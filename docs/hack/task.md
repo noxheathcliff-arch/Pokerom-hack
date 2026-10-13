@@ -55,6 +55,8 @@ Phase B+ : Game Mechanics Director, critiques narratifs indépendants, supervise
 - [x] Audit environnement (§2)
 - [x] Import de la base dans le dépôt + push
 - [x] Lecture du skill, extraction, définition d'agent persistant
+- [x] GM Director : onboarding complet (37 fichiers du skill) → `GM_METHOD.md`, `EXPERIENCE_INTENT.md`
+- [x] `ROM_HACKING_RESEARCH.md`, `AI_AUDIT.md`, `ASSET_INVENTORY.md` (à finaliser), mGBA headless + mgba-rom-test construits (/opt/mgba-tools)
 
 ### En cours
 - [ ] Phase A (6 agents)
@@ -76,4 +78,5 @@ Phase B+ : Game Mechanics Director, critiques narratifs indépendants, supervise
 ## 7. Blocages et solutions
 | Blocage | Impact | Solution |
 |---|---|---|
+| Limite d'usage API atteinte (17:4x→21:50 UTC) : 6 agents de phase A interrompus | ~4 h de pause ; livrables partiels | sorties partielles commitées ; agents relancés avec leur contexte à 21:51 ; réduire le parallélisme et privilégier des prompts économes |
 | ROM US jointe non reçue | aucune vérification d'empreinte de la ROM fournie | sans impact sur la construction (décompilation) ; documenté |
