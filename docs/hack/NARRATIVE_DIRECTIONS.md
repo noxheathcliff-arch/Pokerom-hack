@@ -67,7 +67,7 @@ Dans Hoenn, des lieux se mettent à **s'arrêter** : un bois figé au crépuscul
 « Ce qui est figé n'enseigne plus rien. » Les zones figées sont **sans rencontres, sans heure, sans changement** : des mondes « maîtrisés » et morts — l'illustration littérale du problème de maîtrise. Le joueur, lui, progresse par le changement (évolution, Méga-Évolution, équipe qui tourne) ; l'antagoniste combat avec le **temps tordu** (Distorsion, Requiem, Prescience).
 
 ### B.3 Mystère (colonne vertébrale)
-- Q1 *Que sont les Figements ?* → R1 (fin acte I, New Lavandia) : des cloches anciennes, sonnées par des humains.
+- Q1 *Que sont les Figements ?* → R1 (fin acte I, Tunnel Mérazon) : des cloches anciennes, sonnées par des humains.
 - Q2 *Absol en est-il la cause ?* (fausse piste loyale) → R2 (acte II, Nénucrique) : Absol **prévient**, il ne provoque pas.
 - Q3 *Pourquoi Ysaline fige-t-elle Hoenn ?* → R3 (acte II, Mont Mémoria) : pour figer le sommet où son Xatu se meurt.
 - Q4 *Que craignait le peuple ancien ?* → R4 (acte III, Caverne Fondmer) : la perte ; les Regis sont des gardiens figés par amour, pas des monstres scellés.
@@ -80,7 +80,7 @@ Dans Hoenn, des lieux se mettent à **s'arrêter** : un bois figé au crépuscul
 Diapason (clé pour entrer au cœur d'un Figement) ; cloche-pivot (combat Dominant) ; Peeko figé (bateau de M. Marcel) ; téléphérique bloqué par les Veilleurs ; éruption suspendue (préparer l'évacuation avant de délivrer) ; pluie figée de la Route 119 ; repaire des Veilleurs (preuves de l'innocence d'Absol) ; mélodie de libération (information rassemblée = clé du final) ; Atalanopolis figée → Pilier Céleste.
 
 ### B.6 Cartes réutilisées
-Bois Clémenti, Grotte Granite, New Lavandia, Site Météore, Mont Chimnée, Institut Météo / Route 119, Planque Aqua (→ repaire des Veilleurs), Mont Mémoria, Centre Spatial, Grotte Tréfonds, Caverne Fondmer, Atalanopolis, Pilier Céleste, Épave. Aucune carte neuve.
+Bois Clémenti, Grotte Granite, Tunnel Mérazon, New Lavandia (facultatif), Site Météore, Mont Chimnée, Institut Météo / Route 119, Planque Aqua (→ repaire des Veilleurs), Mont Mémoria, Centre Spatial, Grotte Tréfonds, Caverne Fondmer, Atalanopolis, Pilier Céleste, Épave. Aucune carte neuve.
 
 ### B.7 Gimmick proposé
 **Méga-Évolution** : canon hoennien (Peuple du Météore, ROSA), lisible sur GBA, et sémiotiquement opposée aux Figements (« changer pour dépasser »). Ysaline ne méga-évolue jamais.

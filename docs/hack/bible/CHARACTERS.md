@@ -51,7 +51,7 @@
 - **Compagnon :** **Augure**, Xatu de soixante ans (voit le passé d'un œil, l'avenir de l'autre `[CANON-JEU : OAC Pokédex]`). Il se meurt.
 - **Objectif :** figer le sommet du Mont Mémoria pour qu'Augure ne meure jamais. Moyen : accorder un carillon de cloches anciennes à travers Hoenn ; chaque cloche accordée fige son voisinage.
 - **Croyances :** « Ils ne souffrent pas, ils attendent. » « J'ai aidé mille personnes à laisser partir. Je sais ce que ça coûte. » « Un instant parfait vaut mieux qu'une fin. »
-- **Ce qu'elle n'est pas :** ni manipulatrice, ni avide de pouvoir, ni démasquée par surprise. Elle dit qui elle est dès New Lavandia.
+- **Ce qu'elle n'est pas :** ni manipulatrice, ni avide de pouvoir, ni démasquée par surprise. Elle dit qui elle est dès le Tunnel Mérazon (ch. 5).
 - **Conflit interne :** elle sait que la cloche peut aussi libérer (son métier même) ; elle a « oublié » volontairement la moitié de la mélodie.
 - **Arc (étapes du deuil) :** déni (ch. 4-5 : « rien ne meurt dans un instant ») → colère (ch. 7 : « Vermilava serait cendre sans moi ») → marchandage (ch. 11 : offre au joueur de figer ce qu'il aime) → dépression (ch. 15 : au sommet, épuisée) → acceptation (elle sonne le glas, ch. 15 ; épilogue).
 - **Signature mécanique :** Distorsion (vitesse inversée), Requiem (compte à rebours), Prescience (dégâts différés), Vœu, Abri ; Pokémon-cloches et Pokémon du temps ; **jamais de Méga**.
@@ -87,7 +87,7 @@
 ## 12. Les Carillonneurs (fidèles d'Ysaline)
 - **Assets :** `TRAINER_PIC_HEX_MANIAC`, `TRAINER_PIC_CHANNELER_FRLG` (inutilisé), `TRAINER_PIC_GENTLEMAN`, `TRAINER_PIC_LADY` ; OW `HEX_MANIAC`, `OLD_MAN`, `OLD_WOMAN`, `GENTLEMAN`, `WOMAN_*` ; classe **CARILLONNEUR** ; rencontre `MUS_ENCOUNTER_SUSPICIOUS`, combat `MUS_VS_AQUA_MAGMA` ; ID réutilisés : sbires Aqua (~31) + Magma restants.
 - **Qui :** des endeuillés qu'Ysaline a accompagnés : veufs, orphelins, maîtres d'un Pokémon disparu. Chacun a une phrase sur ce qu'il a perdu (à écrire : une ligne par dresseur).
-- **Équipes :** Pokémon-cloches et du temps : Korillon, Éoko, Archéomire, Archéodong, Natu (jamais Xatu, réservé à Augure), Hoothoot/Noarfang, Ramoloss/Flagadoss (Distorsion), Skelénox/Téraclope, Polichombr. Mécaniques : Distorsion, Prescience, Requiem, Abri, Vœu — introduites **une à la fois** (New Lavandia : Prescience ; Institut : Abri/Vœu ; Mont Mémoria : Distorsion ; Fondmer : Requiem).
+- **Équipes :** Pokémon-cloches et du temps : Korillon, Éoko, Archéomire, Archéodong, Natu (jamais Xatu, réservé à Augure), Hoothoot/Noarfang, Ramoloss/Flagadoss (Distorsion), Skelénox/Téraclope, Polichombr. Mécaniques : Distorsion, Prescience, Requiem, Abri, Vœu — introduites **une à la fois** (Tunnel Mérazon : Prescience ; Institut : Abri/Vœu ; Mont Mémoria : Distorsion ; Fondmer : Requiem).
 
 ### 12.1 Les deux Sonneurs (lieutenants)
 | | **Bourdon** | **Tierce** |
@@ -97,7 +97,7 @@
 | Qui | veuf, ancien horloger de Poivressel | ~25 ans ; sa mère a disparu dans le naufrage de l'Épave |
 | Croyance | « Les horloges mentent : le temps ne passe que si on le laisse. » | « Si le bateau ne coule jamais, elle n'est jamais morte. » |
 | Arc | fidèle jusqu'au bout ; s'efface à Atalanopolis | quête « Le Dernier Quart » (Épave) : elle délivre elle-même l'Épave et quitte Ysaline |
-| Combats | Institut Météo (ch. 9), Centre Spatial (duo, ch. 12), Pilier Céleste (ch. 15) | New Lavandia (ch. 5), Centre Spatial (duo, ch. 12) ; Épave (annexe) |
+| Combats | Institut Météo (ch. 9), Centre Spatial (duo, ch. 12), Pilier Céleste (ch. 15) | Tunnel Mérazon (ch. 5), Centre Spatial (duo, ch. 12) ; Épave (annexe) |
 | Signature | Distorsion + lents puissants (Ramoloss, Archéodong, Téraclope) | Requiem + Abri (Éoko, Polichombr, Ramoloss) |
 
 ## 13. Pierre Rochard (Steven) — collectionneur, puis Maître
@@ -145,4 +145,4 @@ Règle (STRATEGY_RESEARCH §8) : écart boss / plafond ≤ +2 (As +3) ; au moins
 | **Prof. Cosmo** (◐) | OW vanilla | Autéquia ; témoigne qu'un Absol est passé « la veille » de l'éruption figée ; indice R2 |
 | **Directeur de l'Institut Météo** | OW `SCIENTIST_2` | figé au ch. 9 ; ses relevés montrent le « tintement » avant chaque Figement (indice R1/R2) |
 | **Scott** | OW `SCOTT` | postgame : ouvre la Zone de Combat (pas de rôle de mystère) |
-| **Voltère** (hors arène) | — | demande de délivrer New Lavandia (quête vanilla réécrite) |
+| **Voltère** (hors arène) | — | demande de délivrer New Lavandia (quête facultative A3, ch. 8) |
