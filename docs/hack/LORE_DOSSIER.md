@@ -1,0 +1,415 @@
+# Dossier Lore & Ressources — matériau pour la conception narrative
+
+> **Destinataire :** Directeur Game Design / Mécaniques (conception de l'histoire).
+> **Rôle de ce document :** fournir des faits vérifiables, des noms français officiels, et des pistes exploitables. Ce document **n'écrit pas l'histoire**.
+> **Base technique :** pokeemeraude-expansion (décomp Émeraude, espèces & mécaniques Gen 1–9, cartes de Hoenn + assets RFVF).
+> **Date de rédaction :** octobre 2026.
+
+---
+
+## 0. Méthode, conventions et limites (à lire en premier)
+
+### 0.1 Étiquettes épistémiques
+
+| Étiquette | Sens |
+|---|---|
+| **[CANON-JEU : X]** | Affirmé dans le texte ou les événements du jeu X (RS = Rubis/Saphir, E = Émeraude, RFVF = Rouge Feu/Vert Feuille, ROSA = Rubis Oméga/Saphir Alpha, DP/Pt = Diamant/Perle/Platine, HGSS = Or HeartGold/Argent SoulSilver, NB = Noir/Blanc, XY, SL/USUL = Soleil/Lune/Ultra, EB = Épée/Bouclier, LPA = Légendes Pokémon : Arceus, EV = Écarlate/Violet, LZA = Légendes Pokémon : Z-A). |
+| **[CANON-AUTRE MÉDIA]** | Anime, manga *Pokémon La Grande Aventure* (Pocket Monsters Special), JCC, guides officiels. Utilisable, mais non contraignant pour les jeux. |
+| **[THÉORIE DE FANS]** | Spéculation communautaire répandue, jamais confirmée. |
+| **[INTERPRÉTATION]** | Lecture raisonnable de faits canon, faite par moi. |
+| **[HYPOTHÈSE DE CONCEPTION]** | Proposition d'usage pour le hack. Ce n'est pas du canon. |
+
+### 0.2 Fiabilité des noms français
+
+- **✔** : nom FR confirmé pendant cette recherche (via extraits Poképédia / Pokébip / Eternia renvoyés par le moteur de recherche).
+- **◐** : nom FR donné de mémoire, très probable, **à vérifier sur Poképédia avant intégration dans les textes du jeu**.
+- **?** : nom FR inconnu ou incertain. Utiliser le nom anglais entre crochets en attendant.
+
+**Limite technique de cette recherche :** depuis l'environnement de travail, l'accès direct à pokepedia.fr, bulbapedia.bulbagarden.net, serebii.net et pokebip.com était **bloqué** (refus du proxy / DNS). Les vérifications ont été faites via les extraits du moteur de recherche. Les URL citées sont les pages de référence à consulter. Les paraphrases de Pokédex (section 5) sont **de mémoire** : vérifier le texte FR exact sur Poképédia avant de citer.
+
+### 0.3 Corrections notables trouvées pendant la vérification
+
+Ces points corrigent des erreurs fréquentes. Ils sont à retenir pour l'écriture.
+
+- **Cave of Origin = Grotte Origine** ✔ (et non « Grotte Originelle »). https://www.pokepedia.fr/Grotte_Origine
+- **Meteor Falls = Site Météore** ✔ (et non « Chutes Météore »). Source : menu du guide Pokébip Émeraude.
+- **Navel Rock = Roc Nombri** ✔. https://www.pokepedia.fr/Roc_Nombri
+- **Zinnia = Amaryllis** ✔. **Lorekeeper = Gardienne du Savoir** ✔. **Draconid people = Peuple du Météore** ✔. https://www.pokepedia.fr/Amaryllis , https://www.pokepedia.fr/Gardienne_du_Savoir
+- **Maxie** : « Max » dans la VF de RSE. Dans ROSA, selon Poképédia, le nom anglais **Maxie** est conservé pour éviter la confusion avec Max, le frère de Flora ✔. https://www.pokepedia.fr/Leader_Magma
+- **Admins Aqua = Matthieu (Matt) et Sarah (Shelly)** ✔. **Admins Magma = Kelvin (Tabitha) et Courtney** ✔. Ignacio (Blaise) est exclusif au manga ✔. https://www.pokepedia.fr/Admin_Team_Aqua
+- **Key Stone = Gemme Sésame** ✔. Elle est portée dans le **Méga-Anneau** (XY) ou le **Méga-Bracelet** (ROSA). Amaryllis la porte sur une **Méga-Grève** (anneau de cheville) ✔.
+- **Red/Blue Orb** : Poképédia parle de **Gemme Rouge / Gemme Bleue** pour la **Primo-Résurgence** ✔. https://www.pokepedia.fr/Primo-Résurgence
+- **Sealed Chamber = Sanctuaire** ✔. **Desert Ruins = Ruines Désert** ✔. **Island Cave = Grotte de l'Îlot** ✔. **Ancient Tomb = Tombeau Antique** ✔ (Pokébip).
+- **Darkest Day = Nuit Noire** ✔. **Wishing Star = Étoile Vœu** ✔. Les variantes **Fragment Vœu** et **Morceau Vœu** existent aussi ✔. **Eternatus = Éthernatos** ✔, forme **Infinimax** ✔.
+- **Legends Z-A** : la société s'appelle **Quasartico Inc.** en anglais et **Société Quazar** en FR ✔. L'équipe du joueur est la **Team MT** ✔. Les Méga-Évolutions incontrôlées sont des **Méga-Ferox** ✔ (d'après le guide Millenium).
+- Les énigmes des Regis **diffèrent entre RS et Émeraude**. Cela explique les contradictions entre guides (voir §1.4).
+
+---
+
+## 1. Hoenn en profondeur
+
+### 1.1 Géographie (noms FR)
+
+**[CANON-JEU : RSE/ROSA]** Hoenn est inspirée de Kyūshū. Le climat est subtropical. La région compte beaucoup d'eau : environ la moitié des routes sont des Chenaux. L'île principale est montagneuse, avec un volcan central. À l'est se trouve un archipel volcanique et corallien.
+
+**Villes et villages** (✔ sauf mention) :
+- **Bourg-en-Vol** (Littleroot) : laboratoire du **Prof. Seko** (Birch) ✔.
+- **Rosyères** (Oldale) ◐.
+- **Clémenti-Ville** (Petalburg) : Arène de **Norman** ◐.
+- **Mérouville** (Rustboro) : siège de **Devon SA** (Devon Corporation) ◐, École de Dresseurs, Arène de **Roxanne** ◐.
+- **Village Myokara** (Dewford) ✔ : Grotte Granite, Arène de **Bastien** (Brawly) ◐.
+- **Poivressel** (Slateport) : Musée Océanographique, chantier naval, marché ◐.
+- **Lavandia** (Mauville) : Arène de **Voltère** (Wattson) ◐.
+- **Vergazon** (Verdanturf) : air pur, Timmy y emménage ◐.
+- **Vermilava** (Lavaridge) : sources chaudes, Arène d'**Adriane** (Flannery) ◐.
+- **Autéquia** (Fallarbor) : cendres, Salle de Concours, maison du Prof. Cosmo ? (Cozmo).
+- **Cimetronelle** (Fortree) : maisons dans les arbres, Arène d'**Alizée** (Winona) ◐.
+- **Nénucrique** (Lilycove) ✔ : grand magasin, musée, Salle de Concours, repaire Aqua.
+- **Algatia** (Mossdeep) ✔ : Centre Spatial, Arène de **Lévy & Tatia** (Tate & Liza) ◐, maison de Pierre Rochard.
+- **Atalanopolis** (Sootopolis) ✔ : ville dans un cratère de volcan sous-marin, accessible par Plongée. Arène de **Marc** (Wallace, RS/ROSA) ◐ ou de **Juan** (E) ◐.
+- **Pacifiville** (Pacifidlog) ✔ : village de planches posé sur une colonie de **Corayon** (Corsola).
+- **Éternara** (Ever Grande) ✔ : Route Victoire, Ligue Pokémon.
+
+**Lieux notables** (le statut de chaque nom est indiqué) :
+- **Bois Clémenti** (Petalburg Woods) ◐.
+- **Tunnel Mérazon** (Rusturf Tunnel) ◐.
+- **Grotte Granite** (Granite Cave) ✔.
+- **Mont Chimnée** (Mt. Chimney) ◐.
+- **Chemin Ardent** (Jagged Pass) ✔.
+- **Site Météore** (Meteor Falls) ✔.
+- **Désert** de la Route 111, **Tour Mirage** (Mirage Tower) ✔ et **Voie du Désert** (Desert Underpass, E) ✔.
+- **Mont Mémoria** (Mt. Pyre) ◐ : cimetière et sanctuaire des Gemmes.
+- **Parc Safari** ◐.
+- **Institut Météo** (Weather Institute) ◐.
+- **Épave** (Abandoned Ship) ✔.
+- **Grotte Tréfonds** (Shoal Cave) ✔.
+- **Grotte Fondmer** (Seafloor Cavern) ◐.
+- **Grotte Origine** ✔.
+- **Pilier Céleste** (Sky Pillar) ✔.
+- **Sanctuaire**, **Ruines Désert**, **Grotte de l'Îlot**, **Tombeau Antique** ✔.
+- **Grotte Terra** (Terra Cave, E) ✔ et sa grotte marine jumelle (Marine Cave) ? (Pokébip liste aussi une « Grotte Zénith », correspondance non confirmée).
+- **Île Mirage** ✔, **Île du Sud** ✔, **Île Aurore** ✔, **Roc Nombri** ✔, **Île Lointaine** ✔.
+- **Zone de Combat** (Battle Frontier, E) ◐.
+- **Maison des Pièges** (Trick House) ✔ (Pokébip : « Guide de la Maison des Pièges »).
+- **Nouvelle-Lavandia** ? (New Mauville).
+
+### 1.2 Histoire et mythes fondateurs de Hoenn
+
+**Le conflit primordial** [CANON-JEU : RSE, ROSA]
+- **Groudon** est le Pokémon qui a étendu les continents. **Kyogre** est celui qui a étendu les mers.
+- Dans les temps anciens, ils se sont affrontés et ont provoqué un cataclysme climatique : sécheresse d'un côté, déluges de l'autre.
+- **Rayquaza** est descendu du ciel et a apaisé leur combat. Les deux titans se sont alors endormis : Kyogre dans une fosse marine, Groudon dans le magma (selon les versions).
+- La version RS est plus elliptique. Émeraude rend le rôle de Rayquaza central. ROSA ajoute une **fresque** au Pilier Céleste et explique que les formes **Primo** (Primo-Kyogre, Primo-Groudon) sont les formes **ancestrales** des titans, liées à l'énergie naturelle des temps anciens. Source : https://www.pokepedia.fr/Primo-Résurgence
+
+**Les Gemmes Rouge et Bleue (Orbes)** [CANON-JEU : RSE/ROSA]
+- Elles sont conservées au sommet du **Mont Mémoria** par un couple de vieillards gardiens.
+- Les Teams Magma et Aqua les volent. Dans ROSA, le Pokémon légendaire absorbe la Gemme et accomplit sa Primo-Résurgence ; le chef qui croyait le contrôler perd la maîtrise.
+- Le texte du jeu présente les Gemmes comme liées au pouvoir des titans et capables de les contrôler ou de les apaiser.
+- **[INTERPRÉTATION]** Le motif « objet sacré gardé par des anciens, volé par des idéologues » est l'un des plus solides de Hoenn.
+
+**Atalanopolis et la garde de la Grotte Origine** [CANON-JEU : E, ROSA]
+- La ville est construite dans un cratère, et la Grotte Origine se trouve au nord. https://www.pokepedia.fr/Grotte_Origine
+- Dans Émeraude, **Marc** (Wallace) explique qu'il a la charge de la Grotte Origine, et **Juan**, Champion d'Arène, est présenté comme son maître ◐.
+- Les **sages / anciens d'Atalanopolis** connaissent la légende et ne laissent entrer que certaines personnes. Les PNJ portent des noms génériques. **[CANON-JEU, détails à vérifier]**
+- Dans le climax d'Émeraude, Groudon et Kyogre s'affrontent au-dessus d'Atalanopolis. Le joueur réveille Rayquaza au Pilier Céleste, et Rayquaza vient les séparer.
+
+**Le Pilier Céleste** [CANON-JEU : RSE/ROSA] https://www.pokepedia.fr/Pilier_Céleste
+- Tour en ruine sur le Chenal 131, à l'est de Pacifiville. Son sol est fissuré (vélo Cross requis dans Émeraude). Rayquaza dort au sommet.
+- Dans RS, la tour n'est accessible qu'après la Ligue. Elle est centrale dans Émeraude.
+- Personne ne sait qui l'a bâtie : c'est un **mystère de construction** non résolu par le canon. **[INTERPRÉTATION]** Pour ROSA, l'hypothèse du Peuple du Météore est cohérente.
+
+### 1.3 Le Sanctuaire, les Regis et le Braille
+
+**[CANON-JEU : RSE]** https://bulbapedia.bulbagarden.net/wiki/Sealed_Chamber
+- Le **Sanctuaire** se trouve sous l'eau sur le Chenal 134 (accès par Plongée). Ses murs sont couverts de **Braille**.
+- Les inscriptions, en paraphrase anglaise RS : « Dans cette grotte nous avons vécu. Nous devons tout aux Pokémon. Mais nous les avons scellés. Nous en avions peur. » et « Ceux qui ont courage et espoir, ouvrez la porte. Un Pokémon éternel attend. »
+- Condition : avoir **Wailord en tête** et **Relicanth en dernier** dans l'équipe ✔, puis utiliser Éclate-Roc ou Force selon la version.
+- **Point capital** : un peuple ancien a vécu là, devait tout aux Pokémon, et les a pourtant scellés **par peur**. C'est un aveu de culpabilité gravé dans la pierre.
+
+**Énigmes RS ≠ Émeraude** (cela explique les contradictions entre guides) ✔/◐ :
+
+| Lieu | Regi | RS | Émeraude |
+|---|---|---|---|
+| **Ruines Désert** (Route 111) | Regirock | 2 pas à gauche, 2 en bas, **Éclate-Roc** | 2 à droite, 2 en bas, **Force** |
+| **Grotte de l'Îlot** (Chenal 105) | Regice | Attendre ~2 min | **Faire le tour de la salle** le long des murs |
+| **Tombeau Antique** (Route 120) | Registeel | **Flash** au centre | **Vol** au centre |
+
+**Lore étendu** :
+- **[CANON-JEU : DP/Pt]** **Regigigas**, dans le **Temple de Frimapic** ◐, aurait remorqué les continents avec des cordes. Le Pokédex Pt indique qu'il aurait créé les trois Regis à partir d'argile, de glace et de magma.
+- **[CANON-JEU : EB DLC « Terres Neigeuses de la Couronne »]** On y trouve **Regieleki** et **Regidrago**.
+- **[CANON-JEU : ROSA]** Dans ROSA, les Regis sont capturables via les zones des Pokémon légendaires (Mirage) et via un mécanisme de cristal (Regigigas). Détails à vérifier.
+
+**Mécanique expansion** : l'écriture Braille existe dans la police du moteur (héritée de RSE). Les tuiles et scripts des Regis sont présents dans les cartes. Le Braille français est identique au Braille anglais pour les lettres de base ; les accents ont des codes spécifiques. Point à traiter si l'on écrit en FR.
+
+### 1.4 Îles mythiques et événementielles
+
+| Lieu | Contenu | Accès canon | Statut |
+|---|---|---|---|
+| **Île Mirage** ✔ (Chenal 130) | Okéoké (Wynaut) ◐, Baie Lichii ◐ | Apparaît **aléatoirement** : en RSE, une valeur quotidienne doit correspondre à la personnalité d'un Pokémon de l'équipe | [CANON-JEU : RSE] |
+| **Île du Sud** ✔ | Latios/Latias, **Rosée Âme** (Soul Dew) ◐ | **Passe Éon** ◐ (événement) | [CANON-JEU : RSE] |
+| **Île Lointaine** ✔ | Mew | **Vieille Carte** ? (Old Sea Map, événement E). Un panneau évoque un marin qui l'aurait découverte | [CANON-JEU : E] |
+| **Île Aurore** ✔ | Deoxys, énigme du triangle | **Passe Aurora** ? (Aurora Ticket) | [CANON-JEU : RFVF/E] |
+| **Roc Nombri** ✔ | Ho-Oh (sommet), Lugia (fond) | **Ticketmystik** ✔ | [CANON-JEU : RFVF/E] https://www.pokepedia.fr/Roc_Nombri |
+
+**[INTERPRÉTATION]** Ces quatre îles n'ont **jamais** eu de récit dans le jeu. Elles sont donc canoniquement vides de lore : un terrain idéal pour un hack. Elles sont toutes atteintes par le **S.S. Marée** ◐ (S.S. Tidal) depuis Nénucrique ou Poivressel. Le Roc Nombri n'apparaît pas sur la carte du PokéNav ✔ (Bulbapedia).
+
+**ROSA** : les **Zones Mirage** (Mirage spots) sont accessibles en planant sur Latios/Latias avec la **Flûte Éon** ◐. Ce sont des îles, grottes et forêts qui changent chaque jour et abritent des légendaires d'autres régions. **[CANON-JEU : ROSA]**
+
+### 1.5 Fiches de lieux (lore et accroches)
+
+- **Site Météore** ✔ [CANON-JEU : RSE/ROSA] : grotte de cascades formée, selon la légende, par la chute d'une météorite. On y trouve **Draby** (Bagon) ◐ en profondeur. Dans ROSA, c'est le **village du Peuple du Météore** ; Amaryllis en est originaire ✔. La Team Magma y vole la météorite du **Prof. Cosmo** ? (Cozmo). https://bulbapedia.bulbagarden.net/wiki/Meteor_Falls
+- **Mont Chimnée** [CANON-JEU : E/ROSA] : volcan central, desservi par un téléphérique. La Team Magma tente d'y provoquer une éruption à l'aide de la **Météorite** et d'une machine ; dans Émeraude, elle vole aussi du carburant de fusée. Les cendres retombent sur la Route 113 et Autéquia, et le Souffleur de verre ◐ fabrique des Flûtes avec.
+- **Ruines Désert / Tour Mirage** ✔ [CANON-JEU : E] : la **Tour Mirage** apparaît dans les tempêtes de sable de la Route 111. Elle contient deux fossiles (**Fossile Racine**/Lilia ◐ et **Fossile Griffe**/Anorith ◐). Quand on en prend un, **la tour s'effondre** et l'autre fossile est perdu. **Accroche archéologique forte.** https://bulbapedia.bulbagarden.net/wiki/Mirage_Tower
+- **Grotte Tréfonds** ✔ [CANON-JEU : RSE] : marées haute et basse alternant toutes les 6 h (horloge temps réel). On y récupère du **Sel Tréfonds** ◐ et des **Coquillages Tréfonds** ◐, que le vieil homme de l'entrée transforme en **Grelot Coque** ◐ (Shell Bell).
+- **Grotte Origine** ✔ et **Grotte Fondmer** ◐ : sanctuaires des titans. La Grotte Fondmer est accessible avec le sous-marin volé à Devon (Explorer 1 ?).
+- **Épave** ✔ [CANON-JEU : RSE/ROSA] : le paquebot **S.S. Cactus** ? (nom FR à vérifier) a coulé entre Poivressel et Lavandia. On y trouve le **Scanner** ◐ du **Capitaine Marin** ? (Captain Stern), des clés de cabines, et des espaces inondés. Dans ROSA, des éléments d'ambiance fantomatique y sont ajoutés (à vérifier).
+- **Centre Spatial d'Algatia** [CANON-JEU : RSE/ROSA] : lancements de fusées ; cible de la Team Magma (vol de carburant, E). Dans ROSA, il est **central dans l'Épisode Delta** (projet de téléportation de la météorite, voir §1.6). Un scientifique PNJ y compte les jours avant le lancement.
+- **Devon SA** ◐ [CANON-JEU : RSE/ROSA] : entreprise de **M. Rochard** (Mr. Stone), père de Pierre.
+    - Produits : **Pièces Devon** ◐ (Devon Goods), **Scope Devon** ◐ (révèle les Kecleon invisibles), **PokéNav**, Ball Rapide/Luxe ◐ (selon la version).
+    - Le sous-marin d'exploration est volé par la Team Aqua.
+    - Le **Tunnel Mérazon** a été interrompu pour ne pas déranger les **Chuchmur** (Whismur) : Devon apparaît comme une entreprise « écologiquement prudente ».
+    - **ROSA** : Devon fait des recherches sur l'**énergie infinie** ? (Infinity Energy), liée à l'**Arme Ultime** de Kalos (voir §2.6).
+- **Institut Météo** ◐ [CANON-JEU : RSE] : il étudie le climat et **Morphéo** (Castform). Les Teams l'envahissent pour ses données sur les phénomènes climatiques liés aux titans. Le joueur y reçoit Morphéo.
+- **Maison des Pièges** ✔ [CANON-JEU : RSE] : sur la Route 110. Le **Maître des Pièges** ? (Trick Master), un excentrique masqué, se cache dans chaque salle et propose 8 énigmes successives.
+- **Zone de Combat** ◐ [CANON-JEU : E] : île accessible par le S.S. Marée. Elle compte 7 installations ; les **Meneurs** ? (Frontier Brains, nom FR à vérifier) y sont les boss. Elle est fondée et animée par **Scott** ◐, un personnage énigmatique qui observe le joueur dès le début du jeu. On y trouve aussi la **Grotte Artisan** ? (Artisan Cave, Queulorior). https://bulbapedia.bulbagarden.net/wiki/Battle_Frontier_(Generation_III)
+- **Mont Mémoria** ◐ : cimetière de Pokémon. On y trouve Polichombr, Skelénox et **Éoko** (Chimecho) au sommet, ainsi que les Gemmes. C'est le lieu du deuil dans Hoenn.
+- **Nouvelle-Lavandia** ? : centrale électrique souterraine abandonnée sous la Route 110 (Voltère). Dans ROSA, elle devient **Lavandia-sur-Mer** ? (Sea Mauville), une épave de ville flottante.
+
+### 1.6 Rubis Oméga & Saphir Alpha : l'Épisode Delta et ses ajouts
+
+Sources : https://www.pokepedia.fr/Épisode_Delta , https://www.pokepedia.fr/Amaryllis , https://bulbapedia.bulbagarden.net/wiki/Delta_Episode
+
+**Synopsis** [CANON-JEU : ROSA] :
+- Après la Ligue, une **météorite géante** menace de percuter la planète.
+- Pierre Rochard, M. Rochard, le **Prof. Cosmo** ? et le Centre Spatial veulent la **téléporter** dans l'espace grâce à un dispositif alimenté par l'énergie infinie ? (détail à vérifier dans le texte FR).
+- **Amaryllis** ✔ (Zinnia), **Gardienne du Savoir** ✔ du **Peuple du Météore** ✔, veut au contraire **invoquer Rayquaza** pour qu'il détruise la météorite.
+- Elle vole des ressources en chemin (notamment un fragment de météorite) et affronte le joueur à la Grotte Granite ✔ et ailleurs.
+- Rayquaza, après avoir ingéré le fragment, **méga-évolue**. Le joueur l'enfourche dans l'espace et y découvre **Deoxys**, caché dans la météorite.
+
+**La Méga-Évolution, selon le Peuple du Météore** [CANON-JEU : ROSA] :
+- Une vieille dame du peuple raconte qu'autrefois, les prières du peuple et une météorite ont permis à **Rayquaza** de méga-évoluer : c'est la **première Méga-Évolution**.
+- Rayquaza est le seul Pokémon à méga-évoluer **sans Méga-Gemme**, grâce à la capacité **Draco Ascension** ◐ (Dragon Ascent).
+- Le rôle de la vieille dame est appuyé par Eternia (soluce partie 22).
+- **Rôle social de la Gardienne du Savoir** : c'est la personne qui transmet les récits du peuple et qui appelle Rayquaza en cas de crise. Amaryllis a hérité du titre d'une amie disparue ✔ (selon Poképédia).
+- Elle méga-évolue son **Drattak** (Salamence) grâce à la Gemme Sésame de sa Méga-Grève ✔.
+
+**Le motif « autres mondes »** [CANON-JEU : ROSA] :
+- Amaryllis évoque des **mondes parallèles**, où les choses se sont passées autrement, et un monde « sans Méga-Évolution ».
+- **[INTERPRÉTATION largement admise]** C'est un clin d'œil méta aux RSE originaux. Le canon pose ainsi explicitement que **plusieurs Hoenn coexistent**.
+- **[THÉORIE DE FANS]** Elle lierait le multivers de ROSA à l'Ultra-Dimension de SL/USUL. Ce lien n'est pas confirmé.
+
+**Le lien avec l'Arme Ultime de Kalos** [CANON-JEU : ROSA] : l'énergie infinie étudiée par Devon est explicitement reliée à l'énergie de l'Arme Ultime d'AZ, dans la Kalos d'il y a 3 000 ans. Les Méga-Gemmes et cette énergie partagent une origine thématique : l'énergie vitale et cosmique. Les dialogues de M. Rochard sont à vérifier pour le détail exact. https://bulbapedia.bulbagarden.net/wiki/Infinity_Energy
+
+**Autres ajouts de ROSA** :
+- La Primo-Résurgence ✔.
+- Le **DexNav** ◐ (Navidex ?), les Zones Mirage, le vol sur Latios/Latias, les bases secrètes étendues.
+- **Lisia** ◐ (nièce de Marc, idole des Concours) et le **Pikachu Cosplayeur** ◐.
+- Des motivations des chefs Magma et Aqua plus humanisées. Maxie veut étendre les terres pour le progrès humain ; Arthur veut rendre la planète aux Pokémon aquatiques. Tous deux finissent repentants.
+
+### 1.7 Personnages nommés et relations canoniques
+
+| Personnage (FR / EN) | Rôle | Relations canoniques | Statut nom |
+|---|---|---|---|
+| **Pierre Rochard** / Steven Stone | Maître de la Ligue (RS, ROSA) ; collectionneur de pierres rares | Fils de **M. Rochard** (président de Devon). Vit à Algatia. Possède Métalosse et donne un **Terhal** (Beldum) au joueur dans E/ROSA. Dans Émeraude, il est remplacé comme Maître par Marc | ◐ |
+| **M. Rochard** / Mr. Stone | PDG de Devon SA | Père de Pierre. Confie au joueur la lettre et les Pièces Devon | ◐ |
+| **Marc** / Wallace | Champion d'Arène d'Atalanopolis (RS, ROSA), **Maître** (E) ; Maître des Concours | Élève de **Juan** (E). Oncle de **Lisia** (ROSA). Gardien de la Grotte Origine (E). Équipe : Milobellus | ◐ |
+| **Juan** / Juan | Champion d'Arène d'Atalanopolis (E) | Maître de Marc | ◐ |
+| **Maxie** (ROSA) / **Max** (RSE VF) | Chef de la Team Magma | Admins : Kelvin, Courtney. Rival idéologique d'Arthur | ✔ |
+| **Arthur** / Archie | Chef de la Team Aqua | Admins : Matthieu, Sarah | ✔ |
+| **Kelvin** / Tabitha ; **Courtney** / Courtney | Admins Magma | Courtney a un traitement plus marqué dans ROSA | ✔ |
+| **Matthieu** / Matt ; **Sarah** / Shelly | Admins Aqua | — | ✔ |
+| **Prof. Seko** / Prof. Birch | Professeur de Bourg-en-Vol, spécialiste de terrain | Père de Brice ou Flora | ✔ |
+| **Brice** / Brendan ; **Flora** / May | Protagoniste ou rival | Enfant de Norman (protagoniste) ou de Seko (rival). Max est le petit frère de Flora quand elle est la protagoniste | ◐ |
+| **Norman** / Norman | Champion d'Arène de Clémenti-Ville | Père du protagoniste. Famille venue de **Johto** (explicite dans ROSA ; à vérifier pour RSE) | ✔ |
+| **Timmy** / Wally | Ami malade du joueur | Déménage à Vergazon pour l'air pur. Capture **Tarsal** (Ralts) avec l'aide du joueur. Rival final à la Route Victoire. Dans ROSA : Méga-Gallame (Gallade) / Méga-Gardevoir | ◐ |
+| **Roxanne**, **Bastien**, **Voltère**, **Adriane**, **Norman**, **Alizée**, **Lévy & Tatia**, **Marc/Juan** | Champions d'Arène | Voltère est lié à la centrale de Nouvelle-Lavandia. Adriane est la petite-fille d'un ancien champion (ROSA ◐). Lévy et Tatia sont des jumeaux télépathes | ◐ |
+| **Damien** (Sidney), **Spectra** (Phoebe), **Glacia**, **Aragon** (Drake) | Conseil 4 | **Spectra** a grandi au Mont Mémoria auprès de sa grand-mère (RSE ◐). **Aragon** est un ancien marin/capitaine (ROSA ◐) | ◐ |
+| **Amaryllis** / Zinnia | Gardienne du Savoir | Peuple du Météore. Possède un Chuchmur (Whismur) lié à une personne disparue (détail à vérifier) | ✔ |
+| **Scott** / Scott | Fondateur et recruteur de la Zone de Combat | Apparaît tout au long d'Émeraude | ◐ |
+| **M. Briney** ? / Mr. Briney | Vieux marin ; son Bekipan s'appelle Peeko | Transporte le joueur. Les extraits Poképédia montrent « M. Briney » dans le JCC FR | ? |
+| **Prof. Cosmo** ? / Prof. Cozmo | Chercheur sur les météorites (Autéquia) | Victime de la Team Magma | ? |
+| **Capitaine Marin** ? / Captain Stern | Capitaine océanographe (Poivressel) | Sous-marin volé | ? |
+| **Lanette** ? / Lanette | Créatrice du système PC de Hoenn | — | ? |
+| Vieux couple du Mont Mémoria | Gardiens des Gemmes | — | — |
+| Sages d'Atalanopolis | Gardiens de la légende | — | — |
+
+---
+
+## 2. Mythologie trans-générationnelle et mystères réutilisables
+
+### 2.1 Arceus et la cosmogonie de Sinnoh
+
+**[CANON-JEU : DP/Pt, HGSS, LPA]**
+- **Arceus**, le « Pokémon Alpha », serait né d'un œuf dans le chaos et aurait façonné l'univers avec ses mille bras (Mythes de Sinnoh, bibliothèque de **Joliberges** ◐ / Canalave).
+- Il a créé le **trio du temps, de l'espace et de l'antimatière** : **Dialga** (temps), **Palkia** (espace) et **Giratina** (banni dans le **Monde Distorsion** ✔ pour sa violence).
+- Il a créé aussi le **trio des lacs** : **Créhelf** (savoir, Lac Savoir ◐), **Créfollet** (émotion, Lac Vérité ◐) et **Créfadet** (volonté, Lac Courage ◐).
+- Les **Colonnes Lances** ✔ (Spear Pillar), au sommet du **Mont Couronné** ◐, étaient autrefois le **Temple de Sinnoh** ✔. **Hélio** (Cyrus) ◐ et la **Team Galaxie** y tentent de recréer le monde. https://www.pokepedia.fr/Colonnes_Lances
+- Mythes de Sinnoh : autrefois, humains et Pokémon se mariaient, car il n'y avait pas de différence entre eux. Ce mythe est inscrit à la bibliothèque de Joliberges.
+- **[CANON-JEU : HGSS]** Les **Ruines Sinjo** ? (Sinjoh Ruins) : un événement avec Arceus y crée Dialga, Palkia ou Giratina. Le nom mêle **Sin**noh et **Joh**to, ce qui suggère qu'une **civilisation commune aux deux régions** a existé. **[INTERPRÉTATION]** https://bulbapedia.bulbagarden.net/wiki/Sinjoh_Ruins
+
+### 2.2 Zarbi (Unown) et les ruines
+
+- **[CANON-JEU : OAC, HGSS]** Les **Ruines d'Alpha** ◐ (Ruins of Alph), près de Doublonville/Écorcia ◐, comportent des panneaux-puzzles (Kabuto, Amonita, Ptéra, Ho-Oh) et des inscriptions en alphabet Zarbi sur les murs (« ESCAPE », « LIGHT », « WATER », « HO-OH »).
+- Zarbi : 28 formes (A–Z, « ! » et « ? »). Le Pokédex demande qui est venu en premier, l'écriture ancienne ou les Zarbi.
+- **[CANON-JEU : RFVF]** **Îles Sevii** ✔ :
+    - Les **Ruines Tanoby** ✔ (Île 7) contiennent **7 Chambres Tanoby** ✔ peuplées de Zarbi.
+    - La **Vallée Ruine** ✔ (Île 6) abrite le **Trou Pointillé** ? (Dotted Hole), une énigme en **Braille** qui mène au **Saphir**.
+    - On y trouve aussi le **Canyon Sesor** ✔ (Sevault Canyon) et la **Clé Tanoby** ✔.
+    - Sources : https://www.pokepedia.fr/Ruines_Tanoby , https://www.pokepedia.fr/Vallée_Ruine
+- **[INTERPRÉTATION]** Le **Braille** apparaît à la fois dans Hoenn (Regis) et dans Sevii (Vallée Ruine). Les deux régions ont été conçues ensemble (Gen 3) et partagent une même « civilisation scripturale aveugle ». C'est le meilleur pont canonique entre les assets Hoenn et RFVF.
+
+### 2.3 Ultra-Chimères, Necrozma et Ultra-Dimension (SL/USUL)
+
+- **[CANON-JEU : SL/USUL]** Les **Ultra-Chimères** ◐ (Ultra Beasts) viennent d'autres mondes à travers des **Ultra-Brèches** ◐ (Ultra Wormholes).
+- La **Fondation Æther** ◐ et sa présidente **Elsa-Mina** ◐ (Lusamine) les étudient et les vénèrent. Elsa-Mina est la mère de **Lilie** ◐ et de **Gladio** ◐ ; elle est obsédée par la beauté et la possession.
+- **Necrozma** a volé la lumière de l'**Ultra-Mégalopolis** ? (Ultra Megalopolis). L'**Ultra-Escouade** ? (Ultra Recon Squad) vient la récupérer. Necrozma fusionne avec Solgaleo ou Lunala, puis peut réaliser un **Ultra-Explosion** ? (Ultra Burst).
+- **Visiteurs d'Ultra-Dimension** ? (Fallers) : les humains qui ont traversé une brèche portent une aura étrange (USUL ◐).
+
+### 2.4 Pokémon Paradoxe, Zone Zéro et Téracristallisation (EV)
+
+- **[CANON-JEU : EV]** La **Zone Zéro** ◐, au fond du grand cratère de Paldea, abrite les **Pokémon Paradoxe** ✔.
+    - **Écarlate** : formes « anciennes », par exemple **Rugit-Lune** ✔ (Drattak ancestral).
+    - **Violet** : formes « futures », par exemple **Garde-de-Fer** ✔ et **Hotte-de-Fer** ✔.
+    - Ils sont amenés par la **machine à voyager dans le temps** de la **Professeure Olim** ◐ (Sada) ou du **Professeur Turum** ◐ (Turo). https://www.pokepedia.fr/Pokémon_Paradoxe
+- Le professeur est mort ; c'est une **IA** à son image qui guide le joueur. L'IA cherche à fermer la machine et à rompre son propre « programme Paradis ». L'idée d'un **« paradis »** où coexistent passé ou futur et présent est explicite.
+- **Téracristallisation** : elle provient des cristaux de **Terapagos** dans la Zone Zéro (DLC *Le Disque Indigo* ◐) ; Terapagos possède une forme **Stellaire**. L'**Orbe Téracristal** ◐ se recharge au Centre Pokémon.
+- **Livres Écarlate/Violet** ◐ : récits d'une expédition ancienne en Zone Zéro, dont une partie relève de **canular** ou de description d'ombres. Le canon joue explicitement sur la **fiabilité des sources**. **[CANON-JEU : EV]**
+
+### 2.5 Galar : Nuit Noire, Dynamax, Éthernatos
+
+- **[CANON-JEU : EB]** La **Nuit Noire** ✔ est le réveil d'**Éthernatos** ✔ et la libération massive d'énergie Dynamax. https://www.pokepedia.fr/Éthernatos
+- Les **Étoiles Vœu**, **Fragments Vœu** et **Morceaux Vœu** ✔ sont des parcelles d'Éthernatos dispersées dans la région, et elles sont le secret du Dynamax ✔ (Eternia).
+- Selon le Pokédex, Éthernatos serait tombé du ciel il y a environ 20 000 ans ◐.
+- Le **Président Shehroz** ✔ (Rose) réveille Éthernatos de manière anticipée pour résoudre une crise énergétique future de « mille ans ». Il est un « méchant raisonnable ».
+- La légende officielle célèbre deux héros humains armés d'une épée et d'un bouclier. **Sonia** ◐ découvre que les vrais héros étaient **Zacian** et **Zamazenta**, et que l'histoire officielle avait été **réécrite** (statue de Smashings ? / Motorby ◐). C'est un **modèle d'histoire révisionniste** très exploitable.
+
+### 2.6 Kalos : l'Arme Ultime, AZ et Floette
+
+- **[CANON-JEU : XY]** Il y a environ **3 000 ans**, le roi **AZ** de Kalos a perdu sa **Floette** à la guerre. Il a construit une machine qui l'a ressuscitée en drainant la **vie d'autres Pokémon**.
+- Fou de douleur et de colère, il a ensuite transformé la machine en **Arme Ultime**, qui a mis fin à la guerre en tuant des deux côtés.
+- La Floette, horrifiée, l'a quitté. AZ est devenu **immortel**, et sa Floette porte une **Fleur Éternelle** (forme de **Floette Fleur Éternelle** ◐).
+- **Lysandre** ◐ et la **Team Flare** veulent réactiver l'arme à **Géosenge** ◐. Source : https://bulbapedia.bulbagarden.net/wiki/Ultimate_weapon
+- **[CANON-JEU : XY]** Les **Méga-Gemmes** et les **Gemmes Sésame** sont liées thématiquement à cette énergie. Le Professeur **Platane** ◐ fait des recherches sur la Méga-Évolution, et la **Tour Maîtrise** ◐ de **Yantreizh** ✔ (Shalour) est le berceau de la tradition Méga à Kalos ; **Cornélia** ✔ en est l'héritière.
+- **[CANON-JEU : LZA]** Le jeu se déroule dans **Illumis** ◐ environ **5 ans après XY** ✔. La ville est en réaménagement urbain par la **Société Quazar** ✔, avec des **Zones sauvages** au cœur de la ville et le tournoi **Royale Z-A** ✔. On y croise la Team MT ✔, des **Méga-Ferox** ✔ et des « Méga Énergies ». Un événement mystérieux a laissé la **Tour Prismatique** ◐ en réparation perpétuelle ✔ (RPGamer).
+    - **Le rôle exact d'AZ, de Zygarde et du final n'a pas pu être vérifié de façon fiable** : à compléter avant usage.
+
+### 2.7 Hisui : distorsions spatio-temporelles (LPA)
+
+- **[CANON-JEU : LPA]** Une **faille** dans le ciel de Hisui (l'ancien Sinnoh) provoque des **distorsions spatio-temporelles** ◐. Ce sont des zones temporaires où apparaissent des Pokémon rares et des objets d'autres époques.
+- Le protagoniste tombe du ciel, envoyé par Arceus. L'**Équipe Galaxie** ◐ (ancêtre thématique de la Team Galaxie) cartographie la région.
+- Le **Clan Diamant** ◐ et le **Clan Perle** ◐ s'opposent sur la nature de la divinité (temps ou espace). C'est un très bon modèle de **schisme religieux**.
+- **Volo** (nom FR à vérifier) est un marchand de la **Guilde Ginkgo** ◐ et un descendant du peuple ancien des **Célestica** ?. Il a provoqué la faille pour atteindre Arceus en utilisant Giratina. Bulbapedia : https://bulbapedia.bulbagarden.net/wiki/Volo
+- Les **Pokémon Seigneurs** ? (Nobles) sont des Pokémon frénétiques que les « Gardiens » ? apaisent. C'est un modèle de **culte local d'un Pokémon**.
+
+### 2.8 Kanto / Îles Sevii
+
+- **[CANON-JEU : RBJ, RFVF]** Les journaux du **Manoir Pokémon** ◐ de **Cramois'Île** ◐ en donnent la chronologie :
+    - Découverte de Mew en Guyane, en Amérique du Sud.
+    - Mew donne naissance à un petit, qui est baptisé Mewtwo.
+    - Mewtwo est « bien trop puissant ».
+    - Mewtwo s'échappe et détruit le manoir.
+    - Ces journaux sont **un modèle classique de narration environnementale**. https://bulbapedia.bulbagarden.net/wiki/Pokémon_Mansion
+- **[CANON-JEU : RFVF]** Îles Sevii ✔ :
+    - **Celio** ◐ construit la **Machine Réseau** ◐ qui relie Kanto à Hoenn. Il a besoin du **Rubis** (Mont Braise ◐) et du **Saphir** (Vallée Ruine).
+    - La **Team Rocket** opère sur Sevii après sa dissolution officielle (entrepôt sur l'Île 5 ◐) et vole le Saphir pour le revendre.
+    - **[INTERPRÉTATION]** Ce **lien technique officiel Kanto↔Hoenn**, matérialisé par des pierres précieuses portant les noms des jeux, est presque inexploité.
+    - **Olga** (Lorelei) ◐ est originaire de l'Île 4.
+- **[CANON-JEU : RBJ/RFVF]** **M. Fuji** ◐ est l'un des créateurs de Mewtwo selon des sources secondaires ; c'est explicite dans le **Pokémon Origins**/anime [CANON-AUTRE MÉDIA]. Dans le jeu, il s'occupe des orphelins de Lavanville et de la Tour Pokémon.
+
+### 2.9 Johto : la Tour Carillon et la Tour Cendrée
+
+- **[CANON-JEU : OAC, HGSS]** À **Rosalia** ◐ (Ecruteak), la **Tour Cendrée** ◐ (Burned Tower, ex-Tour de Cuivre) a brûlé il y a environ 150 ans, foudroyée.
+    - Trois Pokémon y sont morts ; **Ho-Oh** les a ressuscités en **Raikou**, **Entei** et **Suicune**.
+    - Ho-Oh a ensuite quitté la **Tour Carillon** ◐ (Tin/Bell Tower).
+    - **Lugia** réside aux **Îles Tourbillon** ◐.
+    - Les **Kimono Girls** ◐ (Danseuses ?) et les **Sages** gardent la tradition.
+- **[CANON-JEU : HGSS]** La Gelée d'Argent et la Plume Arc-en-ciel ◐ servent de clés rituelles.
+- **[THÉORIE DE FANS]** Les trois Pokémon morts dans l'incendie seraient d'anciens Pokémon précis, par exemple trois Évoli. Ce n'est pas confirmé.
+
+### 2.10 Unova : Vérité et Idéaux
+
+- **[CANON-JEU : NB/NB2]** Un royaume ancien était gouverné par deux frères héros et un dragon unique. Quand les frères se sont querellés (vérité contre idéaux), le dragon s'est scindé en **Reshiram**, **Zekrom** et la coquille **Kyurem**.
+- **N** ◐, élevé par **Ghetis** ◐ dans une chambre fermée, est un **pion idéaliste** sincère. Ghetis est le manipulateur. La **Team Plasma** prêche la « libération » des Pokémon.
+- On y trouve aussi la **Tour Dragospire** ◐ et le **Château Enfoui** ◐ (Relic Castle) dans le désert. **Cryptéro** (Sigilyph) y garde une cité ancienne.
+- **Genesect** : la Team Plasma a ressuscité et modifié un fossile de 300 millions d'années.
+
+### 2.11 Alola : les Tokos
+
+- **[CANON-JEU : SL/USUL]** Les gardiens divins **Tokorico** ◐ (Koko), **Tokopiyon** ◐ (Lele), **Tokotoro** ◐ (Bulu) et **Tokopisco** ◐ (Fini) sont **capricieux** : ils bénissent puis punissent.
+- Les **Doyens** ◐ (Kahunas) sont choisis par les Tokos.
+- **Épreuves insulaires** : les **Capitaines** ◐ remplacent les Arènes, et les **Pokémon Dominants** ◐ (Totem) font office de boss.
+- **Ruines** dédiées à chaque Toko. **[INTERPRÉTATION]** C'est un modèle de structure de progression non-Arène.
+
+### 2.12 Paldea, suite : Septentria et le Trésor de Paldea
+
+- **[CANON-JEU : EV DLC *Le Masque Turquoise* ◐]**
+    - À **Septentria** ? (Kitakami), le folklore local présente **Ogerpon** comme un ogre malfaisant, alors que les **« Trois Loyaux »** ? (Loyal Three) sont présentés comme des héros.
+    - La vérité est inverse : les Trois Loyaux, empoisonnés par **Pêchaminus** ◐, étaient les voleurs ; Ogerpon a protégé son compagnon humain.
+    - **[INTERPRÉTATION]** C'est le meilleur exemple récent de **folklore inversé**, et l'un des récits Pokémon les mieux reçus par les fans.
+
+### 2.13 Thèmes transversaux (synthèse)
+
+| Thème | Occurrences canon |
+|---|---|
+| **Civilisations disparues** | Sanctuaire/Regis (Hoenn), Ruines d'Alpha (Johto), Tanoby (Sevii), Célestia (Sinnoh), Château Enfoui (Unova), Kalos d'AZ, Hisui |
+| **Royaumes perdus / rois** | AZ (Kalos), rois de Galar, **Sylveroy** ◐ (Calyrex, « roi des récoltes »), frères d'Unova |
+| **Voyage dans le temps** | Celebi, Dialga, Machine temporelle (EV), Hisui, Pokémon Paradoxe |
+| **Espace** | Deoxys, Rayquaza, Séléroc/Solaroc, Éthernatos, Ultra-Chimères, Necrozma, Mossdeep |
+| **Mirage / irréel** | Île Mirage, Tour Mirage, Zones Mirage (ROSA), Monde Distorsion, Pokémon Mirage ? (Kecleon) |
+| **Histoire falsifiée** | Galar (héros), Septentria (Ogerpon), Livres Écarlate/Violet |
+| **Scellement par peur** | Regis (Sanctuaire), Spiritomb (Clé de Voûte), Hoopa (Vase), Giratina (banni) |
+
+---
+
+## 3. Organisations, professions et institutions
+
+### 3.1 Ligue Pokémon et Arènes
+
+- **[CANON-JEU : toutes gen]** Les **Champions d'Arène** remettent des **Badges**. On compte 8 badges, puis la **Route Victoire**, le **Conseil 4**, et enfin le **Maître** (Champion de la Ligue).
+- Dans EB, la Ligue de Galar est un **spectacle sportif sponsorisé** (stades, présidents). Dans EV, la Ligue est intégrée à une **Académie** (Académie Orange/Raisin ◐) et la **Directrice** (Top Champion ◐ **Alyxis** ? / Geeta) supervise.
+- **[INTERPRÉTATION]** La Ligue n'est pas monolithique : son organisation varie selon les régions (sport, académie, tradition), et cela autorise un **modèle original** dans le hack.
+
+### 3.2 Institutions de service
+
+- **Centre Pokémon** et **Infirmière Joëlle** ◐ (Nurse Joy). Dans l'anime, les Joëlle sont une famille de sœurs et cousines identiques [CANON-AUTRE MÉDIA]. Dans les jeux, la soignante est générique.
+- **Agente Jenny** ◐ (Officer Jenny) : police locale, même logique familiale dans l'anime [CANON-AUTRE MÉDIA].
+- **Police Internationale** ◐ : l'agent **Beladonis** ◐ (Looker) apparaît dans Pt, XY, USUL et LPA. Ce sont des **enquêteurs transnationaux**.
+- **Rangers Pokémon** : protègent la nature à l'aide d'un **Capstick** et non de Poké Balls (série *Pokémon Ranger*) [CANON-JEU spin-off]. Ils apparaissent aussi comme Dresseurs « Ranger » dans les jeux principaux.
+- **Pension Pokémon** (Route 117 dans Hoenn) ; Éleveurs.
+- **Professeurs régionaux** : chaque région a sa spécialité (Seko : terrain/habitat ; Platane : Méga ; Sorbier ◐ : évolution).
+- **Musées** (Poivressel, Nénucrique) et **archéologues** : Unova a l'archéologue **Anis** ? ; Sinnoh a **Cynthia**, Maître de la Ligue et chercheuse en mythologie ; l'**Expédition Zone Zéro** existe dans EV.
+- **Association Pokémon / Ligue Pokémon** : dans les jeux, l'entité supra-régionale est rarement nommée. Une « Association Pokémon » existe dans le JCC et certains textes [CANON-AUTRE MÉDIA, à vérifier].
+
+### 3.3 Divertissement et sport
+
+- **Concours Pokémon** : 5 catégories (Sang-froid, Beauté, Grâce, Intelligence, Robustesse ◐), rangs de Normal à Master. Les **Salles de Concours** se trouvent à Autéquia, Vermilava, Poivressel et Nénucrique (RSE), et Marc en est le Maître. Le moteur gère des **Pokécubes/Pokéblocs** ◐ et Contests. `include/config/contest.h` existe dans le dépôt.
+- **Zone de Combat / Tour de Combat** : spectacle et méritocratie du combat.
+- **Casino de Lavandia** (Game Corner) ◐.
+- **Maison des Pièges** : divertissement d'énigmes.
+
+### 3.4 Organisations « maléfiques » ou ambiguës
+
+| Organisation | Idéologie | Ce qui la rend intéressante |
+|---|---|---|
+| Team Rocket | Profit criminel | Crime organisé, survit à sa dissolution (Sevii) |
+| Team Magma / Aqua | Écologie radicale inversée (terres/mers) | Deux idéologies **symétriques**, chacune « raisonnable » à petite dose |
+| Team Galaxie | Recréer un monde sans esprit | Nihilisme cosmique |
+| Team Plasma | Libération des Pokémon (façade) | Question morale réelle, manipulateur caché |
+| Team Flare | Élitisme, monde « beau » | Faible exécution selon les fans |
+| Team Skull / Fondation Æther | Délinquance / philanthropie toxique | Drame familial |
+| Macro Cosmos | Corporation énergétique | Méchant « utilitariste » |
+| Team Star | Délinquants « victimes » | Inversion : les « méchants » sont harcelés |
+| Équipe Galaxie / Clans (Hisui) | Institution coloniale / clans religieux | Pas d'équipe maléfique classique |
+| Société Quazar (LZA) | Urbanisme corporatif | Ville-laboratoire |
+
+### 3.5 Professions et figures récurrentes (PNJ)
+
+- **Scientifiques** : Institut Météo, Centre Spatial, Devon.
+- **Fanas de fossiles** : Maniaque des Fossiles de la Route 114 ◐ (RSE), qui creuse une grotte pour trouver des fossiles.
+- **Souffleur de verre** (Route 113).
+- **Psy des Noms** ? (Name Rater).
+- **Maîtres des Capacités** ◐ (Move Tutors).
+- **Pêcheurs**, **Marins**, **Nageurs**, **Montagnards**, **Ruinemaniaques** ◐ (Ruin Maniac), **Mystiques**/**Médiums** ◐ (Hex Maniac), **Dresseurs Dragon** ◐ (Dragon Tamer), **Ninjas** ◐ (Ninja Boy), **Gardes Ranger** ◐.
+- **Classe de dresseur « Ruinemaniaque »** : elle existe nativement dans RSE (Ruin Maniac), avec sprites et classe déjà présents dans le moteur. **[HYPOTHÈSE DE CONCEPTION]** C'est une faction « archéologues » à coût d'asset quasi nul.
+
+---
