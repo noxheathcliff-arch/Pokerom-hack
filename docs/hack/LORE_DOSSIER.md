@@ -493,3 +493,90 @@ Tous ces éléments ont été vérifiés dans le dépôt [MOTEUR ✔] :
 - **Écran d'aperçu de carte** (`config/map_preview_screen.h`) : présentation des lieux.
 - **Lieu de rencontre modifiable** (`setmonmetlocation`) : Pokémon « venus d'ailleurs ». On peut afficher un lieu fictif ou ancien.
 
+---
+
+## 5. Détails de lore méconnus et entrées de Pokédex évocatrices (~65 entrées)
+
+**Avertissement :**
+- Les paraphrases sont courtes et faites **de mémoire** à partir des Pokédex anglais et français. Elles sont toutes **[CANON-JEU : Pokédex]**, mais le **texte FR exact doit être vérifié sur Poképédia** (page de l'espèce, section « Descriptions du Pokédex ») avant toute citation.
+- Les jeux indiqués sont les plus probables.
+- Les noms FR des espèces sont tous ✔ ou ◐ (très haute confiance).
+
+### 5.1 Hoenn (prioritaires : déjà présents dans les assets)
+
+| # | Pokémon FR (EN) | Jeu(x) | Paraphrase courte | Germe narratif |
+|---|---|---|---|---|
+| 1 | **Kecleon** (Kecleon) | RSE | Change de couleur pour se fondre dans le décor, mais ne peut pas cacher la bande en zigzag de son ventre | Les « invisibles » trahis par un détail. Le Scope Devon les révèle |
+| 2 | **Éoko** (Chimecho) | RSE | Son cri résonne dans son corps creux et devient une mélodie ; il vit au sommet du Mont Mémoria et se laisse porter par le vent | Carillon du deuil, voix des morts |
+| 3 | **Relicanth** (Relicanth) | RSE | N'a pas changé depuis 100 millions d'années ; découvert lors d'une exploration sous-marine | Clé du Sanctuaire : un **témoin vivant** de la civilisation des Regis |
+| 4 | **Balbuto** (Baltoy) | RSE | Trouvé dans des ruines anciennes ; se déplace en tournoyant sur un pied | Figurine rituelle |
+| 5 | **Kaorine** (Claydol) | RSE | Figurine d'argile façonnée par un peuple ancien, animée par un rayon mystérieux | **Artefact devenu vivant**, preuve d'une technologie ancienne |
+| 6 | **Séléroc** (Lunatone) | RSE | Découvert il y a environ 40 ans sur le site de chute d'une météorite ; plus actif à la pleine lune | Venu de l'espace : lien avec le Site Météore |
+| 7 | **Solaroc** (Solrock) | RSE | Venu de l'espace ; tire son énergie du soleil et émet de la lumière en tournant | Dualité avec Séléroc : **Lévy & Tatia** (jumeaux) |
+| 8 | **Coquiperl** (Clamperl) | RSE | Ne produit qu'une perle de toute sa vie, et cette perle amplifie les pouvoirs psychiques | Perle unique = objet de désir |
+| 9 | **Serpang / Rosabyss** (Huntail/Gorebyss) | RSE | Vivent dans les grands fonds, sans lumière ; Rosabyss aspire les fluides de ses proies | Faune abyssale de la Grotte Fondmer |
+| 10 | **Spoink** (Spoink) | RSE | Son cœur ne bat que s'il rebondit : s'il cesse de sauter, il meurt. Il porte une perle sur la tête | Survivre = continuer à bouger |
+| 11 | **Absol** (Absol) | RSE+ | Apparaît avant les catastrophes ; les gens l'ont pris pour la cause et l'ont chassé dans les montagnes | **Prophète persécuté**. Archétype narratif majeur |
+| 12 | **Morphéo** (Castform) | RSE | Change de forme selon la météo ; c'est un Pokémon étudié, voire « créé », à l'Institut Météo [le statut « créé » est une interprétation/à vérifier] | Météo artificielle |
+| 13 | **Ténéfix** (Sableye) | RSE+ | Vit dans les grottes et se nourrit de gemmes ; ses yeux sont des pierres précieuses ; on le craint comme un démon | Mineurs et superstitions |
+| 14 | **Polichombr** (Shuppet) | RSE | Se nourrit des sentiments de rancune et de jalousie ; il est attiré par les maisons où ils règnent | Fantôme « émotionnel » |
+| 15 | **Branette** (Banette) | RSE | Peluche abandonnée animée par la rancune, qui cherche l'enfant qui l'a jetée ; la fermeture éclair de sa bouche retient son énergie maudite | Objets abandonnés qui reviennent |
+| 16 | **Skelénox** (Duskull) | RSE | Poursuit les enfants désobéissants ; traverse les murs | Croque-mitaine hoennien |
+| 17 | **Téraclope** (Dusclops) | RSE | Son corps creux peut absorber n'importe quoi, y compris les âmes | — |
+| 18 | **Noctunoir** (Dusknoir) | DP | Son antenne reçoit des ondes du monde des esprits, qui lui ordonnent d'y emmener des gens | **Psychopompe** |
+| 19 | **Munja** (Shedinja) | RSE | Mue vide devenue vivante, qui ne respire pas ; regarder dans le trou de son dos volerait l'âme | Éveil inexpliqué d'une coquille |
+| 20 | **Barpau → Milobellus** (Feebas → Milotic) | RSE | Barpau est méprisé pour sa laideur ; Milobellus est considéré comme le plus beau Pokémon et apaise les conflits | Arc de Marc, beauté contre valeur |
+| 21 | **Wailord** (Wailord) | RSE | Le plus grand Pokémon connu ; chasse en bancs | Clé du Sanctuaire (avec Relicanth) |
+| 22 | **Corayon** (Corsola) | RSE | Vit en colonies ; Pacifiville est construite sur l'une d'elles ; ses branches repoussent | Village sur un être vivant |
+| 23 | **Tarinor** (Nosepass) | RSE | Son nez, aimanté, pointe toujours vers le nord | **Boussole vivante**, navigation |
+| 24 | **Chartor** (Torkoal) | RSE | Brûle du charbon à l'intérieur de sa carapace et s'abrite dans les montagnes | Industrie, Mont Chimnée |
+| 25 | **Mangriff / Séviper** (Zangoose/Seviper) | RSE | Rivalité ancestrale entre les deux espèces | Vendetta héréditaire |
+| 26 | **Rayquaza** | RSE | Vit dans la couche d'ozone depuis des centaines de millions d'années et se nourrit de météoroïdes | Gardien du ciel |
+| 27 | **Groudon / Kyogre** | RSE | L'un a étendu les terres, l'autre a étendu les mers ; ils dorment depuis leur combat | Titans symétriques |
+| 28 | **Regirock / Regice / Registeel** | RSE | Regirock est fait de roches d'époques variées. La glace de Regice date d'une ère glaciaire. Le métal de Registeel n'est pas de ce monde ou a été durci sous pression pendant des dizaines de milliers d'années | Créés et scellés par un peuple ancien |
+| 29 | **Latias / Latios** | RSE | Ressentent les émotions ; Latios projette des images dans l'esprit des autres ; tous deux peuvent se rendre invisibles par réfraction | Témoins télépathes, **messagers d'images** |
+| 30 | **Jirachi** | RSE (évènement) | S'éveille 7 jours tous les 1 000 ans et exauce les vœux écrits sur ses tablettes | Compte à rebours millénaire |
+| 31 | **Deoxys** | RFVF/E | ADN d'un virus spatial muté après une exposition laser ; possède un cristal dans la poitrine | Venu dans une météorite |
+
+### 5.2 Autres régions : esprits, ruines, artefacts
+
+| # | Pokémon FR (EN) | Jeu(x) | Paraphrase courte | Germe narratif |
+|---|---|---|---|---|
+| 32 | **Spiritomb** | DP | 108 esprits enchaînés à une **Clé de Voûte** ✔ par un voyageur au moyen d'un sortilège ; punis pour des méfaits il y a 500 ans | Collecte des « âmes » |
+| 33 | **Baudrive** (Drifloon) | DP | Formé des âmes de personnes et de Pokémon ; les enfants qui tiennent sa ficelle disparaissent | Disparitions d'enfants |
+| 34 | **Grodrive** (Drifblim) | DP | Emporte personnes et Pokémon on ne sait où | — |
+| 35 | **Archéomire** (Bronzor) | DP | Trouvé dans des tombes anciennes ; les motifs de son dos auraient un pouvoir mystérieux | Miroir funéraire |
+| 36 | **Archéodong** (Bronzong) | DP | Vénéré autrefois comme dieu de la pluie ; un spécimen a été déterré après un sommeil de 2 000 ans ; il aurait ouvert des passages vers d'autres mondes | Cloche sacrée, divinité de l'eau, **portail** |
+| 37 | **Feuforêve** (Misdreavus) | OAC | Effraie les gens et se nourrit de leur peur | — |
+| 38 | **Momartik** (Froslass) | DP | Légende d'une femme perdue dans les montagnes enneigées et réincarnée ; congèle ses victimes et les « collectionne » | Folklore de montagne |
+| 39 | **Tutafeh** (Yamask) | NB | Le masque qu'il porte est son propre visage humain d'autrefois ; il pleure parfois en le regardant | **Mémoire d'une vie antérieure humaine** |
+| 40 | **Tutankafer** (Cofagrigus) | NB | Sarcophage doré qui piège les pilleurs de tombes ; il serait le « vrai corps » des riches inhumés | Pilleurs punis |
+| 41 | **Tutafeh de Galar** | EB | Une tablette d'argile ancienne chargée de rancune l'a possédé ; elle aurait été dessinée par un artiste ancien | Malédiction d'objet archéologique |
+| 42 | **Tutétékri** (Runerigus) | EB | Une peinture ancienne a pris possession de son corps ; il ne faut jamais toucher son corps d'ombre, sous peine de voir des souvenirs terribles | Fresque vivante |
+| 43 | **Théffroi / Polthégeist** (Sinistea/Polteageist) | EB | Une âme habite une tasse de thé ancienne. Il existe des formes **Contrefaçon/Authentique** ◐ ; une tasse authentique est rarissime | Faux et authenticité, marché de l'antiquité |
+| 44 | **Funécire** (Litwick) | NB | Fait semblant de guider les voyageurs égarés, mais absorbe leur énergie vitale | Faux guide |
+| 45 | **Lugulabre** (Chandelure) | NB | Ses flammes brûlent l'âme, laissant le corps vide | — |
+| 46 | **Brocélôme** (Phantump) | XY | Âmes d'enfants perdus en forêt ayant pris possession de souches | Forêt hantée |
+| 47 | **Desséliande** (Trevenant) | XY | Contrôle les arbres par ses racines ; il maudit ceux qui abîment la forêt | Gardien sylvestre |
+| 48 | **Mimiqui** (Mimikyu) | SL | Se déguise en Pikachu par solitude ; un chercheur qui aurait vu sous son tissu serait mort d'un mal mystérieux | Tabou de la vue |
+| 49 | **Sinistrail** (Dhelmise) | SL | Algue animée qui a pris possession d'une ancre de navire coulé | Épave hantée |
+| 50 | **Bacabouh / Trépassable** (Sandygast/Palossand) | SL | Château de sable formé de la rancune des morts ; contrôle ceux qui lui mettent la main à la pelle | Plages de Hoenn |
+| 51 | **Corayon de Galar / Corayôme** (Cursola) | EB | Un **changement climatique soudain** a tué les Corayon anciens, et leurs âmes ont survécu | **Écho direct** aux titans climatiques de Hoenn |
+| 52 | **Cryptéro** (Sigilyph) | NB | Gardien d'une cité ancienne ; il suivrait le même itinéraire depuis des millénaires | Patrouille fossile |
+| 53 | **Gringolem / Golemastoc** (Golett/Golurk) | NB | Façonnés en argile par une science ancienne pour protéger humains et Pokémon ; le sceau de leur poitrine retient leur énergie, et le retirer les rend incontrôlables | **Automates gardiens** (lien direct avec les Regis) |
+| 54 | **Zarbi** (Unown) | OAC | Leurs formes ressemblent à une écriture ancienne ; on ne sait pas laquelle est venue en premier | Alphabet vivant |
+| 55 | **Xatu** (Xatu) | OAC | Un œil voit le passé, l'autre le futur ; il reste immobile toute la journée face au soleil | Oracle |
+| 56 | **Osselait** (Cubone) | RBJ | Porte le crâne de sa mère défunte ; pleure à la pleine lune | Deuil (Tour Pokémon) |
+| 57 | **Ectoplasma** (Gengar) | RBJ+ | Se cache dans les ombres ; quand la température baisse soudainement, c'est qu'il est proche | — |
+| 58 | **Hypnomade** (Hypno) | RBJ+ | Entrée célèbre et sombre sur des enfants hypnotisés et emmenés (à vérifier, ton à manier avec précaution) | — |
+| 59 | **Porygon** | RBJ | Premier Pokémon entièrement artificiel, créé par programmation | Vie artificielle (Devon ?) |
+| 60 | **Mewtwo / Mew** | RBJ | Mewtwo a été créé par manipulation génétique à partir de Mew, qui contiendrait l'ADN de tous les Pokémon | Science sans éthique |
+| 61 | **Motisma** (Rotom) | DP | Corps de plasma ; capable d'entrer dans les appareils électriques | Hantise technologique |
+| 62 | **Mordudor / Gromago** (Gimmighoul/Gholdengo) | EV | Mordudor protège un coffre au trésor depuis des siècles (il s'agirait de 1 500 ans ◐) ; Gromago est formé de 1 000 pièces | Trésor maudit |
+| 63 | **Toutombe / Tomberro** (Greavard/Houndstone) | EV | Né d'une âme de chien dans une tombe ; Tomberro dort dans les cimetières | Mont Mémoria |
+| 64 | **Paragruel** (Basculegion) | LPA | Âmes des Bargantua morts pendant leur migration, qui animent un survivant | Ancêtres qui portent les vivants |
+| 65 | **Zorua de Hisui** | LPA | Âmes de Zorua bannis dans des terres hostiles, animées par la rancune | Exilés |
+| 66 | **Pêchaminus** (Pecharunt) | EV DLC | Ses mochis empoisonnés contrôlent ceux qui les mangent | Manipulation par le don |
+| 67 | **Éthernatos** | EB | Tombé du ciel il y a environ 20 000 ans dans une météorite | Énergie extraterrestre |
+| 68 | **Regigigas** | Pt | Aurait remorqué les continents avec des cordes ; père des Regis | Créateur endormi |
+
