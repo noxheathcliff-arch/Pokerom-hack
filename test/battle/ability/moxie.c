@@ -1,0 +1,150 @@
+#include "global.h"
+#include "test/battle.h"
+
+DOUBLE_BATTLE_TEST("Moxie/Chilling Neigh raises Attack by one stage after directly causing a Pokemon to faint")
+{
+    u32 species = 0, abilityPopUp = 0;
+    enum Ability ability = ABILITY_NONE;
+    PARAMETRIZE { species = SPECIES_SALAMENCE;   ability = ABILITY_MOXIE;            abilityPopUp = ABILITY_MOXIE;          }
+    PARAMETRIZE { species = SPECIES_GLASTRIER;   ability = ABILITY_CHILLING_NEIGH;   abilityPopUp = ABILITY_CHILLING_NEIGH; }
+    PARAMETRIZE { species = SPECIES_CALYREX_ICE; ability = ABILITY_AS_ONE_ICE_RIDER; abilityPopUp = ABILITY_CHILLING_NEIGH; }
+    GIVEN {
+        ASSUME(GetMoveTarget(MOVE_EARTHQUAKE) == TARGET_FOES_AND_ALLY);
+        PLAYER(species) { Ability(ability); }
+        PLAYER(SPECIES_SNORUNT) { HP(1); }
+        OPPONENT(SPECIES_GLALIE) { HP(1); }
+        OPPONENT(SPECIES_ABRA) { HP(1); }
+        OPPONENT(SPECIES_ABRA);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_EARTHQUAKE); SEND_OUT(opponentLeft, 2); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, playerLeft);
+        MESSAGE("Oniglali ennemi est K.O.!\p");
+        MESSAGE("Stalgamin est K.O.!\p");
+        MESSAGE("Abra ennemi est K.O.!\p");
+        ABILITY_POPUP(playerLeft, abilityPopUp);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
+        if (species == SPECIES_SALAMENCE)
+            MESSAGE("Ah, Attaque du Drattak\naugmente énormément!");
+        else if (species == SPECIES_GLASTRIER)
+            MESSAGE("Ah, Attaque du Blizzeval\naugmente énormément!");
+        else
+            MESSAGE("Ah, Attaque du Sylveroy\naugmente énormément!");
+    } THEN {
+        EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 3);
+    }
+}
+
+DOUBLE_BATTLE_TEST("Moxie/Chilling Neigh does not trigger if Pokemon faint to indirect damage or damage from other Pokemon")
+{
+    u32 species = 0, abilityPopUp = 0;
+    enum Ability ability = ABILITY_NONE;
+    PARAMETRIZE { species = SPECIES_SALAMENCE;   ability = ABILITY_MOXIE;            abilityPopUp = ABILITY_MOXIE;          }
+    PARAMETRIZE { species = SPECIES_GLASTRIER;   ability = ABILITY_CHILLING_NEIGH;   abilityPopUp = ABILITY_CHILLING_NEIGH; }
+    PARAMETRIZE { species = SPECIES_CALYREX_ICE; ability = ABILITY_AS_ONE_ICE_RIDER; abilityPopUp = ABILITY_CHILLING_NEIGH; }
+    GIVEN {
+        PLAYER(species) { Ability(ability); }
+        PLAYER(SPECIES_SNORUNT) { HP(1); Status1(STATUS1_POISON); }
+        OPPONENT(SPECIES_GLALIE) { HP(1); Status1(STATUS1_BURN); }
+        OPPONENT(SPECIES_ABRA) { HP(1); }
+        OPPONENT(SPECIES_ABRA);
+    } WHEN {
+        TURN { MOVE(playerRight, MOVE_QUICK_ATTACK, target: opponentRight); SEND_OUT(opponentLeft, 2); }
+    } SCENE {
+        int i;
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, playerRight);
+        for (i = 0; i < 3; i++) {
+            ONE_OF {
+                MESSAGE("Stalgamin est K.O.!\p");
+                MESSAGE("Oniglali ennemi est K.O.!\p");
+                MESSAGE("Abra ennemi est K.O.!\p");
+            }
+            NONE_OF {
+                ABILITY_POPUP(playerLeft, abilityPopUp);
+                ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
+                MESSAGE("Ah, Attaque du Drattak augmente!");
+                MESSAGE("Ah, Attaque du Blizzeval augmente!");
+                MESSAGE("Ah, Attaque du Sylveroy augmente!");
+            }
+        }
+    } THEN {
+        EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
+    }
+}
+
+SINGLE_BATTLE_TEST("Moxie/Chilling Neigh does not trigger when already at maximum Attack stage")
+{
+    u32 species = 0, abilityPopUp = 0;
+    enum Ability ability = ABILITY_NONE;
+    PARAMETRIZE { species = SPECIES_SALAMENCE;   ability = ABILITY_MOXIE;            abilityPopUp = ABILITY_MOXIE;          }
+    PARAMETRIZE { species = SPECIES_GLASTRIER;   ability = ABILITY_CHILLING_NEIGH;   abilityPopUp = ABILITY_CHILLING_NEIGH; }
+    PARAMETRIZE { species = SPECIES_CALYREX_ICE; ability = ABILITY_AS_ONE_ICE_RIDER; abilityPopUp = ABILITY_CHILLING_NEIGH; }
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_BELLY_DRUM) == EFFECT_BELLY_DRUM);
+        PLAYER(species) { Ability(ability); }
+        OPPONENT(SPECIES_SNORUNT) { HP(1); }
+        OPPONENT(SPECIES_SNORUNT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_BELLY_DRUM); }
+        TURN { MOVE(player, MOVE_QUICK_ATTACK); SEND_OUT(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+        if (species == SPECIES_SALAMENCE)
+            MESSAGE("Drattak sacrifie des PV et augmente son Attaque au maximum!");
+        else if (species == SPECIES_GLASTRIER)
+            MESSAGE("Blizzeval sacrifie des PV et augmente son Attaque au maximum!");
+        else
+            MESSAGE("Sylveroy sacrifie des PV et augmente son Attaque au maximum!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player);
+        MESSAGE("Stalgamin ennemi est K.O.!\p");
+        NONE_OF {
+            ABILITY_POPUP(player, abilityPopUp);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+            MESSAGE("Ah, Attaque du Drattak augmente!");
+            MESSAGE("Ah, Attaque du Blizzeval augmente!");
+            MESSAGE("Ah, Attaque du Sylveroy augmente!");
+        }
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_ATK], MAX_STAT_STAGE);
+    }
+}
+
+DOUBLE_BATTLE_TEST("Moxie/Chilling Neigh does not increase damage done by the same move that causes another Pokemon to faint")
+{
+    s16 damage[2];
+    u32 species = 0, abilityPopUp = 0;
+    enum Ability ability = ABILITY_NONE;
+    PARAMETRIZE { species = SPECIES_SALAMENCE;   ability = ABILITY_MOXIE;            abilityPopUp = ABILITY_MOXIE;          }
+    PARAMETRIZE { species = SPECIES_GLASTRIER;   ability = ABILITY_CHILLING_NEIGH;   abilityPopUp = ABILITY_CHILLING_NEIGH; }
+    PARAMETRIZE { species = SPECIES_CALYREX_ICE; ability = ABILITY_AS_ONE_ICE_RIDER; abilityPopUp = ABILITY_CHILLING_NEIGH; }
+
+    GIVEN {
+        ASSUME(GetMoveTarget(MOVE_EARTHQUAKE) == TARGET_FOES_AND_ALLY);
+        PLAYER(species) { Ability(ability); }
+        PLAYER(SPECIES_ABRA) { HP(1); }
+        OPPONENT(SPECIES_GLALIE);
+        OPPONENT(SPECIES_GLALIE);
+        OPPONENT(SPECIES_ABRA);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_EARTHQUAKE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, playerLeft);
+        HP_BAR(opponentLeft, captureDamage: &damage[0]);
+        HP_BAR(playerRight);
+        HP_BAR(opponentRight, captureDamage: &damage[1]);
+        MESSAGE("Abra est K.O.!\p");
+        ABILITY_POPUP(playerLeft, abilityPopUp);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
+        if (species == SPECIES_SALAMENCE)
+            MESSAGE("Ah, Attaque du Drattak augmente!");
+        else if (species == SPECIES_GLASTRIER)
+            MESSAGE("Ah, Attaque du Blizzeval augmente!");
+        else
+            MESSAGE("Ah, Attaque du Sylveroy augmente!");
+    } THEN {
+        EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
+        EXPECT_EQ(damage[0], damage[1]);
+    }
+}

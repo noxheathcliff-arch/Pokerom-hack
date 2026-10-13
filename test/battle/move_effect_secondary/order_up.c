@@ -1,0 +1,172 @@
+#include "global.h"
+#include "test/battle.h"
+
+ASSUMPTIONS
+{
+    ASSUME(GetMoveAdditionalEffectById(MOVE_ORDER_UP, 0)->moveEffect == MOVE_EFFECT_ORDER_UP);
+}
+
+DOUBLE_BATTLE_TEST("Order Up increases a stat based on Tatsugiri's form")
+{
+    u32 species = 0;
+    PARAMETRIZE { species = SPECIES_TATSUGIRI_CURLY; }
+    PARAMETRIZE { species = SPECIES_TATSUGIRI_DROOPY; }
+    PARAMETRIZE { species = SPECIES_TATSUGIRI_STRETCHY; }
+
+    GIVEN {
+        PLAYER(species) { Ability(ABILITY_COMMANDER); }
+        PLAYER(SPECIES_DONDOZO);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_VOLBEAT) { Ability(ABILITY_PRANKSTER); }
+    } WHEN {
+        TURN { MOVE(opponentRight, MOVE_HAZE); MOVE(playerRight, MOVE_ORDER_UP, target: opponentLeft); }
+    } SCENE {
+        ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HAZE, opponentRight); // Remove previous stat boosts
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ORDER_UP, playerRight);
+        switch (species)
+        {
+        case SPECIES_TATSUGIRI_CURLY:
+            MESSAGE("Ah, Attaque du Oyacata augmente!");
+            break;
+        case SPECIES_TATSUGIRI_DROOPY:
+            MESSAGE("Ah, Défense du Oyacata augmente!");
+            break;
+        case SPECIES_TATSUGIRI_STRETCHY:
+            MESSAGE("Ah, Vitesse du Oyacata augmente!");
+            break;
+        }
+    } THEN {
+        switch (species)
+        {
+        case SPECIES_TATSUGIRI_CURLY:
+            EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
+            break;
+        case SPECIES_TATSUGIRI_DROOPY:
+            EXPECT_EQ(playerRight->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 1);
+            break;
+        case SPECIES_TATSUGIRI_STRETCHY:
+            EXPECT_EQ(playerRight->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+            break;
+        }
+    }
+}
+
+DOUBLE_BATTLE_TEST("Order Up increases a stat based on Tatsugiri's form even if Tatsugiri fainted inside Dondozo")
+{
+    u32 species = 0;
+    PARAMETRIZE { species = SPECIES_TATSUGIRI_CURLY; }
+    PARAMETRIZE { species = SPECIES_TATSUGIRI_DROOPY; }
+    PARAMETRIZE { species = SPECIES_TATSUGIRI_STRETCHY; }
+
+    GIVEN {
+        PLAYER(species) { HP(1); Status1(STATUS1_POISON); Ability(ABILITY_COMMANDER); }
+        PLAYER(SPECIES_DONDOZO);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_VOLBEAT) { Ability(ABILITY_PRANKSTER); }
+    } WHEN {
+        TURN {}
+        TURN { MOVE(opponentRight, MOVE_HAZE); MOVE(playerRight, MOVE_ORDER_UP, target: opponentLeft); }
+    } SCENE {
+        ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
+        MESSAGE("Nigirigon souffre du poison!");
+        MESSAGE("Nigirigon est K.O.!\p");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HAZE, opponentRight); // Remove previous stat boosts
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ORDER_UP, playerRight);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
+        switch (species)
+        {
+        case SPECIES_TATSUGIRI_CURLY:
+            MESSAGE("Ah, Attaque du Oyacata augmente!");
+            break;
+        case SPECIES_TATSUGIRI_DROOPY:
+            MESSAGE("Ah, Défense du Oyacata augmente!");
+            break;
+        case SPECIES_TATSUGIRI_STRETCHY:
+            MESSAGE("Ah, Vitesse du Oyacata augmente!");
+            break;
+        }
+    } THEN {
+        switch (species)
+        {
+        case SPECIES_TATSUGIRI_CURLY:
+            EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
+            break;
+        case SPECIES_TATSUGIRI_DROOPY:
+            EXPECT_EQ(playerRight->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 1);
+            break;
+        case SPECIES_TATSUGIRI_STRETCHY:
+            EXPECT_EQ(playerRight->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+            break;
+        }
+    }
+}
+
+DOUBLE_BATTLE_TEST("Order up does not boosts any stats if Dondozo is not affected by Commander")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_DONDOZO);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(playerRight, MOVE_ORDER_UP, target: opponentLeft); }
+    } SCENE {
+        NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
+   }
+}
+
+DOUBLE_BATTLE_TEST("Order Up is boosted by Sheer Force without removing the stat boosting effect")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_ENTRAINMENT) == EFFECT_ENTRAINMENT);
+        PLAYER(SPECIES_DONDOZO) { Speed(10); }
+        PLAYER(SPECIES_TATSUGIRI_CURLY) { Speed(9); }
+        OPPONENT(SPECIES_WOBBUFFET) { Speed(8); }
+        OPPONENT(SPECIES_TAUROS) { Speed(21); Ability(ABILITY_SHEER_FORCE); }
+    } WHEN {
+        TURN { MOVE(opponentRight, MOVE_ENTRAINMENT, target: playerLeft); MOVE(playerLeft, MOVE_ORDER_UP, target: opponentLeft); }
+    } SCENE {
+        MESSAGE("Tauros ennemi utilise\nTen-Danse!");
+        MESSAGE("Oyacata acquiert le talent Sans Limite!");
+        MESSAGE("Oyacata utilise\nPlat du Jour!");
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
+    }
+}
+DOUBLE_BATTLE_TEST("Order Up is always boosted by Sheer Force", s16 damage)
+{
+    enum Move move;
+    enum Ability ability;
+    PARAMETRIZE(move = MOVE_CELEBRATE, ability = ABILITY_STORM_DRAIN);
+    PARAMETRIZE(move = MOVE_ENTRAINMENT, ability = ABILITY_STORM_DRAIN);
+    PARAMETRIZE(move = MOVE_ENTRAINMENT, ability = ABILITY_COMMANDER);
+
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_HAZE) == EFFECT_HAZE);
+        ASSUME(GetMoveEffect(MOVE_ENTRAINMENT) == EFFECT_ENTRAINMENT);
+        PLAYER(SPECIES_DONDOZO) { Speed(10); }
+        PLAYER(SPECIES_TATSUGIRI_CURLY) { Speed(9); Ability(ability); }
+        OPPONENT(SPECIES_TAUROS) { Speed(21); Ability(ABILITY_SHEER_FORCE); }
+        OPPONENT(SPECIES_WOBBUFFET) { Speed(22); }
+    } WHEN {
+        TURN { MOVE(opponentRight, MOVE_HAZE);
+               MOVE(opponentLeft, move, target: playerLeft);
+               MOVE(playerLeft, MOVE_ORDER_UP, target: opponentRight); }
+    } SCENE {
+        MESSAGE("Qulbutoké ennemi utilise\nBuée Noire!");
+        if (move == MOVE_ENTRAINMENT)
+        {
+            MESSAGE("Tauros ennemi utilise\nTen-Danse!");
+            MESSAGE("Oyacata acquiert le talent Sans Limite!");
+        }
+        MESSAGE("Oyacata utilise\nPlat du Jour!");
+        HP_BAR(opponentRight, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1.3), results[1].damage);
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1.3), results[2].damage);
+    }
+}

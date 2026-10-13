@@ -1,0 +1,12 @@
+Route15_WestEntrance_1F_Frlg_MapScripts::
+	.byte 0
+
+Route15_WestEntrance_1F_EventScript_Guard::
+	msgbox Route15_WestEntrance_1F_Text_OaksAideCameByHere, MSGBOX_NPC
+	end
+
+Route15_WestEntrance_1F_Text_OaksAideCameByHere::
+	.string "Tu travailles sur un POKéDEX?\p"
+	.string "L'assistant du PROF. CHEN est\n"
+	.string "passé par là.$"
+

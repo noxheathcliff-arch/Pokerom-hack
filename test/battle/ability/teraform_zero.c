@@ -1,0 +1,141 @@
+#include "global.h"
+#include "test/battle.h"
+
+DOUBLE_BATTLE_TEST("Teraform Zero clears weather and terrain upon activation")
+{
+    GIVEN {
+        PLAYER(SPECIES_TERAPAGOS_TERASTAL);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_KYOGRE) { Ability(ABILITY_DRIZZLE); }
+        OPPONENT(SPECIES_TAPU_KOKO) { Ability(ABILITY_ELECTRIC_SURGE); }
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
+    } SCENE {
+        ABILITY_POPUP(playerLeft, ABILITY_TERAFORM_ZERO);
+        MESSAGE("La pluie s'est arrêtée.");
+        MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
+    }
+}
+
+DOUBLE_BATTLE_TEST("Teraform Zero can be supressed")
+{
+    GIVEN {
+        PLAYER(SPECIES_TERAPAGOS_TERASTAL);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WEEZING) { Ability(ABILITY_NEUTRALIZING_GAS); }
+        OPPONENT(SPECIES_KYOGRE) { Ability(ABILITY_DRIZZLE); }
+        OPPONENT(SPECIES_TAPU_KOKO) { Ability(ABILITY_ELECTRIC_SURGE); }
+    } WHEN {
+        TURN { SWITCH(playerRight, 2); MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
+    } SCENE {
+        ABILITY_POPUP(playerRight, ABILITY_NEUTRALIZING_GAS);
+        NONE_OF {
+            MESSAGE("La pluie s'est arrêtée.");
+            MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
+        }
+    }
+}
+
+SINGLE_BATTLE_TEST("Teraform Zero can be replaced")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_WORRY_SEED) == EFFECT_OVERWRITE_ABILITY);
+        ASSUME(GetMoveEffect(MOVE_REST) == EFFECT_REST);
+        PLAYER(SPECIES_TERAPAGOS);
+        OPPONENT(SPECIES_WHIMSICOTT) { Ability(ABILITY_PRANKSTER); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_POUND); }
+        TURN { MOVE(opponent, MOVE_WORRY_SEED); MOVE(player, MOVE_REST, gimmick: GIMMICK_TERA); }
+    } SCENE {
+        MESSAGE("Farfaduvet ennemi utilise\nSoucigraine!");
+        MESSAGE("Terapagos acquiert le talent Insomnia!");
+        MESSAGE("Terapagos utilise\nRepos!");
+        ABILITY_POPUP(player, ABILITY_INSOMNIA);
+        MESSAGE("Terapagos ne s'endort pas!");
+    }
+}
+
+SINGLE_BATTLE_TEST("Teraform Zero cannot be swapped")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_SKILL_SWAP) == EFFECT_SKILL_SWAP);
+        PLAYER(SPECIES_TERAPAGOS);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_SKILL_SWAP); }
+    } SCENE {
+        MESSAGE("Qulbutoké ennemi utilise\nÉchange!");
+        MESSAGE("Mais cela échoue!");
+    }
+}
+
+SINGLE_BATTLE_TEST("Teraform Zero cannot be copied")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_ROLE_PLAY) == EFFECT_ROLE_PLAY);
+        PLAYER(SPECIES_TERAPAGOS);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_ROLE_PLAY); }
+    } SCENE {
+        MESSAGE("Qulbutoké ennemi utilise\nImitation!");
+        MESSAGE("Mais cela échoue!");
+    }
+}
+
+DOUBLE_BATTLE_TEST("Teraform Zero shouldn't cause Neutralizing Gas to show it's popup when trying to activate")
+{
+    GIVEN {
+        PLAYER(SPECIES_TERAPAGOS_TERASTAL);
+        PLAYER(SPECIES_ABSOL) { Ability(ABILITY_PRESSURE); }
+        PLAYER(SPECIES_WEEZING) { Ability(ABILITY_NEUTRALIZING_GAS); }
+        OPPONENT(SPECIES_KYOGRE) { Ability(ABILITY_DRIZZLE); }
+        OPPONENT(SPECIES_TAPU_KOKO) { Ability(ABILITY_ELECTRIC_SURGE); }
+    } WHEN {
+        TURN {  SWITCH(playerRight, 2); MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
+    } SCENE {
+        MESSAGE("Terapagos prend son mal en patience!");
+        MESSAGE("Terapagos se Téracristallise en type Stellair!");
+        NOT ABILITY_POPUP(playerRight, ABILITY_NEUTRALIZING_GAS);
+        MESSAGE("Terapagos utilise\nCélébration!");
+    }
+}
+
+SINGLE_BATTLE_TEST("Teraform Zero doesn't activate if there is no weather or terrain")
+{
+    GIVEN {
+        PLAYER(SPECIES_TERAPAGOS_TERASTAL);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_CHARGE, player);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_ACTIVATE, player);
+        NOT ABILITY_POPUP(player, ABILITY_TERAFORM_ZERO);
+    }
+}
+
+SINGLE_BATTLE_TEST("Teraform Zero doesn't reactivate when Terapagos-Stellar switches back in")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_RAIN_DANCE) == EFFECT_WEATHER);
+        ASSUME(GetMoveWeatherType(MOVE_RAIN_DANCE) == BATTLE_WEATHER_RAIN);
+        PLAYER(SPECIES_TERAPAGOS_TERASTAL);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_KYOGRE) { Ability(ABILITY_DRIZZLE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
+        TURN { SWITCH(player, 1); MOVE(opponent, MOVE_RAIN_DANCE); }
+        TURN { SWITCH(player, 0); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_CHARGE, player);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_ACTIVATE, player);
+        ABILITY_POPUP(player, ABILITY_TERAFORM_ZERO);
+        MESSAGE("La pluie s'est arrêtée.");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_RAIN_DANCE, opponent);
+        NONE_OF {
+            ABILITY_POPUP(player, ABILITY_TERAFORM_ZERO);
+            MESSAGE("La pluie s'est arrêtée.");
+        }
+    }
+}

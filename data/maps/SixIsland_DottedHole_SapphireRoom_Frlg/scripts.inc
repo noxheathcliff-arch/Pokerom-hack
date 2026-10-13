@@ -1,0 +1,264 @@
+SixIsland_DottedHole_SapphireRoom_Frlg_MapScripts::
+	.byte 0
+
+SixIsland_DottedHole_SapphireRoom_EventScript_Sapphire::
+	lock
+	faceplayer
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	playfanfare MUS_RG_OBTAIN_KEY_ITEM
+	message SixIsland_DottedHole_SapphireRoom_Text_FoundSapphire
+	waitmessage
+	waitfanfare
+	closemessage
+	setobjectxyperm LOCALID_DOTTED_HOLE_THIEF, 5, 0
+	addobject LOCALID_DOTTED_HOLE_THIEF
+	playse SE_FALL
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefFallIn
+	waitmovement 0
+	playse SE_M_STRENGTH
+	call_if_eq VAR_FACING, DIR_NORTH, SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefLeft
+	call_if_eq VAR_FACING, DIR_SOUTH, SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefLeft
+	call_if_eq VAR_FACING, DIR_EAST, SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefDown
+	call_if_eq VAR_FACING, DIR_WEST, SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefDown
+	setvar VAR_0x8004, 3
+	setvar VAR_0x8005, 0
+	setvar VAR_0x8006, 12
+	setvar VAR_0x8007, 3
+	special ShakeScreen
+	delay 60
+	call_if_eq VAR_FACING, DIR_NORTH, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefLookAtSapphireNorth
+	call_if_eq VAR_FACING, DIR_SOUTH, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefLookAtSapphireSouth
+	call_if_eq VAR_FACING, DIR_EAST, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefLookAtSapphireEast
+	call_if_eq VAR_FACING, DIR_WEST, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefLookAtSapphireWest
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox SixIsland_DottedHole_SapphireRoom_Text_IWasRightInTailingYou
+	closemessage
+	call_if_eq VAR_FACING, DIR_NORTH, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefGetSapphireNorth
+	call_if_eq VAR_FACING, DIR_SOUTH, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefGetSapphireSouth
+	call_if_eq VAR_FACING, DIR_EAST, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefGetSapphireEast
+	call_if_eq VAR_FACING, DIR_WEST, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefGetSapphireWest
+	removeobject LOCALID_SAPPHIRE
+	call_if_eq VAR_FACING, DIR_NORTH, SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefLeft2
+	call_if_eq VAR_FACING, DIR_SOUTH, SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefLeft2
+	call_if_eq VAR_FACING, DIR_EAST, SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefDown2
+	call_if_eq VAR_FACING, DIR_WEST, SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefDown2
+	msgbox SixIsland_DottedHole_SapphireRoom_Text_SellToTeamRocketTellPassword
+	closemessage
+	call_if_eq VAR_FACING, DIR_NORTH, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefExitNorth
+	call_if_eq VAR_FACING, DIR_SOUTH, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefExitSouth
+	call_if_eq VAR_FACING, DIR_EAST, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefExitEast
+	call_if_eq VAR_FACING, DIR_WEST, SixIsland_DottedHole_SapphireRoom_EventScript_ThiefExitWest
+	playse SE_EXIT
+	delay 35
+	removeobject LOCALID_DOTTED_HOLE_THIEF
+	setflag FLAG_LEARNED_YES_NAH_CHANSEY
+	release
+	end
+
+@ Lots of redundant scripts below
+SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefLeft2::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefDown2::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefLeft::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefDown::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefLookAtSapphireNorth::
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefLookAtSapphireFromLeft
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefLookAtSapphireSouth::
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefLookAtSapphireFromLeft
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefLookAtSapphireEast::
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefLookAtSapphireFromBelow
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefLookAtSapphireWest::
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefLookAtSapphireFromBelow
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefGetSapphireNorth::
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefGetSapphireFromLeft
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefGetSapphireSouth::
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefGetSapphireFromLeft
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefGetSapphireEast::
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefGetSapphireFromBelow
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefGetSapphireWest::
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefGetSapphireFromBelow
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefExitNorth::
+	applymovement LOCALID_PLAYER, SixIsland_DottedHole_SapphireRoom_Movement_PlayerWatchThiefExit
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefExitNorth
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefExitSouth::
+	applymovement LOCALID_PLAYER, SixIsland_DottedHole_SapphireRoom_Movement_PlayerWatchThiefExit
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefExitSouth
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefExitEast::
+	applymovement LOCALID_PLAYER, SixIsland_DottedHole_SapphireRoom_Movement_PlayerWatchThiefExit
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefExitEastWest
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ThiefExitWest::
+	applymovement LOCALID_PLAYER, SixIsland_DottedHole_SapphireRoom_Movement_PlayerWatchThiefExit
+	applymovement LOCALID_DOTTED_HOLE_THIEF, SixIsland_DottedHole_SapphireRoom_Movement_ThiefExitEastWest
+	waitmovement 0
+	return
+
+SixIsland_DottedHole_SapphireRoom_Movement_ThiefLookAtSapphireFromLeft::
+	walk_up
+	walk_up
+	walk_in_place_faster_right
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_Movement_ThiefLookAtSapphireFromBelow::
+	walk_right
+	walk_right
+	walk_in_place_faster_up
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_Movement_ThiefGetSapphireFromLeft::
+	walk_right
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_Movement_ThiefGetSapphireFromBelow::
+	walk_up
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_Movement_ThiefExitNorth::
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_Movement_ThiefExitSouth::
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_Movement_ThiefExitEastWest::
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_Movement_ThiefFallIn::
+	face_down
+	disable_anim
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	restore_anim
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_Movement_PlayerWatchThiefExit::
+	delay_16
+	walk_in_place_faster_right
+	step_end
+
+SixIsland_DottedHole_SapphireRoom_EventScript_BrailleMessage::
+	lockall
+	setvar VAR_0x8005, 130
+	braillemessage_wait Braille_Text_LetTheTwo
+	braillemessage_wait Braille_Text_Glittering
+	braillemessage_wait Braille_Text_Stones
+	braillemessage_wait Braille_Text_OneInRed
+	braillemessage_wait Braille_Text_OneInBlue
+	braillemessage_wait Braille_Text_ConnectThe
+	braillemessage_wait Braille_Text_Past
+	braillemessage_wait Braille_Text_TwoFriends
+	braillemessage_wait Braille_Text_Sharing
+	braillemessage_wait Braille_Text_PowerOpen
+	braillemessage_wait Braille_Text_AWindowTo
+	braillemessage_wait Braille_Text_ANewWorld
+	braillemessage_wait Braille_Text_ThatGlows
+	braillemessage_wait Braille_Text_TheNext
+	braillemessage_wait Braille_Text_WorldWaits
+	braillemsgbox Braille_Text_ForYou
+	releaseall
+	end
+
+SixIsland_DottedHole_SapphireRoom_Text_FoundSapphire::
+	.string "{PLAYER} a trouvé un SAPHIR!$"
+
+SixIsland_DottedHole_SapphireRoom_Text_IWasRightInTailingYou::
+	.string "Fufu… Fufufufu…\n"
+	.string "J'avais vu juste.\p"
+	.string "J'ai bien fait de te suivre en\n"
+	.string "cachette.$"
+
+SixIsland_DottedHole_SapphireRoom_Text_SellToTeamRocketTellPassword::
+	.string "Je savais qu'il y avait un SAPHIR\n"
+	.string "ici, et il est pour moi!\p"
+	.string "Je vais le vendre à la TEAM\n"
+	.string "ROCKET pour gagner plein d'argent.\p"
+	.string "Ne… ne me regarde pas\n"
+	.string "comme ça!\p"
+	.string "Si tu le veux tellement, tu n'auras\n"
+	.string "qu'à le récupérer après.\p"
+	.string "Je vais même te donner un des\n"
+	.string "mots de passe de l'ENTREPOT.\p"
+	.string "C'est: “TARSAL LA STAR”.\p"
+	.string "Voilà, c'est fait. Et je t'ai dit\n"
+	.string "de ne pas me regarder comme ça!$"
+
