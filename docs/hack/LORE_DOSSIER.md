@@ -580,3 +580,226 @@ Tous ces éléments ont été vérifiés dans le dépôt [MOTEUR ✔] :
 | 67 | **Éthernatos** | EB | Tombé du ciel il y a environ 20 000 ans dans une météorite | Énergie extraterrestre |
 | 68 | **Regigigas** | Pt | Aurait remorqué les continents avec des cordes ; père des Regis | Créateur endormi |
 
+---
+
+## 6. Schémas narratifs des jeux passés et des ROM hacks appréciés
+
+### 6.1 Ce que les fans saluent dans les jeux officiels
+
+Toutes les entrées de ce tableau sont **[INTERPRÉTATION]**, basées sur le consensus des forums, critiques et rétrospectives.
+
+| Jeu | Ce qui fonctionne | Mécanisme narratif |
+|---|---|---|
+| **NB1** | **N** est un antagoniste sincère qui doute. **Ghetis** est un manipulateur révélé tardivement. La **question morale** (« les Pokémon sont-ils libres ? ») n'a pas de réponse facile. La Team Plasma tient des discours publics en ville | **Ambiguïté morale**, révélation qui **recadre** les événements passés, villes vivantes qui réagissent |
+| **SL** | **Elsa-Mina** : drame familial, mère toxique. **Lilie** évolue (« mode Lilie »). Les Ultra-Chimères sont objet d'obsession | Le méchant est **intime** (famille). Arc de croissance d'un PNJ secondaire |
+| **Gen 4 (DPPt)** | Cosmogonie profonde (Arceus, trio, Monde Distorsion). Textes de mythes à la bibliothèque. Ruines. **Cynthia** est chercheuse | **Lore éparpillé à collecter** ; la mythologie est **sérieuse** |
+| **ROSA – Épisode Delta** | Amaryllis : une antagoniste tragique au **devoir hérité**. Une crise cosmique. Le clin d'œil au multivers | Un post-game qui **re-contextualise** le jeu principal |
+| **EV – Zone Zéro** (« Route des Légendes » + « Victoire Suprême » + Team Star) | Trois arcs entrelacés qui convergent. Le professeur est mort et une IA a pris sa place. Les camarades d'Académie sont développés | **Convergence d'arcs**, révélation sur l'entité qui guide le joueur |
+| **EV DLC *Le Masque Turquoise*** | Folklore inversé (Ogerpon). Kassis ? (Kieran), un rival dont l'amertume monte | Un **conte local** qui se révèle faux |
+| **OAC/HGSS** | Johto puis **Kanto** : la deuxième région en post-game. **Red** en boss silencieux | Montagne finale mythique |
+
+### 6.2 Critiques récurrentes
+
+- **Teams génériques** : Team Flare, et en partie Magma/Aqua dans RS. Leurs motivations sont absurdes ou peu développées, et leurs admins sont interchangeables.
+- **Retournements prévisibles** : « le notable bienveillant est le méchant » est devenu un cliché (Lysandre, Elsa-Mina, Shehroz, Pierre ?). **[INTERPRÉTATION]** Les joueurs anticipent désormais toute figure d'autorité trop gentille.
+- **Tutoriels interminables et prise en main excessive** (XY, SL) : il faut des heures avant de jouer librement.
+- **Combats contre les légendaires « faits à la place du joueur »** : dans EB, Tarak règle souvent la crise hors champ.
+- **Monde qui ne réagit pas** aux crises (dans RS, la météo de Hoenn se dérègle sans conséquence durable).
+- **Le légendaire comme simple deus ex machina** (Rayquaza qui « arrive et règle »).
+- **Le lore relégué en post-game ou dans des panneaux** que personne ne lit.
+
+### 6.3 ROM hacks et fangames de référence
+
+| Titre | Base | Ce qui le distingue | Pourquoi ça fonctionne | Statut des infos |
+|---|---|---|---|---|
+| **Pokémon Insurgence** | RPG Maker (fangame) | Région de **Torren** rongée par des **cultes** vouant chacun un culte à un légendaire. Le joueur se réveille amnésique au QG du **Culte de Darkrai**. Les **Pokémon Delta** (variantes de type issues du JCC) ; des mondes de mode « sombre » et « léger » (morts de personnages ou non) | Factions **religieuses** multiples plutôt qu'une Team unique, et le choix du ton | ✔ (Wikipédia EN : https://en.wikipedia.org/wiki/Pokémon_Insurgence) |
+| **Pokémon Uranium** | Fangame | Région de **Tandor**. Un **accident nucléaire** a causé la disparition, peut-être la mort, de la mère du joueur ; le père est Ranger. Le type **Nucléaire** et les mutations ; des sabotages de centrales. Le rival s'appelle Theo | Le **mystère personnel** (la mère) est ancré dans une **catastrophe régionale** concrète | ✔ (sources secondaires ; le sort de la mère varie selon les sources) |
+| **Pokémon Reborn** | Fangame | Ville **décadente**, mature. La **Team Meteor**. **Ame**, à la fois Maître de la Ligue et avatar de la créatrice. Des morts de personnages. Les **effets de terrain** de combat (field effects) en sont la marque | Ton adulte assumé, ville comme personnage, **combat et lore liés par les terrains** | ✔ (wiki fans) |
+| **Pokémon Rejuvenation** | Fangame (successeur spirituel de Reborn) | Région d'**Aevium**, morcelée en îles après une catastrophe. La **Team Xen** attaque le navire du joueur. Mythologie riche (entité scindée par une météorite, d'après des théories). Des **voyages dans le passé** existent dans des versions récentes | Un lore tentaculaire et **épisodique** | Partiel. Le voyage temporel n'a **pas été confirmé** pendant cette recherche : à vérifier |
+| **Pokémon Radical Red** | ROM hack RFVF (CFRU) | **Essentiellement du gameplay** : difficulté, Pokémon Gen 1–9, qualité de vie. L'histoire reste celle de Kanto | Prouve que la **mécanique seule** peut porter un hack, mais n'est pas un modèle narratif | ✔ (connaissance générale) |
+| **Pokémon Unbound** | ROM hack RFVF (CFRU), par **Skeli** | Région de **Borrius**. Il y a environ **3 000 ans**, Borrius aurait fait la guerre à Kalos (l'Arme Ultime en écho) ; le peuple, furieux contre son roi, aurait manipulé **Hoopa** dans une tentative d'insurrection. La faction **« Les Ombres »** (Shadows) veut libérer une force obscure. Système de **missions** et quêtes annexes ; niveaux de difficulté ; achevé en 2020 | **Raccroche son lore inédit au canon** (guerre de Kalos, Hoopa) ; grande quantité de contenu ; structure claire | ✔ (TV Tropes, Pokécommunity, wiki fans) |
+| **Pokémon Gaia** | ROM hack RFVF | Région d'**Orbtus**, ancienne civilisation florissante disparue dans des **séismes**, laissant temples et idoles. Le **Prof. Redwood** est archéologue. Les **« Nouveaux Anciens »** (New Elders), dirigés par **Morgana**, veulent réveiller les **Regis** | **Le plus proche de votre projet** : archéologie, Regis, civilisation disparue. Récit jugé très **cohérent** par la critique | ✔ (TV Tropes, critiques). **Attention à ne pas copier** sa prémisse |
+| **Pokémon Clover** | ROM hack RFVF | Parodie de culture internet (4chan), humour cru et offensant, Fakemons. La région n'a pas pu être confirmée (une source dit « Fochun ») | Créativité des designs. **Mauvais modèle narratif** pour un projet sérieux | Partiel |
+| **Pokémon Prism** | ROM hack Cristal | Région de **Naljo**, ambition narrative ; arrêté par Nintendo avant sa sortie (rendu disponible ensuite) | — | ◐ (de mémoire, à vérifier) |
+| **Communauté FR** | — | **PSDK (Pokémon SDK)** de Nuri Yuri et la communauté **Pokémon Workshop** sont francophones. Il existe des fangames FR ambitieux | Ressource : public FR, attentes de **qualité de traduction** | ◐ (à vérifier) |
+
+### 6.4 Leçons transposables
+
+Toutes les leçons ci-dessous sont **[INTERPRÉTATION]**.
+
+1. **Ancrer l'inédit dans le canon** (Unbound et Kalos ; Gaia et les Regis). Cela donne de la « légitimité » sans fan service, **à condition que le canon serve l'histoire et non l'inverse**.
+2. **Factions multiples aux idéologies crédibles** (cultes d'Insurgence, Clans de Hisui) plutôt qu'une Team monolithique.
+3. **Le mystère personnel lié au mystère régional** (la mère dans Uranium).
+4. **Mécanique = lore** (effets de terrain de Reborn). Le moteur expansion le permet nativement via `setstartingstatus` et `settotemboost`.
+5. **Révéler qu'une source est fausse** (Galar, Septentria, Livres Écarlate/Violet). C'est jouable : le joueur collecte des preuves contradictoires.
+6. **Éviter** le notable bienveillant qui devient le méchant final, les tutoriels de plus de 30 minutes et le légendaire deus ex machina.
+
+---
+
+## 7. 25 accroches narratives à fort potentiel
+
+Format : **Faits sources** · **Pourquoi c'est intrigant** · **Comment le jouer (et pas seulement le raconter)** · **Risque de fan service**. Toutes les accroches sont des **[HYPOTHÈSE DE CONCEPTION]** fondées sur le canon cité.
+
+**1. « Nous en avions peur » : le peuple du Sanctuaire**
+- **Faits :** Braille du Sanctuaire : un peuple ancien devait tout aux Pokémon, puis les a scellés par peur [RSE]. Regigigas est le créateur des Regis [Pt]. Gringolem et Golemastoc sont des automates gardiens scellés [NB].
+- **Pourquoi :** une culpabilité ancienne gravée dans la pierre, avec un motif clair (la peur), mais une victime et un contexte inconnus.
+- **Jeu :** déchiffrer le Braille FR dans des ruines inédites (énigmes à étapes). Chaque Regi libéré modifie un lieu (météo, terrain via `setstartingstatus`). Un choix final : libérer ou resceller.
+- **Risque :** moyen. Gaia l'a déjà fait (Regis + Nouveaux Anciens) : il faut un angle différent, par exemple le point de vue des descendants du peuple scelleur.
+
+**2. La Gardienne qui a perdu la foi (Peuple du Météore)**
+- **Faits :** le titre de Gardienne du Savoir s'hérite ; la première Méga-Évolution est née d'une prière et d'une météorite [ROSA].
+- **Pourquoi :** une transmission orale contre la science (le Centre Spatial). Le savoir peut se perdre.
+- **Jeu :** la Gemme Sésame du joueur s'obtient par les **épreuves du Site Météore**, pas en cadeau. On recueille des fragments de récits auprès des anciens (journal de quêtes). La Méga-Évolution est verrouillée tant que le récit n'est pas complet.
+- **Risque :** faible si Amaryllis n'apparaît pas ou n'est qu'évoquée.
+
+**3. L'autre Hoenn (multivers de ROSA)**
+- **Faits :** Amaryllis parle de mondes parallèles [ROSA]. L'Île Mirage apparaît et disparaît [RSE]. Le Monde Distorsion existe [Pt].
+- **Pourquoi :** le canon autorise **deux Hoenn**, et le hack est techniquement « un autre Hoenn ».
+- **Jeu :** certaines cartes ont une **variante « mirage »** (même tileset, objets et PNJ différents) accessible selon l'heure ou la météo (`OW_TIMES_OF_DAY`). Les PNJ s'y souviennent d'une histoire différente.
+- **Risque :** élevé si l'on en fait un « remix de RS ». Le motif doit rester mystérieux, pas nostalgique.
+
+**4. La Tour Mirage et le prix de l'archéologie**
+- **Faits :** prendre un fossile effondre la tour, et l'autre fossile est perdu [E]. Les chimères de Galar sont nées de fossiles mal assemblés [EB].
+- **Pourquoi :** il y a un **coût irréversible** à la connaissance.
+- **Jeu :** choix exclusifs dans les sites de fouille. Une faction d'archéologues (classe Ruinemaniaque, assets natifs) aux méthodes destructrices s'oppose à une faction de conservateurs. Il y a des conséquences sur les rencontres ultérieures.
+- **Risque :** faible.
+
+**5. Les Gemmes du Mont Mémoria : berceuses, pas laisses**
+- **Faits :** les Gemmes sont gardées par un vieux couple. Les chefs qui les utilisent perdent le contrôle [RSE/ROSA].
+- **Pourquoi :** réinterpréter un objet de pouvoir comme un **objet de soin**.
+- **Jeu :** les Gemmes n'apaisent que si un rituel (Éoko, chant) est accompli au Mont Mémoria. Le combat contre un titan peut se gagner autrement que par KO (interdiction du Sac via `B_VAR_NO_BAG_USE`, conditions de tour).
+- **Risque :** moyen, car Groudon et Kyogre sont très attendus.
+
+**6. L'énergie infinie de Devon**
+- **Faits :** Devon étudie l'énergie infinie, liée à l'Arme Ultime d'AZ, qui fonctionnait en drainant la vie de Pokémon [XY/ROSA]. Le Tunnel Mérazon a été arrêté pour les Chuchmur [RSE].
+- **Pourquoi :** une entreprise « éthique » assise sur une technologie de guerre.
+- **Jeu :** une enquête interne chez Devon (infiltration, archives). Ce n'est pas un retournement « PDG maléfique » : c'est une **bureaucratie** qui a hérité d'un secret. Les preuves se trouvent en jeu (documents).
+- **Risque :** élevé si cela devient « encore un notable méchant » (cliché du §6.2) : à éviter.
+
+**7. La météorite qui chante (Deoxys et le Centre Spatial)**
+- **Faits :** Deoxys est né d'un virus spatial muté [RS] et était caché dans la météorite de Delta [ROSA]. Séléroc et Solaroc sont venus de l'espace [RSE].
+- **Pourquoi :** un visiteur, pas un envahisseur.
+- **Jeu :** les Séléroc et Solaroc de la région changent de comportement (rencontres nocturnes accrues). Le joueur collecte des fragments d'`ITEM_METEORITE` qui changent la forme de Deoxys. Un compte à rebours réel (RTC, `FORM_CHANGE_DAYS_PASSED`).
+- **Risque :** moyen.
+
+**8. La succession d'Atalanopolis**
+- **Faits :** Juan est le maître de Marc ; Marc garde la Grotte Origine [E] ; les sages contrôlent l'accès.
+- **Pourquoi :** une institution héréditaire en crise (pas d'héritier, ou un héritier qui refuse le rôle).
+- **Jeu :** une arène qui est aussi un **conseil d'anciens**. Le badge s'obtient par un vote, le combat ne suffit pas. La quête change selon les alliés.
+- **Risque :** faible si les personnages sont inédits.
+
+**9. L'Épave et le Scanner perdu**
+- **Faits :** un paquebot a coulé ; le Scanner du capitaine s'y trouve [RSE]. Sinistrail possède des ancres [SL].
+- **Pourquoi :** pourquoi a-t-il coulé ? Le canon ne le dit jamais.
+- **Jeu :** une enquête par strates (Plongée). Les Pokémon fantômes rejouent les derniers instants (événements scriptés selon la marée ou l'heure).
+- **Risque :** faible.
+
+**10. La marée comme horloge (Grotte Tréfonds)**
+- **Faits :** marées toutes les 6 h [RSE] ; le Grelot Coque y est fabriqué.
+- **Pourquoi :** un lieu qui « respire ».
+- **Jeu :** une partie du scénario n'est accessible qu'à marée basse. Un PNJ ermite ne parle qu'à marée haute. Une variante « horloge arrêtée » (`OW_FLAG_PAUSE_TIME`) peut servir de **phénomène surnaturel**.
+- **Risque :** nul. Attention seulement à la frustration (offrir un moyen d'accélérer le temps).
+
+**11. L'Institut Météo et la météo fabriquée**
+- **Faits :** l'Institut étudie Morphéo et les données climatiques des titans [RSE]. Le Corayon de Galar a été tué par un changement climatique [EB].
+- **Pourquoi :** le climat comme sujet contemporain, ancré dans le canon.
+- **Jeu :** des zones de la carte « bloquées » dans une météo (déluge, sécheresse, sable). Morphéo comme indicateur. Les **Corayon blanchis** (de Galar) apparaissent dans Pacifiville si la crise s'aggrave.
+- **Risque :** faible.
+
+**12. Absol, le prophète persécuté**
+- **Faits :** Absol apparaît avant les catastrophes et a été chassé, accusé à tort [RSE].
+- **Pourquoi :** une victime-messager, et un renversement moral.
+- **Jeu :** voir un Absol (suiveur ou rencontre) annonce un événement. Des PNJ villageois veulent le chasser. Le joueur doit **le protéger** (escorte avec `follower_npc`).
+- **Risque :** faible.
+
+**13. Les 108 voix de la Clé de Voûte**
+- **Faits :** Spiritomb rassemble 108 esprits enchaînés à la Clé de Voûte [DP].
+- **Pourquoi :** chaque esprit est une histoire.
+- **Jeu :** ce n'est **pas** une collecte de 108 objets. Ce sont 108 « fragments de récits » courts (PNJ, tombes, panneaux) qui reconstituent un événement ancien (la faute punie il y a 500 ans).
+- **Risque :** risque de fetch quest plutôt que de fan service. Le nombre doit rester symbolique (on peut compléter avec moins de 108).
+
+**14. Les automates d'argile**
+- **Faits :** Kaorine (figurine animée), Gringolem/Golemastoc (gardiens à sceau), Regis [RSE/NB/Pt].
+- **Pourquoi :** une civilisation qui fabriquait des gardiens, et peut-être pourquoi elle les a scellés.
+- **Jeu :** des combats avec totems (`settotemboost`) contre des gardiens de ruines. Le « sceau » peut être retiré au prix d'un risque (forme incontrôlable).
+- **Risque :** faible.
+
+**15. L'alphabet Zarbi et le Braille : deux écritures, un peuple ?**
+- **Faits :** le Braille est présent dans Hoenn et dans la Vallée Ruine ; les Zarbi peuplent Tanoby [RSE/RFVF].
+- **Pourquoi :** relier les assets Hoenn et RFVF par un **peuple navigateur**.
+- **Jeu :** apprendre à lire les deux écritures. Des messages en Zarbi (formes `!` et `?`) révèlent des coordonnées d'îles.
+- **Risque :** moyen (Sevii est fortement associé à RFVF).
+
+**16. Les îles qui n'ont jamais eu d'histoire**
+- **Faits :** l'Île Aurore, le Roc Nombri et l'Île Lointaine sont des lieux événementiels sans récit ✔.
+- **Pourquoi :** du canon vide, des cartes déjà présentes dans la ROM.
+- **Jeu :** une **carte au trésor reconstituée** (fragments de Vieille Carte), avec une navigation au **Tarinor** (boussole vivante). Chaque île a sa légende inédite.
+- **Risque :** moyen, car Mew, Lugia, Ho-Oh et Deoxys sont des aimants à fan service.
+
+**17. Les jumeaux Soleil-Lune**
+- **Faits :** Lévy et Tatia (jumeaux télépathes), Séléroc et Solaroc, Lunala et Solgaleo [RSE/SL].
+- **Pourquoi :** la dualité et la séparation.
+- **Jeu :** une arène double où les deux champions ne combattent ensemble que selon l'heure. Des quêtes jour/nuit (`OW_ENABLE_DNS`).
+- **Risque :** faible.
+
+**18. Les anachronismes vivants**
+- **Faits :** Pokémon Paradoxe et machine temporelle [EV] ; distorsions de Hisui [LPA] ; Relicanth inchangé depuis 100 millions d'années.
+- **Pourquoi :** le temps « fuit ».
+- **Jeu :** de rares rencontres de Paradoxe dans des zones de distorsion temporaires. L'**Énergie Booster** est une ressource rare. On ne nomme pas Zone Zéro : la cause est locale.
+- **Risque :** élevé. Les Paradoxe sont très associés à Paldea, il faut les rendre organiques.
+
+**19. L'histoire réécrite**
+- **Faits :** Galar a falsifié l'identité de ses héros [EB] ; Septentria a inversé la morale du conte [EV DLC].
+- **Pourquoi :** un canon qui assume que les vainqueurs écrivent l'histoire.
+- **Jeu :** un musée (Poivressel ou Nénucrique) expose une version officielle. Le joueur collecte des preuves contradictoires et peut **modifier l'exposition** (état persistant).
+- **Risque :** faible.
+
+**20. Le culte des titans**
+- **Faits :** les idéologies symétriques de Magma et Aqua [RSE] ; les cultes de légendaires d'Insurgence (fangame) ; les clans de Hisui [LPA].
+- **Pourquoi :** des factions **religieuses** plutôt que des Teams.
+- **Jeu :** deux confréries qui ne sont pas « maléfiques ». Chacune protège une vérité partielle, et le joueur peut aider l'une ou l'autre sur des quêtes ponctuelles.
+- **Risque :** moyen (Insurgence l'a déjà fait).
+
+**21. Les Concours comme diplomatie**
+- **Faits :** Marc est Maître des Concours et champion ; Lisia est une idole [ROSA]. Les danses Z sont rituelles [SL].
+- **Pourquoi :** le spectacle comme pouvoir.
+- **Jeu :** les Concours débloquent des accès sociaux (audience auprès des sages). Une danse rituelle peut remplacer la danse Z.
+- **Risque :** faible.
+
+**22. Scott et la Zone de Combat**
+- **Faits :** Scott observe le joueur pendant tout Émeraude, et ses motivations ne sont jamais expliquées [E].
+- **Pourquoi :** un recruteur dont l'agenda est inconnu.
+- **Jeu :** un personnage inédit dans le même rôle (impresario) qui tient un registre de « talents », lequel sert à autre chose.
+- **Risque :** faible.
+
+**23. L'air de Vergazon**
+- **Faits :** Timmy est malade, et la cendre du Mont Chimnée recouvre la Route 113 [RSE].
+- **Pourquoi :** un enjeu humain quotidien face aux idéologies planétaires.
+- **Jeu :** un PNJ malade dont l'état dépend des choix environnementaux du joueur (éruption, météo), avec un arc de compagnon.
+- **Risque :** élevé si l'on reprend Timmy tel quel. Il faut créer un personnage inédit.
+
+**24. Ce que le Scope révèle**
+- **Faits :** les Kecleon invisibles bloquent des routes ; le Scope Devon les révèle [RSE] ; Latios et Latias se rendent invisibles.
+- **Pourquoi :** une **population cachée** au milieu des humains.
+- **Jeu :** un objet de perception (lunettes, scope) qui révèle PNJ, Pokémon et inscriptions invisibles. Un **second calque** sur les mêmes cartes.
+- **Risque :** faible.
+
+**25. Le vœu millénaire**
+- **Faits :** Jirachi s'éveille 7 jours tous les 1 000 ans [RSE] ; les Étoiles Vœu de Galar existent [EB] ; `ITEM_WISHING_PIECE` est présent dans le moteur.
+- **Pourquoi :** un compte à rebours mythique et l'éthique du vœu.
+- **Jeu :** la fenêtre de 7 jours est une période narrative (calendrier en jeu). Différents PNJ veulent formuler un vœu, et le joueur arbitre qui l'obtient.
+- **Risque :** moyen.
+
+---
+
+## Annexe : sources principales
+
+**Sources consultées** (via les extraits du moteur de recherche) :
+- Poképédia : Pilier Céleste, Grotte Origine, Roc Nombri, Amaryllis, Gardienne du Savoir, Primo-Résurgence, Éthernatos, Colonnes Lances, Monde Distorsion, Ruines Tanoby, Vallée Ruine, Îles Sevii, Spiritomb, Pokémon Paradoxe, Société Quazar, Leader Magma, Admin Team Aqua, Matthieu.
+- Pokébip : guides des lieux d'Émeraude (Sanctuaire, Ruines Désert, Grotte de l'Îlot, Île Aurore, Île Lointaine, Tour Mirage, Maison des Pièges) et table de traduction RFVF.
+- Eternia : soluce de l'Épisode Delta, Team Magma/Aqua, Éthernatos.
+- Millenium et RPGamer : Légendes Pokémon Z-A.
+- Wikipédia EN : Pokémon Insurgence. TV Tropes et wikis fans : Unbound, Gaia, Reborn, Rejuvenation.
+
+**Pages de référence à consulter** pour vérifier les points ◐ et ? :
+- Bulbapedia : Sealed Chamber, Delta Episode, Infinity Energy, Ultimate weapon, Mirage Tower, Meteor Falls, Battle Frontier (Gen III), Sinjoh Ruins, Pokémon Mansion, Volo.
