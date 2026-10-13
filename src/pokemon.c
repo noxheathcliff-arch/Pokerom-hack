@@ -5191,14 +5191,17 @@ u16 GetBattleBGM(void)
 
         switch (trainerClass)
         {
-        case TRAINER_CLASS_AQUA_LEADER:
-        case TRAINER_CLASS_MAGMA_LEADER:
+        // Heure Suspendue: repurposed Aqua/Magma classes (see include/constants/trainers.h)
+        case TRAINER_CLASS_SONNEUSE:      // Ysaline
+        case TRAINER_CLASS_SONNEUSE_2:
             return MUS_VS_AQUA_MAGMA_LEADER;
-        case TRAINER_CLASS_TEAM_AQUA:
-        case TRAINER_CLASS_TEAM_MAGMA:
-        case TRAINER_CLASS_AQUA_ADMIN:
-        case TRAINER_CLASS_MAGMA_ADMIN:
+        case TRAINER_CLASS_CARILLONNEUR:  // Ysaline's followers
+        case TRAINER_CLASS_SONNEUR:       // Bourdon, Tierce
             return MUS_VS_AQUA_MAGMA;
+        case TRAINER_CLASS_CHEF_VEILLEUR: // Capitaine Rocheval
+            return MUS_RG_VS_GYM_LEADER;
+        case TRAINER_CLASS_VEILLEUR:      // militia: frightened villagers, not villains
+            return MUS_RG_VS_TRAINER;
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:

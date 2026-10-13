@@ -2162,6 +2162,9 @@ extern const u8 gText_Girl[];
 
 // Specific to the French Version
 extern const u8 gText_Eleve[];
+extern const u8 gText_Carillonneuse[];
+extern const u8 gText_Sonneuse[];
+extern const u8 gText_Veilleuse[];
 extern const u8 gText_Dresseur[];
 extern const u8 gText_Champion[];
 

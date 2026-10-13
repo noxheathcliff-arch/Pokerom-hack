@@ -273,6 +273,21 @@ const u8 *GetTrainerClassNameGenderSpecific(s32 trainerClassId, u32 trainerGende
         if (trainerGender != 0)
             return gText_Dresseur; // DRESSEUR
         break;
+    // Heure Suspendue: feminine forms of the repurposed classes. These strings are
+    // separate from gTrainerClasses (whose names are limited to 12 characters).
+    case TRAINER_CLASS_CARILLONNEUR:
+        if (trainerGender != 0)
+            return gText_Carillonneuse; // CARILLONNEUSE (13)
+        break;
+    case TRAINER_CLASS_SONNEUR:
+        if (trainerGender != 0)
+            return gText_Sonneuse; // SONNEUSE
+        break;
+    case TRAINER_CLASS_VEILLEUR:
+    case TRAINER_CLASS_CHEF_VEILLEUR:
+        if (trainerGender != 0)
+            return gText_Veilleuse; // VEILLEUSE
+        break;
     case TRAINER_CLASS_LEADER:
         if (trainerName != NULL && StringCompare(trainerName, gText_LevyTatia) == 0)
             return gText_Champion; // CHAMPION

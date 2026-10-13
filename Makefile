@@ -1,5 +1,5 @@
 GAME_VERSION ?= EMERALD
-TITLE        ?= POKEMON EMER
+TITLE        ?= HEURESUSPEND
 GAME_CODE    ?= BPEF
 BUILD_NAME   ?= emeraude
 MAP_VERSION  ?= emerald

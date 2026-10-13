@@ -2409,9 +2409,9 @@ static inline bool32 IsTrainerIdToSwap(u16 trainerId)
 
     // Add to this list if you want to swap the trainer name and class for a specific trainer class.
     // In French, this displays as: SBIRE TEAM MAGMA instead of TEAM MAGMA SBIRE.
-    return (class == TRAINER_CLASS_TEAM_MAGMA
-            || class == TRAINER_CLASS_TEAM_AQUA
-            || class == TRAINER_CLASS_TEAM_ROCKET_FRLG);
+    // Heure Suspendue: TEAM_MAGMA/TEAM_AQUA are now VEILLEUR/CARILLONNEUR, displayed
+    // in the normal order ("CARILLONNEUR NOM"), so they are no longer swapped.
+    return (class == TRAINER_CLASS_TEAM_ROCKET_FRLG);
 }
 
 static inline void SwapTrainerNameAndClass(u16 trainerId, u8 **dst)
