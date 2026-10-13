@@ -221,7 +221,7 @@ Le log complet est dans `qa_artifacts/proof_upstream/log.txt`.
 
 Autotest (`tools/qa/scripts/selftest_logging_crash.txt`) : `[game WARN] hello` capturé, puis crash provoqué (`gMain.callback2 = 0x0F000001`), suivi de `[CRASH] … 0F000000` et du code de sortie 5. `--hang 300 --hang-fatal` sur le menu principal immobile donne `[HANG?]` et le code 4 : c'est le comportement attendu de l'heuristique, et c'est aussi la démonstration de sa limite.
 
-**`make check` sur l'upstream** (binaires `/opt/mgba-tools`, `make check -j4`, log `/home/user/check_upstream.log`) : RESULTATS_MAKE_CHECK
+**`make check` sur l'upstream** (binaires `/opt/mgba-tools`, `make check -j4`, log `/home/user/check_upstream.log`) : **EXIT 0, 9 min 57 s** (temps CPU 34 min 44 s). Résumé hydra : **PASSED 4937 / TOTAL 5553**, FAILED 0, TO_DO 595, KNOWN_FAILING 13, EXPECT_FAILING 8 (chiffres repris tels quels de la fin du log). Note : un premier lancement avait été interrompu par un redémarrage du conteneur (`/home/user/check_upstream_interrupted.log`, partiel, sans résumé).
 
 ## 8. Limites connues
 

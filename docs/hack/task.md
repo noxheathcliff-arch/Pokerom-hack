@@ -78,6 +78,8 @@ Phase B+ : Game Mechanics Director, critiques narratifs indépendants, supervise
 ## 6. Résultats de tests / preuves
 | Date | Test | Résultat |
 |---|---|---|
+| 10-13 | `make check` upstream (mgba-rom-test) | EXIT 0, 9 min 57 s : 4937 PASS, 595 TO_DO, 13 KNOWN_FAILING, 8 EXPECT_FAILING, **0 échec** (log /home/user/check_upstream.log) |
+| 10-13 | Smoke émulateur upstream (gbaplay) : nouvelle partie → camion → sauvegarde → redémarrage → CONTINUER | SMOKE: PASS ; revérifié par l'orchestrateur (`qa_artifacts/verify_orch`, capture du joueur dans le camion après reprise) |
 | 10-13 | Build de référence upstream non modifié (`make -j4`) | EXIT 0, 4 min 15 s. EWRAM 86.43 %, IWRAM 86.60 %, ROM 26 549 676 o / 32 Mo (79.12 %). Avertissements : 203× `bKGD: invalid index` + 3× `iCCP` (métadonnées PNG libpng, préexistants, bénins). SHA1 `ff2de54c…` (≠ rom.sha1 qui vise un autre profil de build ; non significatif). |
 
 ## 7. Blocages et solutions
