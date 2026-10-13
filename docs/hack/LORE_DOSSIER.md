@@ -413,3 +413,83 @@ Sources : https://www.pokepedia.fr/Épisode_Delta , https://www.pokepedia.fr/Ama
 - **Classe de dresseur « Ruinemaniaque »** : elle existe nativement dans RSE (Ruin Maniac), avec sprites et classe déjà présents dans le moteur. **[HYPOTHÈSE DE CONCEPTION]** C'est une faction « archéologues » à coût d'asset quasi nul.
 
 ---
+
+## 4. Phénomènes et mécanismes utilisables comme ressorts narratifs, avec leur pendant dans le moteur
+
+Tout ce qui est marqué **[MOTEUR ✔]** a été vérifié dans le dépôt (`include/config/*.h`, `include/constants/items.h`, `include/constants/form_change_types.h`, `asm/macros/event.inc`).
+
+**Remarque importante sur la configuration :** dans la config actuelle, les flags `B_FLAG_DYNAMAX_BATTLE`, `B_FLAG_TERA_ORB_CHARGED`, `B_FLAG_TERA_ORB_NO_COST`, `B_FLAG_SKY_BATTLE` et `B_FLAG_INVERSE_BATTLE` valent **0**, c'est-à-dire « non assignés ». Il faut leur attribuer des flags libres pour activer ces mécaniques de façon scénarisée.
+
+### 4.1 Tableau de correspondance lore ↔ moteur
+
+| Phénomène (FR) | Lore canon | Pendant moteur | Potentiel narratif |
+|---|---|---|---|
+| **Méga-Évolution** | La Gemme Sésame (portée dans un Méga-Anneau ou Méga-Bracelet) résonne avec une Méga-Gemme et le lien Dresseur–Pokémon [XY/ROSA] ; première Méga = Rayquaza (Peuple du Météore) [ROSA] | `ITEM_MEGA_RING` [MOTEUR ✔] ; Méga-Gemmes ; `FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM` et `_MOVE` (Rayquaza/Draco Ascension) [MOTEUR ✔] | Origine météoritique, donc liée au Site Météore. Possibilité de **Méga instable** (écho des Méga-Ferox de LZA) |
+| **Primo-Résurgence** | Gemmes Rouge/Bleue, forme ancestrale des titans [ROSA] | `ITEM_RED_ORB`, `ITEM_BLUE_ORB`, `FORM_CHANGE_BATTLE_PRIMAL_REVERSION` [MOTEUR ✔] | Les Gemmes du Mont Mémoria comme reliques sacrées |
+| **Capacités Z** | Bracelet Z ◐, Cristaux Z ◐, danses rituelles dédiées aux Tokos [SL] | `ITEM_Z_POWER_RING` [MOTEUR ✔], cristaux Z | Pouvoir **rituel/religieux** (danse = prière) |
+| **Dynamax / Gigamax** | Énergie d'Éthernatos, Étoiles Vœu, Nids/Antres ? (Power Spots) [EB] | `ITEM_DYNAMAX_BAND`, `B_FLAG_DYNAMAX_BATTLE`, `FORM_CHANGE_BATTLE_GIGANTAMAX` [MOTEUR ✔], `ITEM_WISHING_PIECE` [MOTEUR ✔] | Énergie **tombée du ciel**, s'accorde avec les météorites de Hoenn |
+| **Téracristallisation** | Cristaux de Terapagos en Zone Zéro ; l'Orbe se recharge au Centre [EV] | `ITEM_TERA_ORB`, `B_FLAG_TERA_ORB_CHARGED`, `B_FLAG_TERA_ORB_NO_COST`, `ITEM_STELLAR_TERA_SHARD` [MOTEUR ✔] | Gisement cristallin souterrain ; la recharge peut devenir un **objet narratif** (rationnement) |
+| **Ultra-Explosion** | Necrozma [USUL] | `FORM_CHANGE_BATTLE_ULTRA_BURST`, `ITEM_N_SOLARIZER`, `ITEM_N_LUNARIZER` [MOTEUR ✔] | Lumière volée, entité affamée |
+| **Pokémon Dominants (Totem)** | Boss des épreuves d'Alola, aura de stats [SL] | Macro `settotemboost` [MOTEUR ✔] | **Gardiens de lieux** sans Arène |
+| **Météo** | Titans, Morphéo, Institut Météo | Météo du monde (`field_weather.c`, `coord_event_weather.c`) + météo de combat ; `OW_FOLLOWERS_WEATHER_FORMS` (Morphéo/Ceriflor changent de forme dans le monde ouvert) [MOTEUR ✔] | Crise climatique régionale, zones météo « contaminées » |
+| **Champs / terrains et statut de départ** | Champs Électrique, Herbu, Brumeux, Psychique | Macro `setstartingstatus` [MOTEUR ✔], qui impose un terrain ou une météo au début d'un combat | Lieux « chargés » (ruine psychique, forêt herbue) |
+| **Jour/nuit** | Séléroc/Solaroc, Pokémon nocturnes | `OW_ENABLE_DNS`, `OW_TIMES_OF_DAY`, `OW_TIME_OF_DAY_ENCOUNTERS`, `FORM_CHANGE_TIME_OF_DAY` [MOTEUR ✔] | Rituels nocturnes, PNJ visibles uniquement la nuit |
+| **Temps qui passe** | Marées de la Grotte Tréfonds, Île Mirage quotidienne | RTC ; `FORM_CHANGE_DAYS_PASSED` [MOTEUR ✔] ; `OW_FLAG_PAUSE_TIME` [MOTEUR ✔] | Événements datés, **horloge arrêtée** comme ressort |
+| **Combat aérien / inversé** | Combats Aériens [XY], Combats Inversés [XY] | `B_FLAG_SKY_BATTLE`, `B_FLAG_INVERSE_BATTLE` [MOTEUR ✔] | Combat au sommet du Pilier Céleste ; « monde inversé » (Monde Distorsion, Île Mirage) |
+| **Difficulté** | — | `B_VAR_DIFFICULTY` [MOTEUR ✔] | — |
+| **Interdiction du Sac** | — | `B_VAR_NO_BAG_USE` [MOTEUR ✔] | Épreuves rituelles « à mains nues » |
+
+### 4.2 Changements de forme exploitables
+
+| Espèce (FR) | Déclencheur canon | Pendant moteur | Remarque lore |
+|---|---|---|---|
+| **Deoxys** (Normale, Attaque, Défense, Vitesse) | Toucher les météorites de **Voilaroc** ◐ [DP] ; météorite [ROSA, à vérifier] | `ITEM_METEORITE` [MOTEUR ✔] + `FORM_CHANGE_ITEM_USE` | Virus spatial muté par un laser [RS Pokédex]. Un lien parfait avec le Site Météore |
+| **Motisma** (Rotom) | Appareils ménagers (Manoir Motisma ◐, Pt) | `ITEM_ROTOM_CATALOG` [MOTEUR ✔] | Esprit-plasma ; en EV, le Motisma-Phone |
+| **Morphéo** (Castform) | Météo | `FORM_CHANGE_BATTLE_WEATHER`, `FORM_CHANGE_OVERWORLD_WEATHER` [MOTEUR ✔] | Conçu ou étudié à l'Institut Météo |
+| **Shaymin** (Terrestre / Céleste) | **Gracidée** ◐ de jour ; redevient Terrestre la nuit ou s'il est gelé | `ITEM_GRACIDEA` [MOTEUR ✔] | Fleur de gratitude |
+| **Hoopa** (Enchaîné / Déchaîné) | **Vase Scellé** ? (Prison Bottle) | `ITEM_PRISON_BOTTLE` [MOTEUR ✔] | Pokémon scellé pour avoir volé des choses à travers ses anneaux [ROSA : Hoopa et les anneaux] |
+| **Kyurem** (Blanc / Noir) | **Pointeau ADN** ◐ (DNA Splicers) | `ITEM_DNA_SPLICERS` [MOTEUR ✔] | Coquille vide du dragon originel |
+| **Necrozma** (Crinière du Couchant / Ailes de l'Aurore) | Solarizer / Lunarizer | [MOTEUR ✔] | — |
+| **Sylveroy** (Calyrex : Cavalier du Froid / d'Effroi) | **Rênes de l'Unité** ◐ | `ITEM_REINS_OF_UNITY` [MOTEUR ✔] | Roi déchu, oublié de son peuple |
+| **Zygarde** (10 %, 50 %, Parfait) | **Zygarde Cube** ◐ / Cellules | `ITEM_ZYGARDE_CUBE` [MOTEUR ✔] | Gardien de l'écosystème, collection disséminée |
+| **Zacian / Zamazenta** | **Épée Rouillée** ◐ / Bouclier Rouillé | `ITEM_RUSTED_SWORD` [MOTEUR ✔] | Héros effacés de l'histoire |
+| **Dialga / Palkia / Giratina** (Formes Originelles) | Globes et Noyaux (LPA) | `ITEM_ADAMANT_CRYSTAL`, `ITEM_LUSTROUS_GLOBE`, `ITEM_GRISEOUS_CORE` [MOTEUR ✔] | Formes « originelles » ; écho direct des formes Primo |
+| **Shifours** (Urshifu : Poing Final / Mille Poings) | Rouleaux (Ténèbres/Eau) | `ITEM_SCROLL_OF_DARKNESS`, `_WATERS` [MOTEUR ✔] | Tours d'entraînement, maître et disciple |
+| **Pokémon Paradoxe** | **Énergie Booster** ◐ ; capacités Paléosynthèse ◐ / Charge Quantique ◐ | `ITEM_BOOSTER_ENERGY` [MOTEUR ✔] | Anachronismes vivants |
+| **Spiritomb** | **Clé de Voûte** ✔ (Odd Keystone) + 32 interactions dans le Souterrain [DP] | `ITEM_ODD_KEYSTONE` [MOTEUR ✔] | 108 esprits enchaînés |
+| **Zarbi** (28 formes) | Personnalité aléatoire | Formes natives | Alphabet ancien |
+| **Météno** (Minior, Noyau / Météore) | PV < 50 % | `FORM_CHANGE_BATTLE_HP_PERCENT_*` [MOTEUR ✔] | Il tombe de la stratosphère : thème météorite |
+| **Froussardine** (Wishiwashi) | PV et niveau | idem | Banc solitaire / banc uni |
+| **Mimiqui** | Déguisement brisé | `FORM_CHANGE_BATTLE_HIT_BY_MOVE_CATEGORY` ◐ | — |
+| **Ogerpon** (Masques) | Masques portés | `FORM_CHANGE_ITEM_HOLD` + Tera | Masques volés |
+| **Terapagos** (Normale / Téracristal / Stellaire) | Combat + Tera | `FORM_CHANGE_BATTLE_TERASTALLIZATION` [MOTEUR ✔] | Origine du phénomène Tera |
+| **Lougaroc** (Lycanroc), **Évoli** (Mentali/Noctali), **Pyronille**… | Heure du jour | Évolutions dépendant de l'heure | Rituels liés au cycle |
+
+### 4.3 Fossiles (toutes générations)
+
+Les noms FR sont à vérifier pour les fossiles marqués ◐.
+
+| Gen | Fossile (FR) | Pokémon |
+|---|---|---|
+| 1 | Fossile Nautile ◐, Fossile Dôme ◐, Vieil Ambre ◐ | Amonita, Kabuto, Ptéra |
+| 3 | **Fossile Racine** ◐, **Fossile Griffe** ◐ | Lilia (Lileep), Anorith |
+| 4 | Fossile Crâne ◐, Fossile Armure ◐ | Kranidos, Dinoclier |
+| 5 | Fossile Couvercle ◐, Fossile Plume ◐ | Carapagos (Tirtouga), Arkéapti (Archen) |
+| 6 | Fossile Mâchoire ◐, Fossile Nageoire ◐ | Ptyranidur (Tyrunt), Amagara (Amaura) |
+| 8 | Fossile Oiseau ?, Fossile Dragon ?, Fossile Poisson ?, Fossile Gelé ? | **Chimères** : Galvagon (Dracozolt) ◐, Galvagla (Arctozolt) ◐, Hydragon (Dracovish) ◐, Hydragla (Arctovish) ◐ |
+
+**[CANON-JEU : EB]** En Galar, le scientifique **Cara Liss** ◐ assemble des moitiés de fossiles **mal appariées** et crée des chimères biologiquement aberrantes (le Pokédex le souligne). C'est une **critique implicite de la paléontologie amateur**.
+
+**[CANON-JEU : E]** Dans Hoenn, la Tour Mirage s'effondre quand on choisit un fossile : la **destruction archéologique** fait partie du canon.
+
+### 4.4 Autres outils natifs utiles à la mise en scène
+
+Tous ces éléments ont été vérifiés dans le dépôt [MOTEUR ✔] :
+- **DexNav** (`dexnav.c`, `config/dexnav.h`) : traque de Pokémon cachés.
+- **PNJ suiveurs** (`follower_npc.c`) : compagnon humain qui suit le joueur. Utile pour les escortes et les arcs de personnage.
+- **Boîte de nom** (`config/name_box.h`) : dialogues avec nom du locuteur.
+- **Pokémon suiveurs** (`follower_helper.c`) : idéal pour le lien Dresseur–Pokémon.
+- **Choix multiples dynamiques** (`dynmultichoice`) : dialogues à embranchements.
+- **Écran d'aperçu de carte** (`config/map_preview_screen.h`) : présentation des lieux.
+- **Lieu de rencontre modifiable** (`setmonmetlocation`) : Pokémon « venus d'ailleurs ». On peut afficher un lieu fictif ou ancien.
+
