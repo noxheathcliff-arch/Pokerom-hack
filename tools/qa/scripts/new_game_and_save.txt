@@ -1,0 +1,3 @@
+# New game up to the truck, then save in game (battery written at exit with -s FILE).
+include new_game_to_truck.txt
+include save_in_game.txt

@@ -61,27 +61,57 @@ static int gbaDebugCategory = -1;
 static int gbaMemCategory = -1;
 
 /* ---------- symbols / defines ---------- */
-struct Sym { char* name; uint32_t value; };
+struct Sym { char* name; uint32_t value; size_t order; };
+/* user definitions (-D, --defs, `define`): small list, searched first, last one wins */
+static struct Sym* defs = NULL;
+static size_t ndefs = 0;
+/* symbols from files: sorted once, binary search; first definition in file order wins */
 static struct Sym* syms = NULL;
 static size_t nsyms = 0, capsyms = 0;
+static int symsSorted = 1;
 
 static void symAdd(const char* name, uint32_t value) {
-	for (size_t i = 0; i < nsyms; ++i) {
-		if (strcmp(syms[i].name, name) == 0) { syms[i].value = value; return; }
+	for (size_t i = 0; i < ndefs; ++i) {
+		if (strcmp(defs[i].name, name) == 0) { defs[i].value = value; return; }
 	}
+	defs = realloc(defs, (ndefs + 1) * sizeof(*defs));
+	defs[ndefs].name = strdup(name);
+	defs[ndefs].value = value;
+	defs[ndefs].order = ndefs;
+	++ndefs;
+}
+
+static void fileSymAdd(const char* name, uint32_t value) {
 	if (nsyms == capsyms) {
 		capsyms = capsyms ? capsyms * 2 : MAX_SYMS_INIT;
 		syms = realloc(syms, capsyms * sizeof(*syms));
 	}
 	syms[nsyms].name = strdup(name);
 	syms[nsyms].value = value;
+	syms[nsyms].order = nsyms;
 	++nsyms;
+	symsSorted = 0;
+}
+
+static int symCmp(const void* a, const void* b) {
+	const struct Sym* x = a;
+	const struct Sym* y = b;
+	int c = strcmp(x->name, y->name);
+	if (c) return c;
+	return x->order < y->order ? -1 : x->order > y->order;
 }
 
 static int symFind(const char* name, uint32_t* out) {
-	for (size_t i = 0; i < nsyms; ++i) {
-		if (strcmp(syms[i].name, name) == 0) { *out = syms[i].value; return 1; }
+	for (size_t i = 0; i < ndefs; ++i) {
+		if (strcmp(defs[i].name, name) == 0) { *out = defs[i].value; return 1; }
 	}
+	if (!symsSorted) { qsort(syms, nsyms, sizeof(*syms), symCmp); symsSorted = 1; }
+	size_t lo = 0, hi = nsyms;
+	while (lo < hi) { /* lower bound */
+		size_t mid = (lo + hi) / 2;
+		if (strcmp(syms[mid].name, name) < 0) lo = mid + 1; else hi = mid;
+	}
+	if (lo < nsyms && strcmp(syms[lo].name, name) == 0) { *out = syms[lo].value; return 1; }
 	return 0;
 }
 
@@ -118,9 +148,7 @@ static int loadSymbols(const char* path) {
 		if (nt == 2 && tok[0][0] != '0') continue;
 		uint32_t region = addr >> 24;
 		if (region != 2 && region != 3 && region != 8 && region != 9) continue;
-		uint32_t dummy;
-		if (symFind(name, &dummy)) continue; /* keep first definition */
-		symAdd(name, addr);
+		fileSymAdd(name, addr);
 	}
 	fclose(f);
 	if (!quiet) fprintf(stderr, "gbaplay: loaded %zu symbols from %s\n", nsyms - before, path);
@@ -188,6 +216,8 @@ static int evalExpr(const char* s, uint32_t* out) {
 	return 1;
 }
 
+static uint32_t cpuPC(void);
+
 /* ---------- logging ---------- */
 static void logCb(struct mLogger* logger, int category, enum mLogLevel level, const char* format, va_list args) {
 	(void) logger;
@@ -201,7 +231,10 @@ static void logCb(struct mLogger* logger, int category, enum mLogLevel level, co
 		return;
 	}
 	if (category == gbaMemCategory && strstr(msg, "Jumped to invalid address")) {
-		printf("[CRASH] frame %lu: %s\n", totalFrames, msg);
+		static unsigned long more = 0;
+		static int printed = 0;
+		if (!printed++) printf("[CRASH] frame %lu: %s (PC=%08X)\n", totalFrames, msg, cpuPC());
+		else if (++more == 1) printf("[CRASH] (further invalid-jump messages suppressed)\n");
 		crashed = 1;
 		return;
 	}

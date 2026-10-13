@@ -1,0 +1,11 @@
+# Boot -> (intro expansion + intro Game Freak skipped with START) -> title -> main menu.
+# Requires: --syms (gMain, CB2_InitTitleScreen, CB2_MainMenu).
+# Function pointers are Thumb: value = symbol address + 1.
+echo boot: waiting for title screen
+waitfor32 gMain+4 CB2_InitTitleScreen+1 3000 START 20
+wait 400
+screenshot 01_title.png
+echo boot: title -> main menu
+waitfor32 gMain+4 CB2_MainMenu+1 600 START 20
+wait 90
+screenshot 02_main_menu.png

@@ -1,0 +1,36 @@
+# New game: main menu -> Birch speech -> gender (boy, default) -> name "Abc" -> truck.
+# Usage: gbaplay --syms SYMS --defs OFFSETS -o OUT -s OUT/game.sav ROM tools/qa/scripts/new_game_to_truck.txt
+include lib/boot_to_main_menu.txt
+echo new game: select NOUVELLE PARTIE
+press A
+wait 400
+screenshot 03_birch_speech.png
+echo new game: mash A through the speech until the naming screen (default gender = boy)
+waitfor32 gMain+4 CB2_NamingScreen+1 6000 A 20
+wait 60
+# Type "Abc": after the first letter the keyboard switches to lower case (animation -> waits)
+press A
+wait 40
+press RIGHT
+wait 4
+press A
+wait 20
+press RIGHT
+wait 4
+press A
+wait 20
+screenshot 04_naming_screen.png
+press START
+wait 20
+press A
+echo new game: mash A until the overworld (answers OUI to the name confirmation)
+waitfor32 gMain+4 CB2_Overworld+1 6000 A 20
+# the truck fades in and input stays locked for a while: wait before opening the menu
+wait 1000
+screenshot 05_truck_overworld.png
+expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET 0xBB
+expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET+1 0xD6
+expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET+2 0xD7
+expect8 *gSaveBlock2Ptr+SB2_GENDER_OFFSET 0
+expect8 *gSaveBlock1Ptr+SB1_LOCATION_OFFSET MAP_INSIDE_OF_TRUCK_GROUP
+expect8 *gSaveBlock1Ptr+SB1_LOCATION_OFFSET+1 MAP_INSIDE_OF_TRUCK_NUM

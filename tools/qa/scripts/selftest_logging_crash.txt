@@ -1,0 +1,12 @@
+# Self-test of gbaplay: mGBA debug-print capture, then crash detection.
+# Usage: gbaplay --syms SYMS ROM tools/qa/scripts/selftest_logging_crash.txt   (expected exit code 5)
+wait 60
+# emulate what the game does in MgbaPrintf: enable, write the string, flush with level 2 (WARN)
+write16 0x4FFF780 0xC0DE
+write32 0x4FFF600 0x6C6C6568
+write16 0x4FFF604 0x006F
+write16 0x4FFF700 0x102
+# corrupt the main callback2 to jump to an unmapped address -> crash expected
+write32 gMain+4 0x0F000001
+wait 10
+echo should not be reached

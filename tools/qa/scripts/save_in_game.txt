@@ -1,0 +1,19 @@
+# Save from the start menu (overworld, no Pokedex/Pokemon yet: SAC, <nom>, SAUVER, OPTIONS, RETOUR).
+# If the start menu has a POKEDEX/POKEMON entry, adjust the number of DOWN presses.
+echo save: open start menu
+press START
+wait 30
+screenshot 06_start_menu.png
+press DOWN
+wait 4
+press DOWN
+wait 4
+press A
+# text prints slowly: wait for the OUI/NON box before pressing A
+wait 240
+screenshot 07_save_confirm.png
+press A
+wait 460
+screenshot 08_saved.png
+press A
+wait 60
