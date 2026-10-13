@@ -115,28 +115,25 @@ Format des connexions : `direction:MAP`. `dive` et `emerge` relient la surface �
 ### 1.3 Graphe des connexions de Hoenn **[V]**
 
 ```
-                                   FALLARBOR(Autequia)
-                     R115 ── R114 ──┘      │
-                      │  (Site Météore)   R113 (cendres) ── R111-nord ──┐
-                      │                    │                (désert)    │
-                 RUSTBORO ── R116 ┐       R112 ── LAVARIDGE             │
-                 (Mérouville)     │   (Mt Chimnée/téléphérique)        │
-                      │       (Tunnel Mérazon)  └──────────── R111-sud ┘
-                     R104         │                                │
-   PETALBURG ────────┘ │     VERDANTURF ── R117 ── MAUVILLE ── R118 ── R123 ── R122 ── R121 ── LILYCOVE ── R124 ── MOSSDEEP
-   (Clementi)          │     (Vergazon)          (Lavandia)    │            (Mt Mémoria)│                 │  │       │  │
-      │               R105                                     R119 (jungle)            R120 ── FORTREE ─┘  R125─┘   R127
-     R102            (mer)                                      └──────── FORTREE         (Cimetronelle)    R126 ───┘  │
-      │                │                                         (via R119 → R120 → R121)  (dive: Atalanopolis)       R128 ── EVER GRANDE
-   OLDALE ── R103 ────(Surf)──── R110 ── SLATEPORT ── R134 ── R133 ── R132 ── PACIFIDLOG ── R131 ── R130 ── R129 ─┘
-      │                          (Piste   (Poivressel)                       (Pacifiville) (Pilier    (Île Mirage)
-     R101                         Cyclable)   │                                             Céleste)
-      │                                     R109
-   LITTLEROOT                                │
-  (Bourg-en-Vol)            DEWFORD ── R107 ── R108 (Épave)
-                           (Myokara)
-                               │
-                             R106 ── R105 ── R104
+Liste d'adjacence (connexions de bord vérifiées) :
+
+LITTLEROOT ─N─ R101 ─N─ OLDALE ─W─ R102 ─W─ PETALBURG ─W─ R104 ─N─ RUSTBORO ─N─ R115 ─E─ R114 ─E─ FALLARBOR ─E─ R113 ─E─ R111
+                          │                                  │                 │
+                          N                                  S                 E
+                        R103 ─E─ R110                      R105 (mer)        R116 ─S─ VERDANTURF ─E─ R117 ─E─ MAUVILLE
+                                  │                          │                                                 │
+           SLATEPORT ─N──────── R110 ─N─ MAUVILLE          R106 ─S─ DEWFORD ─E─ R107 ─E─ R108 ─E─ R109 ─N─ SLATEPORT
+
+MAUVILLE ─N─ R111 ─W─ R112 ─W─ LAVARIDGE      (R111 ─W─ R113 aussi ; R112 ─N─ R113)
+MAUVILLE ─E─ R118 ─N─ R119 ─E─ FORTREE ─E─ R120 ─E─ R121 ─E─ LILYCOVE ─E─ R124 ─E─ MOSSDEEP
+             R118 ─E─ R123 ─N─ R122 ─N─ R121                               R124 ─E─ R125 ─S─ MOSSDEEP
+                                                                           R124 ─S─ R126 ─E─ R127 ─N─ MOSSDEEP
+                                                                                            R127 ─S─ R128 ─E─ EVER GRANDE
+SLATEPORT ─E─ R134 ─E─ R133 ─E─ R132 ─E─ PACIFIDLOG ─E─ R131 ─E─ R130 ─E─ R129 ─N─ R128
+
+Plongée (dive/emerge) : R105, R124–R129 ↔ UNDERWATER_*. SOOTOPOLIS : aucune connexion,
+accès uniquement par UNDERWATER_ROUTE126 → UNDERWATER_SOOTOPOLIS_CITY (warp).
+Ferry/Aqualine : ports Slateport/Lilycove → Zone de Combat, Île du Sud, îles d'événements.
 ```
 
 Lecture simplifiée de la boucle principale :
@@ -496,7 +493,7 @@ Source : `include/constants/songs.h`. Tout est dans `sound/song_table.inc` sans 
 | Bâtiments | MUS_POKE_CENTER, MUS_POKE_MART, MUS_GYM, MUS_GAME_CORNER, MUS_LILYCOVE_MUSEUM, MUS_OCEANIC_MUSEUM, MUS_CONTEST, MUS_CONTEST_LOBBY, MUS_CONTEST_RESULTS, MUS_CONTEST_WINNER, MUS_LINK_CONTEST_P1 à P4, MUS_CABLE_CAR, MUS_ROULETTE, MUS_C_COMM_CENTER |
 | Zone de Combat | MUS_B_FRONTIER, MUS_B_TOWER, MUS_B_TOWER_RS, MUS_B_DOME, MUS_B_DOME_LOBBY, MUS_B_PALACE, MUS_B_ARENA, MUS_B_FACTORY, MUS_B_PIKE, MUS_B_PYRAMID, MUS_B_PYRAMID_TOP |
 | Finale | MUS_HALL_OF_FAME, MUS_HALL_OF_FAME_ROOM, MUS_CREDITS, MUS_END, MUS_TITLE, MUS_INTRO, MUS_RG_HALL_OF_FAME, MUS_RG_CREDITS, MUS_RG_TITLE |
-| RFVF, villes et routes | MUS_RG_PALLET, MUS_RG_SLOW_PALLET, MUS_RG_PEWTER, MUS_RG_CERULEAN (absent ; Azuria utilise d'autres pistes), MUS_RG_VERMILLION, MUS_RG_LAVENDER (lugubre), MUS_RG_CELADON, MUS_RG_FUCHSIA, MUS_RG_CINNABAR, MUS_RG_ROUTE1, MUS_RG_ROUTE3, MUS_RG_ROUTE11, MUS_RG_ROUTE24, MUS_RG_VIRIDIAN_FOREST, MUS_RG_MT_MOON, MUS_RG_POKE_MANSION, MUS_RG_POKE_TOWER (hanté), MUS_RG_SS_ANNE, MUS_RG_VICTORY_ROAD, MUS_RG_SURF, MUS_RG_CYCLING, MUS_RG_GYM, MUS_RG_POKE_CENTER, MUS_RG_GAME_CORNER |
+| RFVF, villes et routes | MUS_RG_PALLET, MUS_RG_SLOW_PALLET, MUS_RG_PEWTER, (pas de MUS_RG_CERULEAN dans songs.h), MUS_RG_VERMILLION, MUS_RG_LAVENDER (lugubre), MUS_RG_CELADON, MUS_RG_FUCHSIA, MUS_RG_CINNABAR, MUS_RG_ROUTE1, MUS_RG_ROUTE3, MUS_RG_ROUTE11, MUS_RG_ROUTE24, MUS_RG_VIRIDIAN_FOREST, MUS_RG_MT_MOON, MUS_RG_POKE_MANSION, MUS_RG_POKE_TOWER (hanté), MUS_RG_SS_ANNE, MUS_RG_VICTORY_ROAD, MUS_RG_SURF, MUS_RG_CYCLING, MUS_RG_GYM, MUS_RG_POKE_CENTER, MUS_RG_GAME_CORNER |
 | RFVF, Sevii | MUS_RG_SEVII_123, MUS_RG_SEVII_45, MUS_RG_SEVII_67, MUS_RG_SEVII_ROUTE, MUS_RG_SEVII_CAVE, MUS_RG_SEVII_DUNGEON, MUS_RG_TRAINER_TOWER, MUS_RG_BERRY_PICK, MUS_RG_POKE_JUMP |
 | RFVF, divers | MUS_RG_HEAL, MUS_RG_VICTORY_TRAINER/WILD/GYM_LEADER, MUS_RG_CAUGHT(_INTRO), MUS_RG_OBTAIN_KEY_ITEM, MUS_RG_DEX_RATING, MUS_RG_PHOTO, MUS_RG_GAME_FREAK, MUS_RG_NEW_GAME_INTRO/INSTRUCT/EXIT, MUS_RG_INTRO_FIGHT, MUS_RG_UNION_ROOM, MUS_RG_NET_CENTER, MUS_RG_MYSTERY_GIFT, MUS_RG_TEACHY_TV_SHOW/MENU |
 | Gen 2 et Colosseum (restes) | MUS_GSC_ROUTE38, MUS_GSC_PEWTER, MUS_C_COMM_CENTER, MUS_C_VS_LEGEND_BEAST, MUS_LITTLEROOT_TEST, MUS_DUMMY |
