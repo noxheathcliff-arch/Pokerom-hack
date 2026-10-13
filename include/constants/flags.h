@@ -51,7 +51,8 @@
 
 #else
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
+// Heure Suspendue: project-allocated flag (see docs/hack/FLAGS_VARS_REGISTRY.md)
+#define FLAG_FIGEMENT_ACTIF  0x20 // Figement active on the current map: no wild encounters (cleared on every map load)
 #define FLAG_UNUSED_0x021    0x21 // Unused Flag
 #define FLAG_UNUSED_0x022    0x22 // Unused Flag
 #define FLAG_UNUSED_0x023    0x23 // Unused Flag
