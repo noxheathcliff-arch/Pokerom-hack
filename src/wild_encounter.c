@@ -78,6 +78,19 @@ void DisableWildEncounters(bool8 disabled)
     sWildEncountersDisabled = disabled;
 }
 
+// Heure Suspendue (N1): inside a Figement, time is frozen and no wild Pokemon
+// can be met by any means (grass, water, fishing, Rock Smash, Sweet Scent/Honey,
+// overworld encounters). FLAG_FIGEMENT_ACTIF is cleared on every map load
+// (ClearTempFieldEventData) and must be set by the map's ON_TRANSITION script.
+bool32 AreWildEncountersFrozenByFigement(void)
+{
+#ifdef FLAG_FIGEMENT_ACTIF
+    return FlagGet(FLAG_FIGEMENT_ACTIF);
+#else
+    return FALSE;
+#endif
+}
+
 // Each fishing spot on Route 119 is given a number between 1 and NUM_FISHING_SPOTS inclusive.
 // The number is determined by counting the valid fishing spots left to right top to bottom.
 // The map is divided into three sections, with each section having a pre-counted number of
@@ -701,6 +714,9 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
     if (sWildEncountersDisabled == TRUE)
         return FALSE;
 
+    if (AreWildEncountersFrozenByFigement())
+        return FALSE;
+
     headerId = GetCurrentMapWildMonHeaderId();
     if (headerId == HEADER_NONE)
     {
@@ -843,6 +859,12 @@ void RockSmashWildEncounter(void)
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay;
 
+    if (AreWildEncountersFrozenByFigement())
+    {
+        gSpecialVar_Result = FALSE;
+        return;
+    }
+
     if (headerId != HEADER_NONE)
     {
         timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_ROCKS);
@@ -885,6 +907,9 @@ bool8 SweetScentWildEncounter(void)
     s16 x, y;
     u32 headerId;
     enum TimeOfDay timeOfDay;
+
+    if (AreWildEncountersFrozenByFigement())
+        return FALSE;
 
     PlayerGetDestCoords(&x, &y);
     headerId = GetCurrentMapWildMonHeaderId();
@@ -966,6 +991,9 @@ bool8 DoesCurrentMapHaveFishingMons(void)
 {
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_FISHING);
+
+    if (AreWildEncountersFrozenByFigement())
+        return FALSE;
 
     if (headerId != HEADER_NONE && gWildMonHeaders[headerId].encounterTypes[timeOfDay].fishingMonsInfo != NULL)
         return TRUE;
