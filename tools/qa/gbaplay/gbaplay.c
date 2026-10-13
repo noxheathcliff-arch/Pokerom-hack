@@ -275,7 +275,10 @@ static int writePNG(const char* path) {
 static int writeSave(const char* path) {
 	void* sram = NULL;
 	size_t size = core->savedataClone(core, &sram);
-	if (!size || !sram) { fprintf(stderr, "gbaplay: no battery save data to write\n"); return 0; }
+	if (!size || !sram) {
+		fprintf(stderr, "gbaplay: no battery save data to write (savedata type %d)\n", ((struct GBA*) core->board)->memory.savedata.type);
+		return 0;
+	}
 	char tmp[4096];
 	snprintf(tmp, sizeof(tmp), "%s.tmp", path);
 	FILE* f = fopen(tmp, "wb");
