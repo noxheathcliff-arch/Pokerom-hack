@@ -37,6 +37,7 @@ Règles de confidentialité : dépôt public ⇒ jamais de `.gba`, `.sav`, ni du
 |---|---|---|---|
 | D1 | Base = build Émeraude FR de pokeemeraude-expansion 1.16.4 | fourni, complet, FR natif | 10-13 |
 | D2 | Langue du jeu : français | base FR, brief en FR | 10-13 |
+| D4 | Monde physique = les 518 cartes de Hoenn (réhabillées/renommées si besoin). Cartes Kanto/Sevii exclues (non compilées en build Émeraude, cf. ASSET_INVENTORY §1). Musiques MUS_RG_* et 159 portraits de dresseurs (dont Kanto) utilisables. | coût/risque d'un portage FRLG ; pas d'éditeur graphique | 10-13 |
 | D3 | Le skill est appliqué par un agent persistant `.claude/agents/game-mechanics-director.md` | exigence §3.2 | 10-13 |
 
 ## 4. Organisation de l'équipe (agents)
