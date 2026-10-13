@@ -77,3 +77,6 @@ compile_commands.json
 /release/
 /qa_artifacts/
 /.gm_skill/
+
+__pycache__/
+*.pyc
