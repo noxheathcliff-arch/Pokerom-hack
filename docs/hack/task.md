@@ -1,89 +1,89 @@
-# task.md — Suivi central du projet de ROM hack
+# task.md — Suivi central du projet
 
-> Source de vérité du **suivi** (pas du design : voir `GAME_DESIGN_BIBLE.md`).
-> Mis à jour par l'orchestrateur à chaque jalon. Toute session future reprend d'ici.
+> Source de vérité du **suivi**. Le design vit dans `GAME_DESIGN_BIBLE.md` (+ docs liés).
+> Toute session future reprend d'ici. Dernière mise à jour : 2026-10-14.
 
-## 1. Objectif et critères d'achèvement
-Livrer une ROM hack Pokémon GBA complète (base pokeemeraude-expansion 1.16.4, build Émeraude FR), compilée, testée sur émulateur,
-avec une histoire originale complète conçue par le Game Mechanics Director selon le skill Game Mechanics (pipeline Milo Hartmann).
+## 0. Changement de direction (2026-10-14)
+Le brief v2 remplace le brief v1. Le design « Heure Suspendue » est **abandonné** et archivé (`archive/heure_suspendue/`).
+Ce qui reste valable et réutilisé : audit d'environnement, toolchain, harnais QA, recherches (technique, assets, IA, stratégie, lore),
+`GM_METHOD.md`, l'agent persistant GM, les leçons techniques des revues (chaîne de portes vanilla, CS Plongée, plafonds, soins, ID de dresseurs),
+et le prototype moteur (plafonds souples, variable de difficulté, flag anti-rencontres, noms de classe longs).
 
-Critères de livraison (cf. brief §10.7 / §13) :
-- [ ] Compilation propre finale (`make -j4`), avertissements examinés
-- [ ] ROM identifiée (titre, game code, SHA1 consigné), taille plausible
-- [ ] Tests `make check` exécutés, résultats consignés
-- [ ] Tests émulateur : boot, nouvelle partie, intro, déplacements, combats sauvages/dresseurs, événements majeurs, sauvegarde/reprise
-- [ ] Vérifications statiques (dresseurs, scripts, textes, drapeaux, warps)
-- [ ] Aucun bug bloquant connu non traité
-- [ ] Documentation : bible, personnages, cartes/progression, combats majeurs, mécaniques, build, tests, limites
+### Exigences fermes du brief v2
+1. Cartes de Hoenn conservées ; la créativité porte sur scripts/histoire/systèmes. Pas de refonte de level design.
+2. Red et des personnages de Kanto à Hoenn, avec Brice ; présence justifiée par l'intrigue et le lore ; sprites Kanto (pokefirered).
+3. Réécriture complète de l'aventure (intro, scripts, dialogues, événements, quêtes, fins, postgame).
+4. **≥ 101 décisions significatives implémentées et vérifiables** + `DECISION_LEDGER.md`.
+5. Systèmes cachés sélectifs (relations, réputation de factions, états du monde) qui influencent réellement le jeu.
+6. Maturité par les compromis et conséquences crédibles ; pas de moralisation.
+7. Progression qui ne se réduit pas aux badges.
+8. Rééquilibrage complet : sauvages, objets, quêtes, dresseurs, IA ; pas de farm comme solution.
+9. Fonctionnalités : refuser certains combats ; choisir le Pokémon de tête (option) ; QoL justifiée.
+10. Plusieurs fins distinctes + postgame.
+11. **Budget Claude Pro** : pas de gaspillage ; aucune dépense payante.
+12. ROM compilée, testée, livrée en privé ; jamais de ROM dans le dépôt public.
 
-## 2. Constat d'environnement (audit du 2026-10-13)
-| Capacité | État | Preuve / remarque |
+## 1. Constat d'environnement
+| Capacité | État |
+|---|---|
+| Dépôt cible | `noxheathcliff-arch/Pokerom-hack` (**public**), branche `ccr-5b2ad437-a1o6hr` |
+| Base | pokeemeraude-expansion 1.16.4 FR @1b077e5c, compilée depuis les sources (aucune ROM de base requise) |
+| ROM US jointe | **toujours non reçue** (brief v1 et v2) — sans impact sur la construction ; empreinte invérifiable |
+| Skill GM (JSON) | lu intégralement ; extrait dans `.gm_skill/` (ignoré) ; agent persistant `.claude/agents/game-mechanics-director.md` |
+| pokefirered | les sprites OW/combat de Kanto sont **déjà dans l'expansion** (import FRLG) : Red (jeu complet), Leaf, Blue, Giovanni, Chen, 8 champions, Conseil 4, Rocket, Bill, M. Fuji, Celio… derrière `IS_FRLG` ; à débloquer dans le build Émeraude |
+| Toolchain / QA | arm-none-eabi-gcc 13.2 ; mGBA headless `gbaplay` + `mgba-rom-test` (/opt/mgba-tools, script `tools/qa/install_mgba_tools.sh`) |
+| Sous-agents | disponibles ; **limite d'usage atteinte 2 fois** (≈ fenêtres de 5 h) → parallélisme réduit, agents réutilisés |
+| Livraison | ROM via envoi de fichier privé (`SendUserFile`) |
+
+## 2. Décisions structurantes
+| # | Décision | Raison |
 |---|---|---|
-| Dépôt cible | `noxheathcliff-arch/Pokerom-hack`, **public**, branche `ccr-5b2ad437-a1o6hr`, push OK | push du commit d'import 819d7b3 |
-| Dépôt source | clone `pokehacking-fr/pokeemeraude-expansion` @1b077e5c (v1.16.4, FR) | lecture seule, copie dans `/home/user/upstream` |
-| ROM jointe (US) | **non reçue** (« 1 of 2 attachments did not arrive ») | la base se compile intégralement depuis les sources : non bloquant pour la construction ; aucune vérification d'empreinte de la ROM fournie possible |
-| Skill Game Mechanics (JSON 566 Ko) | lu ; extrait dans `.gm_skill/` (ignoré par git) | persona_core + 24 docs Adams&Dormans + 12 chapitres Koster |
-| Toolchain | `arm-none-eabi-gcc 13.2` installé via apt, make, python3, git | |
-| Réseau | OK via proxy (GitHub, apt, web) | |
-| Sous-agents | Agent tool disponible, exécution parallèle en arrière-plan confirmée (6 simultanés) | |
-| Émulateur | à construire (mGBA headless) — tâche QA-Tooling | |
-| Livraison binaire | `SendUserFile` (privé) — la ROM ne sera **jamais** poussée dans le dépôt public | |
-| Persistance | conteneur éphémère : tout ce qui compte doit être commité/poussé | |
+| D1 | Base Émeraude FR expansion 1.16.4 | fourni |
+| D2 | Jeu en français | base FR |
+| D3 | Skill appliqué via agent GM persistant | brief §2 |
+| D4 | Monde = 518 cartes Hoenn ; cartes Kanto non compilées en Émeraude | brief v2 §4 |
+| D5 | GAME_CODE `BPEF` conservé (Flash 128K + RTC), seul `TITLE` change | compat émulateurs |
+| D6 | Livraison `make release` (debug off) ; `EXPANSION_INTRO FALSE` (fait) | qualité |
+| D7 | Texte ≤ 208 px/ligne, 2 lignes/boîte, “ ” au lieu de « » | moteur |
+| D8 | Nouveaux dresseurs = ID vanilla recyclés (9 slots libres) | budget |
+| D9 | Sprites Kanto : déblocage des assets FRLG déjà présents (provenance pret/pokefirered via expansion) plutôt que copie | coût/risque |
+| D10 | Budget : agents peu nombreux, réutilisés (SendMessage), prompts ciblés ; travail d'intégration fait par l'orchestrateur | Claude Pro |
 
-Règles de confidentialité : dépôt public ⇒ jamais de `.gba`, `.sav`, ni du contenu du skill JSON / du livre dans git.
+## 3. Plan d'exécution (brief v2 §20)
+| Étape | Contenu | Statut |
+|---|---|---|
+| 1 | Environnement, fichiers, compatibilité | ✅ |
+| 2 | Examen expansion + pokefirered | ✅ (complément Kanto en cours) |
+| 3 | Skill GM + organisation | ✅ (`GM_METHOD.md`) ; `EXPERIENCE_INTENT.md` à réviser pour choix/maturité |
+| 4 | Lore + vision | ⏳ addendum Kanto/Red ; vision v2 |
+| 5 | Scénario complet + système de choix | ⏳ |
+| 6 | DECISION_LEDGER (≥ 101) + systèmes cachés | ⏳ |
+| 7 | Événements, dialogues, quêtes, combats, rencontres | ⏳ |
+| 8 | Tranche représentative implémentée et testée | ⏳ |
+| 9 | Contenu complet | ⏳ |
+| 10 | Tests, corrections, livraison | ⏳ |
 
-## 3. Décisions structurantes
-| # | Décision | Raison | Date |
-|---|---|---|---|
-| D1 | Base = build Émeraude FR de pokeemeraude-expansion 1.16.4 | fourni, complet, FR natif | 10-13 |
-| D2 | Langue du jeu : français | base FR, brief en FR | 10-13 |
-| D4 | Monde physique = les 518 cartes de Hoenn (réhabillées/renommées si besoin). Cartes Kanto/Sevii exclues (non compilées en build Émeraude, cf. ASSET_INVENTORY §1). Musiques MUS_RG_* et 159 portraits de dresseurs (dont Kanto) utilisables. | coût/risque d'un portage FRLG ; pas d'éditeur graphique | 10-13 |
-| D5 | Garder GAME_CODE `BPEF` (détection Flash 128K + RTC par les émulateurs) ; ne changer que `TITLE` (≤ 12 car.) | TECHNICAL_AUDIT | 10-13 |
-| D6 | Livraison via `make release` (debug menu/quickstart off, LTO) ; `EXPANSION_INTRO` à désactiver | TECHNICAL_AUDIT | 10-13 |
-| D7 | Règle texte : ≤ 208 px par ligne (police variable, boîte 216 px), pas de « » (utiliser “ ”) ; vérification automatique | TECHNICAL_AUDIT §texte | 10-13 |
-| D8 | Nouveaux dresseurs : réutiliser les ID TRAINER_* vanilla (9 slots libres seulement) ou étendre la table si nécessaire | TECHNICAL_AUDIT | 10-13 |
-| D3 | Le skill est appliqué par un agent persistant `.claude/agents/game-mechanics-director.md` | exigence §3.2 | 10-13 |
+## 4. Organisation des agents (rôles réutilisés)
+| Rôle | Livrables | Statut |
+|---|---|---|
+| Game Mechanics Director (persistant) | bible v2, ledger, systèmes, arbitrages, revues GM des productions | à relancer |
+| Lore Kanto/Hoenn | addendum `LORE_DOSSIER.md` (chronologie, Red, Kanto) | à lancer |
+| Moteur / systèmes | joueur = Red, sprites Kanto, refus de combat, choix du Pokémon de tête, helpers de relation, plafonds/difficulté | prototype en place (build OK) |
+| Critiques indépendants | revue bible v2 + ledger | après bible v2 |
+| Scénaristes / intégrateurs | scripts par segment | après tranche |
+| QA | tests de branches, ledger, régression, émulateur | continu |
 
-## 4. Organisation de l'équipe (agents)
-Phase A (audit/recherche, en parallèle) :
-- Architecte technique → `TECHNICAL_AUDIT.md`, `FEATURE_INVENTORY.md`, `TOOLS_AND_COMMANDS.md`
-- Inventaire assets → `ASSET_INVENTORY.md`
-- Recherche méthodes ROM hacking → `ROM_HACKING_RESEARCH.md`
-- Ingénieur outillage QA → harnais mGBA headless + `make check` → `QA_TOOLING.md`
-- Recherche lore & ressources → `LORE_DOSSIER.md`
-- Stratégie compétitive & IA → `AI_AUDIT.md`, `STRATEGY_RESEARCH.md`, `tools/qa/validate_trainers.py`
-
-Phase B+ : Game Mechanics Director, critiques narratifs indépendants, superviseurs de domaine, agents de production, QA. (complété au fil de l'eau)
-
-## 5. Tâches
-### Terminées
-- [x] Audit environnement (§2)
-- [x] Import de la base dans le dépôt + push
-- [x] Lecture du skill, extraction, définition d'agent persistant
-- [x] GM Director : onboarding complet (37 fichiers du skill) → `GM_METHOD.md`, `EXPERIENCE_INTENT.md`
-- [x] `ROM_HACKING_RESEARCH.md`, `AI_AUDIT.md`, `ASSET_INVENTORY.md` (à finaliser), mGBA headless + mgba-rom-test construits (/opt/mgba-tools)
-
-### En cours
-- [ ] Phase A (6 agents)
-- [ ] Build de référence de la base non modifiée
-
-### Restantes (macro)
-- [ ] Phase B : vision, directions narratives, bible, critiques, version de référence
-- [ ] Phase C : préproduction (cartes/progression, personnages/dresseurs, rencontres/objets, combats majeurs, mécaniques/QoL)
-- [ ] Phase D : vertical slice compilée + testée
-- [ ] Phase E : production complète
-- [ ] Phase F : QA finale
-- [ ] Phase G : livraison
-
-## 6. Résultats de tests / preuves
+## 5. Résultats de tests / preuves
 | Date | Test | Résultat |
 |---|---|---|
-| 10-13 | `make check` upstream (mgba-rom-test) | EXIT 0, 9 min 57 s : 4937 PASS, 595 TO_DO, 13 KNOWN_FAILING, 8 EXPECT_FAILING, **0 échec** (log /home/user/check_upstream.log) |
-| 10-13 | Smoke émulateur upstream (gbaplay) : nouvelle partie → camion → sauvegarde → redémarrage → CONTINUER | SMOKE: PASS ; revérifié par l'orchestrateur (`qa_artifacts/verify_orch`, capture du joueur dans le camion après reprise) |
-| 10-13 | Build de référence upstream non modifié (`make -j4`) | EXIT 0, 4 min 15 s. EWRAM 86.43 %, IWRAM 86.60 %, ROM 26 549 676 o / 32 Mo (79.12 %). Avertissements : 203× `bKGD: invalid index` + 3× `iCCP` (métadonnées PNG libpng, préexistants, bénins). SHA1 `ff2de54c…` (≠ rom.sha1 qui vise un autre profil de build ; non significatif). |
+| 10-13 | `make check` upstream | EXIT 0, 9 min 57 s : 4937 PASS, 595 TO_DO, 13 KNOWN_FAILING, 8 EXPECT_FAILING, **0 échec** |
+| 10-13 | Smoke émulateur upstream (nouvelle partie → sauvegarde → redémarrage → CONTINUER) | SMOKE: PASS, revérifié par l'orchestrateur |
+| 10-13 | Build upstream non modifié | EXIT 0, 4 min 15 s ; EWRAM 86.43 %, IWRAM 86.60 %, ROM 79.12 % ; seuls avertissements libpng bénins |
+| 10-14 | Build projet avec prototype moteur (plafonds, difficulté, flag anti-rencontres, classes) | EXIT 0 (`/home/user/build_wip.log`) ; non testé en émulateur |
+| 10-13 | `validate_trainers.py --learnsets` sur trainers.party vanilla | 855 dresseurs, 0 erreur, 2 avertissements vanilla |
 
-## 7. Blocages et solutions
+## 6. Blocages et solutions
 | Blocage | Impact | Solution |
 |---|---|---|
-| Limite d'usage API atteinte (17:4x→21:50 UTC) : 6 agents de phase A interrompus | ~4 h de pause ; livrables partiels | sorties partielles commitées ; agents relancés avec leur contexte à 21:51 ; réduire le parallélisme et privilégier des prompts économes |
-| ROM US jointe non reçue | aucune vérification d'empreinte de la ROM fournie | sans impact sur la construction (décompilation) ; documenté |
+| Limite d'usage Claude Pro (2 interruptions) | pauses ~4–5 h, agents coupés | commits fréquents ; agents réutilisés ; parallélisme ≤ 3 |
+| ROM US jointe non reçue | empreinte invérifiable | sans impact (compilation depuis les sources) |

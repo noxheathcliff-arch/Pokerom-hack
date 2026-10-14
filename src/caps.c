@@ -10,6 +10,10 @@ u32 GetCurrentLevelCap(void)
     // Heure Suspendue (H1, GAME_DESIGN_BIBLE section 8): the cap is the value of the
     // first flag NOT yet set; once FLAG_IS_CHAMPION is set the cap is MAX_LEVEL (100).
     // Initial values, tunable by the trainer supervisor.
+    // To add a story milestone (e.g. a cap step before the Mont Memoria summit / Ysaline 1),
+    // insert {FLAG_<milestone>, <cap>} at its place in progression order: the list must be
+    // ordered so that each flag is set after the previous one in every possible playthrough.
+    // Any saved flag works (badge, FLAG_DEFEATED_*, story flag from FLAGS_VARS_REGISTRY.md).
     static const u32 sLevelCapFlagMap[][2] =
     {
         {FLAG_BADGE01_GET, 15}, // Roxanne

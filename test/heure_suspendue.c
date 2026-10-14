@@ -8,7 +8,6 @@
 #include "wild_encounter.h"
 #include "constants/maps.h"
 #include "constants/map_groups.h"
-#include "constants/metatile_behaviors.h"
 #include "test/test.h"
 
 static void SetPlayerMap(u32 map)
@@ -33,26 +32,20 @@ TEST("Figement: fishing finds no Pokemon while the flag is set (positive control
     FlagClear(FLAG_FIGEMENT_ACTIF);
     EXPECT_NE(GetCurrentMapWildMonHeaderId(), HEADER_NONE);
     EXPECT_EQ(DoesCurrentMapHaveFishingMons(), TRUE);
-    EXPECT_EQ(AreWildEncountersFrozenByFigement(), FALSE);
+    EXPECT_EQ(IsWildEncounterFlagSet(), FALSE);
 
     FlagSet(FLAG_FIGEMENT_ACTIF);
-    EXPECT_EQ(AreWildEncountersFrozenByFigement(), TRUE);
+    EXPECT_EQ(IsWildEncounterFlagSet(), TRUE);
     EXPECT_EQ(DoesCurrentMapHaveFishingMons(), FALSE);
     FlagClear(FLAG_FIGEMENT_ACTIF);
 }
 
-TEST("Figement: no grass or surf encounter while the flag is set")
+TEST("Figement: step and overworld encounters use the upstream WE_FLAG_NO_ENCOUNTER")
 {
-    u32 i;
-    SetPlayerMap(MAP_ROUTE114);
-    FlagSet(FLAG_FIGEMENT_ACTIF);
-    for (i = 0; i < 2000; i++)
-    {
-        EXPECT_EQ(StandardWildEncounter(MB_TALL_GRASS, MB_TALL_GRASS), FALSE);
-        EXPECT_EQ(StandardWildEncounter(MB_DEEP_WATER, MB_DEEP_WATER), FALSE);
-        EXPECT_EQ(StandardWildEncounter(MB_TALL_GRASS, MB_NORMAL), FALSE);
-    }
-    FlagClear(FLAG_FIGEMENT_ACTIF);
+    // Grass/water step encounters are blocked upstream in field_control_avatar.c
+    // (ShouldDisableRandomEncounters, static) and overworld encounters in
+    // wild_encounter_ow.c, both via FlagGet(WE_FLAG_NO_ENCOUNTER).
+    EXPECT_EQ(WE_FLAG_NO_ENCOUNTER, FLAG_FIGEMENT_ACTIF);
 }
 
 TEST("Figement: Rock Smash and Sweet Scent / Honey find nothing while the flag is set")
@@ -75,7 +68,7 @@ TEST("Figement: the flag is cleared on every map load (ClearTempFieldEventData)"
     FlagSet(FLAG_FIGEMENT_ACTIF);
     ClearTempFieldEventData();
     EXPECT_EQ(FlagGet(FLAG_FIGEMENT_ACTIF), FALSE);
-    EXPECT_EQ(AreWildEncountersFrozenByFigement(), FALSE);
+    EXPECT_EQ(IsWildEncounterFlagSet(), FALSE);
 }
 
 // ---------------------------------------------------------------------------

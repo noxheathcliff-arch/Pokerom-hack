@@ -78,17 +78,13 @@ void DisableWildEncounters(bool8 disabled)
     sWildEncountersDisabled = disabled;
 }
 
-// Heure Suspendue (N1): inside a Figement, time is frozen and no wild Pokemon
-// can be met by any means (grass, water, fishing, Rock Smash, Sweet Scent/Honey,
-// overworld encounters). FLAG_FIGEMENT_ACTIF is cleared on every map load
-// (ClearTempFieldEventData) and must be set by the map's ON_TRANSITION script.
-bool32 AreWildEncountersFrozenByFigement(void)
+// Heure Suspendue (N1): step encounters (grass/water) and overworld encounters
+// already honour WE_FLAG_NO_ENCOUNTER (field_control_avatar.c, wild_encounter_ow.c).
+// This helper extends it to the paths that upstream does not cover: fishing,
+// Rock Smash and Sweet Scent / Honey. WE_FLAG_NO_ENCOUNTER = FLAG_FIGEMENT_ACTIF.
+bool32 IsWildEncounterFlagSet(void)
 {
-#ifdef FLAG_FIGEMENT_ACTIF
-    return FlagGet(FLAG_FIGEMENT_ACTIF);
-#else
-    return FALSE;
-#endif
+    return WE_FLAG_NO_ENCOUNTER != 0 && FlagGet(WE_FLAG_NO_ENCOUNTER);
 }
 
 // Each fishing spot on Route 119 is given a number between 1 and NUM_FISHING_SPOTS inclusive.
@@ -714,9 +710,6 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
     if (sWildEncountersDisabled == TRUE)
         return FALSE;
 
-    if (AreWildEncountersFrozenByFigement())
-        return FALSE;
-
     headerId = GetCurrentMapWildMonHeaderId();
     if (headerId == HEADER_NONE)
     {
@@ -859,7 +852,7 @@ void RockSmashWildEncounter(void)
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay;
 
-    if (AreWildEncountersFrozenByFigement())
+    if (IsWildEncounterFlagSet())
     {
         gSpecialVar_Result = FALSE;
         return;
@@ -908,7 +901,7 @@ bool8 SweetScentWildEncounter(void)
     u32 headerId;
     enum TimeOfDay timeOfDay;
 
-    if (AreWildEncountersFrozenByFigement())
+    if (IsWildEncounterFlagSet())
         return FALSE;
 
     PlayerGetDestCoords(&x, &y);
@@ -992,7 +985,7 @@ bool8 DoesCurrentMapHaveFishingMons(void)
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_FISHING);
 
-    if (AreWildEncountersFrozenByFigement())
+    if (IsWildEncounterFlagSet())
         return FALSE;
 
     if (headerId != HEADER_NONE && gWildMonHeaders[headerId].encounterTypes[timeOfDay].fishingMonsInfo != NULL)
