@@ -1181,7 +1181,4 @@ const u8 gText_OakImportantToGetToKnowPokemonThroughly[] = _("CHEN: Il est impor
 const u8 gText_OakThisIsListOfPokemon[] = _("C'est une liste de tes POKéMON,\n{PLAYER}.\pConsulte-la pour voir les\ncompétences de tes POKéMON.\pChoisis aussi POKéMON si tu\nveux donner un objet à l'un d'eux.");
 const u8 gText_Eleve[] = _("ELEVE");
 const u8 gText_Dresseur[] = _("DRESSEUR");
-const u8 gText_Carillonneuse[] = _("CARILLONNEUSE");
-const u8 gText_Sonneuse[] = _("SONNEUSE");
-const u8 gText_Veilleuse[] = _("VEILLEUSE");
 const u8 gText_Champion[] = _("CHAMPION");

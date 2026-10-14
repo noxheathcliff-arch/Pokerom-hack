@@ -525,16 +525,6 @@ enum TrainerClassID
     TRAINER_CLASS_COUNT,
 };
 
-// Heure Suspendue: the Team Aqua / Team Magma classes are repurposed (IDs kept,
-// display names changed in gTrainerClasses). Use these aliases in new code and in
-// trainers.party (e.g. "Class: Carillonneur"). See docs/hack/ENGINE_CHANGES.md.
-#define TRAINER_CLASS_CARILLONNEUR  TRAINER_CLASS_TEAM_AQUA    // Ysaline's followers
-#define TRAINER_CLASS_SONNEUR       TRAINER_CLASS_AQUA_ADMIN   // lieutenants Bourdon / Tierce ("SONNEUSE" if female)
-#define TRAINER_CLASS_SONNEUSE      TRAINER_CLASS_AQUA_LEADER  // Ysaline
-#define TRAINER_CLASS_SONNEUSE_2    TRAINER_CLASS_MAGMA_LEADER // Ysaline (second ID)
-#define TRAINER_CLASS_VEILLEUR      TRAINER_CLASS_TEAM_MAGMA   // Absol-hunting militia ("VEILLEUSE" if female)
-#define TRAINER_CLASS_CHEF_VEILLEUR TRAINER_CLASS_MAGMA_ADMIN  // Capitaine Rocheval (displayed "VEILLEUR")
-
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // Used for Youngsters, Bug Catchers, male School Kids, Sailors, male running and cycling Triathletes, male Pokémon Breeders, and Campers
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // Used for Lasses, Ladies, Beauties, Aroma Ladies, female running and cycling Triathletes, female Pokémon Breeders, and Parasol Ladies
 #define TRAINER_ENCOUNTER_MUSIC_GIRL         2 // Used for Tubers, Picnickers, female School Kids, and Young Couples

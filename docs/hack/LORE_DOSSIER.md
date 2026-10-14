@@ -792,6 +792,295 @@ Format : **Faits sources** · **Pourquoi c'est intrigant** · **Comment le jouer
 
 ---
 
+## 8. Kanto à Hoenn — addendum (Red, Kanto, chronologie)
+
+> **Contrainte de départ :** Red et des personnages de Kanto viennent à Hoenn et rencontrent Brice et les personnages de Hoenn. Leur présence doit être justifiée par l'intrigue et cohérente avec le canon.
+> **Méthode :** mêmes étiquettes et mêmes symboles ✔ / ◐ / ? qu'en §0. Recherche limitée (une quinzaine de requêtes, extraits de moteur seulement ; Bulbapedia, Poképédia et Serebii restent inaccessibles en direct). Les niveaux et capacités donnés de mémoire sont marqués ◐.
+> **Piège de noms à retenir :** en VF, **Pierre** est le Champion d'Argenta (Brock), alors que **Pierre Rochard** est Steven. De même, **Peter** est Lance, le Maître dragon, alors que **Lance** est le Commandant Rocket Proton. Il faut toujours écrire « Pierre Rochard » en entier pour Steven et éviter « Lance » seul quand Peter est en scène.
+
+### 8.1 Chronologie
+
+#### Ce que le canon affirme
+
+- **[CANON-JEU : HGSS]** GSC et HGSS se déroulent **trois ans après** RBJ/RFVF ✔. Le récit le dit explicitement, et l'événement Celebi d'HGSS le confirme : il renvoie le joueur trois ans en arrière, au moment où Giovanni abandonne son fils Silver (voir §8.3).
+- **[CANON (classement Bulbapedia)]** Bulbapedia (page *History of the Pokémon world*) place l'intrigue de **RBJ/RFVF et celle de RSE/ROSA au même moment** ✔ (extrait). Ce classement repose surtout sur le fait que **RFVF communique avec Hoenn** : la machine de Ciléo relie les PC de Kanto à ceux de Hoenn et de Rhode (Orre) ✔ (Poképédia, *Centre Réseau Pokémon*). Aucun jeu ne donne cependant de date commune explicite. **[INTERPRÉTATION]** Il s'agit d'une simultanéité « par défaut » : rien ne la contredit fortement, et la connectivité la suggère.
+- **[CANON-JEU : HGSS]** Pierre Rochard apparaît à Kanto, chez **Sylphe SARL** ◐ à Safrania ◐. Il s'y rend après la victoire contre Red, et il donne un starter de Hoenn (Arcko / Poussifeu / Gobou ◐) selon la pierre choisie (verte, rouge ou bleue) ✔ (Bulbapedia, extrait). Il revient ensuite échanger un Terhal tenant une Pierre Aube contre un Foretress. **[INTERPRÉTATION]** Pierre Rochard est donc actif et libre de voyager trois ans après RBJ. Cela s'accorde avec un Hoenn « contemporain ou antérieur » à GSC, et avec son départ en voyage à la fin d'Émeraude.
+- **[CANON-JEU : DP/Pt / tweet de développeur]** La position de GSC par rapport à DP est discutée : un tweet de Matsumiya les dit contemporains, mais des dialogues de Jasmine et de Cynthia se contredisent ✔ (extrait Bulbapedia). Ce point ne nous concerne qu'indirectement.
+- **[CANON-JEU : SL/USUL]** À l'**Arbre de Combat** ✔ (Île de Poni), Red et Blue sont **adultes ou plus âgés** (nouveaux sprites) et **dirigent l'établissement**. Blue le révèle après le combat ✔. Gen 7 se situe donc nettement après GSC, mais aucun âge n'est donné.
+- **[CANON-JEU : USUL]** La **Team Rainbow Rocket** ◐ est un Giovanni venu d'**un autre monde** (via les Ultra-Brèches). Il a réuni les chefs des autres teams, eux aussi venus de mondes parallèles, **dont Max/Maxie et Arthur** ✔ (presse de 2017), et il possède un **Mewtwo** avec Mewtwoïte Y ✔. Ce n'est pas « notre » Giovanni : c'est un multivers explicite.
+- **[CANON-AUTRE MÉDIA]** *Pokémon Masters (EX)* se déroule à **Pasio**, une île artificielle où les personnages de toutes les époques se côtoient. La chronologie n'y est **pas contraignante** pour les jeux principaux. C'est cependant là que **Leaf** a reçu son nom officiel (voir §8.3).
+- **[CANON-JEU : Let's Go Pikachu/Évoli]** Let's Go est une **réinterprétation** de Jaune : Red et Green y sont des aînés croisés en postgame (◐ lieux exacts à vérifier). Le jeu est généralement traité comme une continuité parallèle à RBJ/RFVF. **[INTERPRÉTATION]** À éviter comme source de chronologie.
+
+#### Points débattus
+
+1. **RSE contemporain de RFVF, ou plutôt de GSC ?**
+    - Arguments pour RFVF : la connectivité (les échanges RFVF↔RSE et le Pokédex National), et l'existence d'**Île Aurore** ◐ (Deoxys) et de **Roc Nombri** ✔ dans les deux jeux, accessibles depuis Kanto (Carmin sur Mer ◐) comme depuis Hoenn (Nénucrique ◐).
+    - Arguments pour GSC : Pierre Rochard à Kanto dans HGSS, et la famille du joueur de ROSA venue de **Johto** (§1.7), ce qui suppose un Johto « déjà là ».
+    - **[INTERPRÉTATION]** Les deux lectures sont compatibles si RSE se déroule **entre** l'année 0 (RBJ) et l'année 3 (GSC).
+2. **Pourquoi Red n'est-il jamais mentionné à Hoenn ?** Dans RSE, le Maître est Pierre Rochard (ou Marc dans E). Aucun PNJ de Hoenn ne cite Red ou Blue (◐ : aucun dialogue trouvé). **[INTERPRÉTATION]** Pour les jeux, la Ligue de Kanto est **une institution distincte**. L'absence de Red est cohérente : il est **jeune et récent** (année 0), ou déjà **reclus** (années 1–3).
+3. **Scott et la Zone de Combat.** Scott recrute des dresseurs dans tout Hoenn (cinq rencontres obligatoires, huit optionnelles) ✔. Aucune source trouvée ne le relie à Red. **[HYPOTHÈSE DE CONCEPTION]** C'est le recruteur idéal pour attirer des célébrités de Kanto, et cela ne contredit rien.
+4. **Lien Sevii–Hoenn.** Le seul lien explicite est **technique** : le réseau PC. Aucune carte officielle ne situe Sevii par rapport à Hoenn. Sevii se trouve au **sud de Kanto** et se rejoint par Hydro-Ferry ◐ (Seagallop) depuis Carmin sur Mer ou Cramois'Île ◐. **[INTERPRÉTATION]** D'après les modèles réels (Kanto ≈ Kantō, Hoenn ≈ Kyūshū), Hoenn est au sud-ouest. Un trajet Sevii → Hoenn par mer est plausible et ne contredit aucun texte.
+
+#### Trois cadres temporels pour le hack
+
+| Cadre | Placement | Pour | Contre |
+|---|---|---|---|
+| **A. « Année 0+ » — juste après RFVF et Émeraude** | Red vient d'être Maître, puis de finir Sevii. La machine de Ciléo vient de relier Kanto à Hoenn. Brice est rival ou ex-rival post-Émeraude | Le **pont technique** (Rubis/Saphir) est tout frais. Les restes de la Team Rocket sont actifs (entrepôt de l'Île 5). Giovanni a disparu et sa chute est récente. Mewtwo vient d'être capturé ou est encore libre à la Caverne Azurée ◐ | Red a environ 11 ans (◐ âge jamais officiel) : son « aura de légende » est prématurée. Les espèces Gen 4–9 demandent une justification lourde. Red n'a pas encore sa réputation de Mont Argenté |
+| **B. « Années 1–3 » — l'entre-deux** (recommandé) | Red a quitté son titre (Blue est Maître un court moment, puis Champion de Jadielle avant GSC). Il voyage ou s'isole **avant** le Mont Argenté. La Team Rocket se reforme en secret et prépare Johto | Ce **trou canonique** est réel : on ignore ce que Red fait pendant ces années. Le récit peut **expliquer** sa réclusion (un échec ou un deuil à Hoenn ?). Pierre Rochard peut ensuite partir pour Kanto (HGSS). Giovanni « s'entraîne » hors de Kanto, ce qui est compatible avec le Celebi d'HGSS | Il faut **finir** avec Red au Mont Argenté et une Team Rocket qui prend la Tour Radio de Doublonville ✔ en année 3. Le joueur sait comment Red « finit » : pas de mort et pas de défaite humiliante permanente possibles |
+| **C. « Ère tardive » — après HGSS, vers l'époque Gen 7** | Red et Blue sont adultes, entre le Mont Argenté et l'Arbre de Combat. Brice et Flora sont plus âgés, ou bien la génération de Hoenn suivante est au centre | Liberté maximale pour les **Gen 4–9** (Ultra-Brèches, Paradoxes, Dynamax déjà « connus »). Red peut parler et vieillir sans trahir son mutisme d'adolescent | Il faut respecter la fin connue (Arbre de Combat à Alola). Le joueur de Hoenn perd la « fraîcheur » de RSE. Le risque est plus grand de dériver vers le crossover gratuit façon *Masters* |
+
+**[HYPOTHÈSE DE CONCEPTION]** Le cadre **B** offre le meilleur rapport entre mystère et contraintes. Le cadre A convient pour un prologue (un flash-back sur la complétion de la machine de Ciléo).
+
+### 8.2 Red
+
+**Nom et classes.** Le nom FR est **Red** ✔ (Eternia, liste des personnages RFVF). Ses classes de dresseur :
+- « Dresseur Pkmn » ◐ (PKMN Trainer) dans GSC/HGSS ;
+- « Dresseur Pokémon » / « Dresseur Émérite » ? dans SL selon la traduction (à vérifier ; en anglais « Pokémon Trainer »).
+
+#### Équipes canoniques
+
+- **RBJ/RFVF.** Red est **le joueur** : il n'a **aucune équipe finale canonique**. Seul le **Pikachu** est rattaché à Red dans Jaune (Pikachu de départ). Le **trio de starters** complet n'apparaît que dans les équipes « légendaires » ultérieures.
+- **GSC — Mont Argenté** ◐ (de mémoire, niveaux partiellement confirmés par Serebii et Nationaldex) :
+
+  | Pokémon | Niveau | Capacités |
+  |---|---|---|
+  | Pikachu | 81 | Charme, Vive-Attaque, Tonnerre, Fatal-Foudre |
+  | Mentali | 73 | Coud'Boue, Protection, Météores, Psyko |
+  | Ronflex | 75 | Amnésie, Ronflement, Repos, Plaquage |
+  | Florizarre | 77 | Zénith, Giga-Sangsue, Synthèse, Lance-Soleil |
+  | Dracaufeu | 77 | Lance-Flamme, Cru-Aile, Tranche, Danse Flamme |
+  | Tortank | 77 | Danse Pluie, Surf, Blizzard, Siphon |
+
+- **HGSS — sommet du Mont Argenté** ✔ (niveaux via plusieurs extraits concordants ; noms FR des capacités ◐). La grêle est permanente au sommet, donc Blizzard ne rate jamais ✔.
+
+  | Pokémon | Niveau | Capacités | Objet |
+  |---|---|---|---|
+  | Pikachu | **88** | Électacle, Queue de Fer, Vive-Attaque, Tonnerre | Balle Lumière |
+  | **Lokhlass** (Lapras ; remplace Mentali) | **80** | Plaquage, Saumure, Blizzard, Psyko | — |
+  | Ronflex | **82** | Ball'Ombre, Mâchouille, Blizzard, Giga Impact | — |
+  | Florizarre | **84** | Végé-Attak, Giga-Sangsue, Bomb-Beurk, Poudre Dodo | — |
+  | Dracaufeu | **84** | Rafale Feu, Lame d'Air, Boutefeu, Dracochoc | — |
+  | Tortank | **84** | Hydroblast, Blizzard, Luminocanon, Exploforce | — |
+
+  Ce Pikachu niveau 88 est le Pokémon de PNJ au plus haut niveau hors installations de combat ✔ (Bulbapedia, extrait).
+
+- **SL / USUL — Arbre de Combat** ✔ : même sextuor (Pikachu, Lokhlass, Ronflex, Florizarre, Dracaufeu, Tortank). Red en aligne **trois** selon le format.
+  - **SL :** Pikachu 70, Lokhlass 65, Ronflex 65, Florizarre/Dracaufeu/Tortank 66.
+  - **USUL :** Pikachu 74, Lokhlass 69, Ronflex 69, starters 70.
+  - **Capacités partielles :** Pikachu (Balle Lumière) : Électacle, Vive-Attaque, Frotte-Frimousse, Mur Lumière. Lokhlass : Surf, Blizzard, Éclats Glace, Psyko. Ronflex : Plaquage, Tapage Terrestre ◐ (High Horsepower), Mâchouille, Tacle Lourd. Dracaufeu : Exploforce.
+  - **[◐]** Le port de Méga-Gemmes par les starters est à vérifier.
+  - On combat Red au 20ᵉ combat (Simple/Multi) et au 50ᵉ (Super) ✔.
+
+**[INTERPRÉTATION]** Le noyau stable de Red est **Pikachu + les trois starters de Kanto + Ronflex + un « slot spécial »** (Mentali en GSC, Lokhlass ensuite). Une version Hoenn peut remplacer ce slot sans trahir le canon.
+
+#### Personnalité selon le média
+
+- **[CANON-JEU]** Red est **muet** : en GSC/HGSS, il ne dit que « … ». Dans HGSS, sa mère dit qu'il ne rentre pas, et Blue évoque son départ ◐. Dans SL, il reste quasi muet et Blue parle pour lui ◐. Après sa défaite, Red **disparaît** du sommet ✔.
+- **[CANON-AUTRE MÉDIA : *Pokémon Origins*]** Red est un garçon expressif et ordinaire, qui fait des erreurs et apprend de ses défaites. Il est « plus proche de Sacha que du mythe silencieux » (extraits de critiques, fiabilité moyenne). Origins **attribue explicitement** la création de Mewtwo à M. Fuji, avec un financement de Giovanni (◐ détails).
+- **[CANON-AUTRE MÉDIA : *La Grande Aventure*]** Red est d'abord sûr de lui, vantard, presque arrogant. À partir des arcs Jaune, Or/Argent et RFVF, il devient **mûr, humble, stoïque et très responsable** ✔ (Bulbapedia, extrait). Dans l'arc RFVF, Red et Blue explorent Sevii pour retrouver le Prof. Chen, enlevé par la Team Rocket ✔. *(Dans ce manga, la VF de Glénat nomme le troisième héros « Verte »/« Olga ».)*
+- **[THÉORIE DE FANS]** « Red est un fantôme » (Mont Argenté), ou « Red s'isole par dépression ou par épuisement du titre ». Rien de cela n'est canon.
+- **[HYPOTHÈSE DE CONCEPTION]** Il faut garder son **mutisme comme trait** et non comme blague. Red communique par gestes, par ses Pokémon et par des écrits (lettres, carnet), et c'est **Blue ou un tiers** qui interprète. Le silence devient un sujet : c'est quelqu'un qu'on ne comprend qu'en le suivant.
+
+**Après la Ligue [CANON-JEU : GSC/HGSS].** Red laisse le titre, s'isole au sommet du Mont Argenté, au-delà de la Route 28 et de la Grotte Argentée ✔, et n'en redescend pas avant GSC. On ignore ce qu'il fait entre l'année 0 et l'année 3 : c'est **le trou exploitable**.
+
+### 8.3 Personnages et lieux de Kanto
+
+| Personnage (FR / EN) | Canon utile | Statut nom |
+|---|---|---|
+| **Blue** / Blue (Green au Japon) | Rival de Red. Maître pendant quelques minutes (RBJ/RFVF). **Champion de Jadielle** dans GSC/HGSS (spécialité mixte). À SL, il dirige l'Arbre de Combat avec Red. Petit-fils du Prof. Chen. Le nom par défaut dans les jeux FR modernes est « Blue » | ◐ (un extrait Poképédia le place à Azuria, sans doute une erreur d'extrait) |
+| **Leaf** / Leaf (EN parfois « Green ») | Protagoniste féminine de RFVF. Nom **fan** officialisé quinze ans plus tard pour *Pokémon Masters* et des figurines. Dans Let's Go, le PNJ s'appelle **Green** ✔ | ✔ |
+| **Prof. Chen** / Prof. Oak | Créateur du Pokédex. Donne les Ticketmystik (Lugia/Ho-Oh) et Ticketaurora (Deoxys) dans RFVF ✔ (Pokébip, extrait). [CANON-AUTRE MÉDIA : anime] Il se rend à Hoenn pour rencontrer Seko pour la première fois. [CANON-AUTRE MÉDIA : manga] Seko et Chen sont amis et se soutiennent mutuellement (WikiDex). **Dans les jeux, aucun lien maître-élève trouvé** | ✔ |
+| **Giovanni** / Giovanni | Chef de la Team Rocket et Champion de Jadielle. Après sa défaite à Jadielle, il **dissout** la Team Rocket et disparaît pour « s'entraîner » ✔ (RFVF). [HGSS] Dans l'événement Celebi, il abandonne son fils **Silver** et se cache près des Chutes Tohjo ◐ en entendant l'appel radio. Battu, il renonce et part ✔. [USUL] Un autre Giovanni dirige la Team Rainbow Rocket avec Mewtwo ✔ | ✔ |
+| **Amos** (Archer), **Ariane** (Ariana), **Lambda** (Petrel), **Lance** (Proton) | Commandants Rocket d'HGSS (« Caïd Rocket » dans GSC). Ils prennent la Tour Radio de Doublonville en année 3. Lambda se déguise (en Giovanni et en directeur de la Tour). Ariane est la seule femme. Amos est le meneur ✔ (Poképédia, *Commandant*) | ✔ |
+| **Olga** (Lorelei), **Aldo** (Bruno), **Agatha**, **Peter** (Lance) | Conseil 4 et Maître de RBJ/RFVF. Dans GSC/HGSS, le Conseil 4 devient **Clément, Koga, Aldo, Marion**, avec **Peter Maître** ✔ (Poképédia, extrait). [RFVF] Olga est rentrée sur l'**Île 4** après la Ligue ◐ (elle s'occupe des Lokhlass et des vols de la Team Rocket). Agatha a pris sa retraite (GSC) ◐ | ✔ (Olga, Aldo, Agatha, Peter, Koga, Clément, Marion) |
+| **Koga** / **Jeannine** (Janine) | Koga passe au Conseil 4. Sa fille Jeannine devient Championne de Parmanie ✔ | ✔ |
+| Champions de Kanto | Pierre (Brock), Ondine (Misty), Major Bob (Lt. Surge), Erika, Morgane (Sabrina), Auguste (Blaine) ◐. [GSC] Le volcan de **Cramois'Île** a fait éruption : Auguste tient son arène dans une grotte des **Îles Écume** ◐ | ◐ |
+| **Léo** / Bill | Concepteur du PC de Kanto. Ami de Ciléo, il emmène le joueur à Sevii (RFVF) ✔ | ✔ |
+| **Ciléo** / Celio | Opérateur du **Centre Réseau Pokémon** (Île 1). Il termine sa machine grâce au **Rubis** et au **Saphir** ; elle relie les PC de **Kanto, Hoenn et Rhode** ✔. Il remet le Tri-Passe et le Passe Prisme ✔ | ✔ |
+| **Lostelle** / Lostelle | Fillette de l'Île 3 ◐, perdue dans la Forêt Baies ◐ (RFVF). Petit fil de quête secondaire | ◐ |
+| **M. Fuji** / Mr. Fuji | Recueille les Pokémon orphelins de Lavanville et garde la Tour Pokémon. Créateur de Mewtwo **dans Origins et Let's Go** [CANON-AUTRE MÉDIA / indice LGPE ◐] ; les jeux de Gen 1 ne l'affirment pas | ◐ |
+| **Sylphe SARL** / Silph Co. | Fabrique la **Master Ball** et le **Scope Sylphe** ◐. Occupée par la Team Rocket dans RBJ (convoitise de la Master Ball). Siège à Safrania. Pierre Rochard y vient dans HGSS ✔ | ◐ |
+| Lieux | **Manoir Pokémon** (journaux de Mewtwo, §2.8), **Tour Pokémon** de Lavanville, **Plateau Indigo** ◐, **Mont Argenté / Grotte Argentée** ✔, **Caverne Azurée** ◐ (Mewtwo) | — |
+
+**[INTERPRÉTATION] Vie après RBJ.** La Team Rocket est **décapitée mais non détruite** :
+- à Sevii (année 0) : vols du Saphir, entrepôt de l'Île 5 ◐ ;
+- à Acajou (années 1–3), puis à Doublonville (année 3).
+
+Les commandants sont donc **actifs pendant le cadre B**, avec un objectif clair : rappeler Giovanni.
+
+### 8.4 Ponts canoniques entre Kanto et Hoenn (justifications d'intrigue)
+
+Classés du plus solide au plus fragile.
+
+1. **La machine de Ciléo, le Rubis et le Saphir** [CANON-JEU : RFVF] ✔.
+    - La liaison des PC Kanto↔Hoenn dépend littéralement de deux gemmes. Le Rubis vient du **Mont Braise** ◐, le Saphir de la **Vallée Ruine** (Point Bouché ◐), où la Team Rocket l'a volé pour le revendre.
+    - **[INTERPRÉTATION]** Le Rubis et le Saphir portent le nom des jeux de Hoenn. Ils font écho à la **Gemme Rouge et à la Gemme Bleue** de Groudon et Kyogre (§0.3). Le jeu ne les relie pas ✔.
+    - **[HYPOTHÈSE]** Une panne, un sabotage ou une « résonance » de la machine pourrait **attirer Ciléo, Léo ou Red à Hoenn**. C'est le pont le plus canonique possible.
+2. **Île Aurore et Roc Nombri, accessibles depuis les deux régions** [CANON-JEU : RFVF + E] ✔. Les Ticketaurora et Ticketmystik fonctionnent depuis Carmin sur Mer ◐ (Kanto) et depuis Nénucrique ◐ (Hoenn). Deoxys, Lugia et Ho-Oh se trouvent sur **les mêmes îles**. **[INTERPRÉTATION]** La géographie des jeux autorise donc une **route maritime commune** vers des îles mythiques.
+3. **Mew à Hoenn** [CANON-JEU : E, événement Île Lointaine] ◐ et **Mewtwo né de Mew** [RBJ, journaux].
+    - Mew vit sur une île de Hoenn. Mewtwo est issu des gènes d'un Mew trouvé en Guyane.
+    - **[HYPOTHÈSE]** Des chercheurs de Kanto, ou des Rocket, cherchent « un second Mew » à Hoenn. Le bateau abandonné ◐ et les messages de l'Île Lointaine s'y prêtent.
+4. **Pierre Rochard voyage vers Kanto** [HGSS] ✔. **[INTERPRÉTATION]** La relation **Devon SA ↔ Sylphe SARL** n'est pas décrite, mais Pierre Rochard choisit Sylphe comme point de chute. Une rivalité industrielle (Master Ball contre Balls Devon) est plausible [HYPOTHÈSE].
+5. **Les ferries** :
+    - M.S. Océane ◐ (S.S. Anne) : croisière internationale à Carmin sur Mer, « une fois par an » ◐ ;
+    - M.S. Marée ? (S.S. Tidal) : Poivressel–Nénucrique, puis Zone de Combat (E) ;
+    - Hydro-Ferry ◐ : vers Sevii.
+
+    **[HYPOTHÈSE]** Une escale de l'Océane à Poivressel est l'entrée la plus « civile » pour des visiteurs de Kanto.
+6. **Scott et la Zone de Combat** [E] ✔ : Scott recrute partout. Il est logique qu'il invite des stars (Blue, ou un Red introuvable). Les **Regis de Brandon** ◐ (Pyramide) relient la Zone de Combat aux mythes de Hoenn (§1.3).
+7. **Mewtwo, Deoxys et Rayquaza** :
+    - Deoxys naît d'un **virus de l'espace** muté (Pokédex ◐), alors que Mewtwo est **génétique**. Le Centre Spatial d'**Algatia** et les météorites (Chutes Météore → Site Météore, Peuple du Météore) relient l'espace à Hoenn.
+    - [CANON-AUTRE MÉDIA : film *Destiny Deoxys*] Rayquaza affronte Deoxys.
+    - **[INTERPRÉTATION]** C'est un axe thématique, « la vie créée par l'homme contre la vie venue d'en haut », et non un lien établi.
+8. **Volcans** : Cramois'Île est détruite par une éruption entre l'année 0 et l'année 3 [GSC] ✔ ◐. À Hoenn, le Mont Chimnée ◐ est lié à Groudon. **[HYPOTHÈSE]** Les vulcanologues ou Auguste étudient le Mont Chimnée pour comprendre la catastrophe de Cramois'Île.
+9. **La Team Rocket au-delà de Kanto** : elle opère à Sevii [RFVF], puis à Johto [GSC]. Dans USUL, des chefs **de Hoenn** (Max/Maxie et Arthur, d'un autre monde) servent sous Giovanni ✔. **[INTERPRÉTATION]** Une collaboration Rocket–Magma/Aqua dans « notre » monde n'est pas canon, mais elle est **pensable** et le canon l'a déjà envisagée dans un monde parallèle.
+10. **Seko et Chen** : liés dans l'anime et le manga seulement. Dans les jeux, aucun lien explicite n'a été trouvé. On peut écrire une correspondance scientifique sans risque.
+
+### 8.5 Personnages de Kanto « plus tard » : versions cohérentes
+
+Chaque fiche donne ce que dit le canon, puis une proposition. Toutes les équipes sont des **[HYPOTHÈSE DE CONCEPTION]**. La règle suivie : **garder le noyau canonique** et ne remplacer qu'un ou deux emplacements avec des espèces Gen 4–9, en justifiant leur origine.
+
+- **Red** (cadre B ou C).
+    - Canon : Pikachu, Florizarre, Dracaufeu, Tortank, Ronflex, puis Mentali **ou** Lokhlass.
+    - Proposition Hoenn : il garde le noyau. Son sixième emplacement est **Lokhlass** (le Pokémon qui l'a porté jusqu'à Hoenn par la mer, une justification diégétique), ou un Pokémon **capturé à Hoenn** (Absol, pour le présage, ou Relicanth). En cadre C seulement, un Méga-Dracaufeu ◐ (Méga-Évolution déjà connue à Hoenn dans ROSA).
+- **Blue** (Champion de Jadielle).
+    - Canon GSC/HGSS (de mémoire ◐) : Roucarnage, Alakazam, Rhinoféros, Léviator, Arcanin, Noadkoko.
+    - Proposition : Rhinoféros → **Rhinastoc** (Gen 4, via Protecteur, cohérent), plus un Pokémon d'une région lointaine signalant qu'il a voyagé (**Corvaillus**, ou **Exagide** pour Kalos). Il n'a pas de starter fixe : le canon le fait dépendre du choix du joueur.
+- **Leaf**. Il n'y a presque pas de canon de jeu après RFVF (Green dans Let's Go). Liberté totale, à présenter comme **une autre championne du même voyage**, sans prétendre qu'elle a été Maître. Équipe : Florizarre ou Nidoqueen, Lokhlass, Clefable… avec une touche « Sevii » (une **Méga-Pierre**, ou un Pokémon de l'Île Aurore).
+- **Giovanni** (en exil, cadre B).
+    - Canon : spécialiste Sol (Rhinoféros, Nidoking, Nidoqueen, Triopikeur, Persian).
+    - Proposition : **Rhinastoc**, **Carchacrok** (Gen 4 Sol), **Scalproie**. Un **Persian d'Alola** serait incohérent sans voyage, à éviter.
+    - Ne **jamais lui donner Mewtwo** dans notre monde : c'est le Giovanni de Rainbow Rocket qui l'a. Un *échec* à le récupérer est bien plus fort.
+- **Commandants Rocket** : Amos (Démolosse, Smogogo), Ariane (Grotadmorv, Arbok, Vortente), Lambda (Smogo, Smogogo, Abo ◐ — l’imitateur aux déguisements), Lance (Smogo, Golbat). Ajouts possibles : **Moufouette**, **Mysdibule**, **Cradopaud** (Poison/Ténèbres, cohérents avec l'esthétique Rocket).
+- **Peter** (Maître). Canon : Dracolosse ×2–3, Ptéra, Léviator rouge ◐, Aéromite. Ajouts : **Carchacrok**, **Drattak** (Drattak est **natif de Hoenn** : excellent prétexte pour une visite au Site Météore).
+- **Olga** (Île 4). Canon : Lokhlass, Lippoutou, Flagadoss, Crustabri, Lamantine. Ajouts : **Givrali**, **Mammochon**.
+- **Agatha** (retraitée). Ajouts : **Spiritomb** (lien avec la Tour Pokémon et les âmes), **Noctunoir** ◐. Une rencontre entre Agatha et **Spectra** (Mont Mémoria, §1.7) est thématiquement idéale.
+- **Prof. Chen** : il ne combat pas (il est « déjà vieux » dans le canon). En scène, il est **correspondant** de Seko.
+- **Ciléo / Léo** : non combattants. Ce sont des **ingénieurs du réseau**.
+
+### 8.6 Brice (Brendan) : ce qu'en dit le canon
+
+- **Noms.**
+    - **Brice** ◐ est le nom VF de Brendan (usage FR établi, déjà au §1.7 ; pas revérifié ici).
+    - **Flora** ◐ est May. **Max** est le frère de Flora quand elle est protagoniste.
+    - **Prof. Seko** ✔ est Birch.
+- **RS/E.**
+    - Si le joueur choisit Flora, Brice est **le rival**, fils de Seko. Il est déjà Dresseur et aide son père sur le terrain.
+    - Il est amical, sans antagonisme, et propose des combats « pour voir ».
+    - Dans **Émeraude**, il a des combats supplémentaires, avec son starter choisi selon le vôtre.
+    - **[INTERPRÉTATION]** C'est un rival de type **collègue**, pas de type Blue.
+- **Chaque jeu de Hoenn a deux protagonistes possibles** : Brice est protagoniste **ou** rival selon la sauvegarde. Si Brice est protagoniste, il est fils de **Norman** et arrive de **Johto** (ROSA ✔, §1.7). **[HYPOTHÈSE]** Le hack doit fixer une version. Brice en **fils de Seko** est le choix le plus « scientifique », et il offre un **lien naturel avec le Prof. Chen**.
+- **ROSA** ◐.
+    - Brice rival participe à la défense contre Groudon/Kyogre et apparaît dans l'**Épisode Delta**.
+    - Il confie qu'il n'est **pas fait pour être le plus fort** et qu'il veut **suivre la voie de son père** (recherche, Pokédex) ◐.
+    - Son « bonnet blanc » est bien un bonnet (ROSA le montre clairement) ◐.
+- **[HYPOTHÈSE DE CONCEPTION]** Brice et Red sont **deux miroirs** :
+    - Red a « tout gagné » et s'est tu.
+    - Brice a renoncé à « tout gagner » pour comprendre.
+
+  La rencontre gagne à être un **dialogue de valeurs**, et non un combat de prestige.
+
+### 8.7 Pourquoi des espèces de toutes les générations à Hoenn ?
+
+Ancres canoniques, classées par plausibilité pour une histoire centrée sur Hoenn.
+
+| Rang | Ancrage | Canon | Plausibilité | Usage |
+|---|---|---|---|---|
+| 1 | **Échanges et réseau PC** (machine de Ciléo, Pokémon étrangers des dresseurs) | RFVF ✔ ; les PNJ des jeux échangent des Pokémon étrangers | Très haute | Pokémon de dresseurs, pas de populations sauvages |
+| 2 | **Migrations et introductions humaines** (ferries, Safari, éleveurs, Pokémon relâchés) | Le Parc Safari d'E contient des espèces de Johto ✔ (Gen 2 à Hoenn dans Émeraude) | Haute | Petites populations sauvages localisées (près de Poivressel, de Nénucrique, du Safari) |
+| 3 | **Îles Mirages / spots Mirages** (ROSA) | ROSA : les spots mirages hébergent des Pokémon d'autres régions ◐ | Haute | Zones à part, « hors de Hoenn », avec un renouvellement contrôlé |
+| 4 | **Anneaux de Hoopa** (ROSA) | Hoopa ouvre des anneaux qui amènent des légendaires d'autres régions ◐ | Moyenne-haute | Événements ponctuels, légendaires étrangers |
+| 5 | **Ultra-Brèches** (SL/USUL) | Elles apparaissent à Alola. Dans USUL, elles amènent des légendaires de partout et des mondes parallèles ✔ | Moyenne | Espèces anachroniques ; justifie « un autre Giovanni » |
+| 6 | **Étoiles Vœu / Dynamax** (EB) | Liées au sol et à l'énergie de Galar (§2.5) | Basse à Hoenn | Seulement via **Jirachi** (§7 accroche 25) comme pont thématique |
+| 7 | **Paradoxes / Zone Zéro** (EV) | Machine temporelle des professeurs de Paldea ◐ (§2.4) | Basse | À éviter, sauf mini-arc « machine » isolé |
+
+**[HYPOTHÈSE]** La règle de cohérence proposée :
+- les rangs 1–3 couvrent la **majorité** des espèces étrangères ;
+- les rangs 4–5 servent les **légendaires et anomalies** ;
+- les rangs 6–7 ne sont pas utilisés comme explication « de fond ».
+
+### 8.8 Dix accroches Kanto + Hoenn (récit mature, conséquences)
+
+Format : **Faits** (canon) / **Pourquoi** / **Jeu** (forme jouable) / **Risque** (de fan service).
+
+**K1. La machine qui écoute**
+- **Faits :** la machine de Ciléo ne fonctionne qu'avec le Rubis et le Saphir, et relie Kanto, Hoenn et Rhode [RFVF ✔]. Groudon et Kyogre réagissent aux Gemmes Rouge et Bleue [ROSA ✔].
+- **Pourquoi :** une infrastructure civile devient un enjeu. Couper le réseau protège Hoenn mais isole des milliers de dresseurs.
+- **Jeu :** Ciléo vient à Hoenn. Le joueur choisit entre un réseau ouvert et un réseau coupé, et le choix modifie les échanges en jeu ou l'accès au PC (variable de scénario).
+- **Risque :** faible.
+
+**K2. L'année blanche de Red**
+- **Faits :** on ignore ce que fait Red entre sa victoire et sa réclusion au Mont Argenté [GSC ✔].
+- **Pourquoi :** le récit *explique* une icône sans la trahir.
+- **Jeu :** Red traverse Hoenn sans un mot, en avance sur le joueur. On lit son passage par les traces qu'il laisse (dresseurs battus, Pokémon soignés, une lettre à sa mère). La fin le montre partir vers le nord.
+- **Risque :** moyen. Il ne faut pas en faire un boss gratuit.
+
+**K3. Les héritiers de Giovanni**
+- **Faits :** Giovanni est dissous et caché [RFVF ✔]. Les Commandants préparent son retour [HGSS ✔]. Le Saphir a été revendu [RFVF ✔].
+- **Pourquoi :** une organisation sans chef cherche une légitimité. Pour la Team Rocket, ramener un Pokémon de légende de Hoenn serait le « cadeau » qui rappelle le boss.
+- **Jeu :** Lambda, déguisé, infiltre la Team Magma ou la Team Aqua. Le joueur démasque un faux chef.
+- **Risque :** faible à moyen.
+
+**K4. Le second Mew**
+- **Faits :** Mew a été trouvé en Guyane. Mewtwo a été créé et s'est échappé [RBJ ✔]. Mew est présent à l'Île Lointaine [E ◐].
+- **Pourquoi :** l'éthique de la création, et une scientifique de Kanto rongée par la culpabilité (M. Fuji ou une ancienne assistante).
+- **Jeu :** une enquête sur l'Île Lointaine, avec des journaux façon Manoir. On peut protéger Mew au lieu de le capturer.
+- **Risque :** moyen (Mew/Mewtwo sont très connus).
+
+**K5. Deux volcans**
+- **Faits :** Cramois'Île est détruite par l'éruption [GSC ◐]. Le Mont Chimnée est lié à Groudon [RSE ✔].
+- **Pourquoi :** des réfugiés de Cramois'Île, menés par Auguste, voient dans le projet de la Team Magma une menace, ou une solution.
+- **Jeu :** un camp de réfugiés à Vermilava ◐. Le joueur arbitre entre l'aide humanitaire et la sécurité.
+- **Risque :** faible.
+
+**K6. Le recrutement de Scott**
+- **Faits :** Scott recrute dans tout Hoenn [E ✔]. Blue deviendra Champion [GSC ✔].
+- **Pourquoi :** Blue, en pleine crise après avoir perdu son titre en quelques minutes, cherche à se prouver. La Zone de Combat lui offre une scène.
+- **Jeu :** Blue est rival secondaire et « mentor négatif ». La fin de l'arc le pousse vers Jadielle (cohérent avec GSC).
+- **Risque :** moyen.
+
+**K7. La croisière de l'Océane**
+- **Faits :** l'Océane est une croisière internationale ◐. Le M.S. Marée relie Poivressel à Nénucrique ◐.
+- **Pourquoi :** un huis clos social : riches collectionneurs, contrebande de Pokémon étrangers (§8.7, rang 2).
+- **Jeu :** un donjon-bateau avec une enquête (un vol, une disparition).
+- **Risque :** faible.
+
+**K8. Agatha et Spectra**
+- **Faits :** Agatha est retraitée [GSC ◐]. Spectra a grandi au Mont Mémoria auprès de sa grand-mère [RSE ◐]. La Tour Pokémon de Lavanville est un cimetière [RBJ ✔].
+- **Pourquoi :** deux cultures du deuil (Lavanville et Mont Mémoria), et une vieille rancune entre écoles de Spectres.
+- **Jeu :** une quête de rite funéraire. Les Pokémon spectraux réagissent à des choix éthiques.
+- **Risque :** faible.
+
+**K9. L'autre Giovanni**
+- **Faits :** les Ultra-Brèches amènent des versions parallèles de Giovanni, Max/Maxie et Arthur [USUL ✔].
+- **Pourquoi :** la Team Magma et la Team Aqua de Hoenn voient « ce qu'elles auraient pu devenir ». Le joueur ne sait plus qui est le vrai.
+- **Jeu :** un acte final ou un postgame, avec une brèche au Pilier Céleste.
+- **Risque :** élevé (crossover facile). À réserver à un postgame bref.
+
+**K10. Peter au Site Météore**
+- **Faits :** Peter est un dragonnier [RBJ ✔]. Le Peuple du Météore et Amaryllis vénèrent Rayquaza ; Drattak est natif de Hoenn [ROSA ✔].
+- **Pourquoi :** deux traditions draconiques se rencontrent : Ébène (Johto) ◐ et le Peuple du Météore. Peter n'est pas un sauveur, c'est un étranger qui ne comprend pas le rite.
+- **Jeu :** un dialogue et un combat. Le joueur peut amener Peter à respecter, ou à piétiner, le lieu sacré.
+- **Risque :** moyen.
+
+**[HYPOTHÈSE DE CONCEPTION] Garde-fous contre le fan service** :
+1. Chaque personnage de Kanto doit **vouloir quelque chose à Hoenn** qui ne concerne pas le joueur.
+2. Aucun d'eux ne résout le conflit principal à la place du joueur.
+3. Leur avenir canonique (Mont Argenté, Jadielle, Arbre de Combat) reste possible à la fin.
+
+**Sources ajoutées pour la section 8** (extraits de moteur) :
+- Bulbapedia : *History of the Pokémon world*, Steven Stone (HGSS), Red (Adventures), Giovanni, Scott, Ariana.
+- Poképédia : Centre Réseau Pokémon, Ciléo, Rubis (objet), Leaf, Green, Commandant (Team Rocket), Amos, Ariane, Lambda, Arbre de Combat, Grotte Argentée, Pokémon HeartGold.
+- Pokébip / Eternia : RFVF (Ticketmystik, Ticketaurora), soluce RFVF partie 23, personnages RFVF.
+- Deltias Gaming et forum Bulbagarden : équipe de Red dans HGSS.
+- Supercheats, Gamerguides, Samurai Gamers : Arbre de Combat.
+- Nintendo Life, Inverse : Team Rainbow Rocket.
+- WikiDex : Seko (manga).
+- TV Tropes : *Pokémon Origins*.
+- À vérifier en priorité sur Poképédia : équipe GSC de Red, noms FR des capacités, classes de dresseur de Red, M.S. Océane / M.S. Marée, Hydro-Ferry, Cramois'Île en GSC, spots mirages de ROSA.
+
+---
+
 ## Annexe : sources principales
 
 **Sources consultées** (via les extraits du moteur de recherche) :

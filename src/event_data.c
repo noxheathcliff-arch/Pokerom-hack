@@ -64,8 +64,6 @@ void ClearTempFieldEventData(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_CTRL_OBJ_DELETE);
     FlagClear(FLAG_NURSE_UNION_ROOM_REMINDER);
-    if (WE_FLAG_NO_ENCOUNTER != 0)
-        FlagClear(WE_FLAG_NO_ENCOUNTER); // Heure Suspendue: FLAG_FIGEMENT_ACTIF, re-set by the Figement map's ON_TRANSITION script
 }
 
 void ClearDailyFlags(void)
