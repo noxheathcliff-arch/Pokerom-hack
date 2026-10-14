@@ -23,6 +23,15 @@ et le prototype moteur (plafonds souples, variable de difficulté, flag anti-ren
 11. **Budget Claude Pro** : pas de gaspillage ; aucune dépense payante.
 12. ROM compilée, testée, livrée en privé ; jamais de ROM dans le dépôt public.
 
+
+### Addendum utilisateur (2026-10-14, v2.1) — exigences fermes supplémentaires
+13. **Toutes les espèces Gen 1→9** présentes et **expliquées par l'intrigue**, avec une **intervention de légendaire** et les **troubles causés par l'apparition des nouveaux Pokémon** (écologie, société).
+14. **Intrigue beaucoup plus complexe, en couches** : le joueur ne connaît pas dès le départ toutes les causes ; révélations progressives.
+15. **Tout le casting majeur de Kanto** (Prof. Chen, Blue, les 8 champions, le Conseil 4, Giovanni, etc.) **et de Hoenn**, **aucun figurant** : chacun a sa place narrative, une vraie personnalité, des objectifs (égoïstes ou non) ; relations entre eux développées ; lore et mythologie Pokémon.
+16. **Affrontements hors badges** : défis libres, combats scénarisés ; **équipes adaptatives** (variantes selon l'avancée/les choix), construites au mieux sur les Gen 1→9 (ex. Olga du Conseil 4 : meilleure équipe possible selon son identité).
+17. Recherche dédiée sur la **scénarisation** (films, grands jeux vidéo).
+Réponse d'organisation : agents « Storycraft » et « Cast & Canon » (en cours) → refonte v3 du GM principal (colonne vertébrale + mystère en couches), puis GM secondaires par domaine (casting/relations, combats/équipes adaptatives, décisions/systèmes, distribution des espèces & écologie), puis critiques.
+
 ## 1. Constat d'environnement
 | Capacité | État |
 |---|---|
