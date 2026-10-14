@@ -1136,6 +1136,10 @@
 #undef B_VAR_DIFFICULTY
 #define B_VAR_DIFFICULTY                TESTING_VAR_DIFFICULTY
 
+// Hack: the project forces Sleep Clause on (config/battle.h); upstream tests drive it through TESTING_FLAG_SLEEP_CLAUSE instead.
+#undef B_SLEEP_CLAUSE
+#define B_SLEEP_CLAUSE                  FALSE
+
 // Flags
 #undef B_FLAG_SLEEP_CLAUSE
 #define B_FLAG_SLEEP_CLAUSE              TESTING_FLAG_SLEEP_CLAUSE
