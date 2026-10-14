@@ -1,0 +1,122 @@
+/* GÉNÉRÉ par teams_v3_gen.py — partenaires de duo (battle_partners.party). */
+
+/* P-PETER-CH5 : ch.5, Red est parti avec Peter : duo contre Amaryllis */
+=== PARTNER_PETER_CH5 ===
+Name: PETER
+Class: Elite Four Frlg
+Pic: Elite Four Lance Frlg
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab
+
+Dragonair
+Level: 27
+Ability: Shed Skin
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Adamant Nature
+- Dragon Tail
+- Aqua Tail
+- Thunder Wave
+- Slam
+
+Aerodactyl
+Level: 28
+Ability: Pressure
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Jolly Nature
+- Rock Slide
+- Bite
+- Wing Attack
+- Ancient Power
+
+Gyarados
+Level: 28
+Ability: Intimidate
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Adamant Nature
+- Waterfall
+- Bite
+- Ice Fang
+- Dragon Rage
+
+/* P-PIERREROCHARD-CH8 : duo ch.8 (R120, présentation de la Méga) puis ch.10 si choisi */
+=== PARTNER_STEVEN ===
+Name: PIERRE R.
+Class: Rival
+Pic: Steven
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab
+
+Metang
+Level: 40
+Ability: Clear Body
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Adamant Nature
+- Meteor Mash
+- Zen Headbutt
+- Bullet Punch
+- Iron Defense
+
+Skarmory
+Level: 40
+Ability: Sturdy
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Impish Nature
+- Steel Wing
+- Air Slash
+- Spikes
+- Roost
+
+Aggron
+Level: 40
+Ability: Sturdy
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Adamant Nature
+- Iron Head
+- Rock Slide
+- Earthquake
+- Protect
+
+/* P-OLGA-CH9 : coup de filet de Nénucrique ch.9 (nuit du marché, branche Olga) */
+=== PARTNER_OLGA_CH9 ===
+Name: OLGA
+Class: Elite Four Frlg
+Pic: Elite Four Lorelei Frlg
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab
+
+Ninetales-Alola
+Level: 40
+Ability: Snow Warning
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Timid Nature
+- Aurora Veil
+- Icy Wind
+- Moonblast
+- Encore
+
+Cloyster
+Level: 40
+Ability: Skill Link
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Jolly Nature
+- Icicle Spear
+- Rock Blast
+- Ice Shard
+- Protect
+
+Slowbro
+Level: 41
+Ability: Regenerator
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Bold Nature
+- Scald
+- Ice Beam
+- Slack Off
+- Protect
+
