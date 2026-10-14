@@ -581,6 +581,10 @@ static u8 CheckTrainer(u8 objectEventId)
         }
     }
 
+    // Hack: a trainer whose battle was declined stops spotting the player until the next map load.
+    if (trainerBattlePtr && HasTrainerBattleBeenDeclined(gObjectEvents[objectEventId].localId))
+        return 0;
+
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         if (GetBattlePyramidTrainerFlag(objectEventId))

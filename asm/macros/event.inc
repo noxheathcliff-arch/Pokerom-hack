@@ -793,6 +793,20 @@
 	.endif
 	.endm
 
+	@ Hack: like trainerbattle_single, but after the intro text the player is asked "Accepter le combat ?".
+	@ If refused, the battle does not happen, the trainer flag is NOT set (the trainer can still be talked to),
+	@ the trainer stops spotting the player until the next map load, and B_VAR_LAST_DECLINED_TRAINER (if set) gets the id.
+	@ Only for single battles; mandatory battles keep using trainerbattle_single.
+	.macro trainerbattle_single_declinable trainer:req, intro_text:req, lose_text:req, event_script=FALSE, music=TRUE
+	.if \event_script == FALSE
+	trainerbattle TRAINER_BATTLE_SINGLE, LOCALID_NONE, \trainer, \intro_text, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
+	.elseif \music == TRUE
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
+	.else
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
+	.endif
+	.endm
+
 	@ Starts a double trainer battle. Takes a trainer, intro text, loss text, text for when you have too few pokemon
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
 	.macro trainerbattle_double trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script=FALSE, music=TRUE

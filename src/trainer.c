@@ -1,8 +1,12 @@
 #include "global.h"
 #include "constants/trainers.h"
 
+static enum TrainerPicID GetKantoTrainerPic(enum Gender gender);
+
 static enum TrainerPicID GetEmeraldTrainerPic(enum Gender gender)
 {
+    if (OW_KANTO_PLAYER_AVATAR) // Hack: player is Red / Leaf
+        return GetKantoTrainerPic(gender);
     return gender == MALE ? TRAINER_PIC_BRENDAN : TRAINER_PIC_MAY;
 }
 static enum TrainerPicID GetRSTrainerPic(enum Gender gender)

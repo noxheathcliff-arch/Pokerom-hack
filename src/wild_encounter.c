@@ -78,10 +78,10 @@ void DisableWildEncounters(bool8 disabled)
     sWildEncountersDisabled = disabled;
 }
 
-// Heure Suspendue (N1): step encounters (grass/water) and overworld encounters
+// Hack: step encounters (grass/water) and overworld encounters
 // already honour WE_FLAG_NO_ENCOUNTER (field_control_avatar.c, wild_encounter_ow.c).
 // This helper extends it to the paths that upstream does not cover: fishing,
-// Rock Smash and Sweet Scent / Honey. WE_FLAG_NO_ENCOUNTER = FLAG_FIGEMENT_ACTIF.
+// Rock Smash and Sweet Scent / Honey. WE_FLAG_NO_ENCOUNTER = FLAG_NO_WILD_ENCOUNTERS.
 bool32 IsWildEncounterFlagSet(void)
 {
     return WE_FLAG_NO_ENCOUNTER != 0 && FlagGet(WE_FLAG_NO_ENCOUNTER);

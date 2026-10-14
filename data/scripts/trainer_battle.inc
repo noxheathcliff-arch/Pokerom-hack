@@ -108,9 +108,25 @@ EventScript_ShowTrainerIntroMsg::
 	special ShowTrainerIntroSpeech
 	waitmessage
 	waitbuttonpress
+	specialvar VAR_RESULT, IsTrainerBattleDeclinable
+	goto_if_eq VAR_RESULT, TRUE, EventScript_AskAcceptTrainerBattle
+EventScript_TrainerIntroMsgContinue::
 	special TryPrepareSecondApproachingTrainer
 	goto_if_eq VAR_RESULT, TRUE, EventScript_TrainerApproach
 	goto EventScript_DoTrainerBattle
+
+@ Hack: declinable trainer battles (trainerbattle_single_declinable)
+EventScript_AskAcceptTrainerBattle::
+	msgbox Text_AcceptTrainerBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, EventScript_TrainerIntroMsgContinue
+	closemessage
+	special RecordDeclinedTrainerBattle
+	fadedefaultbgm
+	releaseall
+	end
+
+Text_AcceptTrainerBattle:
+	.string "Accepter le combat ?$"
 
 EventScript_DoTrainerBattle::
 	dotrainerbattle

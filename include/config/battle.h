@@ -269,7 +269,9 @@
                                           // This var should never remain non-zero long enough for the player to save.
                                           // For better wild AI handling, edit GetWildAiFlags() in src/battle_ai_main.c
 
-#define B_VAR_DIFFICULTY            VAR_HS_DIFFICULTE // Heure Suspendue (H2): 0x40F7, set to DIFFICULTY_NORMAL in NewGameInitData. If not 0, you can use this var to control which difficulty version of a Trainer is loaded. This should be manually set by the developer using Script_SetDifficulty AFTER NewGameInitData has run.
+#define B_DECLINABLE_TRAINER_BATTLES TRUE  // Hack: if TRUE, trainers using trainerbattle_single_declinable ask "Accepter le combat ?" and can be refused.
+#define B_VAR_LAST_DECLINED_TRAINER 0       // Hack: if not 0, this var receives the TRAINER_* id of the last declined trainer (for scripts that react).
+#define B_VAR_DIFFICULTY            VAR_DIFFICULTY    // Hack: 0x40F7; upstream NewGameInitData sets it to DIFFICULTY_NORMAL. If not 0, you can use this var to control which difficulty version of a Trainer is loaded. This should be manually set by the developer using Script_SetDifficulty AFTER NewGameInitData has run.
 
 // No bag settings
 #define NO_BAG_RESTRICTION       0

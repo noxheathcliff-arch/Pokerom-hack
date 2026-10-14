@@ -1,14 +1,20 @@
-// Heure Suspendue: engine hooks specific to the hack (see docs/hack/ENGINE_CHANGES.md).
+// Project engine hooks (see docs/hack/ENGINE_CHANGES.md).
 #include "global.h"
 #include "caps.h"
 #include "data.h"
 #include "event_data.h"
-#include "international_string_util.h"
+#include "event_object_movement.h"
+#include "field_player_avatar.h"
+#include "pokemon.h"
+#include "trainer.h"
+#include "constants/event_objects.h"
 #include "string_util.h"
 #include "wild_encounter.h"
 #include "constants/maps.h"
 #include "constants/map_groups.h"
 #include "test/test.h"
+
+void RockSmashWildEncounter(void); // special, no header prototype upstream
 
 static void SetPlayerMap(u32 map)
 {
@@ -17,42 +23,37 @@ static void SetPlayerMap(u32 map)
 }
 
 // ---------------------------------------------------------------------------
-// N1 - Figement: no wild encounters while FLAG_FIGEMENT_ACTIF is set
+// No wild encounters while FLAG_NO_WILD_ENCOUNTERS (= WE_FLAG_NO_ENCOUNTER) is set
 // ---------------------------------------------------------------------------
 
-TEST("Figement: FLAG_FIGEMENT_ACTIF is a saved story flag")
-{
-    EXPECT_EQ(FLAG_FIGEMENT_ACTIF, 0x20);
-    EXPECT_GT(FLAG_FIGEMENT_ACTIF, TEMP_FLAGS_END);
-}
-
-TEST("Figement: fishing finds no Pokemon while the flag is set (positive control without it)")
-{
-    SetPlayerMap(MAP_ROUTE114); // has land, water, rock smash and fishing tables
-    FlagClear(FLAG_FIGEMENT_ACTIF);
-    EXPECT_NE(GetCurrentMapWildMonHeaderId(), HEADER_NONE);
-    EXPECT_EQ(DoesCurrentMapHaveFishingMons(), TRUE);
-    EXPECT_EQ(IsWildEncounterFlagSet(), FALSE);
-
-    FlagSet(FLAG_FIGEMENT_ACTIF);
-    EXPECT_EQ(IsWildEncounterFlagSet(), TRUE);
-    EXPECT_EQ(DoesCurrentMapHaveFishingMons(), FALSE);
-    FlagClear(FLAG_FIGEMENT_ACTIF);
-}
-
-TEST("Figement: step and overworld encounters use the upstream WE_FLAG_NO_ENCOUNTER")
+TEST("No-encounter flag: WE_FLAG_NO_ENCOUNTER is the saved flag FLAG_NO_WILD_ENCOUNTERS")
 {
     // Grass/water step encounters are blocked upstream in field_control_avatar.c
     // (ShouldDisableRandomEncounters, static) and overworld encounters in
     // wild_encounter_ow.c, both via FlagGet(WE_FLAG_NO_ENCOUNTER).
-    EXPECT_EQ(WE_FLAG_NO_ENCOUNTER, FLAG_FIGEMENT_ACTIF);
+    EXPECT_EQ(WE_FLAG_NO_ENCOUNTER, FLAG_NO_WILD_ENCOUNTERS);
+    EXPECT_GT(FLAG_NO_WILD_ENCOUNTERS, TEMP_FLAGS_END);
 }
 
-TEST("Figement: Rock Smash and Sweet Scent / Honey find nothing while the flag is set")
+TEST("No-encounter flag: fishing finds nothing while set (positive control without it)")
+{
+    SetPlayerMap(MAP_ROUTE114); // has land, water, rock smash and fishing tables
+    FlagClear(FLAG_NO_WILD_ENCOUNTERS);
+    EXPECT_NE(GetCurrentMapWildMonHeaderId(), HEADER_NONE);
+    EXPECT_EQ(DoesCurrentMapHaveFishingMons(), TRUE);
+    EXPECT_EQ(IsWildEncounterFlagSet(), FALSE);
+
+    FlagSet(FLAG_NO_WILD_ENCOUNTERS);
+    EXPECT_EQ(IsWildEncounterFlagSet(), TRUE);
+    EXPECT_EQ(DoesCurrentMapHaveFishingMons(), FALSE);
+    FlagClear(FLAG_NO_WILD_ENCOUNTERS);
+}
+
+TEST("No-encounter flag: Rock Smash and Sweet Scent / Honey find nothing while set")
 {
     u32 i;
     SetPlayerMap(MAP_ROUTE114);
-    FlagSet(FLAG_FIGEMENT_ACTIF);
+    FlagSet(FLAG_NO_WILD_ENCOUNTERS);
     for (i = 0; i < 500; i++)
     {
         gSpecialVar_Result = 0xFFFF;
@@ -60,77 +61,97 @@ TEST("Figement: Rock Smash and Sweet Scent / Honey find nothing while the flag i
         EXPECT_EQ(gSpecialVar_Result, FALSE);
         EXPECT_EQ(SweetScentWildEncounter(), FALSE); // Honey uses the same Sweet Scent effect
     }
-    FlagClear(FLAG_FIGEMENT_ACTIF);
-}
-
-TEST("Figement: the flag is cleared on every map load (ClearTempFieldEventData)")
-{
-    FlagSet(FLAG_FIGEMENT_ACTIF);
-    ClearTempFieldEventData();
-    EXPECT_EQ(FlagGet(FLAG_FIGEMENT_ACTIF), FALSE);
-    EXPECT_EQ(IsWildEncounterFlagSet(), FALSE);
+    FlagClear(FLAG_NO_WILD_ENCOUNTERS);
 }
 
 // ---------------------------------------------------------------------------
-// H1 - soft level caps keyed on badges
+// Soft level caps (values are placeholders: only the structure is tested)
 // ---------------------------------------------------------------------------
 
-TEST("Level cap: badge table 15/19/24/29/33/38/44/50/58 then 100 after the champion")
+TEST("Level cap: non-decreasing along the badge flags, MAX_LEVEL after the champion")
 {
-    static const u16 badges[] = {
+    static const u16 milestones[] = {
         FLAG_BADGE01_GET, FLAG_BADGE02_GET, FLAG_BADGE03_GET, FLAG_BADGE04_GET,
         FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
         FLAG_IS_CHAMPION,
     };
-    static const u8 caps[] = {15, 19, 24, 29, 33, 38, 44, 50, 58, MAX_LEVEL};
-    u32 i;
+    u32 i, prev;
 
     ASSUME(B_EXP_CAP_TYPE == EXP_CAP_SOFT);
     ASSUME(B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST);
 
-    for (i = 0; i < ARRAY_COUNT(badges); i++)
-        FlagClear(badges[i]);
-    for (i = 0; i < ARRAY_COUNT(badges); i++)
+    for (i = 0; i < ARRAY_COUNT(milestones); i++)
+        FlagClear(milestones[i]);
+    prev = GetCurrentLevelCap();
+    EXPECT_LT(prev, MAX_LEVEL);
+    for (i = 0; i < ARRAY_COUNT(milestones); i++)
     {
-        EXPECT_EQ(GetCurrentLevelCap(), caps[i]);
-        FlagSet(badges[i]);
+        FlagSet(milestones[i]);
+        EXPECT_GE(GetCurrentLevelCap(), prev);
+        prev = GetCurrentLevelCap();
     }
-    EXPECT_EQ(GetCurrentLevelCap(), caps[ARRAY_COUNT(badges)]);
-    for (i = 0; i < ARRAY_COUNT(badges); i++)
-        FlagClear(badges[i]);
+    EXPECT_EQ(prev, MAX_LEVEL);
+    for (i = 0; i < ARRAY_COUNT(milestones); i++)
+        FlagClear(milestones[i]);
 }
 
-TEST("Level cap: soft cap reduces exp above the cap and boosts it below")
+TEST("Level cap: soft cap reduces exp at/above the cap and boosts it below")
 {
-    u32 i;
+    u32 i, cap;
     for (i = 0; i < 8; i++)
         FlagClear(FLAG_BADGE01_GET + i);
     FlagClear(FLAG_IS_CHAMPION);
-    // Cap = 15 with no badge.
-    EXPECT_EQ(GetSoftLevelCapExpValue(15, 640), 640 / 4);
-    EXPECT_EQ(GetSoftLevelCapExpValue(16, 640), 640 / 8);
-    EXPECT_EQ(GetSoftLevelCapExpValue(30, 640), 640 / 64);
-    EXPECT_GT(GetSoftLevelCapExpValue(10, 640), 640); // B_LEVEL_CAP_EXP_UP
+    cap = GetCurrentLevelCap();
+    EXPECT_EQ(GetSoftLevelCapExpValue(cap, 640), 640 / 4);
+    EXPECT_EQ(GetSoftLevelCapExpValue(cap + 1, 640), 640 / 8);
+    EXPECT_EQ(GetSoftLevelCapExpValue(cap + 10, 640), 640 / 64);
+    EXPECT_GT(GetSoftLevelCapExpValue(cap - 1, 640), 640); // B_LEVEL_CAP_EXP_UP
 }
 
 // ---------------------------------------------------------------------------
-// N2 - repurposed trainer classes
+// Trainer class names: buffer is 12 characters + EOS
 // ---------------------------------------------------------------------------
 
-TEST("Trainer classes: repurposed Aqua/Magma classes have the Heure Suspendue names")
+TEST("Trainer classes: every class name fits in 12 characters")
 {
-    EXPECT_EQ(StringCompare(gTrainerClasses[TRAINER_CLASS_CARILLONNEUR].name, COMPOUND_STRING("CARILLONNEUR")), 0);
-    EXPECT_EQ(StringCompare(gTrainerClasses[TRAINER_CLASS_VEILLEUR].name, COMPOUND_STRING("VEILLEUR")), 0);
-    EXPECT_EQ(StringCompare(gTrainerClasses[TRAINER_CLASS_SONNEUR].name, COMPOUND_STRING("SONNEUR")), 0);
-    EXPECT_EQ(StringCompare(gTrainerClasses[TRAINER_CLASS_SONNEUSE].name, COMPOUND_STRING("SONNEUSE")), 0);
-    EXPECT_EQ(StringLength(gTrainerClasses[TRAINER_CLASS_CARILLONNEUR].name), 12);
+    u32 i;
+    STATIC_ASSERT(sizeof(gTrainerClasses[0].name) == 13, TrainerClassNameBufferIs13);
+    for (i = 0; i < TRAINER_CLASS_COUNT; i++)
+        EXPECT_LE(StringLength(gTrainerClasses[i].name), 12);
 }
 
-TEST("Trainer classes: feminine forms")
+// ---------------------------------------------------------------------------
+// Kanto player avatar (OW_KANTO_PLAYER_AVATAR) and Kanto NPC sprites in Emerald
+// ---------------------------------------------------------------------------
+
+TEST("Kanto avatar: the player uses Red / Green overworld sprites and Red / Leaf trainer pics")
 {
-    EXPECT_EQ(StringCompare(GetTrainerClassNameGenderSpecific(TRAINER_CLASS_CARILLONNEUR, 1, NULL), COMPOUND_STRING("CARILLONNEUSE")), 0);
-    EXPECT_EQ(StringCompare(GetTrainerClassNameGenderSpecific(TRAINER_CLASS_CARILLONNEUR, 0, NULL), COMPOUND_STRING("CARILLONNEUR")), 0);
-    EXPECT_EQ(StringCompare(GetTrainerClassNameGenderSpecific(TRAINER_CLASS_SONNEUR, 1, NULL), COMPOUND_STRING("SONNEUSE")), 0);
-    EXPECT_EQ(StringCompare(GetTrainerClassNameGenderSpecific(TRAINER_CLASS_VEILLEUR, 1, NULL), COMPOUND_STRING("VEILLEUSE")), 0);
-    EXPECT_EQ(StringCompare(GetTrainerClassNameGenderSpecific(TRAINER_CLASS_VEILLEUR, 0, NULL), COMPOUND_STRING("VEILLEUR")), 0);
+    ASSUME(OW_KANTO_PLAYER_AVATAR == TRUE);
+    EXPECT_EQ(GetPlayerAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, MALE), OBJ_EVENT_GFX_RED_NORMAL);
+    EXPECT_EQ(GetPlayerAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_SURFING, MALE), OBJ_EVENT_GFX_RED_SURF);
+    EXPECT_EQ(GetPlayerAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_MACH_BIKE, MALE), OBJ_EVENT_GFX_RED_BIKE);
+    EXPECT_EQ(GetPlayerAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, FEMALE), OBJ_EVENT_GFX_GREEN_NORMAL);
+    EXPECT_EQ(GetPlayerTrainerPic(MALE, VERSION_EMERALD), TRAINER_PIC_RED);
+    EXPECT_EQ(GetPlayerTrainerPic(FEMALE, VERSION_EMERALD), TRAINER_PIC_LEAF);
+    EXPECT_EQ(PlayerGenderToFrontTrainerPicId(MALE), TRAINER_PIC_RED);
+}
+
+TEST("Kanto NPCs: overworld graphics are built in Emerald")
+{
+    static const u16 gfx[] = {
+        OBJ_EVENT_GFX_RED_NORMAL, OBJ_EVENT_GFX_RED_BIKE, OBJ_EVENT_GFX_RED_SURF, OBJ_EVENT_GFX_RED_FIELD_MOVE,
+        OBJ_EVENT_GFX_RED_FISH, OBJ_EVENT_GFX_RED_VS_SEEKER, OBJ_EVENT_GFX_GREEN_NORMAL,
+        OBJ_EVENT_GFX_BLUE, OBJ_EVENT_GFX_GIOVANNI, OBJ_EVENT_GFX_PROF_OAK, OBJ_EVENT_GFX_BROCK,
+        OBJ_EVENT_GFX_MISTY, OBJ_EVENT_GFX_LT_SURGE, OBJ_EVENT_GFX_ERIKA, OBJ_EVENT_GFX_KOGA,
+        OBJ_EVENT_GFX_SABRINA, OBJ_EVENT_GFX_BLAINE, OBJ_EVENT_GFX_LORELEI, OBJ_EVENT_GFX_BRUNO,
+        OBJ_EVENT_GFX_AGATHA, OBJ_EVENT_GFX_LANCE, OBJ_EVENT_GFX_ROCKET_M, OBJ_EVENT_GFX_ROCKET_F,
+        OBJ_EVENT_GFX_BILL, OBJ_EVENT_GFX_MR_FUJI, OBJ_EVENT_GFX_CELIO, OBJ_EVENT_GFX_DAISY,
+    };
+    u32 i;
+    for (i = 0; i < ARRAY_COUNT(gfx); i++)
+    {
+        const struct ObjectEventGraphicsInfo *info = GetObjectEventGraphicsInfo(gfx[i]);
+        EXPECT(info != NULL);
+        EXPECT(info->images != NULL);
+    }
 }

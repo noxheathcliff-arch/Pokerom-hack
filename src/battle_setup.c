@@ -95,6 +95,7 @@ EWRAM_DATA u16 gPartnerTrainerId = 0;
 EWRAM_DATA static u8 *sTrainerBattleEndScript = NULL;
 EWRAM_DATA static bool8 sShouldCheckTrainerBScript = FALSE;
 EWRAM_DATA static u8 sNoOfPossibleTrainerRetScripts = 0;
+EWRAM_DATA static u32 sDeclinedTrainerLocalIds[2] = {0}; // Hack: bitmask of localIds (< 64) declined on the current map
 
 // The first transition is used if the enemy Pokémon are lower level than our Pokémon.
 // Otherwise, the second transition is used.
@@ -1264,6 +1265,44 @@ u8 GetTrainerBattleMode(void)
 u8 GetRivalBattleFlags(void)
 {
     return TRAINER_BATTLE_PARAM.rivalBattleFlags;
+}
+
+// Hack: declinable trainer battles (trainerbattle_single_declinable, B_DECLINABLE_TRAINER_BATTLES).
+bool32 IsTrainerBattleDeclinable(void)
+{
+    if (!B_DECLINABLE_TRAINER_BATTLES)
+        return FALSE;
+    if (gNoOfApproachingTrainers > 1) // two trainers spotted the player at once: no choice
+        return FALSE;
+    if (TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_EARLY_RIVAL)
+        return FALSE;
+    return (TRAINER_BATTLE_PARAM.rivalBattleFlags & TRAINER_BATTLE_DECLINABLE) != 0;
+}
+
+void RecordDeclinedTrainerBattle(void)
+{
+    u32 localId = gSpecialVar_LastTalked;
+
+    if (localId < 64)
+        sDeclinedTrainerLocalIds[localId / 32] |= 1u << (localId % 32);
+    if (B_VAR_LAST_DECLINED_TRAINER != 0)
+        VarSet(B_VAR_LAST_DECLINED_TRAINER, TRAINER_BATTLE_PARAM.opponentA);
+    gNoOfApproachingTrainers = 0;
+    gApproachingTrainerId = 0;
+    gTrainerApproachedPlayer = FALSE;
+}
+
+bool32 HasTrainerBattleBeenDeclined(u32 localId)
+{
+    if (localId >= 64)
+        return FALSE;
+    return (sDeclinedTrainerLocalIds[localId / 32] >> (localId % 32)) & 1;
+}
+
+void ClearDeclinedTrainerBattles(void)
+{
+    sDeclinedTrainerLocalIds[0] = 0;
+    sDeclinedTrainerLocalIds[1] = 0;
 }
 
 bool8 GetTrainerFlag(void)

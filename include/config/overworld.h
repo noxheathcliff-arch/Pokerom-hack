@@ -13,6 +13,7 @@
 #define OW_DEFOG_FIELD_MOVE             FALSE      // If enabled, Defog can be used as a Field Move as seen in DPPt.
 #define OW_ROCK_CLIMB_FIELD_MOVE        FALSE      // If enabled, Rock Climb can be used as a Field Move as seen in DPPt.
 #define OW_CHOOSE_FROM_PC_AND_PARTY     TRUE       // If enabled, NPCs like move tutors or trainers asking for trade will let you pick a Pokémon from your PC or party instead of just your party
+#define OW_KANTO_PLAYER_AVATAR      TRUE       // Hack: in Emerald, the player uses Red (male) / Leaf (female, "Green" OW sprites) overworld sprites and trainer pics instead of Brendan/May. Brendan/May stay available as NPCs/rival.
 
 // Item Obtain Description Box
 #define OW_ITEM_DESCRIPTIONS_OFF        0   // never show descriptions

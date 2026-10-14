@@ -7,24 +7,22 @@
 
 u32 GetCurrentLevelCap(void)
 {
-    // Heure Suspendue (H1, GAME_DESIGN_BIBLE section 8): the cap is the value of the
-    // first flag NOT yet set; once FLAG_IS_CHAMPION is set the cap is MAX_LEVEL (100).
-    // Initial values, tunable by the trainer supervisor.
-    // To add a story milestone (e.g. a cap step before the Mont Memoria summit / Ysaline 1),
-    // insert {FLAG_<milestone>, <cap>} at its place in progression order: the list must be
-    // ordered so that each flag is set after the previous one in every possible playthrough.
+    // Hack: the cap is the value of the first flag NOT yet set; once the last flag is set
+    // the cap is MAX_LEVEL (100). Values are PLACEHOLDERS (to be tuned by design).
+    // To add a story milestone, insert {FLAG_<milestone>, <cap>} at its place in progression
+    // order: each flag must be set after the previous one in every possible playthrough.
     // Any saved flag works (badge, FLAG_DEFEATED_*, story flag from FLAGS_VARS_REGISTRY.md).
     static const u32 sLevelCapFlagMap[][2] =
     {
-        {FLAG_BADGE01_GET, 15}, // Roxanne
-        {FLAG_BADGE02_GET, 19}, // Bastien
-        {FLAG_BADGE03_GET, 24}, // Voltere
-        {FLAG_BADGE04_GET, 29}, // Adriane
-        {FLAG_BADGE05_GET, 33}, // Norman
-        {FLAG_BADGE06_GET, 38}, // Alizee
-        {FLAG_BADGE07_GET, 44}, // Levy & Tatia
-        {FLAG_BADGE08_GET, 50}, // Juan
-        {FLAG_IS_CHAMPION, 58}, // Elite Four + Champion
+        {FLAG_BADGE01_GET, 15},
+        {FLAG_BADGE02_GET, 19},
+        {FLAG_BADGE03_GET, 24},
+        {FLAG_BADGE04_GET, 29},
+        {FLAG_BADGE05_GET, 33},
+        {FLAG_BADGE06_GET, 38},
+        {FLAG_BADGE07_GET, 44},
+        {FLAG_BADGE08_GET, 50},
+        {FLAG_IS_CHAMPION, 58},
     };
 
     u32 i;

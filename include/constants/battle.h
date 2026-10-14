@@ -151,6 +151,7 @@ enum BattleSide
 
 #define RIVAL_BATTLE_HEAL_AFTER  1
 #define RIVAL_BATTLE_TUTORIAL    3
+#define TRAINER_BATTLE_DECLINABLE 0x80 // Hack: stored in rivalBattleFlags; the player may refuse the battle (see trainerbattle_single_declinable)
 
 // Battle Outcome defines
 #define B_OUTCOME_WON                  1
