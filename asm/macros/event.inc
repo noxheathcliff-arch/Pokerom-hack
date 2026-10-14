@@ -2606,6 +2606,20 @@
 	.2byte \wait
 	.endm
 
+	@ Hack: hidden relationship / reputation counters (vars). VAR = clamp(VAR + amount, min, max),
+	@ VAR_RESULT = new value. Default range 0..100. Check thresholds with goto_if_ge / goto_if_lt.
+	.macro addaffinity var:req, amount:req, min=0, max=100
+	callnative Script_AddAffinity, requests_effects=1
+	.2byte \var
+	.2byte \amount
+	.2byte \min
+	.2byte \max
+	.endm
+
+	.macro subaffinity var:req, amount:req, min=0, max=100
+	addaffinity \var, -(\amount), \min, \max
+	.endm
+
 	.macro increasedifficulty
 	callnative Script_IncreaseDifficulty, requests_effects=1
 	.endm

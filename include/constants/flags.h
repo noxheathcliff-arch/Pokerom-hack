@@ -53,7 +53,7 @@
 
 // Hack: project-allocated flag (see docs/hack/FLAGS_VARS_REGISTRY.md)
 #define FLAG_NO_WILD_ENCOUNTERS 0x20 // WE_FLAG_NO_ENCOUNTER: no wild encounters by any method while set
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
+#define FLAG_CHOOSE_BATTLE_LEAD 0x21 // B_FLAG_CHOOSE_BATTLE_LEAD: ask which Pokemon leads before trainer battles
 #define FLAG_UNUSED_0x022    0x22 // Unused Flag
 #define FLAG_UNUSED_0x023    0x23 // Unused Flag
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag

@@ -50,6 +50,7 @@ EventScript_DoNoIntroTrainerBattle::
 	waitmovement 0
 	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	special PlayTrainerEncounterMusic
+	call EventScript_MaybeChooseBattleLead
 	dotrainerbattle
 	gotopostbattlescript
 
@@ -128,7 +129,17 @@ EventScript_AskAcceptTrainerBattle::
 Text_AcceptTrainerBattle:
 	.string "Accepter le combat ?$"
 
+@ Hack: B_FLAG_CHOOSE_BATTLE_LEAD - pick the lead Pokemon before the battle (B cancels: normal lead)
+EventScript_MaybeChooseBattleLead::
+	specialvar VAR_RESULT, ShouldChooseBattleLead
+	goto_if_eq VAR_RESULT, FALSE, EventScript_MaybeChooseBattleLeadEnd
+	special ChoosePartyMon
+	special SetBattleLeadFromSelection
+EventScript_MaybeChooseBattleLeadEnd::
+	return
+
 EventScript_DoTrainerBattle::
+	call EventScript_MaybeChooseBattleLead
 	dotrainerbattle
 	@ Below battle mode check only needed in FRLG
 	specialvar VAR_RESULT, GetTrainerBattleMode

@@ -1130,6 +1130,9 @@
 #define P_FAMILY_PECHARUNT               TRUE
 
 // Vars
+// Hack: upstream exp tests assume no level cap; the project enables soft caps (config/caps.h).
+#undef B_EXP_CAP_TYPE
+#define B_EXP_CAP_TYPE                  EXP_CAP_NONE
 #undef B_VAR_DIFFICULTY
 #define B_VAR_DIFFICULTY                TESTING_VAR_DIFFICULTY
 

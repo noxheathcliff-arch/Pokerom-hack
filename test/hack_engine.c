@@ -1,6 +1,9 @@
 // Project engine hooks (see docs/hack/ENGINE_CHANGES.md).
 #include "global.h"
+#include "battle_setup.h"
 #include "caps.h"
+#include "trainer_see.h"
+#include "constants/battle_setup.h"
 #include "data.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -9,7 +12,9 @@
 #include "trainer.h"
 #include "constants/event_objects.h"
 #include "string_util.h"
+#include "script_affinity.h"
 #include "wild_encounter.h"
+#include "test/overworld_script.h"
 #include "constants/maps.h"
 #include "constants/map_groups.h"
 #include "test/test.h"
@@ -77,7 +82,6 @@ TEST("Level cap: non-decreasing along the badge flags, MAX_LEVEL after the champ
     };
     u32 i, prev;
 
-    ASSUME(B_EXP_CAP_TYPE == EXP_CAP_SOFT);
     ASSUME(B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST);
 
     for (i = 0; i < ARRAY_COUNT(milestones); i++)
@@ -98,6 +102,7 @@ TEST("Level cap: non-decreasing along the badge flags, MAX_LEVEL after the champ
 TEST("Level cap: soft cap reduces exp at/above the cap and boosts it below")
 {
     u32 i, cap;
+    ASSUME(B_EXP_CAP_TYPE == EXP_CAP_SOFT); // forced to EXP_CAP_NONE in config/test.h: skipped by make check
     for (i = 0; i < 8; i++)
         FlagClear(FLAG_BADGE01_GET + i);
     FlagClear(FLAG_IS_CHAMPION);
@@ -115,7 +120,7 @@ TEST("Level cap: soft cap reduces exp at/above the cap and boosts it below")
 TEST("Trainer classes: every class name fits in 12 characters")
 {
     u32 i;
-    STATIC_ASSERT(sizeof(gTrainerClasses[0].name) == 13, TrainerClassNameBufferIs13);
+    EXPECT_EQ(sizeof(gTrainerClasses[0].name), 13);
     for (i = 0; i < TRAINER_CLASS_COUNT; i++)
         EXPECT_LE(StringLength(gTrainerClasses[i].name), 12);
 }
@@ -155,3 +160,57 @@ TEST("Kanto NPCs: overworld graphics are built in Emerald")
         EXPECT(info->images != NULL);
     }
 }
+
+// ---------------------------------------------------------------------------
+// Declinable trainer battles (trainerbattle_single_declinable)
+// ---------------------------------------------------------------------------
+
+TEST("Declinable battles: only trainers flagged TRAINER_BATTLE_DECLINABLE can be refused")
+{
+    ASSUME(B_DECLINABLE_TRAINER_BATTLES == TRUE);
+    InitTrainerBattleParameter();
+    gNoOfApproachingTrainers = 1;
+    TRAINER_BATTLE_PARAM.mode = TRAINER_BATTLE_SINGLE;
+    EXPECT_EQ(IsTrainerBattleDeclinable(), FALSE);
+    TRAINER_BATTLE_PARAM.rivalBattleFlags = TRAINER_BATTLE_DECLINABLE;
+    EXPECT_EQ(IsTrainerBattleDeclinable(), TRUE);
+    gNoOfApproachingTrainers = 2; // two trainers at once: mandatory
+    EXPECT_EQ(IsTrainerBattleDeclinable(), FALSE);
+    gNoOfApproachingTrainers = 0;
+    InitTrainerBattleParameter();
+}
+
+TEST("Declinable battles: a refused trainer is remembered until the next map load")
+{
+    ClearDeclinedTrainerBattles();
+    gSpecialVar_LastTalked = 5;
+    RecordDeclinedTrainerBattle();
+    EXPECT_EQ(HasTrainerBattleBeenDeclined(5), TRUE);
+    EXPECT_EQ(HasTrainerBattleBeenDeclined(6), FALSE);
+    gSpecialVar_LastTalked = 40;
+    RecordDeclinedTrainerBattle();
+    EXPECT_EQ(HasTrainerBattleBeenDeclined(40), TRUE);
+    ClearTempFieldEventData();
+    EXPECT_EQ(HasTrainerBattleBeenDeclined(5), FALSE);
+    EXPECT_EQ(HasTrainerBattleBeenDeclined(40), FALSE);
+}
+
+// ---------------------------------------------------------------------------
+// Affinity / reputation helpers (addaffinity / subaffinity)
+// ---------------------------------------------------------------------------
+
+TEST("Affinity: addaffinity / subaffinity clamp to the range")
+{
+    VarSet(VAR_TEMP_0, 95);
+    RUN_OVERWORLD_SCRIPT(addaffinity VAR_TEMP_0, 10;);
+    EXPECT_EQ(VarGet(VAR_TEMP_0), 100);
+    EXPECT_EQ(gSpecialVar_Result, 100);
+    RUN_OVERWORLD_SCRIPT(subaffinity VAR_TEMP_0, 30;);
+    EXPECT_EQ(VarGet(VAR_TEMP_0), 70);
+    RUN_OVERWORLD_SCRIPT(subaffinity VAR_TEMP_0, 200;);
+    EXPECT_EQ(VarGet(VAR_TEMP_0), 0);
+    RUN_OVERWORLD_SCRIPT(addaffinity VAR_TEMP_0, 7, 0, 5;);
+    EXPECT_EQ(VarGet(VAR_TEMP_0), 5);
+    EXPECT_EQ(AddAffinityClamped(VAR_TEMP_0, -1, 0, 100), 4);
+}
+

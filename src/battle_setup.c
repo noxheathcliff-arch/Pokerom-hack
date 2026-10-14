@@ -2,6 +2,7 @@
 #include "battle.h"
 #include "load_save.h"
 #include "battle_setup.h"
+#include "battle_controllers.h"
 #include "battle_tower.h"
 #include "battle_transition.h"
 #include "main.h"
@@ -1297,6 +1298,41 @@ bool32 HasTrainerBattleBeenDeclined(u32 localId)
     if (localId >= 64)
         return FALSE;
     return (sDeclinedTrainerLocalIds[localId / 32] >> (localId % 32)) & 1;
+}
+
+// Hack: B_FLAG_CHOOSE_BATTLE_LEAD. The chosen slot is consumed by SetBattlePartyIds
+// (battle_controllers.c) for the next battle only; the party order is never changed.
+EWRAM_DATA static u8 sChosenBattleLeadPlusOne = 0; // 0 = no choice (EWRAM starts zeroed)
+
+bool32 ShouldChooseBattleLead(void)
+{
+    u32 i, count = 0;
+
+    sChosenBattleLeadPlusOne = 0;
+    if (B_FLAG_CHOOSE_BATTLE_LEAD == 0 || !FlagGet(B_FLAG_CHOOSE_BATTLE_LEAD))
+        return FALSE;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (IsValidForBattle(&gParties[B_TRAINER_PLAYER][i]))
+            count++;
+    }
+    return count >= 2;
+}
+
+void SetBattleLeadFromSelection(void)
+{
+    // Validity (not fainted, not an egg) is checked when the battle consumes the choice.
+    if (gSpecialVar_0x8004 < PARTY_SIZE)
+        sChosenBattleLeadPlusOne = gSpecialVar_0x8004 + 1;
+    else
+        sChosenBattleLeadPlusOne = 0;
+}
+
+u32 ConsumeChosenBattleLead(void)
+{
+    u32 lead = sChosenBattleLeadPlusOne ? sChosenBattleLeadPlusOne - 1 : PARTY_SIZE;
+    sChosenBattleLeadPlusOne = 0;
+    return lead;
 }
 
 void ClearDeclinedTrainerBattles(void)

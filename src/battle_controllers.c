@@ -469,10 +469,21 @@ bool32 ShouldUpdateTvData(enum BattlerId battler)
 
 static void SetBattlePartyIds(void)
 {
+    u32 chosenLead = ConsumeChosenBattleLead(); // Hack: B_FLAG_CHOOSE_BATTLE_LEAD
+
+    // Not in link or Battle Frontier battles (the only battles that can be saved as recordings).
+    if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_FRONTIER))
+        chosenLead = PARTY_SIZE;
+
     if (!(gBattleTypeFlags & BATTLE_TYPE_MULTI))
     {
         for (enum BattlerId i = 0; i < gBattlersCount; i++)
         {
+            if (i == B_BATTLER_0 && chosenLead < PARTY_SIZE && IsValidForBattle(&GetBattlerParty(i)[chosenLead]))
+            {
+                gBattlerPartyIndexes[i] = chosenLead;
+                continue;
+            }
             for (u32 j = 0; j < PARTY_SIZE; j++)
             {
                 if (i < 2)
