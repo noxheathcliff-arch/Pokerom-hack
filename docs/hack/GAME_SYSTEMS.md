@@ -223,14 +223,14 @@ Fréquences (sim) : M1 FERMER 72 % · CHARTE 25 % · LIBÉRER 3 % ; M2 REMPART 3
 **Matrice témoin (une partie réelle du modèle par issue ; à rejouer en harnais avec états forcés) :**
 | Motion → issue | Votes (après bascule) | Bascule par Red | Défendue |
 |---|---|---|---|
-| M1 → FERMER | NOR 2, PRO 3, PET 1, ROC 2, MAX 1, ART —, DOY 3, COM 2, BRI 1 (égalité 3-3-2 → statu quo) | PRO | LIBÉRER |
+| M1 → FERMER | NOR 2, PRO 3, PET 1, ROC 2, MAX 1, ART —, DOY 3, COM 2, BRI 1 (égalité FERMER–CHARTE 3-3 ; défendue hors égalité → statu quo) | PRO | LIBÉRER |
 | M1 → CHARTE | NOR 1, PRO 2, PET 1, ROC 2, MAX 1, ART 2, DOY 1, COM 2, BRI 2 | — | CHARTE |
 | M1 → LIBÉRER | NOR 2, PRO 3, PET 1, ROC 1, MAX 1, ART —, DOY 3, COM 2, BRI 3 (égalité 3-3, `N`/`BR`) | PRO | LIBÉRER |
 | M2 → REMPART | NOR 1, PRO 3, PET 2, ROC 3, MAX 1, DOY 1, BRI 1, COM 1 | PRO | MARCHÉ |
 | M2 → INTÉGRATION | NOR 1, PRO 2, PET 2, ROC 3, MAX 1, DOY 1, BRI 2, COM 2 | — | REMPART |
 | M2 → MARCHÉ | NOR 1, PRO 3, PET 1, ROC 3, MAX 3, ART 2, BRI 2, COM 3 | PRO | MARCHÉ |
 | M3 → KANTO | NOR 1, PRO 1, PET 1, ROC 3, MAX 2, DOY 3, COM 1, BRI 3, Juan 3 | PET | KANTO |
-| M3 → HOENN | NOR 1, PRO 2, PET 3, ROC 1, MAX 2, DOY 3, COM 3, BRI 2 (égalité 3-3-2... HOENN défendue, `BR` ≥ 60) | — | HOENN |
+| M3 → HOENN | NOR 1, PRO 2, PET 3, ROC 1, MAX 2, DOY 3, COM 3, BRI 2 (égalité HOENN–PARTAGÉE 3-3 ; défendue gagne car `N` ≥ 2 ou `BR` ≥ 60) | — | HOENN |
 | M3 → PARTAGÉE | NOR 3, PET 3, ROC 3, ART —, DOY 3, COM 3, BRI 3, Juan 3 | NOR | PARTAGÉE |
 Test harnais : pour chaque ligne, forcer les vars/flags de la partie témoin (`--sim` les imprime : `MWIT`), jouer D108–D110, lire `VAR_CF_SUMMIT` b6-11.
 
@@ -308,3 +308,129 @@ Retour de l'équipe de Red par le canal de la fin (F1 PC de Ciléo, F2 anneau, F
 ## 13. Quêtes et QoL
 **Quêtes :** fil de Hoopa (10 gestes) ; Piko (D006 → F2 ou lettre) ; missions de zone ×6 ; quête de Bayar (D048, facultative, Éclate-Roc) ; Ferrand (D033 → D082 a) ; Défis Indigo (8 combats refusables, 4 sont des décisions) ; Tournoi (D034) ; Auguste–Fuji (D062 → D089) ; Timmy (D038 → D064 → D124) ; restauration (D128) ; fin cachée (D131).
 **QoL :** Multi Exp (`I_EXP_SHARE_FLAG FLAG_CF_EXP_SHARE`, ch. 3 par Chen ou ch. 4 par Seko : D030) — demandé par le brief D pour que le plafond n'empêche pas de diversifier ; choix du Pokémon de tête (`FLAG_CHOOSE_BATTLE_LEAD`) via un PNJ « coach » à Clémenti (ch. 1) ; difficulté (`VAR_DIFFICULTY`) proposée par Seko au ch. 0 (Normal/Difficile) ; `FLAG_NO_WILD_ENCOUNTERS` pendant les scènes et escortes ; soin ≤ 2 cartes (§15) ; le Carnet (objet clé) affiche les pièces du Dossier et les phrases de Red (lecture seule, aucune jauge).
+
+## 14. Allocation (résumé ; table définitive : `FLAGS_VARS_REGISTRY.md`)
+| Catégorie | Utilisé | Budget | Marge |
+|---|---|---|---|
+| Vars libres (`VAR_UNUSED_*` + vars d'état « Unused Var », 54 vérifiées par grep sans référence hors `vars.h`) | **44** (9 relations, 7 réputations, `PA`, `RK`, CHAPTER, ECO, WORLD, BVCOUNT, SUMMIT, CLIMAX, FIN, STANCE, 17 vars de décisions, CAP) | ≤ 45 | 10 libres (0x40DB, 0x40DC, 0x40E5, 0x40F9–0x40FF) |
+| Vars vanilla recyclées | **0** (inutile ; `VAR_SOOTOPOLIS_CITY_STATE` et `VAR_MOSSDEEP_CITY_STATE` sont lues par `src/overworld.c` : **interdites**) | — | — |
+| Flags persistants libres | **227** (0x22–0x4F : 46 ; 0x264–0x2BB : 88 ; 0x493–0x4EF : 93, dont 93 de visibilité par chapitre) | ≤ 260 | 59 (0x8E5–0x91F) + 32 isolés |
+| `FLAG_HIDE_*` vanilla recyclés | **40** (lecteurs = cartes réécrites + `new_game.inc`, aucun lecteur C ; liste et preuve grep au registre) | ~40 | 10 candidats prouvés non utilisés |
+| Flags temporaires | 0x5–0xD : bascules du Sommet (une seule carte) | — | — |
+| Quotidiens | **0** (0x920–0x95F remis à zéro chaque jour : exclus) | — | — |
+
+## 15. Traversée par branche et softlocks
+### 15.1 Capacités, donneurs, soins
+| Ch. | Trajet obligatoire | Capacités requises | Donneurs (vanilla conservé) | Soin ≤ 2 cartes |
+|---|---|---|---|---|
+| 0 | R104 plage → maison Marco → Clémenti → R102 → Rosyères → R101 → Bourg-en-Vol → R103 | aucune | — | Mme Seko (lit) ; Centre de Rosyères |
+| 1 | Bourg-en-Vol → Clémenti → R104 → Bois → Mérouville → R116 | aucune | Coupe (Roxanne, B1) | Centres de Clémenti, Mérouville |
+| 2 | R104 (bateau, `FLAG_DELIVERED_STEVEN_LETTER` posé à la remise) → Myokara → Grotte Granite | Flash facultatif | Flash (Bastien, B2) | Centre de Myokara (1 carte) |
+| 3 | Myokara → R107–109 → Poivressel → R110 sud | aucune | — | Centre de Poivressel |
+| 4 | R110 → Lavandia → R117 → Vergazon → Tunnel Mérazon | Éclate-Roc **au milieu du tunnel : non** — le raid ouvre le passage (`VAR_RUSTURF_TUNNEL_STATE` réécrit, lu aussi par `src/field_specials.c` : garder les valeurs vanilla 4–6) | Éclate-Roc (maison de Lavandia, après B3) | Brice soigne avant le raid ; Centre de Vergazon |
+| 5 | Lavandia → R111 sud → R112 → Chemin Ardent → R113 → Autéquia → R114 → Chutes Météore 1F_1R | Éclate-Roc (R111) | — | Centre d'Autéquia |
+| 6 | R112 (téléphérique ouvert par `FLAG_HIDE_ROUTE_112_TEAM_MAGMA`, posé en fin d'événement du ch. 5) → Mont Chimnée → Vermilava → Planque Magma 1F/2F_1R | aucune | Force (Adriane, B4) ; Lunettes Sable (Brice) | médecin du chantier (sommet + entrée de planque) |
+| 7 | Vermilava → R112 → Lavandia → R117 → Vergazon → Tunnel → R116 → Mérouville → R104 → Clémenti → Bourg-en-Vol | aucune | Surf (Norman, B5 ; `FLAG_RECEIVED_HM_SURF` lu par `PetalburgCity_WallysHouse` : remis par Norman, script réécrit) | Centres sur le trajet |
+| 8 | R118 (Surf) → R119 → Institut → Cimetronelle → R120 | Surf | Vol (Brice, R119, `VAR_ROUTE119_STATE` conservé) ; Scope + Méga-Anneau (D077, deux cas) | lit de l'Institut |
+| 9 | R120 → R121 → Nénucrique ; R122 (Surf) → Mont Mémoria | Surf | — | Centre de Nénucrique ; Spectra soigne au Mont Mémoria |
+| 10 | Nénucrique → R124 (ouverte par `FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS` quand `FLAG_CF_M_PLANQUE` ∧ `FLAG_CF_M_MEMORIA`) → Algatia | Surf | Plongée (Pierre Rochard, D101, deux cas : `FLAG_RECEIVED_HM_DIVE`) | Centre d'Algatia |
+| 11 | R127/128 → plongée → Caverne Fondmer | Surf, Plongée, Force, Éclate-Roc | — | infirmière d'Aqua **ou** Flora à l'entrée (D105, les deux soignent) ; Aldo en plus si `ALDO_RESPECT` |
+| 12 | R126 → plongée → Atalanopolis | Plongée | Cascade (Juan, B8) | Centre d'Atalanopolis ; soin forcé avant le Sommet |
+| 13 | veillée → lieu choisi (warps scriptés : relais, Pilier sommet, civils) | aucune (warps) | — | soin forcé à la veillée ; Doyenne avant le Pilier |
+| 14 | R128 → Éternara → Route Victoire | Surf, Cascade, Force, Éclate-Roc (Flash non requis : `requires_flash: false`) | — | Centre d'Éternara |
+### 15.2 Portes vanilla touchées (preuve grep, `data/maps/*/scripts.inc`, hors `map.json`)
+| Drapeau / var | Lecteurs vanilla | Traitement |
+|---|---|---|
+| `FLAG_DELIVERED_DEVON_GOODS` | Route109, DewfordTown, Route104_MrBrineysHouse, OceanicMuseum 1F/2F, SternsShipyard_1F, `src/pokenav_match_call_data.c` | posé dans les 2 options de D029 (sens vanilla gardé) |
+| `FLAG_DELIVERED_STEVEN_LETTER` | DevonCorp_3F, GraniteCave_StevensRoom, Route104, MrBrineysHouse, DewfordTown, pokenav | posé à la remise (ch. 2), même si D018 c (Pierre Rochard absent : la lettre est laissée sur son bureau) |
+| `FLAG_HIDE_ROUTE_112_TEAM_MAGMA` | Route112, MeteorFalls_1F_1R | posé par la fin d'événement commune du Site Météore (D050) |
+| `FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS` | LilycoveCity, AquaHideout_B2F | posé quand planque résolue ∧ Mont Mémoria |
+| `FLAG_HIDE_ROUTE_119_TEAM_AQUA` | Route119, WeatherInstitute 1F/2F | occupation de l'Institut par Sarah ; levé par D072 (2 issues) |
+| `VAR_ROUTE119_STATE`, `FLAG_RECEIVED_HM_FLY` | Route119 | Brice 3 et Vol conservés |
+| `FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE` | SootopolisCity, MtPyre_Summit | posé à la nouvelle partie (état normal) ; portes de l'arène pilotées par `FLAG_CF_M_FONDMER` |
+| `VAR_SOOTOPOLIS_CITY_STATE`, `VAR_MOSSDEEP_CITY_STATE` | + `src/overworld.c` | **non recyclées** ; valeurs vanilla de repos |
+| `VAR_PETALBURG_GYM_STATE` | 7 scripts dont `prof_birch.inc` | réécrit : Norman accepte le défi à 4 badges (sens vanilla) |
+| `VAR_RUSTURF_TUNNEL_STATE` | RustboroCity, RusturfTunnel, `event_scripts.s`, `src/field_specials.c` | posé à la valeur « tunnel ouvert » par la fin du raid (D040, 3 issues) |
+| `FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN` | 6 cartes + pokenav | **jamais posé** (Kyogre dort, bible §6) |
+### 15.3 Cas de softlock examinés
+| Cas | Risque | Parade |
+|---|---|---|
+| Plongée ouvre Fondmer **et** Atalanopolis | Sommet avant Fondmer (S12 v2) | Sommet et arène exigent `FLAG_CF_M_FONDMER` ; garde explicite |
+| Refus d'un combat refusable | décision perdue / question reposée (S2 v2) | `trainerbattle_single_declinable` + script de refus (D1) qui écrit le slot (valeur 3) ; refus définitif |
+| Défaite dans un combat d'histoire | voile blanc, jalon non posé | `FLAG_CF_NO_WHITEOUT` + soin scripté + script de fin commun |
+| Mission de zone ignorée | état orphelin | MIXTE posé au jalon de fin de chapitre |
+| Hoopa suiveur sur l'eau / en Plongée | blocage du suiveur | `FLAG_CF_HOOPA_SUIVEUR` effacé sur les cartes d'eau (ON_TRANSITION), rétabli à terre |
+| Retour arrière du ch. 7 (trajet long) | ennui, pas de blocage | contenu sur le trajet (D063–D071) |
+| D063 a (filature) | Vergazon sans Red | script automatique (§8.1), aucun PNJ bloquant |
+| D079 / D123 (donner un Pokémon) | équipe vide | option masquée si l'équipe a < 2 Pokémon |
+| Kiosque prend un objet | objet clé perdu | liste fixe sans objets clés |
+| Vélo Cross | sprites manquants (ENGINE_CHANGES §B) | jamais requis ; Pilier par warp scripté |
+| Climax sans allié compétent pour un lieu | lieu vide | Brice toujours disponible (C) ; un lieu vide est **légal** et lisible (veillée : “Personne ne tient le Pilier.”) |
+
+## 16. Lectures par carte (états lus → ce qui change)
+| Carte (dossier vanilla) | États lus | Effet observable |
+|---|---|---|
+| PetalburgCity_Gym (QG) | N, D017, D016, `VOTE_ABATTAGE`, `BOB_QUARTIER`, `BR` | barrage, insigne, vote du ch. 7 |
+| PetalburgWoods | D008, `FL` | brigade présente / arrivants enfuis |
+| RustboroCity + DevonCorp 2F/3F | Z-02, D009, D011, D013, D071, D015 | boutique (Corde Sortie), affiche, Ferrand, mineur revenu, scène W2 |
+| Route116 | Z-02, D012, D014, `HO` ≥ 40 (D066) | tables E-ECO, sbires, carnet rendu |
+| RusturfTunnel | D014 b, D015, D040 | effectifs, approche du raid |
+| DewfordTown (+ Gym) | Z-01, D006 (Marco), D019, D021, D022 | boutique (Baies Oran), passage gratuit, Aldo |
+| GraniteCave_StevensRoom | D018 | Pierre Rochard présent ou lettre sur le bureau |
+| SlateportCity (port, marché, Tente, chantier, musée) | D025, D026, D027, D030, D031, D032, D034, `FK`, `N`, Kiosque | foule, fillette sans Goélise, Blue/Scott, Chen/Seko, pétition, Défis |
+| Route109_SeashoreHouse | D035 | couple présent / amendé |
+| MauvilleCity / NewMauville | D036, D041, D042, D043, `BOB_*` | quartier éclairé ou sombre, Pikachu |
+| VerdanturfTown / Route117 | Z-03, D037, D038, D063, D064 | baies, Timmy et son arrivant, brigade |
+| Route111 (désert) | D048, Z-03 | ruines scellées / Kraknoix |
+| Route112 / MeteorFalls_1F_1R | D046, D050, `FLAG_HIDE_ROUTE_112_TEAM_MAGMA` | capteur, clans, téléphérique |
+| FallarborTown / Route113–114 | D047, D049, D052, D053 | Kosmo (lunettes), Lanette, fragment, Aster |
+| MtChimney / LavaridgeTown / MagmaHideout | Z-06, D054–D062 | troupeau, sources vides, Ariane, Erika/Adriane, Auguste |
+| LittlerootTown (maisons, labo) | D005, D030, D041, D067, D068, BV | dîner, publication, Pikachu chez Brice |
+| Route119 + Institut | D072, D080, D077 | occupation, Sarah sur le pont |
+| FortreeCity / Route120 | Z-04, D074, D075, D076, D078, D079, D081 | nids, piège, suiveur, Morgane, Jeannine |
+| LilycoveCity (port, toit, Concours, Safari) | D082, D083, D084, D085, D090, D091, D093, garde MISSION | nuit du marché, Blue/Giovanni, Ondine/Aldo, cage de Hoopa |
+| MtPyre (extérieur, sommet) | D086–D089 | rite, Agatha, article, Fuji/Auguste |
+| MossdeepCity (+ Gym, Centre Spatial, maison de Pierre Rochard) | D094–D101, `N` ≥ 2, `RK` ≥ 40 | piège nominatif, seconde équipe d'Ariane, faux Giovanni, Plongée |
+| SeafloorCavern_* | D102–D105, `REL_ONDINE_ARTHUR`, `ALDO_RESPECT` | camp d'Ondine, soigneurs, câble |
+| SootopolisCity (+ Gym) | `FLAG_CF_M_FONDMER`, Sommet (tout §9), D107–D115 | séance, votes, R4 |
+| Veillée, MossdeepCity_SpaceCenter_2F, SkyPillar_Top, civils | §10 | lieux, alliés, Fiole |
+| VictoryRoad_1F, EverGrandeCity_* | Blue (`BL`, `BLUE_LIBRE`, D123), D124, `VAR_CF_FIN` | équipes et répliques du Conseil 4 (écho de la fin), Maître |
+| Cartes du postgame | `VAR_CF_FIN`, D125–D131, `FK`, ECO | canal de retour, Kiosque, sbires, Mewtwo, Regis |
+
+## 17. Aides moteur requises (code en ROM ; IWRAM interdite)
+| Code | Aide | Exigée par | État |
+|---|---|---|---|
+| E-CAP | config `LEVEL_CAP_VARIABLE` + `VAR_CF_CAP` + `CF_RaiseCap` (script) | §7 | config seule |
+| E-BITS | specials `CF_GetBits` / `CF_SetBits` (var, décalage, largeur → `VAR_RESULT`) | toutes les décisions (slots), WORLD, ECO, SUMMIT, CLIMAX, FIN, STANCE | **bloquant** (~40 lignes C) |
+| E-REPREL | special `CF_RepStanding` (`VAR_RESULT = rX − moyenne + 100`) | §3.2 (tous les lecteurs de réputation) | **nouveau, bloquant** (~20 lignes) |
+| E-ECO | table {carte, zone} → en-tête alternatif selon `VAR_CF_ECO` | §3.5, D010, D018, D037, D054, D074, D102, D128 | brief D |
+| E-OUT | poser / effacer une épidémie (espèce, carte, niveau) ; couper le tirage TV | §3.3 (P2), F5 postgame | brief D |
+| E-ADAPT | type dominant de l'équipe → `VAR_RESULT` | brief B (Blue, Giovanni, Peter), D123 | brief B |
+| E-REMOVE | `removepartymon SLOT` | prologue (D001), D079, D123 | ~10 lignes |
+| E-NATIVE | espèce du dex de Hoenn ? → `VAR_RESULT` | D085, D123 (natif) | ~10 lignes |
+| E-LVL | **aucun code** : `givemon` lit le niveau par `VarGet` (`src/script_pokemon_util.c:506`) → `copyvar VAR_0x8001, VAR_CF_CAP ; subvar 2` | D041 | vérifié par lecture |
+| Existants | D1 refusables, D2 tête, E affinités, N1 sans rencontres, `setfollowernpc`, `dynmultichoice`, `ChoosePartyMon` | partout | `ENGINE_CHANGES.md` |
+| Non requis | E-SB3, E-PRICE (remplacé par ruptures de stock), E-LEND (D118 b donne des objets) | — | — |
+
+## 18. Checklists
+**GM_METHOD §6.1 :** intention (thèse bible §2 : lire ce que ses choix prennent aux autres) ✔ ; comportement observable (choisir, montrer, désigner, se placer) ✔ ; économie : sources/puits par système §3, §6 ✔ ; dominance : §5 chiffré ✔ ; progression : chaque chapitre ouvre des options (alliés, pièces, votes) ✔ ; sens : §1 ✔ ; UX : aucune jauge, perception par réactions, bulletin en mots ✔ ; faisabilité : budgets §14, aides §17 ✔ ; **aucune affirmation « testé » : le modèle papier est une preuve de cohérence, pas un test ROM** ✔.
+**§6.2 Technique :** fiches 15 champs → le registre (champs du brief C) en tient lieu par décision ; flags/vars recensés sans collision (registre) ✔ ; build/tests : **non exécutés** (aucun code écrit) ✘ (attendu : porte prototype) ; dépendances : E-BITS et E-REPREL sur le chemin critique.
+
+## 19. Conflits et écarts (à arbitrer par le GMD)
+| # | Conflit | Cause | Choix fait ici | Alternative / coût |
+|---|---|---|---|---|
+| K-C1 | Bible ch. 11 « Grotte Tréfonds » = en FR vanilla **Caverne Fondmer** (`SeafloorCavern`, R128 sous-marin) ; « Grotte Tréfonds » = `ShoalCave` (`region_map_sections.json`) | erreur de nom | on écrit Caverne Fondmer | renommer la carte : risque de confusion avec Shoal Cave |
+| K-C2 | Réputations lues **relativement** (`S(X)`) au lieu de seuils absolus (bible §11.1 « vars 0–100 ») | sans cela, « plaire à tous » marche (7/7 ≥ 55 trouvé par recherche) | lecture relative + E-REPREL | seuils absolus relevés : fragile, à retarer à chaque ajout |
+| K-C3 | Seuil du PACTE : brief A « `HO` ≥ 80 au relais » ; ici 70 (Red donneur), 80 (allié) | borne analytique de `HO` = 87 : 80 exigerait 9 gestes sur 10 | 70 / 80 | 80 partout : F2 devient quasi introuvable |
+| K-C4 | Amaryllis ne renonce **que** si Red est au Pilier (brief A : renonce/persiste/sacrifice selon `AM` et preuves) | chemin doré (F2 + RENONCE + civils sains) trouvé sinon | renonciation exclusive par présence | autoriser Aragon : rouvre le chemin doré |
+| K-C5 | « Pacte + intégration + Rocket démantelée » reste atteignable (sans « toutes relations ≥ 60 ») | chemin libéral cohérent | gardé, au prix chiffré §5 | l'interdire = punir une cohérence thématique |
+| K-C6 | Plafond « Maître → 60 » interprété : 60 à l'entrée de la salle du Maître, 75 au Panthéon, 100 au retour de l'équipe | ligne bible ambiguë | §7 | — |
+| K-C7 | Défis Indigo : 8 refusables, seuls 4 sont des décisions comptées (Koga, Peter, Major Bob, Aldo) ; les autres sont du contenu | bible §10.1 (décision seulement si état lu) | conforme | — |
+| K-C8 | Brief D : état ABATTU (2 bits) adopté ; prix → ruptures de stock | évite une aide moteur | adopté | E-PRICE si le GMD veut des prix |
+| K-C9 | Mewtwo « laisser » (brief D §9.4) : D126 b **retarde** la capture (lettre de Fuji), ne la supprime pas | invariant 9 | adopté | — |
+| K-C10 | Brief A demande `STANCE_ERIKA`, `STANCE_MAX`, `REL_*` : fusionnés en flags ou en bits de `VAR_CF_STANCE` ; `REL_CHEN_SEKO` **dérivé** à la fin | budget | voir registre | — |
+
+## 20. Changelog
+| Date | Version | Changement | Auteur |
+|---|---|---|---|
+| 2026-10-14 | 3.0 | Réécriture complète pour *Confluence* : systèmes, lecture relative des réputations, Sommet à 9 votants, climax à 3 lieux, fins ordonnées, plafonds par var, allocation, traversée, lectures par carte ; modèle `cf_model.py` | GMD secondaire (brief C) |
