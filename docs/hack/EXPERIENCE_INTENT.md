@@ -7,6 +7,17 @@
 
 ---
 
+## 0. Addendum v2 (2026-10-14) — ce que le brief v2 change (prioritaire sur la suite en cas de conflit)
+
+1. **Le joueur incarne Red**, ancien Maître de Kanto, muet `[CANON-JEU]`. La thèse §1 devient : *le joueur le plus fort du monde découvre que la force ne lit pas le monde à sa place.* La compétence récompensée reste **observer → formuler une hypothèse → préparer → vérifier**, mais elle s'applique aussi aux **gens** (confiance, intérêts, preuves) et plus seulement aux combats.
+2. **« Ce que le joueur doit maîtriser » (§2.3) s'élargit** : en plus de la construction d'équipe, il doit apprendre à **choisir où il est, avec qui il agit, et quoi il prouve**. Les problèmes politiques, relationnels et moraux ne se règlent pas par le combat (invariant de la bible).
+3. **Fun visé (§3)** : la maîtrise mentale reste première ; s'y ajoutent le **plaisir de l'enquête** (preuves) et la **tension du choix à conséquences** (registre de 120 décisions, systèmes cachés, 5 fins). Pas de jauge de morale unique.
+4. **Variation des joueurs (§5)** : le vétéran de Pokémon « est » Red ; il est servi par la difficulté des boss et la richesse des choix, pas par des niveaux. Le joueur occasionnel est servi par Brice (qui explique et parle), par le mode Normal et par des conséquences toujours expliquées après coup.
+5. **Comportements cibles (§4) ajoutés** — minute 20 : il a déjà fait un choix qui change ce qu'un PNJ dit de lui ; heure 5 : il a rassemblé une preuve qu'il a cherchée lui-même et vu une conséquence différée d'un choix du prologue ; heure 15 : il sait qu'il ne peut pas tout sauver et choisit en connaissance de cause.
+6. **Arc de maîtrise (§7)** : remplacé par `COMBAT_DESIGN.md` §2 (même logique, factions Rocket/Magma/Aqua/Blue comme couches).
+7. **Grille (§9.2)** : remplacée par la grille v2 de `NARRATIVE_DIRECTIONS.md` §0 (ajout de C11 « profondeur des décisions et des conséquences » et C12 « justification de Kanto à Hoenn », poids rééquilibrés ; porte E6 « avenir canonique préservé »).
+8. **Hypothèses H1–H7 (§10)** : résolues dans `GAME_DESIGN_BIBLE.md` v2.0 (§7-§8) et `GAME_SYSTEMS.md` (§3, §10) : plafonds souples sur jalons d'histoire ; mode Normal/Expert ; Méga seule ; pas de rencontres par heure ; Blue adaptatif ; DexNav et suiveurs Pokémon désactivés, PNJ suiveur activé ; pas de cartes RFVF.
+
 ## 1. La thèse en une phrase
 
 > **Le joueur part comme quelqu'un qui *subit* les combats et le monde, et finit comme quelqu'un qui les *lit* : il anticipe un adversaire, construit une équipe comme une réponse à une question, et comprend ce qui s'est réellement passé dans cette région — parce que le jeu lui a appris à observer, pas parce qu'on le lui a raconté.**

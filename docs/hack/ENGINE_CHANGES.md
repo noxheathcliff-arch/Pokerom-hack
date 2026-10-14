@@ -1,0 +1,163 @@
+# ENGINE_CHANGES — modifications moteur du projet
+
+> Base : pokeemeraude-expansion 1.16.4 (FR). Auteur : programmeur moteur. Dernière mise à jour : 2026-10-14 (brief v2).
+> Toutes les modifications sont marquées `Hack:` dans le code (`grep -rn "Hack:" src include asm data/scripts`).
+> Registre des flags/vars : [`FLAGS_VARS_REGISTRY.md`](FLAGS_VARS_REGISTRY.md) (source unique).
+> Tests : `test/hack_engine.c` (tests unitaires) et `test/battle/hack_choose_lead.c` (tests de combat), lancés par `make check`.
+
+## Résumé de vérification
+
+| Vérification | Résultat |
+|---|---|
+| `make -j4` (ROM normale) | **EXIT 0** ; EWRAM 226 596 o (86,44 %), IWRAM 28 376 o (inchangé, 86,60 %), ROM 26 791 900 o (79,85 %, **+242 Kio** vs upstream, dus aux sprites Kanto) |
+| `tools/qa/run_smoke.sh . qa_artifacts/smoke_engine_v2` | **SMOKE: PASS** (nouvelle partie → sauvegarde → redémarrage → CONTINUER) ; **aucun script QA modifié** (les scripts se synchronisent sur `gMain.callback2`, la suppression de l'intro RHH ne les casse pas) |
+| `make check` | voir §Tests (`RESULTATS_CHECK`) |
+| En-tête ROM | `POKEMON HACK` / `BPEF` (vérifié dans `pokeemeraude.gba` à 0xA0) |
+
+---
+
+## A. Nettoyage et réglages de base
+
+| Fichier | Changement | Pourquoi |
+|---|---|---|
+| `Makefile` | `TITLE ?= POKEMON HACK` (12 car. max), `GAME_CODE` **inchangé** `BPEF` | titre provisoire neutre ; garder un code `BPE?` pour que les émulateurs activent RTC + Flash 128K (TECHNICAL_AUDIT §2) |
+| `include/config/general.h` | `EXPANSION_INTRO FALSE` | identité du hack ; l'intro RHH ne s'affiche plus (crédits RHH à garder ailleurs, README/crédits) |
+| `include/constants/flags.h` | `0x20` → `FLAG_NO_WILD_ENCOUNTERS`, `0x21` → `FLAG_CHOOSE_BATTLE_LEAD` | voir §N1, §D2 |
+| `include/constants/vars.h` | `0x40F7` → `VAR_DIFFICULTY` | §H2 |
+| `test/heure_suspendue.c` → `test/hack_engine.c` | renommé, réécrit sans rien de spécifique à l'ancienne histoire | |
+| Classes de dresseurs (Carillonneur/Veilleur) | **retirées** (revert des fichiers `battle_main.c`, `battle_message.c`, `international_string_util.c`, `pokemon.c`, `strings.c`, `constants/trainers.h`) | propres à l'histoire abandonnée |
+| Effacement auto du flag de non-rencontre à chaque chargement de carte | **retiré** | n'était utile qu'au Figement ; un flag persistant est plus général (zones sûres, cinématiques, escortes) |
+
+### `make release`
+`make release` existe (Makefile l. 59-60, 160-163, 337) : objets dans `build/emeraude-release/`, sortie `pokeemeraude-release.gba`, `-DRELEASE` + LTO (`USE_LTO_ON_RELEASE ?= 1` dans `config.mk`) + `NDEBUG`. Effets : `DEBUG_OVERWORLD_MENU`, `DEBUG_BATTLE_MENU`, `DEBUG_POKEMON_SPRITE_VISUALIZER`, `I_SHOW_NO_ID_TRAINER` passent à FALSE (`DISABLED_ON_RELEASE`), Quickstart (SELECT à l'écran titre) désactivé (`include/quickstart.h`). **Non lancé** dans cette session (budget) : à faire avant toute livraison.
+
+---
+
+## N1. Aucune rencontre sauvage sous un flag (`FLAG_NO_WILD_ENCOUNTERS`)
+
+**Constat :** l'expansion a déjà `WE_FLAG_NO_ENCOUNTER` (`include/config/wild_encounter.h`), mais il ne bloque que les rencontres **en marchant** (`ShouldDisableRandomEncounters`, `src/field_control_avatar.c`) et les **rencontres visibles** (`src/wild_encounter_ow.c`). Pêche, Éclate-Roc et Doux Parfum/Miel passaient encore.
+
+| Fichier | Changement |
+|---|---|
+| `include/config/wild_encounter.h` | `WE_FLAG_NO_ENCOUNTER FLAG_NO_WILD_ENCOUNTERS` (réutilise le mécanisme upstream) |
+| `src/wild_encounter.c` | nouvelle fonction `IsWildEncounterFlagSet()` ; retour anticipé dans `DoesCurrentMapHaveFishingMons()` (→ « Pas même une touche »), `RockSmashWildEncounter()` (`VAR_RESULT = FALSE`), `SweetScentWildEncounter()` (le Miel utilise le même effet → échec normal) |
+| `include/wild_encounter.h` | prototype |
+
+**Usage script :** `setflag FLAG_NO_WILD_ENCOUNTERS` … `clearflag FLAG_NO_WILD_ENCOUNTERS`. Le flag est **sauvegardé et persistant** : le script qui le pose doit l'effacer (par ex. dans le `ON_TRANSITION` des cartes voisines, ou à la fin de la séquence).
+**Tests :** `test/hack_engine.c` — câblage `WE_FLAG_NO_ENCOUNTER == FLAG_NO_WILD_ENCOUNTERS` ; pêche : TRUE sans flag (témoin positif, Route 114), FALSE avec ; Éclate-Roc et Doux Parfum : 500 essais → aucune rencontre. **Non testé directement :** le chemin « pas dans l'herbe » (fonction `static` upstream) — couvert par lecture de code uniquement.
+
+## H1. Plafonds de niveau souples
+
+| Fichier | Changement |
+|---|---|
+| `include/config/caps.h` | `B_EXP_CAP_TYPE EXP_CAP_SOFT`, `B_LEVEL_CAP_TYPE LEVEL_CAP_FLAG_LIST`, `B_LEVEL_CAP_EXP_UP TRUE` |
+| `src/caps.c` | table `sLevelCapFlagMap` : **valeurs provisoires** (15/19/24/29/33/38/44/50/58 sur les 8 badges puis le Maître ; 100 ensuite) + mode d'emploi en commentaire |
+
+**Fonctionnement :** le plafond = valeur du **premier flag non posé** de la liste ; une fois tous posés → `MAX_LEVEL`. Au-dessus du plafond l'EXP est divisée (÷4 au plafond, ÷8 à +1… ÷64 à +4 et plus) ; en dessous, bonus (`B_LEVEL_CAP_EXP_UP`).
+**Ajouter un jalon d'histoire :** insérer `{FLAG_<jalon>, <plafond>}` à sa place chronologique ; l'ordre doit être garanti dans **toutes** les parties (un flag posé hors ordre « saute » des paliers). N'importe quel flag sauvegardé convient (badge, `FLAG_DEFEATED_*`, flag d'histoire du registre). Pour une histoire non linéaire, préférer `LEVEL_CAP_VARIABLE` + une var mise à jour par script (`B_LEVEL_CAP_VARIABLE`).
+**Tests :** plafond non décroissant le long des badges, `MAX_LEVEL` après le Maître ; division/bonus d'EXP. Les valeurs ne sont pas figées dans les tests (le design les réglera). `B_RARE_CANDY_CAP` laissé FALSE (décision design).
+
+## H2. Difficulté (`B_VAR_DIFFICULTY`)
+
+- `include/config/battle.h` : `B_VAR_DIFFICULTY VAR_DIFFICULTY` (0x40F7).
+- **Sélection des équipes :** dans `src/data/trainers.party`, un second bloc avec le même `=== TRAINER_X ===` et `Difficulty: Hard` (ou `Easy`) définit la version alternative ; `trainerproc` génère `gTrainers[DIFFICULTY_*][TRAINER_X]`. `GetTrainerDifficultyLevel()` (`src/difficulty.c`) prend la version de la difficulté courante **si elle existe**, sinon `Normal`.
+- **Initialisation :** `NewGameInitData` appelle déjà `SetCurrentDifficultyLevel(DIFFICULTY_NORMAL)` (upstream). ⚠ Sans cela la var vaudrait 0 = `DIFFICULTY_EASY`.
+- **Script :** `setdifficulty DIFFICULTY_HARD` (ou `DIFFICULTY_NORMAL`) ; `getdifficulty` → `VAR_RESULT` ; `increasedifficulty` / `decreasedifficulty`.
+- Non testé spécifiquement (le test système force `B_VAR_DIFFICULTY` sur une var de test ; les tests upstream `trainer_control` couvrent la sélection).
+
+## H4. Arrêt de l'horloge (`OW_USE_FAKE_RTC` + `OW_FLAG_PAUSE_TIME`) — **non adopté**
+
+Analyse du code (`src/fake_rtc.c`, `src/rtc.c`, `src/play_time.c`, `include/global.h`) :
+- `OW_USE_FAKE_RTC TRUE` **remplace globalement** l'horloge matérielle : `RtcInit` ne lit plus la puce, l'heure est stockée en SaveBlock3 (`fakeRTC`, 8 o sur 1 623 libres) et avance seulement **pendant le jeu**, à chaque seconde de temps de jeu, d'un facteur `OW_ALTERED_TIME_RATIO` (GEN_LATEST = GEN_9 → **20 s de jeu par seconde réelle**, une journée = 72 min ; `GEN_8_PLA` = 60×, `TIME_DEBUG` = 1×).
+- Conséquences : l'heure réelle est perdue (baies, marées, événements quotidiens, Mirage… suivent l'horloge interne et s'arrêtent console éteinte) ; la nouvelle partie démarre à 10 h ; plus de dépendance à la puce RTC (avantage sur linkers sans RTC) ; s'arrête si le compteur de temps de jeu est bloqué (999 h).
+- `OW_FLAG_PAUSE_TIME` n'existe qu'avec la fausse RTC (`STATIC_ASSERT`) ; `fwdtime` / `FakeRtc_ForwardTimeTo` efface ce flag (pause → reprise).
+- **Décision : non adopté.** Changement de rythme jour/nuit global = décision de design. Repli conseillé si besoin d'un « temps arrêté » local : effet cosmétique (teinte/météo/musique), sans toucher à l'horloge.
+
+## Méga-Évolution : `ITEM_MEGA_RING`
+
+- Nom FR dans cette base : **« Méga-Anneau »** (`src/data/items.h`, `[ITEM_MEGA_RING]`, poche Objets rares). (« Méga-Bracelet » = nom ROSA ; renommer `.name` si le design le veut.)
+- Chemin : `CanMegaEvolve()` (`src/battle_util.c`) exige `CheckBagHasItem(ITEM_MEGA_RING, 1)` pour le joueur ; aucune autre condition (pas de flag). Les dresseurs adverses n'en ont pas besoin.
+- Ligne de script : `giveitem ITEM_MEGA_RING`.
+
+## Noms de classes de dresseurs (longueur)
+
+`struct TrainerClass` (`include/data.h`) : `u8 name[13]` → **12 caractères maximum** (+ fin de chaîne). Les formes féminines peuvent être plus longues via `GetTrainerClassNameGenderSpecific()` (`src/international_string_util.c`, chaînes séparées, ex. `ELEVE`). Pour renommer une classe : changer la chaîne dans `gTrainerClasses` (`src/battle_main.c`) en gardant l'ID ; pour une musique de combat dédiée : `GetBattleBGM()` (`src/pokemon.c`). ⚠ `IsTrainerIdToSwap()` (`src/battle_message.c`) inverse classe et nom pour `TEAM_AQUA/MAGMA` (« SBIRE TEAM MAGMA ») : à retirer si ces classes sont renommées. **Test :** toutes les classes tiennent en 12 caractères.
+
+---
+
+## B. Le joueur incarne Red (sprites Kanto en Émeraude)
+
+| Fichier | Changement |
+|---|---|
+| `include/config/overworld.h` | nouveau `OW_KANTO_PLAYER_AVATAR TRUE` |
+| `include/constants/event_objects.h` | `PLAYER_AVATAR_KANTO = (IS_FRLG \|\| OW_KANTO_PLAYER_AVATAR)` choisit les sprites `RED_*` (garçon) / `GREEN_*` (fille, sprites de Leaf) au lieu de Brendan/May pour tous les états (marche, vélo, surf, plongée, CS, pêche, arrosoir, Cherche VS) |
+| `src/trainer.c` | `GetEmeraldTrainerPic()` → `TRAINER_PIC_RED` / `TRAINER_PIC_LEAF` (dos en combat, sprites Kanto) |
+| `src/pokemon.c` | `PlayerGenderToFrontTrainerPicId()` → classes `RED` / `LEAF` (portrait de face : carte dresseur, etc.) |
+| `src/data/object_events/object_event_anims.h` | nouvelle table `sAnimTable_RedGreenNormal` : les feuilles Red/Green utilisent toujours les cadres de course FRLG (la table Brendan/May choisissait selon `IS_FRLG` → mauvais cadres en Émeraude) |
+| `object_event_graphics_info.h` | Red/Green normal → `sAnimTable_RedGreenNormal` |
+
+Brendan/May restent disponibles comme PNJ / rival (`GetRivalAvatarGraphicsIdByStateIdAndGender` utilise sa propre table en Émeraude).
+**Preuve :** `qa_artifacts/smoke_red/run1_new_game/06_start_menu.png` (Red dans le camion) ; tests unitaires (ID de sprites par état/genre, `GetPlayerTrainerPic(MALE, VERSION_EMERALD) == TRAINER_PIC_RED`, face).
+**Limites / à faire :**
+- Vélo Cross et Vélo Course utilisent la même feuille `RED_BIKE` : les **figures du Vélo Cross** (wheelie, sauts) n'ont pas de cadres dédiés → risque d'affichage incorrect : ne pas donner le Vélo Cross, ou fournir des sprites.
+- Le discours de Birch (choix du genre) montre encore Brendan/May ; l'intro devra être réécrite de toute façon.
+- Animation de course et dos en combat **non vérifiés visuellement** (pas de combat dans le smoke test).
+
+## C. Sprites Kanto en Émeraude
+
+Les blocs `#if IS_FRLG` des données d'objets ont été **ouverts** (remplacés par un commentaire `Hack:`) dans : `object_event_graphics.h`, `object_event_graphics_info.h`, `object_event_graphics_info_pointers.h`, `object_event_pic_tables.h` et la liste des palettes de `src/event_object_movement.c`. Tous les PNJ FRLG sont donc disponibles en Émeraude avec leurs ID `OBJ_EVENT_GFX_*` existants et leurs palettes (système de palettes dynamiques par tag, inchangé). Coût ROM : **+241 Kio** (≈ 6,4 Mio restent libres).
+**Liste demandée — sprites terrain présents (testés non NULL) :** BLUE, GIOVANNI, PROF_OAK, BROCK, MISTY, LT_SURGE, ERIKA, KOGA, SABRINA, BLAINE, LORELEI, BRUNO, AGATHA, LANCE, ROCKET_M, ROCKET_F, BILL, MR_FUJI, CELIO, DAISY (+ RED_*, GREEN_*).
+**Portraits de combat (face) dans la build Émeraude** (tous non gardés par `IS_FRLG`) : Blue = `TRAINER_PIC_RIVAL_EARLY_FRLG` / `RIVAL_LATE_FRLG` / `CHAMPION_RIVAL_FRLG` ; Giovanni = `LEADER_GIOVANNI_FRLG` ; Chen = `PROFESSOR_OAK_FRLG` ; arènes Kanto = `LEADER_*_FRLG` ; Conseil = `ELITE_FOUR_*_FRLG` ; Rocket = `ROCKET_GRUNT_M/F_FRLG`. **Manquants :** Bill, M. Fuji, Celio, Daisy (jamais dresseurs dans FRLG).
+
+## D1. Combats de dresseurs refusables
+
+**Conception (opt-in par dresseur, combats importants inchangés) :** un bit `TRAINER_BATTLE_DECLINABLE` (0x80) dans l'octet `rivalBattleFlags` déjà présent dans les paramètres de `trainerbattle` (inutilisé hors rival de début) — aucun nouveau mode, aucune modification de format.
+
+| Fichier | Changement |
+|---|---|
+| `include/constants/battle.h` | `TRAINER_BATTLE_DECLINABLE 0x80` |
+| `include/config/battle.h` | `B_DECLINABLE_TRAINER_BATTLES TRUE` (interrupteur global), `B_VAR_LAST_DECLINED_TRAINER 0` |
+| `asm/macros/event.inc` | macro `trainerbattle_single_declinable trainer, intro_text, lose_text[, event_script[, music]]` |
+| `data/scripts/trainer_battle.inc` | après le texte d'intro : si refusable → « Accepter le combat ? » (OUI/NON) ; NON → `RecordDeclinedTrainerBattle`, musique de la carte restaurée, fin |
+| `src/battle_setup.c` | specials `IsTrainerBattleDeclinable`, `RecordDeclinedTrainerBattle` ; `HasTrainerBattleBeenDeclined`, `ClearDeclinedTrainerBattles` (masque EWRAM de 8 o, localId < 64) |
+| `src/trainer_see.c` | un dresseur refusé **ne repère plus** le joueur jusqu'au prochain chargement de carte (évite une boucle de défis) |
+| `src/event_data.c` | `ClearTempFieldEventData` remet le masque à zéro (changement de carte) |
+| `data/specials.inc` | 2 specials |
+
+**Pour les scénaristes :** remplacer `trainerbattle_single TRAINER_X, Intro, Defaite` par `trainerbattle_single_declinable TRAINER_X, Intro, Defaite`. Refus : le flag du dresseur **n'est pas posé** (on peut lui reparler : la question est reposée) ; s'il faut réagir (réputation, dialogue), allouer une var et la mettre dans `B_VAR_LAST_DECLINED_TRAINER` (reçoit l'ID `TRAINER_*`). Non refusables : combats doubles, deux dresseurs qui repèrent en même temps, rival de début, revanches, `trainerbattle_no_intro`.
+**Tests :** unitaires (bit lu, cas « deux dresseurs » obligatoire, mémorisation et remise à zéro). **Non testé en émulateur** (aucun dresseur ne l'utilise encore ; preuve UI à faire sur le premier dresseur scripté).
+
+## D2. Choisir son Pokémon de tête
+
+Rien d'équivalent dans l'expansion (`grep lead/ChooseLead/B_PARTY_SELECT`). Conception la plus simple et sûre : **on ne réordonne pas l'équipe** ; on mémorise l'emplacement choisi et on l'utilise une seule fois quand le combat fixe les Pokémon envoyés.
+
+| Fichier | Changement |
+|---|---|
+| `include/config/battle.h` | `B_FLAG_CHOOSE_BATTLE_LEAD FLAG_CHOOSE_BATTLE_LEAD` (0 = fonction désactivée) |
+| `data/scripts/trainer_battle.inc` | `EventScript_MaybeChooseBattleLead` appelé juste avant `dotrainerbattle` (combats avec et sans intro) : si le flag est posé et ≥ 2 Pokémon aptes → `special ChoosePartyMon` (menu d'équipe ; B = tête par défaut) |
+| `src/battle_setup.c` | specials `ShouldChooseBattleLead`, `SetBattleLeadFromSelection` ; `ConsumeChosenBattleLead` (1 octet EWRAM, consommé au combat suivant) |
+| `src/battle_controllers.c` | `SetBattlePartyIds` : en combat non lié/non enregistré/hors Zone de combat, le combattant 0 du joueur prend l'emplacement choisi s'il est apte |
+
+**Activation :** `setflag FLAG_CHOOSE_BATTLE_LEAD` (option joueur à exposer : PNJ « coach », objet clé ou entrée du menu Options — l'intégration au menu Options, qui touche l'UI et la sauvegarde des options, est **différée**).
+**Limites :** combats sauvages non couverts (ils partent du C sans script : un menu d'équipe à ce moment demanderait de réorganiser les transitions) ; revanches Cherche VS non couvertes ; en double, seul le Pokémon de gauche est choisi.
+**Tests :** `test/battle/hack_choose_lead.c` (emplacement 2 envoyé en premier ; témoin sans choix). Menu d'équipe non testé en émulateur.
+
+## E. Affinités / réputation (convention)
+
+- **Stockage :** une var sauvegardée par relation/faction (allocation par le design, dans le registre). Plage conseillée 0..100, valeur neutre 50 (à poser au début de partie).
+- **Macros** (`asm/macros/event.inc`, C : `src/script_affinity.c`) :
+  - `addaffinity VAR, n[, min=0, max=100]` → `VAR = clamp(VAR + n, min, max)`, `VAR_RESULT` = nouvelle valeur ;
+  - `subaffinity VAR, n[, min, max]`.
+- **Seuils :** commandes existantes, pas de nouvelle commande : `goto_if_ge VAR, 70, Label`, `goto_if_lt VAR, 30, Label`, `call_if_ge`…
+- **C :** `AddAffinityClamped(varId, delta, min, max)`.
+- **Tests :** bornes haute/basse, plage personnalisée.
+
+---
+
+## Tests (`make check`)
+
+RESULTATS_CHECK
+
+## Fichiers touchés (résumé)
+
+`Makefile`, `include/config/{battle,caps,general,overworld,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`.
