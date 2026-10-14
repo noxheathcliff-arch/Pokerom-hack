@@ -214,3 +214,4 @@ Témoins complets (15 fins × variantes) : `GAME_SYSTEMS` §11.
 | Date | Changement | Auteur |
 |---|---|---|
 | 2026-10-14 | v3 : 131 décisions (124 robustes), règles durcies, audit S1–S20, contributions aux fins ; données et modèle exécutable | GMD secondaire (brief C) |
+| 2026-10-14 | v3.1 : arbitrage du GMD (`reviews/ARBITRATION_V3.md`) ; D030 « non prise » couverte (Multi Exp de Seko au ch. 4) ; nom Caverne Fondmer (ACT3) ; aucune décision ajoutée ni retirée | GMD |

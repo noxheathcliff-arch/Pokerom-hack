@@ -103,8 +103,8 @@ Le « plafond en vigueur » est celui **avant** que le jalon du combat soit pos�
 | planque Aqua | 42 | (rien de nouveau) |
 | Mont Mémoria | 44 | Ondine, Olga, Lévy et Tatia, Morgane |
 | badge 7 | 47 | Centre Spatial : Ariane, Lambda, Amaryllis ch. 10 ; Défis de Peter et Koga |
-| Centre Spatial | 49 | Tréfonds : Sarah, Arthur, Ondine (camp Aqua), Aldo |
-| Tréfonds | 51 | Juan |
+| Centre Spatial | 49 | Fondmer : Sarah, Arthur, Ondine (camp Aqua), Aldo |
+| Fondmer | 51 | Juan |
 | badge 8 | 53 | Brice ch. 12, climax : Ariane, Amos, Amaryllis ch. 13 |
 | climax | 56 | Blue final, Conseil 4, Maître |
 | Maître | 60 → postgame 75 | tous les combats T5 (niveaux fixes 75–78, même quand le plafond passe à 100) |
@@ -204,8 +204,8 @@ Légende : **O** obligatoire ; **2I** à deux issues racontées (victoire et dé
 | 38 | 10 | Centre Spatial 1F/2F | Ariane, puis Lambda (faux Giovanni), **série sans soin** | T3 (47) | 2I | D095 | Centre Spatial → 49 | `T-ARIANE-T3-RK{BAS,HAUT}`, `T-LAMBDA-T3` ; partenaire selon relations |
 | 39 | 10 | Centre Spatial, toit | Amaryllis 2 | T3 (47) | 2I | — | — | `T-AMARYLLIS-T3` |
 | 40 | 10 | Algatia | Peter, Défi Indigo (E-ADAPT × Drattak) | T3 (47) | R | D100 | — | `T-PETER-T3{A,B,C}-{DRATTAK,KANTO}` (6) |
-| 41 | 11 | Grotte Tréfonds | Sarah 2 (si elle reste) ; Ondine (camp Aqua) ; Arthur | T3 (49) | 2I / R (Ondine) | D102, D104 | Tréfonds → 51 | `T-SARAH-T3`, `T-ONDINE-T3-AQUA`, `T-ARTHUR-T3-{COUPE,NEGOCIE}` |
-| 42 | 11 | Grotte Tréfonds ou Tente | Aldo (escorte) ou finale du Tournoi T3 | T3 (49) | R | — | — | `T-ALDO-T3` |
+| 41 | 11 | Caverne Fondmer | Sarah 2 (si elle reste) ; Ondine (camp Aqua) ; Arthur | T3 (49) | 2I / R (Ondine) | D102, D104 | Fondmer → 51 | `T-SARAH-T3`, `T-ONDINE-T3-AQUA`, `T-ARTHUR-T3-{COUPE,NEGOCIE}` |
+| 42 | 11 | Caverne Fondmer ou Tente | Aldo (escorte) ou finale du Tournoi T3 | T3 (49) | R | — | — | `T-ALDO-T3` |
 | 43 | 12 | Atalanopolis, arène | Juan | T3 (51) | O | — | badge 8 → 53 | `T-JUAN-T3` |
 | 44 | 12 | Atalanopolis | Brice 4, duel avant le vote | T3 (53) | R | D111 | — | `T-BRICE-T3-CH12-{BV}-{T,M,G}` (9) |
 | 45 | 13 | Centre Spatial (relais) | Ariane 2 ; Amos (si `RK` haut) | T4 (53) | 2I | climax (C) | climax → 56 | `T-ARIANE-T4-RK{BAS,HAUT}`, `T-AMOS-T4` |
@@ -217,6 +217,8 @@ Légende : **O** obligatoire ; **2I** à deux issues racontées (victoire et dé
 | 51 | P | Bourg-en-Vol, Zone, sites | Défis T5 (tous), Giovanni (dernier duel), Chen, Têtes, Tournoi final (Brice **ou** Blue) | T5 (75) | R | D127, D130 | postgame → 100 | tous les `*-T5*` |
 
 **Bilan :** 51 rencontres majeures, 38 personnages adverses distincts, **175 équipes** (variantes comprises) + 175 blocs `Difficulty: Hard` + 3 partenaires. Aucun combat obligatoire n'est refusable ; aucune défaite n'est imposée (les combats d'histoire sont **O** ou **2I**).
+
+**Arbitrage v3.1 (C7) :** seuls D022, D043, D081 et D100 sont des décisions ; Pierre, Auguste, Erika, Ondine 1, Olga et Morgane sont des Défis de **contenu** (macro, flag de refus 0, le Défi reste proposé) ; le combat d'Agatha « rite profané » est un combat d'histoire. La recommandation ci-dessous (flags pour Olga et Agatha) est rejetée.
 
 **Combats refusables sans décision du brouillon C** (Pierre, Auguste, Erika, Ondine 1, Olga, Morgane, Agatha-rite) : demande au brief C (§11.1) soit de créer la décision (un flag de refus + un lecteur), soit de les traiter comme **Défis non comptés** (refus sans flag : le Défi reste proposé). Recommandation : flag de refus pour Olga et Agatha (ils écrivent un état lu au Sommet), pas de flag pour les autres.
 
@@ -354,7 +356,7 @@ Lecture : **Identité** (ce que l'équipe raconte, `CHARACTER_AND_LORE` §1.6) �
 
 **C-12 Pierre (Brock)** (plafond 18). *Identité :* l'éleveur de roche, défensif ; ceux que Red a sauvés aux mines se battent à ses côtés. SANS : Racaillou 16, Simularbre 16 (Johto), Onix 19 (Fermeté). AVEC : + **Charbi 16** (l'arrivant des mines, Galar). AI-G2. *Plan :* Fermeté et Étreinte usent. *Menaces → réponses :* Onix : Eau/Plante (Nénupiot, Marill ch. 1) ; Charbi (Roche/Feu au T5) : Eau, Sol. *Victoire :* (1) Eau/Plante ; (2) Combat (Férosinge). *T5 :* Grolem, Kabutops, Amonistar (Exuviation, Herbe Blanche), Simularbre, Strassie (SANS) ou Monthracite (AVEC), Méga-Steelix. Fossiles Nautile/Dôme : ceux qu'il échange au ch. 3 (`ENCOUNTERS_PLAN` §10.2).
 
-**C-21 Aldo** (plafond 20 ; 49 ; T5). *Identité :* le corps et l'honnêteté ; **aucun arrivant** : ses Pokémon sont venus avec lui par bateau. T1 : Onix 18, Tygnon 19, Kicklee 19, Machopeur 21. T3 (escorte de Tréfonds ou finale du Tournoi T3) : Kapoera, Kicklee (Téméraire), Tygnon (Veste de Combat), Steelix, Mackogneur 51. T5 : + Courrousinge (son Colossinge, évolué). AI-G2. *Plan :* coups physiques directs, aucune ruse. *Menaces → réponses :* Psy (Tarsal, Abra), Vol, Fée ; Intimidation (Medhyèna) ; T3 Mackogneur Cran : ne pas le brûler. *Victoire :* (1) Psy rapide ; (2) murs physiques (Galekid, Airmure).
+**C-21 Aldo** (plafond 20 ; 49 ; T5). *Identité :* le corps et l'honnêteté ; **aucun arrivant** : ses Pokémon sont venus avec lui par bateau. T1 : Onix 18, Tygnon 19, Kicklee 19, Machopeur 21. T3 (escorte de Fondmer ou finale du Tournoi T3) : Kapoera, Kicklee (Téméraire), Tygnon (Veste de Combat), Steelix, Mackogneur 51. T5 : + Courrousinge (son Colossinge, évolué). AI-G2. *Plan :* coups physiques directs, aucune ruse. *Menaces → réponses :* Psy (Tarsal, Abra), Vol, Fée ; Intimidation (Medhyèna) ; T3 Mackogneur Cran : ne pas le brûler. *Victoire :* (1) Psy rapide ; (2) murs physiques (Galekid, Airmure).
 
 **C-14 Major Bob** (plafond 22, double). *Identité :* le logisticien militaire : un **exercice**, pas un combat. Voltorbe 21, Magnéti 21, Élektek 21, Raichu 23 (Bluff, Toile Élek). Double, AI-G2. *Intention :* **premier double, sans enjeu** (refusable, aucune conséquence lourde : D043). *Menaces → réponses :* Bluff + Toile Élek (vitesse) : Sol (Osselait, Taupiqueur), Abri ; en double, attaques ciblées plutôt que de zone. *Victoire :* (1) concentrer deux attaques sur Raichu ; (2) Sol + Vol en duo. *T5 :* Électrode (écrans), Voltali, Magnézone, Élekable, Pharamp, Raichu (As).
 
@@ -396,7 +398,7 @@ Lecture : **Identité** (ce que l'équipe raconte, `CHARACTER_AND_LORE` §1.6) �
 
 **C-48 Arthur** (plafond 49 ; T5). *Identité :* la mer libre et vorace. COUPE : Grahyèna, Nostenfer, **Oyacata** (Inconscient, Paldea), **Démanta**, Grotadmorv + Méga-Sharpedo 51 (Turbo). NÉGOCIE : Grahyèna, Nostenfer, Wailord, Colhomard, Grotadmorv + Méga-Sharpedo. AI-V. *Plan :* Méga-Sharpedo (talent Méga : Mâchoire Forte, Mâchouille et Crocs Givre ×1,5) frappe fort et vite dès son entrée. *Menaces → réponses :* Sharpedo est fragile en défense : priorité (Vive-Attaque, Pisto-Poing), Électrik, Combat, Fée (Fluvetin) ; Oyacata (Inconscient) : Plante/Électrik spéciales. *Victoire :* (1) KO de Sharpedo à son entrée (priorité ou Pokémon plus rapide) ; (2) mur physique + Feu Follet.
 
-**C-52 Sarah** (plafond 35 ; 49). Institut : Wailmer 33, Grahyèna 34, Sharpedo 36. Tréfonds (si elle reste) : Prédastérie (Alola), Grahyèna, Wailord, Sharpedo 50. AI-V. *Menaces → réponses :* Électrik (Dynavolt, Zéblitz), Plante.
+**C-52 Sarah** (plafond 35 ; 49). Institut : Wailmer 33, Grahyèna 34, Sharpedo 36. Fondmer (si elle reste) : Prédastérie (Alola), Grahyèna, Wailord, Sharpedo 50. AI-V. *Menaces → réponses :* Électrik (Dynavolt, Zéblitz), Plante.
 
 **C-51 Matthieu** (plafond 40, branche D082 b). Grahyèna, Nostenfer, Wailord, Sharpedo 42. AI-V.
 
@@ -787,7 +789,7 @@ Adamant Nature
 **Préparation :** W1 juste avant (désigner Aragon → combat seul, respect ; partir avec Peter → 2 contre 1, Peter partenaire `P-PETER-CH5`) ; Glace (Marcacrin, Frissonille, Polarhume, Sorbébé), Fée (Snubbull, Fluvetin, Flabébé) ; doubles de route R111/R112.
 **Rôles :** Aster/Ramboum (Querelleur : touche les Spectres), Altaria, Vibrava (duo : Lévitation), Draby évolué en Drackhaus (As, Tête de Roc).
 **IA :** AI-V + `Force Setup First Turn` (seule) ; AI-V (duo, logique double automatique).
-**Gimmick :** 2 contre 1 (moteur : `BATTLE_TWO_VS_ONE_OPPONENT`, code présent dans `battle_setup.c` ; macro de script à vérifier par le programmeur moteur).
+**Gimmick :** 2 contre 1 (moteur : `BATTLE_TWO_VS_ONE_OPPONENT`). **Arbitrage v3.1 : pas de nouvelle macro** : Peter en suiveur partenaire (`setfollowernpc … battlePartner`) puis `trainerbattle` simple, ce qui donne `opponentB = 0xFFFF` (`src/battle_setup.c` l. 1419–1423) ; à vérifier en émulateur.
 **Dominante prévisible :** en duo, laisser Peter faire → contre-pression : Peter est au niveau 27–28, il ne gagne pas seul ; l'IA d'Amaryllis vise le plus faible des deux.
 **Plans de victoire :** (1) Glace/Fée ; (2) en duo, concentrer deux attaques sur Drackhaus ; (3) l'issue « défaite » est racontée (elle part : « Pas encore. »), jalon 29 posé.
 **Hasard :** faible.
@@ -1756,7 +1758,7 @@ Adamant Nature
 - Iron Head
 ```
 **Intention :** l'arbitre élégant : la danse passe de l'un à l'autre. **Pattern :** outils **anti-boost** (Buée Noire, Hurlement, Inconscient, Provoc, Encore).
-**Préparation :** Tréfonds juste avant (Sarah : Prédastérie à Buée Noire montre l'outil) ; Tentacool (Buée Noire), Caninos/Airmure (Hurlement/Cyclone), Maraiste (Inconscient, Safari), Vigoroth (Encore), Électrik et Plante.
+**Préparation :** Fondmer juste avant (Sarah : Prédastérie à Buée Noire montre l'outil) ; Tentacool (Buée Noire), Caninos/Airmure (Hurlement/Cyclone), Maraiste (Inconscient, Safari), Vigoroth (Encore), Électrik et Plante.
 **Rôles :** Mustéflott (Gonflette + Relais), Barbicha (Danse Draco), Kaimorse, Colhomard (Danse Lames), Hyporoi (As, Danse Draco, Glissade).
 **IA :** AI-G2 + `Conservative` + `Prefer Baton Pass` + `Force Setup First Turn`.
 **Dominante prévisible :** « un gros attaquant » → contre-pression : les boosts passent plus vite que tu ne frappes.
@@ -2167,7 +2169,7 @@ Mode **Facile** : non produit (le moteur retombe sur Normal) ; si le GMD le veut
 | 8 | R118–R120, Cimetronelle | − 3 … − 1 | pluie (un Bekipan) ; **un Picots** puis un Tentacool de pêcheur (Tour Rapide montré) ; un Pics Toxik | Brice 3, Alizée, Koga | AI-R2 | 3 |
 | 9 | R121–R122, Nénucrique, Mont Mémoria | − 3 … − 1 | Spectres **la nuit** (variante E-TOD) ; un Voile/écran ; un Exuviation | Agatha, Olga, Blue 2 | AI-R2 | 3–4 |
 | 10 | R124, Algatia | − 2 … 0 | doubles à Distorsion ; Provoc ; une Illusion (Zorua) | Lévy et Tatia, Lambda | AI-R2 | 3–4 |
-| 11–12 | R125–R128, Tréfonds, Atalanopolis | − 2 … 0 | Buée Noire, Relais, Inconscient | Juan | AI-R2 | 4 |
+| 11–12 | R125–R128, Caverne Fondmer, Atalanopolis | − 2 … 0 | Buée Noire, Relais, Inconscient | Juan | AI-R2 | 4 |
 | 13–14 | Route Victoire | − 1 … + 1 | une Méga par **Topdresseur** au plus ; Vulné-Assurance ; Intimidation | Blue, Ligue | AI-R2 | 4–5 |
 
 **Couches de faction (mêmes règles, identité visible) :**
@@ -2269,6 +2271,8 @@ Niveaux contre plafond ; une Méga max ; Méga après le plafond 40 ; collisions
 
 ## 14. Conflits avec la bible et les autres briefs (à arbitrer par le GMD)
 
+> **Arbitré** (`reviews/ARBITRATION_V3.md` §3) : C1–C6, C8, C9 acceptés ; C7 modifié (4 Défis comptés, pas de flag pour Olga ni Agatha) ; 2 contre 1 sans nouvelle macro ; E-ADAPT accepté.
+
 | # | Conflit | Cause | Ma proposition | Coût de l'alternative |
 |---|---|---|---|---|
 | C1 | Bible §9.3 : Timmy « H ch. 7 (refusable) » ; brouillon C : D064 (combat contre la **brigade** au ch. 7) et D124 (Timmy à la Route Victoire, ch. 14) | deux lectures du même arc | suivre C : ch. 7 = Flora 2 (brigade), Timmy = Route Victoire (canon Timmy/Wally), avec ou sans son arrivant | garder un combat Timmy au ch. 7 : deux combats contre des enfants/brigade dans la même scène, routine |
@@ -2308,3 +2312,4 @@ Niveaux contre plafond ; une Méga max ; Méga après le plafond 40 ; collisions
 | Date | Version | Changement | Auteur |
 |---|---|---|---|
 | 2026-10-14 | 3.0 | Création (brief B) : paliers T1–T5, IA par palier, 51 rencontres, 175 équipes + 175 Hard + 3 partenaires (générateur `teams_v3_gen.py`, validées : 0 erreur), E-ADAPT (3 paquets), politique Méga, 22 fiches, allocation de 175 ID recyclés (240 restants), conflits C1–C9. Ligne proposée pour la bible §16 : « COMBAT_DESIGN v3 livré (proposé) ». | GMD secondaire combat |
+| 2026-10-14 | 3.1 | Arbitrage du GMD (`reviews/ARBITRATION_V3.md`) : Caverne Fondmer (ch. 11) ; note d'arbitrage §14 et §4 (C7) ; 2 contre 1 par suiveur partenaire (§8.6) | GMD |

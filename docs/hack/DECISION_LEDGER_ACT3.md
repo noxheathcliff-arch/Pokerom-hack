@@ -11,7 +11,7 @@
 ### D102 - Le câble de Passerelle : négocier, combattre, laisser couper
 `E` · `L` · arbitrage · Ch. 11 · statut **proposé** · verdict **VALIDE**
 
-- **Unité :** SeafloorCavern_Room4-9 (Caverne Fondmer ; bible : "Grotte Tréfonds") - CF_D102 (jalon plafond 51, toutes issues ; FLAG_CF_FONDMER_DONE)
+- **Unité :** SeafloorCavern_Room4-9 (Caverne Fondmer ; nom corrigé dans la bible v3.1) - CF_D102 (jalon plafond 51, toutes issues ; FLAG_CF_FONDMER_DONE)
 - **Déclencheur :** Arthur et Sarah vont couper le câble sous la mer ; Marin et Ondine (ou pas) defendent.
 - **Prérequis :** aucun
 - **Stockage :** VAR_CF_D12 bits 10-11 (0 = non prise ; 1..3 = option)

@@ -471,7 +471,7 @@
 - **Lecteurs (contenu affecté) :** QoL (Multi Exp, ch. 3 ou 4); ch. 7 dîner; REL_CHEN_SEKO
 - **Délai principal :** immédiat
 - **Fins :** épilogue Chen-Seko.
-- **Test :** a : FLAG_CF_EXP_SHARE pose au ch. 3 ; b : pose au ch. 4 (script Seko). BR 47/53.
+- **Test :** a : FLAG_CF_EXP_SHARE pose au ch. 3 ; b **ou non prise** : pose au ch. 4 (script Seko, indépendant de D041 ; arbitrage v3.1). BR 47/53.
 
 ### D031 - Petit voleur n 3 : l'objet du Kiosque
 `D` · `S` · geste · Ch. 3 · statut **proposé** · verdict **VALIDE**

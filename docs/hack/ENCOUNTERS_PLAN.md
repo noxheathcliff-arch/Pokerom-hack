@@ -809,6 +809,8 @@ Décisions transmises au brief C (à numéroter) : les 6 missions de zone (§7.2
 | K8 | Bible §8.3 : « Plongée ouvre Tréfonds » — Super/Méga canne non datées | absent de la bible | Vieille canne ch. 2 (Myokara), Super canne ch. 8 (R118), Méga canne ch. 10 (Algatia) | à confirmer par C (donneurs) |
 
 ### 13.3 Décisions du GMD requises (avant de remplir le JSON)
+
+> **Arbitré** (`reviews/ARBITRATION_V3.md` §2) : les points 1 à 6 et K1–K8 sont acceptés. Le point 7 est accepté **modifié** : le Multi Exp est remis dans toutes les branches avant la fin du ch. 4 (Chen au ch. 3 si D030 a, sinon Seko au ch. 4, indépendamment de D041). E-LEDGER est accepté (seul usage de SB3), E-OUT accepté. **Le remplissage du JSON peut commencer.**
 1. Règle §4.1 (ensemble constant, rareté variable). 2. État ABATTU (K3). 3. Safari-réserve exclu des 80 % (§3.3). 4. Mewtwo (K1). 5. R110 en Z-03 (K2). 6. E-TOD « nuit seule ». 7. Paliers et niveaux (§2.2–2.3), dont le Multi Exp demandé à C.
 
 ---
@@ -864,3 +866,4 @@ Décisions transmises au brief C (à numéroter) : les 6 missions de zone (§7.2
 | Date | Changement | Auteur |
 |---|---|---|
 | 2026-10-14 | v1 : capacité mesurée, zones Z-01–Z-06, règle des états, calendrier d'anneaux, anomalies, sites légendaires par fin, interfaces B et C, registre et vérificateur de couverture (1 025/1 025 par fin sur plan) | GM Espèces et écologie |
+| 2026-10-14 | v1.1 : arbitrage du GMD reporté en §13.3 (décisions prises, remplissage du JSON autorisé) | GMD |

@@ -307,7 +307,7 @@ Retour de l'équipe de Red par le canal de la fin (F1 PC de Ciléo, F2 anneau, F
 
 ## 13. Quêtes et QoL
 **Quêtes :** fil de Hoopa (10 gestes) ; Piko (D006 → F2 ou lettre) ; missions de zone ×6 ; quête de Bayar (D048, facultative, Éclate-Roc) ; Ferrand (D033 → D082 a) ; Défis Indigo (8 combats refusables, 4 sont des décisions) ; Tournoi (D034) ; Auguste–Fuji (D062 → D089) ; Timmy (D038 → D064 → D124) ; restauration (D128) ; fin cachée (D131).
-**QoL :** Multi Exp (`I_EXP_SHARE_FLAG FLAG_CF_EXP_SHARE`, ch. 3 par Chen ou ch. 4 par Seko : D030) — demandé par le brief D pour que le plafond n'empêche pas de diversifier ; choix du Pokémon de tête (`FLAG_CHOOSE_BATTLE_LEAD`) via un PNJ « coach » à Clémenti (ch. 1) ; difficulté (`VAR_DIFFICULTY`) proposée par Seko au ch. 0 (Normal/Difficile) ; `FLAG_NO_WILD_ENCOUNTERS` pendant les scènes et escortes ; soin ≤ 2 cartes (§15) ; le Carnet (objet clé) affiche les pièces du Dossier et les phrases de Red (lecture seule, aucune jauge).
+**QoL :** Multi Exp (`I_EXP_SHARE_FLAG FLAG_CF_EXP_SHARE`, ch. 3 par Chen ou ch. 4 par Seko : D030 ; **arbitrage v3.1 : posé dans toutes les branches avant la fin du ch. 4** — si D030 ≠ a, Seko le remet au ch. 4 même si Pikachu est laissé, D041) — demandé par le brief D pour que le plafond n'empêche pas de diversifier ; choix du Pokémon de tête (`FLAG_CHOOSE_BATTLE_LEAD`) via un PNJ « coach » à Clémenti (ch. 1) ; difficulté (`VAR_DIFFICULTY`) proposée par Seko au ch. 0 (Normal/Difficile) ; `FLAG_NO_WILD_ENCOUNTERS` pendant les scènes et escortes ; soin ≤ 2 cartes (§15) ; le Carnet (objet clé) affiche les pièces du Dossier et les phrases de Red (lecture seule, aucune jauge).
 
 ## 14. Allocation (résumé ; table définitive : `FLAGS_VARS_REGISTRY.md`)
 | Catégorie | Utilisé | Budget | Marge |
@@ -410,13 +410,16 @@ Retour de l'équipe de Red par le canal de la fin (F1 PC de Ciléo, F2 anneau, F
 | E-NATIVE | espèce du dex de Hoenn ? → `VAR_RESULT` | D085, D123 (natif) | ~10 lignes |
 | E-LVL | **aucun code** : `givemon` lit le niveau par `VarGet` (`src/script_pokemon_util.c:506`) → `copyvar VAR_0x8001, VAR_CF_CAP ; subvar 2` | D041 | vérifié par lecture |
 | Existants | D1 refusables, D2 tête, E affinités, N1 sans rencontres, `setfollowernpc`, `dynmultichoice`, `ChoosePartyMon` | partout | `ENGINE_CHANGES.md` |
-| Non requis | E-SB3, E-PRICE (remplacé par ruptures de stock), E-LEND (D118 b donne des objets) | — | — |
+| E-LEDGER | 128 bits dans SB3 (16 o) pour les statiques (brief D) | sites légendaires, orphelins | accepté (seul usage de SB3) |
+| Non requis | E-SB3 général, E-PRICE (remplacé par ruptures de stock), E-LEND (D118 b donne des objets) | — | rejetés (arbitrage v3.1) |
 
 ## 18. Checklists
 **GM_METHOD §6.1 :** intention (thèse bible §2 : lire ce que ses choix prennent aux autres) ✔ ; comportement observable (choisir, montrer, désigner, se placer) ✔ ; économie : sources/puits par système §3, §6 ✔ ; dominance : §5 chiffré ✔ ; progression : chaque chapitre ouvre des options (alliés, pièces, votes) ✔ ; sens : §1 ✔ ; UX : aucune jauge, perception par réactions, bulletin en mots ✔ ; faisabilité : budgets §14, aides §17 ✔ ; **aucune affirmation « testé » : le modèle papier est une preuve de cohérence, pas un test ROM** ✔.
 **§6.2 Technique :** fiches 15 champs → le registre (champs du brief C) en tient lieu par décision ; flags/vars recensés sans collision (registre) ✔ ; build/tests : **non exécutés** (aucun code écrit) ✘ (attendu : porte prototype) ; dépendances : E-BITS et E-REPREL sur le chemin critique.
 
 ## 19. Conflits et écarts (à arbitrer par le GMD)
+
+> **Arbitré** (`reviews/ARBITRATION_V3.md` §4) : K-C1 à K-C10 acceptés. Motion 3 « qui paie » retenue contre la bible v3.0 (la garde de la Fiole se joue au climax). Les « appels » sont des scènes scriptées (Match Call coupé). Multi Exp : voir §13 (règle ajoutée).
 | # | Conflit | Cause | Choix fait ici | Alternative / coût |
 |---|---|---|---|---|
 | K-C1 | Bible ch. 11 « Grotte Tréfonds » = en FR vanilla **Caverne Fondmer** (`SeafloorCavern`, R128 sous-marin) ; « Grotte Tréfonds » = `ShoalCave` (`region_map_sections.json`) | erreur de nom | on écrit Caverne Fondmer | renommer la carte : risque de confusion avec Shoal Cave |
@@ -434,3 +437,4 @@ Retour de l'équipe de Red par le canal de la fin (F1 PC de Ciléo, F2 anneau, F
 | Date | Version | Changement | Auteur |
 |---|---|---|---|
 | 2026-10-14 | 3.0 | Réécriture complète pour *Confluence* : systèmes, lecture relative des réputations, Sommet à 9 votants, climax à 3 lieux, fins ordonnées, plafonds par var, allocation, traversée, lectures par carte ; modèle `cf_model.py` | GMD secondaire (brief C) |
+| 2026-10-14 | 3.1 | Arbitrage du GMD (`reviews/ARBITRATION_V3.md`) : note §19 ; E-LEDGER ajoutée en §17 ; règle du Multi Exp en §13 | GMD |

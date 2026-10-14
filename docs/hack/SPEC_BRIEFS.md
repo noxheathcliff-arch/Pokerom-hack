@@ -212,7 +212,7 @@
    - vars ≤ 45 sur les 54 libres, plus des vars vanilla recyclées (**liste prouvée par grep** : aucun lecteur vanilla restant) ;
    - choix à 3 options rangés en bits (E-BITS) ;
    - flags ≤ 260, plus des `FLAG_HIDE_*` recyclés dont les lecteurs sont listés.
-5. **Table de traversée par branche** : capacités requises, donneurs, soins (≤ 2 cartes), portes vanilla touchées (avec preuve par grep), et **cas de softlock** examinés (Plongée ouvre Tréfonds et Atalanopolis, refus, défaites, retour arrière).
+5. **Table de traversée par branche** : capacités requises, donneurs, soins (≤ 2 cartes), portes vanilla touchées (avec preuve par grep), et **cas de softlock** examinés (Plongée ouvre la Caverne Fondmer et Atalanopolis, refus, défaites, retour arrière).
 6. **Table « lectures par carte »** : chaque carte, les états qu'elle lit, ce qui change.
 7. **Analyse de dominance** (`GM_METHOD` §6.1) :
    - le « chemin doré » simulé à partir des maxima, avec la preuve qu'il **ne** donne **pas** tout ;

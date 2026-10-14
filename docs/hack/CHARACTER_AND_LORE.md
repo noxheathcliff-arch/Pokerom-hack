@@ -169,14 +169,14 @@ Format : `ch. carte` ; le déclencheur, ce qu'on voit et l'action du joueur sont
 | C-10 Seko | 0 Bourg-en-Vol, labo | 4 Lavandia (ramène Pikachu) | 7 Bourg-en-Vol (dîner, publication) | 3 ; épilogue |
 | C-11 Flora | 1 Bois Clémenti | 7 Vergazon | 13 Civils (désobéit ou non) | 7 Clémenti (vote) ; épilogue |
 | C-12 Pierre (Brock) | 1 Mérouville (mines) | 7 Vergazon (protégés condamnés) | 12 Sommet (vote) | épilogue (élevage) |
-| C-13 Ondine | 3 Poivressel | 9 Nénucrique, port | 11 Tréfonds (camp) | épilogue |
+| C-13 Ondine | 3 Poivressel | 9 Nénucrique, port | 11 Fondmer (camp) | épilogue |
 | C-14 Major Bob | 3 Poivressel | 4 Lavandia (coupe un quartier) | 7 Clémenti (vote) | 13 Civils (évacuation) |
 | C-15 Erika | 4 Vergazon | 6 Vermilava (avec Adriane) | 7 Vergazon (contrat) | épilogue |
 | C-16 Koga | 3 Poivressel | 8 Cimetronelle (piège) | 10 Algatia (double jeu) | épilogue (Conseil 4) |
 | C-18 Morgane | 3 Poivressel | 8 R120 (vision) | 10 Algatia (avec Lévy et Tatia) | 13 veillée |
 | C-19 Auguste | 6 Mont Chimnée | 6 Vermilava (sources vides) | 9 Mont Mémoria (rejoint Fuji ou non) | 12 Sommet ; épilogue |
 | C-20 Olga | 3 Poivressel | 9 Nénucrique (coup de filet) | 12 Sommet | épilogue (Île 4) |
-| C-21 Aldo | 2 Myokara | 9 Nénucrique, port (contre Ondine) | 11 Tréfonds ou Tournoi | épilogue |
+| C-21 Aldo | 2 Myokara | 9 Nénucrique, port (contre Ondine) | 11 Fondmer ou Tournoi | épilogue |
 | C-22 Agatha | 9 Mont Mémoria | 9 Mont Mémoria (accuse Chen) | 12 Sommet (l'article) | 13 Pilier ; épilogue (retraite) |
 | C-23 Léo | 1 Devon 2F | 5 R114 (chez Lanette) | 7 Lavandia (aveu) | 10 Centre Spatial |
 | C-24 Ciléo | 0 R104 plage | 3 Poivressel (entrepôt) | 10 Centre Spatial (voit la Fiole) | 12 Sommet (registre) |
@@ -192,7 +192,7 @@ Format : `ch. carte` ; le déclencheur, ce qu'on voit et l'action du joueur sont
 | C-36 Juan | 9 Nénucrique (jury) | 12 arène (badge 8) | 12 Sommet (prend parti) | épilogue |
 | C-37 à C-46 | voir fiches §5 (crise de ville = P/É, badge = B, Sommet ou Ligue = E) | | | |
 | C-47 Max | 5 R112 (relevés) | 6 Mont Chimnée (démonstration) | 12 Sommet | épilogue |
-| C-48 Arthur | 6 Mont Chimnée (manifestation) | 9 Planque Aqua | 11 Tréfonds | épilogue |
+| C-48 Arthur | 6 Mont Chimnée (manifestation) | 9 Planque Aqua | 11 Fondmer | épilogue |
 
 ### 1.4 Scènes de témoin (Red arrive pendant ; il ne fait que regarder, puis peut faire un geste)
 | W | Paire | Carte, ch. | Ce qui se dit sans Red | Geste possible ensuite (décision ou non : brief C) |
@@ -672,7 +672,7 @@ Format des fiches B : fonction · veut → besoin (faiblesse) · raison d'être 
 - **À Hoenn :** experte marine de la Mission (des Stari de Kanto finissent dans les filets de Myokara). **Désaccord :** Aldo (pêcheurs), Major Bob.
 - **Agenda** M. **Sans Red**, elle ouvre un filet par nuit et ruine les pêcheurs de Nénucrique.
 - **PNJ.** A : Marc (admiration), Arthur (M1). R : Aldo, Major Bob.
-- **Pulsations.** P ch. 3 quai · É ch. 9 port de Nénucrique (W8) · B ch. 11 Tréfonds (camp Aqua ou Mission) · E épilogue.
+- **Pulsations.** P ch. 3 quai · É ch. 9 port de Nénucrique (W8) · B ch. 11 Fondmer (camp Aqua ou Mission) · E épilogue.
 - **Scène qui définit (9 boîtes, ch. 9, W8).** Elle coupe un filet ; un banc d'arrivants file. Aldo arrive avec les caisses vides. Elle ne baisse pas les yeux, lui non plus. Red **désigne** l'un ou l'autre.
 - **Voix.** Traits : fougueuse, franche, fière. Tics : « Allez ! » ; parle d'offensive [c RFVF : « offensive totale »]. Interdits : jamais cynique ; jamais froide avec un Pokémon.
   - “Ma politique ? L’offensive / totale. Avec ou sans permis.”
@@ -798,7 +798,7 @@ Format des fiches B : fonction · veut → besoin (faiblesse) · raison d'être 
 - **À Hoenn :** venu s'entraîner à Myokara avec Bastien avant la fermeture [c RFVF : il s'entraîne en voyage] ; les pêcheurs l'ont nourri ; la Mission en fait son escorte. **Désaccord :** Ondine.
 - **Agenda** É. **Sans Red**, il s'entraîne sur les falaises de la Grotte Granite et ignore la crise, jusqu'au naufrage d'un bateau.
 - **PNJ.** A : Bastien (élève), pêcheurs de Myokara. R : Ondine.
-- **Pulsations.** P ch. 2 Myokara · ch. 3 (escorte de la Mission) · É ch. 9 port (W8) · B ch. 11 Tréfonds ou Tournoi · E épilogue.
+- **Pulsations.** P ch. 2 Myokara · ch. 3 (escorte de la Mission) · É ch. 9 port (W8) · B ch. 11 Fondmer ou Tournoi · E épilogue.
 - **Scène qui définit (8 boîtes, ch. 2).** Il porte seul un bateau échoué. Bastien le regarde. « Tu ne te bats pas pour eux ? » Aldo pose le bateau. « Je porte. C'est déjà ça. »
 - **Voix.** Traits : bref, honnête, physique. Tics : « Hmph. » Interdits : jamais d'insulte ; jamais de mensonge.
   - “Les pêcheurs m’ont nourri tout / l’hiver. Je porte leurs caisses.”
@@ -964,7 +964,7 @@ Format resserré (même champs que §4). Pour les Champions : la **crise de vill
 
 ### C-33 Timmy · `CANON RSE` (Vergazon, fragile)
 - **Veut → besoin :** garder son ami → se battre pour lui ou le laisser partir. Son arrivant (espèce : brief D ; surnom « Petit-Pois ») est condamné. **Sans Red**, il le cache dans la remise jusqu'à la brigade. **PNJ** A : Erika, Pierre (Brock) · R : Flora.
-- **Pulsations.** P ch. 4 Vergazon · É ch. 7 (contre la brigade, combat refusable) · B ch. 13 Civils (son arrivant aide à l'évacuation) · E ch. 14 Route Victoire ou postgame.
+- **Pulsations.** P ch. 4 Vergazon · É ch. 7 (Red le défend contre la brigade : combat contre Flora, D064 ; Timmy ne combat pas Red ici) · B ch. 13 Civils (son arrivant aide à l'évacuation) · E ch. 14 Route Victoire (combat refusable, D124) ou postgame.
 - **Voix.** timide puis décidé ; « Je… je peux ? » ; ne se plaint plus après le ch. 7.
   - “Il s’appelle Petit-Pois. / Il a mangé toutes les baies.”
   - “Mon oncle dit qu’il faut le / rendre. Le rendre à qui ?”
@@ -1048,7 +1048,7 @@ Répliques :
 
 ### C-48 Arthur · `CANON RSE/ROSA`
 - **Veut → besoin :** libérer la créature, accueillir tous → mesurer. **Ce qu'il voit juste :** enchaîner une créature est un crime. **Sans Red**, il coupe le câble au ch. 11 : tempête d'anneaux sur Pacifiville. **PNJ** A : Sarah, Matthieu, Ondine (M1) · R : Max [c] ; E : Norman (Rempart).
-- **Pulsations.** P ch. 6 manifestation (W5) · É ch. 9 Planque Aqua (plan du câble) · B ch. 11 Tréfonds · E épilogue.
+- **Pulsations.** P ch. 6 manifestation (W5) · É ch. 9 Planque Aqua (plan du câble) · B ch. 11 Fondmer · E épilogue.
 - **Voix.** pirate, chaleureux, impulsif ; « Les gars ! » ; jamais cruel envers un Pokémon.
   - “Une créature enchaînée sous / nos mers ! Et ça s’appelle Hoenn ?”
   - “Les gars ! Tout ce qui nage / a le droit de nager.”
@@ -1075,7 +1075,7 @@ Répliques :
 | C-49 Kelvin | être reconnu par Max · il exécute la démonstration sans poser de question | Max · Courtney | ch. 5 R112 ; ch. 6 ; E | “Max l’a calculé. Donc / c’est juste. Donc on y va.” | `MAGMA_ADMIN` |
 | C-50 Courtney | loyauté instable · elle pousse la démonstration plus loin que prévu | Max · Kelvin | ch. 6 Planque ; ch. 12 ; E | “Plus grand. L’anneau. / Max a dit grand, non ?” | `MAGMA_ADMIN` (pic partagé) |
 | C-51 Matthieu | protéger les siens · il évacue les sbires avant le câble | Arthur · Max | ch. 9 ; ch. 11 ; E | “Le chef coupe ? Je porte / les gars. Chacun son travail.” | `AQUA_ADMIN_M` |
-| C-52 Sarah | la vérité des données (M) · elle occupe l'Institut et cache ses doutes | Arthur (M8) · Max | ch. 8 Institut ; ch. 11 Tréfonds ; E | “Mes relevés disent : tempête. / Arthur dit : liberté. Les deux ?” | `AQUA_ADMIN_F` |
+| C-52 Sarah | la vérité des données (M) · elle occupe l'Institut et cache ses doutes | Arthur (M8) · Max | ch. 8 Institut ; ch. 11 Fondmer ; E | “Mes relevés disent : tempête. / Arthur dit : liberté. Les deux ?” | `AQUA_ADMIN_F` |
 | C-53 Scott | profiter des imports, recruter des stars (É) · il signe Blue à vie | Blue · Peter (refuse ses imports) | ch. 3 Tente ; ch. 9 ; P Zone | “Une star, des imports, un public. / Il ne manque que vous, Red.” | OW `SCOTT`, pic `EXPERT_M` |
 | C-54 Bayar | les sceaux anciens (A) · il fouille seul les ruines du désert | Capucine · Magma (relevés) | ch. 5 quête ; P Pyramide ; fin cachée | “Les anciens ont scellé ce / qu’ils craignaient. Toujours.” | ✔ |
 | C-55 Capucine | « lire » les Pokémon ; liée à Morgane | Morgane · Scott | P Tour ; lettre de Morgane (ch. 10) ; E | “Votre équipe vous manque. / Elle le sait, où qu’elle soit.” | ✔ |
@@ -1306,7 +1306,8 @@ Méthode : script `pxw.py` (bac à sable, non suivi) : `charmap.txt` → octet �
 - **K-03 « COMPRENDRE » en axe B** (Chen, Pierre (Brock)) : lu `CTL`. À confirmer.
 - **K-04 Spectres de Lavanville au Mont Mémoria** : origine Kanto dans une zone Sinnoh/Alola (§5.3). Ce sont des esprits scénarisés, hors des tables de rencontre (brief D : à compter dans les 20 % de bruit ou à exclure).
 - **K-05 F2 « Sylphe ruinée »** : Sylphe fonctionne en HGSS. Lecture : ruinée puis relevée avant l'année 3 ; une ligne d'épilogue le dit.
-- **Ajouts proposés (non contradictoires, à valider) :** l'affiche Sylphe et la raison du silence de Red ; Ferrand ; Giovanni actionnaire de Devon ; Koga qui paie Lance ; la lettre d'Auguste à Fuji ; Erika et son contrat.
+- **Arbitré (GMD, `reviews/ARBITRATION_V3.md` §1) :** K-01 à K-05 acceptés ; « Tréfonds » du ch. 11 corrigé en **Caverne Fondmer** ; Timmy ne combat pas au ch. 7 (Flora 2, D064) mais à la Route Victoire (D124) ; le Défi de Koga est au ch. 8, et W10 (ch. 10) règle une revanche de contenu ; tout « appel » (Norman ch. 0, M. Rochard ch. 10) est une scène scriptée, jamais Match Call (coupé) ; Parc Safari = **réserve d'arrivants saisis** (abattages, marché noir), « prison douce » critiquée par l'Intégration et défendue par le Rempart.
+- **Ajouts proposés (tous acceptés en v3.1) :** l'affiche Sylphe et la raison du silence de Red ; Ferrand ; Giovanni actionnaire de Devon ; Koga qui paie Lance ; la lettre d'Auguste à Fuji ; Erika et son contrat.
 
 ### 12.6 Checklists `GM_METHOD` §6.1 et §6.2 (narration)
 - Intention et comportement : ✔ (lire les gens comme on lit un combat : observer → preuve → geste).
@@ -1324,3 +1325,4 @@ Méthode : script `pxw.py` (bac à sable, non suivi) : `charmap.txt` → octet �
 | Date | Version | Changement | Auteur |
 |---|---|---|---|
 | 2026-10-14 | 3.0 | Création (brief A) : 64 entrées `C-xx`, tables d'interface A→B/C, toile, voix, lore, chronologie, promesses, contrôles | GM spécialiste distribution |
+| 2026-10-14 | 3.1 | Arbitrage du GMD (`reviews/ARBITRATION_V3.md`) : Caverne Fondmer au ch. 11 ; Timmy (C-33) aligné sur D064/D124 ; note d'arbitrage en §12.5 (K-01 à K-05 et ajouts acceptés, Safari-réserve, appels scriptés) | GMD |

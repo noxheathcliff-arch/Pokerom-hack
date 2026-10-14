@@ -1,17 +1,18 @@
-# GAME_DESIGN_BIBLE — *Pokémon Confluence* (v3.0, colonne vertébrale)
+# GAME_DESIGN_BIBLE — *Pokémon Confluence* (v3.1, colonne vertébrale gelée, étape 1)
 
 > **Source unique de vérité du design.** Propriétaire : Game Mechanics Director (GMD). Toute modification passe par le GMD et entre au changelog (§16).
 > Méthode obligatoire : `GM_METHOD.md`. Intention : `EXPERIENCE_INTENT.md` (son addendum v2 reste valable, sauf là où ce document le contredit ; la thèse est reformulée en §2).
-> Statut : **v3.0 — colonne vertébrale (conception). Rien n'est implémenté ni testé.** Toute mécanique nouvelle est une `HYPOTHÈSE` jusqu'à la porte prototype.
+> Statut : **v3.1 — colonne vertébrale après arbitrage des spécialistes (`reviews/ARBITRATION_V3.md`, qui fait foi en cas d'écart). Rien n'est implémenté ni testé.** Toute mécanique nouvelle est une `HYPOTHÈSE` jusqu'à la porte prototype.
 > Briefs des spécialistes : `SPEC_BRIEFS.md`. Archives v2 (*Cendres*) : `archive/cendres_v2/`. Les revues v2 (`reviews/REVIEW_V2_*.md`) restent des **listes de défauts à ne pas reproduire**.
 
 ## Documents liés (font partie de la bible)
 | Document | Contenu | État |
 |---|---|---|
-| `CHARACTER_AND_LORE.md` v3 | fiches complètes, toile relationnelle, guides de voix, lore/mythologie, chronologie détaillée | à produire (brief A) |
-| `COMBAT_DESIGN.md` v3 | équipes de tous les dresseurs majeurs par rencontre, paliers, IA, ID | à produire (brief B) |
-| `DECISION_LEDGER.md` (+ fichiers par acte) et `GAME_SYSTEMS.md` v3 | ≥ 131 décisions listées / ≥ 115 robustes, systèmes, budget flags/vars, logique des fins | à produire (brief C) |
-| `ENCOUNTERS_PLAN.md` | les 1 025 espèces Gen 1–9, répartition, rareté, écologie, événements | à produire (brief D) |
+| `CHARACTER_AND_LORE.md` v3 | fiches complètes, toile relationnelle, guides de voix, lore/mythologie, chronologie détaillée | livré (brief A), arbitré |
+| `COMBAT_DESIGN.md` v3 + `data/teams_v3.party` | 175 variantes d'équipes, paliers, IA, ID | livré (brief B), arbitré |
+| `DECISION_LEDGER.md` (+ `_ACT0-1`, `_ACT2`, `_ACT3`, `_POST`), `GAME_SYSTEMS.md` v3, `data/cf_model.py` | 131 décisions listées / 124 robustes, systèmes, budget, fins formelles | livré (brief C), arbitré |
+| `ENCOUNTERS_PLAN.md` + `data/*.csv` | les 1 025 espèces Gen 1–9, répartition, rareté, écologie, événements | livré (brief D), arbitré |
+| `reviews/ARBITRATION_V3.md` | arbitrage des conflits des spécialistes ; questions pour les critiques | v3.1 |
 
 ---
 
@@ -136,7 +137,9 @@ Avec **Brice**, qui recense les « arrivants » pour son père, il traverse une 
 | An 0 | Giovanni cache la Fiole dans le coffre de Sylphe pendant l'occupation : il voulait la Master Ball **et** la Fiole. Red libère Sylphe. Le Président trouve la Fiole et la cache à la police | occupation CANON RBJ/RFVF ; Fiole HYPOTHÈSE | ch. 12 |
 | An 0 | Red apporte le Rubis et le Saphir à Ciléo : le réseau Kanto–Hoenn–Rhode est relié | CANON RFVF | prologue (indice) |
 | An 0 + 4 mois | Sylphe (ruinée) et Devon signent **Passerelle** : transfert instantané de Pokémon et de biens entre les régions. Léo conçoit la couche de transfert, Lanette le stockage, Ciléo le nœud Kanto. Le relais est au Centre Spatial d'Algatia. Sa source d'énergie est un « Cœur » scellé fourni par Sylphe. M. Rochard ne demande pas ce que c'est | HYPOTHÈSE | ch. 7 (Cœur vivant), ch. 10 (Fiole), ch. 12 (qui savait) |
-| An 1 − 3 mois | Mise en service commerciale. Premiers anneaux près de Poivressel, avec des Pokémon de Kanto. Hoenn ferme ses ports aux navires de Kanto | HYPOTHÈSE | prologue |
+| An 0 + 2 mois | Campagne Sylphe avec l'image de Red (affiche « Il a sauvé Sylphe. Sylphe relie le monde. », Red de dos). Red cesse de parler en public | HYPOTHÈSE | ch. 1, ch. 12 |
+| An 0 + 5 mois | Lambda remplace l'ingénieur Passerelle **Ferrand**, séquestré à Nénucrique (libérable au ch. 9) | HYPOTHÈSE | ch. 10 (ch. 9 si libéré) |
+| An 1 − 3 mois | Mise en service commerciale. Premiers anneaux près de Poivressel, avec des Pokémon de Kanto. Hoenn ferme ses ports aux navires de Kanto. Les Kantonais déjà présents deviennent des **« bloqués »** suspects : Pierre (Brock), Aldo, Blue, Léo, le Président de Sylphe, Giovanni incognito (qui rachète en secret des actions de Devon), les commandants Rocket. La **Mission Indigo** n'arrive qu'au ch. 3 ; Agatha et Fuji (appelé par une lettre d'Auguste) viennent seuls au ch. 9 | HYPOTHÈSE | ch. 1–3 |
 | An 1 − 6 semaines | Amaryllis comprend et commence à **surcharger** le réseau (achats massifs par prête-noms, résonance de la météorite) pour forcer Rayquaza à descendre | HYPOTHÈSE | ch. 12 |
 | An 1 − 2 semaines | **Hoopa Confiné**, attiré par son pouvoir enfermé, arrive à Hoenn par un anneau. Il vole pour manger et se cache | HYPOTHÈSE (Hoopa et Fiole CANON ROSA/XY ; Pokédex : avarice, anneaux CANON) | ch. 8 |
 | An 1 | Le jeu commence | — | — |
@@ -193,7 +196,7 @@ Questions ouvertes par chapitre :
 | R4 : la chaîne de responsabilités | le Président de Sylphe évite toute question sur le Cœur (ch. 1, 3) ; l'homme au Persian (ch. 3, 6, 9) | Agatha accuse Chen (ch. 9) ; Lambda se déguise en Giovanni (ch. 10) | au Sommet, trois sources concordent : registre du coffre de Sylphe (Ciléo), témoignage de Giovanni **ou** confession du Président, inscription |
 
 ### 4.4 Le silence de Red
-Red **choisit** de se taire depuis la Ligue. Ce n'est ni un handicap ni une coquetterie. Le Carnet est sa seule voix intime (des phrases courtes, débloquées par les relations). **Une seule phrase écrite publique**, au moment fort du Sommet ou de l'épilogue, selon l'état (brief C).
+Red **choisit** de se taire depuis la Ligue. Ce n'est ni un handicap ni une coquetterie : après le Panthéon, la Ligue Indigo et Sylphe ont parlé **à sa place** (interviews jamais données, slogans, l'affiche Passerelle), et depuis, « quand il parle, on le cite ». Cette cause n'est explicite qu'au Carnet et au ch. 12. Le Carnet est sa seule voix intime (des phrases courtes, débloquées par les relations). **Une seule phrase écrite publique**, au moment fort du Sommet ou de l'épilogue, selon l'état (brief C).
 
 Pour agir, Red dispose de **cinq verbes de geste**, valables dans tout le jeu, de la négociation au Sommet : **montrer** (une pièce, un objet), **désigner** (une personne, qui parle alors), **rester** (attendre), **partir** (rompre), **donner**.
 
@@ -233,12 +236,14 @@ Chaque nœud de Passerelle a des contrats avec certaines régions. Les anneaux f
 
 | Nœud (carte) | Contrats | Zones d'effet (ordre indicatif) |
 |---|---|---|
-| Poivressel (port, entrepôt Passerelle) | Kanto, Johto | Routes 104–110, 134 ; Myokara |
+| Poivressel (port, entrepôt Passerelle) | Kanto, Johto | Routes 101–109, 134 ; Myokara (zone Z-01) |
 | Mérouville (siège Devon) | Kalos, Galar | Bois Clémenti, Routes 115–116, Tunnel Mérazon, Grotte Granite |
-| Lavandia (centrale, Nouvelle Lavandia) | Unys | Routes 110–111, 117–118, Vergazon |
+| Lavandia (centrale, Nouvelle Lavandia) | Unys | Routes 110–111, 117–118, Vergazon (zone Z-03 ; R110 rattachée ici) |
 | Nénucrique (marché) | Sinnoh, Alola | Routes 119–123, Parc Safari, Mont Mémoria |
-| Algatia (relais central) | Paldea, plus la **surcharge** (P2) | Routes 124–131, Grotte Tréfonds, Pilier Céleste |
-| Autéquia, Site Météore (aucun nœud) | anneaux de surcharge seulement | Routes 113–114, Chutes Météore (P2 tardif) |
+| Algatia (relais central) | Paldea, plus la **surcharge** (P2) | Routes 124–131, Grotte Tréfonds, Caverne Fondmer, Pilier Céleste |
+| Autéquia, Site Météore (aucun nœud) | anneaux de surcharge seulement | Routes 112–114, Chemin Ardent, Chutes Météore (P2 tardif) (zone Z-06) |
+
+Zones écologiques Z-01–Z-06 : découpage de référence dans `ENCOUNTERS_PLAN.md` §3.1. Exclus du calcul des 80 % : le **Parc Safari**, devenu **réserve d'arrivants saisis** (fiction : abattages et marché noir ; une « prison douce » que l'Intégration critique et que le Rempart défend), et les spectres de Lavanville du Mont Mémoria (scénarisés, hors tables).
 
 ### 5.4 Perturbations écologiques et sociales
 Les exemples d'espèces sont **indicatifs** : le brief D les choisit selon §5.3, et l'origine doit rester cohérente avec le nœud.
@@ -267,6 +272,8 @@ Les exemples d'espèces sont **indicatifs** : le brief D les choisit selon §5.3
 - recrutement de la Rocket parmi les ruinés : il est mesuré par `RK` (§11).
 
 **Anti-farming et anti-dominance.** L'état d'une zone dépend des **issues de missions et de la politique votée**, jamais du nombre de captures.
+
+**États de zone (v3.1) :** ENVAHI, MIXTE, RESTAURÉ, **ABATTU** (signature du Rempart : moins d'arrivants **et** moins de diversité). **Règle de couverture :** une table alternative ne retire jamais une espèce ; elle change sa rareté. Au moins 3 emplacements changent, dont le natif emblématique.
 
 ---
 
@@ -360,10 +367,10 @@ Notation : `Dx–Dy` = budget de décisions (le brief C les numérote) ; **L** =
 | 8 | R118, R119, Institut Météo, Cimetronelle (arène), R120 | Koga et Jeannine / Alizée ; Morgane / Pierre Rochard ; Sarah (Aqua) | Institut occupé par Sarah (données de tempête : les signes de Rayquaza) ; Brice 3 → Vol ; canopée ; **piège de Koga : le voleur est Hoopa Confiné** ; R120 : Méga-Bracelet et Scope ; vision de Morgane ; Absol | **R2b**, Q4 ouverte | 10 (**L** : garde de Hoopa) | Institut → 37 ; badge 6 → 40 |
 | 9 | R121, entrée du Parc Safari, Nénucrique (toit du Grand Magasin, salle des Concours, port), Planque Aqua 1F/B1F, R122, Mont Mémoria | Olga / Glacia ; Agatha et Fuji / Spectra ; Ondine / Arthur ; Nina / Marc ; Blue et Giovanni (toit) ; Damien | marché noir : **coup de filet avec Olga ou raid Aqua la même nuit (présence exclusive)** ; plan d'Arthur (couper le câble) ; rite du Mont Mémoria ; les spectres montrent ce qui est parti ; **inscription du Sceau** ; Lance (Rocket) la copie ; plan de Fuji ; **la R124 s'ouvre quand planque et Mont Mémoria sont faits** | **R3** | 12 (**L** : la nuit du marché) | planque → 42 ; Mont Mémoria → 44 |
 | 10 | R124, Algatia (arène, Centre Spatial 1F/2F, maison de Pierre Rochard), R125 | Morgane / Lévy et Tatia ; Ciléo ; Amos | badge 7 ; **assaut Rocket du relais** (Ariane, plus Lambda déguisé en Giovanni) ; duo (partenaire selon les relations) ; **le vrai Giovanni désavoue** ; Ciléo voit la Fiole dans le cœur du relais ; Plongée (Pierre Rochard) | Fiole vue | 8 | badge 7 → 47 ; Centre Spatial (toutes issues) → 49 |
-| 11 | R127/128, sous-marin 128, Grotte Tréfonds | Arthur et Sarah / Capitaine Marin et Ondine | opération Aqua pour couper le câble ; Sarah doute ; négocier, combattre, laisser faire | — | 5 | Grotte Tréfonds → 51 (**prérequis du Sommet**) |
-| 12 | sous-marin 126, Atalanopolis (arène, place), Grotte Originelle fermée | Juan et Marc / Peter et Pierre Rochard ; Doyenne ; tous les chefs | Juan → badge 8 (Cascade) ; puis **Sommet des Confluences** (3 motions, négociation par gestes) ; **R4 pendant la séance** ; interruption : tempête d'anneaux, assaut Rocket, Rayquaza s'éveille | **R4** | 9 | badge 8 → 53 |
+| 11 | R127/128, sous-marin 128, Caverne Fondmer (`SeafloorCavern`) | Arthur et Sarah / Capitaine Marin et Ondine | opération Aqua pour couper le câble ; Sarah doute ; négocier, combattre, laisser faire | — | 5 | Caverne Fondmer → 51 (**prérequis du Sommet**) |
+| 12 | sous-marin 126, Atalanopolis (arène, place), Grotte Originelle fermée | Juan et Marc / Peter et Pierre Rochard ; Doyenne ; tous les chefs | Juan → badge 8 (Cascade) ; puis **Sommet des Confluences** (3 motions : M1 le réseau, M2 les arrivants, **M3 qui paie** — la garde de la Fiole se règle au climax ; négociation par gestes ; Juan préside) ; **R4 pendant la séance** ; interruption : tempête d'anneaux, assaut Rocket, Rayquaza s'éveille | **R4** | 9 | badge 8 → 53 |
 | 13 | Atalanopolis ou Nénucrique (civils), Centre Spatial (relais, Fiole), Pilier Céleste (warp vers le sommet ; aucun Vélo Cross requis) | tous | veillée : chaque allié **dit** ce qu'il peut tenir ; affectation ; résolution de la Fiole ; Rayquaza | — | 7 | climax (toutes issues) → 56 |
-| 14 | R128, Éternara, Route Victoire, Ligue, Panthéon | Blue ; Conseil 4 de Hoenn ; Maître (Pierre Rochard **ou** Marc) | Blue final ; Ligue = **écho** de la fin (équipes et répliques selon l'état) ; épilogue en diaporama | — | 3 | Maître → 60 ; postgame 75, puis 100 |
+| 14 | R128, Éternara, Route Victoire, Ligue, Panthéon | Blue ; Conseil 4 de Hoenn ; Maître (Pierre Rochard **ou** Marc) | Blue final ; Ligue = **écho** de la fin (équipes et répliques selon l'état) ; épilogue en diaporama | — | 3 | Conseil 4 battu → 60 ; Maître battu → 75 ; retour de l'équipe de Red → 100 |
 | P | Zone de Combat, Pilier, lieux d'anneaux, Bourg-en-Vol… | départs canoniques | retour de l'équipe de Red ; anneaux légendaires ; dernier duel de Giovanni ; Mewtwo et Fuji ; Tournoi | couches cachées | 6 | — |
 
 **Budget :** 131 décisions listées, cible ≥ 115 robustes (brief C).
@@ -372,12 +379,14 @@ Notation : `Dx–Dy` = budget de décisions (le brief C les numérote) ; **L** =
 - ordre des badges et correspondance badges → capacités vanilla conservés ;
 - les drapeaux de livraison vanilla gardent leur sens. Lettre pour Pierre Rochard. Composant Devon pour le Capitaine Marin : poser `FLAG_DELIVERED_DEVON_GOODS` dans **tous** les cas (ce drapeau a 6 lecteurs vanilla) ;
 - chaque barrage vanilla Magma ou Aqua réutilisé est levé par un événement qui se termine dans **toutes** les branches ;
-- le Sommet exige la Grotte Tréfonds ; l'arène d'Atalanopolis se déverrouille à la fin de Tréfonds ;
+- le Sommet exige la Caverne Fondmer ; l'arène d'Atalanopolis se déverrouille à la fin de Fondmer ;
+- cannes : donneurs vanilla (Vieille canne ch. 2 à Myokara, Super canne ch. 8 sur la R118, Méga canne ch. 10 à Algatia) ;
+- **Multi Exp remis dans toutes les branches avant la fin du ch. 4** (Chen au ch. 3 si D030 a ; sinon Seko au ch. 4, indépendamment de D041) ;
 - au Pilier Céleste, warp scripté vers le sommet (le Vélo Cross n'est pas requis).
 
 **Soins :** aucune zone exigeante à plus de 2 cartes d'un soin. On ajoute des soigneurs PNJ :
 - médecin du chantier au Mont Chimnée ;
-- secouriste d'Aqua **ou** de repli (Flora / Ondine) à Tréfonds ;
+- secouriste d'Aqua **ou** de repli (Flora / Ondine) à Fondmer ;
 - la Doyenne avant le Pilier Céleste ;
 - un soin forcé avant la veillée.
 
@@ -405,35 +414,35 @@ Rangs :
 | **Brice** | second protagoniste, voix, recenseur | être utile à son père → avoir son propre avis | A | **émerge de ce qu'il a vu** (`BV` : PROTÉGER, ACCUEILLIR ou COMPRENDRE) | Red, Flora (amitié tendue), Chen (admiration) · Seko, Flora (positions) | P ch. 0 sauvetage ; É ch. 5 (ses données contredisent son père) ; B ch. 7 (publie ou se tait, **seul**) ; B2 ch. 12 (vote **à lui**, même contre Red) ; E voix de l'épilogue | H : R103, R110, R119 ; ch. 12 refusable ; L : postgame. Son équipe contient les arrivants protégés ou des natifs selon `BV`, plus le starter fort contre le vôtre |
 | **Blue** | rival miroir, comédie et blessure | battre Red → valoir sans être premier, aimer ses Pokémon | É | MARCHÉ (Scott) → libre / indifférent | Scott (tentation), Nina · Red, Peter (honte), Giovanni (héritage de Jadielle) | P ch. 3 défi ; É ch. 9 (aveu sur le toit, rencontre Giovanni) ; B ch. 13 (vient ou non) ; E Route Victoire et départ pour Jadielle | H ch. 3, ch. 9 (refusables), ch. 14 (obligatoire) ; L : Tournoi. **Adaptatif** : contre le type dominant de l'équipe du joueur (aide moteur E-ADAPT), plus une variante selon `BL` |
 | **Hoopa** (Confiné) | cœur mythique muet | retrouver son pouvoir → un échange juste (confiance) | É puis ? | LIBÉRATION | Fuji, Aqua · Koga (piège), Rocket, Consortium | P ch. 1 vol ; É ch. 6 (blessé par l'anneau de Magma) ; B ch. 8 révélé ; E fin (§12) | aucun combat pendant l'histoire (suiveur PNJ) ; postgame : obtenable dans toutes les fins (canal par fin) |
-| **Amaryllis** | antagoniste croyante | faire descendre Rayquaza, venger la gardienne → admettre que la colère d'un dieu n'est pas une justice | M | — / LE CIEL JUGE | Aster, Aragon (respect), Doyenne (tension) · Peter (clans), Rocket (vengeance), Pierre Rochard | P ch. 5 ; É ch. 8 (tempête) et ch. 10 (surcharge entrevue) ; B ch. 13 (renonce, persiste ou se sacrifie, selon `AM` et les preuves) ; E épilogue | H ch. 5, ch. 10, ch. 13 ; L postgame. Dragons et Méga-Drattak après le ch. 8 ; au climax, **une anomalie P2** dans l'équipe si `PA` est haut |
-| **Giovanni** | ombre, clé du noyau | mériter son retour seul → (il ne change pas : il renonce, canon) | É (orgueil) | MARCHÉ / « pas comme ça » (refuse le dieu volé) | Persian · Red, Ariane et Lambda (mépris), Président de Sylphe, M. Rochard | P ch. 3 (l'homme au Persian) ; É ch. 6 (corrige des sbires négligents) ; B ch. 10 (désavoue Lambda) ; E ch. 12 témoignage (si `GI` le permet), postgame dernier duel et départ (« s'entraîner », canon) | L ch. 6 incognito (refusable) ; L postgame (T5). Noyau Sol, satellites Ténèbres ; jamais Mewtwo |
+| **Amaryllis** | antagoniste croyante | faire descendre Rayquaza, venger la gardienne → admettre que la colère d'un dieu n'est pas une justice | M | — / LE CIEL JUGE | Aster, Aragon (respect), Doyenne (tension) · Peter (clans), Rocket (vengeance), Pierre Rochard | P ch. 5 ; É ch. 8 (tempête) et ch. 10 (surcharge entrevue) ; B ch. 13 (renonce — **seulement si Red est au Pilier** —, persiste, ou se sacrifie : le sacrifice n'est **pas** une mort, elle retient Rayquaza et son Drattak suit le dragon) ; E épilogue | H ch. 5, ch. 10, ch. 13 ; L postgame. Dragons et Méga-Drattak après le ch. 8 ; au climax, **une anomalie P2** dans l'équipe si `PA` est haut |
+| **Giovanni** | ombre, clé du noyau | mériter son retour seul → (il ne change pas : il renonce, canon) | É (orgueil) | MARCHÉ / « pas comme ça » (refuse le dieu volé) | Persian · Red, Ariane et Lambda (mépris), Président de Sylphe, M. Rochard | P ch. 3 (l'homme au Persian ; il rachète des actions de Devon : revenir avec de l'argent, pas avec un dieu — il n'en garde rien à la fin) ; É ch. 6 (corrige des sbires négligents) ; B ch. 10 (désavoue Lambda) ; E ch. 12 témoignage (si `GI` le permet), postgame dernier duel et départ (« s'entraîner », canon) | L ch. 6 incognito (refusable) ; L postgame (T5). Noyau Sol, satellites Ténèbres **d'avant le réseau** (rien d'importé) ; jamais Mewtwo |
 | **Peter** | chef de la Mission Indigo | laver Kanto, abattre la Rocket → écouter les gens du lieu | M | RAPATRIEMENT / SCEAU | Pierre Rochard, Major Bob, Olga · Amaryllis et Aragon (clans), Koga (méfiance), Blue | P ch. 3 débarquement ; É ch. 5 (piétine ou respecte le Site Météore) ; B ch. 12 (Kanto assume sa part ou non) ; E rentre Maître (canon) | H ch. 5 (duo ou contre Amaryllis), ch. 13 allié ; L Défi Indigo dès le ch. 10. Dragons ; Drattak s'il respecte les gardiens |
 | **Pierre Rochard** | Maître de Hoenn, fils de Devon | protéger Hoenn et son père → affronter son père | M | INTÉGRATION prudente / SCEAU ou CONTRÔLE (déchiré) | Marc, Peter, Red · M. Rochard, Max, Arthur | P ch. 2 ; É ch. 8 (Méga-Bracelet, doute) ; B ch. 12 (accuse ou protège son père) ; E Maître, **ou** démission (Marc devient Maître) et départ pour Kanto (canon HGSS) | H ch. 8 duo, ch. 10 duo, ch. 14 Maître ; L postgame. Méga-Métalosse |
-| **Prof. Chen** | science de Kanto, faute ancienne | être le premier à cataloguer → reconnaître Seko et Blue, avouer | É | INTÉGRATION / COMPRENDRE | Nina, Brice · Seko, Agatha | P ch. 3 ; É ch. 7 (clash avec Seko) ; B ch. 9 et 12 (Agatha révèle l'article ; il avoue ou nie) ; E épilogue | L postgame (vétéran ; HYPOTHÈSE non canon) |
+| **Prof. Chen** | science de Kanto, faute ancienne | être le premier à cataloguer → reconnaître Seko et Blue, avouer | É | INTÉGRATION / CONTRÔLE (« garder le réseau pour l'étudier ») | Nina, Brice · Seko, Agatha | P ch. 3 ; É ch. 7 (clash avec Seko) ; B ch. 9 et 12 (Agatha révèle l'article ; il avoue ou nie) ; E épilogue | L postgame (vétéran ; HYPOTHÈSE non canon) |
 | **Prof. Seko** | science de Hoenn, père | publier avant Chen, protéger les natifs → écouter son fils | É/A | REMPART doux / SCEAU | Norman, Mme Seko · Chen, Brice | P ch. 0 ; É ch. 4 (ramène Pikachu) ; B ch. 7 ; E épilogue | aucun |
 | **Flora** | héroïne qui aurait pu l'être, cadette du Rempart | prouver qu'elle sert → son propre jugement | M | REMPART / SCEAU | Norman, Brice · Brice (positions), Timmy (abattage) | P ch. 1 Bois ; É ch. 7 Vergazon ; B ch. 13 (désobéit ou non) ; E épilogue | H ch. 1 (refusable), ch. 7 ; L. Équipe de brigade (natifs) ou mixte si elle bascule |
 
 ### 9.2 Mission Indigo et Kanto (rang B sauf mention)
 | Perso | Fonction | Veut → Besoin | Agenda | Position | Alliés · Rivaux | Présence et pulsations | Combats |
 |---|---|---|---|---|---|---|---|
-| **Pierre** (Brock) | éleveur | quitter l'arène pour soigner → assumer qu'on ne sauve pas tout | É/A | INTÉGRATION / COMPRENDRE | Roxanne, Timmy · mineurs, Major Bob | ch. 1 mines (P), ch. 7 (É : ses protégés condamnés), ch. 12 vote (B), épilogue élevage (E) | H ch. 1 (duo possible) ; L. Roche défensive, plus les arrivants adoptés s'ils ont été sauvés |
+| **Pierre** (Brock) | éleveur | quitter l'arène pour soigner → assumer qu'on ne sauve pas tout | É/A | INTÉGRATION / CONTRÔLE | Roxanne, Timmy · mineurs, Major Bob | ch. 1 mines (P), ch. 7 (É : ses protégés condamnés), ch. 12 vote (B), épilogue élevage (E) | H ch. 1 (duo possible) ; L. Roche défensive, plus les arrivants adoptés s'ils ont été sauvés |
 | **Ondine** | action directe | libérer les Eau des filets (A), défier Marc (É) → mesurer les conséquences | M | INTÉGRATION / LIBÉRATION | Arthur (temporaire), Marc · Major Bob, Aldo | ch. 3, ch. 9 (libère un banc : pêcheurs ruinés), ch. 11 (Aqua ou Mission), E | L ; H ch. 11 selon le camp choisi |
 | **Major Bob** | logisticien militaire | contenir par la force → voir les gens derrière les chiffres | A (ordre) | REMPART / SCEAU | Voltère, Norman · Ondine, Erika | ch. 3, ch. 4 (coupe un quartier), ch. 7 (vote), ch. 13 évacuation | L ; H ch. 4 (exercice refusable) |
 | **Erika** | parfumeuse d'affaires | contrat de parfum avec une fleur arrivante → choisir entre profit et vergers | É | MARCHÉ → INTÉGRATION / CONTRÔLE | Adriane, Timmy · Major Bob, Consortium (négociation) | ch. 4, ch. 6, ch. 7 ou 9, E | L |
-| **Koga** | espion ambigu | un siège au Conseil 4, la tête de la Rocket → (ambiguïté : ancien de la Rocket ? HYPOTHÈSE inspirée du manga) | É | — / CONTRÔLE (pour Indigo) | Jeannine, Peter (méfiant) · Rocket, Hoopa | ch. 3, ch. 8 (piège), ch. 10 (révèle son double jeu), E (Conseil 4) | H ch. 8 si Red lui dispute Hoopa ; L |
+| **Koga** | espion ambigu ; il **achète** des informations à Lance (Rocket) (le « K. » du carnet de primes) | un siège au Conseil 4, la tête de la Rocket → (ambiguïté : ancien de la Rocket ? jamais confirmé ; HYPOTHÈSE inspirée du manga) | É | — / CONTRÔLE (pour Indigo) | Jeannine, Peter (méfiant) · Rocket, Hoopa | ch. 3, ch. 8 (piège), ch. 10 (W10 : démasqué, couvert ou ignoré), E (Conseil 4) | H ch. 8 si Red lui dispute Hoopa ; L ch. 8 (Défi, équipe neutre, D081) ; revanche de contenu au ch. 10 (PROPRE / PIÈGES selon W10) |
 | **Jeannine** (rang C) | héritière | égaler son père | É | — | Koga · Koga | ch. 3, ch. 8, E | L (sprite de repli) |
 | **Morgane** | voyante | comprendre sa vision → une prophétie n'est pas un ordre | M | — / SCEAU (elle craint le dragon) | Lévy et Tatia, Capucine · Amaryllis | ch. 3, ch. 8 (vision), ch. 10, ch. 13 | L |
-| **Auguste** | consultant de Magma, conscience | payer la reconstruction de Cramois'Île → refuser de refaire Mewtwo | M | REMPART géré → LIBÉRATION | Max, Fuji · Adriane | ch. 6 (démonstration, sources), ch. 9 (rejoint Fuji ou reste), ch. 12, E (rentre : le volcan gronde) | L |
+| **Auguste** | consultant de Magma, conscience | financer la surveillance et l'évacuation de Cramois'Île → refuser de refaire Mewtwo | M | REMPART géré → LIBÉRATION | Max, Fuji · Adriane | ch. 6 (démonstration, sources), ch. 9 (rejoint Fuji ou reste), ch. 12, E (rentre : le volcan gronde) | L |
 | **Olga** | traque les Lokhlass de Sevii | récupérer ses Lokhlass → accepter l'aide de Hoenn | A/É | RAPATRIEMENT / SCEAU | Glacia, Damien · Rocket, marchands | ch. 3, ch. 9 coup de filet, ch. 12, E (Île 4) | H ch. 9 duo ; L |
 | **Aldo** | ascète | un adversaire digne → s'engager | É | REMPART (avec les pêcheurs) / — | Bastien · Ondine | ch. 2, ch. 11 ou Tournoi, E | L |
 | **Agatha** | deuil et rancune | ramener les spectres de Lavanville, régler ses comptes avec Chen → transmettre, pardonner | M | — / SCEAU | Spectra, Fuji · Chen | ch. 9 (P/É), ch. 12 (B : révèle l'article), E retraite (canon) | L ; H ch. 9 si le rite est profané |
 | **Léo** (Bill) | concepteur de la couche de transfert | sauver son invention → dire la vérité à ses dépens | M | INTÉGRATION / LIBÉRATION | Lanette (rivale), Ciléo · Président de Sylphe | ch. 1, ch. 5, ch. 7 (aveu), ch. 10 | aucun |
 | **Ciléo** | opérateur du nœud Kanto | prouver que sa machine est saine → admettre | É | — / CONTRÔLE → LIBÉRATION | Red, Léo · Lanette | ch. 0, ch. 3, ch. 10 (voit le cœur), ch. 12 (registre du coffre) | aucun |
-| **M. Fuji** | conscience extrême | libérer Hoopa à tout prix → sa pénitence ne justifie pas un désastre | A | INTÉGRATION / LIBÉRATION ou BRISER | Auguste, Agatha · Président de Sylphe | ch. 9, ch. 12, ch. 13 (peut briser la Fiole), postgame (Mewtwo) | aucun |
+| **M. Fuji** | conscience extrême (venu sur une lettre d'Auguste) | libérer Hoopa à tout prix → sa pénitence ne justifie pas un désastre | A | INTÉGRATION / LIBÉRATION ou BRISER | Auguste, Agatha · Président de Sylphe | ch. 9, ch. 12, ch. 13 (peut briser la Fiole), postgame (Mewtwo) | aucun |
 | **Président de Sylphe** | homme d'affaires coupable | sauver Sylphe → assumer | É | MARCHÉ / CONTRÔLE | M. Rochard (partenaire et rival) · Giovanni, Fuji | ch. 1, ch. 3, ch. 10, ch. 12 (confession ou chute) | aucun |
 | **Nina** (rang C) | médiatrice des Concours | un ruban de Hoenn ; veiller sur Blue | A | INTÉGRATION / — | Marc, Blue | ch. 3, ch. 9, E | aucun (pas de portrait) |
 | **Ariane** (Rocket) | cheffe des opérations | prouver sa valeur, ramener Giovanni → (ne change pas) | É | MARCHÉ / VOLER | Lance (Rocket) · Amos (méthode), Giovanni | ch. 1 (indirect), ch. 6, ch. 10 (assaut), ch. 13 ; réplique juste : « Votre Ligue les parque, nous on les paie » | H ch. 10, ch. 13 |
-| **Lambda** (Rocket) | imitateur | réussir le coup du siècle | É | — / VOLER | Ariane · tous | infiltré en ingénieur de Passerelle (ch. 1–7, indices), faux Giovanni (ch. 10), démasqué | H ch. 10 ; Zoroark ou Métamorph (gimmick lisible) |
+| **Lambda** (Rocket) | imitateur | réussir le coup du siècle (et vendre l'horaire à Magma en privé) | É | — / VOLER | Ariane · tous | infiltré sous l'identité de l'ingénieur **Ferrand** (ch. 1–7, indices), faux Giovanni (ch. 10), démasqué (dès le ch. 9 si le vrai Ferrand est libéré) | H ch. 10 ; Zoroark ou Métamorph (gimmick lisible) |
 | **Lance** (Rocket) | cruel, homme de terrain | encaisser les primes du Rempart | É | REMPART cynique / VOLER | Ariane · Peter | ch. 1 (R116), ch. 4 (Tunnel), ch. 9 (profane le Mont Mémoria) | H ch. 4, ch. 9 |
 | **Amos** (Rocket, rang C) | stratège | un retour « digne » | É | — | Giovanni (loyauté) · Ariane | lettres (ch. 6), ch. 10 et ch. 12 | H ch. 13 selon `RK` |
 
@@ -441,7 +450,7 @@ Rangs :
 | Perso | Fonction | Veut → Besoin | Agenda | Position | Alliés · Rivaux | Présence et pulsations | Combats |
 |---|---|---|---|---|---|---|---|
 | **Norman** | chef du Rempart, registraire | l'ordre → voir sa fille | A | REMPART / SCEAU | Major Bob, Seko · Chen, Erika | ch. 0 (téléphone), ch. 1, ch. 7, ch. 12 | badge 5 ; L postgame |
-| **Timmy** | enfant qui adopte un arrivant | garder son ami → se battre pour lui ou le laisser partir | M | INTÉGRATION | Erika, Pierre (Brock) · Flora | ch. 4, ch. 7, ch. 14 ou postgame | H ch. 7 (refusable) ; L. Son arrivant est dans l'équipe s'il a été sauvé |
+| **Timmy** | enfant qui adopte un arrivant | garder son ami → se battre pour lui ou le laisser partir | M | INTÉGRATION | Erika, Pierre (Brock) · Flora | ch. 4, ch. 7 (Red le défend contre la brigade : combat contre Flora, D064), ch. 14 ou postgame | Route Victoire (ch. 14, refusable, D124) ; L. Son arrivant est dans l'équipe s'il a été sauvé |
 | **M. Rochard** | Devon | sauver Devon et les emplois de Mérouville → dire la vérité à son fils | É | MARCHÉ / CONTRÔLE | Président de Sylphe · Pierre Rochard, Giovanni | ch. 1, ch. 7, ch. 12 | aucun |
 | **Marc** | gardien d'Atalanopolis, Concours | préserver la tradition et le spectacle → choisir entre les sages et son ami | M | INTÉGRATION / SCEAU | Juan, Pierre Rochard, Nina · Doyenne | ch. 9, ch. 12, ch. 14 (Maître si Pierre Rochard démissionne) | H ch. 14 (conditionnel) ; L |
 | **Juan** | arbitre moral du Sommet | l'impartialité → prendre parti | A | — | Marc · — | ch. 12, E | badge 8 ; L |
@@ -495,11 +504,15 @@ Rangs :
 
 **Construction.** Un noyau canonique de 2 ou 3 Pokémon, puis des satellites Gen 1–9 **justifiés par l'intrigue** : origine cohérente avec §5.3, ou avec le passé du personnage. Validateur `tools/qa/validate_trainers.py --learnsets` : 0 erreur exigée.
 
-**Méga :** une seule par équipe désignée, après l'introduction au ch. 8.
+**Méga :** une seule par équipe désignée, après l'introduction au ch. 8. Méga-Drattak pendant l'histoire : Amaryllis seule ; Aragon et Glacia ont leur Méga en T5 seulement. Exception déclarée : Drackhaus d'Amaryllis au ch. 5 (natif du Site Météore ; la règle « pas de pseudo-légendaire avant le ch. 8 » vise les sauvages).
+
+**Défis et décisions :** seuls 4 Défis refusables sont des décisions comptées (Aldo D022, Major Bob D043, Koga D081, Peter D100). Les autres sont du **contenu** : macro avec flag de refus 0, le Défi reste proposé. Les arènes de Roxanne, Bastien et Norman sont des tutoriels sans effet de terrain (déclaré).
+
+**2 contre 1** (Amaryllis contre Red et Peter, ch. 5) : pas de nouvelle macro. On utilise un suiveur partenaire (`setfollowernpc … battlePartner`) et un `trainerbattle` simple (`opponentB = 0xFFFF`, `src/battle_setup.c`), à vérifier en émulateur.
 
 **IA :** flags par palier, justifiés (brief B).
 
-**ID de dresseurs :** recyclés. 324 ID de revanche vanilla, 64 ID de sbires et admins Magma/Aqua, 38 ID de rivaux, plus 9 libres. Les revanches par Cherche VS sont **désactivées** (cohérent avec « pas de farm »).
+**ID de dresseurs :** recyclés. **291** ID de revanche vérifiés, 64 ID de sbires et admins Magma/Aqua, 38 ID de rivaux, plus 9 libres. Revanches, Cherche VS et Match Call sont **désactivés** (`FREE_MATCH_CALL TRUE`, cohérent avec « pas de farm »). Le **Match Call n'est pas un canal narratif** : tout « appel » est une scène scriptée (téléphone du labo, interphone, PNJ présent). `B_SLEEP_CLAUSE TRUE`.
 
 ---
 
@@ -509,10 +522,10 @@ Rangs :
 | Système | Stockage | Échelle | Écrit par | Lecteurs (≥ 2, avant la dernière écriture) | Lisible comment |
 |---|---|---|---|---|---|
 | Relations (9) : Brice `BR`, Blue `BL`, Flora `FL`, Pierre Rochard `PR`, Peter `PE`, Amaryllis `AM`, Timmy `TI`, Giovanni `GI` (respect), **Hoopa `HO`** (confiance) | vars 0–100, départ 50 (`HO` part de 20) | bornée (`addaffinity`) | décisions, gestes discrets | répliques de saillance, options déverrouillées, qui vient au climax, voix de l'épilogue, fins | réactions, présence, Carnet |
-| Réputations (7) : `rL`, `rC`, `rM`, `rA`, `rI`, `rG`, `rP` | vars 0–100 | bornée | décisions | barrages, prix, aides, votes du Sommet (**comparaisons relatives**, ex. `rA > rM`), fins | PNJ, affiches, prix |
+| Réputations (7) : `rL`, `rC`, `rM`, `rA`, `rI`, `rG`, `rP` | vars 0–100 | bornée | décisions | barrages, ruptures de stock, aides, votes du Sommet, fins — **toujours lues relativement** : `S(X)` = écart à la moyenne des 7 (aide E-REPREL) | PNJ, affiches, boutiques |
 | **Pression des anneaux** `PA` | var 0–100 | monte par le Kiosque, la surcharge, les transferts du Consortium soutenus ; baisse par les fermetures de nœuds et les preuves publiées | décisions et événements | fréquence des anneaux (épidémies scriptées), anomalies P2, descente de Rayquaza, options de fin | météo, PNJ, bulletins |
 | Emprise Rocket `RK` | var 0–100 | recrutement des ruinés, primes | décisions | sbires sur les routes, assaut du ch. 10, climax, variante Rocket de l'épilogue | sbires locaux reconnus |
-| Écosystèmes × 6 zones (`Z-01`–`Z-06`) | 2 flags par zone (ENVAHI / MIXTE / RESTAURÉ) | discret | missions de zone, motion 2 du Sommet | **tables de rencontre alternatives** (aide moteur E-ECO), PNJ, diaporama | ce qu'on rencontre |
+| Écosystèmes × 6 zones (`Z-01`–`Z-06`) | 1 var, 2 bits par zone (ENVAHI / MIXTE / RESTAURÉ / ABATTU) | discret | missions de zone, motion 2 du Sommet | **tables de rencontre alternatives** (aide moteur E-ECO), PNJ, diaporama | ce qu'on rencontre |
 | Frontière `FK` | flag ou var (fermée / Mission / ouverte) | discret | ch. 3, ch. 12 | présence de la Mission, postgame | ports |
 | Notoriété `N` | var 0–3 | — | ch. 0 (nom ou anonymat), actes publics | portes, Défis, Sommet (qui parle), épilogue | regards, presse |
 | Dossier | flags de pièces | — | enquête | Sommet (montrer), R4, options de fin, fin cachée | Carnet |
@@ -582,13 +595,15 @@ La surcharge d'Amaryllis déclenche une **tempête d'anneaux** sur Atalanopolis 
 
 Red va en un lieu ; 2 ou 3 alliés sont affectés aux autres.
 
+**Le Sommet ne décide pas de la Fiole.** Sa motion 3 porte sur la responsabilité (KANTO / HOENN / PARTAGÉE) ; la garde de la Fiole se joue ici, par l'affectation et l'intention de celui qui tient le relais (formalisation : `GAME_SYSTEMS.md` §10).
+
 **Invariants :**
 - la Rocket **n'obtient jamais** la Fiole ;
 - combattre Rayquaza ne fait que **gagner du temps** ;
 - aucun seuil caché n'est lu sans avoir été **annoncé** par une réplique de veillée.
 
 ### 12.2 Résultat de la Fiole (évaluation ordonnée ; formalisation : brief C)
-1. **PACTE** si Hoopa est présent et réuni à la Fiole par quelqu'un en qui il a confiance (`HO` ≥ seuil), **et** si le relais est tenu.
+1. **PACTE** si Hoopa est présent et réuni à la Fiole par quelqu'un en qui il a confiance (`HO` ≥ 70 si c'est Red, ≥ 80 si c'est un allié), **et** si le relais est tenu.
 2. **SCEAU** si la Fiole atteint le Pilier avec le rite (`rG` ≥ seuil ou Doyenne présente), **et** si la tempête est contenue.
 3. **PASSERELLE** si le relais est tenu par le Consortium et la Ligue (`rC` et `rL`), **et** si `PA` est ramené sous le seuil de Y1 avant l'arrivée de Rayquaza (fermeture des nœuds de surcharge).
 4. **CIEL OUVERT** si la Fiole est brisée sans Hoopa (Fuji ou Aqua ; câble coupé au ch. 11 ; `HO` bas).
@@ -601,7 +616,7 @@ Red va en un lieu ; 2 ou 3 alliés sont affectés aux autres.
 | Fin | Ce qui arrive | Gain exclusif | Perte | Dernière image |
 |---|---|---|---|---|
 | **F1 Le Sceau** | Fiole au Pilier ; les anneaux cessent ; les arrivants restent | restauration des natifs la plus rapide ; épreuves du Pilier au postgame | Hoopa exilé, impuissant ; réseau mort, crise économique à Mérouville | Hoopa seul au sommet, qui regarde le ciel |
-| **F2 Le Pacte** | Hoopa réuni et libre ; il **équilibre** l'échange : une part des disparus revient, une part des arrivants rentre | l'équipe de Red revient par un anneau ; sites d'anneaux de Hoopa | Hoopa prend « le trésor de qui l'a enchaîné » : Devon et Sylphe ruinées ; Pierre Rochard démissionne (Marc Maître) | un anneau qui rend Piko à M. Marco |
+| **F2 Le Pacte** | Hoopa réuni et libre ; il **équilibre** l'échange : une part des disparus revient, une part des arrivants rentre | l'équipe de Red revient par un anneau ; sites d'anneaux de Hoopa | Hoopa prend « le trésor de qui l'a enchaîné » : Devon et Sylphe ruinées (Sylphe se relève avant l'année 3 : une ligne d'épilogue) ; Pierre Rochard démissionne (Marc Maître) | un anneau qui rend Piko à M. Marco |
 | **F3 La Passerelle** | réseau régulé par une charte ; Hoopa toujours captif mais « rationné » | lien fort Kanto–Hoenn ; boutiques mondiales ; imports pour la Zone de Combat | Hoopa enchaîné (coût moral visible) ; incidents résiduels au postgame | une file au Kiosque ; un anneau minuscule au loin |
 | **F4 Le Rempart** | Rayquaza détruit le relais ; fermeture violente ; frontières fermées ; abattages | les natifs protégés ; l'arc d'Amaryllis s'accomplit | Algatia blessée ; la Mission repart en disgrâce ; arrivants abattus ou bloqués | Rayquaza qui remonte ; ruines du Centre Spatial |
 | **F5 Le Ciel ouvert** | Fiole brisée ; le pouvoir est sans maître ; Hoopa s'enfuit ; anneaux sauvages imprévisibles | le plus de sites légendaires ; monde le plus mêlé | instabilité (épidémies d'anneaux sur les routes) | un anneau qui s'ouvre au-dessus de Bourg-en-Vol |
@@ -619,7 +634,7 @@ Red va en un lieu ; 2 ou 3 alliés sont affectés aux autres.
 - **Toutes les espèces légendaires et fabuleuses** obtenables, par le canal de la fin : anneaux de Hoopa, expéditions Passerelle, anneaux résiduels ouverts par la Doyenne, anneaux sauvages. Conditions par espèce : brief D.
 - **Départs canoniques** : Blue vers Jadielle, Koga au Conseil 4, Olga à l'Île 4, Agatha à la retraite, Auguste vers Cramois'Île, Pierre Rochard possiblement vers Kanto.
 - **Dernier duel de Giovanni**, puis son départ.
-- **Fuji et Mewtwo** : un anneau amène Mewtwo ; capturer ou laisser est une décision.
+- **Fuji et Mewtwo** : un anneau amène Mewtwo ; capturer ou laisser est une décision (D126). « Laisser » **retarde** seulement l'obtention : Fuji le confie plus tard (P8), invariant 9.
 - Zone de Combat et Tournoi ; Défis T5.
 - Restauration écologique continuée ; lettres.
 
@@ -646,12 +661,12 @@ Red va en un lieu ; 2 ou 3 alliés sont affectés aux autres.
 ## 14. Contraintes techniques (contraignantes)
 | Domaine | Contrainte | Conséquence |
 |---|---|---|
-| ID de dresseurs | 9 libres ; recyclables : 324 revanches, 64 Magma/Aqua, 38 rivaux | revanches Cherche VS désactivées ; allocation par le brief B, sans collision |
+| ID de dresseurs | 9 libres ; recyclables : 291 revanches (vérifiées), 64 Magma/Aqua, 38 rivaux | `FREE_MATCH_CALL TRUE` (revanches, Cherche VS, Match Call coupés) ; allocation : `COMBAT_DESIGN` §12 |
 | Flags | 319 persistants libres + ~40 `FLAG_HIDE_*` vanilla recyclables (lecteurs réécrits) | budget ~260 ; option E-SB3 |
 | Vars | 54 libres + vars d'état vanilla recyclables une fois l'histoire vanilla retirée (liste vérifiée par grep) | budget ≤ 45 ; choix à 3 options en bits (E-BITS) ; aucune var sans lecteur |
 | Sauvegarde | SB1 376 o, SB2 120 o, **SB3 1 623 o libres** | aucune structure nouvelle sauf E-SB3 (flags étendus), à valider par le programmeur moteur |
 | IWRAM | 86,6 % | **aucune** aide en IWRAM : code en ROM seulement |
-| Rencontres | `wild_encounters.json` ; `OW_TIME_OF_DAY_ENCOUNTERS` (capacité ×4 si activé) ; épidémies vanilla en SaveBlock1 (`outbreakPokemonSpecies`…) | brief D : analyse de capacité ; épidémies = anneaux scriptés |
+| Rencontres | `wild_encounters.json` ; `OW_TIME_OF_DAY_ENCOUNTERS TRUE` en **nuit seule** (variantes `_Night` ; test RTC) ; épidémies vanilla en SaveBlock1 | capacité validée par `ENCOUNTERS_PLAN` ; épidémies = anneaux scriptés |
 | Texte | ~3 500–4 500 boîtes estimées | scènes de 8–15 boîtes ; saillance plutôt que branches |
 | Assets | sprites OW de RFVF compilés ; replis : Jeannine (`NINJA_BOY` / `BATTLE_GIRL`), commandants Rocket (sbires RFVF), Président de Sylphe (`GENTLEMAN`), Amaryllis (`DRAGON_TAMER` / `HEX_MANIAC`), Hoopa (`OBJ_EVENT_GFX_SPECIES`) | `CAST_DOSSIER` §5 |
 
@@ -661,12 +676,16 @@ Red va en un lieu ; 2 ou 3 alliés sont affectés aux autres.
 | E-CAP | `B_LEVEL_CAP_TYPE LEVEL_CAP_VARIABLE` + var, montée monotone par un script commun | jalons dans toutes les branches |
 | E-ECO | table alternative de rencontres par zone selon un état (petite table {carte, flag → en-tête alternatif}) | écosystèmes |
 | E-OUT | special qui pose ou efface une épidémie (espèce, carte, niveau) | anneaux sur les routes |
-| E-TOD | activer les tables par moment de la journée (si le brief D le justifie) | capacité pour 1 025 espèces |
+| E-TOD | activer les tables par moment de la journée, **nuit seule** | capacité pour 1 025 espèces |
 | E-ADAPT | special « type dominant de l'équipe » → `VAR_RESULT` | Blue, Giovanni, Peter |
 | E-REMOVE | `removepartymon` (vider l'équipe du prologue) ; donner une équipe temporaire | prologue |
-| E-LVL | donner un Pokémon au « plafond − 2 » | retour de Pikachu |
+| E-LVL | **aucun code** : `givemon` lit le niveau dans une var (`copyvar` du plafond, `subvar 2`) | retour de Pikachu |
 | E-BITS | `GetVarBits` / `SetVarBits` | budget vars |
-| E-SB3 | bloc de flags étendus dans SB3 (optionnel) | marge |
+| E-LEDGER | 128 bits dans SB3 (16 o) pour les rencontres statiques | seul usage de SB3 retenu (E-SB3 général abandonné) |
+| E-REPREL | special « réputation relative » `S(X)` | lecteurs de réputation |
+| E-NATIVE | « espèce du dex de Hoenn ? » → `VAR_RESULT` | D085, D123 |
+| 2 contre 1 | aucune aide : suiveur partenaire + `trainerbattle` | Amaryllis ch. 5 (à vérifier en émulateur) |
+| Rejetées | E-PRICE (remplacée par des ruptures de stock), E-LEND, E-SB3 général | — |
 | Déjà faits | combats refusables enregistrés (D1), choix du Pokémon de tête (D2), affinités (E), aucun sauvage (N1) | `ENGINE_CHANGES.md` |
 
 ---
@@ -684,6 +703,8 @@ Red va en un lieu ; 2 ou 3 alliés sont affectés aux autres.
 | R8 | Climax trop complexe à scripter | moyen | 3 lieux, résultat déterministe, flags temporaires ; prototype papier d'abord |
 | R9 | Retour arrière du ch. 7 | moyen | contenu sur le trajet (filature, Timmy, Léo) |
 | R10 | Une hypothèse de lore lue comme du canon (Fiole au Pilier, article de Chen) | faible | étiquettes HYPOTHÈSE dans `CHARACTER_AND_LORE` |
+| R11 | Le repli F4 domine la distribution simulée (46 %) : il peut être vécu comme un échec | moyen | question aux critiques (`ARBITRATION_V3` §6) ; F4 a son gain exclusif et peut être **choisie** (Rempart défendu) |
+| R12 | Options presque mortes au Sommet (M1 LIBÉRER : 3 %) et Amaryllis qui RENONCE rarement (12 %) | moyen | question aux critiques ; la libération se joue aussi au climax (F2) |
 
 ---
 
@@ -693,3 +714,4 @@ Red va en un lieu ; 2 ou 3 alliés sont affectés aux autres.
 | 2026-10-13 | 1.0 | « Heure suspendue » (archivée) | brief v1 | GMD |
 | 2026-10-14 | 2.0 | *Pokémon Cendres* (archivé dans `archive/cendres_v2/`) | brief v2 | GMD |
 | 2026-10-14 | 3.0 | **Nouvelle colonne vertébrale : *Pokémon Confluence*.** Prémisse remplacée (anneaux de Hoopa et réseau Passerelle à la place du volcan et du camp) ; oignon à 4 couches et R1–R4 ; mécanisme des espèces Gen 1–9 (nœuds, paliers P1–P3, loi d'échange) ; Hoopa et Rayquaza avec leurs règles ; 10 factions sur 2 axes ; distribution chorale complète (Kanto et Hoenn, rangs A/B/C) ; Mission Indigo en paires par ville ; Défis Indigo et Tournoi ; 5 fins × 3 variantes ; plafond par var ; aides moteur E-* ; v2 archivée. Briefs des spécialistes dans `SPEC_BRIEFS.md` | addendum utilisateur v2.1 ; revues v2 | GMD |
+| 2026-10-14 | 3.1 | **Gel, étape 1 : arbitrage des spécialistes** (`reviews/ARBITRATION_V3.md`). Changements : Caverne Fondmer au ch. 11 (erreur de nom corrigée) ; deux vagues de Kantonais ; affiche Sylphe et cause du silence de Red ; Ferrand ; actions de Giovanni ; Koga qui paie Lance (Rocket) ; lettre d'Auguste à Fuji ; Auguste finance la surveillance ; SACRIFICE d'Amaryllis ≠ mort, renonciation seulement si Red est au Pilier ; motion 3 = « qui paie » (garde de la Fiole au climax) ; PACTE `HO` ≥ 70/80 ; réputations relatives (E-REPREL) ; 4e état ABATTU, zones en bits, règle de couverture ; R110 en Z-03, R101–R103 en Z-01 ; Safari-réserve ; E-TOD nuit seule ; Multi Exp dans toutes les branches avant la fin du ch. 4 ; Timmy à la Route Victoire, Flora 2 au ch. 7 ; Koga : Défi au ch. 8 et revanche de contenu au ch. 10 ; 4 Défis comptés ; politique Méga-Drattak ; 291 ID de revanche ; `FREE_MATCH_CALL` (pas de Match Call narratif) ; 2 contre 1 sans macro ; aides E-LEDGER, E-NATIVE, E-REPREL ; E-SB3 général et E-PRICE rejetés ; plafonds 60/75/100 ; risques R11–R12 | gel du design | GMD |
