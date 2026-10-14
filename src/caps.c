@@ -37,7 +37,13 @@ u32 GetCurrentLevelCap(void)
     }
     else if (B_LEVEL_CAP_TYPE == LEVEL_CAP_VARIABLE)
     {
-        return VarGet(B_LEVEL_CAP_VARIABLE);
+        // Hack: Confluence E-CAP. VAR_CF_CAP is set to 14 by NewGameInitData and only raised by
+        // raisecap / CF_RaiseCap. Fail-safe: an unset var (0, e.g. a save made before E-CAP)
+        // means "no cap" rather than "cap 0", and the value is clamped to MAX_LEVEL.
+        u32 cap = VarGet(B_LEVEL_CAP_VARIABLE);
+        if (cap == 0 || cap > MAX_LEVEL)
+            return MAX_LEVEL;
+        return cap;
     }
 
     return MAX_LEVEL;

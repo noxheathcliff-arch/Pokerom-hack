@@ -51,6 +51,7 @@
 #include "constants/items.h"
 #include "difficulty.h"
 #include "follower_npc.h"
+#include "confluence.h" // Hack
 
 extern const u8 EventScript_ResetAllMapFlags[];
 extern const u8 EventScript_ResetAllMapFlagsFrlg[];
@@ -231,6 +232,7 @@ void NewGameInitData(void)
     ResetTrainerTowerResults();
     ResetContestLinkResults();
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
+    CF_InitNewGameVars(); // Hack: Confluence starting values (relations, reputations, PA, RK, level cap)
     ResetItemFlags();
     ResetDexNav();
     ClearFollowerNPCData();

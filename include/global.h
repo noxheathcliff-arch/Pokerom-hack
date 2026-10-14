@@ -271,6 +271,7 @@ struct SaveBlock3
 #if APRICORN_TREE_COUNT > 0
     u8 apricornTrees[NUM_APRICORN_TREE_BYTES];
 #endif
+    u8 cfStaticLedger[16]; // Hack: Confluence E-LEDGER, 128 static-encounter bits (src/confluence.c)
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;

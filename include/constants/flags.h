@@ -54,8 +54,8 @@
 // Hack: project-allocated flag (see docs/hack/FLAGS_VARS_REGISTRY.md)
 #define FLAG_NO_WILD_ENCOUNTERS 0x20 // WE_FLAG_NO_ENCOUNTER: no wild encounters by any method while set
 #define FLAG_CHOOSE_BATTLE_LEAD 0x21 // B_FLAG_CHOOSE_BATTLE_LEAD: ask which Pokemon leads before trainer battles
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
+#define FLAG_CF_EXP_SHARE                        0x22 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_NO_WHITEOUT                      0x23 // Hack: CF (FLAGS_VARS_REGISTRY)
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
@@ -68,26 +68,28 @@
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
-#define FLAG_UNUSED_0x042    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
+#define FLAG_CF_REFUS_FLORA1                     0x30 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_ALDO                       0x31 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_BOB                        0x32 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_KOGA                       0x33 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_PETER                      0x34 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_ONDINE                     0x35 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_BRICE4                     0x36 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_TIMMY                      0x37 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_GIO1                       0x38 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_GIO2                       0x39 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_BLUE1                      0x3A // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REFUS_BLUE2                      0x3B // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_M_PLANQUE                        0x3C // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_M_MEMORIA                        0x3D // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_M_FONDMER                        0x3E // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_M_CLIMAX                         0x3F // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_KIOSK_OUVERT                     0x40 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_HOOPA_SUIVEUR                    0x41 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_HIDDEN_ENDING                    0x42 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_GIO_DISSOUT                      0x43 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_PLANQUE_RESOLUE FLAG_CF_M_PLANQUE // Hack: alias (DECISION_LEDGER)
+#define FLAG_CF_FONDMER_DONE    FLAG_CF_M_FONDMER // Hack: alias (DECISION_LEDGER)
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
@@ -665,92 +667,92 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_UNUSED_0x264  0x264 // Unused Flag
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
-#define FLAG_UNUSED_0x266  0x266 // Unused Flag
-#define FLAG_UNUSED_0x267  0x267 // Unused Flag
-#define FLAG_UNUSED_0x268  0x268 // Unused Flag
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
-#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
-#define FLAG_UNUSED_0x27B  0x27B // Unused Flag
-#define FLAG_UNUSED_0x27C  0x27C // Unused Flag
-#define FLAG_UNUSED_0x27D  0x27D // Unused Flag
-#define FLAG_UNUSED_0x27E  0x27E // Unused Flag
-#define FLAG_UNUSED_0x27F  0x27F // Unused Flag
-#define FLAG_UNUSED_0x280  0x280 // Unused Flag
-#define FLAG_UNUSED_0x281  0x281 // Unused Flag
-#define FLAG_UNUSED_0x282  0x282 // Unused Flag
-#define FLAG_UNUSED_0x283  0x283 // Unused Flag
-#define FLAG_UNUSED_0x284  0x284 // Unused Flag
-#define FLAG_UNUSED_0x285  0x285 // Unused Flag
-#define FLAG_UNUSED_0x286  0x286 // Unused Flag
-#define FLAG_UNUSED_0x287  0x287 // Unused Flag
-#define FLAG_UNUSED_0x288  0x288 // Unused Flag
-#define FLAG_UNUSED_0x289  0x289 // Unused Flag
-#define FLAG_UNUSED_0x28A  0x28A // Unused Flag
-#define FLAG_UNUSED_0x28B  0x28B // Unused Flag
-#define FLAG_UNUSED_0x28C  0x28C // Unused Flag
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
-#define FLAG_UNUSED_0x28E  0x28E // Unused Flag
-#define FLAG_UNUSED_0x28F  0x28F // Unused Flag
-#define FLAG_UNUSED_0x290  0x290 // Unused Flag
-#define FLAG_UNUSED_0x291  0x291 // Unused Flag
-#define FLAG_UNUSED_0x292  0x292 // Unused Flag
-#define FLAG_UNUSED_0x293  0x293 // Unused Flag
-#define FLAG_UNUSED_0x294  0x294 // Unused Flag
-#define FLAG_UNUSED_0x295  0x295 // Unused Flag
-#define FLAG_UNUSED_0x296  0x296 // Unused Flag
-#define FLAG_UNUSED_0x297  0x297 // Unused Flag
-#define FLAG_UNUSED_0x298  0x298 // Unused Flag
-#define FLAG_UNUSED_0x299  0x299 // Unused Flag
-#define FLAG_UNUSED_0x29A  0x29A // Unused Flag
-#define FLAG_UNUSED_0x29B  0x29B // Unused Flag
-#define FLAG_UNUSED_0x29C  0x29C // Unused Flag
-#define FLAG_UNUSED_0x29D  0x29D // Unused Flag
-#define FLAG_UNUSED_0x29E  0x29E // Unused Flag
-#define FLAG_UNUSED_0x29F  0x29F // Unused Flag
-#define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
-#define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
-#define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
-#define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
-#define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
-#define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag
-#define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
-#define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
-#define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag
-#define FLAG_UNUSED_0x2A9  0x2A9 // Unused Flag
-#define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
-#define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
-#define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
-#define FLAG_UNUSED_0x2AD  0x2AD // Unused Flag
-#define FLAG_UNUSED_0x2AE  0x2AE // Unused Flag
-#define FLAG_UNUSED_0x2AF  0x2AF // Unused Flag
-#define FLAG_UNUSED_0x2B0  0x2B0 // Unused Flag
-#define FLAG_UNUSED_0x2B1  0x2B1 // Unused Flag
-#define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag
-#define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
-#define FLAG_UNUSED_0x2B4  0x2B4 // Unused Flag
-#define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
-#define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
-#define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
-#define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
-#define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
+#define FLAG_CF_DOS_JOURNAL_NOEUD                0x264 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_CLOCHETTE_PIKO               0x265 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_AFFICHE_SYLPHE               0x266 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_HORAIRE_R116                 0x267 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_ECLATS                       0x268 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_SCHEMA_CABLE                 0x269 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_TRACE_ANNEAU                 0x26A // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_CARNET_PRIMES                0x26B // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_JOURNAUX                     0x26C // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_ETOILES                      0x26D // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_SCEAUX_ANCIENS               0x26E // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_HORAIRE_VENDU                0x26F // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_LAMBDA                       0x270 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_DONNEES_INSTITUT             0x271 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_VISION                       0x272 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_ARTICLE_CHEN                 0x273 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_PLAN_CABLE                   0x274 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_OBJ_LETTRE_FERRAND               0x275 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_VOIX_RELAIS                  0x276 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_PREDICTEUR                   0x277 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_BATTEMENT                    0x278 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_INSCRIPTION                  0x279 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_REGISTRE                     0x27A // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DOS_GARDIENNE                    0x27B // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_ALDO_RESPECT                     0x27C // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_AUGUSTE_DOUTE                    0x27D // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_BLUE_LIBRE                       0x27E // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_BOB_QUARTIER                     0x27F // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_BOB_RESPECT                      0x280 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_BOIS_SAUVES                      0x281 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_BRICE_DEFERE                     0x282 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_BRICE_PARLE                      0x283 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_BRICE_PUBLIE                     0x284 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_BROCK_PROTEGES                   0x285 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_CABLE_COUPE                      0x286 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_CHEN_CONFRONTE                   0x287 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_CHEN_LETTRE_MONTREE              0x288 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_CIVILS_CENTRE                    0x289 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_CIVILS_PORT                      0x28A // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_CIVILS_PREPARES                  0x28B // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_COPIE_REPRISE                    0x28C // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_CREDIT_PARTAGE                   0x28D // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DINER_APAISE                     0x28E // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DUO_BRICE                        0x28F // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DUO_PETER                        0x290 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_DUO_PR                           0x291 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_ERIKA_CONTRAT                    0x292 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_FLORA_DESOBEIT                   0x293 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_FLORA_DOUTE                      0x294 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_FRAGMENT_DOYENNE                 0x295 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_FUJI_ATTEND                      0x296 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_GIO_TEMOIN                       0x297 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_HOOPA_CONFIE                     0x298 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_HOOPA_SOIGNE                     0x299 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_INFO_ENTREPOT                    0x29A // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_INSIGNE                          0x29B // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_JEANNINE_ALLIEE                  0x29C // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_KOGA_AVEU                        0x29D // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_LAMBDA_DEMASQUE                  0x29E // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_LAMBDA_REMARQUE                  0x29F // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_LEO_INSIDER                      0x2A0 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_MARCO_ALLIE                      0x2A1 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_MARC_SAGES                       0x2A2 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_MEWTWO_CAPTURE                   0x2A3 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_MEWTWO_LIBRE                     0x2A4 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_MORGANE_ALLIEE                   0x2A5 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_OLGA_LOKHLASS                    0x2A6 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_ONDINE_MISSION                   0x2A7 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_PETER_ASSUME                     0x2A8 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_PETER_RESPECT                    0x2A9 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_PETITION                         0x2AA // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_PRET_CIVILS                      0x2AB // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_PR_ACCUSE                        0x2AC // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_PR_PREUVE                        0x2AD // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REL_AMA_ARAGON                   0x2AE // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REL_AUGUSTE_FUJI                 0x2AF // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REL_CHEN_SEKO                    0x2B0 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_REL_ONDINE_ARTHUR                0x2B1 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_RITE_PREPARE                     0x2B2 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_RITE_PROTEGE                     0x2B3 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_SARAH_DOUTE                      0x2B4 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_SARAH_TEMOIN                     0x2B5 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_STANCE_ERIKA_INT                 0x2B6 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_STANCE_MAX_ECOUTE                0x2B7 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_TIMMY_SAUVE                      0x2B8 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VOTE_ABATTAGE                    0x2B9 // Hack: CF (FLAGS_VARS_REGISTRY)
 #define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
 #define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
 
@@ -1223,100 +1225,101 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
-#define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
-#define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
-#define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
-#define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
-#define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
-#define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
-#define FLAG_UNUSED_0x4A0                                           0x4A0 // Unused Flag
-#define FLAG_UNUSED_0x4A1                                           0x4A1 // Unused Flag
-#define FLAG_UNUSED_0x4A2                                           0x4A2 // Unused Flag
-#define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
-#define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
-#define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
-#define FLAG_UNUSED_0x4A6                                           0x4A6 // Unused Flag
-#define FLAG_UNUSED_0x4A7                                           0x4A7 // Unused Flag
-#define FLAG_UNUSED_0x4A8                                           0x4A8 // Unused Flag
-#define FLAG_UNUSED_0x4A9                                           0x4A9 // Unused Flag
-#define FLAG_UNUSED_0x4AA                                           0x4AA // Unused Flag
-#define FLAG_UNUSED_0x4AB                                           0x4AB // Unused Flag
-#define FLAG_UNUSED_0x4AC                                           0x4AC // Unused Flag
-#define FLAG_UNUSED_0x4AD                                           0x4AD // Unused Flag
-#define FLAG_UNUSED_0x4AE                                           0x4AE // Unused Flag
-#define FLAG_UNUSED_0x4AF                                           0x4AF // Unused Flag
-#define FLAG_UNUSED_0x4B0                                           0x4B0 // Unused Flag
-#define FLAG_UNUSED_0x4B1                                           0x4B1 // Unused Flag
-#define FLAG_UNUSED_0x4B2                                           0x4B2 // Unused Flag
-#define FLAG_UNUSED_0x4B3                                           0x4B3 // Unused Flag
-#define FLAG_UNUSED_0x4B4                                           0x4B4 // Unused Flag
-#define FLAG_UNUSED_0x4B5                                           0x4B5 // Unused Flag
-#define FLAG_UNUSED_0x4B6                                           0x4B6 // Unused Flag
-#define FLAG_UNUSED_0x4B7                                           0x4B7 // Unused Flag
-#define FLAG_UNUSED_0x4B8                                           0x4B8 // Unused Flag
-#define FLAG_UNUSED_0x4B9                                           0x4B9 // Unused Flag
-#define FLAG_UNUSED_0x4BA                                           0x4BA // Unused Flag
-#define FLAG_UNUSED_0x4BB                                           0x4BB // Unused Flag
-#define FLAG_UNUSED_0x4BC                                           0x4BC // Unused Flag
-#define FLAG_UNUSED_0x4BD                                           0x4BD // Unused Flag
-#define FLAG_UNUSED_0x4BE                                           0x4BE // Unused Flag
-#define FLAG_UNUSED_0x4BF                                           0x4BF // Unused Flag
-#define FLAG_UNUSED_0x4C0                                           0x4C0 // Unused Flag
-#define FLAG_UNUSED_0x4C1                                           0x4C1 // Unused Flag
-#define FLAG_UNUSED_0x4C2                                           0x4C2 // Unused Flag
-#define FLAG_UNUSED_0x4C3                                           0x4C3 // Unused Flag
-#define FLAG_UNUSED_0x4C4                                           0x4C4 // Unused Flag
-#define FLAG_UNUSED_0x4C5                                           0x4C5 // Unused Flag
-#define FLAG_UNUSED_0x4C6                                           0x4C6 // Unused Flag
-#define FLAG_UNUSED_0x4C7                                           0x4C7 // Unused Flag
-#define FLAG_UNUSED_0x4C8                                           0x4C8 // Unused Flag
-#define FLAG_UNUSED_0x4C9                                           0x4C9 // Unused Flag
-#define FLAG_UNUSED_0x4CA                                           0x4CA // Unused Flag
-#define FLAG_UNUSED_0x4CB                                           0x4CB // Unused Flag
-#define FLAG_UNUSED_0x4CC                                           0x4CC // Unused Flag
-#define FLAG_UNUSED_0x4CD                                           0x4CD // Unused Flag
-#define FLAG_UNUSED_0x4CE                                           0x4CE // Unused Flag
-#define FLAG_UNUSED_0x4CF                                           0x4CF // Unused Flag
-#define FLAG_UNUSED_0x4D0                                           0x4D0 // Unused Flag
-#define FLAG_UNUSED_0x4D1                                           0x4D1 // Unused Flag
-#define FLAG_UNUSED_0x4D2                                           0x4D2 // Unused Flag
-#define FLAG_UNUSED_0x4D3                                           0x4D3 // Unused Flag
-#define FLAG_UNUSED_0x4D4                                           0x4D4 // Unused Flag
-#define FLAG_UNUSED_0x4D5                                           0x4D5 // Unused Flag
-#define FLAG_UNUSED_0x4D6                                           0x4D6 // Unused Flag
-#define FLAG_UNUSED_0x4D7                                           0x4D7 // Unused Flag
-#define FLAG_UNUSED_0x4D8                                           0x4D8 // Unused Flag
-#define FLAG_UNUSED_0x4D9                                           0x4D9 // Unused Flag
-#define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag
-#define FLAG_UNUSED_0x4DB                                           0x4DB // Unused Flag
-#define FLAG_UNUSED_0x4DC                                           0x4DC // Unused Flag
-#define FLAG_UNUSED_0x4DD                                           0x4DD // Unused Flag
-#define FLAG_UNUSED_0x4DE                                           0x4DE // Unused Flag
-#define FLAG_UNUSED_0x4DF                                           0x4DF // Unused Flag
-#define FLAG_UNUSED_0x4E0                                           0x4E0 // Unused Flag
-#define FLAG_UNUSED_0x4E1                                           0x4E1 // Unused Flag
-#define FLAG_UNUSED_0x4E2                                           0x4E2 // Unused Flag
-#define FLAG_UNUSED_0x4E3                                           0x4E3 // Unused Flag
-#define FLAG_UNUSED_0x4E4                                           0x4E4 // Unused Flag
-#define FLAG_UNUSED_0x4E5                                           0x4E5 // Unused Flag
-#define FLAG_UNUSED_0x4E6                                           0x4E6 // Unused Flag
-#define FLAG_UNUSED_0x4E7                                           0x4E7 // Unused Flag
-#define FLAG_UNUSED_0x4E8                                           0x4E8 // Unused Flag
-#define FLAG_UNUSED_0x4E9                                           0x4E9 // Unused Flag
-#define FLAG_UNUSED_0x4EA                                           0x4EA // Unused Flag
-#define FLAG_UNUSED_0x4EB                                           0x4EB // Unused Flag
-#define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
-#define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag
-#define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
-#define FLAG_UNUSED_0x4EF                                           0x4EF // Unused Flag
-
+#define FLAG_CF_VIS_00                           0x493 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_01                           0x494 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_02                           0x495 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_03                           0x496 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_04                           0x497 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_05                           0x498 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_06                           0x499 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_07                           0x49A // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_08                           0x49B // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_09                           0x49C // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_10                           0x49D // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_11                           0x49E // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_12                           0x49F // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_13                           0x4A0 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_14                           0x4A1 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_15                           0x4A2 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_16                           0x4A3 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_17                           0x4A4 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_18                           0x4A5 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_19                           0x4A6 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_20                           0x4A7 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_21                           0x4A8 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_22                           0x4A9 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_23                           0x4AA // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_24                           0x4AB // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_25                           0x4AC // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_26                           0x4AD // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_27                           0x4AE // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_28                           0x4AF // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_29                           0x4B0 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_30                           0x4B1 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_31                           0x4B2 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_32                           0x4B3 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_33                           0x4B4 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_34                           0x4B5 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_35                           0x4B6 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_36                           0x4B7 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_37                           0x4B8 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_38                           0x4B9 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_39                           0x4BA // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_40                           0x4BB // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_41                           0x4BC // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_42                           0x4BD // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_43                           0x4BE // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_44                           0x4BF // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_45                           0x4C0 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_46                           0x4C1 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_47                           0x4C2 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_48                           0x4C3 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_49                           0x4C4 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_50                           0x4C5 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_51                           0x4C6 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_52                           0x4C7 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_53                           0x4C8 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_54                           0x4C9 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_55                           0x4CA // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_56                           0x4CB // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_57                           0x4CC // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_58                           0x4CD // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_59                           0x4CE // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_60                           0x4CF // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_61                           0x4D0 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_62                           0x4D1 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_63                           0x4D2 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_64                           0x4D3 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_65                           0x4D4 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_66                           0x4D5 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_67                           0x4D6 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_68                           0x4D7 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_69                           0x4D8 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_70                           0x4D9 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_71                           0x4DA // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_72                           0x4DB // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_73                           0x4DC // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_74                           0x4DD // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_75                           0x4DE // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_76                           0x4DF // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_77                           0x4E0 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_78                           0x4E1 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_79                           0x4E2 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_80                           0x4E3 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_81                           0x4E4 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_82                           0x4E5 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_83                           0x4E6 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_84                           0x4E7 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_85                           0x4E8 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_86                           0x4E9 // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_87                           0x4EA // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_88                           0x4EB // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_89                           0x4EC // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_90                           0x4ED // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_91                           0x4EE // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_92                           0x4EF // Hack: CF (FLAGS_VARS_REGISTRY)
+#define FLAG_CF_VIS_START FLAG_CF_VIS_00 // Hack: reserved block of per-chapter object-visibility flags
+#define FLAG_CF_VIS_END   FLAG_CF_VIS_92
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
 #define FLAG_DEFEATED_DEWFORD_GYM                                   0x4F1
 #define FLAG_DEFEATED_MAUVILLE_GYM                                  0x4F2
