@@ -1,0 +1,559 @@
+species,channel,map,method,chapter,endings,status,note
+CATERPIE,WILD,Route101,L,0,ALL,proposé,
+WEEDLE,WILD,Route102,L,0,ALL,proposé,
+PIDGEY,WILD,Route103,L,0,ALL,proposé,
+RATTATA,WILD,Route102,L,0,ALL,proposé,
+SPEAROW,WILD,Route101,L,0,ALL,proposé,
+EKANS,WILD,Route102,L,0,ALL,proposé,
+PIKACHU,SAFARI,SafariZone_South,L,9,ALL,proposé,
+SANDSHREW,WILD,Route111,L,6,ALL,proposé,
+NIDORAN_F,WILD,Route103,L,0,ALL,proposé,
+NIDORAN_M,WILD,Route101,L,0,ALL,proposé,
+CLEFAIRY,WILD,Route103,L,0,ALL,proposé,
+VULPIX,WILD,MtPyre_Exterior,L,9,ALL,proposé,
+JIGGLYPUFF,WILD,Route115,L,1,ALL,proposé,
+ZUBAT,WILD,GraniteCave_1F,L,2,ALL,proposé,
+ODDISH,WILD,Route117,L,4,ALL,proposé,
+PARAS,WILD,Route102,L,0,ALL,proposé,
+VENONAT,WILD,Route101,L,0,ALL,proposé,
+DIGLETT,WILD,Route101,L,0,ALL,proposé,
+MEOWTH,WILD,Route102,L,0,ALL,proposé,
+PSYDUCK,SAFARI,SafariZone_Southwest,W,9,ALL,proposé,
+MANKEY,WILD,Route103,L,0,ALL,proposé,
+GROWLITHE,WILD,Route104,L,1,ALL,proposé,
+POLIWAG,WILD,Route109,F,3,ALL,proposé,
+ABRA,WILD,GraniteCave_1F,L,2,ALL,proposé,
+MACHOP,WILD,FieryPath,L,5,ALL,proposé,
+BELLSPROUT,WILD,Route101,L,0,ALL,proposé,
+TENTACOOL,WILD,Route103,W,7,ALL,proposé,
+GEODUDE,WILD,GraniteCave_1F,L,2,ALL,proposé,
+PONYTA,WILD,Route104,L,1,ALL,proposé,
+SLOWPOKE,WILD,SlateportCity,F,3,ALL,proposé,
+MAGNEMITE,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+FARFETCHD,WILD,Route104,L,1,ALL,proposé,
+DODUO,SAFARI,SafariZone_Northwest,L,9,ALL,proposé,
+SEEL,WILD,Route106,W,7,ALL,proposé,
+GRIMER,WILD,FieryPath,L,5,ALL,proposé,
+SHELLDER,WILD,Route107,W,7,ALL,proposé,
+GASTLY,WILD,Route101,L,0,ALL,proposé,
+ONIX,WILD,Route104,L,1,ALL,proposé,
+DROWZEE,WILD,Route103,L,0,ALL,proposé,
+KRABBY,WILD,DewfordTown,F,2,ALL,proposé,
+VOLTORB,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+EXEGGCUTE,WILD,Route102,L,0,ALL,proposé,
+CUBONE,WILD,Route102,L,0,ALL,proposé,
+HITMONLEE,SAFARI,SafariZone_Southwest,L,9,ALL,proposé,
+LICKITUNG,WILD,Route104,L,1,ALL,proposé,
+KOFFING,WILD,FieryPath,L,5,ALL,proposé,
+RHYHORN,SAFARI,SafariZone_Northwest,L,9,ALL,proposé,
+CHANSEY,SAFARI,SafariZone_Southwest,L,9,ALL,proposé,
+TANGELA,WILD,Route104,L,1,ALL,proposé,
+KANGASKHAN,SAFARI,SafariZone_Southwest,L,9,ALL,proposé,
+HORSEA,WILD,Route132,F,7,ALL,proposé,
+GOLDEEN,WILD,Route102,W,7,ALL,proposé,
+STARYU,WILD,LilycoveCity,F,9,ALL,proposé,
+MR_MIME,SAFARI,SafariZone_Southwest,L,9,ALL,proposé,
+SCYTHER,SAFARI,SafariZone_Southwest,L,9,ALL,proposé,
+JYNX,SAFARI,SafariZone_South,L,9,ALL,proposé,
+ELECTABUZZ,SAFARI,SafariZone_North,L,9,ALL,proposé,
+MAGMAR,SAFARI,SafariZone_North,L,9,ALL,proposé,
+PINSIR,SAFARI,SafariZone_Northwest,L,9,ALL,proposé,
+TAUROS,SAFARI,SafariZone_North,L,9,ALL,proposé,
+MAGIKARP,WILD,Route102,F,2,ALL,proposé,
+LAPRAS,WILD,Route105,W,7,ALL,proposé,
+DITTO,WILD_POST,DesertUnderpass,L,post,ALL,proposé,
+EEVEE,WILD,Route103,L,0,ALL,proposé,
+PORYGON,WILD,Route104,L,1,ALL,proposé,
+SNORLAX,SAFARI,SafariZone_North,L,9,ALL,proposé,
+DRATINI,SAFARI,SafariZone_Southwest,W,9,ALL,proposé,
+SENTRET,WILD,Route101,L,0,ALL,proposé,
+HOOTHOOT,WILD,Route101,L,0,ALL,proposé,
+LEDYBA,WILD,Route102,L,0,ALL,proposé,
+SPINARAK,WILD,Route102,L,0,ALL,proposé,
+CHINCHOU,WILD,Route124,F,10,ALL,proposé,
+TOGETIC,SAFARI,SafariZone_Northwest,L,9,ALL,proposé,
+NATU,SAFARI,SafariZone_South,L,9,ALL,proposé,
+MAREEP,SAFARI,SafariZone_Southeast,L,post,ALL,proposé,
+MARILL,WILD,Route102,W,7,ALL,proposé,
+SUDOWOODO,WILD,Route104,L,1,ALL,proposé,
+HOPPIP,WILD,Route103,L,0,ALL,proposé,
+AIPOM,SAFARI,SafariZone_Southeast,L,post,ALL,proposé,
+SUNKERN,SAFARI,SafariZone_Southeast,L,post,ALL,proposé,
+YANMA,SAFARI,SafariZone_Northwest,L,9,ALL,proposé,
+WOOPER,SAFARI,SafariZone_Southeast,W,post,ALL,proposé,
+MURKROW,WILD,Route104,L,1,ALL,proposé,
+MISDREAVUS,WILD,Route104,L,1,ALL,proposé,
+UNOWN,SAFARI,SafariZone_Northwest,L,9,ALL,proposé,
+WOBBUFFET,WILD,Route130,L,14,ALL,proposé,
+GIRAFARIG,SAFARI,SafariZone_South,L,9,ALL,proposé,
+PINECO,WILD,Route101,L,0,ALL,proposé,
+DUNSPARCE,SAFARI,SafariZone_Northwest,L,9,ALL,proposé,
+GLIGAR,SAFARI,SafariZone_Southeast,L,post,ALL,proposé,
+SNUBBULL,WILD,Route102,L,0,ALL,proposé,
+QWILFISH,WILD,Route107,F,7,ALL,proposé,
+SHUCKLE,SAFARI,SafariZone_Northeast,R,post,ALL,proposé,
+HERACROSS,SAFARI,SafariZone_North,L,9,ALL,proposé,
+SNEASEL,WILD,Route104,L,1,ALL,proposé,
+TEDDIURSA,SAFARI,SafariZone_Northeast,L,post,ALL,proposé,
+SLUGMA,WILD,Route113,L,5,ALL,proposé,
+SWINUB,WILD,Route103,L,0,ALL,proposé,
+CORSOLA,WILD,Route128,F,10,ALL,proposé,
+REMORAID,SAFARI,SafariZone_Southeast,F,post,ALL,proposé,
+DELIBIRD,WILD,PetalburgCity,F,2,ALL,proposé,
+MANTINE,WILD,Route105,F,7,ALL,proposé,
+SKARMORY,WILD,Route113,L,5,ALL,proposé,
+HOUNDOUR,SAFARI,SafariZone_Northeast,L,post,ALL,proposé,
+PHANPY,SAFARI,SafariZone_North,L,9,ALL,proposé,
+STANTLER,SAFARI,SafariZone_Southeast,L,post,ALL,proposé,
+SMEARGLE,WILD_POST,ArtisanCave_1F,L,post,ALL,proposé,
+MILTANK,SAFARI,SafariZone_Northeast,L,post,ALL,proposé,
+LARVITAR,SAFARI,SafariZone_South,L,9,ALL,proposé,
+POOCHYENA,WILD,Route101,L,0,ALL,proposé,
+ZIGZAGOON,WILD,Route101,L,0,ALL,proposé,
+WURMPLE,WILD,Route101,L,0,ALL,proposé,
+LOTAD,WILD,Route102,L,0,ALL,proposé,
+SEEDOT,WILD,Route114,L,5,ALL,proposé,
+TAILLOW,WILD,Route104,L,1,ALL,proposé,
+WINGULL,WILD,Route103,L,0,ALL,proposé,
+RALTS,WILD,Route102,L,0,ALL,proposé,
+SURSKIT,WILD,Route102,L,0,ALL,proposé,
+SHROOMISH,WILD,PetalburgWoods,L,1,ALL,proposé,
+SLAKOTH,WILD,PetalburgWoods,L,1,ALL,proposé,
+NINCADA,WILD,Route116,L,1,ALL,proposé,
+WHISMUR,WILD,Route116,L,1,ALL,proposé,
+MAKUHITA,WILD,GraniteCave_1F,L,2,ALL,proposé,
+NOSEPASS,WILD,GraniteCave_B2F,R,4,ALL,proposé,
+SKITTY,WILD,Route116,L,1,ALL,proposé,
+SABLEYE,WILD,GraniteCave_B1F,L,2,ALL,proposé,
+MAWILE,WILD,VictoryRoad_B1F,L,14,ALL,proposé,
+ARON,WILD,GraniteCave_B1F,L,2,ALL,proposé,
+MEDITITE,WILD,MtPyre_2F,L,9,ALL,proposé,
+ELECTRIKE,WILD,Route110,L,3,ALL,proposé,
+PLUSLE,WILD,Route110,L,3,ALL,proposé,
+MINUN,WILD,Route110,L,3,ALL,proposé,
+VOLBEAT,WILD,Route117,L,4,ALL,proposé,
+ILLUMISE,WILD,Route117,L,4,ALL,proposé,
+ROSELIA,WILD,Route117,L,4,ALL,proposé,
+GULPIN,WILD,Route110,L,3,ALL,proposé,
+CARVANHA,WILD,Route103,F,2,ALL,proposé,
+WAILMER,WILD,Route103,F,2,ALL,proposé,
+NUMEL,WILD,Route112,L,5,ALL,proposé,
+TORKOAL,WILD,FieryPath,L,5,ALL,proposé,
+SPOINK,WILD,JaggedPass,L,6,ALL,proposé,
+SPINDA,WILD,Route113,L,5,ALL,proposé,
+TRAPINCH,WILD,Route111,L,6,ALL,proposé,
+CACNEA,WILD,Route111,L,6,ALL,proposé,
+SWABLU,WILD,Route115,L,1,ALL,proposé,
+ZANGOOSE,WILD,Route114,L,5,ALL,proposé,
+SEVIPER,WILD,Route114,L,5,ALL,proposé,
+LUNATONE,WILD,MeteorFalls_1F_1R,L,5,ALL,proposé,
+SOLROCK,WILD,MeteorFalls_1F_1R,L,5,ALL,proposé,
+BARBOACH,WILD,Route111,F,4,ALL,proposé,
+CORPHISH,WILD,Route102,F,2,ALL,proposé,
+BALTOY,WILD,Route111,L,6,ALL,proposé,
+KECLEON,WILD,Route118,L,4,ALL,proposé,
+SHUPPET,WILD,Route121,L,9,ALL,proposé,
+DUSKULL,WILD,MtPyre_4F,L,9,ALL,proposé,
+TROPIUS,WILD,Route119,L,8,ALL,proposé,
+CHIMECHO,WILD,MtPyre_Summit,L,9,ALL,proposé,
+ABSOL,WILD,Route120,L,8,ALL,proposé,
+SNORUNT,WILD,ShoalCave_LowTideIceRoom,L,11,ALL,proposé,
+SPHEAL,WILD,ShoalCave_LowTideEntranceRoom,L,11,ALL,proposé,
+CLAMPERL,WILD,Underwater_Route124,W,10,ALL,proposé,
+RELICANTH,WILD,Underwater_Route124,W,10,ALL,proposé,
+LUVDISC,WILD,Route128,F,10,ALL,proposé,
+BAGON,WILD,MeteorFalls_B1F_2R,L,12,ALL,proposé,
+STARLY,WILD,Route119,L,8,ALL,proposé,
+BIDOOF,WILD,Route122,W,9,ALL,proposé,
+KRICKETOT,WILD,Route121,L,9,ALL,proposé,
+SHINX,WILD,Route120,L,8,ALL,proposé,
+BURMY,WILD,Route119,L,8,ALL,proposé,
+COMBEE,WILD,Route120,L,8,ALL,proposé,
+PACHIRISU,WILD,Route123,L,9,ALL,proposé,
+BUIZEL,WILD,Route122,W,9,ALL,proposé,
+CHERUBI,WILD,Route119,L,8,ALL,proposé,
+SHELLOS,WILD,Route122,F,9,ALL,proposé,
+DRIFLOON,WILD,MtPyre_Exterior,L,9,ALL,proposé,
+BUNEARY,WILD,Route120,L,8,ALL,proposé,
+GLAMEOW,WILD,Route123,L,9,ALL,proposé,
+STUNKY,WILD,Route121,L,9,ALL,proposé,
+BRONZOR,WILD,MtPyre_1F,L,9,ALL,proposé,
+CHATOT,WILD,Route119,L,8,ALL,proposé,
+SPIRITOMB,WILD,MtPyre_1F,L,9,ALL,proposé,
+GIBLE,SAFARI,SafariZone_South,L,9,ALL,proposé,
+LUCARIO,WILD,Route121,L,9,ALL,proposé,
+HIPPOPOTAS,WILD,Route123,L,9,ALL,proposé,
+SKORUPI,WILD,Route121,L,9,ALL,proposé,
+CROAGUNK,WILD,Route120,L,8,ALL,proposé,
+CARNIVINE,WILD,Route123,L,9,ALL,proposé,
+FINNEON,WILD,LilycoveCity,F,9,ALL,proposé,
+SNOVER,WILD,Route121,L,9,ALL,proposé,
+ROTOM,WILD,Route120,L,8,ALL,proposé,
+PATRAT,WILD,Route110,L,3,ALL,proposé,
+LILLIPUP,WILD,Route117,L,4,ALL,proposé,
+PURRLOIN,WILD,Route118,L,4,ALL,proposé,
+PANSAGE,WILD,Route117,L,4,ALL,proposé,
+PANSEAR,WILD,Route117,L,4,ALL,proposé,
+PANPOUR,WILD,Route117,W,7,ALL,proposé,
+MUNNA,WILD,Route118,L,4,ALL,proposé,
+PIDOVE,WILD,Route110,L,3,ALL,proposé,
+BLITZLE,WILD,Route110,L,3,ALL,proposé,
+ROGGENROLA,WILD,MirageTower_4F,R,6,ALL,proposé,
+WOOBAT,WILD,Route110,L,3,ALL,proposé,
+DRILBUR,WILD,Route111,R,6,ALL,proposé,
+AUDINO,WILD,Route118,L,4,ALL,proposé,
+TIMBURR,WILD,Route117,L,4,ALL,proposé,
+TYMPOLE,WILD,Route117,F,4,ALL,proposé,
+THROH,WILD,MirageTower_2F,L,6,ALL,proposé,
+SAWK,WILD,MirageTower_3F,L,6,ALL,proposé,
+SEWADDLE,WILD,Route118,L,4,ALL,proposé,
+VENIPEDE,WILD,Route110,L,3,ALL,proposé,
+COTTONEE,WILD,Route117,L,4,ALL,proposé,
+PETILIL,WILD,Route118,L,4,ALL,proposé,
+BASCULIN,WILD,Route110,W,7,ALL,proposé,
+SANDILE,WILD,Route111,L,6,ALL,proposé,
+DARUMAKA,WILD,Route111,L,6,ALL,proposé,
+MARACTUS,WILD,Route111,L,6,ALL,proposé,
+DWEBBLE,WILD,MirageTower_3F,R,6,ALL,proposé,
+SCRAGGY,WILD,MirageTower_1F,L,6,ALL,proposé,
+SIGILYPH,WILD,MirageTower_2F,L,6,ALL,proposé,
+YAMASK,WILD,MirageTower_4F,L,6,ALL,proposé,
+TRUBBISH,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+ZORUA,WILD,Route110,L,3,ALL,proposé,
+MINCCINO,WILD,NewMauville_Inside,L,4,ALL,proposé,
+GOTHITA,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+SOLOSIS,WILD,NewMauville_Inside,L,4,ALL,proposé,
+DUCKLETT,WILD,Route118,F,4,ALL,proposé,
+VANILLITE,WILD,Route117,L,4,ALL,proposé,
+DEERLING,WILD,Route118,L,4,ALL,proposé,
+EMOLGA,WILD,Route110,L,3,ALL,proposé,
+KARRABLAST,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+FOONGUS,WILD,NewMauville_Inside,L,4,ALL,proposé,
+FRILLISH,WILD,Route110,F,3,ALL,proposé,
+ALOMOMOLA,WILD,Route118,W,7,ALL,proposé,
+JOLTIK,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+FERROSEED,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+KLINK,WILD,Route111,R,6,ALL,proposé,
+TYNAMO,WILD,NewMauville_Inside,L,4,ALL,proposé,
+ELGYEM,WILD,Route110,L,3,ALL,proposé,
+LITWICK,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+AXEW,WILD,NewMauville_Inside,L,4,ALL,proposé,
+CUBCHOO,WILD,Route118,L,4,ALL,proposé,
+CRYOGONAL,WILD,MirageTower_3F,L,6,ALL,proposé,
+SHELMET,WILD,NewMauville_Entrance,L,4,ALL,proposé,
+STUNFISK,WILD,Route110,W,7,ALL,proposé,
+MIENFOO,WILD,Route117,L,4,ALL,proposé,
+DRUDDIGON,WILD,MirageTower_4F,L,6,ALL,proposé,
+GOLETT,WILD,MirageTower_1F,L,6,ALL,proposé,
+PAWNIARD,WILD,Route111,L,6,ALL,proposé,
+BOUFFALANT,WILD,Route112,L,5,ALL,proposé,
+RUFFLET,WILD,Route118,L,4,ALL,proposé,
+VULLABY,WILD,Route117,L,4,ALL,proposé,
+HEATMOR,WILD,MirageTower_1F,L,6,ALL,proposé,
+DURANT,WILD,MirageTower_2F,L,6,ALL,proposé,
+DEINO,SAFARI,SafariZone_South,L,9,ALL,proposé,
+LARVESTA,WILD,Route110,L,3,ALL,proposé,
+BUNNELBY,WILD,Route116,L,1,ALL,proposé,
+FLETCHLING,WILD,Route115,L,1,ALL,proposé,
+LITLEO,WILD,Route116,L,1,ALL,proposé,
+FLABEBE,WILD,Route115,L,1,ALL,proposé,
+SKIDDO,WILD,Route116,L,1,ALL,proposé,
+PANCHAM,WILD,Route115,L,1,ALL,proposé,
+FURFROU,SAFARI,SafariZone_North,L,9,ALL,proposé,
+ESPURR,WILD,Route116,L,1,ALL,proposé,
+HONEDGE,WILD,GraniteCave_1F,L,2,ALL,proposé,
+SPRITZEE,WILD,Route115,L,1,ALL,proposé,
+SWIRLIX,WILD,Route116,L,1,ALL,proposé,
+INKAY,WILD,Route115,F,2,ALL,proposé,
+BINACLE,WILD,Route115,W,7,ALL,proposé,
+SKRELP,WILD,Route115,F,2,ALL,proposé,
+CLAUNCHER,WILD,Route115,F,2,ALL,proposé,
+HELIOPTILE,WILD,Route116,L,1,ALL,proposé,
+HAWLUCHA,SAFARI,SafariZone_North,L,9,ALL,proposé,
+DEDENNE,WILD,Route115,L,1,ALL,proposé,
+CARBINK,WILD,GraniteCave_B2F,L,2,ALL,proposé,
+GOOMY,SAFARI,SafariZone_South,L,9,ALL,proposé,
+KLEFKI,SAFARI,SafariZone_Southwest,L,9,ALL,proposé,
+PHANTUMP,WILD,GraniteCave_B1F,L,2,ALL,proposé,
+PUMPKABOO,WILD,RusturfTunnel,L,1,ALL,proposé,
+BERGMITE,WILD,GraniteCave_StevensRoom,L,2,ALL,proposé,
+NOIBAT,WILD,Route115,L,1,ALL,proposé,
+PIKIPEK,WILD,Route119,L,8,ALL,proposé,
+YUNGOOS,WILD,MtPyre_2F,L,9,ALL,proposé,
+GRUBBIN,WILD,MtPyre_3F,L,9,ALL,proposé,
+CRABRAWLER,WILD,Route119,L,8,ALL,proposé,
+ORICORIO,WILD,Route121,L,9,ALL,proposé,
+CUTIEFLY,WILD,MtPyre_5F,L,9,ALL,proposé,
+ROCKRUFF,WILD,Route123,L,9,ALL,proposé,
+WISHIWASHI,WILD,LilycoveCity,F,9,ALL,proposé,
+MAREANIE,WILD,LilycoveCity,W,9,ALL,proposé,
+MUDBRAY,WILD,Route123,L,9,ALL,proposé,
+DEWPIDER,WILD,Route122,W,9,ALL,proposé,
+FOMANTIS,WILD,MtPyre_6F,L,9,ALL,proposé,
+MORELULL,WILD,Route123,L,9,ALL,proposé,
+SALANDIT,WILD,MtPyre_1F,L,9,ALL,proposé,
+STUFFUL,WILD,Route120,L,8,ALL,proposé,
+BOUNSWEET,WILD,MtPyre_2F,L,9,ALL,proposé,
+COMFEY,WILD,Route123,L,9,ALL,proposé,
+ORANGURU,WILD,Route121,L,9,ALL,proposé,
+PASSIMIAN,WILD,Route123,L,9,ALL,proposé,
+WIMPOD,WILD,Route122,F,9,ALL,proposé,
+SANDYGAST,WILD,MtPyre_Summit,L,9,ALL,proposé,
+PYUKUMUKU,WILD,LilycoveCity,W,9,ALL,proposé,
+MINIOR,WILD,Route119,L,8,ALL,proposé,
+KOMALA,WILD,Route121,L,9,ALL,proposé,
+TURTONATOR,WILD,Route123,L,9,ALL,proposé,
+TOGEDEMARU,WILD,Route121,L,9,ALL,proposé,
+MIMIKYU,WILD,MtPyre_4F,L,9,ALL,proposé,
+BRUXISH,WILD,Route122,F,9,ALL,proposé,
+DRAMPA,WILD,Route121,L,9,ALL,proposé,
+DHELMISE,WILD,MtPyre_2F,L,9,ALL,proposé,
+JANGMO_O,SAFARI,SafariZone_South,L,9,ALL,proposé,
+SKWOVET,WILD,Route115,L,1,ALL,proposé,
+ROOKIDEE,WILD,Route116,L,1,ALL,proposé,
+BLIPBUG,WILD,Route115,L,1,ALL,proposé,
+NICKIT,WILD,Route116,L,1,ALL,proposé,
+GOSSIFLEUR,WILD,PetalburgWoods,L,1,ALL,proposé,
+WOOLOO,WILD,PetalburgWoods,L,1,ALL,proposé,
+CHEWTLE,WILD,Route115,F,2,ALL,proposé,
+YAMPER,WILD,PetalburgWoods,L,1,ALL,proposé,
+ROLYCOLY,WILD,RusturfTunnel,L,1,ALL,proposé,
+APPLIN,WILD,PetalburgWoods,L,1,ALL,proposé,
+SILICOBRA,WILD,RusturfTunnel,R,4,ALL,proposé,
+CRAMORANT,WILD,Route115,W,7,ALL,proposé,
+ARROKUDA,WILD,Route115,F,2,ALL,proposé,
+TOXTRICITY,SAFARI,SafariZone_North,L,9,ALL,proposé,
+SIZZLIPEDE,WILD,PetalburgWoods,L,1,ALL,proposé,
+CLOBBOPUS,SAFARI,SafariZone_Southwest,W,9,ALL,proposé,
+SINISTEA,WILD,GraniteCave_StevensRoom,L,2,ALL,proposé,
+HATENNA,WILD,PetalburgWoods,L,1,ALL,proposé,
+IMPIDIMP,WILD,Route115,L,1,ALL,proposé,
+MILCERY,WILD,PetalburgWoods,L,1,ALL,proposé,
+FALINKS,SAFARI,SafariZone_North,L,9,ALL,proposé,
+PINCURCHIN,WILD,Route115,F,2,ALL,proposé,
+SNOM,WILD,RusturfTunnel,L,1,ALL,proposé,
+STONJOURNER,SAFARI,SafariZone_Southwest,L,9,ALL,proposé,
+EISCUE,WILD,Route115,W,7,ALL,proposé,
+INDEEDEE,SAFARI,SafariZone_Northwest,L,9,ALL,proposé,
+MORPEKO,WILD,Route116,L,1,ALL,proposé,
+CUFANT,WILD,GraniteCave_1F,L,2,ALL,proposé,
+DURALUDON,SAFARI,SafariZone_Southwest,L,9,ALL,proposé,
+DREEPY,SAFARI,SafariZone_South,L,9,ALL,proposé,
+LECHONK,WILD,Route130,L,14,ALL,proposé,
+TAROUNTULA,WILD,Route130,L,14,ALL,proposé,
+NYMBLE,WILD,Route130,L,14,ALL,proposé,
+PAWMI,WILD,SeafloorCavern_Room2,L,11,ALL,proposé,
+TANDEMAUS,WILD,SeafloorCavern_Room3,L,11,ALL,proposé,
+FIDOUGH,WILD,SeafloorCavern_Room4,L,11,ALL,proposé,
+SMOLIV,WILD,SeafloorCavern_Room5,L,11,ALL,proposé,
+SQUAWKABILLY,WILD,Route130,L,14,ALL,proposé,
+NACLI,WILD,ShoalCave_LowTideLowerRoom,L,11,ALL,proposé,
+CHARCADET,WILD,SeafloorCavern_Room6,L,11,ALL,proposé,
+TADBULB,WILD,Route131,W,7,ALL,proposé,
+WATTREL,WILD,Route124,W,10,ALL,proposé,
+MASCHIFF,WILD,Route130,L,14,ALL,proposé,
+SHROODLE,WILD,Route130,L,14,ALL,proposé,
+BRAMBLIN,WILD,ShoalCave_LowTideEntranceRoom,L,11,ALL,proposé,
+TOEDSCOOL,WILD,Route130,L,14,ALL,proposé,
+KLAWF,WILD,ShoalCave_LowTideEntranceRoom,L,11,ALL,proposé,
+CAPSAKID,WILD,SeafloorCavern_Room7,L,11,ALL,proposé,
+RELLOR,WILD,SeafloorCavern_Room8,L,11,ALL,proposé,
+FLITTLE,WILD,CaveOfOrigin_Entrance,L,12,ALL,proposé,
+TINKATINK,WILD,SeafloorCavern_Room1,L,11,ALL,proposé,
+WIGLETT,WILD,Route128,W,10,ALL,proposé,
+BOMBIRDIER,WILD,Route130,L,14,ALL,proposé,
+FINIZEN,WILD,Route129,W,7,ALL,proposé,
+VAROOM,WILD,SeafloorCavern_Room1,R,11,ALL,proposé,
+CYCLIZAR,WILD,Route130,L,14,ALL,proposé,
+ORTHWORM,WILD,ShoalCave_LowTideInnerRoom,L,11,ALL,proposé,
+GLIMMET,WILD,ShoalCave_LowTideStairsRoom,L,11,ALL,proposé,
+GREAVARD,WILD,ShoalCave_LowTideInnerRoom,L,11,ALL,proposé,
+FLAMIGO,WILD,Route130,L,14,ALL,proposé,
+CETODDLE,WILD,ShoalCave_LowTideIceRoom,L,11,ALL,proposé,
+VELUZA,WILD,Route130,W,7,ALL,proposé,
+DONDOZO,WILD,Route126,F,10,ALL,proposé,
+TATSUGIRI,WILD,Route126,F,10,ALL,proposé,
+FRIGIBAX,SAFARI,SafariZone_South,L,9,ALL,proposé,
+GIMMIGHOUL,WILD,ShoalCave_LowTideStairsRoom,L,11,ALL,proposé,
+POLTCHAGEIST,WILD,ShoalCave_LowTideLowerRoom,L,11,ALL,proposé,
+SCATTERBUG,WILD,Route115,L,1,ALL,proposé,famille Kalos (lien macro)
+TREECKO,GIFT,LittlerootTown_ProfessorBirchsLab,starter,0/post,ALL,proposé,"1 au ch.0, les 2 autres à la Pension des starters (postgame)"
+TORCHIC,GIFT,LittlerootTown_ProfessorBirchsLab,starter,0/post,ALL,proposé,"1 au ch.0, les 2 autres à la Pension des starters (postgame)"
+MUDKIP,GIFT,LittlerootTown_ProfessorBirchsLab,starter,0/post,ALL,proposé,"1 au ch.0, les 2 autres à la Pension des starters (postgame)"
+BULBASAUR,GIFT,orphelins du recensement (Kanto),quest,3/post,ALL,proposé,1 au choix au ch.3 ; les 2 autres à la Pension des starters
+CHARMANDER,GIFT,orphelins du recensement (Kanto),quest,3/post,ALL,proposé,1 au choix au ch.3 ; les 2 autres à la Pension des starters
+SQUIRTLE,GIFT,orphelins du recensement (Kanto),quest,3/post,ALL,proposé,1 au choix au ch.3 ; les 2 autres à la Pension des starters
+CHIKORITA,GIFT,orphelins du recensement (Johto),quest,3/post,ALL,proposé,1 au choix au ch.3 ; les 2 autres à la Pension des starters
+CYNDAQUIL,GIFT,orphelins du recensement (Johto),quest,3/post,ALL,proposé,1 au choix au ch.3 ; les 2 autres à la Pension des starters
+TOTODILE,GIFT,orphelins du recensement (Johto),quest,3/post,ALL,proposé,1 au choix au ch.3 ; les 2 autres à la Pension des starters
+SNIVY,GIFT,orphelins du recensement (Unys),quest,4/post,ALL,proposé,1 au choix au ch.4 ; les 2 autres à la Pension des starters
+TEPIG,GIFT,orphelins du recensement (Unys),quest,4/post,ALL,proposé,1 au choix au ch.4 ; les 2 autres à la Pension des starters
+OSHAWOTT,GIFT,orphelins du recensement (Unys),quest,4/post,ALL,proposé,1 au choix au ch.4 ; les 2 autres à la Pension des starters
+CHESPIN,GIFT,orphelins du recensement (Kalos),quest,5/post,ALL,proposé,1 au choix au ch.5 ; les 2 autres à la Pension des starters
+FENNEKIN,GIFT,orphelins du recensement (Kalos),quest,5/post,ALL,proposé,1 au choix au ch.5 ; les 2 autres à la Pension des starters
+FROAKIE,GIFT,orphelins du recensement (Kalos),quest,5/post,ALL,proposé,1 au choix au ch.5 ; les 2 autres à la Pension des starters
+GROOKEY,GIFT,orphelins du recensement (Galar),quest,7/post,ALL,proposé,1 au choix au ch.7 ; les 2 autres à la Pension des starters
+SCORBUNNY,GIFT,orphelins du recensement (Galar),quest,7/post,ALL,proposé,1 au choix au ch.7 ; les 2 autres à la Pension des starters
+SOBBLE,GIFT,orphelins du recensement (Galar),quest,7/post,ALL,proposé,1 au choix au ch.7 ; les 2 autres à la Pension des starters
+TURTWIG,GIFT,orphelins du recensement (Sinnoh),quest,8/post,ALL,proposé,1 au choix au ch.8 ; les 2 autres à la Pension des starters
+CHIMCHAR,GIFT,orphelins du recensement (Sinnoh),quest,8/post,ALL,proposé,1 au choix au ch.8 ; les 2 autres à la Pension des starters
+PIPLUP,GIFT,orphelins du recensement (Sinnoh),quest,8/post,ALL,proposé,1 au choix au ch.8 ; les 2 autres à la Pension des starters
+ROWLET,GIFT,orphelins du recensement (Alola),quest,9/post,ALL,proposé,1 au choix au ch.9 ; les 2 autres à la Pension des starters
+LITTEN,GIFT,orphelins du recensement (Alola),quest,9/post,ALL,proposé,1 au choix au ch.9 ; les 2 autres à la Pension des starters
+POPPLIO,GIFT,orphelins du recensement (Alola),quest,9/post,ALL,proposé,1 au choix au ch.9 ; les 2 autres à la Pension des starters
+SPRIGATITO,GIFT,orphelins du recensement (Paldea),quest,10/post,ALL,proposé,1 au choix au ch.10 ; les 2 autres à la Pension des starters
+FUECOCO,GIFT,orphelins du recensement (Paldea),quest,10/post,ALL,proposé,1 au choix au ch.10 ; les 2 autres à la Pension des starters
+QUAXLY,GIFT,orphelins du recensement (Paldea),quest,10/post,ALL,proposé,1 au choix au ch.10 ; les 2 autres à la Pension des starters
+OMANYTE,FOSSIL,RustboroCity_DevonCorp_2F,Mission Indigo (Pierre),3,ALL,proposé,résurrection Devon
+KABUTO,FOSSIL,RustboroCity_DevonCorp_2F,Mission Indigo (Pierre),3,ALL,proposé,résurrection Devon
+AERODACTYL,FOSSIL,RustboroCity_DevonCorp_2F,"Vieil Ambre, Tunnel Mérazon",4,ALL,proposé,résurrection Devon
+LILEEP,FOSSIL,RustboroCity_DevonCorp_2F,Tour Mirage / Voie du Désert,6,ALL,proposé,résurrection Devon
+ANORITH,FOSSIL,RustboroCity_DevonCorp_2F,Tour Mirage / Voie du Désert,6,ALL,proposé,résurrection Devon
+CRANIDOS,FOSSIL,RustboroCity_DevonCorp_2F,Tunnel Mérazon (Éclate-Roc),4,ALL,proposé,résurrection Devon
+SHIELDON,FOSSIL,RustboroCity_DevonCorp_2F,Tunnel Mérazon (Éclate-Roc),4,ALL,proposé,résurrection Devon
+TIRTOUGA,FOSSIL,RustboroCity_DevonCorp_2F,Route 111 désert,6,ALL,proposé,résurrection Devon
+ARCHEN,FOSSIL,RustboroCity_DevonCorp_2F,Route 111 désert,6,ALL,proposé,résurrection Devon
+TYRUNT,FOSSIL,RustboroCity_DevonCorp_2F,Grotte Granite,2,ALL,proposé,résurrection Devon
+AMAURA,FOSSIL,RustboroCity_DevonCorp_2F,Grotte Granite,2,ALL,proposé,résurrection Devon
+DRACOZOLT,FOSSIL,RustboroCity_DevonCorp_2F,Route 115 falaises (moitiés),5,ALL,proposé,résurrection Devon
+ARCTOZOLT,FOSSIL,RustboroCity_DevonCorp_2F,Route 115,5,ALL,proposé,résurrection Devon
+DRACOVISH,FOSSIL,RustboroCity_DevonCorp_2F,Route 115,5,ALL,proposé,résurrection Devon
+ARCTOVISH,FOSSIL,RustboroCity_DevonCorp_2F,Route 115,5,ALL,proposé,résurrection Devon
+CASTFORM,GIFT,Route119_WeatherInstitute_2F,special,8,ALL,proposé,cadeau vanilla
+BELDUM,GIFT,MossdeepCity_StevensHouse,special,10,ALL,proposé,cadeau Pierre Rochard
+FEEBAS,GIFT,Route119,special,8,ALL,proposé,tuiles Barpivot vanilla
+PORYGON,GIFT,SilphPresident (Mérouville),special,3,ALL,proposé,cadeau ou échange
+ESCAVALIER,GIFT,échange Lavandia,special,4,ALL,proposé,échange en jeu (Karrablast)
+ACCELGOR,GIFT,échange Lavandia,special,4,ALL,proposé,échange en jeu (Escargaume)
+MEOWTH_GALAR,GIFT,Route116,special,8,ALL,proposé,"forme Galar, nuit"
+FARFETCHD_GALAR,GIFT,Route115,special,5,ALL,proposé,forme Galar
+CORSOLA_GALAR,GIFT,Route115,special,7,ALL,proposé,super canne
+ZIGZAGOON_GALAR,GIFT,Route116,special,1,ALL,proposé,forme Galar à côté du natif
+MR_MIME_GALAR,GIFT,SafariZone_North,special,9,ALL,proposé,forme Galar
+YAMASK_GALAR,GIFT,RusturfTunnel,special,4,ALL,proposé,nuit
+SNEASEL_HISUI,ANOMALY,P2 Hisui: Mont Mémoria,special,9,ALL,proposé,anomalie
+QWILFISH_HISUI,ANOMALY,P2 Hisui: Route 124,special,10,ALL,proposé,anomalie
+WOOPER_PALDEA,GIFT,Route124 (îlot),special,10,ALL,proposé,Paldea
+BASCULIN_WHITE_STRIPED,ANOMALY,P2 Hisui: Route 119,special,8,ALL,proposé,anomalie
+URSALUNA,ANOMALY,P2 Hisui: Route 120,special,8,ALL,proposé,évolution bloquée hors Hisui : rencontre directe
+GIMMIGHOUL_CHEST,GIFT,AbandonedShip (coffres),special,7,ALL,proposé,+999 pièces : trésor de l'Épave
+PHIONE,GIFT,oeuf de Manaphy,special,post,ALL,proposé,pension
+ARTICUNO,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ZAPDOS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MOLTRES,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MEWTWO,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MEW,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+RAIKOU,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ENTEI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+SUICUNE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+LUGIA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+HO_OH,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+CELEBI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+REGIROCK,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+REGICE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+REGISTEEL,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+LATIAS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+LATIOS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+KYOGRE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+GROUDON,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+RAYQUAZA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+JIRACHI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+DEOXYS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+UXIE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MESPRIT,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+AZELF,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+DIALGA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+PALKIA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+HEATRAN,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+REGIGIGAS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+GIRATINA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+CRESSELIA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+PHIONE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MANAPHY,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+DARKRAI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+SHAYMIN,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ARCEUS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+VICTINI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+COBALION,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+TERRAKION,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+VIRIZION,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+TORNADUS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+THUNDURUS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+RESHIRAM,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ZEKROM,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+LANDORUS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+KYUREM,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+KELDEO,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MELOETTA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+GENESECT,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+XERNEAS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+YVELTAL,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ZYGARDE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+DIANCIE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+HOOPA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+VOLCANION,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+TYPE_NULL,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+TAPU_KOKO,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+TAPU_LELE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+TAPU_BULU,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+TAPU_FINI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+COSMOG,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+NIHILEGO,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+BUZZWOLE,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+PHEROMOSA,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+XURKITREE,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+CELESTEELA,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+KARTANA,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+GUZZLORD,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+NECROZMA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MAGEARNA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MARSHADOW,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+POIPOLE,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+STAKATAKA,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+BLACEPHALON,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+ZERAORA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MELTAN,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MELMETAL,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ZACIAN,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ZAMAZENTA,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ETERNATUS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+KUBFU,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ZARUDE,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+REGIELEKI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+REGIDRAGO,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+GLASTRIER,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+SPECTRIER,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+CALYREX,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ENAMORUS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+GREAT_TUSK,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+SCREAM_TAIL,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+BRUTE_BONNET,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+FLUTTER_MANE,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+SLITHER_WING,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+SANDY_SHOCKS,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_TREADS,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_BUNDLE,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_HANDS,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_JUGULIS,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_MOTH,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_THORNS,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+WO_CHIEN,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+CHIEN_PAO,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+TING_LU,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+CHI_YU,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+ROARING_MOON,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_VALIANT,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+KORAIDON,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MIRAIDON,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+WALKING_WAKE,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_LEAVES,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+OKIDOGI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+MUNKIDORI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+FEZANDIPITI,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+OGERPON,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+GOUGING_FIRE,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+RAGING_BOLT,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_BOULDER,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+IRON_CROWN,ANOMALY,voir §8 anomalies P2,static,8/post,ALL,proposé,histoire selon PA ; permanent au postgame
+TERAPAGOS,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin
+PECHARUNT,P3_SITE,voir §9 plan légendaire,static,post,ALL,proposé,ouvert par le canal de chaque fin

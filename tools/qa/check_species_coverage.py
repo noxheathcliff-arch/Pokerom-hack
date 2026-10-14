@@ -93,6 +93,22 @@ def main():
     for x, y in MANUAL_EDGES:
         succ[x].add((y, None)); pred[y].add(x)
 
+    keys = set(info) | {x for e in MANUAL_EDGES for x in e}
+
+    def norm(k):
+        k = k.replace('SPECIES_', '')
+        if k in keys:
+            return k
+        c = sorted(x for x in keys if x.startswith(k + '_'))
+        return c[0] if c else k
+
+    for k in list(info):  # macro-generated forms: link plain name to its first form key
+        b = base(k)
+        if b and b not in info and b != k:
+            succ[b].add((k, None)); pred[k].add(b)
+            for t, p in list(succ.get(k, ())):
+                succ[b].add((t, p))
+
     def egg_root(k):
         seen = set()
         while pred.get(k) and k not in seen:
@@ -156,7 +172,7 @@ def main():
     if planned:
         print('planned rows by channel: ' + ', '.join(f'{k}={v}' for k, v in sorted(planned.items())))
     for en in ENDINGS:
-        have = {base(k) for k in closure(sources[en])} - {None}
+        have = {base(k) for k in closure({norm(x) for x in sources[en]} | sources[en])} - {None}
         miss = [n for n in dex if n not in have]
         print(f'{en}: {len(dex) - len(miss)}/{len(dex)} obtainable' + (f' | missing {len(miss)}' if miss else ''))
         if miss:
