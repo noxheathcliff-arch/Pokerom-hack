@@ -256,8 +256,8 @@ T("T-ROXANNE-T5", lrm("ROXANNE", 2), "ROXANNE", "Leader", "Leader Roxanne", "Fem
   items="Max Potion / Max Potion", mods=["Conservative"])
 
 T("T-BASTIEN-T1", "TRAINER_BRAWLY_1", "BASTIEN", "Leader", "Leader Brawly", "Male", "Male", "G1", 18,
-  ["Mankey | Vital Spirit | Jolly | Karate Chop / Fury Swipes / Low Kick / Focus Energy | 17 | P",
-   "Machop | Guts | Adamant | Karate Chop / Low Kick / Leer / Focus Energy | 17 | P",
+  ["Mankey | Vital Spirit | Jolly | Karate Chop / Fury Swipes / Low Kick / Leer | 17 | P",
+   "Machop | Guts | Adamant | Karate Chop / Low Kick / Leer / Rock Smash | 17 | P",
    "Makuhita @ Sitrus Berry | Thick Fat | Adamant | Arm Thrust / Bulk Up / Fake Out / Vital Throw | 19 | T"],
   items="Super Potion", mods=["Risky"], note="badge 2 ; Gonflette = leçon")
 T("T-BASTIEN-T5", lrm("BRAWLY", 2), "BASTIEN", "Leader", "Leader Brawly", "Male", "Male", "E", 75,
@@ -371,7 +371,7 @@ T("T-PIERRE-T1-SANS", nid(), "PIERRE", "Leader Frlg", "Leader Brock Frlg", "Male
   note="Défi ch.1 (mines), arrivant non sauvé")
 T("T-PIERRE-T1-AVEC", nid(), "PIERRE", "Leader Frlg", "Leader Brock Frlg", "Male", "Male", "G2", 18,
   ["Geodude | Sturdy | Impish | Rock Throw / Magnitude / Defense Curl / Rollout | 16 | B",
-   "Rolycoly | Steam Engine | Bold | Rapid Spin / Smack Down / Smokescreen / Ancient Power | 16 | B",
+   "Rolycoly | Steam Engine | Bold | Rapid Spin / Smack Down / Tackle / Ancient Power | 16 | B",
    "Sudowoodo | Sturdy | Adamant | Rock Throw / Low Kick / Flail / Mimic | 16 | B",
    "Onix @ Sitrus Berry | Sturdy | Impish | Rock Tomb / Bind / Dragon Breath / Harden | 19 | B"],
   note="Défi ch.1, Charbi sauvé aux mines")
@@ -455,7 +455,7 @@ T("T-KOGA-T2-PIEGE", nid(), "KOGA", "Leader Frlg", "Leader Koga Frlg", "Male", "
   mods=["Prefer Status Moves"], note="piège de Cimetronelle ch.8, si Red lui dispute Hoopa (refusable)")
 T("T-KOGA-T2-DEFI", nid(), "KOGA", "Leader Frlg", "Leader Koga Frlg", "Male", "Male", "G2", 37,
   ["Golbat | Inner Focus | Jolly | Poison Fang / Wing Attack / Bite / Haze | 36 | P",
-   "Venomoth | Tinted Lens | Timid | Psybeam / Venoshock / Toxic Spikes / Supersonic | 36 | S",
+   "Venomoth | Tinted Lens | Timid | Psybeam / Venoshock / Toxic Spikes / Disable | 36 | S",
    "Skuntank | Aftermath | Adamant | Poison Jab / Bite / Sucker Punch / Toxic | 36 | P",
    "Weezing @ Black Sludge | Levitate | Bold | Sludge Bomb / Will-O-Wisp / Pain Split / Haze | 38 | B"],
   note="Défi Indigo ch.8 « sans rancune » (D081, refusable) après le piège")
@@ -812,7 +812,7 @@ T("T-COURTNEY-T2", "TRAINER_TABITHA_MAGMA_HIDEOUT", "COURTNEY", "Magma Admin", "
    "Camerupt | Solid Rock | Modest | Flame Burst / Earth Power / Rock Slide / Amnesia | 29 | U"], note="Planque Magma ch.6")
 T("T-MAX-T2", "TRAINER_MAXIE_MT_CHIMNEY", "MAX", "Magma Leader", "Magma Leader Maxie", "Male", "Magma", "V", 29,
   ["Mightyena | Intimidate | Adamant | Crunch / Fire Fang / Howl / Take Down | 28 | P",
-   "Krokorok | Moxie | Jolly | Bulldoze / Crunch / Sand Tomb / Swagger | 27 | P",
+   "Krokorok | Moxie | Jolly | Bulldoze / Crunch / Sand Tomb / Scary Face | 27 | P",
    "Bouffalant | Sap Sipper | Adamant | Head Charge / Revenge / Rock Slide / Scary Face | 28 | T",
    "Camerupt @ Charcoal | Solid Rock | Modest | Flame Burst / Earth Power / Rock Slide / Amnesia | 31 | U"],
   note="Mont Chimnée ch.6, si Red sabote ou dénonce la démonstration ; Frison = le troupeau déplacé")

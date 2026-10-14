@@ -8049,7 +8049,7 @@ Jolly Nature
 - Karate Chop
 - Fury Swipes
 - Low Kick
-- Focus Energy
+- Leer
 
 Machop
 Level: 17
@@ -8059,7 +8059,7 @@ Adamant Nature
 - Karate Chop
 - Low Kick
 - Leer
-- Focus Energy
+- Rock Smash
 
 Makuhita @ Sitrus Berry
 Level: 19
@@ -8091,7 +8091,7 @@ Jolly Nature
 - Karate Chop
 - Fury Swipes
 - Low Kick
-- Focus Energy
+- Leer
 
 Machop
 Level: 17
@@ -8101,7 +8101,7 @@ Adamant Nature
 - Karate Chop
 - Low Kick
 - Leer
-- Focus Energy
+- Rock Smash
 
 Makuhita @ Sitrus Berry
 Level: 19
@@ -9880,7 +9880,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Bold Nature
 - Rapid Spin
 - Smack Down
-- Smokescreen
+- Tackle
 - Ancient Power
 
 Sudowoodo
@@ -9931,7 +9931,7 @@ EVs: 85 HP / 85 Def
 Bold Nature
 - Rapid Spin
 - Smack Down
-- Smokescreen
+- Tackle
 - Ancient Power
 
 Sudowoodo
@@ -11456,7 +11456,7 @@ Timid Nature
 - Psybeam
 - Venoshock
 - Toxic Spikes
-- Supersonic
+- Disable
 
 Skuntank
 Level: 36
@@ -11507,7 +11507,7 @@ Timid Nature
 - Psybeam
 - Venoshock
 - Toxic Spikes
-- Supersonic
+- Disable
 
 Skuntank
 Level: 36
@@ -20109,7 +20109,7 @@ Jolly Nature
 - Bulldoze
 - Crunch
 - Sand Tomb
-- Swagger
+- Scary Face
 
 Bouffalant
 Level: 28
@@ -20160,7 +20160,7 @@ Jolly Nature
 - Bulldoze
 - Crunch
 - Sand Tomb
-- Swagger
+- Scary Face
 
 Bouffalant
 Level: 28
