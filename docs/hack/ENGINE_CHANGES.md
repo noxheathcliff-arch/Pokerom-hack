@@ -110,23 +110,53 @@ Les blocs `#if IS_FRLG` des données d'objets ont été **ouverts** (remplacés 
 **Liste demandée — sprites terrain présents (testés non NULL) :** BLUE, GIOVANNI, PROF_OAK, BROCK, MISTY, LT_SURGE, ERIKA, KOGA, SABRINA, BLAINE, LORELEI, BRUNO, AGATHA, LANCE, ROCKET_M, ROCKET_F, BILL, MR_FUJI, CELIO, DAISY (+ RED_*, GREEN_*).
 **Portraits de combat (face) dans la build Émeraude** (tous non gardés par `IS_FRLG`) : Blue = `TRAINER_PIC_RIVAL_EARLY_FRLG` / `RIVAL_LATE_FRLG` / `CHAMPION_RIVAL_FRLG` ; Giovanni = `LEADER_GIOVANNI_FRLG` ; Chen = `PROFESSOR_OAK_FRLG` ; arènes Kanto = `LEADER_*_FRLG` ; Conseil = `ELITE_FOUR_*_FRLG` ; Rocket = `ROCKET_GRUNT_M/F_FRLG`. **Manquants :** Bill, M. Fuji, Celio, Daisy (jamais dresseurs dans FRLG).
 
-## D1. Combats de dresseurs refusables
+## D1. Combats de dresseurs refusables (refus enregistré et définitif)
 
-**Conception (opt-in par dresseur, combats importants inchangés) :** un bit `TRAINER_BATTLE_DECLINABLE` (0x80) dans l'octet `rivalBattleFlags` déjà présent dans les paramètres de `trainerbattle` (inutilisé hors rival de début) — aucun nouveau mode, aucune modification de format.
+**Conception (opt-in par dresseur ; les combats importants restent `trainerbattle_single`, obligatoires) :** un bit `TRAINER_BATTLE_DECLINABLE` (0x80) dans l'octet `rivalBattleFlags` des paramètres de `trainerbattle` (inutilisé hors rival de début) ; le **flag de refus** et le **script de refus** sont rangés dans deux champs « dresseur B » (`defeatTextB`, `battleScriptRetAddrB`), qui ne sont lus que pour les combats à deux dresseurs (jamais refusables). Aucun nouveau mode, aucun changement de format.
+
+**Macro :**
+```
+trainerbattle_single_declinable TRAINER_X, Intro, Defaite, FLAG_REFUS_X [, ScriptRefus [, event_script [, music]]]
+```
+- après le texte d'intro : « Accepter le combat ? » (OUI/NON) ;
+- **NON** → `FLAG_REFUS_X` posé (sauvegardé), `VAR_RESULT = TRAINER_DECLINED_NOW` (1), musique de la carte restaurée, puis saut à `ScriptRefus` s'il est donné (sinon fin) ; le flag du dresseur **n'est pas** posé (pas de récompense) ;
+- **refus définitif** : tant que `FLAG_REFUS_X` est posé, le dresseur **ne repère plus** le joueur (`src/trainer_see.c`) et, si on lui parle, **ne repose pas** la question : saut direct à `ScriptRefus` avec `VAR_RESULT = TRAINER_DECLINED_BEFORE` (2) (sinon fin silencieuse) ;
+- le scénariste peut rouvrir le choix avec `clearflag FLAG_REFUS_X` ;
+- `FLAG_REFUS_X = 0` : refus non enregistré (le dresseur redemandera ; à éviter pour une décision d'histoire).
+- `ScriptRefus` démarre joueur **bloqué** : le terminer par `releaseall` + `end`.
+
+**Exemple :**
+```
+Route1_EventScript_Montagnard::
+	trainerbattle_single_declinable TRAINER_MONTAGNARD_1, Route1_Text_Intro, Route1_Text_Defaite, FLAG_REFUS_MONTAGNARD_1, Route1_EventScript_MontagnardRefus
+	msgbox Route1_Text_ApresCombat, MSGBOX_AUTOCLOSE
+	end
+
+Route1_EventScript_MontagnardRefus::
+	goto_if_eq VAR_RESULT, TRAINER_DECLINED_BEFORE, Route1_EventScript_MontagnardDeja
+	addaffinity VAR_REPUTATION_MONTAGNARDS, -5      @ exemple de conséquence
+	msgbox Route1_Text_Dommage, MSGBOX_DEFAULT
+	releaseall
+	end
+Route1_EventScript_MontagnardDeja::
+	msgbox Route1_Text_TuAsRefuse, MSGBOX_DEFAULT
+	releaseall
+	end
+```
+Les flags `FLAG_REFUS_*` sont alloués par le design dans `FLAGS_VARS_REGISTRY.md` (un par décision).
 
 | Fichier | Changement |
 |---|---|
-| `include/constants/battle.h` | `TRAINER_BATTLE_DECLINABLE 0x80` |
-| `include/config/battle.h` | `B_DECLINABLE_TRAINER_BATTLES TRUE` (interrupteur global), `B_VAR_LAST_DECLINED_TRAINER 0` |
-| `asm/macros/event.inc` | macro `trainerbattle_single_declinable trainer, intro_text, lose_text[, event_script[, music]]` |
-| `data/scripts/trainer_battle.inc` | après le texte d'intro : si refusable → « Accepter le combat ? » (OUI/NON) ; NON → `RecordDeclinedTrainerBattle`, musique de la carte restaurée, fin |
-| `src/battle_setup.c` | specials `IsTrainerBattleDeclinable`, `RecordDeclinedTrainerBattle` ; `HasTrainerBattleBeenDeclined`, `ClearDeclinedTrainerBattles` (masque EWRAM de 8 o, localId < 64) |
-| `src/trainer_see.c` | un dresseur refusé **ne repère plus** le joueur jusqu'au prochain chargement de carte (évite une boucle de défis) |
-| `src/event_data.c` | `ClearTempFieldEventData` remet le masque à zéro (changement de carte) |
+| `include/constants/battle.h` | `TRAINER_BATTLE_DECLINABLE 0x80`, `TRAINER_DECLINED_NOW 1`, `TRAINER_DECLINED_BEFORE 2` |
+| `include/config/battle.h` | `B_DECLINABLE_TRAINER_BATTLES TRUE` (interrupteur global) |
+| `asm/macros/event.inc` | macro `trainerbattle_single_declinable` |
+| `data/scripts/trainer_battle.inc` | `EventScript_ShowTrainerIntroMsg` : contrôle « déjà refusé » avant l'intro ; question OUI/NON après ; `EventScript_AskAcceptTrainerBattle`, `EventScript_TrainerBattleAlreadyDeclined` |
+| `src/battle_setup.c` | specials `IsTrainerBattleDeclinable`, `IsTrainerBattleAlreadyDeclined` ; natives `Script_TrainerBattleDeclinedNow/Before` (posent le flag, `VAR_RESULT`, sautent au script) ; `IsTrainerBattleDeclinedFromScriptPointer` |
+| `src/trainer_see.c` | un dresseur dont le flag de refus est posé ne repère plus le joueur |
 | `data/specials.inc` | 2 specials |
 
-**Pour les scénaristes :** remplacer `trainerbattle_single TRAINER_X, Intro, Defaite` par `trainerbattle_single_declinable TRAINER_X, Intro, Defaite`. Refus : le flag du dresseur **n'est pas posé** (on peut lui reparler : la question est reposée) ; s'il faut réagir (réputation, dialogue), allouer une var et la mettre dans `B_VAR_LAST_DECLINED_TRAINER` (reçoit l'ID `TRAINER_*`). Non refusables : combats doubles, deux dresseurs qui repèrent en même temps, rival de début, revanches, `trainerbattle_no_intro`.
-**Tests :** unitaires (bit lu, cas « deux dresseurs » obligatoire, mémorisation et remise à zéro). **Non testé en émulateur** (aucun dresseur ne l'utilise encore ; preuve UI à faire sur le premier dresseur scripté).
+Non refusables : combats doubles, deux dresseurs qui repèrent en même temps, rival de début, revanches, `trainerbattle_no_intro`.
+**Tests :** unitaires (`test/hack_engine.c` : bit lu ; « deux dresseurs » obligatoire ; flag de refus → plus de repérage ni de nouvelle question ; bit absent → flag ignoré). **Assemblage vérifié** : script temporaire avec la macro (avec et sans script de refus) compilé, octets contrôlés dans la ROM (`defeatTextB = 0x22`, `battleScriptRetAddrB` = adresse du script, `rivalBattleFlags = 0x80`), puis retiré. **Non testé en émulateur** (UI OUI/NON, musique) : aucun dresseur ne l'utilise encore ; à vérifier sur le premier dresseur scripté.
 
 ## D2. Choisir son Pokémon de tête
 

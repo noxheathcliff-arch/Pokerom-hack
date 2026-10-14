@@ -181,19 +181,31 @@ TEST("Declinable battles: only trainers flagged TRAINER_BATTLE_DECLINABLE can be
     InitTrainerBattleParameter();
 }
 
-TEST("Declinable battles: a refused trainer is remembered until the next map load")
+TEST("Declinable battles: the declined flag makes the refusal final (no sight, no re-ask)")
 {
-    ClearDeclinedTrainerBattles();
-    gSpecialVar_LastTalked = 5;
-    RecordDeclinedTrainerBattle();
-    EXPECT_EQ(HasTrainerBattleBeenDeclined(5), TRUE);
-    EXPECT_EQ(HasTrainerBattleBeenDeclined(6), FALSE);
-    gSpecialVar_LastTalked = 40;
-    RecordDeclinedTrainerBattle();
-    EXPECT_EQ(HasTrainerBattleBeenDeclined(40), TRUE);
-    ClearTempFieldEventData();
-    EXPECT_EQ(HasTrainerBattleBeenDeclined(5), FALSE);
-    EXPECT_EQ(HasTrainerBattleBeenDeclined(40), FALSE);
+    u8 script[1 + sizeof(TrainerBattleParameter)];
+    TrainerBattleParameter *param = (TrainerBattleParameter *)&script[1];
+
+    memset(script, 0, sizeof(script));
+    param->params.mode = TRAINER_BATTLE_SINGLE;
+    param->params.rivalBattleFlags = TRAINER_BATTLE_DECLINABLE;
+    param->params.defeatTextB = (u8 *)FLAG_TEMP_1; // declined_flag argument
+    FlagClear(FLAG_TEMP_1);
+    EXPECT_EQ(IsTrainerBattleDeclinedFromScriptPointer(script), FALSE);
+    FlagSet(FLAG_TEMP_1);
+    EXPECT_EQ(IsTrainerBattleDeclinedFromScriptPointer(script), TRUE);
+
+    TrainerBattleLoadArgs(&script[1]);
+    gNoOfApproachingTrainers = 0;
+    EXPECT_EQ(IsTrainerBattleAlreadyDeclined(), TRUE);
+    FlagClear(FLAG_TEMP_1);
+    EXPECT_EQ(IsTrainerBattleAlreadyDeclined(), FALSE);
+
+    param->params.rivalBattleFlags = 0; // ordinary (mandatory) battle: flag argument ignored
+    FlagSet(FLAG_TEMP_1);
+    EXPECT_EQ(IsTrainerBattleDeclinedFromScriptPointer(script), FALSE);
+    FlagClear(FLAG_TEMP_1);
+    InitTrainerBattleParameter();
 }
 
 // ---------------------------------------------------------------------------

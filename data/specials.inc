@@ -640,6 +640,6 @@ gSpecials::
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
 	def_special IsTrainerBattleDeclinable
-	def_special RecordDeclinedTrainerBattle
+	def_special IsTrainerBattleAlreadyDeclined
 	def_special ShouldChooseBattleLead
 	def_special SetBattleLeadFromSelection

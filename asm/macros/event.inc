@@ -794,16 +794,20 @@
 	.endm
 
 	@ Hack: like trainerbattle_single, but after the intro text the player is asked "Accepter le combat ?".
-	@ If refused, the battle does not happen, the trainer flag is NOT set (the trainer can still be talked to),
-	@ the trainer stops spotting the player until the next map load, and B_VAR_LAST_DECLINED_TRAINER (if set) gets the id.
-	@ Only for single battles; mandatory battles keep using trainerbattle_single.
-	.macro trainerbattle_single_declinable trainer:req, intro_text:req, lose_text:req, event_script=FALSE, music=TRUE
+	@ declined_flag: saved flag set when the player refuses (the refusal is final: the trainer never
+	@   spots the player again and does not re-ask while the flag is set). 0 = not recorded (the
+	@   trainer will ask again next time).
+	@ decline_script: optional script jumped to on refusal (VAR_RESULT = TRAINER_DECLINED_NOW) and
+	@   when talked to again after a refusal (VAR_RESULT = TRAINER_DECLINED_BEFORE). The player is
+	@   still locked: end it with release/releaseall + end. Without it, the script just ends.
+	@ The trainer flag is NOT set on refusal. Single battles only; mandatory battles keep trainerbattle_single.
+	.macro trainerbattle_single_declinable trainer:req, intro_text:req, lose_text:req, declined_flag:req, decline_script=NULL, event_script=FALSE, music=TRUE
 	.if \event_script == FALSE
-	trainerbattle TRAINER_BATTLE_SINGLE, LOCALID_NONE, \trainer, \intro_text, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
+	trainerbattle TRAINER_BATTLE_SINGLE, LOCALID_NONE, \trainer, \intro_text, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, \declined_flag, \decline_script, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
 	.elseif \music == TRUE
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, \declined_flag, \decline_script, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
 	.else
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, \declined_flag, \decline_script, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
 	.endif
 	.endm
 

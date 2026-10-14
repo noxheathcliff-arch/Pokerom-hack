@@ -106,6 +106,8 @@ Movement_RevealTrainer:
 	step_end
 
 EventScript_ShowTrainerIntroMsg::
+	specialvar VAR_RESULT, IsTrainerBattleAlreadyDeclined
+	goto_if_eq VAR_RESULT, TRUE, EventScript_TrainerBattleAlreadyDeclined
 	special ShowTrainerIntroSpeech
 	waitmessage
 	waitbuttonpress
@@ -121,8 +123,14 @@ EventScript_AskAcceptTrainerBattle::
 	msgbox Text_AcceptTrainerBattle, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, EventScript_TrainerIntroMsgContinue
 	closemessage
-	special RecordDeclinedTrainerBattle
 	fadedefaultbgm
+	callnative Script_TrainerBattleDeclinedNow, requests_effects=1
+	releaseall
+	end
+
+EventScript_TrainerBattleAlreadyDeclined::
+	fadedefaultbgm
+	callnative Script_TrainerBattleDeclinedBefore, requests_effects=1
 	releaseall
 	end
 

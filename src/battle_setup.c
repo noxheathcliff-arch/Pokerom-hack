@@ -96,7 +96,6 @@ EWRAM_DATA u16 gPartnerTrainerId = 0;
 EWRAM_DATA static u8 *sTrainerBattleEndScript = NULL;
 EWRAM_DATA static bool8 sShouldCheckTrainerBScript = FALSE;
 EWRAM_DATA static u8 sNoOfPossibleTrainerRetScripts = 0;
-EWRAM_DATA static u32 sDeclinedTrainerLocalIds[2] = {0}; // Hack: bitmask of localIds (< 64) declined on the current map
 
 // The first transition is used if the enemy Pokémon are lower level than our Pokémon.
 // Otherwise, the second transition is used.
@@ -1269,35 +1268,69 @@ u8 GetRivalBattleFlags(void)
 }
 
 // Hack: declinable trainer battles (trainerbattle_single_declinable, B_DECLINABLE_TRAINER_BATTLES).
-bool32 IsTrainerBattleDeclinable(void)
+// For these single battles the unused trainer-B fields of the trainerbattle data carry:
+//   defeatTextB          = flag set when the player refuses (0 = none)
+//   battleScriptRetAddrB = script jumped to on refusal / when already refused (NULL = release)
+// (trainer B fields are only read for two-trainer battles, which are never declinable).
+static bool32 IsDeclinableParam(const TrainerBattleParameter *param)
 {
-    if (!B_DECLINABLE_TRAINER_BATTLES)
-        return FALSE;
-    if (gNoOfApproachingTrainers > 1) // two trainers spotted the player at once: no choice
-        return FALSE;
-    if (TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_EARLY_RIVAL)
-        return FALSE;
-    return (TRAINER_BATTLE_PARAM.rivalBattleFlags & TRAINER_BATTLE_DECLINABLE) != 0;
+    return B_DECLINABLE_TRAINER_BATTLES
+        && (param->params.rivalBattleFlags & TRAINER_BATTLE_DECLINABLE)
+        && param->params.mode != TRAINER_BATTLE_EARLY_RIVAL;
 }
 
-void RecordDeclinedTrainerBattle(void)
+static u32 GetDeclinedFlag(const TrainerBattleParameter *param)
 {
-    u32 localId = gSpecialVar_LastTalked;
+    return (u32)param->params.defeatTextB;
+}
 
-    if (localId < 64)
-        sDeclinedTrainerLocalIds[localId / 32] |= 1u << (localId % 32);
-    if (B_VAR_LAST_DECLINED_TRAINER != 0)
-        VarSet(B_VAR_LAST_DECLINED_TRAINER, TRAINER_BATTLE_PARAM.opponentA);
+bool32 IsTrainerBattleDeclinable(void)
+{
+    if (gNoOfApproachingTrainers > 1) // two trainers spotted the player at once: no choice
+        return FALSE;
+    return IsDeclinableParam(&gTrainerBattleParameter);
+}
+
+// TRUE if this declinable battle was already refused (its declined flag is set).
+bool32 IsTrainerBattleAlreadyDeclined(void)
+{
+    u32 flag = GetDeclinedFlag(&gTrainerBattleParameter);
+    return IsTrainerBattleDeclinable() && flag != 0 && FlagGet(flag);
+}
+
+// Used by trainer_see.c: a refused trainer never spots the player again (until the flag is cleared).
+bool32 IsTrainerBattleDeclinedFromScriptPointer(const u8 *data)
+{
+    const TrainerBattleParameter *param = (const TrainerBattleParameter *)(data + 1);
+    u32 flag = GetDeclinedFlag(param);
+    return IsDeclinableParam(param) && flag != 0 && FlagGet(flag);
+}
+
+// Script native: VAR_RESULT = result, set the declined flag, then jump to the decline script if any.
+static void FinishDeclinedTrainerBattle(struct ScriptContext *ctx, u16 result)
+{
+    u32 flag = GetDeclinedFlag(&gTrainerBattleParameter);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+    Script_RequestWriteVar(VAR_RESULT);
+    if (flag != 0)
+        FlagSet(flag);
+    gSpecialVar_Result = result;
     gNoOfApproachingTrainers = 0;
     gApproachingTrainerId = 0;
     gTrainerApproachedPlayer = FALSE;
+    if (TRAINER_BATTLE_PARAM.battleScriptRetAddrB != NULL)
+        ScriptJump(ctx, TRAINER_BATTLE_PARAM.battleScriptRetAddrB);
 }
 
-bool32 HasTrainerBattleBeenDeclined(u32 localId)
+void Script_TrainerBattleDeclinedNow(struct ScriptContext *ctx)
 {
-    if (localId >= 64)
-        return FALSE;
-    return (sDeclinedTrainerLocalIds[localId / 32] >> (localId % 32)) & 1;
+    FinishDeclinedTrainerBattle(ctx, TRAINER_DECLINED_NOW);
+}
+
+void Script_TrainerBattleDeclinedBefore(struct ScriptContext *ctx)
+{
+    FinishDeclinedTrainerBattle(ctx, TRAINER_DECLINED_BEFORE);
 }
 
 // Hack: B_FLAG_CHOOSE_BATTLE_LEAD. The chosen slot is consumed by SetBattlePartyIds
@@ -1335,11 +1368,6 @@ u32 ConsumeChosenBattleLead(void)
     return lead;
 }
 
-void ClearDeclinedTrainerBattles(void)
-{
-    sDeclinedTrainerLocalIds[0] = 0;
-    sDeclinedTrainerLocalIds[1] = 0;
-}
 
 bool8 GetTrainerFlag(void)
 {

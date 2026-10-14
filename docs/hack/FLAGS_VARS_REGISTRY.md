@@ -29,7 +29,7 @@
 
 | Config | Effet | Statut |
 |---|---|---|
-| `B_VAR_LAST_DECLINED_TRAINER` | reçoit l'ID `TRAINER_*` du dernier dresseur refusé | `0` (désactivé) ; allouer une var si un script doit réagir à un refus |
+| `FLAG_REFUS_*` (argument de `trainerbattle_single_declinable`) | un flag sauvegardé par combat refusable (refus définitif) | à allouer par le design, ici, un par décision |
 | `OW_FLAG_PAUSE_TIME` | pause de l'horloge (exige `OW_USE_FAKE_RTC`) | **non adopté** (voir ENGINE_CHANGES.md §H4) |
 | `WE_FLAG_NO_CATCHING`, `WE_FLAG_NO_RUNNING`, `B_FLAG_NO_WHITEOUT`… | voir `include/config/*.h` | à allouer ici si le design en a besoin |
 
