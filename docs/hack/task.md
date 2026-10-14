@@ -67,8 +67,8 @@ Réponse d'organisation : agents « Storycraft » et « Cast & Canon » (en cour
 | 2 | Examen expansion + pokefirered | ✅ (complément Kanto en cours) |
 | 3 | Skill GM + organisation | ✅ (`GM_METHOD.md`) ; `EXPERIENCE_INTENT.md` à réviser pour choix/maturité |
 | 4 | Lore + vision | ✅ addendum Kanto (§8) ; direction « Cendres » choisie (88.8/100) |
-| 5 | Scénario complet + système de choix | v2 revue (2 critiques) → **v3.0 colonne vertébrale** (bible) ; ⏳ 4 GM spécialistes (`SPEC_BRIEFS.md`) |
-| 6 | DECISION_LEDGER (≥ 101) + systèmes cachés | 120 décisions **proposées** (0 implémentée) ; ⏳ audit décision par décision |
+| 5 | Scénario complet + système de choix | ✅ v3.0 (bible) + 4 GM spécialistes livrés : `CHARACTER_AND_LORE.md` (62 fiches), `ENCOUNTERS_PLAN.md` (1025/1025 sur plan), `COMBAT_DESIGN.md` (175 variantes validées), `DECISION_LEDGER*.md` + `GAME_SYSTEMS.md` (131 listées / 124 robustes auto-évaluées ; GAME_SYSTEMS possiblement à finir) ; ⏳ arbitrage des conflits (A: K-01..05, B: C1..C9, D: K1..K8, C: §19) par le GMD principal, puis critiques indépendantes v3 |
+| 6 | DECISION_LEDGER (≥ 101) + systèmes cachés | v3 : 131 proposées (124 robustes, auto-audit) ; **0 implémentée** |
 | 7 | Événements, dialogues, quêtes, combats, rencontres | ⏳ |
 | 8 | Tranche représentative implémentée et testée | ⏳ |
 | 9 | Contenu complet | ⏳ |
@@ -92,10 +92,20 @@ Réponse d'organisation : agents « Storycraft » et « Cast & Canon » (en cour
 | 10-13 | Build upstream non modifié | EXIT 0, 4 min 15 s ; EWRAM 86.43 %, IWRAM 86.60 %, ROM 79.12 % ; seuls avertissements libpng bénins |
 | 10-14 | Build projet avec prototype moteur (plafonds, difficulté, flag anti-rencontres, classes) | EXIT 0 (`/home/user/build_wip.log`) ; non testé en émulateur |
 | 10-14 | Socle moteur v2 (joueur Red, sprites Kanto, combats refusables, choix du Pokémon de tête, helpers d'affinité, plafonds, difficulté) | build EXIT 0 (ROM 79.85 %, +241 Kio sprites Kanto) ; `make check` 4949 PASS / 0 échec / 1 assumption (test exp désactivé en build test) ; smoke PASS ; capture de Red dans le camion vérifiée par l'orchestrateur. Non vérifié à l'écran : refus de combat, menu du Pokémon de tête, dos de Red en combat |
+| 10-14 | `teams_v3.party` (175 variantes × Normal/Hard) | `validate_trainers.py --learnsets --strict-levels` : 350 dresseurs, 1804 Pokémon, 0 erreur, 20 avertissements (talents par macro, vérifiés à la main) — revérifié par l'orchestrateur |
+| 10-14 | Couverture espèces (plan) | `check_species_coverage.py --plan … --strict` : 1025/1025 dans F1–F5, EXIT 0 (revérifié) ; code actuel : 269/1025 (vanilla) |
+| 10-14 | `FREE_MATCH_CALL TRUE` (revanches vanilla coupées : ID recyclés) + `B_SLEEP_CLAUSE TRUE` | build EXIT 0 (ROM 79.84 %, EWRAM −104 o) ; smoke PASS ; make check : voir ci-dessous |
 | 10-13 | `validate_trainers.py --learnsets` sur trainers.party vanilla | 855 dresseurs, 0 erreur, 2 avertissements vanilla |
 
 ## 6. Blocages et solutions
 | Blocage | Impact | Solution |
 |---|---|---|
-| Limite d'usage Claude Pro (2 interruptions) | pauses ~4–5 h, agents coupés | commits fréquents ; agents réutilisés ; parallélisme ≤ 3 |
+| Limite d'usage Claude Pro (6 interruptions de session) | pauses ~4–5 h, agents coupés | commits fréquents ; agents réutilisés ; écriture progressive des livrables |
+| **Limite HEBDOMADAIRE atteinte le 2026-10-14 ~18:30 UTC → reprise le 2026-10-20 01:00 UTC** | sous-agents bloqués | reprise prévue ci-dessous (§7) |
 | ROM US jointe non reçue | empreinte invérifiable | sans impact (compilation depuis les sources) |
+
+## 7. Reprise (à partir du 2026-10-20 01:00 UTC)
+1. Relancer (SendMessage) le GMD spécialiste « décisions & systèmes » pour finir `GAME_SYSTEMS.md` s'il reste des sections manquantes (il s'est arrêté pendant la partie 1 ; le fichier fait 55 Ko et va jusqu'au §20).
+2. **Arbitrage unique par le GMD principal** de tous les conflits : CHARACTER_AND_LORE §12.5 (K-01..K-05), ENCOUNTERS_PLAN §13 (K1..K8 + §13.3), COMBAT_DESIGN (C1..C9), GAME_SYSTEMS §19 ; mise à jour de la bible (changelog v3.1).
+3. Deux critiques indépendants v3 (narration/cast ; systèmes/décisions/faisabilité), puis arbitrage.
+4. Moteur : aides demandées — E-ECO (tables alternatives), E-OUT (épidémies), E-TOD, E-LEDGER, E-BITS, E-ADAPT (type dominant), E-REMOVE (retirer un Pokémon), E-NATIVE, E-REPREL, macro combat 2 contre 1 ; puis tranche ch. 0–2 (intro Red, scripts, décisions, équipes, rencontres) testée en émulateur.
