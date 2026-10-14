@@ -411,3 +411,1900 @@ Conseil 4 : chaque membre = **une thématique + une mécanique** (`STRATEGY_RESE
 | **Aragon** | Dragon, le vieux marin | **Intimidation** et murs de Dragon ; Dragon de mer (Kravarech) | Altaria, Libégon (Mouchoir), Kravarech (Adaptabilité), Tranchodon, Carchacrok, Drattak | Glace, Fée, Dragon ; Éclats Glace contre Drattak après Danse Draco |
 | **Maître Pierre Rochard** | Acier et pierres de Hoenn ; fossiles de Devon | Méga-Métalosse ; Picots + Piège de Roc | Airmure, Kaorine, Galeking, Vacilys, **Armaldo (PROTÈGE) / Tarinorme (ACCUSE)**, Méga-Métalosse 59 | Feu, Sol, Eau, Combat ; Tour Rapide |
 | **Maître Marc** | Eau, la beauté qui dure | **pluie** (Bekipan) + Glissade ; Milobellus (Écaille Spéciale) ; **aucune Méga** | Bekipan, Tentacruel, Ludicolo, Léviator, Oratoria, Milobellus 59 | Électrik, Plante ; changer la météo ; Provoc contre Soin |
+
+---
+
+## 8. Fiches combat majeur (`GM_METHOD` §5.4)
+
+Équipes en mode Normal (lignes IV omises : IV du palier, §2.2 ; EV absents en T1–T3). Les autres variantes sont dans l'annexe. « Fun » = checklist « présence du fun » (`GM_METHOD` §4.10) : préparation · plusieurs voies · environnement · règles claires · plusieurs capacités · skill · plusieurs issues · anti-farm · échec = nouvelle tentative.
+
+### 8.1 Roxanne — badge 1 (T1, plafond 14, Mérouville)
+
+`T-ROXANNE-T1`
+```
+=== TRAINER_ROXANNE_1 ===
+Name: ROXANNE
+Class: Leader
+Pic: Leader Roxanne
+Gender: Female
+Music: Female
+Items: Potion
+Battle Type: Singles
+AI: Basic Trainer / Sequence Switching / Ace Pokemon / Conservative
+
+Geodude
+Level: 12
+Ability: Sturdy
+Impish Nature
+- Tackle
+- Defense Curl
+- Rock Throw
+- Rock Tomb
+
+Aron
+Level: 13
+Ability: Sturdy
+Impish Nature
+- Tackle
+- Harden
+- Metal Claw
+- Headbutt
+
+Nosepass @ Oran Berry
+Level: 15
+Ability: Sturdy
+Bold Nature
+- Rock Tomb
+- Thunder Wave
+- Harden
+- Tackle
+```
+**Intention :** premier examen : le joueur découvre que le type ne suffit pas quand l'adversaire **encaisse** (Fermeté). **Pattern :** types/STAB + « deux coups valent mieux qu'un ».
+**Préparation :** élèves de l'École des Dresseurs (2 dresseurs à Racaillou et Tarinor de route, `Sequence Switching`) ; options Nénupiot (R102), Férosinge (R103), Osselait, Marcacrin, Snubbull (ch. 0) (`ENCOUNTERS_PLAN` §10.4). Potion de l'École.
+**Rôles :** Racaillou (mur lent), Galekid (Fermeté, Acier : piège pour les Combat faibles), Tarinor (As, Fermeté + Cage-Éclair, Baie Oran).
+**IA :** AI-G1 + `Conservative` : ordre fixe, l'As en dernier, aucune prise de risque.
+**Gimmick :** Fermeté (annoncée par Roxanne : « Une roche ne tombe jamais d'un seul coup. ») et affichée par le moteur à l'activation.
+**Dominante prévisible :** « mon starter Eau/Plante tape fort » → contre-pression : Fermeté laisse 1 PV, Tomberoche ralentit ; il faut un deuxième coup, une attaque multiple ou un statut.
+**Plans de victoire :** (1) Plante/Eau + un second attaquant pour finir ; (2) Combat (Férosinge) qui enchaîne, Galekid compris ; (3) Snubbull (Intimidation) + usure.
+**Hasard :** faible (aucune attaque à précision < 90, aucun critique augmenté).
+**Fun :** prép O · plusieurs voies O · environnement N (combat-tutoriel déclaré) · règles claires O · plusieurs capacités O · skill O · plusieurs issues O · anti-farm O · échec = nouvelle tentative O.
+**Tests :** une équipe « starter seul » échoue au moins une fois sur Tarinor ; une équipe à 2 types gagne en ≤ 2 essais.
+
+### 8.2 Bastien — badge 2 (T1, plafond 18, Myokara)
+
+`T-BASTIEN-T1`
+```
+=== TRAINER_BRAWLY_1 ===
+Name: BASTIEN
+Class: Leader
+Pic: Leader Brawly
+Gender: Male
+Music: Male
+Items: Super Potion
+Battle Type: Singles
+AI: Basic Trainer / Sequence Switching / Ace Pokemon / Risky
+
+Mankey
+Level: 17
+Ability: Vital Spirit
+Jolly Nature
+- Karate Chop
+- Fury Swipes
+- Low Kick
+- Leer
+
+Machop
+Level: 17
+Ability: Guts
+Adamant Nature
+- Karate Chop
+- Low Kick
+- Leer
+- Rock Smash
+
+Makuhita @ Sitrus Berry
+Level: 19
+Ability: Thick Fat
+Adamant Nature
+- Arm Thrust
+- Bulk Up
+- Fake Out
+- Vital Throw
+```
+**Intention :** punir le **setup** (Gonflette) avant qu'il punisse. **Pattern :** statut et baisses de stats (`STRATEGY_RESEARCH` §7, étape 3).
+**Préparation :** dresseurs de la salle de Myokara (un Makuhita qui se booste, un Machoc à Cran) ; Psy (Tarsal ch. 0, Abra Grotte Granite ch. 2), Vol (Nirondelle, Goélise), Ponyta (Feu, brûlure ch. 1).
+**Rôles :** Férosinge (vitesse), Machoc (Cran : ne pas l'empoisonner), Makuhita (As : Isograisse, Gonflette, Bluff, Baie Sitrus).
+**IA :** AI-G1 + `Risky` (le surfeur tente le gros coup : fenêtre d'erreur pour le joueur).
+**Gimmick :** Gonflette au premier tour sûr (le setup « quand c'est sûr » de `Check Viability`) ; Bastien l'annonce : « La vague monte avant de tomber ! »
+**Dominante prévisible :** statut sur tout → contre-pression : Cran (Machoc).
+**Plans de victoire :** (1) Psy/Vol avant le boost ; (2) Rugissement/Grimace + mur ; (3) brûlure sur Makuhita (pas sur Machoc).
+**Hasard :** faible (Bluff = premier tour seulement, prévisible).
+**Fun :** O partout sauf environnement N (déclaré).
+**Tests :** le joueur qui empoisonne Machoc voit Cran s'activer (message moteur) ; Makuhita se booste au tour 1 si le joueur ne menace pas de KO.
+
+### 8.3 Blue 1 — Tente de Scott (T1, plafond 20, Poivressel ; refusable D027)
+
+`T-BLUE-T1A`
+```
+=== TRAINER_ROSE_3 ===
+Name: BLUE
+Class: Rival Late Frlg
+Pic: Rival Late Frlg
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / Know Opponent Party / Assumptions / Risky
+
+Pidgeotto
+Level: 20
+Ability: Keen Eye
+Jolly Nature
+- Wing Attack
+- Quick Attack
+- Feather Dance
+- Twister
+
+Growlithe
+Level: 20
+Ability: Intimidate
+Adamant Nature
+- Bite
+- Ember
+- Flame Wheel
+- Roar
+
+Corvisquire
+Level: 19
+Ability: Keen Eye
+Jolly Nature
+- Pluck
+- Fury Attack
+- Power Trip
+- Scary Face
+
+Kadabra @ Twisted Spoon
+Level: 21
+Ability: Synchronize
+Timid Nature
+- Psybeam
+- Confusion
+- Disable
+- Reflect
+```
+**Intention :** le rival **lit ton équipe**. Première rencontre avec l'adaptation : la diversité bat la spécialisation. **Pattern :** équipe équilibrée, choix de tête (D2).
+**Préparation :** Blue parade à la Tente avant le combat (« Montre-moi ce que t'as. ») et commente ta dominante en une boîte ; options variées (Férosinge, Pandespiègle R115, Caninos, Makuhita ; ENCOUNTERS §10.4). Le refus est une décision (D027).
+**Équipe affichée :** paquet A (dominante Plante/Insecte/Glace/Fée/Psy/Spectre/Dragon) ; B et C dans l'annexe (`T-BLUE-T1B`, `T-BLUE-T1C`).
+**Rôles :** Roucoups (vitesse, Danse Plumes), Caninos (Intimidation), Bleuseille (Vol, Assurance), Kadabra (As, frappe spéciale fragile).
+**IA :** AI-RV + `Risky` : il connaît tes espèces (lore : il t'observe) et tente le KO limite.
+**Gimmick :** E-ADAPT (§5.3), annoncé.
+**Dominante prévisible :** monotype → contre-pression : le paquet. Exploitation d'expert (voulue) : dominante en façade.
+**Plans de victoire :** (1) équipe sans dominante ; (2) Ténèbres/Spectre/Insecte contre Kadabra et mur physique contre Intimidation ; (3) refuser (et payer en `BL`).
+**Hasard :** faible ; `Risky` crée des KO ratés **en faveur** du joueur.
+**Fun :** O partout (l'environnement = la Tente : public, réplique de Scott ; le paquet change le défi).
+**Tests :** dominante Eau → `T-BLUE-T1C` ; dominante Feu → `T-BLUE-T1B` ; égalité → type 1 de la tête ; refus → flag C, jalon 22 posé quand même à la sortie de Poivressel.
+
+### 8.4 Voltère — badge 3 (T1, plafond 22, Lavandia)
+
+`T-VOLTERE-T1`
+```
+=== TRAINER_WATTSON_1 ===
+Name: VOLTERE
+Class: Leader
+Pic: Leader Wattson
+Gender: Male
+Music: Male
+Items: Super Potion / Super Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab / Will Suicide
+
+Voltorb
+Level: 21
+Ability: Static
+Timid Nature
+- Spark
+- Sonic Boom
+- Self-Destruct
+- Charge
+
+Emolga
+Level: 21
+Ability: Static
+Jolly Nature
+- Nuzzle
+- Acrobatics
+- Quick Attack
+- Shock Wave
+
+Magneton
+Level: 22
+Ability: Sturdy
+Modest Nature
+- Spark
+- Sonic Boom
+- Thunder Wave
+- Metal Sound
+
+Manectric @ Sitrus Berry
+Level: 23
+Ability: Lightning Rod
+Timid Nature
+- Shock Wave
+- Bite
+- Howl
+- Quick Attack
+```
+**Intention :** l'Électrik se combat avec le **Sol**, mais Voltère a prévu un Pokémon que le Sol ne touche pas. **Pattern :** immunités (Paratonnerre, Vol), paralysie.
+**Préparation :** la centrale (Nouvelle Lavandia : Magnéti, Statitik, Anchwatt ch. 4) ; Sol : Osselait, Taupiqueur (ch. 0), Grolem via Racaillou (ch. 2), Barloche (ch. 4) ; Roche/Glace contre Emolga (Racaillou, Frissonille ch. 1, Polarhume ch. 4) ; Total Soin en boutique.
+**Rôles :** Voltorbe (Destruction quand il va tomber), Emolga (Frotte-Frimousse : paralysie à coup sûr ; immunisé Sol), Magnéton (Fermeté), Élecsprint (As, **Paratonnerre** : il absorbe ton Électrik).
+**IA :** AI-G2 + `Will Suicide`.
+**Gimmick :** Explosion annoncée (« Ça va faire boum ! »).
+**Dominante prévisible :** « tout Sol » → contre-pression : Emolga ; « mon Électrik » → Paratonnerre.
+**Plans de victoire :** (1) Sol + un Roche/Glace pour Emolga ; (2) murs spéciaux + Total Soin ; (3) Plante/Électrik neutres en vitesse.
+**Hasard :** la paralysie (25 % de perte de tour) est un aléa d'**output** : borné par Total Soin et un seul paralyseur.
+**Fun :** O partout (environnement : la centrale prépare les types).
+**Tests :** Emolga ne subit aucun dégât de Sol ; Voltorbe utilise Destruction quand il est sous 30 % (flag `Will Suicide`).
+
+### 8.5 Raid du Tunnel Mérazon — Lance (Rocket) (T1, plafond 25 ; deux issues)
+
+`T-LANCE-T1`
+```
+=== TRAINER_MIGUEL_5 ===
+Name: LANCE
+Class: Team Rocket Frlg
+Pic: Rocket Grunt M Frlg
+Gender: Male
+Music: Suspicious
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Powerful Status / Ace Pokemon / Assumptions / Risky
+
+Nickit
+Level: 23
+Ability: Unburden
+Jolly Nature
+- Quick Attack
+- Snarl
+- Thief
+- Assurance
+
+Golbat
+Level: 24
+Ability: Inner Focus
+Jolly Nature
+- Poison Fang
+- Wing Attack
+- Bite
+- Haze
+
+Weezing @ Black Sludge
+Level: 26
+Ability: Levitate
+Bold Nature
+- Sludge
+- Clear Smog
+- Toxic
+- Self-Destruct
+```
+**Intention :** l'**attrition** : une série (3 sbires + Lance) sans soin, avec Brice à côté (prédicteur). **Pattern :** gérer PV/PP/objets entre deux combats.
+**Préparation :** la décision L du ch. 4 (approche du raid, brief C) fixe le nombre de sbires (2 à 4) ; Psy (Abra, Tarsal), Sol (Osselait, Taupiqueur) ; Total Soin ; la route R116 a montré deux sbires Poison (`Toxik`).
+**Rôles :** Goupilou (vole l'objet : Larcin), Nosferalto (vitesse, Crochetvenin), Smogogo (As : Toxik, Purédpois, Destruction).
+**IA :** AI-V + `Risky`.
+**Gimmick :** aucun ; la difficulté est la série.
+**Dominante prévisible :** « soigner entre chaque combat » → contre-pression : pas de soin ; mais Brice soigne **une fois** si `BR` ≥ 50 (lisible : il le propose).
+**Plans de victoire :** (1) Psy/Sol pour finir vite ; (2) mur + Total Soin ; (3) issue « défaite » : Lance s'enfuit avec la cargaison, le raid échoue, l'histoire continue (jalon 27 posé).
+**Hasard :** faible ; aucune baisse de précision (Brouillard retiré).
+**Fun :** O partout.
+**Tests :** les deux issues posent le jalon 27 ; aucune issue ne bloque la R116.
+
+### 8.6 Amaryllis 1 — Chutes Météore (T2, plafond 27 ; D050)
+
+`T-AMARYLLIS-T2-SEULE`
+```
+=== TRAINER_KAREN_3 ===
+Name: AMARYLLIS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Powerful Status / Ace Pokemon / Assumptions / Force Setup First Turn
+
+Aster (Loudred)
+Level: 26
+Ability: Scrappy
+Modest Nature
+- Uproar
+- Bite
+- Howl
+- Stomp
+
+Altaria
+Level: 26
+Ability: Natural Cure
+Adamant Nature
+- Dragon Breath
+- Peck
+- Mist
+- Take Down
+
+Shelgon @ Sitrus Berry
+Level: 28
+Ability: Rock Head
+Adamant Nature
+- Dragon Breath
+- Headbutt
+- Protect
+- Zen Headbutt
+```
+
+`T-AMARYLLIS-T2-DUO`
+```
+=== TRAINER_KAREN_4 ===
+Name: AMARYLLIS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Female
+Music: Female
+Battle Type: Doubles
+AI: Basic Trainer / Smart Switching / Powerful Status / Ace Pokemon / Assumptions
+
+Aster (Loudred)
+Level: 27
+Ability: Scrappy
+Modest Nature
+- Uproar
+- Bite
+- Howl
+- Echoed Voice
+
+Altaria
+Level: 27
+Ability: Natural Cure
+Adamant Nature
+- Dragon Breath
+- Peck
+- Mist
+- Take Down
+
+Vibrava
+Level: 27
+Ability: Levitate
+Jolly Nature
+- Bulldoze
+- Dragon Breath
+- Bite
+- Sand Tomb
+
+Shelgon @ Sitrus Berry
+Level: 29
+Ability: Rock Head
+Adamant Nature
+- Dragon Breath
+- Headbutt
+- Protect
+- Zen Headbutt
+```
+**Intention :** la croyante **teste** Red : « es-tu de la région du voleur ? » ; la forme du combat dit la position choisie à W1. **Pattern :** premier double à enjeu (2 contre 1) **ou** duel de Dragons.
+**Préparation :** W1 juste avant (désigner Aragon → combat seul, respect ; partir avec Peter → 2 contre 1, Peter partenaire `P-PETER-CH5`) ; Glace (Marcacrin, Frissonille, Polarhume, Sorbébé), Fée (Snubbull, Fluvetin, Flabébé) ; doubles de route R111/R112.
+**Rôles :** Aster/Ramboum (Querelleur : touche les Spectres), Altaria, Vibrava (duo : Lévitation), Draby évolué en Drackhaus (As, Tête de Roc).
+**IA :** AI-V + `Force Setup First Turn` (seule) ; AI-V (duo, logique double automatique).
+**Gimmick :** 2 contre 1 (moteur : `BATTLE_TWO_VS_ONE_OPPONENT`, code présent dans `battle_setup.c` ; macro de script à vérifier par le programmeur moteur).
+**Dominante prévisible :** en duo, laisser Peter faire → contre-pression : Peter est au niveau 27–28, il ne gagne pas seul ; l'IA d'Amaryllis vise le plus faible des deux.
+**Plans de victoire :** (1) Glace/Fée ; (2) en duo, concentrer deux attaques sur Drackhaus ; (3) l'issue « défaite » est racontée (elle part : « Pas encore. »), jalon 29 posé.
+**Hasard :** faible.
+**Fun :** O partout (environnement : la grotte et le choix W1 changent la forme du combat).
+**Tests :** D050 a → `T-AMARYLLIS-T2-SEULE` ; D050 b → `-DUO` + partenaire ; les deux issues posent le jalon.
+
+### 8.7 Adriane — badge 4 (T2, plafond 29, Vermilava)
+
+`T-ADRIANE-T2`
+```
+=== TRAINER_FLANNERY_1 ===
+Name: ADRIANE
+Class: Leader
+Pic: Leader Flannery
+Gender: Female
+Music: Female
+Items: Super Potion / Super Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab
+
+Torkoal
+Level: 29
+Ability: Drought
+Bold Nature
+- Flame Wheel
+- Body Slam
+- Will-O-Wisp
+- Curse
+
+Numel
+Level: 28
+Ability: Simple
+Modest Nature
+- Flame Burst
+- Magnitude
+- Growth
+- Amnesia
+
+Magcargo
+Level: 28
+Ability: Flame Body
+Bold Nature
+- Flame Burst
+- Rock Slide
+- Amnesia
+- Recover
+
+Camerupt @ Charcoal
+Level: 31
+Ability: Solid Rock
+Modest Nature
+- Flame Burst
+- Earth Power
+- Rock Slide
+- Amnesia
+```
+**Intention :** la **météo** comme règle du terrain : un poseur, deux profiteurs. **Pattern :** météo (`STRATEGY_RESEARCH` §7, étape 5).
+**Préparation :** Chemin Ardent (un Chartor de route à Sécheresse) ; Sol/Roche (Galekid, Racaillou ch. 2, Barloche ch. 4, Escroco ch. 6), Eau malgré le soleil (Wailmer), Bekipan (Crachin, Goélise ch. 0 → niveau 25).
+**Rôles :** Chartor (tête, Sécheresse), Chamallot (Simple + Amnésie : se booste vite), Limagma (mur), Camérupt (As, Tellurique, Roche Solide).
+**IA :** AI-G2.
+**Gimmick :** soleil 5 tours (le joueur peut **attendre** : Abri, changements).
+**Dominante prévisible :** « mon Eau gagne » → contre-pression : Eau ×0,5 au soleil ; Camérupt (Roche Solide) encaisse.
+**Plans de victoire :** (1) KO de Chartor puis Eau ; (2) Crachin : retourner la météo ; (3) Sol/Roche qui ignorent le soleil.
+**Hasard :** faible.
+**Fun :** O partout.
+**Tests :** le soleil s'active au premier tour ; un Bekipan en tête l'annule.
+
+### 8.8 Giovanni incognito — Chemin Ardent (T2, plafond 29 ; refusable D056)
+
+`T-GIOVANNI-T2`
+```
+=== TRAINER_JACKI_4 ===
+Name: GIOVANNI
+Class: Boss Frlg
+Pic: Leader Giovanni Frlg
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention
+
+Persian
+Level: 28
+Ability: Technician
+Jolly Nature
+- Fake Out
+- Bite
+- Feint
+- Power Gem
+
+Nidoking
+Level: 29
+Ability: Sheer Force
+Modest Nature
+- Earth Power
+- Sludge Wave
+- Thunderbolt
+- Ice Beam
+
+Rhydon @ Eviolite
+Level: 31
+Ability: Lightning Rod
+Adamant Nature
+- Rock Slide
+- Bulldoze
+- Megahorn
+- Scary Face
+```
+**Intention :** l'homme au Persian se mesure : trois Pokémon, aucun objet de sac, aucune excuse. Une **rencontre**, pas une épreuve imposée. **Pattern :** respect de la force pure ; priorité (Bluff) et couverture (Nidoking).
+**Préparation :** il est vu au ch. 3 (marché) et au ch. 6 (il corrige des sbires) ; Eau/Plante/Glace contre Sol ; Psy contre Nidoking ; Intimidation (Medhyèna).
+**Rôles :** Persian (Technicien, Bluff, Ruse), Nidoking (Sans Limite : Telluriforce, Cradovague, couverture Tonnerre et Laser Glace), Rhinoféros (Évoluroc, Paratonnerre).
+**IA :** AI-B (première prédiction du jeu : il **lit** le changement 1 fois sur 2).
+**Gimmick :** aucun ; la réplique dit tout : « Trois. C'est assez pour savoir. »
+**Dominante prévisible :** « mon Eau tue Rhinoféros » → contre-pression : Nidoking (Tonnerre) et la prédiction.
+**Plans de victoire :** (1) Eau/Plante + un Psy ; (2) murs + statut ; (3) refuser (`GI` −, mais aucune perte de jeu).
+**Hasard :** faible.
+**Fun :** O partout.
+**Tests :** refus → flag C, Giovanni ne repère plus le joueur ; victoire → `GI` + (C).
+
+### 8.9 Max — Mont Chimnée (T2, plafond 29 ; D054 saboter ou dénoncer)
+
+`T-MAX-T2`
+```
+=== TRAINER_MAXIE_MT_CHIMNEY ===
+Name: MAX
+Class: Magma Leader
+Pic: Magma Leader Maxie
+Gender: Male
+Music: Magma
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Powerful Status / Ace Pokemon / Assumptions
+
+Mightyena
+Level: 28
+Ability: Intimidate
+Adamant Nature
+- Crunch
+- Fire Fang
+- Howl
+- Take Down
+
+Krokorok
+Level: 27
+Ability: Moxie
+Jolly Nature
+- Bulldoze
+- Crunch
+- Sand Tomb
+- Scary Face
+
+Bouffalant
+Level: 28
+Ability: Sap Sipper
+Adamant Nature
+- Head Charge
+- Revenge
+- Rock Slide
+- Scary Face
+
+Camerupt @ Charcoal
+Level: 31
+Ability: Solid Rock
+Modest Nature
+- Flame Burst
+- Earth Power
+- Rock Slide
+- Amnesia
+```
+**Intention :** le technocrate défend sa démonstration ; son équipe montre ce qu'elle a fait (Frison = le troupeau déplacé). **Pattern :** Intimidation + Impudence ; lire les talents (Herbivore).
+**Préparation :** Kelvin juste avant (Grahyèna, Intimidation) ; le médecin du chantier soigne (bible §8.3) ; Eau (Wailmer, Marill), Combat (Makuhita), Psy.
+**Rôles :** Grahyèna (Intimidation), Escroco (Impudence : chaque KO l'accélère), Frison (Herbivore : absorbe la Plante), Camérupt (As).
+**IA :** AI-V.
+**Dominante prévisible :** Plante contre Sol/Feu → contre-pression : Frison (Herbivore) et Camérupt (Feu).
+**Plans de victoire :** (1) Eau + Combat ; (2) murs physiques contre l'Intimidation répétée ; (3) défaite racontée : la démonstration a lieu, D054 garde ses effets, l'histoire continue.
+**Hasard :** faible. **Fun :** O partout (le chantier et l'anneau déclenché font l'environnement).
+**Tests :** combat présent seulement en D054 b/c ; aucune issue ne bloque le téléphérique.
+
+### 8.10 Norman — badge 5 (T2, plafond 33, Clémenti/QG du Rempart)
+
+`T-NORMAN-T2`
+```
+=== TRAINER_NORMAN_1 ===
+Name: NORMAN
+Class: Leader
+Pic: Leader Norman
+Gender: Male
+Music: Male
+Items: Super Potion / Super Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab
+
+Vigoroth
+Level: 32
+Ability: Vital Spirit
+Jolly Nature
+- Slash
+- Bulk Up
+- Encore
+- Fury Swipes
+
+Linoone
+Level: 32
+Ability: Gluttony
+Jolly Nature
+- Headbutt
+- Slash
+- Pin Missile
+- Belly Drum
+
+Exploud
+Level: 32
+Ability: Scrappy
+Modest Nature
+- Hyper Voice
+- Bite
+- Stomp
+- Howl
+
+Slaking @ Sitrus Berry
+Level: 35
+Ability: Truant
+Adamant Nature
+- Body Slam
+- Slack Off
+- Shadow Claw
+- Facade
+```
+**Intention :** l'ordre qui tient un tour sur deux : **attendre est un coup**. **Pattern :** tempo (Absentéisme), Encore, Ventre Plein annoncé.
+**Préparation :** R117 (un Monaflèmit de route) ; Combat (Makuhita, Charpenti ch. 4, Scalpion ch. 6), Abri/Détection (CT), Feu Follet.
+**Rôles :** Vigoroth (Encore : piège tes boosts), Linéon (Ventre Plein : « Tu as le temps d'un tour. »), Brouhabam (Querelleur), Monaflèmit (As, Absentéisme).
+**IA :** AI-G2.
+**Dominante prévisible :** « je frappe le plus fort chaque tour » → contre-pression : Encore et Monaflèmit qui encaisse ; « mon Spectre bloque Normal » → Querelleur.
+**Plans de victoire :** (1) Abri le tour où Monaflèmit frappe, frapper pendant sa paresse ; (2) Combat ×2 ; (3) brûlure.
+**Hasard :** faible. **Fun :** O partout sauf environnement N (déclaré : le décor du QG n'agit pas).
+**Tests :** Linéon utilise Ventre Plein si le joueur ne menace pas de KO ; Monaflèmit ne frappe qu'un tour sur deux.
+
+### 8.11 Brice 3 — R119 (T2, plafond 35 ; variante `BV` × starter)
+
+`T-BRICE-T2-R119-PROTEGER-T`
+```
+=== TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
+Name: BRICE
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / Know Opponent Party / Assumptions
+
+Pelipper
+Level: 34
+Ability: Drizzle
+Modest Nature
+- Water Pulse
+- Air Cutter
+- Protect
+- Roost
+
+Tropius
+Level: 33
+Ability: Harvest
+Adamant Nature
+- Leaf Tornado
+- Air Slash
+- Stomp
+- Synthesis
+
+Manectric
+Level: 34
+Ability: Lightning Rod
+Timid Nature
+- Thunder Fang
+- Discharge
+- Bite
+- Howl
+
+Linoone
+Level: 33
+Ability: Pickup
+Jolly Nature
+- Headbutt
+- Slash
+- Pin Missile
+- Rest
+
+Blaziken @ Charcoal
+Level: 37
+Ability: Blaze
+Adamant Nature
+- Blaze Kick
+- Double Kick
+- Aerial Ace
+- Bulk Up
+```
+**Intention :** Brice a changé : son équipe dit **ce qu'il a vu** (`BV`). **Pattern :** pluie (poseur + profiteurs) et lecture de la voie.
+**Préparation :** la pluie de la R119 (la route est déjà sous la pluie : le terrain annonce le thème) ; Électrik (Dynavolt, Zéblitz, Magnéti), Plante (Nénupiot).
+**Équipe affichée :** PROTÉGER, Brice a Poussifeu (Red a Arcko) ; 8 autres dans l'annexe.
+**Rôles :** Bekipan (Crachin, tête), Tropius, Élecsprint (Paratonnerre : il te prend l'Électrik !), Linéon, Braségali (As).
+**IA :** AI-RV.
+**Dominante prévisible :** Électrik contre la pluie → contre-pression : Élecsprint (PROTÉGER), Pharamp (ACCUEILLIR), Paratonnerre ; il faut une **deuxième** réponse (Plante, Roche).
+**Plans de victoire :** (1) KO de Bekipan puis jeu neutre ; (2) Plante + Roche ; (3) défaite racontée (Brice : « Tu vois ? Je compte aussi. »).
+**Hasard :** faible. **Fun :** O partout.
+**Tests :** les 9 variantes ; `BV` = 0 → PROTÉGER par défaut.
+
+### 8.12 Alizée — badge 6 (T2, plafond 37, Cimetronelle)
+
+`T-ALIZEE-T2`
+```
+=== TRAINER_WINONA_1 ===
+Name: ALIZEE
+Class: Leader
+Pic: Leader Winona
+Gender: Female
+Music: Female
+Items: Super Potion / Super Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab
+
+Skarmory
+Level: 36
+Ability: Sturdy
+Impish Nature
+- Spikes
+- Steel Wing
+- Whirlwind
+- Air Cutter
+
+Pelipper
+Level: 35
+Ability: Keen Eye
+Bold Nature
+- Water Pulse
+- Air Cutter
+- Protect
+- Stockpile
+
+Tropius
+Level: 36
+Ability: Chlorophyll
+Adamant Nature
+- Leaf Tornado
+- Air Slash
+- Stomp
+- Synthesis
+
+Swellow
+Level: 36
+Ability: Guts
+Jolly Nature
+- Aerial Ace
+- Quick Attack
+- Endeavor
+- Agility
+
+Altaria @ Sitrus Berry
+Level: 39
+Ability: Natural Cure
+Adamant Nature
+- Dragon Dance
+- Dragon Breath
+- Aerial Ace
+- Roost
+```
+**Intention :** l'usure par le terrain : Picots + Cyclone. **Pattern :** pièges d'entrée et nettoyage (`STRATEGY_RESEARCH` §7, étape 6) : l'outil existe avant l'examen.
+**Préparation :** Tentacool (pêche R103 dès le ch. 2) apprend Tour Rapide ; Grosses Bottes à l'Institut Météo (demande C/D) ; Électrik (Zéblitz, Statitik), Glace (Polarhume, Sorbébé), Roche.
+**Rôles :** Airmure (Fermeté, Picots, Cyclone), Bekipan, Tropius, Hélédelle (Cran), Altaria (As, Danse Draco).
+**IA :** AI-G2.
+**Dominante prévisible :** « je change souvent » → contre-pression : Picots + Cyclone. 
+**Plans de victoire :** (1) Tour Rapide puis Électrik ; (2) ignorer les Picots, équipe offensive, KO vite ; (3) Glace/Fée contre Altaria avant le deuxième boost.
+**Hasard :** Lame d'Air/Tranch'Air (apeurement 30 % sur Lame d'Air seulement chez Tropius) : borné.
+**Fun :** O partout.
+**Tests :** Airmure pose Picots au tour 1 ; Cyclone force un changement ; Tour Rapide les retire.
+
+### 8.13 Olga — Défi Indigo (T3, plafond 44, Nénucrique) et T5 : l'équipe de Glace optimale
+
+`T-OLGA-T3-AVEC`
+```
+=== TRAINER_NOB_5 ===
+Name: OLGA
+Class: Elite Four Frlg
+Pic: Elite Four Lorelei Frlg
+Gender: Female
+Music: Female
+Items: Hyper Potion / Hyper Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab / Conservative
+
+Ninetales-Alola @ Light Clay
+Level: 44
+Ability: Snow Warning
+Timid Nature
+- Aurora Veil
+- Freeze-Dry
+- Moonblast
+- Encore
+
+Cloyster @ White Herb
+Level: 44
+Ability: Skill Link
+Jolly Nature
+- Shell Smash
+- Icicle Spear
+- Rock Blast
+- Ice Shard
+
+Slowbro @ Leftovers
+Level: 44
+Ability: Regenerator
+Bold Nature
+- Scald
+- Ice Beam
+- Slack Off
+- Psyshock
+
+Mamoswine @ Life Orb
+Level: 45
+Ability: Thick Fat
+Adamant Nature
+- Icicle Crash
+- Earthquake
+- Ice Shard
+- Stealth Rock
+
+Lapras @ Sitrus Berry
+Level: 46
+Ability: Water Absorb
+Modest Nature
+- Freeze-Dry
+- Surf
+- Thunderbolt
+- Perish Song
+```
+
+`T-OLGA-T3-SANS`
+```
+=== TRAINER_DALTON_2 ===
+Name: OLGA
+Class: Elite Four Frlg
+Pic: Elite Four Lorelei Frlg
+Gender: Female
+Music: Female
+Items: Hyper Potion / Hyper Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab / Conservative
+
+Ninetales-Alola @ Light Clay
+Level: 44
+Ability: Snow Warning
+Timid Nature
+- Aurora Veil
+- Freeze-Dry
+- Moonblast
+- Encore
+
+Cloyster @ White Herb
+Level: 44
+Ability: Skill Link
+Jolly Nature
+- Shell Smash
+- Icicle Spear
+- Rock Blast
+- Ice Shard
+
+Slowbro @ Leftovers
+Level: 44
+Ability: Regenerator
+Bold Nature
+- Scald
+- Ice Beam
+- Slack Off
+- Psyshock
+
+Weavile @ Life Orb
+Level: 45
+Ability: Pressure
+Jolly Nature
+- Triple Axel
+- Knock Off
+- Ice Shard
+- Low Kick
+
+Mamoswine @ Life Orb
+Level: 46
+Ability: Thick Fat
+Adamant Nature
+- Icicle Crash
+- Earthquake
+- Ice Shard
+- Stealth Rock
+```
+
+`T-OLGA-T5-AVEC`
+```
+=== TRAINER_DALTON_3 ===
+Name: OLGA
+Class: Elite Four Frlg
+Pic: Elite Four Lorelei Frlg
+Gender: Female
+Music: Female
+Items: Max Potion / Max Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention / HP Aware / Predict Incoming Mon / Predict Move / Conservative
+
+Ninetales-Alola @ Light Clay
+Level: 75
+Ability: Snow Warning
+Timid Nature
+- Aurora Veil
+- Freeze-Dry
+- Moonblast
+- Encore
+
+Sandslash-Alola @ Heavy-Duty Boots
+Level: 75
+Ability: Slush Rush
+Jolly Nature
+- Triple Axel
+- Iron Head
+- Earthquake
+- Rapid Spin
+
+Cloyster @ White Herb
+Level: 76
+Ability: Skill Link
+Jolly Nature
+- Shell Smash
+- Icicle Spear
+- Rock Blast
+- Ice Shard
+
+Mamoswine @ Never-Melt Ice
+Level: 76
+Ability: Thick Fat
+Adamant Nature
+- Icicle Crash
+- Earthquake
+- Ice Shard
+- Stealth Rock
+
+Lapras @ Leftovers
+Level: 76
+Ability: Water Absorb
+Modest Nature
+- Freeze-Dry
+- Sparkling Aria
+- Thunderbolt
+- Perish Song
+
+Slowbro @ Slowbronite
+Level: 78
+Ability: Regenerator
+Bold Nature
+- Scald
+- Ice Beam
+- Slack Off
+- Calm Mind
+```
+**Intention :** « une île froide qui protège ». Olga ne frappe pas d'abord : elle **installe** (neige, Voile Aurore), puis l'attaquant d'Exuviation balaie. Son équipe dit si Red lui a rendu ses Lokhlass (D082 a).
+**Raisonnement (meilleure équipe que son identité permet, Gen 1–9) :**
+- Glace subit 4 faiblesses (Feu, Combat, Roche, Acier) et résiste mal. La réponse optimale n'est pas « plus de Glace » mais **neige + Voile Aurore** (Feunard d'Alola, Alerte Neige : défense ×1,5 pour la Glace, dégâts ÷2 pendant 5 tours, 8 avec Lumargile) et **une couverture qui frappe ses propres contres** : Mammochon (Séisme : Feu, Roche, Acier), Flagadoss (Psy : Combat ; Eau : Feu, Roche), Lokhlass (Absorb Eau, Lyophilisation : l'Eau).
+- **Crustabri** (Multi-Coups + Exuviation : Stalactite ×5 à coup sûr, Boule Roc contre Feu) est le balayeur : déterministe (pas de hasard de répétition), et punissable (Aqua-Jet, Pisto-Poing, Éclats Glace, Fermeté).
+- **Sabelette d'Alola** (T5 : Chasse-Neige, vitesse ×2 sous la neige ; Tour Rapide) ajoute le contrôle des pièges et la vitesse.
+- **Méga-Flagadoss** (T5, Kanto, canon) est l'As défensif : Régé-Force avant la Méga, Coque Armure ensuite, Plénitude.
+- Origines : Feunard et Sabelette d'**Alola**, Mammochon et Dimoret de **Sinnoh** = nœud de Nénucrique (bible §5.3) où elle traque le marché noir ; Crustabri, Flagadoss, Lokhlass = canon Kanto/Sevii.
+- Exclus volontairement : Glaivodo (réservé à Glacia, l'arrivante) ; Lippoutou (Grobisou = sommeil au hasard) ; Kyurem (légendaire).
+**Variantes :** AVEC : Lokhlass (As, Absorb Eau, Requiem : un compte à rebours **lisible**). SANS : Dimoret (Triple Axel, Sabotage) : elle chasse ; l'As devient Mammochon. T5 : 6 Pokémon, Méga-Flagadoss.
+**Préparation :** Feu (Caninos, Ponyta ch. 1, Chamallot ch. 5), Combat (Makuhita, Charpenti, Scalpion), Acier (Galekid, Magnéti), Roche (Racaillou) ; **Casse-Brique** (CT) ou Anti-Brume contre le Voile ; Tour Rapide ; Total Soin.
+**IA :** AI-G2 + `Conservative` (elle ne vise le KO qu'à coup sûr : elle installe d'abord).
+**Gimmick :** Voile Aurore (annoncé : « Ici, il neige pour moi. ») ; Exuviation (l'Herbe Blanche est visible au moment où elle annule la baisse).
+**Dominante prévisible :** « Feu partout » → contre-pression : Flagadoss, Lokhlass, Mammochon (Isograisse) ; « je frappe à travers le Voile » → les dégâts sont divisés par deux 5 tours.
+**Plans de victoire :** (1) KO de Feunard d'Alola au premier tour (Acier, Roche, Feu) : pas de Voile ; (2) attendre le Voile (Abri, changements, murs), puis frapper ; (3) punir Crustabri après Exuviation (priorité, Fermeté, Feu) ; (4) Casse-Brique sur le Voile.
+**Hasard :** faible (Multi-Coups fixe à 5 ; aucune attaque < 90 % ; Blizzard absent).
+**Fun :** O partout (la neige change le terrain ; deux formes d'équipe selon D082).
+**Tests :** neige au premier tour ; Voile Aurore échoue sans neige ; AVEC si `OLGA_LOKHLASS` ; T5 : Méga-Flagadoss au premier tour de sa sortie.
+
+### 8.14 Lévy et Tatia — badge 7 (T3, double, plafond 44, Algatia)
+
+`T-LEVYTATIA-T3`
+```
+=== TRAINER_TATE_AND_LIZA_1 ===
+Name: LEVY&TATIA
+Class: Leader
+Pic: Leader Tate And Liza
+Gender: Male
+Music: Female
+Items: Hyper Potion / Hyper Potion
+Battle Type: Doubles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab / Omniscient / Double Ace Pokemon
+
+Solrock
+Level: 44
+Ability: Levitate
+Relaxed Nature
+- Trick Room
+- Rock Slide
+- Psychic
+- Flare Blitz
+
+Lunatone
+Level: 44
+Ability: Levitate
+Quiet Nature
+- Trick Room
+- Psychic
+- Ice Beam
+- Moonblast
+
+Claydol @ Sitrus Berry
+Level: 45
+Ability: Levitate
+Quiet Nature
+- Earth Power
+- Psychic
+- Ally Switch
+- Reflect
+
+Farigiraf @ Sitrus Berry
+Level: 46
+Ability: Armor Tail
+Quiet Nature
+- Twin Beam
+- Hyper Voice
+- Trick Room
+- Protect
+```
+**Intention :** les télépathes **lisent** Red ; la Distorsion inverse la vitesse. **Pattern :** contrôle de vitesse en double.
+**Préparation :** doubles de route à Algatia ; Ténèbres (Zorua, Chacripan, Farfuret : **Provoc**), Insecte (Statitik), Spectre (Polichombr ch. 9) ; Pokémon lents (Galekid, Tartard).
+**Rôles :** Solaroc + Séléroc (poseurs de Distorsion), Kaorine (Interversion), Farigiraf (Queue Armure : pas de priorité contre eux).
+**IA :** AI-G2 + **`Omniscient`** (annoncé : « On t'entend penser. ») + `Double Ace`.
+**Dominante prévisible :** « je suis rapide » → contre-pression : Distorsion ; « priorité » → Queue Armure.
+**Plans de victoire :** (1) Provoc sur les poseurs au tour 1 ; (2) jouer lent sous Distorsion ; (3) Abri × 2 pour user les 5 tours.
+**Hasard :** faible. **Fun :** O partout. **Tests :** Distorsion au tour 1 ; aucune priorité ne passe contre Farigiraf.
+
+### 8.15 Peter — Défi Indigo (T3, plafond 47, Algatia ; D100)
+
+`T-PETER-T3A-DRATTAK`
+```
+=== TRAINER_ETHAN_4 ===
+Name: PETER
+Class: Elite Four Frlg
+Pic: Elite Four Lance Frlg
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention
+
+Aerodactyl @ Focus Sash
+Level: 46
+Ability: Pressure
+Jolly Nature
+- Stone Edge
+- Earthquake
+- Stealth Rock
+- Taunt
+
+Charizard @ Life Orb
+Level: 46
+Ability: Blaze
+Timid Nature
+- Flamethrower
+- Air Slash
+- Dragon Pulse
+- Roost
+
+Archaludon @ Leftovers
+Level: 46
+Ability: Stamina
+Modest Nature
+- Flash Cannon
+- Dragon Pulse
+- Body Press
+- Thunderbolt
+
+Salamence @ Life Orb
+Level: 47
+Ability: Intimidate
+Adamant Nature
+- Dragon Dance
+- Dual Wingbeat
+- Earthquake
+- Outrage
+
+Gyarados @ Gyaradosite
+Level: 47
+Ability: Intimidate
+Adamant Nature
+- Dragon Dance
+- Waterfall
+- Crunch
+- Earthquake
+
+Dragonite @ Weakness Policy
+Level: 48
+Ability: Multiscale
+Adamant Nature
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Fire Punch
+```
+**Intention :** l'autorité de Kanto, lourde et adaptative ; ce que Red a fait au Site Météore se voit (Drattak). **Pattern :** Dragons, Multiécaille, Vulné-Assurance ; E-ADAPT.
+**Préparation :** Peter dit sa règle (« Je regarde ce que tu portes. ») ; Glace (Blizzi ch. 9, Polarhume, Sorbébé, Marcacrin → Mammochon), Fée (Snubbull, Fluvetin, Flabébé), Dragons du Safari (ch. 9) ; Tour Rapide contre Piège de Roc.
+**Équipe affichée :** paquet A + Drattak ; 5 autres dans l'annexe.
+**Rôles :** Ptéra (Ceinture Force, Piège de Roc, Provoc), Dracaufeu, Pondralugon (paquet A : Acier/Dragon), Drattak, Méga-Léviator (Brise Moule), Dracolosse (As, Multiécaille, Vulné-Assurance).
+**IA :** AI-B.
+**Gimmick :** Méga-Léviator au premier tour de sa sortie.
+**Dominante prévisible :** « Glace sur tout » → contre-pression : Vulné-Assurance + Multiécaille sur l'As ; Pondralugon (Acier) résiste.
+**Plans de victoire :** (1) casser Multiécaille par Piège de Roc/Éclats Glace puis un vrai coup ; (2) Fée contre les Dragons, Électrik contre Léviator ; (3) contrôle de vitesse (Toile Élek, Cage-Éclair) avant Danse Draco.
+**Hasard :** faible. **Fun :** O partout. **Tests :** 6 variantes ; Drattak seulement si D050 a (respect) ; Méga au premier tour.
+
+### 8.16 Centre Spatial — Ariane puis Lambda (T3, plafond 47 ; série sans soin ; D095)
+
+`T-ARIANE-T3-RKHAUT`
+```
+=== TRAINER_MIGUEL_3 ===
+Name: ARIANE
+Class: Team Rocket Frlg
+Pic: Rocket Grunt F Frlg
+Gender: Female
+Music: Suspicious
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Powerful Status / Ace Pokemon / Assumptions / Prefer Status Moves
+
+Arbok
+Level: 46
+Ability: Intimidate
+Adamant Nature
+- Gunk Shot
+- Glare
+- Crunch
+- Coil
+
+Vileplume
+Level: 46
+Ability: Chlorophyll
+Calm Nature
+- Giga Drain
+- Sludge Bomb
+- Stun Spore
+- Moonblast
+
+Liepard
+Level: 46
+Ability: Prankster
+Timid Nature
+- Fake Out
+- Thunder Wave
+- Knock Off
+- Encore
+
+Grimmsnarl @ Light Clay
+Level: 46
+Ability: Prankster
+Careful Nature
+- Reflect
+- Light Screen
+- Spirit Break
+- Thunder Wave
+
+Muk
+Level: 46
+Ability: Stench
+Adamant Nature
+- Gunk Shot
+- Knock Off
+- Shadow Sneak
+- Curse
+
+Honchkrow @ Life Orb
+Level: 48
+Ability: Moxie
+Adamant Nature
+- Brave Bird
+- Sucker Punch
+- Night Slash
+- Heat Wave
+```
+
+`T-LAMBDA-T3`
+```
+=== TRAINER_TABITHA_MOSSDEEP ===
+Name: LAMBDA
+Class: Team Rocket Frlg
+Pic: Leader Giovanni Frlg
+Gender: Male
+Music: Suspicious
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Powerful Status / Ace Pokemon / Assumptions / Will Suicide
+
+Zoroark @ Life Orb
+Level: 47
+Ability: Illusion
+Timid Nature
+- Night Daze
+- Flamethrower
+- Focus Blast
+- Nasty Plot
+
+Weezing
+Level: 46
+Ability: Levitate
+Bold Nature
+- Sludge Bomb
+- Will-O-Wisp
+- Flamethrower
+- Explosion
+
+Ditto @ Choice Scarf
+Level: 46
+Ability: Imposter
+Relaxed Nature
+- Transform
+
+Persian
+Level: 48
+Ability: Technician
+Jolly Nature
+- Fake Out
+- Bite
+- Feint
+- Power Gem
+```
+**Intention :** l'assaut du relais : deux combats d'affilée, et une imposture à **lire**. **Pattern :** attrition + Illusion (lire l'efficacité affichée).
+**Préparation :** partenaire selon les relations (Pierre Rochard, Peter ou Brice ; brief C) pour les sbires ; Sol, Électrik, Combat ; Giovanni a dit au ch. 9 : « Mon Persian ne connaît pas les attaques des ténèbres. »
+**Rôles (Ariane, RK HAUT) :** Arbok (Intimidation, Regard Médusant), Rafflesia, Léopardus (Farceur : Bluff, Cage-Éclair), Angoliath (Farceur : écrans), Grotadmorv, Corboss (As, Impudence). RK BAS : sans Léopardus ni Angoliath (4 Pokémon) : la Rocket faible se voit.
+**Rôles (Lambda) :** Zoroark (Illusion : il apparaît en **Persian**), Smogogo (Explosion), Métamorph (Imposteur, Mouchoir), Persian (vrai, en dernier).
+**IA :** AI-V + `Prefer Status Moves` (Ariane) ; AI-V + `Will Suicide` (Lambda).
+**Dominante prévisible :** « je joue comme contre Giovanni » (Combat contre Persian) → contre-pression : le « Persian » est Zoroark : la surprise se lit à l'efficacité affichée (Combat super efficace sur un « Persian ») ; Métamorph copie ta tête.
+**Plans de victoire :** (1) Sol + Électrik contre Ariane, Casse-Brique contre les écrans ; (2) lire l'Illusion (l'efficacité affichée trahit le type) et mener avec un Pokémon sacrifiable contre Métamorph ; (3) défaite racontée : la Rocket entre au relais, Ciléo ferme le cœur (le jalon 49 est posé).
+**Hasard :** faible ; Explosion annoncée par Lambda (« Rideau ! »).
+**Fun :** O partout. **Tests :** RK ≥ seuil → `RKHAUT` ; Zoroark apparaît en Persian ; jalon 49 dans toutes les issues.
+
+### 8.17 Amaryllis 2 — Centre Spatial (T3, plafond 47)
+
+`T-AMARYLLIS-T3`
+```
+=== TRAINER_KAREN_5 ===
+Name: AMARYLLIS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention / Force Setup First Turn
+
+Tyrantrum @ Life Orb
+Level: 47
+Ability: Strong Jaw
+Adamant Nature
+- Psychic Fangs
+- Head Smash
+- Dragon Claw
+- Dragon Dance
+
+Noivern @ Sitrus Berry
+Level: 47
+Ability: Infiltrator
+Timid Nature
+- Boomburst
+- Air Slash
+- Dragon Pulse
+- Super Fang
+
+Goodra @ Assault Vest
+Level: 47
+Ability: Sap Sipper
+Modest Nature
+- Draco Meteor
+- Sludge Bomb
+- Thunderbolt
+- Fire Blast
+
+Aster (Exploud) @ Choice Specs
+Level: 48
+Ability: Scrappy
+Modest Nature
+- Boomburst
+- Fire Blast
+- Focus Blast
+- Surf
+
+Altaria @ Leftovers
+Level: 48
+Ability: Natural Cure
+Bold Nature
+- Dragon Pulse
+- Moonblast
+- Roost
+- Cotton Guard
+
+Salamence @ Salamencite
+Level: 49
+Ability: Intimidate
+Jolly Nature
+- Dragon Dance
+- Double-Edge
+- Earthquake
+- Roost
+```
+**Intention :** on la surprend à acheter des transferts ; la croyante montre toute sa force (équipe canonique ROSA, Méga-Drattak). **Pattern :** Méga adverse + Danse Draco annoncée.
+**Préparation :** la série du Centre Spatial vient d'avoir lieu : **soin** au Centre Pokémon d'Algatia avant le toit (ce combat est séparé de la série) ; Glace, Fée, Dragon ; Intimidation.
+**Rôles :** Rexillius (Prognathe, Danse Draco), Bruyverne (Infiltration), Muplodocus (Veste de Combat), Aster/Brouhabam (Lunettes, Querelleur), Altaria (Cotogarde), Méga-Drattak (As, Peau Céleste : Damoclès devient Vol).
+**IA :** AI-B + `Force Setup First Turn` (Danse Draco au premier tour : tell).
+**Dominante prévisible :** « Glace règle tout » → contre-pression : Muplodocus et Brouhabam (Lance-Flammes) ; Rexillius (Roche).
+**Plans de victoire :** (1) Glace/Fée rapides ; (2) punir Danse Draco par la priorité (Éclats Glace) ou Intimidation ; (3) défaite racontée (« Tu entends ? Il compte. »).
+**Hasard :** Fracass'Tête (Rexillius) précision 80 % : seul coup imprécis, sur un Pokémon non-As.
+**Fun :** O partout. **Tests :** Méga au premier tour ; Danse Draco au premier tour sûr.
+
+### 8.18 Juan — badge 8 (T3, plafond 51, Atalanopolis)
+
+`T-JUAN-T3`
+```
+=== TRAINER_JUAN_1 ===
+Name: JUAN
+Class: Leader
+Pic: Leader Juan
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab / Conservative / Prefer Baton Pass / Force Setup First Turn
+
+Floatzel
+Level: 50
+Ability: Water Veil
+Jolly Nature
+- Bulk Up
+- Baton Pass
+- Aqua Jet
+- Waterfall
+
+Whiscash
+Level: 50
+Ability: Oblivious
+Adamant Nature
+- Dragon Dance
+- Earthquake
+- Waterfall
+- Zen Headbutt
+
+Walrein
+Level: 51
+Ability: Thick Fat
+Modest Nature
+- Surf
+- Ice Beam
+- Protect
+- Rest
+
+Crawdaunt @ Life Orb
+Level: 51
+Ability: Adaptability
+Adamant Nature
+- Crabhammer
+- Knock Off
+- Swords Dance
+- Aqua Jet
+
+Kingdra @ Sitrus Berry
+Level: 53
+Ability: Swift Swim
+Adamant Nature
+- Dragon Dance
+- Waterfall
+- Outrage
+- Iron Head
+```
+**Intention :** l'arbitre élégant : la danse passe de l'un à l'autre. **Pattern :** outils **anti-boost** (Buée Noire, Hurlement, Inconscient, Provoc, Encore).
+**Préparation :** Tréfonds juste avant (Sarah : Prédastérie à Buée Noire montre l'outil) ; Tentacool (Buée Noire), Caninos/Airmure (Hurlement/Cyclone), Maraiste (Inconscient, Safari), Vigoroth (Encore), Électrik et Plante.
+**Rôles :** Mustéflott (Gonflette + Relais), Barbicha (Danse Draco), Kaimorse, Colhomard (Danse Lames), Hyporoi (As, Danse Draco, Glissade).
+**IA :** AI-G2 + `Conservative` + `Prefer Baton Pass` + `Force Setup First Turn`.
+**Dominante prévisible :** « un gros attaquant » → contre-pression : les boosts passent plus vite que tu ne frappes.
+**Plans de victoire :** (1) phazer/Buée Noire au bon tour ; (2) Inconscient (Maraiste) ; (3) KO avant le deuxième boost (Électrik).
+**Hasard :** faible (aucun coup critique augmenté). **Fun :** O partout. **Tests :** Mustéflott utilise Relais après un boost ; Buée Noire annule tout.
+
+### 8.19 Amaryllis 3 — Pilier Céleste, climax (T4, plafond 53 ; anomalie P2 selon `PA`)
+
+`T-AMARYLLIS-T4-P2`
+```
+=== TRAINER_ANNA_AND_MEG_3 ===
+Name: AMARYLLIS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention / Force Setup First Turn
+
+Tyrantrum @ Life Orb
+Level: 53
+Ability: Strong Jaw
+Adamant Nature
+- Psychic Fangs
+- Head Smash
+- Dragon Claw
+- Dragon Dance
+
+Noivern @ Sitrus Berry
+Level: 53
+Ability: Infiltrator
+Timid Nature
+- Boomburst
+- Air Slash
+- Dragon Pulse
+- Super Fang
+
+Goodra @ Assault Vest
+Level: 53
+Ability: Sap Sipper
+Modest Nature
+- Draco Meteor
+- Sludge Bomb
+- Thunderbolt
+- Fire Blast
+
+Aster (Exploud) @ Choice Specs
+Level: 54
+Ability: Scrappy
+Modest Nature
+- Boomburst
+- Fire Blast
+- Focus Blast
+- Surf
+
+Guzzlord @ Leftovers
+Level: 54
+Ability: Beast Boost
+Brave Nature
+- Knock Off
+- Dragon Tail
+- Heavy Slam
+- Drain Punch
+
+Salamence @ Salamencite
+Level: 55
+Ability: Intimidate
+Jolly Nature
+- Dragon Dance
+- Double-Edge
+- Earthquake
+- Roost
+```
+**Intention :** la Nuit des Anneaux : elle accueille Rayquaza. Si la pression des anneaux est haute, **le ciel déchiré se voit dans son équipe** : un Engloutyran (Ultra-Chimère non légendaire) remplace Altaria. Le combat ne décide rien (invariant 4) : il gagne du temps (Y3).
+**Préparation :** veillée (soin forcé) ; la Doyenne soigne avant le Pilier ; les anomalies P2 vues depuis le ch. 8 ont montré les Ultra-Chimères ; Fée (Snubbull, Fluvetin, Mélofée : ×4 contre Engloutyran), Glace, Combat.
+**Rôles :** Rexillius, Bruyverne, Muplodocus, Brouhabam (Aster), **Engloutyran** (Boost Chimère : chaque KO augmente sa meilleure stat), Méga-Drattak (As).
+**IA :** AI-B + `Force Setup First Turn`.
+**Dominante prévisible :** « je garde mon meilleur pour la fin » → contre-pression : Engloutyran (PV énormes) use l'équipe.
+**Plans de victoire :** (1) Fée contre Engloutyran et Drattak ; (2) Glace + priorité ; (3) défaite racontée : Rayquaza arrive plus tôt, l'évaluation de la Fiole (bible §12.2) suit son cours, jalon 56 posé.
+**Hasard :** faible. **Fun :** O partout (le ciel, l'anomalie, Rayquaza qui arrive).
+**Tests :** `PA` ≥ seuil P2 → `-P2` ; sinon `T-AMARYLLIS-T4` ; jalon 56 dans toutes les issues.
+
+### 8.20 Blue final — Route Victoire (T4, plafond 56 ; obligatoire)
+
+`T-BLUE-T4A-SCOTT`
+```
+=== TRAINER_LOLA_4 ===
+Name: BLUE
+Class: Rival Late Frlg
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention / Risky
+
+Rhyperior @ Weakness Policy
+Level: 57
+Ability: Solid Rock
+Adamant Nature
+- Stone Edge
+- Earthquake
+- Megahorn
+- Ice Punch
+
+Alakazam @ Life Orb
+Level: 57
+Ability: Magic Guard
+Timid Nature
+- Psychic
+- Shadow Ball
+- Focus Blast
+- Nasty Plot
+
+Arcanine @ Choice Band
+Level: 57
+Ability: Intimidate
+Adamant Nature
+- Flare Blitz
+- Crunch
+- Extreme Speed
+- Wild Charge
+
+Corviknight @ Leftovers
+Level: 56
+Ability: Pressure
+Impish Nature
+- Brave Bird
+- Iron Head
+- Roost
+- Bulk Up
+
+Kingambit @ Black Glasses
+Level: 56
+Ability: Supreme Overlord
+Adamant Nature
+- Kowtow Cleave
+- Iron Head
+- Sucker Punch
+- Swords Dance
+
+Pidgeot @ Pidgeotite
+Level: 58
+Ability: Big Pecks
+Timid Nature
+- Hurricane
+- Heat Wave
+- Roost
+- U-turn
+```
+**Intention :** la dernière question du rival : a-t-il appris à **aimer ses Pokémon** (LIBRE : Tauros de Bourg Palette) ou seulement à les acheter (SCOTT : Scalpereur) ? **Pattern :** synthèse : adaptation + Méga + objets.
+**Préparation :** Blue l'annonce (« J'ai tout revu. Ta dominante, je la connais. ») ; Roche, Électrik, Glace contre Méga-Roucarnage ; Combat contre Scalpereur ; Inconscient contre Vulné-Assurance.
+**Équipe affichée :** paquet A, SCOTT ; 5 autres dans l'annexe.
+**Rôles :** Rhinastoc (Vulné-Assurance : ne pas le taper faiblement en super efficace), Alakazam, paquet (Arcanin Bandeau, Corvaillus), Scalpereur (Général Suprême) ou Tauros (Bandeau), Méga-Roucarnage (As, Annule Garde : Ouragan touche toujours).
+**IA :** AI-B + `Risky`.
+**Dominante prévisible :** dominante en façade → contre-pression : le noyau change peu, la façade marche, mais Alakazam et Rhinastoc couvrent large.
+**Plans de victoire :** (1) Roche/Électrik pour l'As, Combat pour Scalpereur ; (2) dominante en façade ; (3) murs + Feu Follet.
+**Hasard :** faible ; `Risky` = KO ratés en faveur du joueur. **Fun :** O partout. **Tests :** 6 variantes ; LIBRE si `STANCE_BLUE` = LIBRE.
+
+### 8.21 Giovanni — le dernier duel (T5, postgame ; refusable D127)
+
+`T-GIOVANNI-T5A`
+```
+=== TRAINER_JACKI_5 ===
+Name: GIOVANNI
+Class: Boss Frlg
+Pic: Leader Giovanni Frlg
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention / HP Aware / Predict Incoming Mon / Predict Move
+
+Persian @ Choice Band
+Level: 75
+Ability: Technician
+Jolly Nature
+- Fake Out
+- Knock Off
+- U-turn
+- Play Rough
+
+Dugtrio @ Focus Sash
+Level: 75
+Ability: Arena Trap
+Jolly Nature
+- Earthquake
+- Sucker Punch
+- Stone Edge
+- Memento
+
+Nidoqueen @ Leftovers
+Level: 75
+Ability: Sheer Force
+Modest Nature
+- Earth Power
+- Sludge Wave
+- Ice Beam
+- Stealth Rock
+
+Nidoking @ Life Orb
+Level: 76
+Ability: Sheer Force
+Timid Nature
+- Earth Power
+- Sludge Wave
+- Ice Beam
+- Thunderbolt
+
+Honchkrow @ Life Orb
+Level: 76
+Ability: Moxie
+Adamant Nature
+- Brave Bird
+- Sucker Punch
+- Night Slash
+- Heat Wave
+
+Rhyperior @ Weakness Policy
+Level: 78
+Ability: Solid Rock
+Adamant Nature
+- Earthquake
+- Stone Edge
+- Megahorn
+- Rock Polish
+```
+**Intention :** « une dernière fois, sans rien d'importé ». Pas de Méga, pas de Mewtwo, pas d'arrivant : un empire réduit à ce qu'il porte. **Pattern :** optimisation T5 ; Piège Sable (Triopikeur) ; E-ADAPT.
+**Préparation :** sa réplique annonce Triopikeur (« Personne ne quitte ce terrain. ») ; Vol/Lévitation contre Piège Sable ; Eau, Plante, Glace ; Inconscient.
+**Équipe affichée :** paquet A (Corboss) ; B (Hippodocus), C (Tyranocif) dans l'annexe.
+**Rôles :** Persian (Bluff, Demi-Tour), Triopikeur (Piège Sable, Ceinture Force), Nidoqueen (Piège de Roc), Nidoking (Sans Limite), paquet, Rhinastoc (As, Vulné-Assurance).
+**IA :** AI-E.
+**Plans de victoire :** (1) Lévitation/Vol + Eau ; (2) KO de Triopikeur avant qu'il piège ton mur ; (3) Inconscient contre les boosts.
+**Hasard :** faible. **Fun :** O partout. **Tests :** refus → D127 c ; victoire → sbires retirés (C).
+
+### 8.22 Maître — Pierre Rochard (PROTÈGE / ACCUSE) ou Marc (T4, plafond 56)
+
+`T-PIERREROCHARD-T4-PROTEGE`
+```
+=== TRAINER_STEVEN ===
+Name: PIERRE R.
+Class: Champion
+Pic: Steven
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Restore
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention / HP Aware / Predict Incoming Mon / Predict Move / Conservative
+
+Skarmory @ Rocky Helmet
+Level: 56
+Ability: Sturdy
+Impish Nature
+- Spikes
+- Brave Bird
+- Roost
+- Whirlwind
+
+Claydol @ Leftovers
+Level: 56
+Ability: Levitate
+Relaxed Nature
+- Earthquake
+- Psychic
+- Stealth Rock
+- Rapid Spin
+
+Aggron @ Sitrus Berry
+Level: 57
+Ability: Sturdy
+Adamant Nature
+- Heavy Slam
+- Stone Edge
+- Earthquake
+- Rock Polish
+
+Cradily @ Leftovers
+Level: 57
+Ability: Storm Drain
+Calm Nature
+- Giga Drain
+- Rock Slide
+- Recover
+- Toxic
+
+Armaldo @ Life Orb
+Level: 58
+Ability: Battle Armor
+Adamant Nature
+- Stone Edge
+- X-Scissor
+- Earthquake
+- Swords Dance
+
+Metagross @ Metagrossite
+Level: 59
+Ability: Clear Body
+Jolly Nature
+- Meteor Mash
+- Zen Headbutt
+- Earthquake
+- Bullet Punch
+```
+
+`T-MARC-T4`
+```
+=== TRAINER_WALLACE ===
+Name: MARC
+Class: Champion
+Pic: Champion Wallace
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion / Full Restore
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Smart Mon Choices / Ace Pokemon / Assumptions / Predict Switch / PP Stall Prevention / HP Aware / Predict Incoming Mon / Predict Move
+
+Pelipper @ Damp Rock
+Level: 56
+Ability: Drizzle
+Bold Nature
+- Hurricane
+- Scald
+- Roost
+- U-turn
+
+Tentacruel @ Black Sludge
+Level: 56
+Ability: Clear Body
+Timid Nature
+- Scald
+- Sludge Bomb
+- Rapid Spin
+- Toxic Spikes
+
+Ludicolo @ Life Orb
+Level: 57
+Ability: Swift Swim
+Modest Nature
+- Hydro Pump
+- Giga Drain
+- Ice Beam
+- Fake Out
+
+Gyarados @ Sitrus Berry
+Level: 57
+Ability: Intimidate
+Adamant Nature
+- Dragon Dance
+- Waterfall
+- Earthquake
+- Ice Fang
+
+Primarina @ Leftovers
+Level: 58
+Ability: Torrent
+Modest Nature
+- Sparkling Aria
+- Moonblast
+- Psychic
+- Calm Mind
+
+Milotic @ Leftovers
+Level: 59
+Ability: Marvel Scale
+Bold Nature
+- Scald
+- Recover
+- Ice Beam
+- Haze
+```
+**Intention :** la Ligue est l'**écho** de la fin : qui est Maître dépend de l'histoire (Pierre Rochard démissionne en F2 : Marc). L'équipe de Pierre Rochard dit s'il a accusé son père (le fossile de Devon disparaît).
+**Préparation :** le Conseil 4 vient d'enseigner Farceur, Feu Follet, boosts, Intimidation ; Feu, Sol, Combat, Eau contre l'Acier ; Électrik et Plante contre la pluie de Marc.
+**Rôles (Pierre Rochard) :** Airmure (Picots), Kaorine (Piège de Roc, Tour Rapide), Galeking, Vacilys, Armaldo **ou** Tarinorme, Méga-Métalosse 59 (Griffe Dure).
+**Rôles (Marc) :** Bekipan (Crachin), Tentacruel (Pics Toxik), Ludicolo (Glissade), Léviator (Danse Draco), Oratoria, Milobellus 59 (Écaille Spéciale, Buée Noire). Aucune Méga.
+**IA :** AI-E + `Conservative` (Pierre Rochard) ; AI-E (Marc).
+**Plans de victoire :** Pierre Rochard : (1) Feu/Sol contre l'Acier ; (2) Tour Rapide puis offensive ; Marc : (1) retirer Bekipan et jouer hors pluie ; (2) Électrik/Plante sous la pluie avec Absorb Eau.
+**Hasard :** faible. **Fun :** O partout. **Tests :** `STANCE_PR` ACCUSE → Tarinorme ; démission → `T-MARC-T4` ; jalon 60.
+
+---
+
+## 9. Mode Difficile (`Difficulty: Hard`, `B_VAR_DIFFICULTY` = `VAR_DIFFICULTY`, `ENGINE_CHANGES` H2)
+
+**Règle de dérivation (automatique, `teams_v3_gen.py`) :** chaque équipe Normale a un bloc Hard **sous le même ID** (aucun ID consommé). Le moteur retombe sur Normal si un bloc manque (`GetTrainerDifficultyLevel`).
+
+| Élément | Normal | Difficile | Pourquoi |
+|---|---|---|---|
+| Niveaux, espèces, capacités, objets tenus | référence | **identiques** | pas d'abus de niveau ; la doc et les fiches restent vraies |
+| IV | T1 15, T2 20, T3 25, T4–T5 31 | 31 | statistiques de « vrai » dresseur |
+| EV (selon le rôle) | T1–T3 aucun, T4 128/128, T5 252/252/4 | T1 85/85, T2 128/128, T3+ 252/252/4 | la différence se sent sans changer de lecture |
+| IA | §3.1 | + un cran : G1 + `HP Aware` ; G2/RV/V + `Smart Mon Choices` + `Predict Switch` ; B + `HP Aware`, `Predict Incoming Mon`, `Predict Move` ; E/Z + `Weigh Ability Prediction` | décisions plus fines, jamais d'omniscience ajoutée |
+| Sac du joueur | libre | demande au brief C : `B_VAR_NO_BAG_USE` = 1 contre les combats majeurs (option du mode) | Run & Bun, Radical Red (`STRATEGY_RESEARCH` §9) |
+
+Mode **Facile** : non produit (le moteur retombe sur Normal) ; si le GMD le veut, même dérivation inversée (IV −5, IA d'un cran en dessous).
+
+---
+
+## 10. Dresseurs de route et couches de faction
+
+**Règle d'or :** un dresseur de route **montre** ce que le prochain combat majeur **exige** (`GM_METHOD` §4.9 : introduction sûre → essai → échec peu coûteux → renforcement → contrainte → combinaison). Aucun dresseur de route n'est rentable à farmer (plafond souple, pas de revanche : `gRematchTable` neutralisée, §12.3).
+
+| Ch. | Zone | Niveaux (plafond en vigueur) | Ce qu'ils enseignent | Avant quel combat | IA | Taille |
+|---|---|---|---|---|---|---|
+| 0–1 | R101–R104, Bois Clémenti | plafond − 6 … − 4 | types de base ; une espèce de la table de la route dans chaque équipe (la route montre ses options) ; un Fermeté à l'École | Roxanne | AI-R0 | 1–2 |
+| 2 | Myokara, Grotte Granite | − 5 … − 3 | un Gonflette, un Cran, un Psy | Bastien | AI-R0 | 2 |
+| 3 | R107–R109, Poivressel | − 5 … − 3 | équipes à 2 types différents ; dresseurs de la Tente qui changent de tête | Blue 1 | AI-R1 | 2–3 |
+| 4 | R110, R117, Tunnel | − 4 … − 2 | Paratonnerre, paralysie ; Pokémon immunisé au Sol ; sbires Poison (Toxik) | Voltère, raid | AI-R1 | 2–3 |
+| 5 | R111–R114 | − 4 … − 2 | **doubles de route** (deux par route) ; Draby de route au Site | Amaryllis | AI-R1 | 2 (×2) |
+| 6 | Chemin Ardent, Mont Chimnée | − 4 … − 2 | un Chartor (soleil) ; ouvriers Magma à Intimidation | Adriane, Max | AI-R1 | 2–3 |
+| 7 | R117, Vergazon | − 3 … − 1 | un Monaflèmit (Absentéisme), un Encore | Norman | AI-R1 | 3 |
+| 8 | R118–R120, Cimetronelle | − 3 … − 1 | pluie (un Bekipan) ; **un Picots** puis un Tentacool de pêcheur (Tour Rapide montré) ; un Pics Toxik | Brice 3, Alizée, Koga | AI-R2 | 3 |
+| 9 | R121–R122, Nénucrique, Mont Mémoria | − 3 … − 1 | Spectres **la nuit** (variante E-TOD) ; un Voile/écran ; un Exuviation | Agatha, Olga, Blue 2 | AI-R2 | 3–4 |
+| 10 | R124, Algatia | − 2 … 0 | doubles à Distorsion ; Provoc ; une Illusion (Zorua) | Lévy et Tatia, Lambda | AI-R2 | 3–4 |
+| 11–12 | R125–R128, Tréfonds, Atalanopolis | − 2 … 0 | Buée Noire, Relais, Inconscient | Juan | AI-R2 | 4 |
+| 13–14 | Route Victoire | − 1 … + 1 | une Méga par **Topdresseur** au plus ; Vulné-Assurance ; Intimidation | Blue, Ligue | AI-R2 | 4–5 |
+
+**Couches de faction (mêmes règles, identité visible) :**
+- **Sbires Rocket** (ID `TRAINER_GRUNT_*`, 53 ID vanilla) : présents **avant** les anneaux (bible §7) ; espèces Poison/Ténèbres + **arrivants capturés** (Goupilou, Chacripan) quand `RK` ≥ seuil (deux tables de sbires : RK bas, RK haut ; même ID, `Difficulty` non utilisé pour ça : on duplique 6 ID de sbires de route sélectionnés par script). AI-R1, aucun objet.
+- **Brigades du Rempart** (ID de route recyclés sur leurs cartes) : **natifs seulement** (Medhyèna, Zigzaton, Nirondelle, Mangriff) ; barrages sur les routes selon `rL` ; refusables (le refus coûte `rL`, brief C).
+- **Ouvriers Magma / militants Aqua** : Magma = Sol/Feu + Frison (le troupeau) ; Aqua = Eau/Ténèbres + arrivants marins libérés. AI-R1.
+- **Topdresseurs** : un satellite étranger cohérent avec la zone (`ENCOUNTERS_PLAN` §10.5) ; AI-R2.
+
+---
+
+## 11. Interface avec les briefs A, C, D
+
+### 11.1 Demandes au brief C (noms logiques ; C alloue les ID)
+| Nom logique | Type | Lu par | Écrit par |
+|---|---|---|---|
+| `STARTER_RED` | var vanilla du starter (recyclée) | Brice (×5 rencontres) | ch. 0 |
+| `EADAPT_TYPE` | `VAR_RESULT` après le special E-ADAPT (aucun stockage) | Blue, Peter, Giovanni | script juste avant le combat |
+| `BV`, `STANCE_BLUE`, `REL_KOGA_PETER`, `STANCE_ERIKA`, `STANCE_ARTHUR`, `STANCE_PR`, `REL_ONDINE_ARTHUR`, `REL_AUGUSTE_FUJI` | déjà demandés (A §1.2, bible §11) | §5.1 | C |
+| `TIMMY_SAUVE`, `OLGA_LOKHLASS`, `ONDINE_MISSION` | flags (brouillon C : D038/D064, D082, D104) | Timmy, Olga, Ondine | C |
+| `Z02_ETAT` ≠ ABATTU | flags de zone (D) | Pierre (Brock) | mission des mines |
+| `RK` ≥ seuil, `PA` ≥ seuil P2 | vars existantes | Ariane, Amos, sbires ; Amaryllis ch. 13 | C |
+| `FLAG_CF_REFUS_*` | un par Défi qui est une décision | §4 colonne « Décision » | C ; à créer : `REFUS_OLGA`, `REFUS_AGATHA` (lus au Sommet) ; Pierre, Auguste, Erika, Ondine 1, Morgane : Défis sans flag recommandés |
+| `B_SLEEP_CLAUSE TRUE` | config moteur | toutes les équipes | programmeur moteur |
+| `B_VAR_NO_BAG_USE` (mode Difficile) | var | §9 | C (option) |
+
+### 11.2 Combats à deux issues et jalons (B → C)
+| Combat | Victoire écrit | Défaite écrit | Jalon (toutes issues) |
+|---|---|---|---|
+| Raid du Tunnel (Lance) | cargaison saisie (+ `rL`, − `RK`, C) | cargaison perdue (+ `RK`) | raid → 27 |
+| Amaryllis ch. 5 | `AM` + (respect) | `AM` − ; réplique « Pas encore. » | Site Météore → 29 |
+| Max (D054 b/c) | démonstration interrompue | démonstration achevée | — (badge 4 inchangé) |
+| Centre Spatial (Ariane, Lambda) | Lambda démasqué devant Giovanni | la Rocket atteint le relais, Ciléo ferme le cœur | → 49 |
+| Climax (Ariane, Amaryllis) | temps gagné (bible §12.2) | Rayquaza plus tôt | → 56 |
+| Brice 1–3, Flora 2, Koga piège | relations (`BR`, `FL`, garde de Hoopa par D075) | idem, autre réplique | — |
+**Jalons :** aucun combat refusable ne pose seul un jalon ; Blue 1 refusé : le jalon 22 est posé à la **sortie de Poivressel** (bible §8.3).
+
+### 11.3 Reçu du brief D
+Options de joueur par combat : `ENCOUNTERS_PLAN` §10.4 et `encounter_roster_v1.csv` (chapitres d'accès cités dans §7–§8). Satellites : §10.5, suivis sauf écarts listés §14.
+
+---
+
+## 12. Allocation des ID de dresseurs
+
+**Principe :** un ID n'est qu'un emplacement (portrait, classe, musique, équipe se changent dans `trainers.party`). On **garde** les ID vanilla dont le rôle survit (Champions `_1`, Conseil 4, `WALLACE`, `STEVEN`), on **recycle** les autres. Les 9 ID libres (855–863) restent **en réserve** (aucun utilisé). Liste exacte ID → équipe : `docs/hack/data/teams_v3_ids.csv` (générée ; contrôle de collision automatique).
+
+| Pool (vérifié dans `opponents.h` et `gRematchTable`) | Disponible | Utilisé | Reste | Usage |
+|---|---|---|---|---|
+| ID vanilla conservés (8 Champions `_1`, 4 Conseil 4, `WALLACE`, `STEVEN`) | 14 | 14 | 0 | badges, Ligue, Maître (Marc, Pierre Rochard PROTÈGE) |
+| Revanches des Champions (`<CHAMPION>_2`…`_5`) | 32 | 8 (`_2` = T5) | 24 | réserve postgame |
+| Rivaux (`BRENDAN_*` 15, `MAY_*` 15, `WALLY_*` 6, 2 `PLACEHOLDER`) | 38 | 36 | 2 (`WALLY_MAUVILLE`, `WALLY_VR_5`) | Brice (32), Timmy (4) |
+| Admins et chefs Magma/Aqua (`MAXIE_*` 3, `TABITHA_*` 3, `ARCHIE`, `MATT`, `SHELLY_*` 2) | 10 | 10 | 0 | Max (2), Kelvin, Courtney, Lambda, Arthur (2), Sarah (2), Matthieu |
+| Revanches de dresseurs (`gRematchTable`, entrées 2–5, hors Champions et Conseil 4) | 259 | 107 | **152** | Blue, Flora, Mission Indigo, Peter, Giovanni, Amaryllis, Rocket, T5, Têtes, Chen |
+| Sbires `GRUNT_*` | 53 | 0 (couche de faction, §10) | 53 | sbires Rocket, ouvriers Magma, militants Aqua |
+| Libres (855–863) | 9 | 0 | 9 | réserve |
+
+**Total :** 175 équipes sur 175 ID distincts ; **zéro collision** (contrôle du générateur). Restent 152 + 24 + 2 + 53 + 9 = **240 ID**.
+**Écart avec la bible §10/§14 :** la bible annonce « 324 revanches » ; le décompte vérifié est 259 (dresseurs) + 32 (Champions) = 291, les entrées du Conseil 4 dans `gRematchTable` répétant le même ID. Sans effet sur le budget.
+
+### 12.3 Conditions techniques du recyclage
+1. **Revanches désactivées** (bible §10) : les ID `_2`…`_5` ne doivent plus être atteignables par Cherche VS / Match Call. Demande au programmeur moteur : neutraliser `UpdateRematch`/`ShouldTryRematchBattle` (ou vider `gRematchTable`) ; sinon un dresseur de route `ROSE_1` relancé déclencherait `ROSE_2` = Brice T5. **Bloquant avant intégration.**
+2. Chaque ID recyclé garde son **flag de dresseur** (vaincu) : aucun script vanilla ne doit lire ces flags après la réécriture (grep demandé au brief C sur `FLAG_DEFEATED`/`trainerbattle` vanilla retirés).
+3. Classes et noms : noms ≤ 10 caractères (`TRAINER_NAME_LENGTH`) : « PIERRE R. », « LEVY&TATIA », « PROF. CHEN » ; classes ≤ 12 (`ENGINE_CHANGES`).
+4. Partenaires (`battle_partners.party`, budget séparé) : `PARTNER_STEVEN` (recyclé : Pierre Rochard), `PARTNER_PETER_CH5`, `PARTNER_OLGA_CH9` (nouveaux) : annexe `docs/hack/data/partners_v3.party`.
+5. Le 2 contre 1 (Amaryllis ch. 5) utilise `BATTLE_TWO_VS_ONE_OPPONENT` (code présent, `battle_setup.c`) ; la macro de script est à confirmer par le programmeur moteur.
+
+---
+
+## 13. Validation (log) et tests d'acceptation
+
+### 13.1 Commandes exécutées (2026-10-14)
+```
+python3 -I docs/hack/data/teams_v3_gen.py
+  dresseurs/variantes : 175 ; blocs Hard : 175 ; partenaires : 3 ; ID distincts : 175 ; Pokémon : 902
+  (aucune « ERREUR équité » : niveaux ≤ plafond + 2, As ≤ plafond + 3, T5 ≤ 78, ≤ 1 Méga, aucune Méga avant le plafond 40)
+python3 -I tools/qa/validate_trainers.py -f docs/hack/data/teams_v3.party --learnsets --strict-levels
+  Fichiers : 1 | dresseurs : 350 | Pokémon : 1804 | erreurs : 0 | avertissements : 20
+python3 -I tools/qa/validate_trainers.py -f docs/hack/data/partners_v3.party --learnsets --strict-levels
+  Fichiers : 1 | dresseurs : 3 | Pokémon : 9 | erreurs : 0 | avertissements : 0
+```
+**Les 20 avertissements restants** sont tous du type « talents non résolus (macro) » (limite connue du validateur) pour Morphéo (Météo), Mimiqui (Fantômasque), Haydaim (Herbivore), Superdofin (Supermutation) ; **vérifiés à la main** dans `src/data/pokemon/species_info/` (`gen_3_families.h:9128`, `gen_7_families.h:5160`, `gen_5_families.h:7911`, `gen_9_families.h:4183`) : talents légaux.
+Corrections faites pendant la validation : Ectoplasma Corps Maudit → Lévitation (config du dépôt), Séléroc Vaste Pouvoir → Psyko, Draco (partenaire) Attention → Mue, Zéblitz Puissance Cachée → Coup d'Jus.
+
+**Limites (à ne pas surinterpréter) :** le validateur lit le sur-ensemble `all_learnables.json` (une capacité de CT absente du jeu passe) ; il ne vérifie ni la cohérence Méga-Gemme/espèce (vérifiée à la main : chaque gemme correspond à son porteur) ni l'ordre des jalons. **Rien n'est compilé ni testé en ROM.**
+
+### 13.2 Garde-fous automatiques du générateur
+Niveaux contre plafond ; une Méga max ; Méga après le plafond 40 ; collisions d'ID ; ≤ 6 Pokémon. Interdits retirés à la main et vérifiés par `grep` (0 occurrence) : Reflet, Lilliput, Jet de Sable, Brouillard, Vantardise, Ultrason, Puissance Cachée, attaques OHKO, Hypnose, Grobisou, Roche Royale, Griffe Rasoir ; une seule dormeuse par équipe.
+
+### 13.3 Socle de tests pour chaque combat majeur (`STRATEGY_RESEARCH` §10)
+- [ ] `validate_trainers.py --trainer <ID> --learnsets` : 0 erreur (fait, §13.1).
+- [ ] Combat au plafond avec une équipe « moyenne » : ≤ 3 essais en Normal.
+- [ ] Combat avec une équipe « réponse » (§7) : nettement plus facile.
+- [ ] Mode Difficile sans sac.
+- [ ] `B_FLAG_AI_VS_AI_BATTLE` : l'IA suit le plan de la fiche (setup au tour 1, Méga au premier tour, Relais).
+- [ ] Sélecteur : chaque état lu donne l'ID attendu (§5.1) ; état absent → variante par défaut.
+- [ ] Refus : flag posé, aucune EXP, dresseur ne repère plus (D1).
+- [ ] Jalon posé dans toutes les issues (§11.2).
+
+---
+
+## 14. Conflits avec la bible et les autres briefs (à arbitrer par le GMD)
+
+| # | Conflit | Cause | Ma proposition | Coût de l'alternative |
+|---|---|---|---|---|
+| C1 | Bible §9.3 : Timmy « H ch. 7 (refusable) » ; brouillon C : D064 (combat contre la **brigade** au ch. 7) et D124 (Timmy à la Route Victoire, ch. 14) | deux lectures du même arc | suivre C : ch. 7 = Flora 2 (brigade), Timmy = Route Victoire (canon Timmy/Wally), avec ou sans son arrivant | garder un combat Timmy au ch. 7 : deux combats contre des enfants/brigade dans la même scène, routine |
+| C2 | Koga : brouillon C met le Défi au ch. 8 (D081) juste après le piège (D075, qui peut être un combat) ; A lit `REL_KOGA_PETER` au ch. 10 | deux combats Koga dans le même chapitre ; la variante PROPRE/PIÈGES ne peut pas lire un état écrit plus tard | Défi D081 au ch. 8 avec une équipe neutre (`T-KOGA-T2-DEFI`) **et** une revanche ch. 10 (après W10) avec PROPRE/PIÈGES | supprimer la revanche ch. 10 : la position de Koga ne se lit plus en combat |
+| C3 | Giovanni : A dit « rien d'importé » ; D propose Mascaïman, Hippopotas, Dunaja | identité contre écologie | « rien d'**importé** » = rien acheté par Passerelle ; ses satellites E-ADAPT (Corboss, Hippodocus, Tyranocif) sont ses Pokémon d'avant le réseau | prendre ceux de D : contredit sa réplique centrale (D127) |
+| C4 | Bible §10 : Méga « une par équipe désignée » sans liste ; A : Aragon et Amaryllis ont tous deux Méga-Drattak (canon ROSA) | deux Méga-Drattak à un chapitre d'écart | Amaryllis seule au ch. 10/13 ; Aragon en T5 ; Glacia en T5 | deux fois la même Méga au climax et à la Ligue : routine |
+| C5 | Bible §10 et brief : « 324 revanches » | décompte | 291 vérifiés (§12) | aucun |
+| C6 | Pseudo-légendaires de PNJ avant le ch. 8 | symétrie avec D §2.2 | exception : Drackhaus (Draby, natif du Site Météore) chez Amaryllis au ch. 5 | retirer : Amaryllis sans Dragon fort au ch. 5 |
+| C7 | Défis refusables sans décision dans le brouillon C (Pierre, Auguste, Erika, Ondine 1, Olga, Morgane, Agatha-rite) | brief C en cours | flags pour Olga et Agatha seulement ; les autres non comptés | 7 flags de plus pour peu de lecteurs |
+| C8 | Taille : brief B vise 60–100 Ko | 22 fiches avec équipes en clair | ≈ 120 Ko ; l'annexe porte le reste | retirer les blocs Showdown des fiches (−45 Ko) : moins lisible pour le scénariste |
+| C9 | Fun « environnement » = non pour Roxanne, Bastien, Norman | combats d'arène sans règle de terrain | acceptés comme tutoriels (déclarés) | ajouter un effet de terrain : coût de script, peu de gain |
+
+---
+
+## 15. Checklists `GM_METHOD` §6.1 et §6.2 (dresseurs/combats)
+
+- [x] Intention en une phrase (§0) ; comportement observable (changer 1–2 membres avant un combat majeur).
+- [x] Décisions du joueur identifiées : préparation, tête (D2), refus (D1), dominante face à E-ADAPT.
+- [x] Économie : sources (captures, CT), puits (séries sans soin), plafond (convertisseur) ; aucune EXP rentable.
+- [x] Dominance cherchée et contre-pressions (§0, §1, fiches).
+- [x] Arc d'apprentissage et réponse à la routine par palier (§1).
+- [x] Sémiotique 4 couches (§0).
+- [x] Fiches §5.4 pour les combats clés (22) ; ≥ 2 plans de victoire chacune ; hasard faible.
+- [x] Niveaux cohérents avec le plafond (contrôle automatique).
+- [x] Dresseurs de route qui enseignent le prochain examen (§10).
+- [x] Format Showdown validé : 0 erreur (§13.1).
+- [x] Flags d'IA justifiés, jamais l'omniscience sans raison de lore (§3).
+- [x] Aucune espèce/donnée/animation modifiée ; aucun Mewtwo Rocket/Giovanni ; aucun légendaire de PNJ pendant l'histoire ; Téra absent.
+- [ ] Textes FR des répliques : brief A (seuls des échantillons courts ici).
+- [ ] Preuves ROM : aucune (rien compilé ni joué).
+- [x] Changelog de la bible : à reporter par le GMD (ligne proposée ci-dessous).
+
+---
+
+## 16. Changelog
+
+| Date | Version | Changement | Auteur |
+|---|---|---|---|
+| 2026-10-14 | 3.0 | Création (brief B) : paliers T1–T5, IA par palier, 51 rencontres, 175 équipes + 175 Hard + 3 partenaires (générateur `teams_v3_gen.py`, validées : 0 erreur), E-ADAPT (3 paquets), politique Méga, 22 fiches, allocation de 175 ID recyclés (240 restants), conflits C1–C9. Ligne proposée pour la bible §16 : « COMBAT_DESIGN v3 livré (proposé) ». | GMD secondaire combat |
