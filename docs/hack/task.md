@@ -57,6 +57,7 @@ Réponse d'organisation : agents « Storycraft » et « Cast & Canon » (en cour
 | D8 | Nouveaux dresseurs = ID vanilla recyclés (9 slots libres) | budget |
 | D9 | Sprites Kanto : déblocage des assets FRLG déjà présents (provenance pret/pokefirered via expansion) plutôt que copie | coût/risque |
 | D11 | Direction **Pokémon Cendres** : joueur = Red (muet), année 1 après RFVF, réfugiés de Cramois'Île à Hoenn ; Brice voix/partenaire ; Méga seule | NARRATIVE_DIRECTIONS v2 |
+| D12 | **v3 « Pokémon Confluence »** remplace *Cendres* (archivé `archive/cendres_v2/`) : anneaux de Hoopa + réseau Passerelle expliquent les espèces Gen 1–9 ; oignon R1–R4 ; Mission Indigo (casting Kanto complet) ; 5 fins × 3 variantes ; briefs spécialistes `SPEC_BRIEFS.md` | addendum v2.1 + revues v2 (bible §0) |
 | D10 | Budget : agents peu nombreux, réutilisés (SendMessage), prompts ciblés ; travail d'intégration fait par l'orchestrateur | Claude Pro |
 
 ## 3. Plan d'exécution (brief v2 §20)
@@ -66,7 +67,7 @@ Réponse d'organisation : agents « Storycraft » et « Cast & Canon » (en cour
 | 2 | Examen expansion + pokefirered | ✅ (complément Kanto en cours) |
 | 3 | Skill GM + organisation | ✅ (`GM_METHOD.md`) ; `EXPERIENCE_INTENT.md` à réviser pour choix/maturité |
 | 4 | Lore + vision | ✅ addendum Kanto (§8) ; direction « Cendres » choisie (88.8/100) |
-| 5 | Scénario complet + système de choix | ✅ v2.0 conçue ; ⏳ revue indépendante (2 critiques) puis arbitrage |
+| 5 | Scénario complet + système de choix | v2 revue (2 critiques) → **v3.0 colonne vertébrale** (bible) ; ⏳ 4 GM spécialistes (`SPEC_BRIEFS.md`) |
 | 6 | DECISION_LEDGER (≥ 101) + systèmes cachés | 120 décisions **proposées** (0 implémentée) ; ⏳ audit décision par décision |
 | 7 | Événements, dialogues, quêtes, combats, rencontres | ⏳ |
 | 8 | Tranche représentative implémentée et testée | ⏳ |
