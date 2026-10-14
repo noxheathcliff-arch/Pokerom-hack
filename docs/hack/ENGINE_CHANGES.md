@@ -5,12 +5,26 @@
 > Registre des flags/vars : [`FLAGS_VARS_REGISTRY.md`](FLAGS_VARS_REGISTRY.md) (source unique).
 > Tests : `test/hack_engine.c` (tests unitaires) et `test/battle/hack_choose_lead.c` (tests de combat), lancés par `make check`.
 
+## État par fonctionnalité (2026-10-14)
+
+| Fonctionnalité | Compile | Testée comment | Résultat |
+|---|---|---|---|
+| A. Nettoyage (renommages neutres, titre `POKEMON HACK`, intro RHH off, classes « Heure Suspendue » retirées) | oui | build + smoke test + `make check` | OK |
+| N1. Flag sans rencontres `FLAG_NO_WILD_ENCOUNTERS` | oui | tests unitaires (pêche avec témoin positif, Éclate-Roc, Doux Parfum/Miel, câblage `WE_FLAG_NO_ENCOUNTER`) | OK ; chemin « herbe » couvert par code upstream (non testé directement) |
+| H1. Plafonds souples (valeurs provisoires) | oui | tests unitaires de la table | OK ; calcul d'EXP souple ignoré en test (voir H1) |
+| H2. Difficulté `VAR_DIFFICULTY` | oui | lecture de code (tests upstream `trainer_control`) | OK |
+| B. Joueur = Red/Leaf | oui | tests unitaires + capture émulateur (Red dans le camion) | OK ; course, dos en combat, Vélo Cross non vérifiés visuellement |
+| C. Sprites terrain Kanto en Émeraude | oui | test unitaire (27 sprites non NULL) | OK ; **+241 Kio ROM** |
+| D1. Combats refusables (refus enregistré, définitif, branche) | oui | tests unitaires + octets de la macro vérifiés dans la ROM | OK ; UI OUI/NON non testée en émulateur |
+| D2. Choix du Pokémon de tête (dresseurs) | oui | tests unitaires + test de combat témoin | partiel (voir D2) ; menu non testé en émulateur ; combats sauvages non couverts |
+| E. Affinités `addaffinity`/`subaffinity` | oui | tests unitaires (via `RUN_OVERWORLD_SCRIPT`) | OK |
+
 ## Résumé de vérification
 
 | Vérification | Résultat |
 |---|---|
-| `make -j4` (ROM normale) | **EXIT 0** ; EWRAM 226 596 o (86,44 %), IWRAM 28 376 o (inchangé, 86,60 %), ROM 26 791 900 o (79,85 %, **+242 Kio** vs upstream, dus aux sprites Kanto) |
-| `tools/qa/run_smoke.sh . qa_artifacts/smoke_engine_v2` | **SMOKE: PASS** (nouvelle partie → sauvegarde → redémarrage → CONTINUER) ; **aucun script QA modifié** (les scripts se synchronisent sur `gMain.callback2`, la suppression de l'intro RHH ne les casse pas) |
+| `make -j4` (ROM normale) | **EXIT 0** ; EWRAM 226 588 o (86,44 %, +4 o), IWRAM 28 376 o (inchangé, 86,60 %), ROM 26 792 064 o (79,85 % ; +242 Kio vs upstream, presque tout dû aux sprites Kanto) |
+| `tools/qa/run_smoke.sh . qa_artifacts/smoke_engine_v3` | **SMOKE: PASS** (nouvelle partie → sauvegarde → redémarrage → CONTINUER) ; **aucun script QA modifié** (les scripts se synchronisent sur `gMain.callback2`, la suppression de l'intro RHH ne les casse pas) |
 | `make check` | voir §Tests (`RESULTATS_CHECK`) |
 | En-tête ROM | `POKEMON HACK` / `BPEF` (vérifié dans `pokeemeraude.gba` à 0xA0) |
 
@@ -106,7 +120,8 @@ Brendan/May restent disponibles comme PNJ / rival (`GetRivalAvatarGraphicsIdBySt
 
 ## C. Sprites Kanto en Émeraude
 
-Les blocs `#if IS_FRLG` des données d'objets ont été **ouverts** (remplacés par un commentaire `Hack:`) dans : `object_event_graphics.h`, `object_event_graphics_info.h`, `object_event_graphics_info_pointers.h`, `object_event_pic_tables.h` et la liste des palettes de `src/event_object_movement.c`. Tous les PNJ FRLG sont donc disponibles en Émeraude avec leurs ID `OBJ_EVENT_GFX_*` existants et leurs palettes (système de palettes dynamiques par tag, inchangé). Coût ROM : **+241 Kio** (≈ 6,4 Mio restent libres).
+Les blocs `#if IS_FRLG` des données d'objets ont été **ouverts** (remplacés par un commentaire `Hack:`) dans : `object_event_graphics.h`, `object_event_graphics_info.h`, `object_event_graphics_info_pointers.h`, `object_event_pic_tables.h` et la liste des palettes de `src/event_object_movement.c`. Tous les PNJ FRLG sont donc disponibles en Émeraude avec leurs ID `OBJ_EVENT_GFX_*` existants et leurs palettes (système de palettes dynamiques par tag, inchangé). Coût ROM mesuré : 26 544 372 o → 26 791 292 o = **+246 920 o (+241 Kio)** pour l'ensemble des objets FRLG (≈ 6,4 Mio restent libres). Aucun impact IWRAM/EWRAM.
+**Couverture du casting Kanto demandé :** les 8 champions d'arène de Kanto (Pierre/Brock, Ondine/Misty, Major Bob/Lt. Surge, Erika, Koga, Morgane/Sabrina, Auguste/Blaine, Giovanni), le Conseil 4 (Olga/Lorelei, Aldo/Bruno, Agatha, Peter/Lance), Chen, Blue, Red/Leaf, Sbires Rocket H/F, Léo/Bill, M. Fuji, Celio, Daisy : **tous utilisables** dans la build Émeraude (`OBJ_EVENT_GFX_*`, test unitaire). Le casting de Hoenn est natif.
 **Liste demandée — sprites terrain présents (testés non NULL) :** BLUE, GIOVANNI, PROF_OAK, BROCK, MISTY, LT_SURGE, ERIKA, KOGA, SABRINA, BLAINE, LORELEI, BRUNO, AGATHA, LANCE, ROCKET_M, ROCKET_F, BILL, MR_FUJI, CELIO, DAISY (+ RED_*, GREEN_*).
 **Portraits de combat (face) dans la build Émeraude** (tous non gardés par `IS_FRLG`) : Blue = `TRAINER_PIC_RIVAL_EARLY_FRLG` / `RIVAL_LATE_FRLG` / `CHAMPION_RIVAL_FRLG` ; Giovanni = `LEADER_GIOVANNI_FRLG` ; Chen = `PROFESSOR_OAK_FRLG` ; arènes Kanto = `LEADER_*_FRLG` ; Conseil = `ELITE_FOUR_*_FRLG` ; Rocket = `ROCKET_GRUNT_M/F_FRLG`. **Manquants :** Bill, M. Fuji, Celio, Daisy (jamais dresseurs dans FRLG).
 
@@ -172,6 +187,9 @@ Rien d'équivalent dans l'expansion (`grep lead/ChooseLead/B_PARTY_SELECT`). Con
 **Activation :** `setflag FLAG_CHOOSE_BATTLE_LEAD` (option joueur à exposer : PNJ « coach », objet clé ou entrée du menu Options — l'intégration au menu Options, qui touche l'UI et la sauvegarde des options, est **différée**).
 **Limites :** combats sauvages non couverts (ils partent du C sans script : un menu d'équipe à ce moment demanderait de réorganiser les transitions) ; revanches Cherche VS non couvertes ; en double, seul le Pokémon de gauche est choisi.
 **Tests :** unitaires (`test/hack_engine.c` : proposé seulement avec le flag et ≥ 2 Pokémon aptes ; choix consommé une seule fois ; B = pas de choix) ; `test/battle/hack_choose_lead.c` : témoin (sans choix, l'emplacement 1 mène). Un test de combat « l'emplacement 2 mène » n'est **pas exprimable** avec le lanceur de tests actuel : il suppose que le Pokémon actif du joueur est l'emplacement 1 et signale « Illegal battle record » quand un autre est envoyé — ce qui a été observé et montre que la substitution s'applique, mais ce n'est pas un test vert. Menu d'équipe non testé en émulateur.
+
+### Retirer un Pokémon de l'équipe (besoin futur D111)
+Aucune commande de script dédiée dans l'expansion (pas de `removemon`). Briques C existantes : `ZeroMonData()` + `CompactPartySlots()` (utilisées par la pension, `StorePokemonInDaycare`) ; les échanges en jeu (`CreateInGameTradePokemon`) remplacent un Pokémon. Une commande `removepartymon SLOT` (native de ~10 lignes) sera simple à ajouter le moment venu. Non implémenté.
 
 ## E. Affinités / réputation (convention)
 
