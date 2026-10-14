@@ -643,3 +643,12 @@ gSpecials::
 	def_special IsTrainerBattleAlreadyDeclined
 	def_special ShouldChooseBattleLead
 	def_special SetBattleLeadFromSelection
+	@ Hack: Pokemon Confluence (src/confluence.c)
+	def_special CF_GetBits
+	def_special CF_SetBits
+	def_special CF_RepStanding
+	def_special CF_RaiseCap
+	def_special SetRingOutbreak
+	def_special ClearRingOutbreak
+	def_special LedgerGet
+	def_special LedgerSet

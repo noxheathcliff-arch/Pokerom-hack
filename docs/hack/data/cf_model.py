@@ -56,7 +56,8 @@ def allowed(s, d):
             if s['v']['HO'] < 40 and o['code'] != 'c': continue
         if d['id'] == 'D051' and o['code'] == 'a' and not has(s, 'DOS_JOURNAUX'): continue
         if d['id'] == 'D118' and o['code'] == 'a' and not (s['val'].get('custody') == 'RED' and s['val'].get('loc') != 'R'): continue
-        if d['id'] == 'D041' and o['code'] == 'b': pass
+        m = o['fx'].get('money')
+        if isinstance(m, int) and m < 0 and s['money'] < -m: continue  # v3.2 : achat borne par l'argent (S10)
         out.append(i)
     return out
 
@@ -94,11 +95,13 @@ def apply(s, d, i):
         else:
             if s['v']['BR'] >= 55: rox = False
             passed = bob_yes or rox
+        if not passed and has(s, 'FERMIER_TEMOIN') and fx['vote'] != 'show': passed = True  # v3.2 : D039 b
         if passed: s['flags'].add('VOTE_ABATTAGE')
-    if d['id'] == 'D082' and o['code'] == 'a' and not has(s, 'INFO_ENTREPOT') and S(s, 'rI') < 5:
+    if d['id'] == 'D082' and o['code'] == 'a' and not has(s, 'INFO_ENTREPOT'):
         s['flags'].discard('OBJ_LETTRE_FERRAND')
     if 'defend' in fx: s['val']['def%d' % fx['defend'][0]] = fx['defend'][1]
     if fx.get('phrase'): s['flags'].add('PHRASE_SOMMET')
+    if fx.get('appel'): s['flags'].add('APPEL_NOMINAL')
     if fx.get('chen'): s['val']['CHEN'] = 'AVOUE' if has(s, 'CHEN_CONFRONTE') else 'NIE'
     if fx.get('prb'):
         if has(s, 'MARC_SAGES'): s['val']['PR_B'] = 'SCE'
@@ -137,6 +140,7 @@ def chapter_events(s, c):
         if s['val'].get('KOGA') != 'DEMASQUE' and (has(s, 'JEANNINE_ALLIEE') or has(s, 'KOGA_AVEU') or has(s, 'DOS_CARNET_PRIMES')):
             s['val']['KOGA'] = 'DEMASQUE'
         s['val'].setdefault('PR_B', 'CTL')
+        if v['PA'] >= 40: add(s, 'AM', 4); s['flags'].add('AMA_DOUTE')  # v3.2 N26 : anomalie qui blesse Aster
     if c == 12:
         s['flags'].add('DOS_GARDIENNE')
         # positions derivees avant le vote
@@ -150,12 +154,13 @@ def kiosk(s, c, rng, policy):
     n = policy(c, rng)
     for _ in range(min(n, 2)):
         price = 1000 + 500 * c
+        if s['money'] < price: break  # v3.2 : borne par l'argent
         s['money'] -= price; add(s, 'PA', 2); add(s, 'rC', 1); add(s, 'rP', -1); s['kiosk'] += 1
 
 # ----------------------------------------------------------------- Sommet
-LOCKS = {'NOR': {1: {3}, 2: {2, 3}}, 'ART': {1: {1}, 2: {1}}, 'ROC': {2: {1}, 3: {2}},
+LOCKS = {'NOR': {2: {2, 3}}, 'ART': {1: {2}, 2: {1}}, 'SEK': {2: {2, 3}}, 'ROC': {2: {1}, 3: {2}},
          'DOY': {2: {3}}, 'MAX': {1: {3}}}
-VOTERS = ['NOR', 'PRO', 'PET', 'ROC', 'MAX', 'ART', 'DOY', 'COM', 'BRI']
+VOTERS = ['NOR', 'PRO', 'PET', 'ROC', 'MAX', 'ART', 'DOY', 'COM', 'BRI', 'SEK']
 
 def S(s, k):
     # position relative d'une faction : rX - moyenne des 7 reputations (somme nulle par construction)
@@ -166,23 +171,23 @@ def nzones(s, states): return sum(1 for z in ZONES if s['eco'][z] in states)
 def base_votes(s, m):
     v, f, val = s['v'], s['flags'], s['val']; bv = bv_lead(s); out = {}
     cut = 'CABLE_COUPE' in f
-    if m == 1:
+    if m == 1:  # v3.2 : M1 = 1 FERMER / 2 CHARTE (LIBERER retire : appel nominal)
         out['NOR'] = 1 if v['rL'] >= v['rC'] else 2
-        out['PRO'] = {'SCE': 1, 'LIB': 3, 'CTL': 2}[val.get('PR_B', 'CTL')]
-        out['PET'] = 3 if (val.get('custody') == 'MISSION' and v['PE'] >= 55) else 1
+        out['PRO'] = 1 if val.get('PR_B', 'CTL') in ('SCE', 'LIB') else 2
+        out['PET'] = 1
         out['ROC'] = 1 if 'PR_ACCUSE' in f else 2
         out['MAX'] = 1 if ('STANCE_MAX_ECOUTE' in f or 'REL_AUGUSTE_FUJI' in f) else (2 if v['rM'] >= v['rA'] else 1)
-        out['ART'] = None if cut else (3 if v['rA'] >= v['rM'] else 2)
-        out['DOY'] = 3 if (val.get('custody') in ('RED', 'LIBRE') and v['HO'] >= 60) else 1
+        out['ART'] = None if (cut or 'SARAH_TEMOIN' in f) else 1
+        out['DOY'] = 1
         out['COM'] = 1 if v['rP'] >= v['rC'] + 5 else 2
-        out['BRI'] = {'P': 1, 'A': 3, 'C': 2}[bv]
+        out['BRI'] = {'P': 1, 'A': 1, 'C': 2}[bv]
     elif m == 2:
         out['NOR'] = None if ('FLORA_DOUTE' in f and v['FL'] >= 60) else 1
         out['PRO'] = 2
         out['PET'] = 2 if 'PETER_ASSUME' in f else 1
         out['ROC'] = 3
         out['MAX'] = 3 if S(s, 'rC') >= 5 else 1
-        out['ART'] = None if cut else 2
+        out['ART'] = None if (cut or 'SARAH_TEMOIN' in f) else 2
         out['DOY'] = 1 if S(s, 'rG') >= 10 else None
         out['BRI'] = {'P': 1, 'A': 2, 'C': (2 if nzones(s, (RES, MIX)) >= 3 else 1)}[bv]
         if v['rC'] > v['rP']: out['COM'] = 3
@@ -200,14 +205,23 @@ def base_votes(s, m):
         out['COM'] = 1 if ('PETITION' in f or S(s, 'rI') < -5) else 3
         out['BRI'] = 3 if npieces(s) >= 8 else 2
         if 'BRICE_DEFERE' in f and val.get('def3'): out['BRI'] = val['def3']
+    if not seko_cede(s):  # v3.2 N14 : Seko garde son siege ; Brice parle seulement
+        out['SEK'] = {1: 1, 2: 1, 3: 2}[m]; out.pop('BRI', None)
     return out
+
+def seko_cede(s):
+    c = s['choice']; sc = 0
+    sc += 1 if c.get('D030') == 2 else 0          # donnees confiees a Seko
+    sc += 1 if c.get('D005') == 1 else 0          # lettre de Chen montree
+    sc += 1 if (c.get('D067') == 1 or 'DINER_APAISE' in s['flags']) else 0
+    return sc >= 2
 
 def piece_for(s, m, x):
     f = s['flags']; e = s['eco']
     if m == 1:
         return {1: ('DOS_VISION' in f or 'DOS_DONNEES_INSTITUT' in f),
                 2: ('DOS_JOURNAUX' in f or 'DOS_SCHEMA_CABLE' in f),
-                3: ('DOS_VOIX_RELAIS' in f or s['val'].get('custody') == 'RED')}[x]
+                3: False}[x]
     if m == 2:
         return {1: ('BRICE_PUBLIE' in f and nzones(s, (ENV,)) >= 2),
                 2: ('TIMMY_SAUVE' in f or 'OLGA_LOKHLASS' in f or nzones(s, (RES,)) >= 2),
@@ -245,17 +259,27 @@ def summit(s, rng=None):
         best = max(tally.values()) if tally else 0
         tied = sorted(k for k, n in tally.items() if n == best)
         if len(tied) == 1: r = tied[0]
-        elif x in tied and (s['N'] >= 2 or s['v']['BR'] >= 60): r = x
-        else: r = tied[0]
+        elif x in tied and (conv or s['N'] >= 2 or s['v']['BR'] >= 60): r = x
+        else: r = max(tied) if r4_sources(s) >= 2 else tied[0]  # v3.2 S8 : Juan departage
         res[m] = r; detail[m] = (dict(votes), conv, dict(tally))
     s['val']['M1'], s['val']['M2'], s['val']['M3'] = res[1], res[2], res[3]
+    if 'APPEL_NOMINAL' in s['flags']:
+        for who in standers(s): s['flags'].add('DEBOUT_' + who); add(s, 'HO', 3)
     # consequences
-    add(s, 'PA', {1: -15, 2: -8, 3: -3}[res[1]])
-    if res[1] == 3: add(s, 'HO', 5)
+    add(s, 'PA', {1: -15, 2: -8}[res[1]])
     if res[3] == 1: s['val']['FK'] = 0; add(s, 'rI', -5)
     elif res[3] == 2: s['val']['FK'] = 2; add(s, 'rC', -3)
     else: s['val']['FK'] = 2 if S(s, 'rI') >= 0 else 1
     return detail
+
+def standers(s):
+    v, f, val = s['v'], s['flags'], s['val']; out = []
+    if val.get('PR_B') == 'LIB' or (v['PR'] >= 65 and 'DOS_VOIX_RELAIS' in f): out.append('PRO')
+    if 'PETER_ASSUME' in f: out.append('PET')
+    if v['rA'] >= v['rM'] and 'CABLE_COUPE' not in f: out.append('ART')
+    if v['HO'] >= 60 and S(s, 'rG') >= 0: out.append('DOY')
+    if bv_lead(s) == 'A': out.append('BRI')
+    return out[:3]
 
 def ch13_slide(s):
     m2 = s['val']['M2']
@@ -275,7 +299,8 @@ def allies(s):
     if v['BL'] >= 55: A['BLUE'] = {'R', 'P'}
     if S(s, 'rG') >= 3: A['DOYENNE'] = {'P'}
     if 'REL_AUGUSTE_FUJI' in f or 'LEO_INSIDER' in f: A['FUJI'] = {'R'}
-    if 'BOB_QUARTIER' in f or 'BOB_RESPECT' in f or S(s, 'rI') >= 5: A['BOB'] = {'C'}
+    if 'BOB_QUARTIER' in f or 'BOB_RESPECT' in f or S(s, 'rI') >= 5: A['BOB'] = {'C', 'R'}
+    if 'DAMIEN_INDIC' in f: A['DAMIEN'] = {'C'}
     if 'JEANNINE_ALLIEE' in f or val.get('KOGA') == 'DEMASQUE': A['KOGA'] = {'R'}
     if 'LEO_INSIDER' in f and S(s, 'rC') >= -5: A['LEO'] = {'R'}
     if 'MORGANE_ALLIEE' in f: A['MORGANE'] = {'C'}
@@ -286,9 +311,11 @@ def allies(s):
 def ally_intent(s, a):
     val, f, v = s['val'], s['flags'], s['v']
     if a == 'BRICE': return {'P': 'SCEAU', 'A': 'PACTE', 'C': 'PASSERELLE'}[bv_lead(s)]
-    if a in ('PETER', 'KOGA'): return 'SCEAU'
-    if a == 'PR': return {1: 'SCEAU', 2: 'PASSERELLE', 3: 'PACTE'}[val['M1']]
-    if a == 'BLUE': return {1: 'SCEAU', 2: 'PASSERELLE', 3: 'PACTE'}.get(val.get('def1'), 'SCEAU')
+    if a == 'PETER': return 'PACTE' if 'DEBOUT_PET' in f else 'SCEAU'
+    if a == 'KOGA': return 'SCEAU'
+    if a == 'BOB': return 'JUGEMENT'
+    if a == 'PR': return 'PACTE' if 'DEBOUT_PRO' in f else {1: 'SCEAU', 2: 'PASSERELLE'}[val['M1']]
+    if a == 'BLUE': return {1: 'SCEAU', 2: 'PASSERELLE'}.get(val.get('def1'), 'PACTE' if 'APPEL_NOMINAL' in f else 'SCEAU')
     if a == 'FUJI': return 'PACTE' if ('FUJI_ATTEND' in f and v['HO'] >= 40) else 'BRISER'
     if a == 'LEO': return 'PASSERELLE'
     return 'NONE'
@@ -326,22 +353,36 @@ def climax(s, rng, assign=None):
     cus = val.get('custody')
     hoopa = ((cus == 'RED' and (loc == 'R' or 'HOOPA_CONFIE' in f)) or
              (cus == 'MISSION' and ra in ('PETER', 'KOGA')) or
-             (cus == 'LIBRE' and v['HO'] >= 70) or
-             (val.get('M1') == 3 and v['HO'] >= 60))
+             (cus == 'LIBRE' and v['HO'] >= 70))
     ho_need = 70 if giver == 'RED' else 80
-    if rt and intent == 'PACTE' and hoopa and v['HO'] >= ho_need: F = 'F2'
-    elif rt and intent == 'SCEAU' and rite and tc and pilier_held: F = 'F1'
-    elif rt and intent == 'PASSERELLE' and S(s, 'rC') >= 0 and S(s, 'rL') >= -5 and v['PA'] < 50: F = 'F3'
-    elif intent == 'BRISER' or (not rt and (v['HO'] < 40 or 'CABLE_COUPE' in f)): F = 'F5'
-    else: F = 'F4'
+    variant = ''
+    # v3.2 : chaque intention a sa version reussie et sa version payee ; F4 est une fin CHOISIE (JUGEMENT)
+    if intent == 'JUGEMENT': F, variant = 'F4', 'CHOISI'
+    elif rt and intent == 'PACTE':
+        if hoopa and v['HO'] >= ho_need: F = 'F2'
+        elif hoopa: F, variant = 'F5', 'PACTE_REFUSE'
+        else: F, variant = 'F4', 'SANS_HOOPA'
+    elif rt and intent == 'SCEAU':
+        F = 'F1'
+        if not (rite and tc and pilier_held): variant = 'SCEAU_BRISE'
+    elif rt and intent == 'PASSERELLE':
+        F = 'F3'
+        if not (S(s, 'rC') >= 0 and S(s, 'rL') >= -5 and v['PA'] < 50): variant = 'PASSERELLE_AMPUTEE'
+    elif intent == 'BRISER': F = 'F5'
+    elif not rt: F, variant = ('F4', 'RED_AU_PILIER') if loc == 'P' else ('F5', 'RELAIS_PERDU')   # aucune intention portee : la fin depend du lieu de Red
+    else: F, variant = 'F4', 'SANS_INTENTION'
+    val['Fvar'] = variant
     # casualties
     if loc == 'C': cas = 'AUCUN'
     elif tc and ('CIVILS_PREPARES' in f or 'PRET_CIVILS' in f or held.get('C') in ('PR', 'BOB')): cas = 'BLESSES'
     elif tc: cas = 'BLESSES' if v['PA'] < 40 else 'PERTES'
     else: cas = 'PERTES'
+    if F == 'F2' and giver != 'RED' and cas == 'AUCUN': cas = 'BLESSES'  # v3.2 S3 : anneau sur la place
+    if variant == 'SCEAU_BRISE' and cas == 'AUCUN': cas = 'BLESSES'
     # Amaryllis
     if loc == 'P' and val.get('ama') == 'show' and v['AM'] >= 55: ama = 'RENONCE'
-    elif loc != 'P' and v['AM'] < 50 and not rite and v['PA'] >= 45: ama = 'SACRIFICE'
+    elif loc != 'P' and 'OBJET_GARDIENNE_DONNE' in f and 'AMA_DOUTE' in f and held.get('P') in ('PETER', 'DOYENNE', 'BLUE', 'PR') and v['AM'] >= 55: ama = 'RENONCE'  # porteur
+    elif loc != 'P' and v['AM'] < 55 and not rite and v['PA'] >= 30: ama = 'SACRIFICE'
     else: ama = 'PERSISTE'
     if v['RK'] >= 60: rk = 'FORTE'
     elif (loc == 'R' and v['RK'] <= 35 or v['RK'] <= 20) and (S(s, 'rL') >= 0 or S(s, 'rI') >= 0): rk = 'DEMANTELEE'
@@ -352,7 +393,7 @@ def climax(s, rng, assign=None):
 def social(s):
     m2 = s['val']['M2']; vs = {1: 'REMPART', 2: 'INTEGRATION', 3: 'MARCHE'}[m2]
     if vs == 'INTEGRATION' and nzones(s, (ABA,)) >= 3: vs = 'REMPART'
-    if vs == 'REMPART' and nzones(s, (RES,)) >= 3: vs = 'INTEGRATION'
+    if vs == 'REMPART' and nzones(s, (RES,)) >= (2 if 'CIVILS_CENTRE' in s['flags'] else 3): vs = 'INTEGRATION'
     return vs
 
 def finish(s):
@@ -442,8 +483,8 @@ PERSONAS = {
  'REMPART': {'rL': 3, 'rP': 1, 'FL': 1}, 'AQUA': {'rA': 3, 'HO': 1, 'TI': 1}, 'MISSION': {'rI': 3, 'PE': 1, 'BL': 1},
  'RELATIONS': {k: 1 for k in REL}, 'ANTIROCKET': {'RK': -3, 'rP': 1}, 'ALEA': {}}
 CLIMAX_PREF = {'HOOPA': ('R', 'PACTE'), 'CONSORTIUM': ('R', 'PASSERELLE'), 'GARDIENS': ('P', 'SCEAU'),
-               'REMPART': ('C', None), 'AQUA': ('R', 'BRISER'), 'MISSION': ('R', 'SCEAU'), 'RELATIONS': ('C', None),
-               'ANTIROCKET': ('R', 'SCEAU'), 'ALEA': (None, None)}
+               'REMPART': ('R', 'JUGEMENT'), 'AQUA': ('R', 'BRISER'), 'MISSION': ('R', 'SCEAU'), 'RELATIONS': ('C', None),
+               'ANTIROCKET': ('R', None), 'ALEA': (None, None)}
 def persona_chooser(name, noise=1.5):
     w = PERSONAS[name]; pref = CLIMAX_PREF[name]
     def ch(s, d, opts, rng):
@@ -458,6 +499,75 @@ def persona_chooser(name, noise=1.5):
         return bi
     return ch
 
+
+# ----------------------------------------------------------------- v3.2 : test contrefactuel (REVIEW_V3_SYSTEMS annexe A)
+# Verdict strict : pivot >= 15 % -> VALIDE ; 10-15 % -> VALIDE fragile (lecteur nomme) ;
+# < 10 % -> VALIDE seulement si effet immediat substantiel (SUBST) ou si les options proposees plus tard changent (pathdiv >= 15 %).
+# Ch. 14 et postgame : hors modele, verdict de contenu (CONTENT).
+SUBST = {'D021': 'Pokemon contre Super Canne', 'D023': 'Pokemon achete', 'D035': 'Potions / barrage R110',
+         'D038': 'objet + equipe de Timmy', 'D044': 'CT immediate', 'D045': 'oeuf', 'D073': 'Absol dans l equipe'}
+CONTENT = {'D123': 'V', 'D124': 'V', 'D125': 'F', 'D126': 'Vf', 'D127': 'V', 'D128': 'V', 'D129': 'F', 'D130': 'F', 'D131': 'Vf'}
+
+def _outputs(s):
+    v = s['val']; f = s['flags']
+    return (v.get('F'), v.get('Fvar'), v.get('VS'), v.get('rocket'), v.get('cas'), v.get('ama_issue'), v.get('M1'), v.get('M2'),
+            v.get('M3'), s['hidden'], v.get('MAITRE'), v.get('FK'), tuple(sorted(v.get('held', {}).items())),
+            'REL_CHEN_SEKO' in f, 'BLUE_LIBRE' in f, 'PETER_ASSUME' in f, 'PR_ACCUSE' in f, 'TIMMY_SAUVE' in f,
+            'FLORA_DESOBEIT' in f, v.get('KOGA'), seko_cede(s), 'OBJ_LETTRE_FERRAND' in f, tuple(sorted(s['eco'].items())))
+
+def pivot(games=120):
+    global climax
+    orig = climax
+    def det(s, rng, assign=None): return orig(s, random.Random(99), assign)
+    climax = det
+    names = list(PERSONAS); res = {}
+    try:
+        for d in DECISIONS:
+            if d['ch'] >= 14: continue
+            tot = piv = fin = pdv = 0
+            for k in range(games):
+                pn = names[k % len(names)]; outs = []; paths = []
+                for force in range(len(d['opts'])):
+                    ok = [True]
+                    w, pref = PERSONAS[pn], CLIMAX_PREF[pn]
+                    def ch(s_, d_, opts, rng, k=k, force=force, ok=ok, w=w, pref=pref):
+                        if d_['id'] == d['id']:
+                            if force in opts: return force
+                            ok[0] = False
+                        best, bi = None, opts[0]
+                        for i in opts:
+                            o = d_['opts'][i]; r = random.Random('%d-%s-%d' % (k, d_['id'], i)).uniform(-1.5, 1.5) * 3
+                            sc = sum(w.get(x, 0) * dv for x, dv in o['d'].items()) + (r if w else r * 10)
+                            if pref[0] and o['fx'].get('loc') == pref[0]: sc += 50
+                            if pref[1] and o['fx'].get('intent') == pref[1]: sc += 50
+                            if best is None or sc > best: best, bi = sc, i
+                        return bi
+                    seen = []
+                    def ch2(s_, d_, opts, rng, ch=ch, seen=seen):
+                        seen.append((d_['id'], tuple(opts))); return ch(s_, d_, opts, rng)
+                    st = play(random.Random(1000 + k), ch2, lambda c, r: 0)
+                    if ok[0] and d['id'] in st['choice']:
+                        outs.append(_outputs(st)); paths.append(tuple(x for x in seen if x[0] != d['id']))
+                if len(outs) >= 2:
+                    tot += 1; piv += len(set(outs)) > 1; fin += len(set(o[0] for o in outs)) > 1; pdv += len(set(paths)) > 1
+            res[d['id']] = (100.0 * piv / max(tot, 1), 100.0 * fin / max(tot, 1), 100.0 * pdv / max(tot, 1), tot)
+    finally:
+        climax = orig
+    return res
+
+def strict_verdicts(res):
+    out = {}
+    for d in DECISIONS:
+        if d['id'] in CONTENT:
+            out[d['id']] = CONTENT[d['id']]; continue
+        pv, fn, pd, tot = res.get(d['id'], (0, 0, 0, 0))
+        if d['verdict'][0] == 'D': out[d['id']] = 'D'
+        elif pv >= 15: out[d['id']] = 'V'
+        elif pv >= 10 and d['reads']: out[d['id']] = 'Vf'
+        elif d['id'] in SUBST or pd >= 15: out[d['id']] = 'Vf' if pv < 10 and d['id'] in ('D035', 'D038', 'D044') else 'V'
+        else: out[d['id']] = 'F'
+    return out
+
 # ----------------------------------------------------------------- simulation
 def sim(n=20000, seed=1, persona=True):
     rng = random.Random(seed)
@@ -467,6 +577,7 @@ def sim(n=20000, seed=1, persona=True):
     mres = {m: collections.Counter() for m in (1, 2, 3)}; mwit = {}
     hidden = 0; money_neg = 0; cas = collections.Counter(); rk = collections.Counter(); ama = collections.Counter()
     defended_vs_result = collections.Counter()
+    byp = collections.defaultdict(collections.Counter); fvar = collections.Counter()
     names = list(PERSONAS)
     for i in range(n):
         pn = names[i % len(names)] if persona else 'ALEA'
@@ -481,10 +592,11 @@ def sim(n=20000, seed=1, persona=True):
         for m in (1, 2, 3):
             r = s['val']['M%d' % m]; mres[m][r] += 1; mwit.setdefault((m, r), s)
             defended_vs_result[(m, s['val'].get('def%d' % m) == r)] += 1
+        byp[pn][F] += 1; fvar[(F, s['val'].get('Fvar', ''))] += 1
         hidden += s['hidden']; cas[s['val']['cas']] += 1; rk[s['val']['rocket']] += 1; ama[s['val']['ama_issue']] += 1
         if min(sn['money'] for sn in s['snaps'].values()) < 0: money_neg += 1
     return dict(mx=mx, mn=mn, endings=endings, combos=combos, witness=witness, mres=mres, mwit=mwit,
-                hidden=hidden, n=n, cas=cas, rk=rk, ama=ama, dvr=defended_vs_result, money_neg=money_neg)
+                hidden=hidden, n=n, byp=byp, fvar=fvar, cas=cas, rk=rk, ama=ama, dvr=defended_vs_result, money_neg=money_neg)
 
 def path_of(s):
     return ' '.join('%s%s' % (k, 'abcd'[v - 1]) for k, v in sorted(s['choice'].items()))
@@ -622,6 +734,8 @@ if __name__ == '__main__':
         n = int(a[a.index('--sim') + 1]); r = sim(n)
         print('FINS', dict(r['endings'])); print('COMBOS', sorted(r['combos'].items()))
         print('MOTIONS', {m: dict(c) for m, c in r['mres'].items()}); print('DEFENDUE=RESULTAT', dict(r['dvr']))
+        print('PAR_PERSONA', {p: dict(c) for p, c in r['byp'].items()})
+        print('VARIANTES', dict(r['fvar']))
         print('CACHEE', r['hidden'], 'CAS', dict(r['cas']), 'ROCKET', dict(r['rk']), 'AMA', dict(r['ama']), 'ARGENT<0', r['money_neg'])
         for c in (1, 3, 4, 7, 9, 10, 12, 13):
             print('CH', c, 'MAX', {k: r['mx'][c][k] for k in ALLV}, '\n      MIN', {k: r['mn'][c][k] for k in ALLV})
@@ -629,4 +743,12 @@ if __name__ == '__main__':
         sc, s = golden()
         print('GOLD score', sc, s['val']['F'], s['val']['VS'], s['val']['rocket'], s['val']['cas'], s['val']['ama_issue'], 'hidden', s['hidden'])
         print('  rel', {k: s['v'][k] for k in REL}, 'rep', {k: s['v'][k] for k in REP}, 'PA', s['v']['PA'], 'RK', s['v']['RK'])
+    if '--pivot' in a:
+        r = pivot(); sv = strict_verdicts(r)
+        for d in DECISIONS:
+            pv = r.get(d['id'])
+            print(d['id'], d['ch'], sv[d['id']], ('pivot %3.0f%% fin %3.0f%% chemin %3.0f%%' % pv[:3]) if pv else 'contenu')
+        cnt = collections.Counter(sv.values())
+        print('STRICT', dict(cnt), 'VALIDE', cnt['V'] + cnt['Vf'], 'dont fragiles', cnt['Vf'],
+              'ch0-4', sum(1 for d in DECISIONS if d['ch'] <= 4 and sv[d['id']] in ('V', 'Vf')))
     if '--render' in a: render(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))

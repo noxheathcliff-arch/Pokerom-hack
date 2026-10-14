@@ -21,6 +21,7 @@
 #include "script.h"
 #include "tv.h"
 #include "wild_encounter.h"
+#include "confluence.h" // Hack
 #include "battle_debug.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -452,6 +453,16 @@ u16 GetCurrentMapWildMonHeaderId(void)
                     alteringCaveId = 0;
 
                 i += alteringCaveId;
+            }
+            else
+            {
+                // Hack: Confluence E-ECO. A zone map may list consecutive headers (base, _Mixte,
+                // _Restaure, _Abattu); pick the one for the zone state in VAR_CF_ECO.
+                u32 count = 1;
+                while (gWildMonHeaders[i + count].mapGroup == gWildMonHeaders[i].mapGroup
+                    && gWildMonHeaders[i + count].mapNum == gWildMonHeaders[i].mapNum)
+                    count++;
+                i += CF_GetEcoHeaderOffset(gWildMonHeaders[i].mapGroup, gWildMonHeaders[i].mapNum, count);
             }
 
             return i;

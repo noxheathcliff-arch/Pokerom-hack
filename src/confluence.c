@@ -220,20 +220,20 @@ bool32 CF_RemovePartyMon(u32 slot)
 {
     u32 i, othersUsable = 0;
 
-    if (slot >= PARTY_SIZE || GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES) == SPECIES_NONE)
+    if (slot >= PARTY_SIZE || GetMonData(&gParties[B_TRAINER_PLAYER][slot], MON_DATA_SPECIES) == SPECIES_NONE)
         return FALSE;
     // Never leave the player without a non-egg Pokemon.
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (i != slot
-         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE
-         && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+         && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES) != SPECIES_NONE
+         && !GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_EGG))
             othersUsable++;
     }
     if (othersUsable == 0)
         return FALSE;
 
-    ZeroMonData(&gPlayerParty[slot]);
+    ZeroMonData(&gParties[B_TRAINER_PLAYER][slot]);
     CompactPartySlots();
     CalculatePlayerPartyCount();
     return TRUE;
@@ -275,7 +275,7 @@ u32 CF_GetDominantPartyType(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        struct Pokemon *mon = &gPlayerParty[i];
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
         u32 species, t1, t2;
         if (!IsUsablePartyMon(mon))
             continue;

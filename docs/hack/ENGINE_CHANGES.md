@@ -18,6 +18,7 @@
 | D1. Combats refusables (refus enregistré, définitif, branche) | oui | tests unitaires + octets de la macro vérifiés dans la ROM | OK ; UI OUI/NON non testée en émulateur |
 | D2. Choix du Pokémon de tête (dresseurs) | oui | tests unitaires + test de combat témoin | partiel (voir D2) ; menu non testé en émulateur ; combats sauvages non couverts |
 | E. Affinités `addaffinity`/`subaffinity` | oui | tests unitaires (via `RUN_OVERWORLD_SCRIPT`) | OK |
+| CF-1..7. *Confluence* : allocation, E-CAP, E-BITS/décisions, E-REPREL, E-REMOVE, E-NATIVE, E-ADAPT, E-ECO, E-TOD, E-OUT, E-LEDGER | oui | `test/hack_confluence.c` | voir §CF (en cours de vérification) |
 
 ## Résumé de vérification
 
@@ -200,6 +201,58 @@ Aucune commande de script dédiée dans l'expansion (pas de `removemon`). Brique
 - **Seuils :** commandes existantes, pas de nouvelle commande : `goto_if_ge VAR, 70, Label`, `goto_if_lt VAR, 30, Label`, `call_if_ge`…
 - **C :** `AddAffinityClamped(varId, delta, min, max)`.
 - **Tests :** bornes haute/basse, plage personnalisée.
+
+---
+
+## CF. Aides moteur *Confluence* (brief moteur v3, 2026-10-14)
+
+Code : `src/confluence.c`, `include/confluence.h`, `include/constants/confluence.h` (constantes `DEC_*`, `ECO_*`, aussi incluses dans les scripts via `data/event_scripts.s`). Macros : fin de `asm/macros/event.inc`. Specials : fin de `data/specials.inc`. Tests : `test/hack_confluence.c`. Tout est en ROM ; seule donnée de sauvegarde ajoutée : 16 o en SaveBlock3 (E-LEDGER). Les arguments marqués « var ou valeur » acceptent l'un ou l'autre (`VarGet`).
+
+### CF-1. Allocation des flags / vars
+Table définitive et preuve grep : `FLAGS_VARS_REGISTRY.md` § « Allocation définitive ». 44 vars `VAR_CF_*` (budget 45), 108 flags `FLAG_CF_*` nommés + 93 flags de visibilité réservés (`FLAG_CF_VIS_00..92`). **Piège découvert :** `vars_frlg.h` est inclus sans garde en Émeraude ; `0x406E` est remis à 0 par `overworld.c` à chaque vol/K.O. (alias FRLG) → `0x406E`, `0x4073`, `0x4068` exclus. Aucun `FLAG_HIDE_*` recyclé (pas de liste au design).
+Branchements : `I_EXP_SHARE_FLAG = FLAG_CF_EXP_SHARE` (`config/item.h`), `B_FLAG_NO_WHITEOUT = FLAG_CF_NO_WHITEOUT` (`config/battle.h`). Valeurs de départ posées par `CF_InitNewGameVars()` (appel ajouté dans `NewGameInitData`, `src/new_game.c`).
+
+### CF-2. E-CAP (plafond variable)
+- `include/config/caps.h` : `B_LEVEL_CAP_TYPE LEVEL_CAP_VARIABLE`, `B_LEVEL_CAP_VARIABLE VAR_CF_CAP` ; EXP souple inchangée (`EXP_CAP_SOFT`, `B_LEVEL_CAP_EXP_UP`). La table de flags de `src/caps.c` (§H1) n'est plus lue.
+- `src/caps.c` : garde-fou : var à 0 (sauvegarde antérieure) ou > 100 → plafond 100.
+- Nouvelle partie : 14. Script : `raisecap 18` (ou `raisecap VAR_x`) → `VAR_CF_CAP = max(actuel, n)`, jamais de baisse ; `VAR_RESULT` = plafond. Special équivalent : `setvar VAR_0x8004, 18` + `special CF_RaiseCap`. Le script `CF_RaiseCap::` proposé par GAME_SYSTEMS §7 devient inutile.
+- **Tests :** monotone, argument var, borne 100, var nulle = pas de plafond ; config branchée.
+
+### CF-3. E-BITS et décisions
+- `getbits VAR, shift, width` → `VAR_RESULT` ; `setbits VAR, shift, width, valeur` (n'écrit que son champ, valeur masquée). Specials : `CF_GetBits` (0x8004 var, 0x8005 décalage, 0x8006 largeur) / `CF_SetBits` (+ 0x8007 valeur).
+- **Décisions** (D001..D131 → `VAR_CF_D00..D16`, 2 bits, table en C car les vars ne sont pas contiguës) :
+  - `setdecision 27, DEC_B` → **écrit une seule fois** ; `VAR_RESULT = TRUE` si enregistrée maintenant, `FALSE` si déjà prise (ou arguments invalides) ;
+  - `checkdecision 27` → `VAR_RESULT` = 0 (non prise), `DEC_A`=1, `DEC_B`=2, `DEC_C`=3 (aussi « refus » des combats refusables, DECISION_LEDGER règle 7) ;
+  - `setdecision_once 27, DEC_B, Label_Deja` : enregistre puis saute à `Label_Deja` si elle était déjà prise. **Usage type** (garde à usage unique de tous les deltas) :
+```
+CF_D027_OptionB::
+	setdecision_once 27, DEC_B, CF_D027_Fin
+	addaffinity VAR_CF_BL, 3
+	subaffinity VAR_CF_REP_C, 2
+CF_D027_Fin::
+	...
+```
+- **Tests :** champ isolé, masquage, argument var, specials ; les 131 décisions ont des slots distincts (aller-retour des 131) ; D001 = D00 b0-1, D131 = D16 b4-5 ; écriture unique ; `setdecision_once`.
+
+### CF-4. E-REPREL
+`repstanding VAR_CF_REP_G` → `VAR_RESULT = rG − moyenne(7) + 100` (100 = moyenne ; division tronquée vers 0). Special `CF_RepStanding` (0x8004 = la var). Seuils : `S ≥ +3` ⇔ `goto_if_ge VAR_RESULT, 103, …`. C : `CF_GetRepStanding()` (valeur signée). **Tests :** neutre = 100, cas chiffrés, « plaire à tous » = 0.
+
+### CF-5. E-REMOVE, E-NATIVE, E-ADAPT
+- `removepartymon SLOT` (0-5) : `ZeroMonData` + `CompactPartySlots` + recompte ; `VAR_RESULT = FALSE` si slot vide ou si plus aucun Pokémon hors Œuf ne resterait. (Le Pokémon disparaît : le scénario le transfère d'abord ailleurs s'il doit revenir.)
+- `ishoennnative SPECIES` → `VAR_RESULT` : espèce du Pokédex de Hoenn, **hors formes régionales étrangères** (Zigzaton de Galar = arrivant). Pikachu (dex Hoenn d'Émeraude) compte comme natif.
+- `getdominanttype` → `VAR_RESULT = TYPE_*`, `VAR_0x8000` = paquet 1 (A) / 2 (B) / 3 (C) de COMBAT_DESIGN §5.3. **Règle (COMBAT_DESIGN §5.3, arbitrage E-ADAPT, qui prime sur « fréquence pondérée par niveau » du brief moteur) :** pour chaque Pokémon apte (non-Œuf, PV > 0) : +2 au type 1, +1 au type 2 (un monotype ne donne que +2) ; score max gagne ; égalité → type 1 du Pokémon de tête (premier apte) s'il est à égalité, sinon le premier type rencontré dans l'ordre de l'équipe ; équipe vide → `TYPE_NONE`. Types hors table (Stellaire…) → paquet B.
+- **Tests :** compaction, refus du dernier ; natifs / non-natifs / forme de Galar ; égalité → tête, PV 0 ignorés, paquets.
+
+### CF-6. E-ECO, E-TOD, E-OUT
+- **E-ECO** : `GetCurrentMapWildMonHeaderId()` (`src/wild_encounter.c`) compte les en-têtes **consécutifs** de la carte et ajoute `CF_GetEcoHeaderOffset()` = état de la zone (0 ENVAHI, 1 MIXTE, 2 RESTAURÉ, 3 ABATTU) lu dans `VAR_CF_ECO` (zone n = bits `2(n−1)`). Table {carte → zone} `sEcoZoneMaps` (`src/confluence.c`, ENCOUNTERS_PLAN §3.1, ~95 cartes). Un état sans table propre retombe sur la table de base. Grotte Métamo inchangée.
+  - **Données :** dans `src/data/wild_encounters.json`, mettre pour la carte des entrées **consécutives** `gRoute116`, `gRoute116_Mixte`, `gRoute116_Restaure`, `gRoute116_Abattu`, chacune avec **toutes** ses méthodes. **Échantillon livré :** `gRoute116_Mixte` (copie de la R116 vanilla, Skitty passé de 1 % à 20 %) — **provisoire**, à remplacer par la table §4.4.
+  - Écrire un état : `setbits VAR_CF_ECO, 2, 2, ECO_RESTAURE` (Z-02).
+- **E-TOD** : `OW_TIME_OF_DAY_ENCOUNTERS TRUE` (`config/overworld.h`), repli `TIME_MORNING`, `DISABLE_FALLBACK FALSE` : une carte sans table `_Night` garde sa table unique à toute heure. Ajouter `gRoute116_Night` (et `gRoute116_Mixte_Night`…) pour une variante de nuit. ⚠ Aucun label ne doit contenir `Morning`, `Day`, `Evening`, `Night` ailleurs qu'en suffixe (vérifié : aucun label actuel). Coût : +~2 Ko ROM (en-têtes ×4). Test RTC réel sur mGBA : **non fait** (la logique d'heure est upstream).
+- **E-OUT** : `setringoutbreak SPECIES, MAP_X, niveau[, proba=50[, jours=0[, att1..att4]]]` (jours 0 = jusqu'à `clearringoutbreak`, stocké 0xFFFF) ; attaques 0 → les 4 dernières attaques apprises par niveau. Specials `SetRingOutbreak` (0x8004 espèce, 0x8005 carte = constante `MAP_*`, 0x8006 niveau, 0x8007 proba) et `ClearRingOutbreak`. Utilise les champs vanilla de SaveBlock1 (aucune sauvegarde nouvelle) ; rencontres d'herbe uniquement (moteur vanilla). Épidémie télé aléatoire coupée : `OW_RANDOM_TV_OUTBREAKS FALSE` (`config/overworld.h`, garde dans `TryStartRandomMassOutbreak`, `src/tv.c`).
+- **Tests :** R116 MIXTE → en-tête +1 (même carte, autre table) ; ABATTU sans table → base ; autre zone sans effet ; carte à table unique insensible ; aucune carte n'a > 4 en-têtes ; épidémie : champs, attaques ⊂ apprentissage ≤ niveau, test de rencontre sur la bonne carte seulement, attaques explicites, effacement, special.
+
+### CF-7. E-LEDGER
+`u8 cfStaticLedger[16]` à la fin de `struct SaveBlock3` (`include/global.h`), remis à 0 par `ClearSav3` à la nouvelle partie. `checkledger N` → `VAR_RESULT` ; `setledger N[, FALSE]` ; specials `LedgerGet` / `LedgerSet` (0x8004 = index 0..127). Attribution des 128 index : ENCOUNTERS_PLAN (à inscrire au registre). `test/save.c` : `T_SAVEBLOCK3_SIZE` 4 → 20. **Tests :** bits 0/127, hors borne ignoré, specials, octet attendu.
 
 ---
 

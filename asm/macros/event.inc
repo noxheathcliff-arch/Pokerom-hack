@@ -2984,3 +2984,104 @@
 	getbraillestringwidth \text
 	call EventScript_BrailleCursorWaitButton
 	.endm
+
+	@ Hack: Pokemon Confluence helpers (src/confluence.c, docs/hack/ENGINE_CHANGES.md §CF).
+	@ Arguments marked "var or value" accept either an immediate or a var.
+
+	@ VAR_RESULT = (var >> shift) & ((1 << width) - 1). shift/width: var or value.
+	.macro getbits var:req, shift:req, width:req
+	callnative Script_CF_GetBits, requests_effects=1
+	.2byte \var
+	.2byte \shift
+	.2byte \width
+	.endm
+
+	@ Writes value (var or value) into bits [shift, shift+width) of var; other bits untouched.
+	.macro setbits var:req, shift:req, width:req, value:req
+	callnative Script_CF_SetBits, requests_effects=1
+	.2byte \var
+	.2byte \shift
+	.2byte \width
+	.2byte \value
+	.endm
+
+	@ Records decision Dnnn (1..131) = option (DEC_A/DEC_B/DEC_C). Write-once:
+	@ VAR_RESULT = TRUE if recorded now, FALSE if it was already taken (apply deltas only on TRUE).
+	.macro setdecision decision:req, option:req
+	callnative Script_CF_SetDecision, requests_effects=1
+	.2byte \decision
+	.2byte \option
+	.endm
+
+	@ VAR_RESULT = option recorded for decision Dnnn (DEC_NONE = 0 if not taken yet).
+	.macro checkdecision decision:req
+	callnative Script_CF_CheckDecision, requests_effects=1
+	.2byte \decision
+	.endm
+
+	@ Records the decision then jumps to \already if it had already been taken.
+	.macro setdecision_once decision:req, option:req, already:req
+	setdecision \decision, \option
+	goto_if_eq VAR_RESULT, FALSE, \already
+	.endm
+
+	@ E-REPREL: VAR_RESULT = rep - mean(7 reputations) + 100 (100 = average standing).
+	.macro repstanding repvar:req
+	callnative Script_CF_RepStanding, requests_effects=1
+	.2byte \repvar
+	.endm
+
+	@ E-CAP: VAR_CF_CAP = max(VAR_CF_CAP, cap) (never lowers it); VAR_RESULT = new cap.
+	.macro raisecap cap:req
+	callnative Script_CF_RaiseCap, requests_effects=1
+	.2byte \cap
+	.endm
+
+	@ E-REMOVE: removes party slot (0-5, var or value) and compacts the party.
+	@ VAR_RESULT = FALSE if refused (empty slot, or it would leave no non-egg Pokemon).
+	.macro removepartymon slot:req
+	callnative Script_CF_RemovePartyMon, requests_effects=1
+	.2byte \slot
+	.endm
+
+	@ E-NATIVE: VAR_RESULT = TRUE if species (var or value) is in the Hoenn dex (no foreign regional forms).
+	.macro ishoennnative species:req
+	callnative Script_CF_IsHoennNative, requests_effects=1
+	.2byte \species
+	.endm
+
+	@ E-ADAPT: VAR_RESULT = dominant TYPE_* of the party; VAR_0x8000 = package 1 (A), 2 (B) or 3 (C).
+	.macro getdominanttype
+	callnative Script_CF_DominantType, requests_effects=1
+	.endm
+
+	@ E-OUT: ring outbreak of species at level on map (MAP_* constant), probability % of land
+	@ encounters, for days (0 = until clearringoutbreak). Moves: 0 = level-up moves at that level.
+	.macro setringoutbreak species:req, map:req, level:req, probability=50, days=0, move1=0, move2=0, move3=0, move4=0
+	callnative Script_CF_SetRingOutbreak, requests_effects=1
+	.2byte \species
+	.2byte \map
+	.2byte \level
+	.2byte \probability
+	.2byte \days
+	.2byte \move1
+	.2byte \move2
+	.2byte \move3
+	.2byte \move4
+	.endm
+
+	.macro clearringoutbreak
+	callnative Script_CF_ClearRingOutbreak, requests_effects=1
+	.endm
+
+	@ E-LEDGER: VAR_RESULT = bit index (0-127) of the static-encounter ledger.
+	.macro checkledger index:req
+	callnative Script_CF_LedgerGet, requests_effects=1
+	.2byte \index
+	.endm
+
+	.macro setledger index:req, value=TRUE
+	callnative Script_CF_LedgerSet, requests_effects=1
+	.2byte \index
+	.2byte \value
+	.endm

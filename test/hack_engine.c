@@ -74,39 +74,18 @@ TEST("No-encounter flag: Rock Smash and Sweet Scent / Honey find nothing while s
 // Soft level caps (values are placeholders: only the structure is tested)
 // ---------------------------------------------------------------------------
 
-TEST("Level cap: non-decreasing along the badge flags, MAX_LEVEL after the champion")
+TEST("Level cap: Confluence uses the variable cap VAR_CF_CAP (E-CAP)")
 {
-    static const u16 milestones[] = {
-        FLAG_BADGE01_GET, FLAG_BADGE02_GET, FLAG_BADGE03_GET, FLAG_BADGE04_GET,
-        FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
-        FLAG_IS_CHAMPION,
-    };
-    u32 i, prev;
-
-    ASSUME(B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST);
-
-    for (i = 0; i < ARRAY_COUNT(milestones); i++)
-        FlagClear(milestones[i]);
-    prev = GetCurrentLevelCap();
-    EXPECT_LT(prev, MAX_LEVEL);
-    for (i = 0; i < ARRAY_COUNT(milestones); i++)
-    {
-        FlagSet(milestones[i]);
-        EXPECT_GE(GetCurrentLevelCap(), prev);
-        prev = GetCurrentLevelCap();
-    }
-    EXPECT_EQ(prev, MAX_LEVEL);
-    for (i = 0; i < ARRAY_COUNT(milestones); i++)
-        FlagClear(milestones[i]);
+    // Milestone caps are raised by script (raisecap); see test/hack_confluence.c.
+    EXPECT_EQ(B_LEVEL_CAP_TYPE, LEVEL_CAP_VARIABLE);
+    EXPECT_EQ(B_LEVEL_CAP_VARIABLE, VAR_CF_CAP);
 }
 
 TEST("Level cap: soft cap reduces exp at/above the cap and boosts it below")
 {
-    u32 i, cap;
+    u32 cap;
     ASSUME(B_EXP_CAP_TYPE == EXP_CAP_SOFT); // forced to EXP_CAP_NONE in config/test.h: skipped by make check
-    for (i = 0; i < 8; i++)
-        FlagClear(FLAG_BADGE01_GET + i);
-    FlagClear(FLAG_IS_CHAMPION);
+    VarSet(VAR_CF_CAP, 14);
     cap = GetCurrentLevelCap();
     EXPECT_EQ(GetSoftLevelCapExpValue(cap, 640), 640 / 4);
     EXPECT_EQ(GetSoftLevelCapExpValue(cap + 1, 640), 640 / 8);
