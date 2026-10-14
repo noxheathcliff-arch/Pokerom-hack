@@ -47,6 +47,7 @@ et le prototype moteur (plafonds souples, variable de difficulté, flag anti-ren
 | D7 | Texte ≤ 208 px/ligne, 2 lignes/boîte, “ ” au lieu de « » | moteur |
 | D8 | Nouveaux dresseurs = ID vanilla recyclés (9 slots libres) | budget |
 | D9 | Sprites Kanto : déblocage des assets FRLG déjà présents (provenance pret/pokefirered via expansion) plutôt que copie | coût/risque |
+| D11 | Direction **Pokémon Cendres** : joueur = Red (muet), année 1 après RFVF, réfugiés de Cramois'Île à Hoenn ; Brice voix/partenaire ; Méga seule | NARRATIVE_DIRECTIONS v2 |
 | D10 | Budget : agents peu nombreux, réutilisés (SendMessage), prompts ciblés ; travail d'intégration fait par l'orchestrateur | Claude Pro |
 
 ## 3. Plan d'exécution (brief v2 §20)
@@ -55,9 +56,9 @@ et le prototype moteur (plafonds souples, variable de difficulté, flag anti-ren
 | 1 | Environnement, fichiers, compatibilité | ✅ |
 | 2 | Examen expansion + pokefirered | ✅ (complément Kanto en cours) |
 | 3 | Skill GM + organisation | ✅ (`GM_METHOD.md`) ; `EXPERIENCE_INTENT.md` à réviser pour choix/maturité |
-| 4 | Lore + vision | ⏳ addendum Kanto/Red ; vision v2 |
-| 5 | Scénario complet + système de choix | ⏳ |
-| 6 | DECISION_LEDGER (≥ 101) + systèmes cachés | ⏳ |
+| 4 | Lore + vision | ✅ addendum Kanto (§8) ; direction « Cendres » choisie (88.8/100) |
+| 5 | Scénario complet + système de choix | ✅ v2.0 conçue ; ⏳ revue indépendante (2 critiques) puis arbitrage |
+| 6 | DECISION_LEDGER (≥ 101) + systèmes cachés | 120 décisions **proposées** (0 implémentée) ; ⏳ audit décision par décision |
 | 7 | Événements, dialogues, quêtes, combats, rencontres | ⏳ |
 | 8 | Tranche représentative implémentée et testée | ⏳ |
 | 9 | Contenu complet | ⏳ |
