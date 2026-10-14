@@ -90,6 +90,7 @@ Réponse d'organisation : agents « Storycraft » et « Cast & Canon » (en cour
 | 10-13 | Smoke émulateur upstream (nouvelle partie → sauvegarde → redémarrage → CONTINUER) | SMOKE: PASS, revérifié par l'orchestrateur |
 | 10-13 | Build upstream non modifié | EXIT 0, 4 min 15 s ; EWRAM 86.43 %, IWRAM 86.60 %, ROM 79.12 % ; seuls avertissements libpng bénins |
 | 10-14 | Build projet avec prototype moteur (plafonds, difficulté, flag anti-rencontres, classes) | EXIT 0 (`/home/user/build_wip.log`) ; non testé en émulateur |
+| 10-14 | Socle moteur v2 (joueur Red, sprites Kanto, combats refusables, choix du Pokémon de tête, helpers d'affinité, plafonds, difficulté) | build EXIT 0 (ROM 79.85 %, +241 Kio sprites Kanto) ; `make check` 4949 PASS / 0 échec / 1 assumption (test exp désactivé en build test) ; smoke PASS ; capture de Red dans le camion vérifiée par l'orchestrateur. Non vérifié à l'écran : refus de combat, menu du Pokémon de tête, dos de Red en combat |
 | 10-13 | `validate_trainers.py --learnsets` sur trainers.party vanilla | 855 dresseurs, 0 erreur, 2 avertissements vanilla |
 
 ## 6. Blocages et solutions
