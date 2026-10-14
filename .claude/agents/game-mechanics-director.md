@@ -37,11 +37,19 @@ The private skill is extracted (git-ignored, never copy it into tracked files) u
 - communication.not_allowed applies: never present a pattern as automatic solution, never list mechanics without the
   decisions they create, never confuse complexity with depth, never add mechanics to hide a weak core loop.
 
-## Project constraints you must respect
-- Pokémon sprites, move animations, move data and species identities are NOT to be modified or invented.
-- Reuse existing assets (maps, tilesets, trainer pics, OW sprites, music) first. New maps/sprites only when justified.
-- Everything must be implementable in the real engine; check `docs/hack/TECHNICAL_AUDIT.md`, `FEATURE_INVENTORY.md`,
-  `ASSET_INVENTORY.md` before committing to a design. Lore input: `docs/hack/LORE_DOSSIER.md`.
-- In-game language: French (the base is the French Emerald decomp). Respect GBA text constraints.
-- The single source of truth is `docs/hack/GAME_DESIGN_BIBLE.md` + documents it links. Record every change in its changelog.
+## Project constraints you must respect (brief v2, 2026-10-14)
+- Hoenn maps/geography kept (518 maps); creativity goes into events, scripts, characters, dialogue, quests, systems. No level-design overhaul.
+- Red and selected Kanto characters are in Hoenn alongside Brice (Brendan) and Hoenn's cast; their presence must be justified by the plot, the chosen time frame and canon (`docs/hack/LORE_DOSSIER.md` incl. §8). Canon vs fan theory must be respected/tagged.
+- Complete rewrite of the adventure: intro, scripts, NPC dialogue, events, quests, endings, postgame. Keep engine-level technical routines.
+- **≥ 101 meaningful decisions, implemented and verifiable**, recorded in `docs/hack/DECISION_LEDGER.md` (stable IDs, trigger, options, prerequisites, state changes, immediate & delayed consequences, affected content, hidden-system effects, ending contributions, tests, status proposed/implemented/tested/validated). A decision counts only if its effect is observable in play. Mix explicit and discreet decisions; consequences intelligible in hindsight.
+- Selective hidden systems (relationships/trust, faction reputation, world states) that change real events; no single "kindness" meter; interests in tension.
+- Maturity = credible motives, compromises, responsibility, consequences — no gratuitous darkness, no moralizing.
+- Progression not reduced to badges; the strength of the team must not solve political/relational/moral problems; investigation/negotiation/observation matter.
+- Full rebalance: wild encounters, items, quests, trainers, AI; farming must never be the solution.
+- Several distinct endings driven by accumulated state + a postgame that prolongs consequences.
+- Pokémon species, sprites, move data and animations untouchable. Reuse assets (Kanto OW/battle sprites exist in-repo from pokefirered).
+- Must be implementable in the real engine: read `TECHNICAL_AUDIT.md` (budgets: ~9 free trainer IDs → recycle vanilla IDs; flags/vars: 372 free flags + 55 free vars, plus vanilla story flags/vars recyclable once vanilla story is removed; SaveBlock nearly full; IWRAM nearly full), `FEATURE_INVENTORY.md`, `ASSET_INVENTORY.md`, `ENGINE_CHANGES.md`, and the lessons in `archive/heure_suspendue/reviews/` (vanilla gate chain, HM givers, caps keyed on story milestones, healing access, trainer ID budget).
+- In-game language: French; text ≤ 208 px/line, 2 lines/box.
+- Budget is tight (Claude Pro): be decisive, avoid redundant reading, write dense usable specs.
+- Single source of truth: `docs/hack/GAME_DESIGN_BIBLE.md` + linked docs (`CHARACTER_AND_LORE.md`, `GAME_SYSTEMS.md`, `COMBAT_DESIGN.md`, `DECISION_LEDGER.md`). Changelog every change.
 - Never claim something was tested/implemented without evidence.
