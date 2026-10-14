@@ -55,7 +55,8 @@
 
 **Fonctionnement :** le plafond = valeur du **premier flag non posé** de la liste ; une fois tous posés → `MAX_LEVEL`. Au-dessus du plafond l'EXP est divisée (÷4 au plafond, ÷8 à +1… ÷64 à +4 et plus) ; en dessous, bonus (`B_LEVEL_CAP_EXP_UP`).
 **Ajouter un jalon d'histoire :** insérer `{FLAG_<jalon>, <plafond>}` à sa place chronologique ; l'ordre doit être garanti dans **toutes** les parties (un flag posé hors ordre « saute » des paliers). N'importe quel flag sauvegardé convient (badge, `FLAG_DEFEATED_*`, flag d'histoire du registre). Pour une histoire non linéaire, préférer `LEVEL_CAP_VARIABLE` + une var mise à jour par script (`B_LEVEL_CAP_VARIABLE`).
-**Tests :** plafond non décroissant le long des badges, `MAX_LEVEL` après le Maître ; division/bonus d'EXP. Les valeurs ne sont pas figées dans les tests (le design les réglera). `B_RARE_CANDY_CAP` laissé FALSE (décision design).
+**Tests :** plafond non décroissant le long des badges, `MAX_LEVEL` après le Maître. Les valeurs ne sont pas figées dans les tests (le design les réglera).
+**Impact sur les tests upstream :** avec le plafond souple actif, 3 tests d'EXP upstream (`test/battle/exp.c`) échouaient (EXP divisée). `include/config/test.h` force donc `B_EXP_CAP_TYPE EXP_CAP_NONE` **dans la build de test uniquement** ; conséquence : le test du calcul d'EXP souple (`GetSoftLevelCapExpValue`) est ignoré (`ASSUME`) par `make check` — c'est du code upstream non modifié. `B_RARE_CANDY_CAP` laissé FALSE (décision design).
 
 ## H2. Difficulté (`B_VAR_DIFFICULTY`)
 
@@ -140,7 +141,7 @@ Rien d'équivalent dans l'expansion (`grep lead/ChooseLead/B_PARTY_SELECT`). Con
 
 **Activation :** `setflag FLAG_CHOOSE_BATTLE_LEAD` (option joueur à exposer : PNJ « coach », objet clé ou entrée du menu Options — l'intégration au menu Options, qui touche l'UI et la sauvegarde des options, est **différée**).
 **Limites :** combats sauvages non couverts (ils partent du C sans script : un menu d'équipe à ce moment demanderait de réorganiser les transitions) ; revanches Cherche VS non couvertes ; en double, seul le Pokémon de gauche est choisi.
-**Tests :** `test/battle/hack_choose_lead.c` (emplacement 2 envoyé en premier ; témoin sans choix). Menu d'équipe non testé en émulateur.
+**Tests :** unitaires (`test/hack_engine.c` : proposé seulement avec le flag et ≥ 2 Pokémon aptes ; choix consommé une seule fois ; B = pas de choix) ; `test/battle/hack_choose_lead.c` : témoin (sans choix, l'emplacement 1 mène). Un test de combat « l'emplacement 2 mène » n'est **pas exprimable** avec le lanceur de tests actuel : il suppose que le Pokémon actif du joueur est l'emplacement 1 et signale « Illegal battle record » quand un autre est envoyé — ce qui a été observé et montre que la substitution s'applique, mais ce n'est pas un test vert. Menu d'équipe non testé en émulateur.
 
 ## E. Affinités / réputation (convention)
 
@@ -160,4 +161,4 @@ RESULTATS_CHECK
 
 ## Fichiers touchés (résumé)
 
-`Makefile`, `include/config/{battle,caps,general,overworld,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`.
+`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`.

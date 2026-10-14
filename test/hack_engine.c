@@ -4,6 +4,7 @@
 #include "caps.h"
 #include "trainer_see.h"
 #include "constants/battle_setup.h"
+#include "constants/party_menu.h"
 #include "data.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -214,3 +215,30 @@ TEST("Affinity: addaffinity / subaffinity clamp to the range")
     EXPECT_EQ(AddAffinityClamped(VAR_TEMP_0, -1, 0, 100), 4);
 }
 
+
+// ---------------------------------------------------------------------------
+// Choose the lead Pokemon (B_FLAG_CHOOSE_BATTLE_LEAD)
+// ---------------------------------------------------------------------------
+
+TEST("Choose lead: the selection is offered only with the flag and 2+ usable Pokemon, and used once")
+{
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_WOBBUFFET, 10;
+        givemon SPECIES_WYNAUT, 10;
+    );
+    FlagClear(FLAG_CHOOSE_BATTLE_LEAD);
+    EXPECT_EQ(ShouldChooseBattleLead(), FALSE);
+    FlagSet(FLAG_CHOOSE_BATTLE_LEAD);
+    EXPECT_EQ(ShouldChooseBattleLead(), TRUE);
+
+    gSpecialVar_0x8004 = 1;
+    SetBattleLeadFromSelection();
+    EXPECT_EQ(ConsumeChosenBattleLead(), 1);
+    EXPECT_EQ(ConsumeChosenBattleLead(), PARTY_SIZE); // consumed
+
+    gSpecialVar_0x8004 = PARTY_NOTHING_CHOSEN; // B pressed
+    SetBattleLeadFromSelection();
+    EXPECT_EQ(ConsumeChosenBattleLead(), PARTY_SIZE);
+    FlagClear(FLAG_CHOOSE_BATTLE_LEAD);
+}
