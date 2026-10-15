@@ -288,6 +288,15 @@ CF_D027_Fin::
 - **Cause :** la table d'animations `sAnimTable_RedGreenNormal` (ajoutée pour l'avatar Kanto, voir commit « Red avatar ») n'était pas inscrite dans `sStepAnimTables` (`src/data/object_events/object_event_anims.h`). `GetStepAnimTable` renvoyait `NULL`, donc `SetStepAnim` (utilisé par toutes les actions `face_*`, l'arrêt du joueur et `turnobject`) ne ramenait jamais l'animation sur une image de repos et `SetStepAnimHandleAlternation` n'alternait plus les pas : l'image affichée était celle où l'animation de marche avait été mise en pause.
 - **Correctif :** entrée `{ sAnimTable_RedGreenNormal, animPos = {1, 3, 0, 2} }` (mêmes positions que `sAnimTable_BrendanMayNormal`, même disposition des 9 premières images). Aucune modification de code moteur.
 
+### CF-12. Correctifs QA de la démo (2026-10-15)
+- **Suiveur PNJ (Brice)** (`src/confluence.c`, specials) : `CF_ShowFollowerNPC` le montre sur la case du joueur après un warp ; `CF_PlaceFollowerNPC` le pose en (`VAR_0x8004`, `VAR_0x8005`), tourné vers `VAR_0x8006` (macro `cf_bplace`) ; `CF_RevealFollowerNPC` le montre derrière ou à côté du joueur s’il est encore invisible (appelé par `cf_bsay`, `cf_bexcl`, `cf_bmove` et `CF_C4_Leave`), ce qui évite que Brice parle sans être affiché.
+- **`CF_StepAwayDir`** : `VAR_RESULT` = direction d’un pas libre pour s’écarter de l’interlocuteur (opposé d’abord, puis les côtés), `DIR_NONE` sinon (choix « Partir » de C5).
+- **`cf_confirm retry`** (macro, `cf_prologue.inc`) : demande « Tu es sûr ? » après chaque choix narratif du prologue et du ch. 1 ; Non relance le menu, Oui rend le choix d’origine dans `VAR_RESULT` (sauvé dans `VAR_0x800B`).
+- **Noms des poches** (`src/data/script_menu.h`) : OBJETS / OBJETS CLÉS / CT & CS / BAIES.
+- **Portails animés** : trois graphismes 32×32 à 4 images (`graphics/object_events/pics/misc/cf_portal_{front,side,tilted}.png`), `OBJ_EVENT_GFX_CF_PORTAL_FRONT/SIDE/TILTED`. Les objets inanimés jouent toujours l’animation 0 : la table `sAnimTable_CfPortalSpin` (`object_event_anims.h`) remplit toutes les entrées `[0 ... ANIM_STD_COUNT - 1]` avec une boucle de 4 images (10 images par frame).
+- **Texte** (`data/text/trainers.inc`) : intro et revanche de Calvin se terminent par « Alors, tu relèves mon défi? » (cohérent avec le combat refusable).
+- **Carte** : panneau (métatuile 0x003, collision) en (16, 52) à Mérouville pour l’affiche de C4 ; Ferrand en `OBJ_EVENT_GFX_SCIENTIST_2` (Devon 2F, R116).
+
 ## Tests (`make check`)
 
 Commande : `make check -j4 ROMTEST=/opt/mgba-tools/bin/mgba-rom-test ROMTESTHYDRA=/opt/mgba-tools/bin/mgba-rom-test-hydra` (log : `/home/user/check_engine.log`).
