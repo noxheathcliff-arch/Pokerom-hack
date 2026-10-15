@@ -171,6 +171,10 @@ CF_FaceObj_W:
 CF_Nop::
 	end
 
+CF_Mov_Up1:
+	walk_up
+	step_end
+
 CF_Mov_Up2:
 	walk_up
 	walk_up
@@ -413,7 +417,7 @@ CF_C1_Common::
 	cf_say CF_N1_Norman, CF1_T_021
 	closemessage
 	turnobject LOCALID_CF_GYM_FLORA, DIR_SOUTH
-	@ Red standing right below Flora (3,109): she walks around him
+	@ Red (and Brice below him) in column 3: she walks around them via column 2
 	getplayerxy VAR_0x8004, VAR_0x8005
 	goto_if_eq VAR_0x8004, 3, CF_C1_FloraAround
 	applymovement LOCALID_CF_GYM_FLORA, CF1_M_C1_FloraLeave
@@ -431,20 +435,22 @@ CF_C1_FloraGone:
 	releaseall
 	end
 
+@ Brice (follower) stands right below Red on row 110: Flora goes down a free
+@ column to row 111 and then along it to the door (4,111).
 CF1_M_C1_FloraLeave:
 	walk_down
 	walk_down
-	walk_right
 	walk_down
+	walk_right
 	step_end
 
 CF1_M_C1_FloraLeaveL:
 	walk_left
 	walk_down
 	walk_down
-	walk_right
-	walk_right
 	walk_down
+	walk_right
+	walk_right
 	step_end
 
 CF_C1_NormanTalk::
@@ -618,6 +624,8 @@ CF1_M_C2_StepRight:
 CF_C3_Scene::
 	lockall
 	getplayerxy VAR_0x8004, VAR_0x8005
+	@ Brice (follower) stands on the tile Red came from (row 24): he walks up with Red
+	call CF_C3_BriceUp2
 	goto_if_eq VAR_0x8004, 27, CF_C3_FromRight
 	cf_move OBJ_EVENT_ID_PLAYER, CF_Mov_Up2
 	goto CF_C3_InPlace
@@ -646,7 +654,9 @@ CF_C3_InPlace::
 	applymovement LOCALID_CF_WOODS_YAMPER, CF1_M_Jump
 	applymovement LOCALID_CF_WOODS_APPLIN, CF1_M_Jump
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	@ Red steps into the spot Wooloo left (26,20), between the brigade and the arrivals
+	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Up1
+	call CF_C3_BriceUp1
 	waitmovement 0
 	cf_narr CF1_T_034
 	closemessage
@@ -743,6 +753,20 @@ CF_C3_End::
 	releaseall
 	end
 
+@ Start a follower movement without waiting (the caller's waitmovement 0 covers it)
+CF_C3_BriceUp2::
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, CF_C3_BriceRet
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, CF_Mov_Up2
+CF_C3_BriceRet::
+	return
+
+CF_C3_BriceUp1::
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, CF_C3_BriceRet
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, CF_Mov_Up1
+	return
+
 CF1_M_C3_PlayerL:
 	walk_up
 	walk_up
@@ -768,9 +792,8 @@ CF1_M_C3_YamperFlee:
 	walk_fast_right
 	step_end
 
+@ From (26,18): up to the open row 16, then west behind the police
 CF1_M_C3_FloraOut:
-	walk_up
-	walk_up
 	walk_up
 	walk_up
 	walk_left
@@ -812,9 +835,8 @@ CF1_M_C3_PoliceROut:
 	walk_left
 	step_end
 
+@ (26,17) -> (26,18): one tile above Red, row 19 stays free for the flee
 CF1_M_C3_FloraIn:
-	walk_down
-	walk_down
 	walk_down
 	step_end
 
