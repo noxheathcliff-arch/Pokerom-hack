@@ -36,6 +36,10 @@
 #define CF_START_RK         20
 #define CF_START_LEVEL_CAP  14
 
+// Demo new-game spawn on MAP_ROUTE104 (SLICE_DEMO_CH0-1 §P1).
+#define CF_SPAWN_X          15 // spec said 13 = water; 15 is the first sand column (smoke screenshot)
+#define CF_SPAWN_Y          57
+
 // Static encounter ledger (SaveBlock3, E-LEDGER): 128 bits.
 #define CF_LEDGER_BITS      128
 #define CF_LEDGER_BYTES     (CF_LEDGER_BITS / 8)

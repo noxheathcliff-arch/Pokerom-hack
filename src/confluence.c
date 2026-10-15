@@ -508,6 +508,19 @@ void Script_CF_RemovePartyMon(struct ScriptContext *ctx)
     gSpecialVar_Result = CF_RemovePartyMon(slot);
 }
 
+// E-CLEARPARTY: empties the whole party (no "last Pokemon" guard; prologue, SLICE_DEMO_CH0-1).
+void CF_ClearParty(void)
+{
+    ZeroPlayerPartyMons();
+    CalculatePlayerPartyCount();
+}
+
+void Script_CF_ClearParty(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+    CF_ClearParty();
+}
+
 void Script_CF_IsHoennNative(struct ScriptContext *ctx)
 {
     u32 species = VarGet(ScriptReadHalfword(ctx));

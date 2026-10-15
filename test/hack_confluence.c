@@ -252,6 +252,20 @@ TEST("E-REMOVE: removepartymon removes a slot and compacts; never removes the la
     ZeroPlayerPartyMons();
 }
 
+TEST("E-CLEARPARTY: clearparty empties the whole party")
+{
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_TREECKO, 60;
+        givemon SPECIES_PIKACHU, 60;
+    );
+    EXPECT_EQ(CalculatePlayerPartyCount(), 2);
+    RUN_OVERWORLD_SCRIPT(clearparty;);
+    EXPECT_EQ(gPlayerPartyCount, 0);
+    EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES), SPECIES_NONE);
+    EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][1], MON_DATA_SPECIES), SPECIES_NONE);
+}
+
 TEST("E-NATIVE: Hoenn dex species are native, other regions and foreign regional forms are not")
 {
     RUN_OVERWORLD_SCRIPT(ishoennnative SPECIES_SKITTY;);
@@ -400,6 +414,12 @@ TEST("E-OUT: setringoutbreak sets a persistent outbreak with level-up moves; cle
 // ---------------------------------------------------------------------------
 // E-LEDGER
 // ---------------------------------------------------------------------------
+
+TEST("SPAWN: the demo new game starts on Route 104")
+{
+    EXPECT_EQ(CF_SPAWN_X, 15);
+    EXPECT_EQ(CF_SPAWN_Y, 57);
+}
 
 TEST("E-LEDGER: 128 static-encounter bits in SaveBlock3")
 {

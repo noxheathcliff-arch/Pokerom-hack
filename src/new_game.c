@@ -52,6 +52,7 @@
 #include "difficulty.h"
 #include "follower_npc.h"
 #include "confluence.h" // Hack
+#include "constants/confluence.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 extern const u8 EventScript_ResetAllMapFlagsFrlg[];
@@ -139,7 +140,12 @@ static void WarpToTruck(void)
     if (IS_FRLG)
         SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
     else
-        SetWarpDestination(MAP_GROUP(MAP_INSIDE_OF_TRUCK), MAP_NUM(MAP_INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
+    {
+        // Hack: Confluence demo SPAWN (SLICE_DEMO_CH0-1 §P1): new game starts on the Route 104
+        // south beach near Mr. Briney's pier, no truck / Mom intro. Coords to validate in Porymap.
+        SetWarpDestination(MAP_GROUP(MAP_ROUTE104), MAP_NUM(MAP_ROUTE104), WARP_ID_NONE, CF_SPAWN_X, CF_SPAWN_Y);
+        VarSet(VAR_LITTLEROOT_INTRO_STATE, 6); // skip the vanilla truck / Mom intro triggers
+    }
     WarpIntoMap();
 }
 

@@ -11,6 +11,7 @@ bool32 CF_SetDecision(u32 n, u32 option);
 s32 CF_GetRepStanding(u16 repVar);
 u16 CF_RaiseLevelCap(u16 cap);
 bool32 CF_RemovePartyMon(u32 slot);
+void CF_ClearParty(void);
 bool32 CF_IsHoennNative(u32 species);
 u32 CF_GetDominantPartyType(void);
 u32 CF_GetAdaptPackage(u32 type);

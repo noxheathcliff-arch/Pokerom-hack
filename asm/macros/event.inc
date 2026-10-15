@@ -3044,6 +3044,12 @@
 	.2byte \slot
 	.endm
 
+	@ E-CLEARPARTY: empties the whole party (no guard: the script must give a Pokemon back
+	@ before any battle, or keep FLAG_NO_WILD_ENCOUNTERS set).
+	.macro clearparty
+	callnative Script_CF_ClearParty, requests_effects=1
+	.endm
+
 	@ E-NATIVE: VAR_RESULT = TRUE if species (var or value) is in the Hoenn dex (no foreign regional forms).
 	.macro ishoennnative species:req
 	callnative Script_CF_IsHoennNative, requests_effects=1
