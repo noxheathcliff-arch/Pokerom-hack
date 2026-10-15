@@ -109,6 +109,8 @@ static const struct EcoZoneMap sEcoZoneMaps[] =
 // New game
 // ---------------------------------------------------------------------------
 
+static void CF_DemoNewGameInit(void);
+
 void CF_InitNewGameVars(void)
 {
     u32 i;
@@ -121,6 +123,48 @@ void CF_InitNewGameVars(void)
     VarSet(VAR_CF_RK, CF_START_RK);
     VarSet(VAR_CF_CAP, CF_START_LEVEL_CAP);
     // Everything else (CHAPTER, ECO = all ENVAHI, WORLD, decisions...) starts at 0 (vars are cleared).
+    CF_DemoNewGameInit();
+}
+
+// SLICE_DEMO_CH0-1 s2 / s6 / s8: demo new-game flags and neutral vanilla states.
+// The prologue itself (party, P1) is played by scripts: Route104_OnFrame, VAR_ROUTE104_STATE = 0.
+static void CF_DemoNewGameInit(void)
+{
+    u32 i;
+
+    FlagSet(FLAG_NO_WILD_ENCOUNTERS); // cleared at the end of P4
+    // Object visibility: flag set = hidden. VIS_00/01 (beach) and VIS_10/11/12/14/15 (walls) stay visible.
+    // VIS_39 = Routes 102-104 trainers (until chapter 1); VIS_40/41 = Petalburg mini-scene (D006 b).
+    for (i = 2; i <= 41; i++)
+    {
+        if (i == 10 || i == 11 || i == 12 || i == 14 || i == 15)
+            continue;
+        FlagSet(FLAG_CF_VIS_00 + i);
+    }
+    // Mr. Briney (s6): at home, no crossing, no Peeko, no boat on Route 104.
+    FlagClear(FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY);
+    FlagSet(FLAG_HIDE_BRINEYS_HOUSE_PEEKO);
+    FlagSet(FLAG_HIDE_ROUTE_104_MR_BRINEY);
+    FlagSet(FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT);
+    // Vanilla scripts neutralized (s8): final values.
+    FlagSet(FLAG_RESCUED_BIRCH);
+    FlagSet(FLAG_HIDE_ROUTE_101_ZIGZAGOON); // vanilla Route 101 chase objects (visible by default in vanilla)
+    FlagSet(FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG);
+    VarSet(VAR_LITTLEROOT_INTRO_STATE, 7); // 6 = Brendan house "gym report" scene; 7 = past it
+    VarSet(VAR_LITTLEROOT_TOWN_STATE, 4);
+    VarSet(VAR_LITTLEROOT_RIVAL_STATE, 4);
+    VarSet(VAR_ROUTE101_STATE, 2); // P4 triggers (10,18) / (11,18)
+    VarSet(VAR_PETALBURG_CITY_STATE, 1);
+    VarSet(VAR_SCOTT_PETALBURG_ENCOUNTER, 1);
+    VarSet(VAR_BRINEY_HOUSE_STATE, 0); // 0 = P2 pending, 9 = "at home" afterwards
+    // Brendan's house: only Mrs. Seko (rival mom) remains.
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2);
+    FlagSet(FLAG_HIDE_PLAYERS_HOUSE_DAD);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN);
+    FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM);
 }
 
 // ---------------------------------------------------------------------------

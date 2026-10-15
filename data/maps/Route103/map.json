@@ -41,7 +41,7 @@
     },
     {
       "local_id": "LOCALID_ROUTE103_RIVAL",
-      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
       "x": 10,
       "y": 3,
       "elevation": 3,
@@ -50,8 +50,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route103_EventScript_Rival",
-      "flag": "FLAG_HIDE_ROUTE_103_RIVAL"
+      "script": "CF_Route103_BriceDuel",
+      "flag": "FLAG_CF_VIS_07"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route103_EventScript_Daisy",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
@@ -77,7 +77,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route103_EventScript_Liv",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route103_EventScript_Amy",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
@@ -103,7 +103,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route103_EventScript_Andrew",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
@@ -181,7 +181,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route103_EventScript_Miguel",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -233,7 +233,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "Route103_EventScript_Rhett",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
@@ -246,7 +246,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "Route103_EventScript_Marcos",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
@@ -259,7 +259,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route103_EventScript_Isabelle",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
@@ -272,7 +272,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route103_EventScript_Pete",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -286,6 +286,34 @@
       "trainer_sight_or_berry_tree_id": "ITEM_PP_UP",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE_103_PP_UP"
+    },
+    {
+      "local_id": "LOCALID_CF_R103_ZIGZAGOON",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON_GALAR)",
+      "x": 11,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_16"
+    },
+    {
+      "local_id": "LOCALID_CF_R103_POLICE",
+      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "x": 12,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_09"
     }
   ],
   "warp_events": [

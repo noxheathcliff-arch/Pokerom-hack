@@ -4,6 +4,7 @@ Route104_MapScripts::
 	.byte 0
 
 Route104_OnFrame:
+	map_script_2 VAR_ROUTE104_STATE, 0, CF_P1_Beach
 	map_script_2 VAR_BOARD_BRINEY_BOAT_STATE, 1, Route104_EventScript_StartSailToDewford
 	.2byte 0
 

@@ -4,8 +4,7 @@ Route103_MapScripts::
 	.byte 0
 
 Route103_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
-	call ProfBirch_EventScript_UpdateLocation
+	call_if_eq VAR_LITTLEROOT_RIVAL_STATE, 6, CF_P6_ShowBrice
 	end
 
 Route103_OnLoad:
