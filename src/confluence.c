@@ -134,8 +134,9 @@ static void CF_DemoNewGameInit(void)
 
     FlagSet(FLAG_NO_WILD_ENCOUNTERS); // cleared at the end of P4
     // Object visibility: flag set = hidden. VIS_00/01 (beach) and VIS_10/11/12/14/15 (walls) stay visible.
-    // VIS_39 = Routes 102-104 trainers (until chapter 1); VIS_40/41 = Petalburg mini-scene (D006 b).
-    for (i = 2; i <= 41; i++)
+    // VIS_39 = Routes 102-104 trainers (until chapter 1); VIS_40/41 = Petalburg mini-scene (D006 b);
+    // VIS_42 = Petalburg HQ gym trainers; VIS_43 = Brice at the Rustboro Pokemon Center (C11).
+    for (i = 2; i <= 43; i++)
     {
         if (i == 10 || i == 11 || i == 12 || i == 14 || i == 15)
             continue;
@@ -165,6 +166,13 @@ static void CF_DemoNewGameInit(void)
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING);
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN);
     FlagClear(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM);
+    // Chapter 1 (s8): vanilla plot objects/gates of the demo maps (all visible by default in vanilla).
+    FlagSet(FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT);
+    FlagSet(FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE);
+    FlagSet(FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND);
+    FlagSet(FLAG_HIDE_ROUTE_116_DROPPED_GLASSES_MAN);
+    FlagSet(FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE);
+    FlagSet(FLAG_RETURNED_DEVON_GOODS); // Devon 1F stair guard: stairs open (no stolen goods in the demo)
 }
 
 // ---------------------------------------------------------------------------

@@ -227,3 +227,5 @@ Libres restants : `0x24`–`0x2F` (12, moteur), `0x44`–`0x4F` (12, histoire), 
 | 2026-10-14 | Allocation *Confluence* : 44 vars `VAR_CF_*`, 108 flags `FLAG_CF_*`, 93 flags de visibilité réservés (programmeur moteur) |
 | 2026-10-14 | Brief v2 : renommage neutre (`FLAG_FIGEMENT_ACTIF` → `FLAG_NO_WILD_ENCOUNTERS`, `VAR_HS_DIFFICULTE` → `VAR_DIFFICULTY`) ; ajout 0x21 `FLAG_CHOOSE_BATTLE_LEAD` |
 | 2026-10-15 | Démo ch. 0–1 : attribution `FLAG_CF_VIS_00`–`VIS_38` (GMD) |
+
+**Démo ch. 1 (implémentation, 2026-10-15) :** VIS_42 dresseurs de l’arène-QG de Clémenti (cachés) · VIS_43 Brice au Centre de Mérouville (C11). Variables vanilla réutilisées comme états de scène (scripts vanilla neutralisés) : `VAR_STEVENS_HOUSE_STATE` (C1 : 0→1), `VAR_PETALBURG_WOODS_STATE` (C3 : 0→1), `VAR_RUSTBORO_CITY_STATE` (C4 : 0→10, C7 : 10→11), `VAR_DEVON_CORP_3F_STATE` (C6 : 0→1), `VAR_RUSTURF_TUNNEL_STATE` (C8 : 0→1), `VAR_ROUTE116_STATE` (C10 : 0→2, C11 : 2→3).

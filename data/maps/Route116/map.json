@@ -391,6 +391,132 @@
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route116_EventScript_Devan",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_LANCE",
+      "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
+      "x": 44,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_35"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_GRUNT_A",
+      "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
+      "x": 45,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_36"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_GRUNT_B",
+      "graphics_id": "OBJ_EVENT_GFX_ROCKET_F",
+      "x": 45,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CF_C10_SbireB",
+      "flag": "FLAG_CF_VIS_37"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_FERRAND",
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "x": 43,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_25"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_HOOPA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOOPA)",
+      "x": 49,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_30"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_FLORA",
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
+      "x": 42,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_20"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_NET",
+      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "x": 38,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CF_C10_NetTalk",
+      "flag": "FLAG_CF_VIS_13"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_WALL_1",
+      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "x": 50,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CF_Wall_R116",
+      "flag": "FLAG_CF_VIS_15"
+    },
+    {
+      "local_id": "LOCALID_CF_R116_WALL_2",
+      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "x": 50,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CF_Wall_R116",
+      "flag": "FLAG_CF_VIS_15"
     }
   ],
   "warp_events": [
@@ -433,12 +559,57 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 47,
-      "y": 9,
+      "x": 40,
+      "y": 10,
       "elevation": 3,
       "var": "VAR_ROUTE116_STATE",
-      "var_value": "1",
-      "script": "Route116_EventScript_BrineyTrigger"
+      "var_value": "0",
+      "script": "CF_C10_Scene"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 11,
+      "elevation": 3,
+      "var": "VAR_ROUTE116_STATE",
+      "var_value": "0",
+      "script": "CF_C10_Scene"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 12,
+      "elevation": 3,
+      "var": "VAR_ROUTE116_STATE",
+      "var_value": "0",
+      "script": "CF_C10_Scene"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 13,
+      "elevation": 3,
+      "var": "VAR_ROUTE116_STATE",
+      "var_value": "0",
+      "script": "CF_C10_Scene"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 14,
+      "elevation": 3,
+      "var": "VAR_ROUTE116_STATE",
+      "var_value": "0",
+      "script": "CF_C10_Scene"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 15,
+      "elevation": 3,
+      "var": "VAR_ROUTE116_STATE",
+      "var_value": "0",
+      "script": "CF_C10_Scene"
     }
   ],
   "bg_events": [

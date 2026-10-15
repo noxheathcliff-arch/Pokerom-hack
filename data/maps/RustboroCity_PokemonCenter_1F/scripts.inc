@@ -1,7 +1,13 @@
 RustboroCity_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_PokemonCenter_1F_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_PokemonCenter_1F_OnFrame
 	.byte 0
+
+RustboroCity_PokemonCenter_1F_OnFrame:
+	@ Demo: C11 end-of-demo scene (VAR_ROUTE116_STATE 2 = C10 done)
+	map_script_2 VAR_ROUTE116_STATE, 2, CF_C11_Scene
+	.2byte 0
 
 RustboroCity_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_RUSTBORO_CITY

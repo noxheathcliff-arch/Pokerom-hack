@@ -1,11 +1,11 @@
 RustboroCity_DevonCorp_3F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_DevonCorp_3F_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, RustboroCity_DevonCorp_3F_OnWarp
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_DevonCorp_3F_OnFrame
 	.byte 0
 
 RustboroCity_DevonCorp_3F_OnTransition:
-	call_if_eq VAR_DEVON_CORP_3F_STATE, 0, RustboroCity_DevonCorp_3F_EventScript_SetEmployeePos
+	@ Demo: C6 (Passerelle presentation) replaces the vanilla Mr. Stone / President scene
+	call CF_C6_Show
 	end
 
 RustboroCity_DevonCorp_3F_EventScript_SetEmployeePos::
@@ -22,7 +22,7 @@ RustboroCity_DevonCorp_3F_EventScript_PlayerFaceEast::
 	end
 
 RustboroCity_DevonCorp_3F_OnFrame:
-	map_script_2 VAR_DEVON_CORP_3F_STATE, 0, RustboroCity_DevonCorp_3F_EventScript_MeetPresident
+	map_script_2 VAR_DEVON_CORP_3F_STATE, 0, CF_C6_Scene
 	.2byte 0
 
 RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
