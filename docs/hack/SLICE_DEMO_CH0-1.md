@@ -18,6 +18,9 @@
 > - Dans les scripts, utiliser ’ pour l'apostrophe et “ ” pour les guillemets, jamais « ».
 > - Red ne parle jamais. Ses choix sont des **gestes**, présentés par un menu (`dynmultichoice`), avec des libellés courts.
 > - **Narr.** = boîte sans locuteur (narration).
+> - **Écritures d'état (forme abrégée).** Dans ce document, `setdecision_once N, DEC_X` est la forme courte de la macro à 3 arguments `setdecision_once N, DEC_X, CF_DNNN_Fin` (`asm/macros/event.inc`). Tous les deltas qui suivent se placent **avant** `CF_DNNN_Fin`, pour ne s'appliquer qu'une fois.
+> - **Compteurs en bits.** « N + 1 (borné à 3) » et « BVCOUNT X + 1 » s'écrivent `getbits` → `addvar VAR_RESULT, 1` → borne (`goto_if_ge`) → `setbits` sur le champ indiqué (`VAR_CF_WORLD` b0-1 ; `VAR_CF_BVCOUNT` PROT b0-3, ACC b4-7, COMP b8-11).
+> - **Brice suiveur.** `createfollowernpc OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, FNPC_ALL_LAND` (avec `FNPC_ENABLE_NPC_FOLLOWERS TRUE`, déjà actif) ; `destroyfollowernpc` pour les scènes où il est posé comme objet (C11). « Brice présent » = `checkfollowernpc` vrai.
 
 ---
 
@@ -129,7 +132,7 @@ Les positions sont celles des objets vanilla réutilisés quand ils existent. Un
 | Sbire B (ex-mineur) | `ROCKET_F` (repli `ROCKET_M`) | R116 (45, 11) ◐ | `VIS_37` |
 | Ex-mineur rentré | `HIKER` | Mérouville (13, 33) ◐ | `VIS_38`, si D015 a |
 
-Les flags de visibilité `FLAG_CF_VIS_00`…`VIS_38` sont pris dans la plage réservée (`FLAGS_VARS_REGISTRY` : `VIS_00..92`) et sont à inscrire au registre.
+Les flags de visibilité `FLAG_CF_VIS_00`…`VIS_38` sont pris dans la plage réservée (`FLAGS_VARS_REGISTRY` : `VIS_00..92`) et sont **inscrits au registre** (§ « Bloc de visibilité »). **Convention du registre : flag posé = objet caché.** « Visible / afficher » dans ce document = `clearflag` ; « masquer » = `setflag`. À la nouvelle partie, `CF_Demo_NewGame` pose `VIS_02`…`VIS_38` (tout caché), **sauf** les barrages et murs : `VIS_10`, `VIS_11`, `VIS_12`, `VIS_14` et `VIS_15` restent effacés, donc visibles dès le départ (`VIS_10` est posé après le premier passage, C2). Il laisse aussi `VIS_00` (Marco, plage) et `VIS_01` (Ciléo, plage) effacés ; P1 les pose en sortant de la plage.
 
 ---
 
@@ -222,7 +225,8 @@ Puis :
 - `givemon SPECIES_TREECKO|TORCHIC|MUDKIP, 5` ; `setdecision_once 4, DEC_A|B|C`.
 
 Suite :
-- **Seko** “Prends aussi ça. Et mon Pokédex : / note tout. Surtout ce qui vient d’ailleurs.”
+- **Seko** “Prends aussi ça. Et mon Pokédex : / note tout ce que tu vois.”
+- **Seko** “Surtout ce qui vient d’ailleurs.”
 - Objets : Pokédex (`setflag FLAG_SYS_POKEDEX_GET`), 5 Poké Balls, 1 Baie Oran.
 - **Seko** “Une question de méthode. Tu veux / des combats durs, ou normaux ?”
 - Menu (non compté) : “Normaux” · “Durs” → `setdifficulty DIFFICULTY_NORMAL|HARD`.
@@ -577,7 +581,7 @@ trainerbattle_single_declinable TRAINER_VALERIE_5 (si Z-02 = RESTAURÉ) sinon TR
 - **a**
   - Combat contre `TRAINER_GRUNT_PETALBURG_WOODS` (sbire A), puis contre `TRAINER_GRUNT_RUSTURF_TUNNEL` (sbire B). `FLAG_CF_NO_WHITEOUT` posé.
   - Narr. “Le cercle s’ouvre quand même. Il / prend quelque chose dans le sac.”
-  - Script : retire 1 exemplaire du **premier** objet possédé de cette liste : Super Potion, Potion, Antidote, Poké Ball. Puis la ligne : “[objet] a disparu dans l’anneau.”
+  - Script : retire 1 exemplaire du **premier** objet possédé de cette liste : Super Potion, Potion, Antidote, Poké Ball. Puis la ligne (après `bufferitemname STR_VAR_1, <objet>`) : `{STR_VAR_1} a disparu dans / l’anneau.` (le nom de l'objet le plus long, « Super Potion », tient dans la ligne 1).
   - **Lance** “Tu me coûtes une nuit, champion. / On se reverra.”
   - États : `setdecision_once 14, DEC_A` ; `subaffinity VAR_CF_RK, 3` ; `addaffinity VAR_CF_REP_L, 1` ; argent − 200 (borné à 0).
 - **b**
@@ -633,7 +637,7 @@ trainerbattle_single_declinable TRAINER_VALERIE_5 (si Z-02 = RESTAURÉ) sinon TR
 - **Brice** “Les traversées reprennent bientôt, / paraît-il. Moi, j’y crois moyen.”
 - Narr. “Fin de la démo de Pokémon / Confluence. Merci d’avoir joué !”
 - Narr. “La suite arrive bientôt. Votre / partie va être sauvegardée.”
-- Puis : `setvar VAR_CF_CHAPTER, 2` ; sauvegarde (`special SaveGame` ou équivalent vanilla, à vérifier). Le jeu continue en **libre circulation** dans la zone de démo, murs maintenus.
+- Puis : `setvar VAR_CF_CHAPTER, 2` ; sauvegarde par `call Common_EventScript_SaveGame` (vanilla, utilisé par `cable_club.inc`). Le jeu continue en **libre circulation** dans la zone de démo, murs maintenus.
 
 ---
 
@@ -884,3 +888,4 @@ Harnais : `QA_TOOLING.md`. Une sauvegarde d'état avant chaque décision. Vars e
 | Date | Changement | Auteur |
 |---|---|---|
 | 2026-10-14 | Création : spécification complète de la démo (prologue + ch. 1) après le changement de périmètre | GMD |
+| 2026-10-15 | Vérification contre le dépôt : graphismes OW, espèces, flags et vars, macros, classe de dresseur. Équipes de démo validées (`validate_trainers.py --learnsets` : 0 erreur). Largeur de texte : 269 boîtes, 0 échec, max 204 px. Corrections : 1 boîte trop large scindée ; espace réservé de la R116 en `STR_VAR_1` ; forme à 3 arguments de `setdecision_once` ; compteurs en bits ; suiveur Brice (`createfollowernpc`) ; sauvegarde (`Common_EventScript_SaveGame`) | GMD |

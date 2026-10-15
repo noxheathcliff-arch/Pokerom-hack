@@ -10,6 +10,8 @@
 >
 > Tout le reste est **différé** (§3), sans arbitrage. Spécification de la démo : `SLICE_DEMO_CH0-1.md`.
 >
+> **Statut : complet pour le périmètre de la démo (2026-10-15).** Tous les constats des deux revues qui touchent les ch. 0–1 sont arbitrés (§1) ; tous les autres sont listés comme différés (§3).
+>
 > Verdicts :
 > - **A** : accepté ;
 > - **M** : accepté avec modification ;
@@ -37,7 +39,7 @@
 | S13 (E-REMOVE) | D001 retire **toute** l'équipe, mais `removepartymon` refuse de retirer le dernier Pokémon. | A | Nouvelle aide moteur **E-CLEARPARTY** (vider l'équipe, quelques lignes en ROM). C'est un prérequis de la démo. | `SLICE` §8 |
 | S15 / D038 | Un « slot lu » est mal câblé. | — | Ch. 4, différé. | — |
 | D004 | Le starter n'est pas une décision narrative. | A | Il reste **non compté**. | `SLICE` §5 |
-| D005 | FAIBLE depuis que le Multi Exp est donné partout. | M | Effet **dans la démo** : Brice t'accompagne dès le matin (a) ou reste au labo jusqu'à Mérouville (b). Cela change sa présence à 5 scènes du ch. 1, et un barrage (§5). Le siège de Seko au Sommet (N14) reste le lecteur différé. | `cf_decisions.py` (texte) ; `SLICE` §5 |
+| D005 | FAIBLE depuis que le Multi Exp est donné partout. | M | Effet **dans la démo** : Brice t'accompagne dès le matin (a) ou reste au labo jusqu'à Mérouville (b). Cela change sa présence à 5 scènes du ch. 1, et un barrage (§5). Le siège de Seko au Sommet (N14) reste le lecteur différé. | `SLICE` §5 et P3 ; le texte du registre (`cf_decisions.py`, D005) sera aligné à la reprise du jeu complet |
 | D013 | FAIBLE : chemins identiques. | A | Corrigé : D063 a exige `LAMBDA_REMARQUE`. Dans la démo, « Ferrand » est **reconnu** à la R116 si D013 a, ce qui donne une pièce. | `cf_decisions.py` ; `SLICE` §4.9 |
 | D006, D015, D016 | Décisions fragiles (pivot de 10 à 15 %). | M | Chacune reçoit un effet visible **avant la fin de la démo** (§2). | `SLICE` §5 |
 | D035 | Le refus ne doit pas fermer la R110. | — | Ch. 3, différé. | — |
@@ -89,3 +91,9 @@ Résultat (`SLICE` §5) : **16 décisions comptées** (D001–D003 et D005–D01
 1. **Nuit du prologue.** Le RTC ne peut pas être forcé. La nuit est racontée par le texte. Faut-il une teinte nocturne scriptée (aide moteur) ou non ? Décision du GMD : **non** pour la démo.
 2. **Équipe légendaire du prologue.** Elle reçoit de l'EXP pendant les 3 combats, puis elle est retirée. C'est sans effet sur le reste, mais à vérifier en test.
 3. **Mesure réelle du volume de texte.** On compare le nombre de boîtes dans les scripts à la cible de 400. C'est le premier indicateur de productivité, avant de reprendre le jeu complet.
+
+## 5. Changelog
+| Date | Changement | Auteur |
+|---|---|---|
+| 2026-10-14 | Création : arbitrage limité à la démo, liste des constats différés, mesures du modèle | GMD |
+| 2026-10-15 | Finalisation : statut ; ligne D005 corrigée (l'effet vit dans le SLICE, le registre sera aligné plus tard) ; renvoi vers le SLICE vérifié contre le dépôt | GMD |

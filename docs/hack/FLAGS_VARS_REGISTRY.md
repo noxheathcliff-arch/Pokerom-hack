@@ -217,6 +217,8 @@ Libres restants : `0x24`–`0x2F` (12, moteur), `0x44`–`0x4F` (12, histoire), 
 ### Bloc de visibilité réservé (93)
 `FLAG_CF_VIS_00` (`0x493`) … `FLAG_CF_VIS_92` (`0x4EF`), bornes `FLAG_CF_VIS_START` / `FLAG_CF_VIS_END`. Attribution aux objets par les scénaristes, en notant ici « VIS_nn → carte, objet ». Rappel : flag de visibilité posé = objet **caché**.
 
+**Démo ch. 0–1 (GMD, 2026-10-15, `SLICE_DEMO_CH0-1.md` §3) :** VIS_00 Marco (plage R104) · VIS_01 Ciléo (plage) · VIS_02 Ciléo (maison de Marco) · VIS_03 Ciléo (QG, si D006 a) · VIS_04 Ciléo (Devon 3F) · VIS_05 Pikachu blessé (labo) · VIS_06 Brice (R101) · VIS_07 Brice (R103) · VIS_08 arrivants R101 · VIS_09 brigadier R103 · VIS_10 barrage du Bois (R104) · VIS_11 brigadier QG · VIS_12 brigadiers portes du QG · VIS_13 brigadier R116 (filets, D016 a) · VIS_14 mur R115 · VIS_15 mur R116 est · VIS_16 Zigzaton de Galar (R103) · VIS_17 Norman (QG) · VIS_18 Flora (QG) · VIS_19 Flora (Bois) · VIS_20 Flora (R116, D014 c) · VIS_21 brigade du Bois · VIS_22 arrivants du Bois (scène) · VIS_23 arrivants du Bois sauvés · VIS_24 passante (affiche) · VIS_25 Ferrand (R116) · VIS_26 Léo (Devon 3F) · VIS_27 Lanette (Devon 3F) · VIS_28 voleur (sortie Devon) · VIS_29 voleur (Centre de Mérouville) · VIS_30 voleur (R116) · VIS_31 Roxanne (mines) · VIS_32 Pierre (mines) · VIS_33 mineurs · VIS_34 Charbi et Strassie · VIS_35 Lance (Rocket) · VIS_36 sbire A · VIS_37 sbire B · VIS_38 ex-mineur rentré (Mérouville). VIS_39–92 restent libres.
+
 ## Historique
 
 | Date | Changement |
@@ -224,3 +226,4 @@ Libres restants : `0x24`–`0x2F` (12, moteur), `0x44`–`0x4F` (12, histoire), 
 | 2026-10-13 | Création (prototype « Heure Suspendue ») : 0x20, 0x40F7 |
 | 2026-10-14 | Allocation *Confluence* : 44 vars `VAR_CF_*`, 108 flags `FLAG_CF_*`, 93 flags de visibilité réservés (programmeur moteur) |
 | 2026-10-14 | Brief v2 : renommage neutre (`FLAG_FIGEMENT_ACTIF` → `FLAG_NO_WILD_ENCOUNTERS`, `VAR_HS_DIFFICULTE` → `VAR_DIFFICULTY`) ; ajout 0x21 `FLAG_CHOOSE_BATTLE_LEAD` |
+| 2026-10-15 | Démo ch. 0–1 : attribution `FLAG_CF_VIS_00`–`VIS_38` (GMD) |
