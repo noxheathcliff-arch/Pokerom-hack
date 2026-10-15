@@ -2,7 +2,7 @@ Route102_Text_CalvinIntro:
 	.string "Si tu as un POKéMON avec toi, alors\n"
 	.string "tu es officiellement un DRESSEUR\l"
 	.string "de POKéMON!\p"
-	.string "Tu ne peux pas refuser mon défi!$"
+	.string "Alors, tu relèves mon défi?$"
 
 Route102_Text_CalvinDefeated:
 	.string "Grrrr, j'ai perdu… J'aurais dû davantage\n"
@@ -25,7 +25,7 @@ Route102_Text_CalvinRegisterShort:
 Route102_Text_CalvinRematchIntro:
 	.string "Depuis que j'ai perdu contre toi, je n'ai\n"
 	.string "pas cessé de m'entraîner.\p"
-	.string "Tu ne peux pas refuser mon défi!$"
+	.string "Alors, tu relèves mon défi?$"
 
 Route102_Text_CalvinRematchDefeated:
 	.string "Grrrr, j'ai perdu…\n"
