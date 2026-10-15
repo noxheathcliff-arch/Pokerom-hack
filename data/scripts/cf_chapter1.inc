@@ -1177,6 +1177,8 @@ CF_C7_Thief::
 	cf_if_dec 11, DEC_NONE, CF_Nop
 	lockall
 	playse SE_M_TELEPORT
+	clearflag FLAG_CF_VIS_84
+	addobject LOCALID_CF_RUST_PORTAL
 	clearflag FLAG_CF_VIS_28
 	addobject LOCALID_CF_RUST_HOOPA
 	waitse
@@ -1184,6 +1186,8 @@ CF_C7_Thief::
 	cf_narr CF1_T_077
 	waitmoncry
 	closemessage
+	setflag FLAG_CF_VIS_84
+	removeobject LOCALID_CF_RUST_PORTAL
 	cf_bexcl
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement LOCALID_CF_RUST_HOOPA, CF1_M_Jump
@@ -1668,6 +1672,8 @@ CF_C10_FightEnd::
 	clearflag FLAG_CF_NO_WHITEOUT
 	special HealPlayerParty
 	playse SE_M_TELEPORT
+	clearflag FLAG_CF_VIS_85
+	addobject LOCALID_CF_R116_PORTAL
 	cf_flash
 	cf_shake 0, 3, 6, 4
 	waitse
@@ -1686,6 +1692,8 @@ CF_C10_Watch::
 	cf_narr CF1_T_129
 	closemessage
 	playse SE_M_TELEPORT
+	clearflag FLAG_CF_VIS_85
+	addobject LOCALID_CF_R116_PORTAL
 	cf_flash
 	cf_shake 0, 3, 6, 4
 	waitse
@@ -1735,6 +1743,8 @@ CF_C10_End::
 	setflag FLAG_CF_VIS_25
 	setflag FLAG_CF_VIS_20
 	removeobject LOCALID_CF_R116_LANCE
+	setflag FLAG_CF_VIS_85
+	removeobject LOCALID_CF_R116_PORTAL
 	removeobject LOCALID_CF_R116_GRUNT_A
 	removeobject LOCALID_CF_R116_HOOPA
 	removeobject LOCALID_CF_R116_FERRAND
