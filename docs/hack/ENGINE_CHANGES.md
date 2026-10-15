@@ -13,12 +13,12 @@
 | N1. Flag sans rencontres `FLAG_NO_WILD_ENCOUNTERS` | oui | tests unitaires (pêche avec témoin positif, Éclate-Roc, Doux Parfum/Miel, câblage `WE_FLAG_NO_ENCOUNTER`) | OK ; chemin « herbe » couvert par code upstream (non testé directement) |
 | H1. Plafonds souples (valeurs provisoires) | oui | tests unitaires de la table | OK ; calcul d'EXP souple ignoré en test (voir H1) |
 | H2. Difficulté `VAR_DIFFICULTY` | oui | lecture de code (tests upstream `trainer_control`) | OK |
-| B. Joueur = Red/Leaf | oui | tests unitaires + capture émulateur (Red dans le camion) | OK ; course, dos en combat, Vélo Cross non vérifiés visuellement |
+| B. Joueur = Red/Leaf | oui | tests unitaires + captures émulateur | OK ; **dos de Red en combat vérifié** (2026-10-15) ; course, Vélo Cross non vérifiés |
 | C. Sprites terrain Kanto en Émeraude | oui | test unitaire (27 sprites non NULL) | OK ; **+241 Kio ROM** |
-| D1. Combats refusables (refus enregistré, définitif, branche) | oui | tests unitaires + octets de la macro vérifiés dans la ROM | OK ; UI OUI/NON non testée en émulateur |
-| D2. Choix du Pokémon de tête (dresseurs) | oui | tests unitaires + test de combat témoin | partiel (voir D2) ; menu non testé en émulateur ; combats sauvages non couverts |
+| D1. Combats refusables (refus enregistré, définitif, branche) | oui | tests unitaires + **émulateur (gbaplay)** | OK : question « Accepter le combat ? » OUI/NON affichée, NON → flag posé + script de refus exécuté (2026-10-15) |
+| D2. Choix du Pokémon de tête (dresseurs) | oui | tests unitaires + **émulateur** | OK : menu d'équipe après OUI, emplacement 2 (Pikachu) envoyé en tête ; combats sauvages non couverts |
 | E. Affinités `addaffinity`/`subaffinity` | oui | tests unitaires (via `RUN_OVERWORLD_SCRIPT`) | OK |
-| CF-1..7. *Confluence* : allocation, E-CAP, E-BITS/décisions, E-REPREL, E-REMOVE, E-NATIVE, E-ADAPT, E-ECO, E-TOD, E-OUT, E-LEDGER | oui | `test/hack_confluence.c` | voir §CF (en cours de vérification) |
+| CF-1..7. *Confluence* : allocation, E-CAP, E-BITS/décisions, E-REPREL, E-REMOVE, E-NATIVE, E-ADAPT, E-ECO, E-TOD, E-OUT, E-LEDGER | oui | `test/hack_confluence.c` (18/18) + smoke | OK ; E-ECO/E-OUT/E-TOD/E-ADAPT/E-NATIVE/E-LEDGER livrés et testés mais hors démo |
 
 ## Résumé de vérification
 
@@ -253,6 +253,12 @@ CF_D027_Fin::
 
 ### CF-7. E-LEDGER
 `u8 cfStaticLedger[16]` à la fin de `struct SaveBlock3` (`include/global.h`), remis à 0 par `ClearSav3` à la nouvelle partie. `checkledger N` → `VAR_RESULT` ; `setledger N[, FALSE]` ; specials `LedgerGet` / `LedgerSet` (0x8004 = index 0..127). Attribution des 128 index : ENCOUNTERS_PLAN (à inscrire au registre). `test/save.c` : `T_SAVEBLOCK3_SIZE` 4 → 20. **Tests :** bits 0/127, hors borne ignoré, specials, octet attendu.
+
+### CF-8. Démo ch. 0–1 : E-CLEARPARTY, SPAWN, suiveurs PNJ
+- `clearparty` : vide toute l'équipe (`ZeroPlayerPartyMons` + recompte), **sans** garde ; le script doit redonner un Pokémon avant tout combat (ou garder `FLAG_NO_WILD_ENCOUNTERS`). Test unitaire.
+- **SPAWN** (`src/new_game.c`, `WarpToTruck`) : la nouvelle partie démarre sur `MAP_ROUTE104` en (`CF_SPAWN_X`, `CF_SPAWN_Y`) = **(15, 57)** (`include/constants/confluence.h`) — la spec disait (13, 57), qui est **dans l'eau** (capture du smoke test) ; (15, 57) = premier sable. Orientation : par défaut (bas) ; tourner vers le haut dans le script `ON_LOAD`/`ON_FRAME` de la R104. `VAR_LITTLEROOT_INTRO_STATE` = 6 (désactive camion/Maman). Scripts QA mis à jour (`sb_offsets.sh` : `MAP_ROUTE104_*` ; `new_game_to_truck.txt` et `continue_from_save.txt` attendent la R104). Smoke : PASS.
+- `FNPC_ENABLE_NPC_FOLLOWERS TRUE` (`config/follower_npc.h`) pour `setfollowernpc` (Hoopa, 2 contre 1). SaveBlock3 : 44 o en build de test (`test/save.c`). **2 contre 1 non vérifié en émulateur** (différé : le combat de test n'a pas pu être gagné en script dans le temps imparti).
+- Preuves émulateur (script temporaire sur les cartons du camion, retiré) : captures `qa_artifacts/cf_emu/` (`d1_yesno.png`, `e2_party.png`, `f4.png` dos de Red, `g2.png` Pikachu en tête). Note : `trainerbattle` doit être lancé depuis un **objet** (assert `battle_setup.c:1252` sinon). Dans les tests `RUN_OVERWORLD_SCRIPT`, ne pas utiliser le label local `1:` (pris par l'enveloppe).
 
 ---
 

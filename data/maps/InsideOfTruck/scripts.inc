@@ -48,7 +48,6 @@ InsideOfTruck_EventScript_SetIntroFlagsFemale::
 	end
 
 InsideOfTruck_EventScript_MovingBox::
-	goto CF_TempEngineTest @ TEMP
 	msgbox InsideOfTruck_Text_BoxPrintedWithMonLogo, MSGBOX_SIGN
 	end
 
@@ -58,39 +57,3 @@ InsideOfTruck_Text_BoxPrintedWithMonLogo:
 	.string "Il vient d'une société de déménagement\n"
 	.string "et de livraison POKéMON.$"
 
-
-@ TEMP CF engine emulator test (remove after verification)
-CF_TempEngineTest::
-	givemon SPECIES_TREECKO, 100, move1=MOVE_LEAF_BLADE
-	givemon SPECIES_PIKACHU, 100, move1=MOVE_THUNDERBOLT
-	setflag FLAG_CHOOSE_BATTLE_LEAD
-	trainerbattle_single_declinable TRAINER_CALVIN_1, CF_Temp_Text_Intro, CF_Temp_Text_Defeat, FLAG_CF_REFUS_FLORA1, CF_Temp_AfterDecline
-	end
-
-CF_Temp_AfterDecline::
-	setvar VAR_TEMP_9, 0x99
-	trainerbattle_single_declinable TRAINER_RICK, CF_Temp_Text_Intro, CF_Temp_Text_Defeat, FLAG_CF_REFUS_ALDO, CF_Temp_AfterDecline2, CF_Temp_AfterBattle
-	end
-
-CF_Temp_AfterDecline2::
-	setvar VAR_TEMP_9, 0xEE
-	releaseall
-	end
-
-CF_Temp_AfterBattle::
-	setvar VAR_TEMP_9, 0xAA
-	clearflag FLAG_CHOOSE_BATTLE_LEAD
-	setfollowernpc LOCALID_TRUCK_BOX_TOP, FNPC_ALL, 0, PARTNER_STEVEN
-	trainerbattle_single TRAINER_ALLEN, CF_Temp_Text_Intro, CF_Temp_Text_Defeat, CF_Temp_After2v1
-	end
-
-CF_Temp_After2v1::
-	setvar VAR_TEMP_9, 0xBB
-	destroyfollowernpc
-	releaseall
-	end
-
-CF_Temp_Text_Intro:
-	.string "TEST INTRO$"
-CF_Temp_Text_Defeat:
-	.string "TEST DEFAITE$"
