@@ -1244,76 +1244,85 @@ CF_P6_Text_GotZigzagoon::
 	.string "Red reçoit un Zigzaton de Galar !$"
 
 CF_P6_Text_Defeated::
-	.string "Le duel est fini !\n"
-	.string "Alors, qui a gagné ?$"
+	.string "Ouf ! Quel duel !\n"
+	.string "Attends, je note tout ça.$"
 
 @ ---------------------------------------------------------------- generated boxes (<= 208 px, 2 lines)
 
 CF_T_000::
-	.string "Nuit. Route 104, côte sud\n"
-	.string "de Hoenn. Les ports sont fermés.$"
+	.string "Nuit sans lune. Route 104,\n"
+	.string "côte sud de Hoenn.\p"
+	.string "Les ports sont fermés. Personne\n"
+	.string "n’est censé traverser.$"
 
 CF_T_001::
-	.string "On y est. Pas de lumière,\n"
-	.string "pas de bruit, d’accord ?$"
+	.string "On y est. Pas de lampe, pas\n"
+	.string "de bruit. Compris ?$"
 
 CF_T_002::
-	.string "Si la brigade vous trouve, moi,\n"
-	.string "je vous ai jamais vus.$"
+	.string "Si la brigade vous ramasse,\n"
+	.string "moi, je vous ai jamais vus.$"
 
 CF_T_003::
-	.string "Merci, monsieur Marco. Red,\n"
-	.string "tu as tout ? Tes six Balls ?$"
+	.string "Merci, monsieur Marco. Vraiment.\p"
+	.string "Red, tu as tout ? Tes six Balls ?\n"
+	.string "Tu as vérifié deux fois ?$"
 
 CF_T_004::
-	.string "Les gemmes que tu m’as rapportées\n"
-	.string "stabilisent mon nœud. Tu te rappelles ?$"
+	.string "Les gemmes que tu m’as trouvées\n"
+	.string "stabilisent mon nœud.\p"
+	.string "Pardon, je te l’ai déjà dit\n"
+	.string "cent fois. Je suis nerveux.$"
 
 CF_T_005::
 	.string "Ma machine relie Kanto et Hoenn.\n"
-	.string "Elle n’ouvre rien du tout.$"
+	.string "Un câble, pas une porte !\p"
+	.string "Elle n’ouvre rien du tout. Rien.\n"
+	.string "Je le sais. Je l’ai construite.$"
 
 CF_T_006::
-	.string "Je dois le prouver à leur Ligue.\n"
-	.string "Avant qu’ils nous accusent de tout.$"
+	.string "Il faut que leur Ligue l’entende\n"
+	.string "de ma bouche. Avant qu’on nous\p"
+	.string "accuse de tout le reste.$"
 
 CF_T_007::
-	.string "Chut ! Regardez la mer…$"
+	.string "Chut ! …Regardez la mer.$"
 
 CF_T_008::
 	.string "Un cercle d’or s’ouvre au-dessus\n"
-	.string "de l’eau. Il en tombe des formes.$"
+	.string "de l’eau. Des formes en tombent.$"
 
 CF_T_009::
-	.string "Des Pokémon. Affolés, ils\n"
-	.string "chargent la plage.$"
+	.string "Des Pokémon. Affolés, ils se\n"
+	.string "ruent sur la plage.$"
 
 CF_T_010::
-	.string "Des Pokémon de chez nous !\n"
-	.string "Red, protège-nous !$"
+	.string "Ce sont des Pokémon de Kanto !\n"
+	.string "Red ! Protège-nous !$"
 
 CF_T_011::
-	.string "D’autres arrivent. L’anneau ne\n"
-	.string "se referme pas.$"
+	.string "D’autres arrivent encore. L’anneau\n"
+	.string "ne se referme pas.$"
 
 CF_T_012::
-	.string "Ils fuient… Petit, t’as une\n"
-	.string "sacrée équipe.$"
+	.string "Ils décampent… Bon sang, petit.\n"
+	.string "T’as une sacrée équipe.$"
 
 CF_T_013::
 	.string "Le sable s’illumine sous les pieds\n"
-	.string "de Red. Un second cercle.$"
+	.string "de Red. Un second cercle s’ouvre.$"
 
 CF_T_014::
-	.string "Les Balls glissent de sa ceinture.\n"
-	.string "Il ne peut rattraper qu’une chose.$"
+	.string "Ses Balls glissent de sa ceinture.\p"
+	.string "Il n’a le temps de rattraper\n"
+	.string "qu’une seule chose.$"
 
 CF_T_015::
-	.string "Mon sac ! Le disque du nœud !\n"
-	.string "Red !$"
+	.string "Mon sac ! Le disque du nœud\n"
+	.string "est dedans ! Red !$"
 
 CF_T_016::
-	.string "Tendre la main vers…$"
+	.string "Red tend la main vers…$"
 
 CF_T_017::
 	.string "Pikachu$"
@@ -1322,7 +1331,7 @@ CF_T_018::
 	.string "Le sac de Ciléo$"
 
 CF_T_019::
-	.string "Pikachu saute. Red le saisit\n"
+	.string "Pikachu saute. Red le rattrape\n"
 	.string "au vol. L’anneau avale le reste.$"
 
 CF_T_020::
@@ -1330,44 +1339,47 @@ CF_T_020::
 	.string "Il respire, mais ne bouge plus.$"
 
 CF_T_021::
-	.string "Mon disque… Tant pis. Il est\n"
-	.string "vivant, c’est le principal.$"
+	.string "Mon disque… Non. Tant pis.\p"
+	.string "Il est vivant. C’est tout ce\n"
+	.string "qui compte, d’accord ?$"
 
 CF_T_022::
-	.string "Red attrape le sac. Pikachu\n"
-	.string "bondit vers lui, trop tard.$"
+	.string "Red attrape le sac. Pikachu bondit\n"
+	.string "vers lui. Trop tard.$"
 
 CF_T_023::
 	.string "Le cercle se ferme. Il ne reste\n"
-	.string "qu’une plage vide.$"
+	.string "qu’une plage vide et le ressac.$"
 
 CF_T_024::
-	.string "Red… Je suis désolé. Ton\n"
-	.string "équipe… Pikachu…$"
+	.string "Red… Je suis désolé. Ton équipe.\n"
+	.string "Pikachu… Je t’ai entraîné ici, je…$"
 
 CF_T_025::
-	.string "Venez chez moi, vite. La brigade\n"
-	.string "fait sa ronde à l’aube.$"
+	.string "Debout. Chez moi, vite.\n"
+	.string "La brigade fait sa ronde à l’aube.$"
 
 CF_T_026::
-	.string "Asseyez-vous. Y a du thé,\n"
-	.string "et y a pas de questions.$"
+	.string "Asseyez-vous. Y a du thé.\n"
+	.string "Et y a pas de questions.$"
 
 CF_T_027::
-	.string "Moi aussi, un anneau m’a pris\n"
-	.string "quelqu’un. Piko, ma Goélise.$"
+	.string "…Moi aussi, un anneau m’a pris\n"
+	.string "quelqu’un. Piko. Ma Goélise.$"
 
 CF_T_028::
-	.string "C’était il y a huit jours, sur le\n"
-	.string "ponton. Un cercle d’or, et plus rien.$"
+	.string "Il y a huit jours, sur le ponton.\n"
+	.string "Un cercle d’or. Puis plus rien.\p"
+	.string "Pas même une plume.$"
 
 CF_T_029::
-	.string "Je dois aller à Clémenti cette\n"
-	.string "nuit. Me déclarer à leur QG.$"
+	.string "Ton ami veut filer à Clémenti\n"
+	.string "cette nuit. Se déclarer au QG.$"
 
 CF_T_030::
-	.string "Si j’attends, ils diront que les\n"
-	.string "Kantonais se cachent.$"
+	.string "Il dit que s’il attend, on dira\n"
+	.string "que les Kantonais se cachent.\p"
+	.string "Il a pas tort, remarque.$"
 
 CF_T_031::
 	.string "Et toi, petit ? Tu restes ici,\n"
@@ -1383,87 +1395,98 @@ CF_T_034::
 	.string "Suivre Ciléo$"
 
 CF_T_035::
-	.string "Bon choix. Tiens, la clochette\n"
+	.string "Bon choix. Tiens… la clochette\n"
 	.string "de Piko. Garde-la pour moi.$"
 
 CF_T_036::
 	.string "Si tu croises un cercle d’or,\n"
-	.string "écoute bien. Elle tintait toujours.$"
+	.string "écoute bien.\p"
+	.string "Elle tintait toujours quand\n"
+	.string "Piko rentrait au port.$"
 
 CF_T_037::
-	.string "Alors j’y vais seul. On se\n"
-	.string "retrouve à Clémenti.$"
+	.string "Alors j’y vais seul. Ça ira.\n"
+	.string "Ça doit aller.\p"
+	.string "On se retrouve à Clémenti, Red.$"
 
 CF_T_038::
-	.string "Le professeur Seko, à Bourg-en-Vol,\n"
-	.string "soigne les blessés.$"
+	.string "Va voir le professeur Seko,\n"
+	.string "à Bourg-en-Vol. Il soigne\p"
+	.string "les blessés. Bêtes ou gens.$"
 
 CF_T_039::
-	.string "Bêtes ou gens. Dis-lui que tu\n"
-	.string "viens de ma part.$"
+	.string "Dis-lui que c’est Marco qui\n"
+	.string "t’envoie. Il comprendra.$"
 
 CF_T_040::
 	.string "Une heure de marche plus tard,\n"
 	.string "Bourg-en-Vol dort encore.$"
 
 CF_T_041::
-	.string "Merci. À deux, on aura l’air\n"
-	.string "moins louches. Enfin, j’espère.$"
+	.string "Merci, Red. À deux, on aura l’air\n"
+	.string "moins louches. …Enfin, j’espère.$"
 
 CF_T_042::
-	.string "Le professeur Seko, à Bourg-en-Vol,\n"
-	.string "soigne les blessés.$"
+	.string "Va voir le professeur Seko,\n"
+	.string "à Bourg-en-Vol. Il soigne\p"
+	.string "les blessés. Bêtes ou gens.$"
 
 CF_T_043::
-	.string "Bêtes ou gens. Dis-lui que tu\n"
-	.string "viens de ma part.$"
+	.string "Dis-lui que c’est Marco qui\n"
+	.string "t’envoie. Il comprendra.$"
 
 CF_T_044::
 	.string "Pas de traversée cette semaine.\n"
-	.string "La brigade surveille la mer.$"
+	.string "La brigade surveille la mer.\p"
+	.string "Et moi, je surveille la brigade.$"
 
 CF_T_045::
-	.string "Halte. Couvre-feu. Vos noms,\n"
+	.string "Halte ! Couvre-feu. Vos noms,\n"
 	.string "et ce que vous faites dehors.$"
 
 CF_T_046::
-	.string "Ciléo, ingénieur de Kanto.\n"
-	.string "Je viens me déclarer.$"
+	.string "C-Ciléo, ingénieur de Kanto.\n"
+	.string "Je… je viens me déclarer.$"
 
 CF_T_047::
-	.string "Un Kantonais qui vient tout seul ?\n"
-	.string "Ça, c’est nouveau. Passez.$"
+	.string "Un Kantonais qui se rend tout\n"
+	.string "seul ? Ça, c’est nouveau.\p"
+	.string "Bon. Passez.$"
 
 CF_T_048::
 	.string "Une heure de marche plus tard,\n"
 	.string "Bourg-en-Vol dort encore.$"
 
 CF_T_049::
-	.string "Pikachu dort, une bande autour\n"
-	.string "des côtes. Il respire doucement.$"
+	.string "Pikachu dort, les côtes bandées.\n"
+	.string "Son souffle est lent, régulier.$"
 
 CF_T_050::
-	.string "Un visiteur à cette heure ?\n"
-	.string "Marco t’envoie, c’est ça ?$"
+	.string "Un visiteur à cette heure-ci ?\n"
+	.string "Laisse-moi deviner. Marco ?$"
 
 CF_T_051::
-	.string "Je suis Seko. J’étudie où vivent\n"
-	.string "les Pokémon. Où ils vivaient.$"
+	.string "Je suis Seko. J’étudie l’habitat\n"
+	.string "des Pokémon. Où ils vivent.\p"
+	.string "…Où ils vivaient, plutôt.\n"
+	.string "Tout bouge, ces temps-ci.$"
 
 CF_T_052::
-	.string "Ton équipe entière, aspirée ?\n"
-	.string "Je suis désolé, petit.$"
+	.string "Toute ton équipe, aspirée ?\p"
+	.string "Je suis désolé, petit. Vraiment.$"
 
 CF_T_053::
-	.string "Ton Pikachu… Pose-le là. Côtes\n"
-	.string "fêlées. Il lui faut du repos.$"
+	.string "Pauvre bonhomme… Pose-le là.\n"
+	.string "Doucement.\p"
+	.string "Côtes fêlées. Il lui faut\n"
+	.string "du repos, et pas qu’un peu.$"
 
 CF_T_054::
-	.string "Plusieurs semaines. Il reste\n"
-	.string "ici, je m’en occupe.$"
+	.string "Plusieurs semaines. Il reste ici,\n"
+	.string "je m’en occupe. Promis.$"
 
 CF_T_055::
-	.string "Sans Pokémon, tu ne passeras\n"
+	.string "Mais sans Pokémon, tu ne passeras\n"
 	.string "pas la nuit. Pas avec ce qui rôde.$"
 
 CF_T_056::
@@ -1483,15 +1506,17 @@ CF_T_060::
 	.string "Gobou$"
 
 CF_T_061::
-	.string "Prends aussi ça. Et mon Pokédex :\n"
-	.string "note tout ce que tu vois.$"
+	.string "Prends aussi ça. Et mon Pokédex.\p"
+	.string "Note tout ce que tu croises.$"
 
 CF_T_062::
-	.string "Surtout ce qui vient d’ailleurs.$"
+	.string "Surtout ce qui vient d’ailleurs.\n"
+	.string "C’est là que ça devient étrange.$"
 
 CF_T_063::
-	.string "Une question de méthode. Tu veux\n"
-	.string "des combats durs, ou normaux ?$"
+	.string "Question de méthode, avant que\n"
+	.string "tu partes. Tu veux des combats\p"
+	.string "durs, ou normaux ?$"
 
 CF_T_064::
 	.string "Difficulté$"
@@ -1503,12 +1528,13 @@ CF_T_066::
 	.string "Durs$"
 
 CF_T_067::
-	.string "Professeur ! Le QG du Rempart,\n"
-	.string "au téléphone. C’est Norman.$"
+	.string "Professeur ! Le QG du Rempart\n"
+	.string "au téléphone. C’est Norman !$"
 
 CF_T_068::
 	.string "Norman dirige le Rempart. Il veut\n"
-	.string "savoir qui débarque la nuit.$"
+	.string "savoir qui débarque la nuit.\p"
+	.string "Sois poli. Il n’a aucun humour.$"
 
 CF_T_069::
 	.string "Seko tend le combiné à Red.$"
@@ -1532,7 +1558,7 @@ CF_T_074::
 
 CF_T_075::
 	.string "Red. Le champion de Kanto.\n"
-	.string "Bien.$"
+	.string "…Bien.$"
 
 CF_T_076::
 	.string "Accréditation de crise, niveau un.\n"
@@ -1543,20 +1569,21 @@ CF_T_077::
 	.string "en cale. Avec votre nom dessus.$"
 
 CF_T_078::
-	.string "Il ne dira rien. Mon fils l’appellera\n"
-	.string "le Passeur, je parie.$"
+	.string "Il ne dira rien. Têtu, le petit.\p"
+	.string "Mon fils va l’appeler le Passeur,\n"
+	.string "je parie.$"
 
 CF_T_079::
-	.string "Anonyme ? Alors accréditation\n"
-	.string "provisoire. Sous garant.$"
+	.string "Anonyme. Soit. Accréditation\n"
+	.string "provisoire, sous garant.$"
 
 CF_T_080::
 	.string "Mon QG, demain matin. Sinon,\n"
 	.string "la cale.$"
 
 CF_T_081::
-	.string "Ceci est arrivé pour toi par\n"
-	.string "Passerelle. Ça vient de Kanto.$"
+	.string "Ah, et ceci est arrivé pour toi\n"
+	.string "par Passerelle. Ça vient de Kanto.$"
 
 CF_T_082::
 	.string "Une lettre du Prof. Chen :\n"
@@ -1572,28 +1599,31 @@ CF_T_085::
 	.string "La garder$"
 
 CF_T_086::
-	.string "‘Avant Seko’… Ce vieux renard\n"
-	.string "de Chen.$"
+	.string "‘Avant Seko’… Ce vieux renard.\n"
+	.string "Il n’a pas changé.$"
 
 CF_T_087::
 	.string "Tant pis pour lui. Mon registre\n"
-	.string "est à toi. Mon fils aussi.$"
+	.string "est à toi. Mon fils aussi.\p"
+	.string "…Façon de parler. Quoique.$"
 
 CF_T_088::
-	.string "Demain, Brice t’accompagne. Il\n"
-	.string "connaît chaque barrage.$"
+	.string "Demain, Brice part avec toi.\n"
+	.string "Il connaît chaque barrage par cœur.$"
 
 CF_T_089::
 	.string "Red range la lettre. Seko fait\n"
 	.string "semblant de ne rien voir.$"
 
 CF_T_090::
-	.string "Brice finira son recensement ici\n"
-	.string "demain. Il te rejoindra plus tard.$"
+	.string "Brice doit finir son recensement\n"
+	.string "ici demain. Il te rejoindra après.$"
 
 CF_T_091::
-	.string "Mon fils est encore dehors, sur\n"
-	.string "la Route 101. Tu me le ramènes ?$"
+	.string "Au fait, mon fils est encore\n"
+	.string "dehors, sur la Route 101.\p"
+	.string "À cette heure… Tu veux bien\n"
+	.string "me le ramener ?$"
 
 CF_T_092::
 	.string "Voilà, ton équipe est soignée.\n"
@@ -1601,7 +1631,7 @@ CF_T_092::
 
 CF_T_093::
 	.string "Six… sept… Et un Piafabec.\n"
-	.string "Non, deux !$"
+	.string "Non, deux ! Ça bouge, arrêtez !$"
 
 CF_T_094::
 	.string "Hé, vous trois ! Je vous recense,\n"
@@ -1621,8 +1651,8 @@ CF_T_098::
 	.string "Rester et observer$"
 
 CF_T_099::
-	.string "Merci ! Tu es tombé du ciel ?\n"
-	.string "Je suis Brice. Le fils de Seko.$"
+	.string "Merci ! T’es tombé du ciel, toi ?\n"
+	.string "Moi, c’est Brice. Fils de Seko.$"
 
 CF_T_100::
 	.string "Red ne bouge pas. Les arrivants\n"
@@ -1633,12 +1663,12 @@ CF_T_101::
 	.string "brillait une heure plus tôt.$"
 
 CF_T_102::
-	.string "Aïe ! Il m’a griffé… Tu aurais\n"
-	.string "pu m’aider, toi !$"
+	.string "Aïe ! Il m’a griffé… T’aurais\n"
+	.string "pu m’aider, quand même !$"
 
 CF_T_103::
 	.string "…Attends. Ils fuient tous vers\n"
-	.string "la mer. Je le note.$"
+	.string "la mer. Bizarre. Je note.$"
 
 CF_T_104::
 	.string "Tu dors chez nous ce soir.\n"
@@ -1646,7 +1676,7 @@ CF_T_104::
 
 CF_T_105::
 	.string "Bonjour ! Brice m’a tout raconté.\n"
-	.string "Enfin, sa version.$"
+	.string "Enfin, sa version. Très longue.$"
 
 CF_T_106::
 	.string "Tiens, des Chaussures de Course.\n"
@@ -1654,23 +1684,23 @@ CF_T_106::
 
 CF_T_107::
 	.string "Brice t’attend sur la Route 103.\n"
-	.string "Allez, file !$"
+	.string "File ! Il déteste attendre.$"
 
 CF_T_108::
-	.string "Je pars devant, Route 103.\n"
-	.string "Un duel d’essai, ça te dit ?$"
+	.string "Je pars devant, Route 103 !\n"
+	.string "Un petit duel d’essai, ça te dit ?$"
 
 CF_T_109::
-	.string "Celui qui regarde sans bouger !\n"
+	.string "Ah, celui qui regarde sans bouger !\n"
 	.string "Voyons si tu sais te battre.$"
 
 CF_T_110::
 	.string "Le héros d’hier soir ! Voyons\n"
-	.string "si tu es aussi bon de jour.$"
+	.string "si t’es aussi bon de jour.$"
 
 CF_T_111::
-	.string "Joli ! Je note : Red, très fort,\n"
-	.string "ne parle pas.$"
+	.string "Joli ! Je note : Red. Très fort.\n"
+	.string "Ne parle pas.$"
 
 CF_T_112::
 	.string "Ha ! Pas mal quand même. Je note :\n"
@@ -1681,8 +1711,8 @@ CF_T_113::
 	.string "sort des herbes. Il boite.$"
 
 CF_T_114::
-	.string "Noir et blanc… Un Zigzaton de\n"
-	.string "Galar ! Il n’a rien à faire ici.$"
+	.string "Noir et blanc… C’est un Zigzaton\n"
+	.string "de Galar ! Qu’est-ce qu’il fait ici ?$"
 
 CF_T_115::
 	.string "Brigade du Rempart. On ramasse\n"
@@ -1698,16 +1728,16 @@ CF_T_118::
 	.string "Le laisser$"
 
 CF_T_119::
-	.string "Hé ! C’est un arrivant. Vous devrez\n"
-	.string "le déclarer au QG.$"
+	.string "Hé ! C’est un arrivant, ça.\n"
+	.string "Vous devrez le déclarer au QG.$"
 
 CF_T_120::
-	.string "On le déclare ou pas ? …Moi,\n"
-	.string "je n’ai rien vu.$"
+	.string "On le déclare, alors ? …Bah.\n"
+	.string "Moi, j’ai rien vu.$"
 
 CF_T_121::
-	.string "Merci. Il sera soigné. Enfin…\n"
-	.string "on verra.$"
+	.string "Merci. Il sera soigné.\n"
+	.string "…Enfin, on verra.$"
 
 CF_T_122::
 	.string "Je note son numéro. Je veux savoir\n"
@@ -1718,5 +1748,6 @@ CF_T_123::
 	.string "Je te rejoins à Mérouville !$"
 
 CF_T_124::
-	.string "Direction Clémenti. Le QG de Norman,\n"
-	.string "c’est l’ancienne arène.$"
+	.string "On va à Clémenti ! Le QG de\n"
+	.string "Norman, c’est l’ancienne arène.\p"
+	.string "Allez, je te suis. Je note tout.$"
