@@ -109,3 +109,13 @@ Réponse d'organisation : agents « Storycraft » et « Cast & Canon » (en cour
 2. **Arbitrage unique par le GMD principal** de tous les conflits : CHARACTER_AND_LORE §12.5 (K-01..K-05), ENCOUNTERS_PLAN §13 (K1..K8 + §13.3), COMBAT_DESIGN (C1..C9), GAME_SYSTEMS §19 ; mise à jour de la bible (changelog v3.1).
 3. Deux critiques indépendants v3 (narration/cast ; systèmes/décisions/faisabilité), puis arbitrage.
 4. Moteur : aides demandées — E-ECO (tables alternatives), E-OUT (épidémies), E-TOD, E-LEDGER, E-BITS, E-ADAPT (type dominant), E-REMOVE (retirer un Pokémon), E-NATIVE, E-REPREL, macro combat 2 contre 1 ; puis tranche ch. 0–2 (intro Red, scripts, décisions, équipes, rencontres) testée en émulateur.
+
+## 8. Démo jouable ch. 0–1 (2026-10-15)
+| Élément | Statut |
+|---|---|
+| Prologue P1–P6 (choix par défaut, sauvegarde/reprise) | vérifié en émulateur |
+| Ch. 1 C1–C11 (choix par défaut), combats C3/C10 gagnés, perdus et refusés sans K.O. | vérifié en émulateur (téléports + mémoire pour les trajets) |
+| Murs R115, R116 est, QG ; porte d'arène de Mérouville ; arène Roxanne (cap 14→18, CT39) ; fin de ch. 1 (VAR_CF_CHAPTER=2, sauvegarde, rechargement) | vérifié en émulateur |
+| Décisions alternatives (D005 b, D006 b, D007 b, C4/C6/C7/C8/C10 variantes), branches C2 « enregistré »/secours, mode Difficile, trajets réels à pied | **non testés** |
+| `make check` | 4967 PASS / 0 échec |
+| Avancement jeu complet | ≈ 15 % (conception ~70 %, contenu jouable ch. 0–1 sur ~8 chapitres + post-jeu, ~17/101+ décisions) |
