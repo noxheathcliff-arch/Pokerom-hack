@@ -1,7 +1,17 @@
 Route104_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route104_OnWarp
 	.byte 0
+
+@ New game: Red spawns at (15,57) facing south; face Marco (north) before the fade-in.
+Route104_OnWarp:
+	map_script_2 VAR_ROUTE104_STATE, 0, Route104_EventScript_CfFaceMarco
+	.2byte 0
+
+Route104_EventScript_CfFaceMarco::
+	turnobject LOCALID_PLAYER, DIR_NORTH
+	end
 
 Route104_OnFrame:
 	map_script_2 VAR_ROUTE104_STATE, 0, CF_P1_Beach

@@ -58,10 +58,11 @@ CFP_Shake::
 
 @ ---------------------------------------------------------------- P1: la plage (Route 104)
 
+@ The portal opens at (13,60), below the group: everyone looks down at it.
 CFP_P1_FaceSea::
-	applymovement LOCALID_CF_R104_MARCO, Common_Movement_FaceLeft
-	applymovement LOCALID_CF_R104_CELEO, Common_Movement_FaceLeft
-	applymovement LOCALID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_CF_R104_MARCO, Common_Movement_FaceDown
+	applymovement LOCALID_CF_R104_CELEO, Common_Movement_FaceDown
+	applymovement LOCALID_PLAYER, Common_Movement_FaceDown
 	waitmovement LOCALID_CF_R104_MARCO
 	waitmovement LOCALID_CF_R104_CELEO
 	waitmovement LOCALID_PLAYER
@@ -363,6 +364,12 @@ CFP_P2_CeleoLeaves::
 	removeobject LOCALID_CF_BRINEY_CELEO
 	return
 
+@ Celeo (4,5) and Red (5,6) turn to each other before Celeo speaks.
+CFP_P2_CeleoFacesRed::
+	turnobject LOCALID_CF_BRINEY_CELEO, DIR_EAST
+	turnobject LOCALID_PLAYER, DIR_WEST
+	return
+
 CF_P2_Home::
 	lockall
 	turnobject LOCALID_CF_BRINEY_CELEO, DIR_NORTH
@@ -390,7 +397,13 @@ CF_P2_Ask::
 
 CF_P2_Stay::
 	cfp_say CF_N0_Marco, CF_T_035
+	closemessage
+	checkitem ITEM_CLOCHETTE
+	goto_if_eq VAR_RESULT, TRUE, CF_P2_StayHasBell
+	giveitem ITEM_CLOCHETTE
+CF_P2_StayHasBell::
 	cfp_say CF_N0_Marco, CF_T_036
+	call CFP_P2_CeleoFacesRed
 	cfp_say CF_N0_Celeo, CF_T_037
 	closemessage
 	call CFP_P2_CeleoLeaves
@@ -399,6 +412,7 @@ CF_P2_Stay::
 	setflag FLAG_CF_MARCO_ALLIE
 	subaffinity VAR_CF_REP_L, 2
 CF_P2_StayEnd::
+	turnobject LOCALID_PLAYER, DIR_NORTH
 	cfp_say CF_N0_Marco, CF_T_038
 	cfp_say CF_N0_Marco, CF_T_039
 	closemessage
@@ -410,12 +424,14 @@ CF_P2_StayEnd::
 	end
 
 CF_P2_Follow::
+	call CFP_P2_CeleoFacesRed
 	cfp_say CF_N0_Celeo, CF_T_041
 	closemessage
 	call CFP_P2_CeleoLeaves
 	setdecision_once 6, DEC_B, CF_P2_FollowEnd
 	addaffinity VAR_CF_REP_I, 2
 CF_P2_FollowEnd::
+	turnobject LOCALID_PLAYER, DIR_NORTH
 	cfp_say CF_N0_Marco, CF_T_042
 	cfp_say CF_N0_Marco, CF_T_043
 	closemessage
@@ -452,6 +468,8 @@ CF_P2_PetalburgScene::
 	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
 	waitmovement LOCALID_CF_PETAL_POLICE
 	waitmovement LOCALID_PLAYER
+	@ Celeo (3,12) turns to the agent (5,11) too: he is the one who answers.
+	turnobject LOCALID_CF_PETAL_CELEO, DIR_EAST
 	cfp_say CF_N0_Agent, CF_T_045
 	cfp_say CF_N0_Celeo, CF_T_046
 	cfp_say CF_N0_Agent, CF_T_047
@@ -1053,6 +1071,7 @@ CF_P6_Capture::
 	waitfanfare
 	turnobject LOCALID_CF_R103_POLICE, DIR_WEST
 	cfp_say CF_N0_Agent, CF_T_119
+	call CFP_P6_FaceBrice
 	cfp_say CF_N0_Brice, CF_T_120
 	setdecision_once 7, DEC_A, CF_P6_End
 	subaffinity VAR_CF_REP_L, 2
@@ -1069,6 +1088,7 @@ CF_P6_Leave::
 	waitmovement LOCALID_CF_R103_ZIGZAGOON
 	removeobject LOCALID_CF_R103_ZIGZAGOON
 	removeobject LOCALID_CF_R103_POLICE
+	call CFP_P6_FaceBrice
 	cfp_say CF_N0_Brice, CF_T_122
 	setdecision_once 7, DEC_B, CF_P6_EndCommon
 	addaffinity VAR_CF_REP_L, 2
@@ -1090,8 +1110,7 @@ CF_P6_EndCommon::
 	clearflag FLAG_CF_VIS_39
 	setvar VAR_OLDALE_TOWN_STATE, 1
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 7
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-	waitmovement LOCALID_ROUTE103_RIVAL
+	call CFP_P6_FaceBrice
 	checkdecision 5
 	goto_if_eq VAR_RESULT, DEC_A, CF_P6_BriceFollows
 	cfp_say CF_N0_Brice, CF_T_123
@@ -1104,6 +1123,34 @@ CF_P6_EndCommon::
 	setflag FLAG_CF_VIS_07
 	releaseall
 	end
+
+@ Brice (10,3) and Red turn to each other (Red is on one of the 4 tiles next to him;
+@ after T_114 both were looking east at the Zigzaton).
+CFP_P6_FaceBrice::
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement LOCALID_ROUTE103_RIVAL
+	getplayerxy VAR_0x8004, VAR_0x8005
+	call_if_eq VAR_0x8004, 9, CFP_P6_RedFaceE
+	call_if_eq VAR_0x8004, 11, CFP_P6_RedFaceW
+	call_if_eq VAR_0x8005, 4, CFP_P6_RedFaceN
+	call_if_eq VAR_0x8005, 2, CFP_P6_RedFaceS
+	return
+
+CFP_P6_RedFaceE::
+	turnobject LOCALID_PLAYER, DIR_EAST
+	return
+
+CFP_P6_RedFaceW::
+	turnobject LOCALID_PLAYER, DIR_WEST
+	return
+
+CFP_P6_RedFaceN::
+	turnobject LOCALID_PLAYER, DIR_NORTH
+	return
+
+CFP_P6_RedFaceS::
+	turnobject LOCALID_PLAYER, DIR_SOUTH
+	return
 
 CFP_P6_BriceLeaveSide::
 	applymovement LOCALID_ROUTE103_RIVAL, CFP_Mov_BriceR103Side

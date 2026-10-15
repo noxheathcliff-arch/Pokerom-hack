@@ -17477,6 +17477,24 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    // Confluence: Marco's bell, given in the prologue (CF_P2_Stay).
+    [ITEM_CLOCHETTE] =
+    {
+        .name = ITEM_NAME("Clochette"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "La clochette de Piko. Elle\n"
+            "tintait quand il rentrait\n"
+            "au port de Marco."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_Clochette,
+        .iconPalette = gItemIconPalette_Clochette,
+    },
 };
 
 #undef ITEM_NAME

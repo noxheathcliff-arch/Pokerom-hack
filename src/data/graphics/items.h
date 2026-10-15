@@ -1365,6 +1365,10 @@ const u16 gItemIconPalette_QuickClaw[] = INCGFX_U16("graphics/items/icon_palette
 const u32 gItemIcon_SootheBell[] = INCGFX_U32("graphics/items/icons/soothe_bell.png", ".4bpp.smol");
 const u16 gItemIconPalette_SootheBell[] = INCGFX_U16("graphics/items/icon_palettes/soothe_bell.pal", ".gbapal");
 
+// Confluence
+const u32 gItemIcon_Clochette[] = INCGFX_U32("graphics/items/icons/clochette.png", ".4bpp.smol");
+const u16 gItemIconPalette_Clochette[] = INCGFX_U16("graphics/items/icon_palettes/clochette.pal", ".gbapal");
+
 const u16 gItemIconPalette_MentalHerb[] = INCGFX_U16("graphics/items/icon_palettes/mental_herb.pal", ".gbapal");
 
 const u32 gItemIcon_KingsRock[] = INCGFX_U32("graphics/items/icons/kings_rock.png", ".4bpp.smol");
