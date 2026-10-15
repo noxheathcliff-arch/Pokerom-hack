@@ -15,6 +15,18 @@
 	msgbox \txt, MSGBOX_DEFAULT
 	.endm
 
+@ Every story choice is confirmed: after a dynmultistack (+ closemessage), asks "Tu es sûr ?" and jumps back
+@ to \retry (the label right before the question) on NO; otherwise VAR_RESULT holds the menu result again.
+@ Uses VAR_0x800B. Shared with cf_chapter1.inc (included after this file).
+	.macro cf_confirm retry:req
+	copyvar VAR_0x800B, VAR_RESULT
+	setspeaker 0
+	msgbox CF_Text_Sure, MSGBOX_YESNO
+	closemessage
+	goto_if_eq VAR_RESULT, NO, \retry
+	copyvar VAR_RESULT, VAR_0x800B
+	.endm
+
 @ ---------------------------------------------------------------- helpers
 
 @ VAR_0x8004 = bit shift of the 4-bit BVCOUNT field (0 PROT, 4 ACC, 8 COMP); +1 clamped to 15
@@ -68,10 +80,17 @@ CFP_P1_ToCeleo::
 
 @ Whatever is left on the sand drops into the ring, which then closes.
 CFP_P1_RingSwallows::
-	applymovement LOCALID_CF_R104_BALL_B, CFP_Mov_DropDown
+	applymovement LOCALID_CF_R104_BALL_B, CFP_Mov_DropUp
 	waitmovement LOCALID_CF_R104_BALL_B
 	playse SE_M_DIVE
 	removeobject LOCALID_CF_R104_BALL_B
+	return
+
+@ The ring flares: light, rumble, then whatever comes through.
+CFP_P1_RingFlare::
+	playse SE_M_TELEPORT
+	call CFP_Shake
+	waitse
 	return
 
 CFP_P1_RingCloses::
@@ -117,17 +136,22 @@ CF_P1_Beach::
 	call CFP_Shake
 	cfp_nar CF_T_009
 	closemessage
-	@ Tauros charges up the beach
-	clearflag FLAG_CF_VIS_92
-	addobject LOCALID_CF_R104_TAUROS
+	@ The first ring hangs over the shallows at 13,60. Each wild Pokemon is spat out of it
+	@ (flare + shake), drops onto the sand at 15,60 and charges the group.
+	@ Tauros: out of the ring, charges up column 15 and stops under Red (15,58).
 	applymovement LOCALID_PLAYER, Common_Movement_FaceDown
 	applymovement LOCALID_CF_R104_CELEO, Common_Movement_FaceDown
-	applymovement LOCALID_CF_R104_TAUROS, CFP_Mov_TaurosCharge
+	waitmovement LOCALID_PLAYER
+	waitmovement LOCALID_CF_R104_CELEO
+	call CFP_P1_RingFlare
+	clearflag FLAG_CF_VIS_92
+	addobject LOCALID_CF_R104_TAUROS
+	applymovement LOCALID_CF_R104_TAUROS, CFP_Mov_TaurosOut
 	waitmovement LOCALID_CF_R104_TAUROS
 	playse SE_M_TAKE_DOWN
 	playmoncry SPECIES_TAUROS, CRY_MODE_NORMAL
 	waitmoncry
-	setobjectxyperm LOCALID_CF_R104_TAUROS, 15, 59
+	setobjectxyperm LOCALID_CF_R104_TAUROS, 15, 58
 	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_010
 	closemessage
@@ -141,31 +165,35 @@ CF_P1_Beach::
 	call CFP_P1_FaceSea
 	cfp_nar CF_T_011
 	closemessage
-	@ Ursaring comes down the sand path (column 16)
+	@ Ursaring: out of the same ring, lands at 15,60 and cuts across to face Celeo (16,58).
+	call CFP_P1_RingFlare
 	clearflag FLAG_CF_VIS_91
 	addobject LOCALID_CF_R104_URSARING
-	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
-	applymovement LOCALID_CF_R104_MARCO, Common_Movement_FaceUp
-	applymovement LOCALID_CF_R104_CELEO, Common_Movement_FaceUp
-	applymovement LOCALID_CF_R104_URSARING, CFP_Mov_FastDown4
+	applymovement LOCALID_CF_R104_URSARING, CFP_Mov_UrsaringOut
+	applymovement LOCALID_PLAYER, Common_Movement_FaceDown
+	applymovement LOCALID_CF_R104_CELEO, Common_Movement_FaceDown
 	waitmovement LOCALID_CF_R104_URSARING
-	turnobject LOCALID_CF_R104_MARCO, DIR_EAST
+	playse SE_M_TAKE_DOWN
 	playmoncry SPECIES_URSARING, CRY_MODE_NORMAL
 	waitmoncry
-	setobjectxyperm LOCALID_CF_R104_URSARING, 16, 55
+	setobjectxyperm LOCALID_CF_R104_URSARING, 16, 58
 	setwildbattle SPECIES_URSARING, 43
 	dowildbattle
-	applymovement LOCALID_CF_R104_URSARING, CFP_Mov_FastUp4
+	applymovement LOCALID_CF_R104_URSARING, CFP_Mov_FastDown6
 	waitmovement LOCALID_CF_R104_URSARING
 	removeobject LOCALID_CF_R104_URSARING
-	@ Gyarados rises from the ring
+	@ Gyarados: rises out of the ring and swims up to Red (14,57)
 	call CFP_P1_FaceSea
+	call CFP_P1_RingFlare
 	playse SE_M_SURF
 	clearflag FLAG_CF_VIS_90
 	addobject LOCALID_CF_R104_GYARADOS
+	applymovement LOCALID_CF_R104_GYARADOS, CFP_Mov_GyaradosOut
+	waitmovement LOCALID_CF_R104_GYARADOS
 	playmoncry SPECIES_GYARADOS, CRY_MODE_NORMAL
 	call CFP_Shake
 	waitmoncry
+	setobjectxyperm LOCALID_CF_R104_GYARADOS, 14, 57
 	setwildbattle SPECIES_GYARADOS, 45
 	dowildbattle
 	playse SE_M_DIVE
@@ -174,7 +202,7 @@ CF_P1_Beach::
 	call CFP_P1_ToMarco
 	cfp_say CF_N0_Marco, CF_T_012
 	closemessage
-	@ Second ring, at Red's feet
+	@ Second ring, opening in the sand just below Red (15,60)
 	turnobject LOCALID_PLAYER, DIR_SOUTH
 	setobjectxyperm LOCALID_CF_R104_PORTAL, 15, 60
 	playse SE_M_TELEPORT
@@ -186,7 +214,7 @@ CF_P1_Beach::
 	playse SE_PIN
 	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement LOCALID_PLAYER
-	@ The bag and the balls tumble onto the sand
+	@ The bag and the balls tumble onto the ring's upper rim (row 59)
 	clearflag FLAG_CF_VIS_81
 	clearflag FLAG_CF_VIS_82
 	clearflag FLAG_CF_VIS_83
@@ -203,7 +231,7 @@ CF_P1_Beach::
 	playse SE_BALL_BOUNCE_2
 	cfp_nar CF_T_014
 	closemessage
-	@ One ball pops open: Pikachu
+	@ One ball pops open: Pikachu (16,59)
 	removeobject LOCALID_CF_R104_BALL_A
 	playse SE_BALL_OPEN
 	clearflag FLAG_CF_VIS_89
@@ -216,6 +244,7 @@ CF_P1_Beach::
 	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_015
 	turnobject LOCALID_PLAYER, DIR_SOUTH
+CF_P1_Ask::
 	setspeaker 0
 	message CF_T_016
 	waitmessage
@@ -223,23 +252,39 @@ CF_P1_Beach::
 	dynmultipush CF_T_018, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_P1_Ask
 	switch VAR_RESULT
 	case 0, CF_P1_PikachuChoice
 	case 1, CF_P1_BagChoice
 	end
 
+@ Pikachu bolts away from the ring and slams into the rock at 18,59; Red runs to it.
 CF_P1_PikachuChoice::
-	applymovement LOCALID_CF_R104_PIKACHU, CFP_Mov_PikaHop
+	call CFP_P1_RingFlare
+	applymovement LOCALID_CF_R104_PIKACHU, CFP_Mov_PikaBolt
 	waitmovement LOCALID_CF_R104_PIKACHU
+	playse SE_M_STRENGTH
+	call CFP_Shake
+	applymovement LOCALID_CF_R104_PIKACHU, CFP_Mov_PikaHurt
+	waitmovement LOCALID_CF_R104_PIKACHU
+	playmoncry SPECIES_PIKACHU, CRY_MODE_WEAK
+	waitmoncry
+	cfp_nar CF_T_019
+	closemessage
+	applymovement LOCALID_PLAYER, CFP_Mov_RedToPikachu
+	waitmovement LOCALID_PLAYER
+	playse SE_RG_BAG_POCKET
 	removeobject LOCALID_CF_R104_PIKACHU
+	cfp_nar CF_T_020
+	closemessage
 	call CFP_P1_RingSwallows
 	applymovement LOCALID_CF_R104_BAG, CFP_Mov_DropDown
 	waitmovement LOCALID_CF_R104_BAG
 	playse SE_M_DIVE
 	removeobject LOCALID_CF_R104_BAG
 	call CFP_P1_RingCloses
-	cfp_nar CF_T_019
-	cfp_nar CF_T_020
+	applymovement LOCALID_PLAYER, CFP_Mov_RedBackFromRock
+	waitmovement LOCALID_PLAYER
 	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_021
 	setdecision_once 1, DEC_A, CF_P1_Common
@@ -247,9 +292,11 @@ CF_P1_PikachuChoice::
 	subaffinity VAR_CF_REP_I, 3
 	goto CF_P1_Common
 
+@ Red steps down to 15,58 and grabs the bag (15,59); Pikachu (16,59) falls into the ring.
 CF_P1_BagChoice::
-	turnobject LOCALID_PLAYER, DIR_EAST
-	playse SE_BALL_TRAY_ENTER
+	applymovement LOCALID_PLAYER, CFP_Mov_RedToBag
+	waitmovement LOCALID_PLAYER
+	playse SE_RG_BAG_POCKET
 	removeobject LOCALID_CF_R104_BAG
 	applymovement LOCALID_CF_R104_PIKACHU, CFP_Mov_PikaFall
 	waitmovement LOCALID_CF_R104_PIKACHU
@@ -259,6 +306,9 @@ CF_P1_BagChoice::
 	call CFP_P1_RingCloses
 	cfp_nar CF_T_022
 	cfp_nar CF_T_023
+	closemessage
+	applymovement LOCALID_PLAYER, CFP_Mov_RedBackFromBag
+	waitmovement LOCALID_PLAYER
 	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_024
 	setdecision_once 1, DEC_B, CF_P1_Common
@@ -273,7 +323,9 @@ CF_P1_Common::
 	call CFP_P1_ToMarco
 	cfp_say CF_N0_Marco, CF_T_025
 	closemessage
-	@ Leave along the sand path (column 16), not through the cliff
+	@ Up the sand path (column 16) and the steps, to Marco's door (17,50)
+	opendoor 17, 50
+	waitdooranim
 	applymovement LOCALID_CF_R104_MARCO, CFP_Mov_MarcoExit
 	applymovement LOCALID_CF_R104_CELEO, CFP_Mov_CeleoBeachExit
 	applymovement LOCALID_PLAYER, CFP_Mov_RedBeachExit
@@ -282,6 +334,7 @@ CF_P1_Common::
 	waitmovement LOCALID_PLAYER
 	setflag FLAG_CF_VIS_00
 	setflag FLAG_CF_VIS_01
+	setflag FLAG_CF_VIS_44
 	setflag FLAG_CF_VIS_80
 	setflag FLAG_CF_VIS_81
 	setflag FLAG_CF_VIS_82
@@ -291,6 +344,7 @@ CF_P1_Common::
 	setflag FLAG_CF_VIS_91
 	setflag FLAG_CF_VIS_92
 	setvar VAR_ROUTE104_STATE, 3
+	playse SE_EXIT
 	fadescreen FADE_TO_BLACK
 	warp MAP_ROUTE104_MR_BRINEYS_HOUSE, 5, 7
 	waitstate
@@ -319,6 +373,7 @@ CF_P2_Home::
 	cfp_say CF_N0_Marco, CF_T_029
 	cfp_say CF_N0_Marco, CF_T_030
 	cfp_say CF_N0_Marco, CF_T_031
+CF_P2_Ask::
 	setspeaker 0
 	message CF_T_032
 	waitmessage
@@ -326,6 +381,7 @@ CF_P2_Home::
 	dynmultipush CF_T_034, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_P2_Ask
 	switch VAR_RESULT
 	case 0, CF_P2_Stay
 	case 1, CF_P2_Follow
@@ -564,6 +620,7 @@ CF_P3_StarterGot::
 	cfp_nar CF_P3_Text_GotItems
 	waitfanfare
 	cfp_say CF_N0_Seko, CF_T_063
+CF_P3_AskDifficulty::
 	setspeaker 0
 	message CF_T_064
 	waitmessage
@@ -571,6 +628,7 @@ CF_P3_StarterGot::
 	dynmultipush CF_T_066, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_P3_AskDifficulty
 	switch VAR_RESULT
 	case 0, CF_P3_Normal
 	case 1, CF_P3_Hard
@@ -597,6 +655,7 @@ CF_P3_Phone::
 	turnobject LOCALID_BIRCHS_LAB_BIRCH, DIR_SOUTH
 	cfp_nar CF_T_069
 	cfp_say CF_N0_Norman, CF_T_070
+CF_P3_AskName::
 	setspeaker 0
 	message CF_T_071
 	waitmessage
@@ -604,6 +663,7 @@ CF_P3_Phone::
 	dynmultipush CF_T_073, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_P3_AskName
 	switch VAR_RESULT
 	case 0, CF_P3_NameGiven
 	case 1, CF_P3_Anonymous
@@ -633,6 +693,7 @@ CF_P3_Anonymous::
 CF_P3_Letter::
 	cfp_say CF_N0_Seko, CF_T_081
 	cfp_nar CF_T_082
+CF_P3_AskLetter::
 	setspeaker 0
 	message CF_T_083
 	waitmessage
@@ -640,6 +701,7 @@ CF_P3_Letter::
 	dynmultipush CF_T_085, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_P3_AskLetter
 	switch VAR_RESULT
 	case 0, CF_P3_LetterShown
 	case 1, CF_P3_LetterKept
@@ -725,6 +787,7 @@ CF_Route101_BriceRound::
 	cfp_say CF_N0_Brice, CF_T_093
 	cfp_say CF_N0_Brice, CF_T_094
 	cfp_nar CF_T_095
+CF_P4_Ask::
 	setspeaker 0
 	message CF_T_096
 	waitmessage
@@ -732,6 +795,7 @@ CF_Route101_BriceRound::
 	dynmultipush CF_T_098, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_P4_Ask
 	switch VAR_RESULT
 	case 0, CF_P4_Help
 	case 1, CF_P4_Watch
@@ -901,6 +965,7 @@ CF_P6_AfterDuel::
 	applymovement LOCALID_CF_R103_POLICE, Common_Movement_ExclamationMark
 	waitmovement LOCALID_CF_R103_POLICE
 	cfp_say CF_N0_Agent, CF_T_115
+CF_P6_Ask::
 	setspeaker 0
 	message CF_T_116
 	waitmessage
@@ -908,6 +973,7 @@ CF_P6_AfterDuel::
 	dynmultipush CF_T_118, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_P6_Ask
 	switch VAR_RESULT
 	case 0, CF_P6_Capture
 	case 1, CF_P6_Leave
@@ -978,13 +1044,71 @@ CF_P6_BriceFollows::
 
 @ ---------------------------------------------------------------- movements (CFP_Mov_*, prologue only)
 
-CFP_Mov_TaurosCharge:
+@ First ring at 13,60 (over the shallows); the Pokemon land on the sand at 15,60.
+CFP_Mov_TaurosOut:
+	jump_in_place_down
+	jump_2_right
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+CFP_Mov_UrsaringOut:
+	jump_in_place_down
+	jump_2_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+CFP_Mov_GyaradosOut:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
-	walk_fast_up
-	walk_fast_left
-	face_up
+	walk_fast_right
+	step_end
+
+@ Pikachu 16,59 -> 17,59 and slams into the rock at 18,59
+CFP_Mov_PikaBolt:
+	face_right
+	walk_faster_right
+	walk_in_place_faster_right
+	step_end
+
+CFP_Mov_PikaHurt:
+	jump_in_place_left
+	face_left
+	emote_x
+	step_end
+
+@ Red 15,57 -> 17,58, looking down at Pikachu (17,59)
+CFP_Mov_RedToPikachu:
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	face_down
+	step_end
+
+CFP_Mov_RedBackFromRock:
+	walk_left
+	walk_left
+	walk_up
+	face_right
+	step_end
+
+@ Red 15,57 -> 15,58, bag at 15,59
+CFP_Mov_RedToBag:
+	walk_fast_down
+	face_down
+	step_end
+
+CFP_Mov_RedBackFromBag:
+	walk_up
+	face_right
+	step_end
+
+CFP_Mov_DropUp:
+	jump_in_place_up
+	jump_up
 	step_end
 
 CFP_Mov_FastDown6:
@@ -992,13 +1116,6 @@ CFP_Mov_FastDown6:
 	walk_fast_down
 	walk_fast_down
 CFP_Mov_FastDown3:
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	step_end
-
-CFP_Mov_FastDown4:
-	walk_fast_down
 	walk_fast_down
 	walk_fast_down
 	walk_fast_down
@@ -1013,21 +1130,9 @@ CFP_Mov_FastUp6:
 	walk_fast_up
 	step_end
 
-CFP_Mov_PikaHop:
-	jump_in_place_right
-	jump_in_place_right
-	step_end
-
 CFP_Mov_PikaFall:
 	jump_in_place_up
 	jump_down
-	step_end
-
-CFP_Mov_FastUp4:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
 	step_end
 
 CFP_Mov_Bounce:
@@ -1039,13 +1144,17 @@ CFP_Mov_DropDown:
 	jump_down
 	step_end
 
-@ Marco 15,56 -> 16,52 ; Celeo 16,57 -> 16,53 ; Red 15,57 -> 16,54
+@ Marco 15,56 / Celeo 16,57 / Red 15,57 -> up column 16 to the door at 17,50
 CFP_Mov_MarcoExit:
 	walk_right
 	walk_up
 	walk_up
 	walk_up
 	walk_up
+	walk_up
+	walk_right
+	walk_up
+	set_invisible
 	step_end
 
 CFP_Mov_CeleoBeachExit:
@@ -1055,6 +1164,11 @@ CFP_Mov_CeleoBeachExit:
 	walk_up
 	walk_up
 	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_up
+	set_invisible
 	step_end
 
 CFP_Mov_RedBeachExit:
@@ -1066,6 +1180,11 @@ CFP_Mov_RedBeachExit:
 	walk_up
 	walk_up
 	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	face_up
 	step_end
 
 CFP_Mov_Up2:
@@ -1215,6 +1334,12 @@ CF_N0_Assistant::
 
 @ ---------------------------------------------------------------- texts (non-dialogue)
 
+CF_Text_Sure::
+	.string "Tu es sûr ?$"
+
+CF_Text_WhatToDo::
+	.string "Que faire ?$"
+
 CF_P3_Text_ConfirmTreecko::
 	.string "Choisir Arcko ?$"
 
@@ -1331,11 +1456,11 @@ CF_T_018::
 	.string "Le sac de Ciléo$"
 
 CF_T_019::
-	.string "Pikachu saute. Red le rattrape\n"
-	.string "au vol. L’anneau avale le reste.$"
+	.string "Pikachu détale, affolé, et percute\n"
+	.string "un rocher de plein fouet.$"
 
 CF_T_020::
-	.string "Pikachu a heurté les rochers.\n"
+	.string "Red accourt et le ramasse.\n"
 	.string "Il respire, mais ne bouge plus.$"
 
 CF_T_021::

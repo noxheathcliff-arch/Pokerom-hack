@@ -138,9 +138,12 @@ static void CF_DemoNewGameInit(void)
     // Object visibility: flag set = hidden. VIS_00/01 (beach) and VIS_10/11/12/14/15 (walls) stay visible.
     // VIS_39 = Routes 102-104 trainers (until chapter 1); VIS_40/41 = Petalburg mini-scene (D006 b);
     // VIS_42 = Petalburg HQ gym trainers; VIS_43 = Brice at the Rustboro Pokemon Center (C11).
+    // VIS_19/21/22 (Petalburg Woods C3 scene) and VIS_31-34 (Rusturf Tunnel C8 scene) start visible:
+    // their scenes hide them when they end (setflag), nothing ever reveals them.
     for (i = 2; i <= 43; i++)
     {
-        if (i == 10 || i == 11 || i == 12 || i == 14 || i == 15)
+        if (i == 10 || i == 11 || i == 12 || i == 14 || i == 15
+         || i == 19 || i == 21 || i == 22 || (i >= 31 && i <= 34))
             continue;
         FlagSet(FLAG_CF_VIS_00 + i);
     }

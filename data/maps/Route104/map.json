@@ -32,19 +32,6 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
-      "x": 15,
-      "y": 60,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route104_EventScript_BugCatcher",
-      "flag": "0"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
       "x": 25,
       "y": 49,
@@ -55,7 +42,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Girl1",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
@@ -81,7 +68,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Boy1",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -94,7 +81,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Woman",
-      "flag": "0"
+      "flag": "FLAG_CF_VIS_39"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
@@ -563,8 +550,8 @@
     {
       "local_id": "LOCALID_CF_R104_TAUROS",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAUROS)",
-      "x": 16,
-      "y": 63,
+      "x": 13,
+      "y": 60,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -577,8 +564,8 @@
     {
       "local_id": "LOCALID_CF_R104_URSARING",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(URSARING)",
-      "x": 16,
-      "y": 51,
+      "x": 13,
+      "y": 60,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -591,8 +578,8 @@
     {
       "local_id": "LOCALID_CF_R104_GYARADOS",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(GYARADOS)",
-      "x": 11,
-      "y": 57,
+      "x": 13,
+      "y": 60,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -605,8 +592,8 @@
     {
       "local_id": "LOCALID_CF_R104_PIKACHU",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIKACHU)",
-      "x": 14,
-      "y": 58,
+      "x": 16,
+      "y": 59,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -619,8 +606,8 @@
     {
       "local_id": "LOCALID_CF_R104_PORTAL",
       "graphics_id": "OBJ_EVENT_GFX_CF_PORTAL",
-      "x": 11,
-      "y": 56,
+      "x": 13,
+      "y": 60,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -633,8 +620,8 @@
     {
       "local_id": "LOCALID_CF_R104_BAG",
       "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
-      "x": 16,
-      "y": 58,
+      "x": 15,
+      "y": 59,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -647,8 +634,8 @@
     {
       "local_id": "LOCALID_CF_R104_BALL_A",
       "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
-      "x": 14,
-      "y": 58,
+      "x": 16,
+      "y": 59,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -662,7 +649,7 @@
       "local_id": "LOCALID_CF_R104_BALL_B",
       "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
       "x": 15,
-      "y": 58,
+      "y": 61,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -671,6 +658,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_CF_VIS_83"
+    },
+    {
+      "local_id": "LOCALID_CF_R104_ROCK",
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 18,
+      "y": 59,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_44"
     }
   ],
   "warp_events": [
