@@ -365,6 +365,7 @@ CFP_P2_CeleoLeaves::
 
 CF_P2_Home::
 	lockall
+	turnobject LOCALID_CF_BRINEY_CELEO, DIR_NORTH
 	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
 	waitmovement LOCALID_PLAYER
 	cfp_say CF_N0_Marco, CF_T_026
@@ -400,7 +401,6 @@ CF_P2_Stay::
 CF_P2_StayEnd::
 	cfp_say CF_N0_Marco, CF_T_038
 	cfp_say CF_N0_Marco, CF_T_039
-	cfp_nar CF_T_040
 	closemessage
 	setflag FLAG_CF_VIS_02
 	setvar VAR_BRINEY_HOUSE_STATE, 9
@@ -465,8 +465,6 @@ CF_P2_PetalburgScene::
 	setflag FLAG_CF_VIS_40
 	setflag FLAG_CF_VIS_41
 	setvar VAR_PETALBURG_CITY_STATE, 1
-	cfp_nar CF_T_048
-	closemessage
 	fadescreen FADE_TO_BLACK
 	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 11
 	waitstate
@@ -490,7 +488,7 @@ CFP_Lab_ShowTable::
 	clearflag FLAG_CF_VIS_87
 	clearflag FLAG_CF_VIS_88
 	@ the assistant waits at the back of the lab, then walks up to Seko
-	setobjectxyperm LOCALID_BIRCHS_LAB_AIDE, 1, 3
+	setobjectxyperm LOCALID_BIRCHS_LAB_AIDE, 1, 4
 	setobjectmovementtype LOCALID_BIRCHS_LAB_AIDE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -506,6 +504,15 @@ CF_Lab_HurtPikachu::
 
 CF_P3_Lab::
 	lockall
+	@ arrival narration (shown here: text queued before a fade-out is never seen)
+	checkdecision 6
+	goto_if_eq VAR_RESULT, DEC_A, CFP_P3_NarStay
+	cfp_nar CF_T_048
+	goto CFP_P3_NarDone
+CFP_P3_NarStay:
+	cfp_nar CF_T_040
+CFP_P3_NarDone:
+	closemessage
 	applymovement LOCALID_PLAYER, CFP_Mov_Up6
 	waitmovement LOCALID_PLAYER
 	applymovement LOCALID_BIRCHS_LAB_BIRCH, Common_Movement_FaceDown
@@ -522,9 +529,10 @@ CF_P3_Lab::
 
 CF_P3_PikachuHurt::
 	closemessage
-	setobjectxyperm LOCALID_CF_LAB_PIKACHU, 7, 6
+	setobjectxyperm LOCALID_CF_LAB_PIKACHU, 7, 5
 	clearflag FLAG_CF_VIS_05
 	addobject LOCALID_CF_LAB_PIKACHU
+	turnobject LOCALID_CF_LAB_PIKACHU, DIR_WEST
 	playse SE_BALL_OPEN
 	waitse
 	playmoncry SPECIES_PIKACHU, CRY_MODE_WEAK
@@ -572,7 +580,9 @@ CF_P3_Treecko::
 	givemon SPECIES_TREECKO, 5
 	setvar VAR_STARTER_MON, 0
 	setdecision_once 4, DEC_A, CF_P3_StarterGot
+	playfanfare MUS_OBTAIN_ITEM
 	cfp_nar CF_P3_Text_GotTreecko
+	waitfanfare
 	goto CF_P3_StarterGot
 
 CF_P3_Torchic::
@@ -586,7 +596,9 @@ CF_P3_Torchic::
 	givemon SPECIES_TORCHIC, 5
 	setvar VAR_STARTER_MON, 1
 	setdecision_once 4, DEC_B, CF_P3_StarterGot
+	playfanfare MUS_OBTAIN_ITEM
 	cfp_nar CF_P3_Text_GotTorchic
+	waitfanfare
 	goto CF_P3_StarterGot
 
 CF_P3_Mudkip::
@@ -600,7 +612,9 @@ CF_P3_Mudkip::
 	givemon SPECIES_MUDKIP, 5
 	setvar VAR_STARTER_MON, 2
 	setdecision_once 4, DEC_C, CF_P3_StarterGot
+	playfanfare MUS_OBTAIN_ITEM
 	cfp_nar CF_P3_Text_GotMudkip
+	waitfanfare
 	goto CF_P3_StarterGot
 
 CF_P3_StarterGot::
@@ -643,6 +657,10 @@ CF_P3_Hard::
 	goto CF_P3_Phone
 
 CF_P3_Phone::
+	playse SE_POKENAV_CALL
+	waitse
+	playse SE_POKENAV_CALL
+	waitse
 	playse SE_PIN
 	applymovement LOCALID_BIRCHS_LAB_BIRCH, Common_Movement_ExclamationMark
 	waitmovement LOCALID_BIRCHS_LAB_BIRCH
@@ -652,6 +670,8 @@ CF_P3_Phone::
 	cfp_say CF_N0_Assistant, CF_T_067
 	cfp_say CF_N0_Seko, CF_T_068
 	closemessage
+	applymovement LOCALID_BIRCHS_LAB_AIDE, CFP_Mov_AideBack
+	waitmovement LOCALID_BIRCHS_LAB_AIDE
 	turnobject LOCALID_BIRCHS_LAB_BIRCH, DIR_SOUTH
 	cfp_nar CF_T_069
 	cfp_say CF_N0_Norman, CF_T_070
@@ -767,7 +787,7 @@ CFP_P4_MonsFlee::
 
 CF_Route101_BriceRound::
 	lockall
-	applymovement LOCALID_PLAYER, CFP_Mov_Up3
+	applymovement LOCALID_PLAYER, CFP_Mov_Up4
 	waitmovement LOCALID_PLAYER
 	applymovement LOCALID_ROUTE101_BIRCH, CFP_Mov_Panic
 	applymovement LOCALID_CF_R101_A, CFP_Mov_Hop
@@ -843,6 +863,15 @@ CF_P4_Common::
 	end
 
 @ ---------------------------------------------------------------- P5: matin chez les Seko
+@ 2F frame script (VAR_ROUTE101_STATE 3 -> 4): narration shown after the warp, not before the fade.
+CF_P4_Morning::
+	lockall
+	cfp_nar CF_T_104b
+	closemessage
+	setvar VAR_ROUTE101_STATE, 4
+	releaseall
+	end
+
 
 CF_P5_Mom::
 	cfp_say CF_N0_MmeSeko, CF_T_105
@@ -876,20 +905,56 @@ CF_P5_ExitTrigger::
 	waitmovement LOCALID_PLAYER
 	call CF_P5_Mom
 CF_P5_ExitBrice::
+	@ Brice comes down the stairs, talks face to face, then walks out the door
+	closemessage
+	getplayerxy VAR_0x8004, VAR_0x8005
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN
+	setobjectxyperm LOCALID_RIVALS_HOUSE_1F_RIVAL, 8, 2
+	addobject LOCALID_RIVALS_HOUSE_1F_RIVAL
+	call_if_eq VAR_0x8004, 8, CFP_P5_BriceDown8
+	call_if_ne VAR_0x8004, 8, CFP_P5_BriceDown9
+	turnobject LOCALID_PLAYER, DIR_NORTH
 	cfp_say CF_N0_Brice, CF_T_108
 	closemessage
+	call_if_eq VAR_0x8004, 8, CFP_P5_BriceOut8
+	call_if_ne VAR_0x8004, 8, CFP_P5_BriceOut9
+	playse SE_EXIT
+	removeobject LOCALID_RIVALS_HOUSE_1F_RIVAL
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 6
 	releaseall
 	end
 
 CFP_P5_MomTo8::
-	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, CFP_Mov_Right5
+	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, CFP_Mov_MomTo8
 	waitmovement LOCALID_RIVALS_HOUSE_1F_MOM
 	return
 
 CFP_P5_MomTo9::
-	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, CFP_Mov_Right6
+	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, CFP_Mov_MomTo9
 	waitmovement LOCALID_RIVALS_HOUSE_1F_MOM
+	return
+
+CFP_P5_BriceDown8::
+	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, CFP_Mov_BriceDown8
+	waitmovement LOCALID_RIVALS_HOUSE_1F_RIVAL
+	return
+
+CFP_P5_BriceDown9::
+	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, CFP_Mov_BriceDown9
+	waitmovement LOCALID_RIVALS_HOUSE_1F_RIVAL
+	return
+
+CFP_P5_BriceOut8::
+	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, CFP_Mov_BriceOut8
+	waitmovement LOCALID_RIVALS_HOUSE_1F_RIVAL
+	return
+
+CFP_P5_BriceOut9::
+	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, CFP_Mov_BriceOut9
+	waitmovement LOCALID_RIVALS_HOUSE_1F_RIVAL
 	return
 
 @ ---------------------------------------------------------------- P6: Route 103, duel et Zigzaton de Galar
@@ -959,7 +1024,7 @@ CF_P6_AfterDuel::
 	closemessage
 	clearflag FLAG_CF_VIS_09
 	addobject LOCALID_CF_R103_POLICE
-	applymovement LOCALID_CF_R103_POLICE, CFP_Mov_Left7
+	applymovement LOCALID_CF_R103_POLICE, CFP_Mov_Left4
 	waitmovement LOCALID_CF_R103_POLICE
 	playse SE_PIN
 	applymovement LOCALID_CF_R103_POLICE, Common_Movement_ExclamationMark
@@ -986,6 +1051,7 @@ CF_P6_Capture::
 	playfanfare MUS_OBTAIN_ITEM
 	cfp_nar CF_P6_Text_GotZigzagoon
 	waitfanfare
+	turnobject LOCALID_CF_R103_POLICE, DIR_WEST
 	cfp_say CF_N0_Agent, CF_T_119
 	cfp_say CF_N0_Brice, CF_T_120
 	setdecision_once 7, DEC_A, CF_P6_End
@@ -997,25 +1063,27 @@ CF_P6_Capture::
 CF_P6_Leave::
 	cfp_say CF_N0_Agent, CF_T_121
 	closemessage
-	applymovement LOCALID_CF_R103_POLICE, CFP_Mov_Right8
-	applymovement LOCALID_CF_R103_ZIGZAGOON, CFP_Mov_Right8
+	applymovement LOCALID_CF_R103_POLICE, CFP_Mov_Right4
+	applymovement LOCALID_CF_R103_ZIGZAGOON, CFP_Mov_ZigLeave
 	waitmovement LOCALID_CF_R103_POLICE
 	waitmovement LOCALID_CF_R103_ZIGZAGOON
 	removeobject LOCALID_CF_R103_ZIGZAGOON
 	removeobject LOCALID_CF_R103_POLICE
 	cfp_say CF_N0_Brice, CF_T_122
-	setdecision_once 7, DEC_B, CF_P6_End
+	setdecision_once 7, DEC_B, CF_P6_EndCommon
 	addaffinity VAR_CF_REP_L, 2
 	setvar VAR_0x8004, 0
 	call CF_IncBV
-	goto CF_P6_End
+	goto CF_P6_EndCommon
 
 CF_P6_End::
 	closemessage
-	applymovement LOCALID_CF_R103_POLICE, CFP_Mov_Right8
+	applymovement LOCALID_CF_R103_POLICE, CFP_Mov_Right4
 	waitmovement LOCALID_CF_R103_POLICE
 	removeobject LOCALID_CF_R103_POLICE
 	removeobject LOCALID_CF_R103_ZIGZAGOON
+CF_P6_EndCommon::
+	closemessage
 	setflag FLAG_CF_VIS_16
 	setflag FLAG_CF_VIS_09
 	setvar VAR_CF_CHAPTER, 1
@@ -1028,10 +1096,24 @@ CF_P6_End::
 	goto_if_eq VAR_RESULT, DEC_A, CF_P6_BriceFollows
 	cfp_say CF_N0_Brice, CF_T_123
 	closemessage
+	@ Brice walks off south (over the ledge) instead of vanishing on the spot
+	getplayerxy VAR_0x8004, VAR_0x8005
+	call_if_eq VAR_0x8004, 10, CFP_P6_BriceLeaveSide
+	call_if_ne VAR_0x8004, 10, CFP_P6_BriceLeaveDown
 	removeobject LOCALID_ROUTE103_RIVAL
 	setflag FLAG_CF_VIS_07
 	releaseall
 	end
+
+CFP_P6_BriceLeaveSide::
+	applymovement LOCALID_ROUTE103_RIVAL, CFP_Mov_BriceR103Side
+	waitmovement LOCALID_ROUTE103_RIVAL
+	return
+
+CFP_P6_BriceLeaveDown::
+	applymovement LOCALID_ROUTE103_RIVAL, CFP_Mov_BriceR103Down
+	waitmovement LOCALID_ROUTE103_RIVAL
+	return
 
 CF_P6_BriceFollows::
 	cfp_say CF_N0_Brice, CF_T_124
@@ -1192,10 +1274,100 @@ CFP_Mov_Up2:
 	walk_up
 	step_end
 
+CFP_Mov_Up4:
+	walk_up
 CFP_Mov_Up3:
 	walk_up
 	walk_up
 	walk_up
+	step_end
+
+CFP_Mov_Left4:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+CFP_Mov_ZigLeave:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+CFP_Mov_BriceR103Side:
+	walk_left
+	walk_down
+CFP_Mov_BriceR103Jump:
+	jump_2_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+CFP_Mov_BriceR103Down:
+	walk_down
+	jump_2_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+CFP_Mov_MomTo9:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	face_right
+	step_end
+
+CFP_Mov_MomTo8:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	face_right
+	step_end
+
+CFP_Mov_BriceDown8:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+CFP_Mov_BriceDown9:
+	walk_down
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+CFP_Mov_BriceOut8:
+	walk_right
+	walk_down
+	walk_down
+	step_end
+
+CFP_Mov_BriceOut9:
+	walk_right
+	walk_down
+	walk_down
+	walk_left
 	step_end
 
 CFP_Mov_Up6:
@@ -1254,7 +1426,6 @@ CFP_Mov_Right3FaceUp:
 
 CFP_Mov_PikaToSeko:
 	walk_up
-	walk_up
 	face_left
 	step_end
 
@@ -1263,8 +1434,15 @@ CFP_Mov_AideToSeko:
 	walk_right
 	walk_right
 	walk_right
-	walk_down
 	face_right
+	step_end
+
+CFP_Mov_AideBack:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
 	step_end
 
 CFP_Mov_Left3FaceUp:
@@ -1552,8 +1730,9 @@ CF_T_041::
 	.string "moins louches. …Enfin, j’espère.$"
 
 CF_T_042::
-	.string "Va voir le professeur Seko,\n"
-	.string "à Bourg-en-Vol. Il soigne\p"
+	.string "À Clémenti, Ciléo se déclare.\n"
+	.string "Toi, file chez le prof Seko,\p"
+	.string "à Bourg-en-Vol. Il soigne\n"
 	.string "les blessés. Bêtes ou gens.$"
 
 CF_T_043::
@@ -1579,7 +1758,7 @@ CF_T_047::
 	.string "Bon. Passez.$"
 
 CF_T_048::
-	.string "Une heure de marche plus tard,\n"
+	.string "Une heure après Clémenti,\n"
 	.string "Bourg-en-Vol dort encore.$"
 
 CF_T_049::
@@ -1756,7 +1935,7 @@ CF_T_092::
 
 CF_T_093::
 	.string "Six… sept… Et un Piafabec.\n"
-	.string "Non, deux ! Ça bouge, arrêtez !$"
+	.string "Un Nidoran ! Ça bouge, arrêtez !$"
 
 CF_T_094::
 	.string "Hé, vous trois ! Je vous recense,\n"
@@ -1798,6 +1977,10 @@ CF_T_103::
 CF_T_104::
 	.string "Tu dors chez nous ce soir.\n"
 	.string "Maman a toujours un lit en trop.$"
+
+CF_T_104b::
+	.string "Le lendemain matin,\n"
+	.string "chez les Seko…$"
 
 CF_T_105::
 	.string "Bonjour ! Brice m’a tout raconté.\n"
@@ -1870,7 +2053,8 @@ CF_T_122::
 
 CF_T_123::
 	.string "Mon père veut que je finisse ici.\n"
-	.string "Je te rejoins à Mérouville !$"
+	.string "Je te rejoins à Clémenti !$"
+
 
 CF_T_124::
 	.string "On va à Clémenti ! Le QG de\n"

@@ -135,6 +135,7 @@ static void CF_DemoNewGameInit(void)
     FlagSet(FLAG_NO_WILD_ENCOUNTERS); // cleared at the end of P4
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK); // no moving trucks (were walk-through)
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL); // vanilla Potion ball in Brice's room
     // Object visibility: flag set = hidden. VIS_00/01 (beach) and VIS_10/11/12/14/15 (walls) stay visible.
     // VIS_39 = Routes 102-104 trainers (until chapter 1); VIS_40/41 = Petalburg mini-scene (D006 b);
     // VIS_42 = Petalburg HQ gym trainers; VIS_43 = Brice at the Rustboro Pokemon Center (C11).
