@@ -1,0 +1,2 @@
+# QA cheat: FLAG_NO_WILD_ENCOUNTERS (flag 32 = byte 4 bit 0; byte was 0 at ch1 start)
+write8 *gSaveBlock1Ptr+SB1_FLAGS_OFFSET+4 1

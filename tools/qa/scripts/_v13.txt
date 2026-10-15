@@ -1,0 +1,9373 @@
+# Prologue P1-P6 full playthrough, all first options (D001 a, D006 a, starter Arcko, Normal, D002 a, D005 a, D003 a, D007 a).
+# A replay of one verified deterministic run (emulator + inputs are deterministic). It is tied to the ROM build: if a script/text change
+# shifts timing, the A-mash segments drift. Re-run tools/qa/scripts/prologue_p_check.txt style checks, then regenerate.
+# The waitfor timeouts in the P1 forced-switch section are benign "[FAIL] waitfor" lines (the party screen was already open), exit code 3 is expected.
+# End state: Route 103 (map num 18), VAR_CF_CHAPTER=1, VAR_CF_D00=5461, 2 mons, saved in game.
+# Usage: gbaplay -q --syms SYMS --defs OFFSETS -o OUT -s OUT/game.sav ROM tools/qa/scripts/prologue_full_a.txt
+include new_game_to_truck.txt
+wait 200
+echo P1: beach cutscene + 3 scripted battles (Tauros 42 / Gyarados / Ursaring), forced switches
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 15000 A 14
+screenshot pf_p1_forced_switch.png
+wait 90
+press RIGHT
+wait 10
+press A
+wait 20
+press A
+wait 100
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+press A
+wait 14
+wait 20
+press A
+wait 120
+press A
+wait 60
+press B
+wait 30
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 3000 A 14
+wait 90
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+waitfor32 gMain+4 CB2_UpdatePartyMenu+1 4000 A 14
+wait 90
+press DOWN
+wait 8
+press A
+wait 20
+press A
+wait 60
+wait 5
+press B 6
+wait 40
+press A 6
+wait 40
+press B 6
+wait 40
+press DOWN 6
+wait 10
+press DOWN 6
+wait 10
+press A 6
+wait 30
+press A 6
+wait 100
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press B 6
+wait 40
+press A 6
+wait 40
+press B 6
+wait 40
+press DOWN 6
+wait 10
+press A 6
+wait 30
+press A 6
+wait 100
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press B 6
+wait 40
+press A 6
+wait 40
+press B 6
+wait 40
+press DOWN 6
+wait 10
+press A 6
+wait 30
+press A 6
+wait 100
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press B 6
+wait 40
+press A 6
+wait 40
+press B 6
+wait 40
+press DOWN 6
+wait 10
+press A 6
+wait 30
+press A 6
+wait 100
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press B 6
+wait 40
+press A 6
+wait 40
+press B 6
+wait 40
+press DOWN 6
+wait 10
+press A 6
+wait 30
+press A 6
+wait 100
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press B 6
+wait 40
+press A 6
+wait 40
+press B 6
+wait 40
+press DOWN 6
+wait 10
+press A 6
+wait 30
+press A 6
+wait 100
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+echo P1 done -> P2 Marco -> P3 lab (starter, difficulty, D002, D005)
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+screenshot pf_p3_lab_done.png
+expectvar 0x407E 1349
+expect8 *gPlayerPartyCountPtr 1
+echo P4: walk to Route 101
+hold DOWN 50
+wait 120
+hold RIGHT 40
+hold UP 400
+wait 200
+hold DOWN 20
+hold RIGHT 40
+hold UP 100
+wait 30
+hold LEFT 100
+hold RIGHT 48
+hold UP 500
+wait 200
+hold RIGHT 16
+hold UP 300
+wait 300
+wait 13
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+press A 4
+wait 14
+screenshot pf_p4_done.png
+expectvar 0x407E 1365
+echo P5: house, exit trigger

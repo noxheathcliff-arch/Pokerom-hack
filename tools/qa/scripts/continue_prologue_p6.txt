@@ -1,0 +1,10 @@
+# Power-cycle check after prologue_full_a.txt: continue -> Route 103, chapter 1, 2 mons.
+include lib/boot_to_main_menu.txt
+press A
+waitfor32 gMain+4 CB2_Overworld+1 1200
+wait 120
+screenshot pf_continue.png
+expect8 *gSaveBlock1Ptr+SB1_LOCATION_OFFSET+1 18
+expectvar 0x4075 1
+expectvar 0x407E 5461
+expect8 *gPlayerPartyCountPtr 2

@@ -1,0 +1,22 @@
+# In-game save from the overworld: START menu (POKEDEX, SAC, <nom>, SAUVER) -> OUI -> wait.
+# First use only (cursor on top): DOWN x3 = SAUVER. Later saves: ch1_save_again.txt (cursor remembered).
+wait 40
+press START
+wait 30
+press DOWN
+wait 6
+press DOWN
+wait 6
+press DOWN
+wait 6
+press A
+wait 240
+screenshot save_confirm.png
+press A
+wait 300
+# 'Il y a deja une partie sauvegardee. Voulez-vous la remplacer ?' appears when a save exists
+press A
+wait 500
+press A
+wait 60
+writesave

@@ -1,0 +1,6 @@
+# Continue from the battery save (-s) and wait for the overworld.
+include lib/boot_to_main_menu.txt
+press A
+waitfor32 gMain+4 CB2_Overworld+1 1200
+wait 120
+screenshot continued.png

@@ -1,0 +1,15 @@
+# In-game save when the START menu cursor is already on SAUVER (it remembers its last entry).
+wait 40
+press START
+wait 30
+press A
+wait 240
+screenshot save_confirm.png
+press A
+wait 300
+# 'Il y a deja une partie sauvegardee. Voulez-vous la remplacer ?' appears when a save exists
+press A
+wait 500
+press A
+wait 60
+writesave

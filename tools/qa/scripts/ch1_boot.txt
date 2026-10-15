@@ -1,0 +1,10 @@
+# New game -> truck -> mash A on the beach. Savestate at the truck.
+include new_game_to_truck.txt
+wait 200
+savestate truck.ss
+repeat 100 press A 2
+wait 300
+screenshot m1.png
+repeat 60 press A 2
+wait 100
+screenshot m2.png

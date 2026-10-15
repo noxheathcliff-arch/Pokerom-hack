@@ -1,0 +1,9 @@
+# QA teleport within the current map: define TPX/TPY (tile coords) before include. Player object = gObjectEvents[0].
+define TPXO TPX+7
+define TPYO TPY+7
+write16 gObjectEvents+0x10 TPXO
+write16 gObjectEvents+0x12 TPYO
+write16 gObjectEvents+0x14 TPXO
+write16 gObjectEvents+0x16 TPYO
+write16 *gSaveBlock1Ptr+SB1_POS_OFFSET TPX
+write16 *gSaveBlock1Ptr+SB1_POS_OFFSET+2 TPY
