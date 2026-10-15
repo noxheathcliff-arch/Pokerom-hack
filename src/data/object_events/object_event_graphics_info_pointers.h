@@ -96,6 +96,9 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothCar
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothFacingAway;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BirchsBag;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalFront;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalSide;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalTilted;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EnemyZigzagoon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Artist;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalBrendanNormal;
@@ -502,6 +505,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_VIGOROTH_FACING_AWAY] =     &gObjectEventGraphicsInfo_VigorothFacingAway,
     [OBJ_EVENT_GFX_BIRCHS_BAG] =               &gObjectEventGraphicsInfo_BirchsBag,
     [OBJ_EVENT_GFX_CF_PORTAL] =                &gObjectEventGraphicsInfo_CfPortal,
+    [OBJ_EVENT_GFX_CF_PORTAL_FRONT] = &gObjectEventGraphicsInfo_CfPortalFront,
+    [OBJ_EVENT_GFX_CF_PORTAL_SIDE] = &gObjectEventGraphicsInfo_CfPortalSide,
+    [OBJ_EVENT_GFX_CF_PORTAL_TILTED] = &gObjectEventGraphicsInfo_CfPortalTilted,
     [OBJ_EVENT_GFX_ZIGZAGOON_1] =              &gObjectEventGraphicsInfo_EnemyZigzagoon,
     [OBJ_EVENT_GFX_ARTIST] =                   &gObjectEventGraphicsInfo_Artist,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL] =     &gObjectEventGraphicsInfo_RivalBrendanNormal,

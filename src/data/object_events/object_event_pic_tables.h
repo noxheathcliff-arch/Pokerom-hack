@@ -402,6 +402,27 @@ static const struct SpriteFrameImage sPicTable_CfPortal[] = {
     obj_frame_tiles(gObjectEventPic_CfPortal),
 };
 
+static const struct SpriteFrameImage sPicTable_CfPortalFront[] = {
+    overworld_frame(gObjectEventPic_CfPortalFront, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CfPortalFront, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CfPortalFront, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CfPortalFront, 4, 4, 3),
+};
+
+static const struct SpriteFrameImage sPicTable_CfPortalSide[] = {
+    overworld_frame(gObjectEventPic_CfPortalSide, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CfPortalSide, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CfPortalSide, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CfPortalSide, 4, 4, 3),
+};
+
+static const struct SpriteFrameImage sPicTable_CfPortalTilted[] = {
+    overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 3),
+};
+
 static const struct SpriteFrameImage sPicTable_BirchsBag[] = {
     obj_frame_tiles(gObjectEventPic_BirchsBag),
 };

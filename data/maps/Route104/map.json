@@ -605,7 +605,7 @@
     },
     {
       "local_id": "LOCALID_CF_R104_PORTAL",
-      "graphics_id": "OBJ_EVENT_GFX_CF_PORTAL",
+      "graphics_id": "OBJ_EVENT_GFX_CF_PORTAL_FRONT",
       "x": 13,
       "y": 60,
       "elevation": 3,

@@ -416,6 +416,9 @@ enum
     OBJ_EVENT_GFX_CUTTABLE_TREE_FRLG,
     OBJ_EVENT_GFX_BREAKABLE_ROCK_FRLG,
     OBJ_EVENT_GFX_CF_PORTAL, // Hack: Confluence portal ring (32x32, NPC_2 palette)
+    OBJ_EVENT_GFX_CF_PORTAL_FRONT,  // Hack: animated portal, seen head-on (4 frames)
+    OBJ_EVENT_GFX_CF_PORTAL_SIDE,   // Hack: animated portal, seen edge-on (4 frames)
+    OBJ_EVENT_GFX_CF_PORTAL_TILTED, // Hack: animated portal, lying tilted (4 frames)
     NUM_OBJ_EVENT_GFX,
 };
 

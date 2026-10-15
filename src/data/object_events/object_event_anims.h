@@ -1197,6 +1197,21 @@ static const union AnimCmd *const sAnimTable_Inanimate[] = {
     [ANIM_STAY_STILL] = sAnim_StayStill,
 };
 
+// Hack: Confluence portal swirl. Inanimate objects only ever play anim 0, but every
+// standard index points at the loop so nothing can select a missing entry.
+static const union AnimCmd sAnim_CfPortalSpin[] =
+{
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(2, 10),
+    ANIMCMD_FRAME(3, 10),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_CfPortalSpin[] = {
+    [0 ... ANIM_STD_COUNT - 1] = sAnim_CfPortalSpin,
+};
+
 static const union AnimCmd *const sAnimTable_QuintyPlump[] = {
     [ANIM_STD_FACE_SOUTH] = sAnim_QuintyPlumpFaceSouth,
     [ANIM_STD_FACE_NORTH] = sAnim_QuintyPlumpFaceNorth,
