@@ -12,6 +12,9 @@
 #include "constants/maps.h"
 #include "constants/map_groups.h"
 
+// setdecision_once refers to VAR_RESULT by name inside the assembler macro.
+asm(".set VAR_RESULT, " STR(VAR_RESULT) "\n");
+
 bool8 DoMassOutbreakEncounterTest(void); // wild_encounter.c (no header prototype upstream)
 
 static const u16 sCfVars[] =
@@ -176,18 +179,18 @@ TEST("Decisions: setdecision_once jumps away when the decision was already taken
     ClearCfVars();
     VarSet(VAR_TEMP_2, 0);
     RUN_OVERWORLD_SCRIPT(
-        setdecision_once 27, DEC_A, 1f;
+        setdecision_once 27, DEC_A, 2f;
         setvar VAR_TEMP_2, 1;
         end;
-    1:
+    2:
         setvar VAR_TEMP_2, 2;
     );
     EXPECT_EQ(VarGet(VAR_TEMP_2), 1);
     RUN_OVERWORLD_SCRIPT(
-        setdecision_once 27, DEC_B, 1f;
+        setdecision_once 27, DEC_B, 2f;
         setvar VAR_TEMP_2, 1;
         end;
-    1:
+    2:
         setvar VAR_TEMP_2, 2;
     );
     EXPECT_EQ(VarGet(VAR_TEMP_2), 2);
