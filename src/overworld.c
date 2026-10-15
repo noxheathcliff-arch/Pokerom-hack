@@ -893,6 +893,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE
     TryUpdateRandomTrainerRematches(mapGroup, mapNum);
+    ClearDeclinedTrainersOnMap(); // Hack: CF-ROUTE-DECLINE
 #endif //FREE_MATCH_CALL
 
     if (I_VS_SEEKER_CHARGING != 0)
@@ -960,6 +961,7 @@ static void LoadMapFromWarp(bool32 a1)
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE
     TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+    ClearDeclinedTrainersOnMap(); // Hack: CF-ROUTE-DECLINE
 #endif //FREE_MATCH_CALL
 
     if (I_VS_SEEKER_CHARGING != 0)

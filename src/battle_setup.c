@@ -55,6 +55,7 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
+#include "constants/trainer_types.h"
 #include "constants/weather.h"
 #include "fishing.h"
 
@@ -1289,14 +1290,49 @@ static bool32 IsDeclinableParam(const TrainerBattleParameter *param)
 
 static u32 GetDeclinedFlag(const TrainerBattleParameter *param)
 {
+    if (!(param->params.rivalBattleFlags & TRAINER_BATTLE_DECLINABLE))
+        return 0;
     return (u32)param->params.defeatTextB;
+}
+
+// Hack (CF-ROUTE-DECLINE, B_DECLINABLE_ROUTE_TRAINERS): trainerbattle_single / trainerbattle_double (also
+// with an event script WITH music, e.g. match-call registration; not NO_MUSIC, not scene battles) used by a map
+// trainer with a sight type (route / gym trainers) are declinable too. Gym leaders and story bosses are
+// TRAINER_TYPE_NONE and/or use the NO_MUSIC variants: mandatory.
+static bool32 IsAutoDeclinableParam(const TrainerBattleParameter *param)
+{
+    struct ObjectEvent *obj;
+
+    if (!B_DECLINABLE_ROUTE_TRAINERS
+        || (param->params.rivalBattleFlags & (TRAINER_BATTLE_SCENE | TRAINER_BATTLE_DECLINABLE))
+        || (param->params.mode != TRAINER_BATTLE_SINGLE && param->params.mode != TRAINER_BATTLE_DOUBLE
+         && param->params.mode != TRAINER_BATTLE_CONTINUE_SCRIPT && param->params.mode != TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE)
+        || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InTrainerHill() || gSelectedObjectEvent >= OBJECT_EVENTS_COUNT)
+        return FALSE;
+    obj = &gObjectEvents[gSelectedObjectEvent];
+    return obj->active && obj->localId == gSpecialVar_LastTalked
+        && obj->trainerType != TRAINER_TYPE_NONE && obj->trainerType != TRAINER_TYPE_OW_WILD_ENCOUNTER;
+}
+
+// Local IDs of the trainers refused on the current map: they do not spot the player again until the
+// next map load (talking to them re-offers the battle). Cleared by ClearDeclinedTrainersOnMap.
+EWRAM_DATA static u8 sDeclinedTrainerLocalIds[256 / 8] = {0};
+
+void ClearDeclinedTrainersOnMap(void)
+{
+    memset(sDeclinedTrainerLocalIds, 0, sizeof(sDeclinedTrainerLocalIds));
+}
+
+bool32 IsTrainerDeclinedOnMap(u8 localId)
+{
+    return (sDeclinedTrainerLocalIds[localId / 8] >> (localId % 8)) & 1;
 }
 
 bool32 IsTrainerBattleDeclinable(void)
 {
     if (gNoOfApproachingTrainers > 1) // two trainers spotted the player at once: no choice
         return FALSE;
-    return IsDeclinableParam(&gTrainerBattleParameter);
+    return IsDeclinableParam(&gTrainerBattleParameter) || IsAutoDeclinableParam(&gTrainerBattleParameter);
 }
 
 // TRUE if this declinable battle was already refused (its declined flag is set).
@@ -1323,6 +1359,12 @@ static void FinishDeclinedTrainerBattle(struct ScriptContext *ctx, u16 result)
     Script_RequestWriteVar(VAR_RESULT);
     if (flag != 0)
         FlagSet(flag);
+    if (result == TRAINER_DECLINED_NOW && !(TRAINER_BATTLE_PARAM.rivalBattleFlags & TRAINER_BATTLE_SCENE)
+        && gSelectedObjectEvent < OBJECT_EVENTS_COUNT && gObjectEvents[gSelectedObjectEvent].active)
+    {
+        u8 localId = gObjectEvents[gSelectedObjectEvent].localId;
+        sDeclinedTrainerLocalIds[localId / 8] |= 1 << (localId % 8);
+    }
     gSpecialVar_Result = result;
     gNoOfApproachingTrainers = 0;
     gApproachingTrainerId = 0;

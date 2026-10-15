@@ -137,6 +137,8 @@ EventScript_AskAcceptTrainerBattle::
 	closemessage
 	fadedefaultbgm
 	callnative Script_TrainerBattleDeclinedNow, requests_effects=1
+	@ No decline script: short refusal line (CF-ROUTE-DECLINE). The trainer won't spot the player again on this map visit.
+	msgbox Text_TrainerBattleRefused, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -148,6 +150,10 @@ EventScript_TrainerBattleAlreadyDeclined::
 
 Text_AcceptTrainerBattle:
 	.string "Accepter le combat ?$"
+
+Text_TrainerBattleRefused:
+	.string "Dommage… Reviens quand tu seras\n"
+	.string "prêt pour un combat !$"
 
 @ Hack: B_FLAG_CHOOSE_BATTLE_LEAD - pick the lead Pokemon before the battle (B cancels: normal lead)
 EventScript_MaybeChooseBattleLead::

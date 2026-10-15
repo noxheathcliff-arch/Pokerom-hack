@@ -271,6 +271,7 @@
 
 #define B_FLAG_CHOOSE_BATTLE_LEAD   FLAG_CHOOSE_BATTLE_LEAD // Hack: while this flag is set, the player picks the lead Pokemon (party menu) before each scripted trainer battle. 0 disables the feature.
 #define B_DECLINABLE_TRAINER_BATTLES TRUE  // Hack: if TRUE, trainers using trainerbattle_single_declinable ask "Accepter le combat ?" and can be refused.
+#define B_DECLINABLE_ROUTE_TRAINERS  TRUE  // Hack (CF-ROUTE-DECLINE): plain trainerbattle_single/double of sight-type map trainers also ask "Accepter le combat ?".
 #define B_VAR_DIFFICULTY            VAR_DIFFICULTY    // Hack: 0x40F7; upstream NewGameInitData sets it to DIFFICULTY_NORMAL. If not 0, you can use this var to control which difficulty version of a Trainer is loaded. This should be manually set by the developer using Script_SetDifficulty AFTER NewGameInitData has run.
 
 // No bag settings

@@ -144,8 +144,9 @@ static void CF_DemoNewGameInit(void)
             continue;
         FlagSet(FLAG_CF_VIS_00 + i);
     }
-    // VIS_86-92 = prologue staging (lab starter balls, Route 104 wild mons + Pikachu), shown by script.
-    for (i = 86; i <= 92; i++)
+    // VIS_80-92 = prologue staging (R104 portal/bag/balls, lab starter balls, R104 wild mons + Pikachu),
+    // shown by script. VIS_84/85 = reserved for chapter 1 portal objects.
+    for (i = 80; i <= 92; i++)
         FlagSet(FLAG_CF_VIS_00 + i);
     // Mr. Briney (s6): at home, no crossing, no Peeko, no boat on Route 104.
     FlagClear(FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY);

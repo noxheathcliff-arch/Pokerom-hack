@@ -398,6 +398,10 @@ static const struct SpriteFrameImage sPicTable_VigorothFacingAway[] = {
     overworld_frame(gObjectEventPic_VigorothMover, 4, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_CfPortal[] = {
+    obj_frame_tiles(gObjectEventPic_CfPortal),
+};
+
 static const struct SpriteFrameImage sPicTable_BirchsBag[] = {
     obj_frame_tiles(gObjectEventPic_BirchsBag),
 };

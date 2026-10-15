@@ -229,6 +229,7 @@ const u16 gObjectEventPal_SubmarineShadow[] = INCGFX_U16("graphics/object_events
 const u32 gObjectEventPic_Truck[] = INCGFX_U32("graphics/object_events/pics/misc/truck.png", ".4bpp");
 const u16 gObjectEventPal_Truck[] = INCGFX_U16("graphics/object_events/palettes/truck.pal", ".gbapal");
 const u16 gObjectEventPal_Vigoroth[] = INCGFX_U16("graphics/object_events/palettes/vigoroth.pal", ".gbapal");
+const u32 gObjectEventPic_CfPortal[] = INCGFX_U32("graphics/object_events/pics/misc/cf_portal.png", ".4bpp");
 const u32 gObjectEventPic_BirchsBag[] = INCGFX_U32("graphics/object_events/pics/misc/birchs_bag.png", ".4bpp");
 const u32 gObjectEventPic_EnemyZigzagoon[] = INCGFX_U32("graphics/object_events/pics/pokemon_old/enemy_zigzagoon.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u16 gObjectEventPal_EnemyZigzagoon[] = INCGFX_U16("graphics/object_events/palettes/enemy_zigzagoon.pal", ".gbapal");

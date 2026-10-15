@@ -584,6 +584,9 @@ static u8 CheckTrainer(u8 objectEventId)
     // Hack: a trainer whose battle was declined (declined flag set) never spots the player again.
     if (trainerBattlePtr && IsTrainerBattleDeclinedFromScriptPointer(trainerBattlePtr))
         return 0;
+    // Hack: a trainer refused on this map visit does not spot the player again until the next map load.
+    if (IsTrainerDeclinedOnMap(gObjectEvents[objectEventId].localId))
+        return 0;
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {

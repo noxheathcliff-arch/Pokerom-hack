@@ -276,6 +276,18 @@ CF_D027_Fin::
 
 ---
 
+### CF-10. Dresseurs de route refusables (CF-ROUTE-DECLINE)
+
+- Config : `B_DECLINABLE_ROUTE_TRAINERS` (`include/config/battle.h`, TRUE).
+- Tout `trainerbattle_single` / `trainerbattle_double` (modes `SINGLE`, `DOUBLE`, `CONTINUE_SCRIPT`, `CONTINUE_SCRIPT_DOUBLE` — pas les variantes `NO_MUSIC` ni les combats de scène) lancé par un dresseur de carte ayant un type de vue (`trainer_type` ≠ NONE : dresseurs de route, de grotte, d'arène) demande « Accepter le combat ? » après la réplique d'intro (`IsAutoDeclinableParam`, `src/battle_setup.c`). Réutilise le chemin de `trainerbattle_single_declinable` (`EventScript_AskAcceptTrainerBattle`).
+- Refus : réplique « Dommage… Reviens quand tu seras prêt pour un combat ! » (quand il n'y a pas de `decline_script`), aucun combat, drapeau de dresseur **non** posé. Le local ID est mémorisé dans un masque EWRAM (`sDeclinedTrainerLocalIds`, 256 bits) : `CheckTrainer` (`src/trainer_see.c`) ignore ce dresseur jusqu'au prochain chargement de carte (`ClearDeclinedTrainersOnMap`, appelé dans `LoadMapFromWarp`/`LoadMapFromCameraTransition`, `src/overworld.c`) → pas de boucle de repérage. Lui parler repropose le combat. S'applique aussi aux `trainerbattle_single_declinable` sans drapeau de refus.
+- Restent obligatoires : champions et boss (`TRAINER_TYPE_NONE` et/ou variante `NO_MUSIC`), combats de scène, `trainerbattle_no_intro`, revanches, deux dresseurs repérant le joueur en même temps, Pyramide/Trainer Hill.
+
+### CF-11. Pose de repos de Red (avatar figé sur une image de marche)
+- **Symptôme :** après une marche (script ou manette), Red restait parfois figé sur une image « jambe en avant ».
+- **Cause :** la table d'animations `sAnimTable_RedGreenNormal` (ajoutée pour l'avatar Kanto, voir commit « Red avatar ») n'était pas inscrite dans `sStepAnimTables` (`src/data/object_events/object_event_anims.h`). `GetStepAnimTable` renvoyait `NULL`, donc `SetStepAnim` (utilisé par toutes les actions `face_*`, l'arrêt du joueur et `turnobject`) ne ramenait jamais l'animation sur une image de repos et `SetStepAnimHandleAlternation` n'alternait plus les pas : l'image affichée était celle où l'animation de marche avait été mise en pause.
+- **Correctif :** entrée `{ sAnimTable_RedGreenNormal, animPos = {1, 3, 0, 2} }` (mêmes positions que `sAnimTable_BrendanMayNormal`, même disposition des 9 premières images). Aucune modification de code moteur.
+
 ## Tests (`make check`)
 
 Commande : `make check -j4 ROMTEST=/opt/mgba-tools/bin/mgba-rom-test ROMTESTHYDRA=/opt/mgba-tools/bin/mgba-rom-test-hydra` (log : `/home/user/check_engine.log`).
@@ -292,4 +304,4 @@ Historique : un passage intermédiaire avait 4 échecs (3 tests d'EXP upstream c
 
 ## Fichiers touchés (résumé)
 
-`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`.
+`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,overworld,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`.

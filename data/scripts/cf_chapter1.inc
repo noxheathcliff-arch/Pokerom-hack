@@ -84,6 +84,12 @@
 	waitstate
 	.endm
 
+@ Red turns toward an object (dominant axis; vertical on ties). Clobbers VAR_0x8000-0x8006.
+	.macro cf_face id:req
+	setvar VAR_0x8000, \id
+	call CF_FaceObj
+	.endm
+
 @ VAR_RESULT = decision option; jump to label if it equals opt
 	.macro cf_if_dec n:req, opt:req, label:req
 	checkdecision \n
@@ -113,6 +119,45 @@ CF_IncN::
 	addvar VAR_RESULT, 1
 	setbits VAR_CF_WORLD, 0, 2, VAR_RESULT
 CF_IncN_Done::
+	return
+
+@ VAR_0x8000 = localId. 0x8001/0x8002 = |dx|/|dy|, 0x8005/0x8006 = horizontal/vertical side.
+CF_FaceObj::
+	getobjectxy VAR_0x8000, CURRENT_POSITION, VAR_0x8001, VAR_0x8002
+	getplayerxy VAR_0x8003, VAR_0x8004
+	setvar VAR_0x8005, DIR_EAST
+	goto_if_ge VAR_0x8001, VAR_0x8003, CF_FaceObj_DX
+	setvar VAR_0x8005, DIR_WEST
+	copyvar VAR_0x8006, VAR_0x8003
+	subvar VAR_0x8006, VAR_0x8001
+	copyvar VAR_0x8001, VAR_0x8006
+	goto CF_FaceObj_Y
+CF_FaceObj_DX:
+	subvar VAR_0x8001, VAR_0x8003
+CF_FaceObj_Y:
+	setvar VAR_0x8006, DIR_SOUTH
+	goto_if_ge VAR_0x8002, VAR_0x8004, CF_FaceObj_DY
+	setvar VAR_0x8006, DIR_NORTH
+	copyvar VAR_0x8003, VAR_0x8004
+	subvar VAR_0x8003, VAR_0x8002
+	copyvar VAR_0x8002, VAR_0x8003
+	goto CF_FaceObj_Pick
+CF_FaceObj_DY:
+	subvar VAR_0x8002, VAR_0x8004
+CF_FaceObj_Pick:
+	goto_if_lt VAR_0x8002, VAR_0x8001, CF_FaceObj_H
+	goto_if_eq VAR_0x8006, DIR_NORTH, CF_FaceObj_N
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+	return
+CF_FaceObj_N:
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	return
+CF_FaceObj_H:
+	goto_if_eq VAR_0x8005, DIR_WEST, CF_FaceObj_W
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	return
+CF_FaceObj_W:
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	return
 
 CF_Nop::
@@ -265,8 +310,8 @@ CF_C1_Scene::
 	goto_if_ne VAR_RESULT, DEC_NONE, CF_Nop
 	lockall
 	cf_excl LOCALID_PETALBURG_GYM_NORMAN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	cf_move LOCALID_PETALBURG_GYM_NORMAN, Common_Movement_WalkDown
+	cf_face LOCALID_PETALBURG_GYM_NORMAN
 	cf_say CF_N1_Norman, CF1_T_004
 	cf_if_dec 2, DEC_A, CF_C1_NormanA
 	cf_say CF_N1_Norman, CF1_T_005
@@ -279,6 +324,7 @@ CF_C1_AfterNorman::
 CF_C1_Flora::
 	closemessage
 	cf_move LOCALID_CF_GYM_FLORA, Common_Movement_WalkDown
+	cf_face LOCALID_CF_GYM_FLORA
 	cf_say CF_N1_Flora, CF1_T_007
 	cf_if_dec 7, DEC_A, CF_C1_FloraA
 	cf_say CF_N1_Flora, CF1_T_008
@@ -298,6 +344,7 @@ CF_C1_Celeo::
 	waitmovement 0
 	cf_move LOCALID_CF_GYM_CELEO, CF1_M_Jump
 	cf_move LOCALID_CF_GYM_CELEO, Common_Movement_WalkDown
+	cf_face LOCALID_CF_GYM_CELEO
 	cf_say CF_N1_Celeo, CF1_T_011
 	closemessage
 	turnobject LOCALID_PETALBURG_GYM_NORMAN, DIR_EAST
@@ -305,6 +352,7 @@ CF_C1_Celeo::
 	closemessage
 	turnobject LOCALID_PETALBURG_GYM_NORMAN, DIR_SOUTH
 	turnobject LOCALID_CF_GYM_BRIGADIER, DIR_SOUTH
+	cf_face LOCALID_CF_GYM_CELEO
 	cf_if_dec 1, DEC_A, CF_C1_CeleoA
 	cf_say CF_N1_Celeo, CF1_T_013
 	goto CF_C1_Flora
@@ -315,6 +363,7 @@ CF_C1_CeleoA::
 
 CF_C1_Offer::
 	turnobject LOCALID_CF_GYM_FLORA, DIR_EAST
+	cf_face LOCALID_PETALBURG_GYM_NORMAN
 	cf_say CF_N1_Norman, CF1_T_015
 	closemessage
 	applymovement LOCALID_PETALBURG_GYM_NORMAN, Common_Movement_WalkInPlaceDown
@@ -354,7 +403,14 @@ CF_C1_Common::
 	cf_say CF_N1_Norman, CF1_T_021
 	closemessage
 	turnobject LOCALID_CF_GYM_FLORA, DIR_SOUTH
+	@ Red standing right below Flora (3,109): she walks around him
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_eq VAR_0x8004, 3, CF_C1_FloraAround
 	applymovement LOCALID_CF_GYM_FLORA, CF1_M_C1_FloraLeave
+	goto CF_C1_FloraGone
+CF_C1_FloraAround:
+	applymovement LOCALID_CF_GYM_FLORA, CF1_M_C1_FloraLeaveL
+CF_C1_FloraGone:
 	applymovement LOCALID_PETALBURG_GYM_NORMAN, CF1_M_Up1Down
 	waitmovement LOCALID_CF_GYM_FLORA
 	playse SE_EXIT
@@ -368,6 +424,15 @@ CF_C1_Common::
 CF1_M_C1_FloraLeave:
 	walk_down
 	walk_down
+	walk_right
+	walk_down
+	step_end
+
+CF1_M_C1_FloraLeaveL:
+	walk_left
+	walk_down
+	walk_down
+	walk_right
 	walk_right
 	walk_down
 	step_end
@@ -507,19 +572,16 @@ CF_C2_PartnerFacesE::
 	return
 
 @ Left guard steps left, right guard steps right: the road opens
+@ Rows beside the guards are walls: the guard in Red's column steps back (north) to open the way.
 CF_C2_StepAside::
-	goto_if_eq VAR_0x8004, 10, CF_C2_StepAsideLeftFront
-	goto_if_eq VAR_0x8004, 32, CF_C2_StepAsideLeftFront
-	applymovement VAR_0x8009, Common_Movement_WalkLeft
-	applymovement VAR_0x8008, Common_Movement_WalkRight
+	applymovement VAR_0x8008, CF1_M_C2_StepBack
 	waitmovement 0
 	return
 
-CF_C2_StepAsideLeftFront::
-	applymovement VAR_0x8008, Common_Movement_WalkLeft
-	applymovement VAR_0x8009, Common_Movement_WalkRight
-	waitmovement 0
-	return
+CF1_M_C2_StepBack:
+	walk_up
+	face_down
+	step_end
 
 @ ---------------------------------------------------------------- C3: Flora au Bois (D008)
 
@@ -573,7 +635,7 @@ CF_D008_Won::
 	playmoncry SPECIES_YAMPER, CRY_MODE_NORMAL
 	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, CF1_M_FleeLeft
 	applymovement LOCALID_CF_WOODS_APPLIN, CF1_M_FleeLeft
-	applymovement LOCALID_CF_WOODS_YAMPER, CF1_M_FleeRight
+	applymovement LOCALID_CF_WOODS_YAMPER, CF1_M_C3_YamperFlee
 	waitmovement 0
 	waitmoncry
 	removeobject LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE
@@ -619,8 +681,8 @@ CF_D008_Refus::
 @ The brigade closes in on the three arrivals (off-screen outcome)
 CF_C3_Taken::
 	closemessage
-	applymovement LOCALID_CF_WOODS_POLICE_L, Common_Movement_WalkDown
-	applymovement LOCALID_CF_WOODS_POLICE_R, Common_Movement_WalkDown
+	applymovement LOCALID_CF_WOODS_POLICE_L, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_CF_WOODS_POLICE_R, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	playmoncry SPECIES_WOOLOO, CRY_MODE_WEAK
 	waitmoncry
@@ -633,10 +695,10 @@ CF_C3_Taken::
 
 CF_C3_End::
 	closemessage
-	@ Flora and her patrol leave north
-	applymovement LOCALID_PETALBURG_WOODS_GRUNT, CF1_M_LeaveUp
-	applymovement LOCALID_CF_WOODS_POLICE_L, CF1_M_LeaveUp
-	applymovement LOCALID_CF_WOODS_POLICE_R, CF1_M_LeaveUp
+	@ Flora and her patrol leave west along the open row 16 (rows 12-15 are trees)
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT, CF1_M_C3_FloraOut
+	applymovement LOCALID_CF_WOODS_POLICE_L, CF1_M_C3_PoliceLOut
+	applymovement LOCALID_CF_WOODS_POLICE_R, CF1_M_C3_PoliceROut
 	waitmovement 0
 	setvar VAR_PETALBURG_WOODS_STATE, 1
 	setflag FLAG_CF_VIS_19
@@ -660,8 +722,64 @@ CF1_M_C3_PlayerL:
 
 CF1_M_C3_WoolooAside:
 	jump_in_place_down
-	walk_left
+	walk_up
+	walk_right
 	face_down
+	step_end
+
+CF1_M_C3_YamperFlee:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+CF1_M_C3_FloraOut:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+CF1_M_C3_PoliceLOut:
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+CF1_M_C3_PoliceROut:
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 CF1_M_C3_FloraIn:
@@ -690,18 +808,6 @@ CF1_M_FleeRight:
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
-	step_end
-
-CF1_M_LeaveUp:
-	face_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
 	step_end
 
 CF_C3_SavedWooloo::
@@ -758,7 +864,7 @@ CF_C4_NoBrice::
 	waitmovement 0
 	setobjectxyperm LOCALID_CF_RUST_PASSANTE, 17, 52
 	cf_excl LOCALID_CF_RUST_PASSANTE
-	call CF_C4_FacePassante
+	cf_face LOCALID_CF_RUST_PASSANTE
 	cf_say CF_N1_Passante, CF1_T_048
 CF_C4_Menu::
 	closemessage
@@ -770,21 +876,6 @@ CF_C4_Menu::
 	case 0, CF_C4_Stay
 	case 1, CF_C4_Leave
 	end
-
-@ Red turns toward the passer-by at (17,52)
-CF_C4_FacePassante:
-	getplayerxy VAR_0x8004, VAR_0x8005
-	goto_if_lt VAR_0x8004, 17, CF_C4_FaceE
-	goto_if_gt VAR_0x8004, 17, CF_C4_FaceW
-	return
-CF_C4_FaceE:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
-	return
-CF_C4_FaceW:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement 0
-	return
 
 CF_C4_Stay::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
@@ -804,13 +895,14 @@ CF_C4_Stay::
 	goto CF_C4_End
 
 CF_C4_Leave::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement 0
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, CF_C4_LeaveP
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
 	setspeaker CF_N1_Brice
 	goto CF_C4_LeaveSay
 CF_C4_LeaveP:
+	cf_face LOCALID_CF_RUST_PASSANTE
 	setspeaker CF_N1_Passante
 CF_C4_LeaveSay:
 	msgbox CF1_T_053, MSGBOX_DEFAULT
@@ -1136,7 +1228,7 @@ CF_C7_Berry::
 	goto CF_C7_End
 
 CF_C7_Chase::
-	applymovement LOCALID_CF_RUST_HOOPA, CF1_M_FleeRight
+	applymovement LOCALID_CF_RUST_HOOPA, CF1_M_C7_HoopaFlee
 	applymovement OBJ_EVENT_ID_PLAYER, CF1_M_C7_Run
 	waitmovement LOCALID_CF_RUST_HOOPA
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -1171,6 +1263,20 @@ CF_C7_End::
 	removeobject LOCALID_CF_RUST_HOOPA
 	releaseall
 	end
+
+@ (14,18) -> around the wall at x15/16 -> east along row 21
+CF1_M_C7_HoopaFlee:
+	walk_fast_down
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
 
 CF1_M_C7_Run:
 	walk_fast_right
@@ -1390,7 +1496,7 @@ CF_C9_Reward::
 
 CF_C9_Ask::
 	closemessage
-	cf_move VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
+	cf_move VAR_LAST_TALKED, Common_Movement_FacePlayer
 	cf_say CF_N1_Roxanne, CF1_T_107
 	setspeaker CF_N1_Roxanne
 	message CF1_T_108
@@ -1557,6 +1663,7 @@ CF_C10_Fight::
 	cf_excl LOCALID_CF_R116_GRUNT_B
 	cf_move LOCALID_CF_R116_GRUNT_B, CF1_M_C10_GruntBIn
 	trainerbattle_scene_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, CF1_T_126
+	cf_move LOCALID_CF_R116_GRUNT_B, CF1_M_C10_GruntBBack
 CF_C10_FightEnd::
 	clearflag FLAG_CF_NO_WHITEOUT
 	special HealPlayerParty
@@ -1671,6 +1778,16 @@ CF1_M_C10_GruntBIn:
 	walk_left
 	walk_up
 	walk_left
+	step_end
+
+@ (41,10) -> back to (45,11)
+CF1_M_C10_GruntBBack:
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	face_left
 	step_end
 
 @ (35,11) -> (40,11), right below Red

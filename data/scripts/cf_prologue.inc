@@ -55,12 +55,39 @@ CFP_P1_FaceSea::
 	waitmovement LOCALID_PLAYER
 	return
 
+@ Marco stands north of Red (15,56), Celeo east of him (16,57).
+CFP_P1_ToMarco::
+	turnobject LOCALID_PLAYER, DIR_NORTH
+	turnobject LOCALID_CF_R104_MARCO, DIR_SOUTH
+	return
+
+CFP_P1_ToCeleo::
+	turnobject LOCALID_PLAYER, DIR_EAST
+	turnobject LOCALID_CF_R104_CELEO, DIR_WEST
+	return
+
+@ Whatever is left on the sand drops into the ring, which then closes.
+CFP_P1_RingSwallows::
+	applymovement LOCALID_CF_R104_BALL_B, CFP_Mov_DropDown
+	waitmovement LOCALID_CF_R104_BALL_B
+	playse SE_M_DIVE
+	removeobject LOCALID_CF_R104_BALL_B
+	return
+
+CFP_P1_RingCloses::
+	playse SE_M_TELEPORT
+	waitse
+	removeobject LOCALID_CF_R104_PORTAL
+	return
+
 CF_P1_Beach::
 	lockall
 	call CF_GivePrologueTeam
 	cfp_nar CF_T_000
+	call CFP_P1_ToMarco
 	cfp_say CF_N0_Marco, CF_T_001
 	cfp_say CF_N0_Marco, CF_T_002
+	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_003
 	cfp_say CF_N0_Celeo, CF_T_004
 	cfp_say CF_N0_Celeo, CF_T_005
@@ -75,9 +102,15 @@ CF_P1_Beach::
 	waitmovement LOCALID_CF_R104_MARCO
 	waitmovement LOCALID_CF_R104_CELEO
 	waitmovement LOCALID_PLAYER
+	call CFP_P1_ToMarco
 	cfp_say CF_N0_Marco, CF_T_007
 	closemessage
 	call CFP_P1_FaceSea
+	@ First ring, over the sea
+	playse SE_M_TELEPORT
+	clearflag FLAG_CF_VIS_80
+	addobject LOCALID_CF_R104_PORTAL
+	waitse
 	cfp_nar CF_T_008
 	closemessage
 	playse SE_THUNDERSTORM
@@ -95,33 +128,37 @@ CF_P1_Beach::
 	playmoncry SPECIES_TAUROS, CRY_MODE_NORMAL
 	waitmoncry
 	setobjectxyperm LOCALID_CF_R104_TAUROS, 15, 59
+	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_010
 	closemessage
+	turnobject LOCALID_PLAYER, DIR_SOUTH
 	setflag FLAG_CF_NO_WHITEOUT
 	setwildbattle SPECIES_TAUROS, 42
 	dowildbattle
 	applymovement LOCALID_CF_R104_TAUROS, CFP_Mov_FastDown6
 	waitmovement LOCALID_CF_R104_TAUROS
 	removeobject LOCALID_CF_R104_TAUROS
+	call CFP_P1_FaceSea
 	cfp_nar CF_T_011
 	closemessage
-	@ Ursaring comes down from the north
+	@ Ursaring comes down the sand path (column 16)
 	clearflag FLAG_CF_VIS_91
 	addobject LOCALID_CF_R104_URSARING
 	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
-	applymovement LOCALID_CF_R104_MARCO, Common_Movement_FaceRight
+	applymovement LOCALID_CF_R104_MARCO, Common_Movement_FaceUp
 	applymovement LOCALID_CF_R104_CELEO, Common_Movement_FaceUp
 	applymovement LOCALID_CF_R104_URSARING, CFP_Mov_FastDown4
 	waitmovement LOCALID_CF_R104_URSARING
+	turnobject LOCALID_CF_R104_MARCO, DIR_EAST
 	playmoncry SPECIES_URSARING, CRY_MODE_NORMAL
 	waitmoncry
-	setobjectxyperm LOCALID_CF_R104_URSARING, 15, 55
+	setobjectxyperm LOCALID_CF_R104_URSARING, 16, 55
 	setwildbattle SPECIES_URSARING, 43
 	dowildbattle
-	applymovement LOCALID_CF_R104_URSARING, CFP_Mov_FastUp6
+	applymovement LOCALID_CF_R104_URSARING, CFP_Mov_FastUp4
 	waitmovement LOCALID_CF_R104_URSARING
 	removeobject LOCALID_CF_R104_URSARING
-	@ Gyarados rises from the sea
+	@ Gyarados rises from the ring
 	call CFP_P1_FaceSea
 	playse SE_M_SURF
 	clearflag FLAG_CF_VIS_90
@@ -133,16 +170,41 @@ CF_P1_Beach::
 	dowildbattle
 	playse SE_M_DIVE
 	removeobject LOCALID_CF_R104_GYARADOS
+	call CFP_P1_RingCloses
+	call CFP_P1_ToMarco
 	cfp_say CF_N0_Marco, CF_T_012
+	closemessage
+	@ Second ring, at Red's feet
+	turnobject LOCALID_PLAYER, DIR_SOUTH
+	setobjectxyperm LOCALID_CF_R104_PORTAL, 15, 60
+	playse SE_M_TELEPORT
+	clearflag FLAG_CF_VIS_80
+	addobject LOCALID_CF_R104_PORTAL
+	call CFP_Shake
 	cfp_nar CF_T_013
 	closemessage
-	playse SE_M_TELEPORT
-	call CFP_Shake
 	playse SE_PIN
 	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement LOCALID_PLAYER
+	@ The bag and the balls tumble onto the sand
+	clearflag FLAG_CF_VIS_81
+	clearflag FLAG_CF_VIS_82
+	clearflag FLAG_CF_VIS_83
+	addobject LOCALID_CF_R104_BALL_A
+	addobject LOCALID_CF_R104_BALL_B
+	addobject LOCALID_CF_R104_BAG
+	playse SE_BALL_BOUNCE_1
+	applymovement LOCALID_CF_R104_BALL_A, CFP_Mov_Bounce
+	applymovement LOCALID_CF_R104_BALL_B, CFP_Mov_Bounce
+	applymovement LOCALID_CF_R104_BAG, CFP_Mov_Bounce
+	waitmovement LOCALID_CF_R104_BALL_A
+	waitmovement LOCALID_CF_R104_BALL_B
+	waitmovement LOCALID_CF_R104_BAG
+	playse SE_BALL_BOUNCE_2
 	cfp_nar CF_T_014
 	closemessage
+	@ One ball pops open: Pikachu
+	removeobject LOCALID_CF_R104_BALL_A
 	playse SE_BALL_OPEN
 	clearflag FLAG_CF_VIS_89
 	addobject LOCALID_CF_R104_PIKACHU
@@ -151,7 +213,9 @@ CF_P1_Beach::
 	playse SE_PIN
 	applymovement LOCALID_CF_R104_CELEO, Common_Movement_ExclamationMark
 	waitmovement LOCALID_CF_R104_CELEO
+	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_015
+	turnobject LOCALID_PLAYER, DIR_SOUTH
 	setspeaker 0
 	message CF_T_016
 	waitmessage
@@ -168,8 +232,15 @@ CF_P1_PikachuChoice::
 	applymovement LOCALID_CF_R104_PIKACHU, CFP_Mov_PikaHop
 	waitmovement LOCALID_CF_R104_PIKACHU
 	removeobject LOCALID_CF_R104_PIKACHU
+	call CFP_P1_RingSwallows
+	applymovement LOCALID_CF_R104_BAG, CFP_Mov_DropDown
+	waitmovement LOCALID_CF_R104_BAG
+	playse SE_M_DIVE
+	removeobject LOCALID_CF_R104_BAG
+	call CFP_P1_RingCloses
 	cfp_nar CF_T_019
 	cfp_nar CF_T_020
+	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_021
 	setdecision_once 1, DEC_A, CF_P1_Common
 	setbits VAR_CF_WORLD, 14, 2, 1
@@ -177,12 +248,18 @@ CF_P1_PikachuChoice::
 	goto CF_P1_Common
 
 CF_P1_BagChoice::
+	turnobject LOCALID_PLAYER, DIR_EAST
+	playse SE_BALL_TRAY_ENTER
+	removeobject LOCALID_CF_R104_BAG
 	applymovement LOCALID_CF_R104_PIKACHU, CFP_Mov_PikaFall
 	waitmovement LOCALID_CF_R104_PIKACHU
 	playse SE_M_DIVE
 	removeobject LOCALID_CF_R104_PIKACHU
+	call CFP_P1_RingSwallows
+	call CFP_P1_RingCloses
 	cfp_nar CF_T_022
 	cfp_nar CF_T_023
+	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_024
 	setdecision_once 1, DEC_B, CF_P1_Common
 	setflag FLAG_CF_DOS_JOURNAL_NOEUD
@@ -193,14 +270,22 @@ CF_P1_BagChoice::
 CF_P1_Common::
 	clearparty
 	clearflag FLAG_CF_NO_WHITEOUT
+	call CFP_P1_ToMarco
 	cfp_say CF_N0_Marco, CF_T_025
 	closemessage
-	applymovement LOCALID_CF_R104_MARCO, CFP_Mov_Up2
-	applymovement LOCALID_CF_R104_CELEO, CFP_Mov_Up2
+	@ Leave along the sand path (column 16), not through the cliff
+	applymovement LOCALID_CF_R104_MARCO, CFP_Mov_MarcoExit
+	applymovement LOCALID_CF_R104_CELEO, CFP_Mov_CeleoBeachExit
+	applymovement LOCALID_PLAYER, CFP_Mov_RedBeachExit
 	waitmovement LOCALID_CF_R104_MARCO
 	waitmovement LOCALID_CF_R104_CELEO
+	waitmovement LOCALID_PLAYER
 	setflag FLAG_CF_VIS_00
 	setflag FLAG_CF_VIS_01
+	setflag FLAG_CF_VIS_80
+	setflag FLAG_CF_VIS_81
+	setflag FLAG_CF_VIS_82
+	setflag FLAG_CF_VIS_83
 	setflag FLAG_CF_VIS_89
 	setflag FLAG_CF_VIS_90
 	setflag FLAG_CF_VIS_91
@@ -336,8 +421,11 @@ CF_P2_PetalburgScene::
 @ OnTransition of the lab: starter table + balls during the P3 scene, hurt Pikachu if D001 = A
 CF_Lab_ShowPikachu::
 	call_if_eq VAR_BIRCH_LAB_STATE, 0, CFP_Lab_ShowTable
+	@ during the P3 scene Pikachu stays hidden until Red talks to Seko
+	goto_if_eq VAR_BIRCH_LAB_STATE, 0, CFP_Lab_Return
 	getbits VAR_CF_WORLD, 14, 2
 	goto_if_eq VAR_RESULT, 1, CF_Lab_ShowPikachuYes
+CFP_Lab_Return:
 	return
 
 CFP_Lab_ShowTable::
@@ -345,6 +433,9 @@ CFP_Lab_ShowTable::
 	clearflag FLAG_CF_VIS_86
 	clearflag FLAG_CF_VIS_87
 	clearflag FLAG_CF_VIS_88
+	@ the assistant waits at the back of the lab, then walks up to Seko
+	setobjectxyperm LOCALID_BIRCHS_LAB_AIDE, 1, 3
+	setobjectmovementtype LOCALID_BIRCHS_LAB_AIDE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 CF_Lab_ShowPikachuYes::
@@ -374,7 +465,20 @@ CF_P3_Lab::
 	goto CF_P3_Starter
 
 CF_P3_PikachuHurt::
+	closemessage
+	setobjectxyperm LOCALID_CF_LAB_PIKACHU, 7, 6
+	clearflag FLAG_CF_VIS_05
+	addobject LOCALID_CF_LAB_PIKACHU
+	playse SE_BALL_OPEN
+	waitse
+	playmoncry SPECIES_PIKACHU, CRY_MODE_WEAK
+	turnobject LOCALID_PLAYER, DIR_EAST
+	waitmoncry
+	turnobject LOCALID_PLAYER, DIR_NORTH
 	cfp_say CF_N0_Seko, CF_T_053
+	closemessage
+	applymovement LOCALID_CF_LAB_PIKACHU, CFP_Mov_PikaToSeko
+	waitmovement LOCALID_CF_LAB_PIKACHU
 	cfp_say CF_N0_Seko, CF_T_054
 	goto CF_P3_Starter
 
@@ -386,6 +490,7 @@ CF_P3_Starter::
 	waitmovement LOCALID_BIRCHS_LAB_BIRCH
 	applymovement LOCALID_PLAYER, CFP_Mov_Right3FaceUp
 	waitmovement LOCALID_PLAYER
+CF_P3_StarterMenu::
 	setspeaker 0
 	message CF_T_057
 	waitmessage
@@ -401,6 +506,11 @@ CF_P3_Starter::
 	end
 
 CF_P3_Treecko::
+	showmonpic SPECIES_TREECKO, 10, 3
+	setspeaker 0
+	msgbox CF_P3_Text_ConfirmTreecko, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, NO, CF_P3_StarterMenu
 	playse SE_BALL_OPEN
 	removeobject LOCALID_CF_LAB_BALL_TREECKO
 	givemon SPECIES_TREECKO, 5
@@ -410,6 +520,11 @@ CF_P3_Treecko::
 	goto CF_P3_StarterGot
 
 CF_P3_Torchic::
+	showmonpic SPECIES_TORCHIC, 10, 3
+	setspeaker 0
+	msgbox CF_P3_Text_ConfirmTorchic, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, NO, CF_P3_StarterMenu
 	playse SE_BALL_OPEN
 	removeobject LOCALID_CF_LAB_BALL_TORCHIC
 	givemon SPECIES_TORCHIC, 5
@@ -419,6 +534,11 @@ CF_P3_Torchic::
 	goto CF_P3_StarterGot
 
 CF_P3_Mudkip::
+	showmonpic SPECIES_MUDKIP, 10, 3
+	setspeaker 0
+	msgbox CF_P3_Text_ConfirmMudkip, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, NO, CF_P3_StarterMenu
 	playse SE_BALL_OPEN
 	removeobject LOCALID_CF_LAB_BALL_MUDKIP
 	givemon SPECIES_MUDKIP, 5
@@ -468,8 +588,13 @@ CF_P3_Phone::
 	playse SE_PIN
 	applymovement LOCALID_BIRCHS_LAB_BIRCH, Common_Movement_ExclamationMark
 	waitmovement LOCALID_BIRCHS_LAB_BIRCH
+	applymovement LOCALID_BIRCHS_LAB_AIDE, CFP_Mov_AideToSeko
+	waitmovement LOCALID_BIRCHS_LAB_AIDE
+	turnobject LOCALID_BIRCHS_LAB_BIRCH, DIR_WEST
 	cfp_say CF_N0_Assistant, CF_T_067
 	cfp_say CF_N0_Seko, CF_T_068
+	closemessage
+	turnobject LOCALID_BIRCHS_LAB_BIRCH, DIR_SOUTH
 	cfp_nar CF_T_069
 	cfp_say CF_N0_Norman, CF_T_070
 	setspeaker 0
@@ -537,6 +662,8 @@ CF_P3_LetterKept::
 	goto CF_P3_End
 
 CF_P3_End::
+	turnobject LOCALID_PLAYER, DIR_NORTH
+	turnobject LOCALID_BIRCHS_LAB_BIRCH, DIR_SOUTH
 	cfp_say CF_N0_Seko, CF_T_091
 	closemessage
 	removeobject LOCALID_CF_LAB_BALL_TREECKO
@@ -892,8 +1019,53 @@ CFP_Mov_PikaHop:
 	step_end
 
 CFP_Mov_PikaFall:
-	jump_in_place_left
-	jump_2_left
+	jump_in_place_up
+	jump_down
+	step_end
+
+CFP_Mov_FastUp4:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+CFP_Mov_Bounce:
+	jump_in_place_down
+	step_end
+
+CFP_Mov_DropDown:
+	jump_in_place_down
+	jump_down
+	step_end
+
+@ Marco 15,56 -> 16,52 ; Celeo 16,57 -> 16,53 ; Red 15,57 -> 16,54
+CFP_Mov_MarcoExit:
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+CFP_Mov_CeleoBeachExit:
+	delay_16
+	delay_16
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+CFP_Mov_RedBeachExit:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 CFP_Mov_Up2:
@@ -959,6 +1131,21 @@ CFP_Mov_Right3FaceUp:
 	walk_right
 	walk_right
 	face_up
+	step_end
+
+CFP_Mov_PikaToSeko:
+	walk_up
+	walk_up
+	face_left
+	step_end
+
+CFP_Mov_AideToSeko:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	face_right
 	step_end
 
 CFP_Mov_Left3FaceUp:
@@ -1028,11 +1215,20 @@ CF_N0_Assistant::
 
 @ ---------------------------------------------------------------- texts (non-dialogue)
 
+CF_P3_Text_ConfirmTreecko::
+	.string "Choisir Arcko ?$"
+
 CF_P3_Text_GotTreecko::
 	.string "Red reçoit Arcko !$"
 
+CF_P3_Text_ConfirmTorchic::
+	.string "Choisir Poussifeu ?$"
+
 CF_P3_Text_GotTorchic::
 	.string "Red reçoit Poussifeu !$"
+
+CF_P3_Text_ConfirmMudkip::
+	.string "Choisir Gobou ?$"
 
 CF_P3_Text_GotMudkip::
 	.string "Red reçoit Gobou !$"

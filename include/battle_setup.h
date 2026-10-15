@@ -70,6 +70,8 @@ void ResetTrainerOpponentIds(void);
 bool32 IsTrainerBattleDeclinable(void);
 bool32 IsTrainerBattleAlreadyDeclined(void);
 bool32 IsTrainerBattleDeclinedFromScriptPointer(const u8 *data);
+void ClearDeclinedTrainersOnMap(void);
+bool32 IsTrainerDeclinedOnMap(u8 localId);
 struct ScriptContext;
 void Script_TrainerBattleDeclinedNow(struct ScriptContext *ctx);
 void Script_TrainerBattleDeclinedBefore(struct ScriptContext *ctx);

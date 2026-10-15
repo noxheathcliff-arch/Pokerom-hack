@@ -1653,6 +1653,13 @@ static const struct StepAnimTable sStepAnimTables[] = {
         .anims = sAnimTable_BrendanMayNormal,
         .animPos = {1, 3, 0, 2},
     },
+    // Hack (CF-11): Red/Green player table must be registered too, otherwise
+    // SetStepAnim/SetStepAnimHandleAlternation never seek to a standing cel
+    // and the avatar freezes on a walking frame after a step or a face action.
+    {
+        .anims = sAnimTable_RedGreenNormal,
+        .animPos = {1, 3, 0, 2},
+    },
     {
         .anims = sAnimTable_AcroBike,
         .animPos = {1, 3, 0, 2},
