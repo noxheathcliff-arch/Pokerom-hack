@@ -226,16 +226,28 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_PETALBURG_WOODS ===
 Name: SBIRE
-Class: Team Aqua
-Pic: Aqua Grunt M
+Class: Team Rocket Frlg
+Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer
 
-Poochyena
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Koffing
+Level: 15
+Ability: Levitate
+- Tackle
+- Smog
+- Poison Gas
+- Smokescreen
+
+Zubat
+Level: 15
+Ability: Inner Focus
+- Leech Life
+- Supersonic
+- Astonish
+- Bite
 
 === TRAINER_MARCEL ===
 Name: MARCEL
@@ -317,16 +329,28 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_RUSTURF_TUNNEL ===
 Name: SBIRE
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
+Class: Team Rocket Frlg
+Pic: Rocket Grunt F Frlg
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
 
-Poochyena
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Rattata
+Level: 15
+Ability: Guts
+- Tackle
+- Quick Attack
+- Bite
+- Tail Whip
+
+Rolycoly
+Level: 16
+Ability: Steam Engine
+- Tackle
+- Smokescreen
+- Rapid Spin
+- Rock Polish
 
 === TRAINER_GRUNT_WEATHER_INST_1 ===
 Name: SBIRE
@@ -635,11 +659,11 @@ Double Battle: No
 AI: Check Bad Move
 
 Shroomish
-Level: 14
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Roselia
-Level: 14
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ROSE_1 ===
@@ -1923,26 +1947,43 @@ Level: 29
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
 === TRAINER_BROOKE_4 ===
-Name: BLANCHE
-Class: Cooltrainer
-Pic: Cooltrainer F
+Name: FLORA
+Class: Rival
+Pic: May
 Gender: Female
-Music: Cool
-Items: Full Restore
-Double Battle: No
-AI: Basic Trainer
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer / Sequence Switching / Ace Pokemon
 
-Pelipper
-Level: 32
+Zigzagoon
+Level: 11
+Ability: Pickup
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Jolly Nature
+- Tackle
+- Growl
+- Tail Whip
+- Headbutt
 
-Numel
-Level: 32
+Poochyena
+Level: 12
+Ability: Quick Feet
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Adamant Nature
+- Tackle
+- Howl
+- Bite
+- Leer
 
-Roselia
-Level: 32
+Taillow
+Level: 14
+Ability: Guts
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Jolly Nature
+- Peck
+- Quick Attack
+- Growl
+- Wing Attack
 
 === TRAINER_BROOKE_5 ===
 Name: BLANCHE
@@ -2078,42 +2119,92 @@ Level: 35
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
 === TRAINER_VALERIE_4 ===
-Name: VALERIA
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
-Double Battle: No
-AI: Check Bad Move
+Name: PIERRE
+Class: Leader Frlg
+Pic: Leader Brock Frlg
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab
 
-Spoink
-Level: 40
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Geodude
+Level: 16
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Impish Nature
+- Rock Throw
+- Magnitude
+- Defense Curl
+- Rollout
 
-Sableye
-Level: 40
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Sudowoodo
+Level: 16
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Adamant Nature
+- Rock Throw
+- Low Kick
+- Flail
+- Mimic
+
+Onix @ Sitrus Berry
+Level: 19
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Impish Nature
+- Rock Tomb
+- Bind
+- Dragon Breath
+- Harden
 
 === TRAINER_VALERIE_5 ===
-Name: VALERIA
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
-Double Battle: No
-AI: Check Bad Move
+Name: PIERRE
+Class: Leader Frlg
+Pic: Leader Brock Frlg
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer / Smart Switching / Ace Pokemon / HP Aware / Assume Stab
 
-Duskull
-Level: 42
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Geodude
+Level: 16
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Impish Nature
+- Rock Throw
+- Magnitude
+- Defense Curl
+- Rollout
 
-Sableye
-Level: 42
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Rolycoly
+Level: 16
+Ability: Steam Engine
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Bold Nature
+- Rapid Spin
+- Smack Down
+- Tackle
+- Ancient Power
 
-Grumpig
-Level: 42
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Sudowoodo
+Level: 16
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Adamant Nature
+- Rock Throw
+- Low Kick
+- Flail
+- Mimic
+
+Onix @ Sitrus Berry
+Level: 19
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Impish Nature
+- Rock Tomb
+- Bind
+- Dragon Breath
+- Harden
 
 === TRAINER_CINDY_1 ===
 Name: SANDY
@@ -4796,33 +4887,39 @@ Class: Leader
 Pic: Leader Roxanne
 Gender: Female
 Music: Female
-Items: Potion / Potion
-Double Battle: No
-AI: Basic Trainer
+Items: Potion
+Battle Type: Singles
+AI: Basic Trainer / Sequence Switching / Ace Pokemon / Conservative
 
 Geodude
 Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Impish Nature
 - Tackle
 - Defense Curl
 - Rock Throw
 - Rock Tomb
 
-Geodude
-Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Aron
+Level: 13
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Impish Nature
 - Tackle
-- Defense Curl
-- Rock Throw
-- Rock Tomb
+- Harden
+- Metal Claw
+- Headbutt
 
 Nosepass @ Oran Berry
 Level: 15
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Block
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Bold Nature
+- Rock Tomb
+- Thunder Wave
 - Harden
 - Tackle
-- Rock Tomb
 
 === TRAINER_BRAWLY_1 ===
 Name: BASTIEN
@@ -5515,7 +5612,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Skitty @ Oran Berry
-Level: 15
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_COLTON ===
@@ -6319,7 +6416,7 @@ Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Magikarp
-Level: 15
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_IVAN ===
@@ -8775,11 +8872,11 @@ Double Battle: Yes
 AI: Check Bad Move
 
 Plusle
-Level: 15
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Minun
-Level: 15
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_AMY_AND_LIV_2 ===
@@ -9510,12 +9607,25 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
-Double Battle: No
-AI: Basic Trainer
+Battle Type: Singles
+AI: Basic Trainer / Sequence Switching / Ace Pokemon
 
-Treecko
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wingull
+Level: 4
+Ability: Keen Eye
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Hardy Nature
+- Growl
+- Water Gun
+
+Mudkip
+Level: 6
+Ability: Torrent
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Impish Nature
+- Tackle
+- Growl
+- Water Gun
 
 === TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
 Name: BRICE
@@ -9565,12 +9675,25 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
-Double Battle: No
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
+Battle Type: Singles
+AI: Basic Trainer / Sequence Switching / Ace Pokemon
 
-Torchic
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wingull
+Level: 4
+Ability: Keen Eye
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Hardy Nature
+- Growl
+- Water Gun
+
+Treecko
+Level: 6
+Ability: Overgrow
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Hasty Nature
+- Pound
+- Leer
+- Absorb
 
 === TRAINER_BRENDAN_ROUTE_110_TREECKO ===
 Name: BRICE
@@ -9620,12 +9743,25 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
-Double Battle: No
-AI: Basic Trainer
+Battle Type: Singles
+AI: Basic Trainer / Sequence Switching / Ace Pokemon
 
-Mudkip
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wingull
+Level: 4
+Ability: Keen Eye
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Hardy Nature
+- Growl
+- Water Gun
+
+Torchic
+Level: 6
+Ability: Blaze
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Naughty Nature
+- Scratch
+- Growl
+- Ember
 
 === TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
 Name: BRICE
@@ -13070,7 +13206,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Voltorb
-Level: 15
+Level: 12
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RHETT ===
@@ -13083,7 +13219,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Makuhita
-Level: 15
+Level: 12
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_TYRON ===
@@ -13561,7 +13697,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Tentacool
-Level: 15
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ISABELLE ===
@@ -13574,7 +13710,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Marill
-Level: 15
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ANDRES_1 ===
