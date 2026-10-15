@@ -1999,7 +1999,7 @@ CF_C11_Thief::
 	playmoncry SPECIES_HOOPA, CRY_MODE_NORMAL
 	cf_excl LOCALID_CF_PC_BRICE
 	turnobject LOCALID_CF_PC_BRICE, DIR_WEST
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	cf_face LOCALID_CF_PC_HOOPA
 	waitmoncry
 	setspeaker SP_NAME_NONE
 	goto_if_ge VAR_CF_HO, 25, CF_C11_ThiefGift
@@ -2085,7 +2085,7 @@ CF1_T_005::
 
 CF1_T_006::
 	.string "Votre nom est sur ma liste. Ne\n"
-	.string "me faites pas regretter de l’y avoir.$"
+	.string "me faites pas regretter ce choix.$"
 
 CF1_T_007::
 	.string "Flora, cadette de la brigade.\n"
@@ -2293,8 +2293,8 @@ CF1_T_061::
 	.string "quand vous voulez.$"
 
 CF1_T_062::
-	.string "Bienvenue chez Devon ! Voici\n"
-	.string "Passerelle : le monde en une seconde.$"
+	.string "Bienvenue chez Devon ! Voici la\n"
+	.string "Passerelle : le monde en 1 seconde.$"
 
 CF1_T_063::
 	.string "Sylphe fournit le Cœur, Devon le\n"
@@ -2341,7 +2341,7 @@ CF1_T_073::
 
 CF1_T_074::
 	.string "Un service ? Une lettre pour mon\n"
-	.string "fils, Pierre Rochard. Il est à Myokara.$"
+	.string "fils, Pierre Rochard, à Myokara.$"
 
 CF1_T_075::
 	.string "Les traversées reprendront bientôt.\n"
