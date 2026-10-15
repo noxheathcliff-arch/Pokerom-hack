@@ -11,8 +11,77 @@
 	.macro cf_bsay text:req
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, 1f
+	setspeaker CF_N1_Brice
 	msgbox \text, MSGBOX_DEFAULT
 1:
+	.endm
+
+@ Movement on Brice (NPC follower) if present
+	.macro cf_bmove mvt:req
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, 1f
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, \mvt
+	waitmovement 0
+1:
+	.endm
+
+@ Spoken line with namebox (string label CF_N1_*)
+	.macro cf_say name:req, text:req
+	setspeaker \name
+	msgbox \text, MSGBOX_DEFAULT
+	.endm
+
+@ Narration line (clears the namebox)
+	.macro cf_narr text:req
+	setspeaker SP_NAME_NONE
+	msgbox \text, MSGBOX_DEFAULT
+	.endm
+
+@ Talk-to NPC line with namebox
+	.macro cf_npc name:req, text:req
+	lock
+	faceplayer
+	setspeaker \name
+	msgbox \text, MSGBOX_DEFAULT
+	release
+	end
+	.endm
+
+@ Object emote: ! (with SE_PIN) or ?
+	.macro cf_excl id:req
+	playse SE_PIN
+	applymovement \id, Common_Movement_ExclamationMark
+	waitmovement 0
+	.endm
+
+@ ! emote on Brice (if present)
+	.macro cf_bexcl
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, 1f
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
+	waitmovement 0
+1:
+	.endm
+
+	.macro cf_quest id:req
+	applymovement \id, Common_Movement_QuestionMark
+	waitmovement 0
+	.endm
+
+	.macro cf_move id:req, mvt:req
+	applymovement \id, \mvt
+	waitmovement 0
+	.endm
+
+@ Camera shake (vertical, horizontal, count, delay)
+	.macro cf_shake v=0, h=4, n=8, d=4
+	setvar VAR_0x8004, \v
+	setvar VAR_0x8005, \h
+	setvar VAR_0x8006, \n
+	setvar VAR_0x8007, \d
+	special ShakeCamera
+	waitstate
 	.endm
 
 @ VAR_RESULT = decision option; jump to label if it equals opt
@@ -58,23 +127,84 @@ CF_Mov_Down1:
 	walk_down
 	step_end
 
+CF1_M_Jump:
+	jump_in_place_down
+	step_end
+
+CF1_M_Down2:
+	walk_down
+	walk_down
+	step_end
+
+CF1_M_Up1Down:
+	walk_up
+	face_down
+	step_end
+
+CF1_M_Shiver:
+	walk_in_place_faster_left
+	walk_in_place_faster_right
+	walk_in_place_faster_left
+	walk_in_place_faster_right
+	step_end
+
+@ ---------------------------------------------------------------- speaker names (chapter 1)
+
+CF_N1_Norman:
+	.string "NORMAN$"
+CF_N1_Flora:
+	.string "FLORA$"
+CF_N1_Brice:
+	.string "BRICE$"
+CF_N1_Celeo:
+	.string "CÉLÉO$"
+CF_N1_Agent:
+	.string "AGENT$"
+CF_N1_Ferrand:
+	.string "FERRAND$"
+CF_N1_President:
+	.string "PRÉSIDENT$"
+CF_N1_Leo:
+	.string "LÉO$"
+CF_N1_Lanette:
+	.string "LANETTE$"
+CF_N1_Rochard:
+	.string "ROCHARD$"
+CF_N1_Roxanne:
+	.string "ROXANNE$"
+CF_N1_Pierre:
+	.string "PIERRE$"
+CF_N1_Mineur:
+	.string "MINEUR$"
+CF_N1_Lance:
+	.string "LANCE$"
+CF_N1_Sbire:
+	.string "SBIRE$"
+CF_N1_Passante:
+	.string "PASSANTE$"
+CF_N1_Coach:
+	.string "COACH$"
+CF_N1_Habitant:
+	.string "HABITANT$"
+	.align 2
+
 @ ---------------------------------------------------------------- walls (s7)
 
 CF_Wall_QG::
-	msgbox CF1_T_000, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Agent, CF1_T_000
 
 CF_Wall_R116::
-	msgbox CF1_T_001, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Agent, CF1_T_001
 
 CF_Wall_R115_Talk::
-	msgbox CF1_T_002, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Agent, CF1_T_002
 
 CF_Wall_R115::
 	lockall
-	msgbox CF1_T_002, MSGBOX_DEFAULT
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	cf_say CF_N1_Agent, CF1_T_002
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Down1
 	waitmovement 0
@@ -82,8 +212,7 @@ CF_Wall_R115::
 	end
 
 CF_Cutter::
-	msgbox CF1_T_003, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Habitant, CF1_T_003
 
 @ Rustboro mart: no Escape Rope while Z-02 = ENVAHI
 CF_Mart_Clerk::
@@ -135,39 +264,62 @@ CF_C1_Scene::
 	checkdecision 17
 	goto_if_ne VAR_RESULT, DEC_NONE, CF_Nop
 	lockall
-	msgbox CF1_T_004, MSGBOX_DEFAULT
+	cf_excl LOCALID_PETALBURG_GYM_NORMAN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	cf_move LOCALID_PETALBURG_GYM_NORMAN, Common_Movement_WalkDown
+	cf_say CF_N1_Norman, CF1_T_004
 	cf_if_dec 2, DEC_A, CF_C1_NormanA
-	msgbox CF1_T_005, MSGBOX_DEFAULT
+	cf_say CF_N1_Norman, CF1_T_005
 	goto CF_C1_AfterNorman
 
 CF_C1_NormanA::
-	msgbox CF1_T_006, MSGBOX_DEFAULT
+	cf_say CF_N1_Norman, CF1_T_006
 CF_C1_AfterNorman::
 	cf_if_dec 6, DEC_A, CF_C1_Celeo
 CF_C1_Flora::
-	msgbox CF1_T_007, MSGBOX_DEFAULT
+	closemessage
+	cf_move LOCALID_CF_GYM_FLORA, Common_Movement_WalkDown
+	cf_say CF_N1_Flora, CF1_T_007
 	cf_if_dec 7, DEC_A, CF_C1_FloraA
-	msgbox CF1_T_008, MSGBOX_DEFAULT
+	cf_say CF_N1_Flora, CF1_T_008
 	goto CF_C1_Offer
 
 CF_C1_FloraA::
-	msgbox CF1_T_009, MSGBOX_DEFAULT
+	cf_say CF_N1_Flora, CF1_T_009
 	goto CF_C1_Offer
 
 CF_C1_Celeo::
-	msgbox CF1_T_010, MSGBOX_DEFAULT
-	msgbox CF1_T_011, MSGBOX_DEFAULT
-	msgbox CF1_T_012, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_CF_GYM_BRIGADIER, DIR_WEST
+	cf_say CF_N1_Agent, CF1_T_010
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_CF_GYM_CELEO, Common_Movement_ExclamationMark
+	waitmovement 0
+	cf_move LOCALID_CF_GYM_CELEO, CF1_M_Jump
+	cf_move LOCALID_CF_GYM_CELEO, Common_Movement_WalkDown
+	cf_say CF_N1_Celeo, CF1_T_011
+	closemessage
+	turnobject LOCALID_PETALBURG_GYM_NORMAN, DIR_EAST
+	cf_say CF_N1_Norman, CF1_T_012
+	closemessage
+	turnobject LOCALID_PETALBURG_GYM_NORMAN, DIR_SOUTH
+	turnobject LOCALID_CF_GYM_BRIGADIER, DIR_SOUTH
 	cf_if_dec 1, DEC_A, CF_C1_CeleoA
-	msgbox CF1_T_013, MSGBOX_DEFAULT
+	cf_say CF_N1_Celeo, CF1_T_013
 	goto CF_C1_Flora
 
 CF_C1_CeleoA::
-	msgbox CF1_T_014, MSGBOX_DEFAULT
+	cf_say CF_N1_Celeo, CF1_T_014
 	goto CF_C1_Flora
 
 CF_C1_Offer::
-	msgbox CF1_T_015, MSGBOX_DEFAULT
+	turnobject LOCALID_CF_GYM_FLORA, DIR_EAST
+	cf_say CF_N1_Norman, CF1_T_015
+	closemessage
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	setspeaker SP_NAME_NONE
 	message CF1_T_016
 	waitmessage
 	dynmultipush CF1_T_017, 0
@@ -180,7 +332,9 @@ CF_C1_Offer::
 	end
 
 CF_C1_Accept::
-	msgbox CF1_T_019, MSGBOX_DEFAULT
+	playfanfare MUS_OBTAIN_ITEM
+	waitfanfare
+	cf_say CF_N1_Norman, CF1_T_019
 	setdecision_once 17, DEC_A, CF_C1_Common
 	setflag FLAG_CF_INSIGNE
 	addaffinity VAR_CF_REP_L, 3
@@ -188,32 +342,46 @@ CF_C1_Accept::
 	goto CF_C1_Common
 
 CF_C1_Refuse::
-	msgbox CF1_T_020, MSGBOX_DEFAULT
+	applymovement LOCALID_CF_GYM_FLORA, Common_Movement_QuestionMark
+	waitmovement 0
+	cf_say CF_N1_Norman, CF1_T_020
 	setdecision_once 17, DEC_B, CF_C1_Common
 	subaffinity VAR_CF_REP_L, 2
 	addaffinity VAR_CF_REP_A, 1
 	goto CF_C1_Common
 
 CF_C1_Common::
-	msgbox CF1_T_021, MSGBOX_DEFAULT
+	cf_say CF_N1_Norman, CF1_T_021
 	closemessage
+	turnobject LOCALID_CF_GYM_FLORA, DIR_SOUTH
+	applymovement LOCALID_CF_GYM_FLORA, CF1_M_C1_FloraLeave
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, CF1_M_Up1Down
+	waitmovement LOCALID_CF_GYM_FLORA
+	playse SE_EXIT
 	setvar VAR_STEVENS_HOUSE_STATE, 1
 	setflag FLAG_CF_VIS_18
 	removeobject LOCALID_CF_GYM_FLORA
+	waitmovement LOCALID_PETALBURG_GYM_NORMAN
 	releaseall
 	end
 
+CF1_M_C1_FloraLeave:
+	walk_down
+	walk_down
+	walk_right
+	walk_down
+	step_end
+
 CF_C1_NormanTalk::
-	msgbox CF1_T_021, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Norman, CF1_T_021
 
 CF_C1_FloraTalk::
-	msgbox CF1_T_007, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Flora, CF1_T_007
 
 CF_C1_CeleoTalk::
 	lock
 	faceplayer
+	setspeaker CF_N1_Celeo
 	cf_if_dec 1, DEC_A, CF_C1_CeleoTalkA
 	msgbox CF1_T_013, MSGBOX_DEFAULT
 	release
@@ -228,6 +396,7 @@ CF_C1_CeleoTalkA::
 CF_C1_Coach::
 	lock
 	faceplayer
+	setspeaker CF_N1_Coach
 	msgbox CF1_T_022, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, CF_C1_CoachYes
 	clearflag FLAG_CHOOSE_BATTLE_LEAD
@@ -243,57 +412,155 @@ CF_C1_CoachEnd::
 @ ---------------------------------------------------------------- C2: barrage du Bois
 
 CF_C2_BarrageTalk::
-	msgbox CF1_T_024, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Agent, CF1_T_024
 
+@ VAR_0x8008 = guard in front of Red, VAR_0x8009 = his partner
 CF_C2_Barrage::
 	goto_if_set FLAG_CF_VIS_10, CF_Nop
 	lockall
-	msgbox CF1_T_024, MSGBOX_DEFAULT
+	getplayerxy VAR_0x8004, VAR_0x8005
+	call CF_C2_PickGuards
+	cf_excl VAR_0x8008
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	cf_say CF_N1_Agent, CF1_T_024
 	goto_if_set FLAG_CF_INSIGNE, CF_C2_Insigne
 	getbits VAR_CF_WORLD, 0, 2
 	goto_if_ge VAR_RESULT, 1, CF_C2_Registered
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, CF_C2_Fallback
 	goto_if_lt VAR_CF_BR, 50, CF_C2_Fallback
-	msgbox CF1_T_025, MSGBOX_DEFAULT
-	msgbox CF1_T_026, MSGBOX_DEFAULT
+	closemessage
+	cf_bmove Common_Movement_ExclamationMark
+	cf_say CF_N1_Brice, CF1_T_025
+	closemessage
+	applymovement VAR_0x8009, Common_Movement_QuestionMark
+	waitmovement 0
+	cf_say CF_N1_Agent, CF1_T_026
 	goto CF_C2_Pass
 
 CF_C2_Insigne::
-	msgbox CF1_T_027, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	cf_say CF_N1_Agent, CF1_T_027
 	goto CF_C2_Pass
 
 CF_C2_Registered::
-	msgbox CF1_T_028, MSGBOX_DEFAULT
+	cf_say CF_N1_Agent, CF1_T_028
 	goto CF_C2_Pass
 
 CF_C2_Fallback::
-	msgbox CF1_T_029, MSGBOX_DEFAULT
-	msgbox CF1_T_030, MSGBOX_DEFAULT
+	cf_say CF_N1_Agent, CF1_T_029
+	closemessage
+	call CF_C2_PartnerFaces
+	cf_say CF_N1_Agent, CF1_T_030
 	goto CF_C2_Pass
 
 CF_C2_Pass::
 	closemessage
+	turnobject VAR_0x8008, DIR_SOUTH
+	turnobject VAR_0x8009, DIR_SOUTH
+	call CF_C2_StepAside
 	setflag FLAG_CF_VIS_10
-	removeobject LOCALID_CF_R104_BAR_A1
-	removeobject LOCALID_CF_R104_BAR_A2
+	goto_if_ge VAR_0x8004, 32, CF_C2_PassB
 	removeobject LOCALID_CF_R104_BAR_B1
 	removeobject LOCALID_CF_R104_BAR_B2
 	releaseall
 	end
 
+CF_C2_PassB::
+	removeobject LOCALID_CF_R104_BAR_A1
+	removeobject LOCALID_CF_R104_BAR_A2
+	releaseall
+	end
+
+CF_C2_PickGuards::
+	goto_if_ge VAR_0x8004, 32, CF_C2_PickB
+	setvar VAR_0x8008, LOCALID_CF_R104_BAR_A1
+	setvar VAR_0x8009, LOCALID_CF_R104_BAR_A2
+	goto_if_eq VAR_0x8004, 10, CF_C2_PickRet
+	setvar VAR_0x8008, LOCALID_CF_R104_BAR_A2
+	setvar VAR_0x8009, LOCALID_CF_R104_BAR_A1
+	return
+
+CF_C2_PickB::
+	setvar VAR_0x8008, LOCALID_CF_R104_BAR_B1
+	setvar VAR_0x8009, LOCALID_CF_R104_BAR_B2
+	goto_if_eq VAR_0x8004, 32, CF_C2_PickRet
+	setvar VAR_0x8008, LOCALID_CF_R104_BAR_B2
+	setvar VAR_0x8009, LOCALID_CF_R104_BAR_B1
+CF_C2_PickRet::
+	return
+
+@ Partner turns toward the guard in front of Red (left one = A1/B1)
+CF_C2_PartnerFaces::
+	goto_if_eq VAR_0x8009, LOCALID_CF_R104_BAR_A1, CF_C2_PartnerFacesE
+	goto_if_eq VAR_0x8009, LOCALID_CF_R104_BAR_B1, CF_C2_PartnerFacesE
+	turnobject VAR_0x8009, DIR_WEST
+	turnobject VAR_0x8008, DIR_EAST
+	return
+
+CF_C2_PartnerFacesE::
+	turnobject VAR_0x8009, DIR_EAST
+	turnobject VAR_0x8008, DIR_WEST
+	return
+
+@ Left guard steps left, right guard steps right: the road opens
+CF_C2_StepAside::
+	goto_if_eq VAR_0x8004, 10, CF_C2_StepAsideLeftFront
+	goto_if_eq VAR_0x8004, 32, CF_C2_StepAsideLeftFront
+	applymovement VAR_0x8009, Common_Movement_WalkLeft
+	applymovement VAR_0x8008, Common_Movement_WalkRight
+	waitmovement 0
+	return
+
+CF_C2_StepAsideLeftFront::
+	applymovement VAR_0x8008, Common_Movement_WalkLeft
+	applymovement VAR_0x8009, Common_Movement_WalkRight
+	waitmovement 0
+	return
+
 @ ---------------------------------------------------------------- C3: Flora au Bois (D008)
 
 CF_C3_Scene::
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Up2
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_eq VAR_0x8004, 27, CF_C3_FromRight
+	cf_move OBJ_EVENT_ID_PLAYER, CF_Mov_Up2
+	goto CF_C3_InPlace
+CF_C3_FromRight::
+	cf_move OBJ_EVENT_ID_PLAYER, CF1_M_C3_PlayerL
+CF_C3_InPlace::
+	playmoncry SPECIES_WOOLOO, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, CF1_M_Shiver
+	applymovement LOCALID_CF_WOODS_YAMPER, CF1_M_Shiver
+	applymovement LOCALID_CF_WOODS_APPLIN, CF1_M_Shiver
 	waitmovement 0
-	msgbox CF1_T_031, MSGBOX_DEFAULT
-	msgbox CF1_T_032, MSGBOX_DEFAULT
-	cf_bsay CF1_T_033
-	msgbox CF1_T_034, MSGBOX_DEFAULT
+	waitmoncry
+	cf_say CF_N1_Flora, CF1_T_031
 	closemessage
+	turnobject LOCALID_CF_WOODS_POLICE_L, DIR_EAST
+	turnobject LOCALID_CF_WOODS_POLICE_R, DIR_WEST
+	cf_say CF_N1_Flora, CF1_T_032
+	closemessage
+	turnobject LOCALID_CF_WOODS_POLICE_L, DIR_SOUTH
+	turnobject LOCALID_CF_WOODS_POLICE_R, DIR_SOUTH
+	cf_bmove Common_Movement_ExclamationMark
+	cf_bsay CF1_T_033
+	closemessage
+	@ Wooloo scurries aside, the three turn toward Red
+	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, CF1_M_C3_WoolooAside
+	applymovement LOCALID_CF_WOODS_YAMPER, CF1_M_Jump
+	applymovement LOCALID_CF_WOODS_APPLIN, CF1_M_Jump
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	cf_narr CF1_T_034
+	closemessage
+	@ Flora comes down to Red
+	cf_excl LOCALID_PETALBURG_WOODS_GRUNT
+	cf_move LOCALID_PETALBURG_WOODS_GRUNT, CF1_M_C3_FloraIn
 	setflag FLAG_CF_NO_WHITEOUT
 	trainerbattle_scene_declinable TRAINER_BROOKE_4, CF1_T_035, CF1_T_036, FLAG_CF_REFUS_FLORA1, CF_D008_Refus
 	goto_if_set TRAINER_FLAGS_START + TRAINER_BROOKE_4, CF_D008_Won
@@ -302,8 +569,21 @@ CF_C3_Scene::
 CF_D008_Won::
 	clearflag FLAG_CF_NO_WHITEOUT
 	special HealPlayerParty
-	msgbox CF1_T_037, MSGBOX_DEFAULT
-	msgbox CF1_T_038, MSGBOX_DEFAULT
+	@ The three arrivals flee into the woods
+	playmoncry SPECIES_YAMPER, CRY_MODE_NORMAL
+	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, CF1_M_FleeLeft
+	applymovement LOCALID_CF_WOODS_APPLIN, CF1_M_FleeLeft
+	applymovement LOCALID_CF_WOODS_YAMPER, CF1_M_FleeRight
+	waitmovement 0
+	waitmoncry
+	removeobject LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE
+	removeobject LOCALID_CF_WOODS_APPLIN
+	removeobject LOCALID_CF_WOODS_YAMPER
+	turnobject LOCALID_PETALBURG_WOODS_GRUNT, DIR_EAST
+	cf_say CF_N1_Flora, CF1_T_037
+	closemessage
+	turnobject LOCALID_PETALBURG_WOODS_GRUNT, DIR_SOUTH
+	cf_say CF_N1_Agent, CF1_T_038
 	setdecision_once 8, DEC_A, CF_C3_End
 	subaffinity VAR_CF_FL, 3
 	subaffinity VAR_CF_REP_L, 3
@@ -317,24 +597,47 @@ CF_D008_Won::
 CF_D008_Lost::
 	clearflag FLAG_CF_NO_WHITEOUT
 	special HealPlayerParty
-	msgbox CF1_T_039, MSGBOX_DEFAULT
+	cf_say CF_N1_Flora, CF1_T_039
 	setdecision_once 8, DEC_B, CF_C3_End
 	addaffinity VAR_CF_FL, 2
 	addaffinity VAR_CF_REP_L, 1
 	cf_lose_money 300
+	playse SE_SHOP
+	call CF_C3_Taken
 	goto CF_C3_End
 
 CF_D008_Refus::
 	clearflag FLAG_CF_NO_WHITEOUT
-	msgbox CF1_T_040, MSGBOX_DEFAULT
-	msgbox CF1_T_041, MSGBOX_DEFAULT
+	cf_narr CF1_T_040
+	cf_say CF_N1_Flora, CF1_T_041
 	setdecision_once 8, DEC_C, CF_C3_End
 	addaffinity VAR_CF_FL, 3
 	subaffinity VAR_CF_BR, 2
+	call CF_C3_Taken
 	goto CF_C3_End
+
+@ The brigade closes in on the three arrivals (off-screen outcome)
+CF_C3_Taken::
+	closemessage
+	applymovement LOCALID_CF_WOODS_POLICE_L, Common_Movement_WalkDown
+	applymovement LOCALID_CF_WOODS_POLICE_R, Common_Movement_WalkDown
+	waitmovement 0
+	playmoncry SPECIES_WOOLOO, CRY_MODE_WEAK
+	waitmoncry
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE
+	removeobject LOCALID_CF_WOODS_YAMPER
+	removeobject LOCALID_CF_WOODS_APPLIN
+	fadescreen FADE_FROM_BLACK
+	return
 
 CF_C3_End::
 	closemessage
+	@ Flora and her patrol leave north
+	applymovement LOCALID_PETALBURG_WOODS_GRUNT, CF1_M_LeaveUp
+	applymovement LOCALID_CF_WOODS_POLICE_L, CF1_M_LeaveUp
+	applymovement LOCALID_CF_WOODS_POLICE_R, CF1_M_LeaveUp
+	waitmovement 0
 	setvar VAR_PETALBURG_WOODS_STATE, 1
 	setflag FLAG_CF_VIS_19
 	setflag FLAG_CF_VIS_21
@@ -348,16 +651,84 @@ CF_C3_End::
 	releaseall
 	end
 
+CF1_M_C3_PlayerL:
+	walk_up
+	walk_up
+	walk_left
+	face_up
+	step_end
+
+CF1_M_C3_WoolooAside:
+	jump_in_place_down
+	walk_left
+	face_down
+	step_end
+
+CF1_M_C3_FloraIn:
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+CF1_M_FleeLeft:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+
+CF1_M_FleeRight:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+CF1_M_LeaveUp:
+	face_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
 CF_C3_SavedWooloo::
-	msgbox CF1_T_042, MSGBOX_NPC
+	lock
+	faceplayer
+	playmoncry SPECIES_WOOLOO, CRY_MODE_NORMAL
+	msgbox CF1_T_042, MSGBOX_DEFAULT
+	waitmoncry
+	release
 	end
 
 CF_C3_SavedYamper::
-	msgbox CF1_T_043, MSGBOX_NPC
+	lock
+	faceplayer
+	playmoncry SPECIES_YAMPER, CRY_MODE_NORMAL
+	msgbox CF1_T_043, MSGBOX_DEFAULT
+	waitmoncry
+	release
 	end
 
 CF_C3_SavedApplin::
-	msgbox CF1_T_044, MSGBOX_NPC
+	lock
+	faceplayer
+	playmoncry SPECIES_APPLIN, CRY_MODE_NORMAL
+	msgbox CF1_T_044, MSGBOX_DEFAULT
+	waitmoncry
+	release
 	end
 
 @ ---------------------------------------------------------------- C4: l'affiche (D009)
@@ -368,17 +739,27 @@ CF_C4_PosterRead::
 
 CF_C4_Poster::
 	lockall
-	msgbox CF1_T_045, MSGBOX_DEFAULT
-	msgbox CF1_T_046, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	cf_narr CF1_T_045
+	cf_narr CF1_T_046
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, CF_C4_NoBrice
-	msgbox CF1_T_047, MSGBOX_DEFAULT
+	cf_bexcl
+	cf_bsay CF1_T_047
 	goto CF_C4_Menu
 
 CF_C4_NoBrice::
+	closemessage
+	setobjectxyperm LOCALID_CF_RUST_PASSANTE, 24, 52
 	clearflag FLAG_CF_VIS_24
 	addobject LOCALID_CF_RUST_PASSANTE
-	msgbox CF1_T_048, MSGBOX_DEFAULT
+	applymovement LOCALID_CF_RUST_PASSANTE, CF1_M_C4_PassanteIn
+	waitmovement 0
+	setobjectxyperm LOCALID_CF_RUST_PASSANTE, 17, 52
+	cf_excl LOCALID_CF_RUST_PASSANTE
+	call CF_C4_FacePassante
+	cf_say CF_N1_Passante, CF1_T_048
 CF_C4_Menu::
 	closemessage
 	dynmultipush CF1_T_049, 0
@@ -390,8 +771,30 @@ CF_C4_Menu::
 	case 1, CF_C4_Leave
 	end
 
+@ Red turns toward the passer-by at (17,52)
+CF_C4_FacePassante:
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_lt VAR_0x8004, 17, CF_C4_FaceE
+	goto_if_gt VAR_0x8004, 17, CF_C4_FaceW
+	return
+CF_C4_FaceE:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	return
+CF_C4_FaceW:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	return
+
 CF_C4_Stay::
-	msgbox CF1_T_051, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	cf_narr CF1_T_051
+	closemessage
+	playse SE_RG_BALL_CLICK
+	fadescreenspeed FADE_TO_WHITE, 0
+	fadescreenspeed FADE_FROM_WHITE, 0
+	waitse
 	cf_bsay CF1_T_052
 	setdecision_once 9, DEC_A, CF_C4_End
 	setflag FLAG_CF_DOS_AFFICHE_SYLPHE
@@ -401,6 +804,15 @@ CF_C4_Stay::
 	goto CF_C4_End
 
 CF_C4_Leave::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, CF_C4_LeaveP
+	setspeaker CF_N1_Brice
+	goto CF_C4_LeaveSay
+CF_C4_LeaveP:
+	setspeaker CF_N1_Passante
+CF_C4_LeaveSay:
 	msgbox CF1_T_053, MSGBOX_DEFAULT
 	setdecision_once 9, DEC_B, CF_C4_End
 	subaffinity VAR_CF_BR, 1
@@ -409,10 +821,36 @@ CF_C4_Leave::
 CF_C4_End::
 	closemessage
 	setvar VAR_RUSTBORO_CITY_STATE, 10
+	goto_if_set FLAG_CF_VIS_24, CF_C4_End2
+	applymovement LOCALID_CF_RUST_PASSANTE, CF1_M_C4_PassanteOut
+	waitmovement 0
+CF_C4_End2:
 	setflag FLAG_CF_VIS_24
 	removeobject LOCALID_CF_RUST_PASSANTE
 	releaseall
 	end
+
+CF1_M_C4_PassanteIn:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+CF1_M_C4_PassanteOut:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
 @ ---------------------------------------------------------------- C5: "Ferrand" (D013)
 
@@ -421,7 +859,8 @@ CF_C5_Ferrand::
 	faceplayer
 	checkdecision 13
 	goto_if_ne VAR_RESULT, DEC_NONE, CF_C5_Again
-	msgbox CF1_T_054, MSGBOX_DEFAULT
+	cf_excl VAR_LAST_TALKED
+	cf_say CF_N1_Ferrand, CF1_T_054
 	message CF1_T_055
 	waitmessage
 	dynmultipush CF1_T_056, 0
@@ -434,22 +873,29 @@ CF_C5_Ferrand::
 	end
 
 CF_C5_Talk::
-	msgbox CF1_T_057, MSGBOX_DEFAULT
-	msgbox CF1_T_058, MSGBOX_DEFAULT
+	cf_say CF_N1_Ferrand, CF1_T_057
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceUp
+	waitmovement 0
+	cf_narr CF1_T_058
+	cf_bexcl
 	cf_bsay CF1_T_059
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+	waitmovement 0
 	setdecision_once 13, DEC_A, CF_C5_End
 	setflag FLAG_CF_LAMBDA_REMARQUE
 	addaffinity VAR_CF_RK, 3
 	goto CF_C5_End
 
 CF_C5_Go::
-	msgbox CF1_T_060, MSGBOX_DEFAULT
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+	cf_narr CF1_T_060
 	setdecision_once 13, DEC_B, CF_C5_End
 	subaffinity VAR_CF_BR, 1
 	goto CF_C5_End
 
 CF_C5_Again::
-	msgbox CF1_T_061, MSGBOX_DEFAULT
+	cf_say CF_N1_Ferrand, CF1_T_061
 CF_C5_End::
 	release
 	end
@@ -462,12 +908,29 @@ CF_C6_Show::
 	clearflag FLAG_CF_VIS_04
 	return
 
+@ Red arrives by the stairs (2,2) and walks to the President (15,5)
 CF_C6_Scene::
 	lockall
-	msgbox CF1_T_062, MSGBOX_DEFAULT
-	msgbox CF1_T_063, MSGBOX_DEFAULT
-	msgbox CF1_T_064, MSGBOX_DEFAULT
-	msgbox CF1_T_065, MSGBOX_DEFAULT
+	cf_excl LOCALID_CF_DEVON_PRESIDENT
+	cf_say CF_N1_President, CF1_T_062
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, CF1_M_C6_PlayerIn
+	waitmovement 0
+	cf_say CF_N1_President, CF1_T_063
+	closemessage
+	applymovement LOCALID_CF_DEVON_LEO, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	cf_say CF_N1_Leo, CF1_T_064
+	closemessage
+	applymovement LOCALID_CF_DEVON_LANETTE, Common_Movement_FaceRight
+	waitmovement 0
+	cf_say CF_N1_Lanette, CF1_T_065
+	closemessage
+	applymovement LOCALID_CF_DEVON_CELEO, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	setspeaker CF_N1_Celeo
 	cf_if_dec 1, DEC_A, CF_C6_CeleoA
 	msgbox CF1_T_066, MSGBOX_DEFAULT
 	goto CF_C6_President
@@ -475,6 +938,10 @@ CF_C6_Scene::
 CF_C6_CeleoA::
 	msgbox CF1_T_067, MSGBOX_DEFAULT
 CF_C6_President::
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	setspeaker CF_N1_President
 	cf_if_dec 9, DEC_A, CF_C6_PresidentA
 	msgbox CF1_T_068, MSGBOX_DEFAULT
 	goto CF_C6_Photo
@@ -482,6 +949,8 @@ CF_C6_President::
 CF_C6_PresidentA::
 	msgbox CF1_T_069, MSGBOX_DEFAULT
 CF_C6_Photo::
+	applymovement LOCALID_CF_DEVON_PRESIDENT, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
 	message CF1_T_070
 	waitmessage
 	dynmultipush CF1_T_071, 0
@@ -494,7 +963,11 @@ CF_C6_Photo::
 	end
 
 CF_C6_Pose::
-	msgbox CF1_T_072, MSGBOX_DEFAULT
+	playse SE_RG_BALL_CLICK
+	fadescreenspeed FADE_TO_WHITE, 0
+	fadescreenspeed FADE_FROM_WHITE, 0
+	waitse
+	cf_narr CF1_T_072
 	setdecision_once 11, DEC_A, CF_C6_Common
 	addaffinity VAR_CF_REP_C, 5
 	subaffinity VAR_CF_REP_P, 3
@@ -502,16 +975,23 @@ CF_C6_Pose::
 	goto CF_C6_Common
 
 CF_C6_Decline::
-	msgbox CF1_T_073, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	cf_say CF_N1_President, CF1_T_073
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
 	setdecision_once 11, DEC_B, CF_C6_Common
 	subaffinity VAR_CF_REP_C, 3
 	addaffinity VAR_CF_REP_P, 2
 	goto CF_C6_Common
 
 CF_C6_Common::
-	msgbox CF1_T_074, MSGBOX_DEFAULT
+	cf_say CF_N1_President, CF1_T_074
+	setspeaker SP_NAME_NONE
 	giveitem ITEM_LETTER
-	msgbox CF1_T_075, MSGBOX_DEFAULT
+	applymovement LOCALID_CF_DEVON_ROCHARD, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	cf_say CF_N1_Rochard, CF1_T_075
 	cf_if_dec 5, DEC_B, CF_C6_BriceEnters
 CF_C6_Done::
 	closemessage
@@ -519,33 +999,76 @@ CF_C6_Done::
 	releaseall
 	end
 
+@ Brice comes up the stairs (object hidden by an always-set flag) and joins
 CF_C6_BriceEnters::
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, TRUE, CF_C6_Done
-	msgbox CF1_T_076, MSGBOX_DEFAULT
 	closemessage
+	playse SE_EXIT
+	addobject LOCALID_CF_DEVON_BRICE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_CF_DEVON_BRICE, CF1_M_C6_BriceIn
+	waitmovement 0
+	cf_say CF_N1_Brice, CF1_T_076
+	closemessage
+	removeobject LOCALID_CF_DEVON_BRICE
 	createfollowernpc OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, FNPC_ALL_LAND
 	goto CF_C6_Done
 
+CF1_M_C6_PlayerIn:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	face_right
+	step_end
+
+CF1_M_C6_BriceIn:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	face_right
+	step_end
+
 CF_C6_RochardTalk::
-	msgbox CF1_T_075, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Rochard, CF1_T_075
 
 CF_C6_PresidentTalk::
-	msgbox CF1_T_063, MSGBOX_NPC
-	end
+	cf_npc CF_N1_President, CF1_T_063
 
 CF_C6_LeoTalk::
-	msgbox CF1_T_064, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Leo, CF1_T_064
 
 CF_C6_LanetteTalk::
-	msgbox CF1_T_065, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Lanette, CF1_T_065
 
 CF_C6_CeleoTalk::
 	lock
 	faceplayer
+	setspeaker CF_N1_Celeo
 	cf_if_dec 1, DEC_A, CF_C6_CeleoTalkA
 	msgbox CF1_T_066, MSGBOX_DEFAULT
 	release
@@ -561,11 +1084,20 @@ CF_C6_CeleoTalkA::
 CF_C7_Thief::
 	cf_if_dec 11, DEC_NONE, CF_Nop
 	lockall
+	playse SE_M_TELEPORT
 	clearflag FLAG_CF_VIS_28
 	addobject LOCALID_CF_RUST_HOOPA
-	delay 20
-	msgbox CF1_T_077, MSGBOX_DEFAULT
+	waitse
+	playmoncry SPECIES_HOOPA, CRY_MODE_NORMAL
+	cf_narr CF1_T_077
+	waitmoncry
+	closemessage
+	cf_bexcl
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_CF_RUST_HOOPA, CF1_M_Jump
+	waitmovement 0
 	cf_bsay CF1_T_078
+	setspeaker SP_NAME_NONE
 	message CF1_T_079
 	waitmessage
 	checkitem ITEM_ORAN_BERRY
@@ -590,7 +1122,13 @@ CF_C7_Choice::
 
 CF_C7_Berry::
 	removeitem ITEM_ORAN_BERRY
-	msgbox CF1_T_083, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	applymovement LOCALID_CF_RUST_HOOPA, CF1_M_Jump
+	waitmovement 0
+	cf_narr CF1_T_083
+	closemessage
+	call CF_C7_Vanish
 	cf_bsay CF1_T_084
 	setdecision_once 12, DEC_A, CF_C7_End
 	addaffinity VAR_CF_HO, 5
@@ -598,7 +1136,12 @@ CF_C7_Berry::
 	goto CF_C7_End
 
 CF_C7_Chase::
-	msgbox CF1_T_085, MSGBOX_DEFAULT
+	applymovement LOCALID_CF_RUST_HOOPA, CF1_M_FleeRight
+	applymovement OBJ_EVENT_ID_PLAYER, CF1_M_C7_Run
+	waitmovement LOCALID_CF_RUST_HOOPA
+	waitmovement OBJ_EVENT_ID_PLAYER
+	removeobject LOCALID_CF_RUST_HOOPA
+	cf_narr CF1_T_085
 	cf_bsay CF1_T_086
 	setdecision_once 12, DEC_B, CF_C7_End
 	subaffinity VAR_CF_HO, 3
@@ -608,11 +1151,18 @@ CF_C7_Chase::
 	goto CF_C7_End
 
 CF_C7_Nothing::
+	call CF_C7_Vanish
 	cf_bsay CF1_T_087
 	setdecision_once 12, DEC_C, CF_C7_End
 	addaffinity VAR_CF_HO, 1
 	subaffinity VAR_CF_BR, 1
 	goto CF_C7_End
+
+CF_C7_Vanish:
+	playse SE_M_TELEPORT
+	removeobject LOCALID_CF_RUST_HOOPA
+	waitse
+	return
 
 CF_C7_End::
 	closemessage
@@ -622,15 +1172,57 @@ CF_C7_End::
 	releaseall
 	end
 
+CF1_M_C7_Run:
+	walk_fast_right
+	walk_fast_right
+	walk_in_place_faster_right
+	step_end
+
 @ ---------------------------------------------------------------- C8: les mines (D010)
+
+@ White flash (ring / photo)
+	.macro cf_flash
+	fadescreenspeed FADE_TO_WHITE, 0
+	fadescreenspeed FADE_FROM_WHITE, 0
+	.endm
 
 CF_C8_Scene::
 	lockall
-	msgbox CF1_T_088, MSGBOX_DEFAULT
-	msgbox CF1_T_089, MSGBOX_DEFAULT
-	msgbox CF1_T_090, MSGBOX_DEFAULT
-	msgbox CF1_T_091, MSGBOX_DEFAULT
-	msgbox CF1_T_092, MSGBOX_DEFAULT
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_ne VAR_0x8005, 5, CF_C8_Start
+	cf_move OBJ_EVENT_ID_PLAYER, CF1_M_Up1
+CF_C8_Start::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	playse SE_M_ROCK_THROW
+	cf_shake 2, 0, 6, 3
+	waitse
+	cf_excl LOCALID_CF_TUN_MINER_1
+	turnobject LOCALID_CF_TUN_MINER_1, DIR_WEST
+	cf_say CF_N1_Mineur, CF1_T_088
+	closemessage
+	cf_move LOCALID_CF_TUN_ROXANNE, Common_Movement_WalkInPlaceFasterLeft
+	cf_say CF_N1_Roxanne, CF1_T_089
+	closemessage
+	cf_move LOCALID_CF_TUN_PIERRE, CF1_M_C8_PierreIn
+	cf_say CF_N1_Pierre, CF1_T_090
+	closemessage
+	turnobject LOCALID_CF_TUN_PIERRE, DIR_EAST
+	playmoncry SPECIES_ROLYCOLY, CRY_MODE_NORMAL
+	cf_move LOCALID_CF_TUN_CHARBI, CF1_M_Jump
+	waitmoncry
+	playmoncry SPECIES_CARBINK, CRY_MODE_NORMAL
+	cf_move LOCALID_CF_TUN_STRASSIE, CF1_M_Jump
+	waitmoncry
+	turnobject LOCALID_CF_TUN_PIERRE, DIR_WEST
+	cf_say CF_N1_Pierre, CF1_T_091
+	closemessage
+	cf_excl LOCALID_CF_TUN_MINER_2
+	turnobject LOCALID_CF_TUN_MINER_2, DIR_EAST
+	cf_say CF_N1_Mineur, CF1_T_092
+	closemessage
+	turnobject LOCALID_CF_TUN_MINER_2, DIR_WEST
+	cf_move LOCALID_CF_TUN_ROXANNE, Common_Movement_WalkInPlaceFasterLeft
+	setspeaker CF_N1_Roxanne
 	message CF1_T_093
 	waitmessage
 	dynmultipush CF1_T_094, 0
@@ -645,7 +1237,16 @@ CF_C8_Scene::
 	end
 
 CF_C8_Move::
-	msgbox CF1_T_097, MSGBOX_DEFAULT
+	cf_say CF_N1_Pierre, CF1_T_097
+	closemessage
+	turnobject LOCALID_CF_TUN_PIERRE, DIR_EAST
+	playmoncry SPECIES_ROLYCOLY, CRY_MODE_NORMAL
+	applymovement LOCALID_CF_TUN_CHARBI, CF1_M_FleeRight
+	applymovement LOCALID_CF_TUN_STRASSIE, CF1_M_FleeRight
+	waitmovement LOCALID_CF_TUN_CHARBI
+	waitmovement LOCALID_CF_TUN_STRASSIE
+	waitmoncry
+	turnobject LOCALID_CF_TUN_PIERRE, DIR_WEST
 	setdecision_once 10, DEC_A, CF_C8_Hide
 	setbits VAR_CF_ECO, 2, 2, ECO_RESTAURE
 	addaffinity VAR_CF_REP_I, 3
@@ -654,7 +1255,10 @@ CF_C8_Move::
 	goto CF_C8_Hide
 
 CF_C8_Data::
-	msgbox CF1_T_098, MSGBOX_DEFAULT
+	playse SE_RG_CARD_FLIP
+	cf_move LOCALID_CF_TUN_ROXANNE, Common_Movement_WalkInPlaceFasterLeft
+	waitse
+	cf_say CF_N1_Roxanne, CF1_T_098
 	setdecision_once 10, DEC_B, CF_C8_End
 	setbits VAR_CF_ECO, 2, 2, ECO_MIXTE
 	addaffinity VAR_CF_REP_C, 3
@@ -663,7 +1267,15 @@ CF_C8_Data::
 	goto CF_C8_End
 
 CF_C8_Leave::
-	msgbox CF1_T_099, MSGBOX_DEFAULT
+	playmoncry SPECIES_ROLYCOLY, CRY_MODE_WEAK
+	cf_move LOCALID_CF_TUN_CHARBI, CF1_M_Shiver
+	waitmoncry
+	applymovement LOCALID_CF_TUN_CHARBI, CF1_M_FleeRight
+	applymovement LOCALID_CF_TUN_STRASSIE, CF1_M_FleeRight
+	waitmovement LOCALID_CF_TUN_CHARBI
+	waitmovement LOCALID_CF_TUN_STRASSIE
+	turnobject LOCALID_CF_TUN_MINER_2, DIR_SOUTH
+	cf_narr CF1_T_099
 	setdecision_once 10, DEC_C, CF_C8_Hide
 	setbits VAR_CF_ECO, 2, 2, ECO_ABATTU
 	addaffinity VAR_CF_REP_L, 4
@@ -678,30 +1290,72 @@ CF_C8_Hide::
 	removeobject LOCALID_CF_TUN_STRASSIE
 CF_C8_End::
 	cf_bsay CF1_T_100
-	msgbox CF1_T_101, MSGBOX_DEFAULT
+	turnobject LOCALID_CF_TUN_ROXANNE, DIR_WEST
+	cf_say CF_N1_Roxanne, CF1_T_101
 	closemessage
+	applymovement LOCALID_CF_TUN_ROXANNE, CF1_M_C8_RoxOut
+	applymovement OBJ_EVENT_ID_PLAYER, CF1_M_C8_PlayerWatch
+	waitmovement LOCALID_CF_TUN_ROXANNE
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RUSTURF_TUNNEL_STATE, 1
 	setflag FLAG_CF_VIS_31
 	removeobject LOCALID_CF_TUN_ROXANNE
 	releaseall
 	end
 
+CF1_M_Up1:
+	walk_up
+	step_end
+
+CF1_M_C8_PierreIn:
+	walk_left
+	step_end
+
+@ (10,5) -> west along the corridor, then down the side gallery
+CF1_M_C8_RoxOut:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	step_end
+
+CF1_M_C8_PlayerWatch:
+	face_down
+	delay_16
+	delay_16
+	face_left
+	step_end
+
 CF_C8_MinerTalk::
-	msgbox CF1_T_088, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Mineur, CF1_T_088
 
 CF_C8_CharbiTalk::
-	msgbox CF1_T_102, MSGBOX_NPC
+	lock
+	faceplayer
+	playmoncry SPECIES_ROLYCOLY, CRY_MODE_NORMAL
+	cf_narr CF1_T_102
+	waitmoncry
+	release
 	end
 
 CF_C8_StrassieTalk::
-	msgbox CF1_T_103, MSGBOX_NPC
+	lock
+	faceplayer
+	playmoncry SPECIES_CARBINK, CRY_MODE_NORMAL
+	cf_narr CF1_T_103
+	waitmoncry
+	release
 	end
 
 @ Pierre's challenge (content, not counted): after badge 1
 CF_C8_Pierre::
 	lock
 	faceplayer
+	setspeaker CF_N1_Pierre
 	goto_if_set FLAG_BADGE01_GET, CF_C8_PierreDuel
 	msgbox CF1_T_091, MSGBOX_DEFAULT
 	release
@@ -716,6 +1370,7 @@ CF_C8_PierreDuel::
 CF_C8_PierreDuel5::
 	trainerbattle_single_declinable TRAINER_VALERIE_5, CF1_T_104, CF1_T_105, 0
 CF_C8_PierreAfter::
+	setspeaker CF_N1_Pierre
 	msgbox CF1_T_106, MSGBOX_DEFAULT
 	release
 	end
@@ -724,16 +1379,20 @@ CF_C8_PierreAfter::
 
 CF_C9_Reward::
 	raisecap 18
+	setspeaker SP_NAME_NONE
 	giveitem ITEM_TM_ROCK_TOMB
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_ROCK_TOMB
-	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
+	cf_say CF_N1_Roxanne, RustboroCity_Gym_Text_ExplainRockTomb
 	cf_if_dec 16, DEC_NONE, CF_C9_Ask
 	release
 	end
 
 CF_C9_Ask::
-	msgbox CF1_T_107, MSGBOX_DEFAULT
+	closemessage
+	cf_move VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
+	cf_say CF_N1_Roxanne, CF1_T_107
+	setspeaker CF_N1_Roxanne
 	message CF1_T_108
 	waitmessage
 	dynmultipush CF1_T_109, 0
@@ -746,15 +1405,19 @@ CF_C9_Ask::
 	end
 
 CF_C9_Give::
-	msgbox CF1_T_110, MSGBOX_DEFAULT
+	cf_move OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	playse SE_RG_CARD_FLIP
+	waitse
+	cf_say CF_N1_Roxanne, CF1_T_110
 	setdecision_once 16, DEC_A, CF_C9_End
 	addaffinity VAR_CF_REP_L, 3
 	subaffinity VAR_CF_BR, 2
 	goto CF_C9_End
 
 CF_C9_Refuse::
+	cf_bexcl
 	cf_bsay CF1_T_111
-	msgbox CF1_T_112, MSGBOX_DEFAULT
+	cf_say CF_N1_Roxanne, CF1_T_112
 	setdecision_once 16, DEC_B, CF_C9_End
 	subaffinity VAR_CF_REP_L, 2
 	addaffinity VAR_CF_BR, 2
@@ -771,7 +1434,7 @@ CF_C9_GymGate::
 
 CF_C9_GymClosed::
 	lockall
-	msgbox CF1_T_113, MSGBOX_DEFAULT
+	cf_narr CF1_T_113
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Down1
 	waitmovement 0
@@ -788,15 +1451,29 @@ CF_R116_Show_End::
 	return
 
 CF_C10_NetTalk::
-	msgbox CF1_T_114, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Agent, CF1_T_114
+
+@ Player is on x=40, y 10..15: walk up to (40,10), facing the gang
+CF_C10_ToRow10::
+	getplayerxy VAR_0x8004, VAR_0x8005
+CF_C10_ToRow10_Loop::
+	goto_if_le VAR_0x8005, 10, CF_C10_ToRow10_Done
+	cf_move OBJ_EVENT_ID_PLAYER, CF1_M_Up1
+	subvar VAR_0x8005, 1
+	goto CF_C10_ToRow10_Loop
+CF_C10_ToRow10_Done::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	return
 
 CF_C10_Scene::
 	goto_if_unset FLAG_BADGE01_GET, CF_Nop
 	lockall
+	call CF_C10_ToRow10
 	cf_if_dec 16, DEC_A, CF_C10_Net
 CF_C10_Brice::
+	cf_bexcl
 	cf_bsay CF1_T_115
+	closemessage
 	clearflag FLAG_CF_VIS_35
 	clearflag FLAG_CF_VIS_36
 	clearflag FLAG_CF_VIS_37
@@ -808,12 +1485,24 @@ CF_C10_Spawn::
 	addobject LOCALID_CF_R116_LANCE
 	addobject LOCALID_CF_R116_GRUNT_A
 	addobject LOCALID_CF_R116_GRUNT_B
+	goto_if_set FLAG_CF_VIS_25, CF_C10_SpawnHoopa
 	addobject LOCALID_CF_R116_FERRAND
+CF_C10_SpawnHoopa::
+	goto_if_set FLAG_CF_VIS_30, CF_C10_Spawned
 	addobject LOCALID_CF_R116_HOOPA
+	playmoncry SPECIES_HOOPA, CRY_MODE_WEAK
+	waitmoncry
+CF_C10_Spawned::
 	delay 20
-	msgbox CF1_T_116, MSGBOX_DEFAULT
-	msgbox CF1_T_117, MSGBOX_DEFAULT
-	msgbox CF1_T_118, MSGBOX_DEFAULT
+	turnobject LOCALID_CF_R116_LANCE, DIR_EAST
+	cf_say CF_N1_Lance, CF1_T_116
+	turnobject LOCALID_CF_R116_GRUNT_A, DIR_SOUTH
+	cf_say CF_N1_Sbire, CF1_T_117
+	cf_move LOCALID_CF_R116_LANCE, Common_Movement_WalkInPlaceFasterRight
+	cf_say CF_N1_Lance, CF1_T_118
+	closemessage
+	turnobject LOCALID_CF_R116_LANCE, DIR_WEST
+	turnobject LOCALID_CF_R116_GRUNT_A, DIR_WEST
 	cf_if_dec 13, DEC_A, CF_C10_Ferrand
 CF_C10_Poster::
 	cf_if_dec 9, DEC_A, CF_C10_PosterA
@@ -830,7 +1519,10 @@ CF_C10_Menu::
 	end
 
 CF_C10_Net::
-	msgbox CF1_T_114, MSGBOX_DEFAULT
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	cf_say CF_N1_Agent, CF1_T_114
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	goto CF_C10_Brice
 
 CF_C10_ShowFerrand::
@@ -838,28 +1530,44 @@ CF_C10_ShowFerrand::
 	goto CF_C10_ShowHoopa
 
 CF_C10_Ferrand::
+	cf_bexcl
 	cf_bsay CF1_T_122
-	msgbox CF1_T_123, MSGBOX_DEFAULT
+	closemessage
+	cf_move LOCALID_CF_R116_FERRAND, CF1_M_C10_FerrandOut
+	cf_narr CF1_T_123
+	closemessage
 	setflag FLAG_CF_VIS_25
 	removeobject LOCALID_CF_R116_FERRAND
 	goto CF_C10_Poster
 
 CF_C10_PosterA::
+	cf_excl LOCALID_CF_R116_GRUNT_A
+	setspeaker CF_N1_Sbire
 	message CF1_T_124
 	waitmessage
 	goto CF_C10_Menu
 
 CF_C10_Fight::
 	setflag FLAG_CF_NO_WHITEOUT
+	cf_excl LOCALID_CF_R116_GRUNT_A
+	cf_move LOCALID_CF_R116_GRUNT_A, CF1_M_C10_GruntAIn
 	trainerbattle_scene_no_intro TRAINER_GRUNT_PETALBURG_WOODS, CF1_T_125
 	goto_if_unset TRAINER_FLAGS_START + TRAINER_GRUNT_PETALBURG_WOODS, CF_C10_FightEnd
+	cf_move LOCALID_CF_R116_GRUNT_A, CF1_M_C10_GruntABack
+	cf_excl LOCALID_CF_R116_GRUNT_B
+	cf_move LOCALID_CF_R116_GRUNT_B, CF1_M_C10_GruntBIn
 	trainerbattle_scene_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, CF1_T_126
 CF_C10_FightEnd::
 	clearflag FLAG_CF_NO_WHITEOUT
 	special HealPlayerParty
-	msgbox CF1_T_127, MSGBOX_DEFAULT
+	playse SE_M_TELEPORT
+	cf_flash
+	cf_shake 0, 3, 6, 4
+	waitse
+	cf_narr CF1_T_127
 	call CF_C10_LoseItem
-	msgbox CF1_T_128, MSGBOX_DEFAULT
+	turnobject LOCALID_CF_R116_LANCE, DIR_WEST
+	cf_say CF_N1_Lance, CF1_T_128
 	setdecision_once 14, DEC_A, CF_C10_End
 	subaffinity VAR_CF_RK, 3
 	addaffinity VAR_CF_REP_L, 1
@@ -867,8 +1575,14 @@ CF_C10_FightEnd::
 	goto CF_C10_End
 
 CF_C10_Watch::
-	msgbox CF1_T_129, MSGBOX_DEFAULT
-	msgbox CF1_T_130, MSGBOX_DEFAULT
+	turnobject LOCALID_CF_R116_LANCE, DIR_SOUTH
+	cf_narr CF1_T_129
+	closemessage
+	playse SE_M_TELEPORT
+	cf_flash
+	cf_shake 0, 3, 6, 4
+	waitse
+	cf_narr CF1_T_130
 	cf_bsay CF1_T_131
 	setdecision_once 14, DEC_B, CF_C10_End
 	setflag FLAG_CF_DOS_HORAIRE_R116
@@ -876,25 +1590,38 @@ CF_C10_Watch::
 	goto CF_C10_End
 
 CF_C10_Warn::
-	msgbox CF1_T_132, MSGBOX_DEFAULT
+	cf_narr CF1_T_132
+	closemessage
+	setobjectxyperm LOCALID_CF_R116_FLORA, 35, 11
 	clearflag FLAG_CF_VIS_20
 	addobject LOCALID_CF_R116_FLORA
+	cf_move LOCALID_CF_R116_FLORA, CF1_M_C10_FloraIn
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	cf_if_dec 8, DEC_A, CF_C10_FloraA
-	msgbox CF1_T_133, MSGBOX_DEFAULT
+	cf_say CF_N1_Flora, CF1_T_133
 	goto CF_C10_Warn2
 
 CF_C10_FloraA::
-	msgbox CF1_T_134, MSGBOX_DEFAULT
+	cf_say CF_N1_Flora, CF1_T_134
 CF_C10_Warn2::
-	msgbox CF1_T_135, MSGBOX_DEFAULT
+	closemessage
+	cf_move LOCALID_CF_R116_FLORA, CF1_M_C10_FloraOn
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	cf_excl LOCALID_CF_R116_LANCE
+	cf_narr CF1_T_135
 	setdecision_once 14, DEC_C, CF_C10_End
 	addaffinity VAR_CF_REP_L, 3
 	subaffinity VAR_CF_REP_A, 2
 	subaffinity VAR_CF_TI, 1
 	goto CF_C10_End
 
+@ Lance steps back to the ring and the gang vanishes with it
 CF_C10_End::
 	closemessage
+	turnobject LOCALID_CF_R116_LANCE, DIR_EAST
+	cf_move LOCALID_CF_R116_LANCE, CF1_M_C10_LanceOut
+	playse SE_M_TELEPORT
+	cf_flash
 	setflag FLAG_CF_VIS_35
 	setflag FLAG_CF_VIS_36
 	setflag FLAG_CF_VIS_30
@@ -905,9 +1632,68 @@ CF_C10_End::
 	removeobject LOCALID_CF_R116_HOOPA
 	removeobject LOCALID_CF_R116_FERRAND
 	removeobject LOCALID_CF_R116_FLORA
+	waitse
 	setvar VAR_ROUTE116_STATE, 2
 	releaseall
 	end
+
+@ (43,9) -> down the slope and away east
+CF1_M_C10_FerrandOut:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+@ (45,9) -> (41,10), facing Red at (40,10)
+CF1_M_C10_GruntAIn:
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	step_end
+
+CF1_M_C10_GruntABack:
+	walk_right
+	walk_up
+	face_left
+	step_end
+
+@ (45,11) -> (41,10)
+CF1_M_C10_GruntBIn:
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	step_end
+
+@ (35,11) -> (40,11), right below Red
+CF1_M_C10_FloraIn:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	face_up
+	step_end
+
+CF1_M_C10_FloraOn:
+	walk_fast_right
+	walk_fast_right
+	face_right
+	step_end
+
+CF1_M_C10_LanceOut:
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
 @ One item of the first owned kind among: Super Potion, Potion, Antidote, Poke Ball
 CF_C10_LoseItem::
@@ -940,7 +1726,7 @@ CF_C10_LoseBall::
 	bufferitemname STR_VAR_1, ITEM_POKE_BALL
 	removeitem ITEM_POKE_BALL
 CF_C10_LoseMsg::
-	msgbox CF1_T_136, MSGBOX_DEFAULT
+	cf_narr CF1_T_136
 	return
 
 @ The ruined grunt (D015)
@@ -952,7 +1738,7 @@ CF_C10_SbireB::
 	end
 
 CF_C10_SbireBTalk::
-	msgbox CF1_T_137, MSGBOX_DEFAULT
+	cf_say CF_N1_Sbire, CF1_T_137
 	msgbox CF1_T_138, MSGBOX_DEFAULT
 	cf_if_dec 11, DEC_A, CF_C10_SbireBPhotoA
 	msgbox CF1_T_139, MSGBOX_DEFAULT
@@ -980,7 +1766,9 @@ CF_C10_SbireBChoice::
 	end
 
 CF_C10_Give::
-	msgbox CF1_T_142, MSGBOX_DEFAULT
+	playse SE_SHOP
+	waitse
+	cf_say CF_N1_Sbire, CF1_T_142
 	setdecision_once 15, DEC_A, CF_C10_SbireBEnd
 	subaffinity VAR_CF_RK, 2
 	addaffinity VAR_CF_REP_P, 2
@@ -989,23 +1777,49 @@ CF_C10_Give::
 	goto CF_C10_SbireBEnd
 
 CF_C10_NoGive::
-	msgbox CF1_T_143, MSGBOX_DEFAULT
+	cf_narr CF1_T_143
 	setdecision_once 15, DEC_B, CF_C10_SbireBEnd
 	addaffinity VAR_CF_RK, 2
 	goto CF_C10_SbireBEnd
 
 CF_C10_SbireBEnd::
 	closemessage
+	fadescreen FADE_TO_BLACK
 	setflag FLAG_CF_VIS_37
 	removeobject LOCALID_CF_R116_GRUNT_B
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 
 CF_C10_ExMiner::
-	msgbox CF1_T_144, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Mineur, CF1_T_144
 
 @ ---------------------------------------------------------------- C11: end of the demo
+
+@ Brice (6,4) and Red turn toward each other
+CF_C11_FaceBrice::
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_lt VAR_0x8004, 6, CF_C11_FB_West
+	goto_if_gt VAR_0x8004, 6, CF_C11_FB_East
+	goto_if_lt VAR_0x8005, 4, CF_C11_FB_North
+	turnobject LOCALID_CF_PC_BRICE, DIR_SOUTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	return
+
+CF_C11_FB_North::
+	turnobject LOCALID_CF_PC_BRICE, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+	return
+
+CF_C11_FB_West::
+	turnobject LOCALID_CF_PC_BRICE, DIR_WEST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	return
+
+CF_C11_FB_East::
+	turnobject LOCALID_CF_PC_BRICE, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	return
 
 CF_C11_Scene::
 	lockall
@@ -1016,7 +1830,11 @@ CF_C11_Brice::
 	clearflag FLAG_CF_VIS_43
 	addobject LOCALID_CF_PC_BRICE
 	delay 20
-	msgbox CF1_T_145, MSGBOX_DEFAULT
+	cf_narr CF1_T_145
+	closemessage
+	cf_excl LOCALID_CF_PC_BRICE
+	call CF_C11_FaceBrice
+	setspeaker SP_NAME_NONE
 	getbits VAR_CF_ECO, 2, 2
 	goto_if_eq VAR_RESULT, ECO_RESTAURE, CF_C11_BulletinR
 	goto_if_eq VAR_RESULT, ECO_ABATTU, CF_C11_BulletinA
@@ -1030,6 +1848,7 @@ CF_C11_BulletinR::
 CF_C11_BulletinA::
 	msgbox CF1_T_148, MSGBOX_DEFAULT
 CF_C11_Recap::
+	setspeaker CF_N1_Brice
 	cf_if_dec 1, DEC_A, CF_C11_RecapA
 	msgbox CF1_T_149, MSGBOX_DEFAULT
 	goto CF_C11_Recap6
@@ -1055,30 +1874,46 @@ CF_C11_Recap8A::
 CF_C11_Recap15A::
 	msgbox CF1_T_153, MSGBOX_DEFAULT
 CF_C11_Thief::
+	closemessage
+	playse SE_M_TELEPORT
 	clearflag FLAG_CF_VIS_29
 	addobject LOCALID_CF_PC_HOOPA
+	waitse
+	playmoncry SPECIES_HOOPA, CRY_MODE_NORMAL
+	cf_excl LOCALID_CF_PC_BRICE
+	turnobject LOCALID_CF_PC_BRICE, DIR_WEST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	waitmoncry
+	setspeaker SP_NAME_NONE
 	goto_if_ge VAR_CF_HO, 25, CF_C11_ThiefGift
 	goto_if_le VAR_CF_HO, 18, CF_C11_ThiefTake
 	msgbox CF1_T_154, MSGBOX_DEFAULT
 	goto CF_C11_Thesis
 
 CF_C11_ThiefGift::
+	cf_move LOCALID_CF_PC_HOOPA, CF1_M_Jump
 	msgbox CF1_T_155, MSGBOX_DEFAULT
 	giveitem ITEM_ORAN_BERRY
-	msgbox CF1_T_156, MSGBOX_DEFAULT
+	cf_say CF_N1_Brice, CF1_T_156
 	goto CF_C11_Thesis
 
 CF_C11_ThiefTake::
+	cf_move LOCALID_CF_PC_HOOPA, CF1_M_Jump
+	playse SE_BALL
 	msgbox CF1_T_157, MSGBOX_DEFAULT
 	checkitem ITEM_POKE_BALL
 	goto_if_eq VAR_RESULT, FALSE, CF_C11_Thesis
 	removeitem ITEM_POKE_BALL
 CF_C11_Thesis::
+	closemessage
+	playse SE_M_TELEPORT
 	setflag FLAG_CF_VIS_29
 	removeobject LOCALID_CF_PC_HOOPA
-	msgbox CF1_T_158, MSGBOX_DEFAULT
+	waitse
+	call CF_C11_FaceBrice
+	cf_say CF_N1_Brice, CF1_T_158
 	msgbox CF1_T_159, MSGBOX_DEFAULT
-	msgbox CF1_T_160, MSGBOX_DEFAULT
+	cf_narr CF1_T_160
 	msgbox CF1_T_161, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_CF_CHAPTER, 2
@@ -1088,8 +1923,7 @@ CF_C11_Thesis::
 	end
 
 CF_C11_BriceTalk::
-	msgbox CF1_T_158, MSGBOX_NPC
-	end
+	cf_npc CF_N1_Brice, CF1_T_158
 
 CF_C11_Bulletin::
 	getbits VAR_CF_ECO, 2, 2
