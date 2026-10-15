@@ -477,24 +477,6 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 16,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "10",
-      "script": "CF_C7_Thief"
-    },
-    {
-      "type": "trigger",
-      "x": 12,
-      "y": 16,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "10",
-      "script": "CF_C7_Thief"
-    },
-    {
-      "type": "trigger",
       "x": 27,
       "y": 20,
       "elevation": 3,

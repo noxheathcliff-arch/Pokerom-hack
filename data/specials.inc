@@ -652,3 +652,5 @@ gSpecials::
 	def_special ClearRingOutbreak
 	def_special LedgerGet
 	def_special LedgerSet
+	def_special CF_ShowFollowerNPC
+	def_special CF_PlaceFollowerNPC

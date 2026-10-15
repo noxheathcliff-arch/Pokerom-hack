@@ -32,5 +32,7 @@ void SetRingOutbreak(void);
 void ClearRingOutbreak(void);
 void LedgerGet(void);
 void LedgerSet(void);
+void CF_ShowFollowerNPC(void);
+void CF_PlaceFollowerNPC(void);
 
 #endif // GUARD_CONFLUENCE_H

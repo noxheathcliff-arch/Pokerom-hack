@@ -409,7 +409,7 @@
     {
       "local_id": "LOCALID_CF_R116_PORTAL",
       "graphics_id": "OBJ_EVENT_GFX_CF_PORTAL",
-      "x": 48,
+      "x": 47,
       "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -465,7 +465,7 @@
     {
       "local_id": "LOCALID_CF_R116_HOOPA",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOOPA)",
-      "x": 49,
+      "x": 47,
       "y": 9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",

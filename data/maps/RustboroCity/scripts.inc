@@ -26,6 +26,7 @@ RustboroCity_EventScript_HideMapNamePopup::
 
 RustboroCity_OnFrame:
 	map_script_2 VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_ScientistAddMatchCall
+	map_script_2 VAR_RUSTBORO_CITY_STATE, 12, CF_C7_Thief
 	.2byte 0
 
 RustboroCity_EventScript_ScientistAddMatchCall::

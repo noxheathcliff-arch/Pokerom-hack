@@ -5,6 +5,10 @@
 #include "global.h"
 #include "confluence.h"
 #include "event_data.h"
+#include "event_object_movement.h"
+#include "field_player_avatar.h"
+#include "fieldmap.h"
+#include "follower_npc.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
 #include "script.h"
@@ -676,4 +680,37 @@ void LedgerGet(void)
 void LedgerSet(void)
 {
     CF_LedgerSet(gSpecialVar_0x8004, TRUE);
+}
+
+// Shows the NPC follower (Brice) on the player's tile right after a warp, so a cutscene started by an
+// OnFrame script can move him: by default he stays invisible until the player's first free step.
+void CF_ShowFollowerNPC(void)
+{
+    struct ObjectEvent *player, *follower;
+
+    if (!PlayerHasFollowerNPC())
+        return;
+    player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    follower = &gObjectEvents[GetFollowerNPCObjectId()];
+    SetFollowerNPCData(FNPC_DATA_WARP_END, FNPC_WARP_NONE);
+    SetFollowerNPCData(FNPC_DATA_COME_OUT_DOOR, FNPC_DOOR_NONE);
+    MoveObjectEventToMapCoords(follower, player->currentCoords.x, player->currentCoords.y);
+    ObjectEventTurn(follower, player->facingDirection);
+    follower->invisible = FALSE;
+}
+
+// Show the follower NPC at map coords (VAR_0x8004, VAR_0x8005) facing VAR_0x8006
+// (script coordinates, without MAP_OFFSET). Used when a scene starts right after a warp.
+void CF_PlaceFollowerNPC(void)
+{
+    struct ObjectEvent *follower;
+
+    if (!PlayerHasFollowerNPC())
+        return;
+    follower = &gObjectEvents[GetFollowerNPCObjectId()];
+    SetFollowerNPCData(FNPC_DATA_WARP_END, FNPC_WARP_NONE);
+    SetFollowerNPCData(FNPC_DATA_COME_OUT_DOOR, FNPC_DOOR_NONE);
+    MoveObjectEventToMapCoords(follower, gSpecialVar_0x8004 + MAP_OFFSET, gSpecialVar_0x8005 + MAP_OFFSET);
+    ObjectEventTurn(follower, gSpecialVar_0x8006);
+    follower->invisible = FALSE;
 }

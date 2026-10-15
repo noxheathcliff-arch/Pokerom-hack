@@ -1,7 +1,7 @@
 @ Hack: Confluence demo chapter 1 (SLICE_DEMO_CH0-1 C1-C11, walls s7, neutralizations s8). Edit this file directly.
 @ Conventions: visibility flags set = hidden; "M" boxes are 2 lines <= 208 px; Brice present = checkfollowernpc.
 @ State variables (vanilla vars reused, vanilla scripts neutralized): VAR_STEVENS_HOUSE_STATE (C1: 0 -> 1),
-@ VAR_PETALBURG_WOODS_STATE (C3: 0 -> 1), VAR_RUSTBORO_CITY_STATE (C4: 0 -> 10, C7: 10 -> 11),
+@ VAR_PETALBURG_WOODS_STATE (C3: 0 -> 1), VAR_RUSTBORO_CITY_STATE (C4: 0 -> 10, C6 end: 10 -> 12, C7: 12 -> 11),
 @ VAR_DEVON_CORP_3F_STATE (C6: 0 -> 1), VAR_RUSTURF_TUNNEL_STATE (C8: 0 -> 1),
 @ VAR_ROUTE116_STATE (C10: 0 -> 2, C11: 2 -> 3).
 
@@ -23,6 +23,14 @@
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, \mvt
 	waitmovement 0
 1:
+	.endm
+
+@ Show Brice (follower) at once on (x,y) facing dir, for scenes that start right after a warp
+	.macro cf_bplace x:req, y:req, dir:req
+	setvar VAR_0x8004, \x
+	setvar VAR_0x8005, \y
+	setvar VAR_0x8006, \dir
+	special CF_PlaceFollowerNPC
 	.endm
 
 @ Spoken line with namebox (string label CF_N1_*)
@@ -1030,12 +1038,18 @@ CF_C6_Show::
 	return
 
 @ Red arrives by the stairs (2,2) and walks to the President (15,5)
+@ Brice (follower, C5) is shown at once and walks one tile behind; the President only reacts once on screen
 CF_C6_Scene::
 	lockall
+	special CF_ShowFollowerNPC
+	applymovement OBJ_EVENT_ID_PLAYER, CF1_M_C6_PlayerIn1
+	cf_bmove CF1_M_C6_BriceIn1
+	waitmovement 0
 	cf_excl LOCALID_CF_DEVON_PRESIDENT
 	cf_say CF_N1_President, CF1_T_062
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, CF1_M_C6_PlayerIn
+	applymovement OBJ_EVENT_ID_PLAYER, CF1_M_C6_PlayerIn2
+	cf_bmove CF1_M_C6_BriceIn2
 	waitmovement 0
 	cf_say CF_N1_President, CF1_T_063
 	closemessage
@@ -1120,6 +1134,10 @@ CF_C6_Common::
 CF_C6_Done::
 	closemessage
 	setvar VAR_DEVON_CORP_3F_STATE, 1
+	@ C7 pending: RustboroCity OnFrame runs CF_C7_Thief right after the door exit
+	goto_if_gt VAR_RUSTBORO_CITY_STATE, 10, CF_C6_Done2
+	setvar VAR_RUSTBORO_CITY_STATE, 12
+CF_C6_Done2:
 	releaseall
 	end
 
@@ -1139,7 +1157,8 @@ CF_C6_BriceEnters::
 	createfollowernpc OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, FNPC_ALL_LAND
 	goto CF_C6_Done
 
-CF1_M_C6_PlayerIn:
+@ (2,2) -> (10,3), in view of the President (15,5)
+CF1_M_C6_PlayerIn1:
 	walk_right
 	walk_right
 	walk_right
@@ -1149,11 +1168,40 @@ CF1_M_C6_PlayerIn:
 	walk_right
 	walk_right
 	walk_right
+	step_end
+
+@ (10,3) -> (14,5)
+CF1_M_C6_PlayerIn2:
 	walk_right
 	walk_right
 	walk_right
 	walk_right
 	walk_down
+	walk_down
+	face_right
+	step_end
+
+@ Brice one step behind Red: (2,2) -> (9,3), then -> (14,4)
+CF1_M_C6_BriceIn1:
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	face_right
+	step_end
+
+CF1_M_C6_BriceIn2:
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	walk_down
 	face_right
 	step_end
@@ -1205,9 +1253,14 @@ CF_C6_CeleoTalkA::
 
 @ ---------------------------------------------------------------- C7: le petit voleur (D012)
 
+@ Run from RustboroCity OnFrame (VAR_RUSTBORO_CITY_STATE == 12, set at the end of C6)
 CF_C7_Thief::
-	cf_if_dec 11, DEC_NONE, CF_Nop
 	lockall
+	@ Brice came out of the door with Red: show him at once, left of Red
+	getplayerxy VAR_0x8004, VAR_0x8005
+	subvar VAR_0x8004, 1
+	setvar VAR_0x8006, DIR_EAST
+	special CF_PlaceFollowerNPC
 	playse SE_M_TELEPORT
 	clearflag FLAG_CF_VIS_84
 	addobject LOCALID_CF_RUST_PORTAL
@@ -1290,8 +1343,14 @@ CF_C7_Nothing::
 
 CF_C7_Vanish:
 	playse SE_M_TELEPORT
+	clearflag FLAG_CF_VIS_84
+	addobject LOCALID_CF_RUST_PORTAL
+	delay 16
 	removeobject LOCALID_CF_RUST_HOOPA
 	waitse
+	delay 8
+	setflag FLAG_CF_VIS_84
+	removeobject LOCALID_CF_RUST_PORTAL
 	return
 
 CF_C7_End::
@@ -1439,6 +1498,7 @@ CF_C8_End::
 	turnobject LOCALID_CF_TUN_ROXANNE, DIR_WEST
 	cf_say CF_N1_Roxanne, CF1_T_101
 	closemessage
+	call CF_C8_BriceAside
 	applymovement LOCALID_CF_TUN_ROXANNE, CF1_M_C8_RoxOut
 	applymovement OBJ_EVENT_ID_PLAYER, CF1_M_C8_PlayerWatch
 	waitmovement LOCALID_CF_TUN_ROXANNE
@@ -1448,6 +1508,30 @@ CF_C8_End::
 	removeobject LOCALID_CF_TUN_ROXANNE
 	releaseall
 	end
+
+@ Brice steps off row 5 (Roxanne's way out) to (7,4), behind Red
+CF_C8_BriceAside::
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, CF_C8_BriceAsideRet
+	getobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_0x8004, VAR_0x8005
+	goto_if_ne VAR_0x8005, 5, CF_C8_BriceAsideRet
+	goto_if_eq VAR_0x8004, 7, CF_C8_BriceAside7
+	goto_if_ne VAR_0x8004, 8, CF_C8_BriceAsideRet
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, CF1_M_C8_BriceAside8
+	waitmovement 0
+	return
+CF_C8_BriceAside7:
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, CF1_M_C8_BriceAside7
+	waitmovement 0
+CF_C8_BriceAsideRet:
+	return
+
+CF1_M_C8_BriceAside8:
+	walk_left
+CF1_M_C8_BriceAside7:
+	walk_up
+	face_right
+	step_end
 
 CF1_M_Up1:
 	walk_up
@@ -1596,6 +1680,19 @@ CF_R116_Show::
 	goto_if_ne VAR_RESULT, DEC_A, CF_R116_Show_End
 	clearflag FLAG_CF_VIS_13
 CF_R116_Show_End::
+	@ C10 pending (badge won): the gang already waits by the rocks when Red arrives
+	goto_if_unset FLAG_BADGE01_GET, CF_R116_Show_Ret
+	goto_if_ne VAR_ROUTE116_STATE, 0, CF_R116_Show_Ret
+	clearflag FLAG_CF_VIS_35
+	clearflag FLAG_CF_VIS_36
+	clearflag FLAG_CF_VIS_37
+	checkdecision 13
+	goto_if_ne VAR_RESULT, DEC_A, CF_R116_Show_Hoopa
+	clearflag FLAG_CF_VIS_25
+CF_R116_Show_Hoopa::
+	goto_if_lt VAR_CF_HO, 25, CF_R116_Show_Ret
+	clearflag FLAG_CF_VIS_30
+CF_R116_Show_Ret::
 	return
 
 CF_C10_NetTalk::
@@ -1622,22 +1719,8 @@ CF_C10_Brice::
 	cf_bexcl
 	cf_bsay CF1_T_115
 	closemessage
-	clearflag FLAG_CF_VIS_35
-	clearflag FLAG_CF_VIS_36
-	clearflag FLAG_CF_VIS_37
-	cf_if_dec 13, DEC_A, CF_C10_ShowFerrand
-CF_C10_ShowHoopa::
-	goto_if_lt VAR_CF_HO, 25, CF_C10_Spawn
-	clearflag FLAG_CF_VIS_30
-CF_C10_Spawn::
-	addobject LOCALID_CF_R116_LANCE
-	addobject LOCALID_CF_R116_GRUNT_A
-	addobject LOCALID_CF_R116_GRUNT_B
-	goto_if_set FLAG_CF_VIS_25, CF_C10_SpawnHoopa
-	addobject LOCALID_CF_R116_FERRAND
-CF_C10_SpawnHoopa::
+	@ The gang is already on the map (CF_R116_Show, on transition)
 	goto_if_set FLAG_CF_VIS_30, CF_C10_Spawned
-	addobject LOCALID_CF_R116_HOOPA
 	playmoncry SPECIES_HOOPA, CRY_MODE_WEAK
 	waitmoncry
 CF_C10_Spawned::
@@ -1676,10 +1759,6 @@ CF_C10_Net::
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	goto CF_C10_Brice
-
-CF_C10_ShowFerrand::
-	clearflag FLAG_CF_VIS_25
-	goto CF_C10_ShowHoopa
 
 CF_C10_Ferrand::
 	cf_bexcl
@@ -1748,6 +1827,7 @@ CF_C10_Watch::
 CF_C10_Warn::
 	cf_narr CF1_T_132
 	closemessage
+	call CF_C10_BriceAside
 	setobjectxyperm LOCALID_CF_R116_FLORA, 35, 11
 	clearflag FLAG_CF_VIS_20
 	addobject LOCALID_CF_R116_FLORA
@@ -1841,6 +1921,28 @@ CF1_M_C10_GruntBBack:
 	face_left
 	step_end
 
+@ Brice off Flora's way: from (40,y>10) below Red to (39,10), beside him
+CF_C10_BriceAside::
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, CF_C10_BriceAsideRet
+	getobjectxy OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_0x8004, VAR_0x8005
+	goto_if_ne VAR_0x8004, 40, CF_C10_BriceAsideRet
+	goto_if_le VAR_0x8005, 10, CF_C10_BriceAsideRet
+	cf_move OBJ_EVENT_ID_NPC_FOLLOWER, CF1_M_Left1
+CF_C10_BriceAsideLoop:
+	goto_if_le VAR_0x8005, 10, CF_C10_BriceAsideDone
+	cf_move OBJ_EVENT_ID_NPC_FOLLOWER, CF1_M_Up1
+	subvar VAR_0x8005, 1
+	goto CF_C10_BriceAsideLoop
+CF_C10_BriceAsideDone:
+	turnobject OBJ_EVENT_ID_NPC_FOLLOWER, DIR_EAST
+CF_C10_BriceAsideRet:
+	return
+
+CF1_M_Left1:
+	walk_left
+	step_end
+
 @ (35,11) -> (40,11), right below Red
 CF1_M_C10_FloraIn:
 	walk_fast_right
@@ -1857,8 +1959,8 @@ CF1_M_C10_FloraOn:
 	face_right
 	step_end
 
+@ (44,10) -> (46,10), next to the ring at (47,10)
 CF1_M_C10_LanceOut:
-	walk_right
 	walk_right
 	walk_right
 	step_end
@@ -2054,7 +2156,7 @@ CF_C11_Thief::
 	waitse
 	playmoncry SPECIES_HOOPA, CRY_MODE_NORMAL
 	cf_excl LOCALID_CF_PC_BRICE
-	turnobject LOCALID_CF_PC_BRICE, DIR_WEST
+	turnobject LOCALID_CF_PC_BRICE, DIR_EAST
 	cf_face LOCALID_CF_PC_HOOPA
 	waitmoncry
 	setspeaker SP_NAME_NONE
@@ -2632,8 +2734,8 @@ CF1_T_135::
 	.string "saisis partent… vers l’abattage.$"
 
 CF1_T_136::
-	.string "{STR_VAR_1} a disparu dans\n"
-	.string "l’anneau.$"
+	.string "{STR_VAR_1} manque dans le sac :\n"
+	.string "l’anneau l’a avalé.$"
 
 CF1_T_137::
 	.string "Je suis pas un voleur, hein.\n"
