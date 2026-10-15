@@ -1294,7 +1294,31 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
+// Confluence: the vanilla Birch intro (speech, gender, naming) is skipped.
+// The prologue hero is Red: male, named "RED". Fade out and go straight to CB2_NewGame
+// (the same exit the vanilla speech takes in Task_NewGameBirchSpeech_Cleanup).
+static void Task_NewGameBirchSpeech_SkipToNewGame(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        FreeAllWindowBuffers();
+        ResetAllPicSprites();
+        SetMainCallback2(CB2_NewGame);
+        DestroyTask(taskId);
+    }
+}
+
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
+{
+    static const u8 sCfPlayerName[] = _("RED");
+
+    gSaveBlock2Ptr->playerGender = MALE;
+    StringCopy(gSaveBlock2Ptr->playerName, sCfPlayerName);
+    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+    gTasks[taskId].func = Task_NewGameBirchSpeech_SkipToNewGame;
+}
+
+static void UNUSED Task_NewGameBirchSpeech_InitVanilla(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);

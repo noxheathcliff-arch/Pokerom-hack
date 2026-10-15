@@ -1,36 +1,16 @@
-# New game: main menu -> Birch speech -> gender (boy, default) -> name "Abc" -> truck.
+# New game: main menu -> (vanilla Birch speech / naming skipped by Confluence) -> Route 104 beach.
+# Player is forced to Red (boy), name "RED". File name kept for older scripts that include it.
 # Usage: gbaplay --syms SYMS --defs OFFSETS -o OUT -s OUT/game.sav ROM tools/qa/scripts/new_game_to_truck.txt
 include lib/boot_to_main_menu.txt
 echo new game: select NOUVELLE PARTIE
 press A
-wait 400
-screenshot 03_birch_speech.png
-echo new game: mash A through the speech until the naming screen (default gender = boy)
-waitfor32 gMain+4 CB2_NamingScreen+1 6000 A 20
-wait 60
-# Type "Abc": after the first letter the keyboard switches to lower case (animation -> waits)
-press A
-wait 40
-press RIGHT
-wait 4
-press A
-wait 20
-press RIGHT
-wait 4
-press A
-wait 20
-screenshot 04_naming_screen.png
-press START
-wait 20
-press A
-echo new game: mash A until the overworld (answers OUI to the name confirmation)
-waitfor32 gMain+4 CB2_Overworld+1 6000 A 20
-# the truck fades in and input stays locked for a while: wait before opening the menu
-wait 1000
+echo new game: wait for the overworld (no speech, no naming screen)
+waitfor32 gMain+4 CB2_Overworld+1 3000
+wait 120
 screenshot 05_truck_overworld.png
-expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET 0xBB
-expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET+1 0xD6
-expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET+2 0xD7
+expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET 0xCC
+expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET+1 0xBF
+expect8 *gSaveBlock2Ptr+SB2_PLAYERNAME_OFFSET+2 0xBE
 expect8 *gSaveBlock2Ptr+SB2_GENDER_OFFSET 0
 # Hack: Confluence demo spawns on Route 104 (src/new_game.c), not in the truck
 expect8 *gSaveBlock1Ptr+SB1_LOCATION_OFFSET MAP_ROUTE104_GROUP

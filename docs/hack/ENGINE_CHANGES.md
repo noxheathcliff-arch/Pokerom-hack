@@ -267,6 +267,13 @@ CF_D027_Fin::
 - `FNPC_ENABLE_NPC_FOLLOWERS TRUE` (`config/follower_npc.h`) pour `setfollowernpc` (Hoopa, 2 contre 1). SaveBlock3 : 44 o en build de test (`test/save.c`). **2 contre 1 non vérifié en émulateur** (différé : le combat de test n'a pas pu être gagné en script dans le temps imparti).
 - Preuves émulateur (script temporaire sur les cartons du camion, retiré) : captures `qa_artifacts/cf_emu/` (`d1_yesno.png`, `e2_party.png`, `f4.png` dos de Red, `g2.png` Pikachu en tête). Note : `trainerbattle` doit être lancé depuis un **objet** (assert `battle_setup.c:1252` sinon). Dans les tests `RUN_OVERWORLD_SCRIPT`, ne pas utiliser le label local `1:` (pris par l'enveloppe).
 
+### CF-9. Prologue mis en scène (P1–P6)
+- **Obéissance** (`src/battle_util.c`, `GetAttackerObedienceForAction`) : tant que `VAR_CF_CHAPTER == 0`, l'équipe du prologue (niv. 62+, sans badge) obéit toujours (`OBEYS`). Dès le ch. 1, règles vanilla (badges).
+- **Intro sautée** (`src/main_menu.c`) : `Task_NewGameBirchSpeech_Init` règle sexe = garçon, nom = « RED », fondu au noir puis `CB2_NewGame` ; l'ancien discours du Prof. est conservé en `UNUSED` (`Task_NewGameBirchSpeech_InitVanilla`).
+- **Pas de séquence du camion** (`src/overworld.c`, `CB2_NewGame`) : `gFieldCallback = FieldCB_WarpExitFadeFromBlack` (le départ se fait sur la plage R104 ; `ExecuteTruckSequence` bloquait le joueur ~700 images avant que P1 ne démarre).
+- **Nouvelle partie** (`CF_DemoNewGameInit`) : camions de déménagement cachés (`FLAG_HIDE_LITTLEROOT_TOWN_*_TRUCK`, ils étaient traversables) ; VIS_86–92 posés (objets de mise en scène révélés par script).
+- **Boîte de nom** : `setspeaker <label ROM>` avant chaque réplique (chaînes `CF_N0_*` locales à `cf_prologue.inc`, aucune entrée ajoutée à `speaker_names.h`) ; `setspeaker 0` pour la narration. Le nom est remis à zéro par `closemessage`. Pikachu du prologue : `gender=MON_MALE`.
+
 ---
 
 ## Tests (`make check`)

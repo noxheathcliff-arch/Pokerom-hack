@@ -5644,6 +5644,8 @@ enum Obedience GetAttackerObedienceForAction(void)
         return OBEYS;
     if (FlagGet(FLAG_BADGE08_GET)) // Rain Badge, ignore obedience altogether
         return OBEYS;
+    if (VarGet(VAR_CF_CHAPTER) == 0) // Confluence: prologue team (lv62+) always obeys
+        return OBEYS;
 
     obedienceLevel = 10;
 

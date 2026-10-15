@@ -290,8 +290,8 @@
     {
       "local_id": "LOCALID_CF_R103_ZIGZAGOON",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON_GALAR)",
-      "x": 11,
-      "y": 4,
+      "x": 14,
+      "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -304,7 +304,7 @@
     {
       "local_id": "LOCALID_CF_R103_POLICE",
       "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
-      "x": 12,
+      "x": 20,
       "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",

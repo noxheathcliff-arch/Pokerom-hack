@@ -133,6 +133,8 @@ static void CF_DemoNewGameInit(void)
     u32 i;
 
     FlagSet(FLAG_NO_WILD_ENCOUNTERS); // cleared at the end of P4
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK); // no moving trucks (were walk-through)
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK);
     // Object visibility: flag set = hidden. VIS_00/01 (beach) and VIS_10/11/12/14/15 (walls) stay visible.
     // VIS_39 = Routes 102-104 trainers (until chapter 1); VIS_40/41 = Petalburg mini-scene (D006 b);
     // VIS_42 = Petalburg HQ gym trainers; VIS_43 = Brice at the Rustboro Pokemon Center (C11).
@@ -142,6 +144,9 @@ static void CF_DemoNewGameInit(void)
             continue;
         FlagSet(FLAG_CF_VIS_00 + i);
     }
+    // VIS_86-92 = prologue staging (lab starter balls, Route 104 wild mons + Pikachu), shown by script.
+    for (i = 86; i <= 92; i++)
+        FlagSet(FLAG_CF_VIS_00 + i);
     // Mr. Briney (s6): at home, no crossing, no Peeko, no boat on Route 104.
     FlagClear(FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY);
     FlagSet(FLAG_HIDE_BRINEYS_HOUSE_PEEKO);

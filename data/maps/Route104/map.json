@@ -559,6 +559,62 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CF_C2_BarrageTalk",
       "flag": "FLAG_CF_VIS_10"
+    },
+    {
+      "local_id": "LOCALID_CF_R104_TAUROS",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAUROS)",
+      "x": 16,
+      "y": 63,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_92"
+    },
+    {
+      "local_id": "LOCALID_CF_R104_URSARING",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(URSARING)",
+      "x": 15,
+      "y": 51,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_91"
+    },
+    {
+      "local_id": "LOCALID_CF_R104_GYARADOS",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GYARADOS)",
+      "x": 11,
+      "y": 57,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_90"
+    },
+    {
+      "local_id": "LOCALID_CF_R104_PIKACHU",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIKACHU)",
+      "x": 14,
+      "y": 57,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_CF_VIS_89"
     }
   ],
   "warp_events": [
