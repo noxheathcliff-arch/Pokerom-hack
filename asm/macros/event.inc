@@ -811,6 +811,20 @@
 	.endif
 	.endm
 
+	@ Hack: trainer battle started from a coord event / scene script (no trainer object). Intro text, optional
+	@ "Accepter le combat ?", battle, then the script CONTINUES at the next instruction after a win or a loss
+	@ (set FLAG_CF_NO_WHITEOUT beforehand to avoid the whiteout; read the result with goto_if_set TRAINER_FLAGS_START + trainer).
+	@ On refusal: jumps to decline_script (VAR_RESULT = TRAINER_DECLINED_NOW) which must end the script.
+	.macro trainerbattle_scene_declinable trainer:req, intro_text:req, lose_text:req, declined_flag:req, decline_script=NULL
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, LOCALID_NONE, \trainer, \intro_text, \lose_text, .Lscene_after_\@, LOCALID_NONE, TRAINER_NONE, NULL, \declined_flag, \decline_script, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE | TRAINER_BATTLE_SCENE
+.Lscene_after_\@:
+	.endm
+
+	@ Hack: like trainerbattle_no_intro but usable from a coord event / scene script (no trainer object).
+	.macro trainerbattle_scene_no_intro trainer:req, lose_text:req
+	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, LOCALID_NONE, \trainer, NULL, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_SCENE
+	.endm
+
 	@ Starts a double trainer battle. Takes a trainer, intro text, loss text, text for when you have too few pokemon
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
 	.macro trainerbattle_double trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script=FALSE, music=TRUE

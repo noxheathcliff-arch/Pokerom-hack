@@ -151,6 +151,7 @@ enum BattleSide
 
 #define RIVAL_BATTLE_HEAL_AFTER  1
 #define RIVAL_BATTLE_TUTORIAL    3
+#define TRAINER_BATTLE_SCENE      0x40 // Hack: stored in rivalBattleFlags; battle started from a script/coord event without a trainer object (see trainerbattle_scene_*)
 #define TRAINER_BATTLE_DECLINABLE 0x80 // Hack: stored in rivalBattleFlags; the player may refuse the battle (see trainerbattle_single_declinable)
 #define TRAINER_DECLINED_NOW      1    // Hack: VAR_RESULT in a decline script: the player just refused
 #define TRAINER_DECLINED_BEFORE   2    // Hack: VAR_RESULT in a decline script: talked to again after refusing

@@ -258,6 +258,7 @@ CF_P3_Mudkip::
 CF_P3_StarterGot::
 	msgbox CF_T_061, MSGBOX_DEFAULT
 	msgbox CF_T_062, MSGBOX_DEFAULT
+	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	additem ITEM_POKE_BALL, 5
@@ -398,6 +399,7 @@ CF_P4_Help::
 	setwildbattle SPECIES_SPEAROW, 5
 	dowildbattle
 	clearflag FLAG_CF_NO_WHITEOUT
+	special HealPlayerParty
 	removeobject LOCALID_CF_R101_A
 	removeobject LOCALID_CF_R101_B
 	removeobject LOCALID_CF_R101_C

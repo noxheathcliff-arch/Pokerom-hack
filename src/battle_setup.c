@@ -677,7 +677,7 @@ static void CB2_EndScriptedWildBattle(void)
 
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
-        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
+        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(B_FLAG_NO_WHITEOUT)) // Hack: no whiteout for scripted scene battles
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         else
             SetMainCallback2(CB2_WhiteOut);
@@ -1117,6 +1117,14 @@ void SetMapVarsToTrainerB(void)
 // expects parameters have been loaded correctly with TrainerBattleLoadArgs
 const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 {
+    // Hack: scene battle started from a coord event / script (no trainer object): see TRAINER_BATTLE_SCENE
+    if (TRAINER_BATTLE_PARAM.rivalBattleFlags & TRAINER_BATTLE_SCENE)
+    {
+        if (TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT)
+            return EventScript_DoSceneNoIntroTrainerBattle;
+        return EventScript_DoSceneTrainerBattle;
+    }
+
     switch (TRAINER_BATTLE_PARAM.mode)
     {
     case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:

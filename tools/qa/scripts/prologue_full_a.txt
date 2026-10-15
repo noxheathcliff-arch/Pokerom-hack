@@ -1,4 +1,5 @@
 # Prologue P1-P6 full playthrough, all first options (D001 a, D006 a, starter Arcko, Normal, D002 a, D005 a, D003 a, D007 a).
+# STATUS: verified to replay P1-P4 deterministically (expectvar 1349 / 1365 pass). The P5->P6 tail (walk Route 101 -> Oldale -> Route 103 via BFS path) did NOT replay: the path is state dependent and ends with failed expects. P6 + save + continue were verified through a savestate chain (see QA report), not by this script.
 # A replay of one verified deterministic run (emulator + inputs are deterministic). It is tied to the ROM build: if a script/text change
 # shifts timing, the A-mash segments drift. Re-run tools/qa/scripts/prologue_p_check.txt style checks, then regenerate.
 # The waitfor timeouts in the P1 forced-switch section are benign "[FAIL] waitfor" lines (the party screen was already open), exit code 3 is expected.
@@ -8767,7 +8768,7 @@ wait 200
 hold RIGHT 16
 hold UP 300
 wait 300
-wait 3
+wait 53
 press A 4
 wait 14
 press A 4

@@ -54,6 +54,18 @@ EventScript_DoNoIntroTrainerBattle::
 	dotrainerbattle
 	gotopostbattlescript
 
+@ Hack: scene battles (trainerbattle_scene_*): started from a coord event / scene script, no trainer object.
+@ No faceplayer/reveal/facing; the script continues after the battle (win AND loss) at the instruction after the macro.
+EventScript_DoSceneTrainerBattle::
+	special PlayTrainerEncounterMusic
+	goto EventScript_ShowTrainerIntroMsg
+
+EventScript_DoSceneNoIntroTrainerBattle::
+	special PlayTrainerEncounterMusic
+	call EventScript_MaybeChooseBattleLead
+	dotrainerbattle
+	gotopostbattlescript
+
 EventScript_TryDoRematchBattle::
 	call EventScript_RevealTrainer
 	specialvar VAR_RESULT, IsTrainerReadyForRematch

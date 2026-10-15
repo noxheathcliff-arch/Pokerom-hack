@@ -1,5 +1,6 @@
 #!/bin/sh
 # Smoke test: new game -> full prologue P1-P6 (prologue_full_a.txt, ends with an in-game save on Route 103) -> power cycle -> continue.
+# KNOWN: run_smoke.sh fails at the P5/P6 tail until this script is regenerated.
 # The P1 cutscene locks the player, so the old 'new game -> save' script no longer works. Benign '[FAIL] waitfor' lines (party-screen probes) are tolerated.
 # Usage: tools/qa/run_smoke.sh [PROJECT_DIR] [OUTDIR]
 #   PROJECT_DIR: built tree containing pokeemeraude.gba / .elf (default: this repo)

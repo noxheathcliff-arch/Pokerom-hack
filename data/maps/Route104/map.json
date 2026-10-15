@@ -634,7 +634,7 @@
       "x": 10,
       "y": 40,
       "elevation": 3,
-      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var": "VAR_TEMP_E",
       "var_value": "0",
       "script": "CF_C2_Barrage"
     },
@@ -643,7 +643,7 @@
       "x": 11,
       "y": 40,
       "elevation": 3,
-      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var": "VAR_TEMP_E",
       "var_value": "0",
       "script": "CF_C2_Barrage"
     },
@@ -652,7 +652,7 @@
       "x": 32,
       "y": 44,
       "elevation": 3,
-      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var": "VAR_TEMP_E",
       "var_value": "0",
       "script": "CF_C2_Barrage"
     },
@@ -661,7 +661,7 @@
       "x": 33,
       "y": 44,
       "elevation": 3,
-      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var": "VAR_TEMP_E",
       "var_value": "0",
       "script": "CF_C2_Barrage"
     }

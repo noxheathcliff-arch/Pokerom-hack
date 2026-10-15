@@ -295,7 +295,7 @@ CF_C3_Scene::
 	msgbox CF1_T_034, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_CF_NO_WHITEOUT
-	trainerbattle_single_declinable TRAINER_BROOKE_4, CF1_T_035, CF1_T_036, FLAG_CF_REFUS_FLORA1, CF_D008_Refus
+	trainerbattle_scene_declinable TRAINER_BROOKE_4, CF1_T_035, CF1_T_036, FLAG_CF_REFUS_FLORA1, CF_D008_Refus
 	goto_if_set TRAINER_FLAGS_START + TRAINER_BROOKE_4, CF_D008_Won
 	goto CF_D008_Lost
 
@@ -851,9 +851,9 @@ CF_C10_PosterA::
 
 CF_C10_Fight::
 	setflag FLAG_CF_NO_WHITEOUT
-	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, CF1_T_125
+	trainerbattle_scene_no_intro TRAINER_GRUNT_PETALBURG_WOODS, CF1_T_125
 	goto_if_unset TRAINER_FLAGS_START + TRAINER_GRUNT_PETALBURG_WOODS, CF_C10_FightEnd
-	trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, CF1_T_126
+	trainerbattle_scene_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, CF1_T_126
 CF_C10_FightEnd::
 	clearflag FLAG_CF_NO_WHITEOUT
 	special HealPlayerParty

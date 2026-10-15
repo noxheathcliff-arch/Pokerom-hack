@@ -174,6 +174,13 @@ Les flags `FLAG_REFUS_*` sont alloués par le design dans `FLAGS_VARS_REGISTRY.m
 Non refusables : combats doubles, deux dresseurs qui repèrent en même temps, rival de début, revanches, `trainerbattle_no_intro`.
 **Tests :** unitaires (`test/hack_engine.c` : bit lu ; « deux dresseurs » obligatoire ; flag de refus → plus de repérage ni de nouvelle question ; bit absent → flag ignoré). **Assemblage vérifié** : script temporaire avec la macro (avec et sans script de refus) compilé, octets contrôlés dans la ROM (`defeatTextB = 0x22`, `battleScriptRetAddrB` = adresse du script, `rivalBattleFlags = 0x80`), puis retiré. **Non testé en émulateur** (UI OUI/NON, musique) : aucun dresseur ne l'utilise encore ; à vérifier sur le premier dresseur scripté.
 
+### D1b. Combats de scène (coord event / script sans objet dresseur)
+`trainerbattle_*` normal exige un objet dresseur (assert « called from player », pas de reprise du script après combat). Pour tout combat lancé depuis un coord event ou une scène :
+- `trainerbattle_scene_declinable TRAINER, Intro, Défaite, FLAG_REFUS [, ScriptRefus]` et `trainerbattle_scene_no_intro TRAINER, Défaite` (`asm/macros/event.inc`) ; bit `TRAINER_BATTLE_SCENE 0x40` dans `rivalBattleFlags` ; `BattleSetup_ConfigureTrainerBattle` route vers `EventScript_DoSceneTrainerBattle` / `...NoIntro...` (`trainer_battle.inc`) : pas de faceplayer/reveal/orientation ;
+- le script **continue à l'instruction suivante** après victoire ET défaite (poser `FLAG_CF_NO_WHITEOUT` avant ; lire le résultat par `goto_if_set TRAINER_FLAGS_START + TRAINER`) ; le refus saute à `ScriptRefus` (qui doit terminer le script).
+- `CB2_EndScriptedWildBattle` respecte aussi `B_FLAG_NO_WHITEOUT` (combat sauvage scripté perdu → le script reprend, sans blackout). Penser à `special HealPlayerParty`.
+- Coord events « toujours actifs » : utiliser `var: VAR_TEMP_x, var_value: 0` (jamais `TRIGGER_RUN_IMMEDIATELY`, qui exécute le script sans msgbox/lock).
+
 ## D2. Choisir son Pokémon de tête
 
 Rien d'équivalent dans l'expansion (`grep lead/ChooseLead/B_PARTY_SELECT`). Conception la plus simple et sûre : **on ne réordonne pas l'équipe** ; on mémorise l'emplacement choisi et on l'utilise une seule fois quand le combat fixe les Pokémon envoyés.
