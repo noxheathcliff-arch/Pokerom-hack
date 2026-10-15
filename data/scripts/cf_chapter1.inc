@@ -368,6 +368,7 @@ CF_C1_Offer::
 	closemessage
 	applymovement LOCALID_PETALBURG_GYM_NORMAN, Common_Movement_WalkInPlaceDown
 	waitmovement 0
+CF_C1_Ask::
 	setspeaker SP_NAME_NONE
 	message CF1_T_016
 	waitmessage
@@ -375,6 +376,7 @@ CF_C1_Offer::
 	dynmultipush CF1_T_018, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_C1_Ask
 	switch VAR_RESULT
 	case 0, CF_C1_Accept
 	case 1, CF_C1_Refuse
@@ -571,16 +573,36 @@ CF_C2_PartnerFacesE::
 	turnobject VAR_0x8008, DIR_WEST
 	return
 
-@ Left guard steps left, right guard steps right: the road opens
-@ Rows beside the guards are walls: the guard in Red's column steps back (north) to open the way.
+@ The corridor is 2 tiles wide with walls on both sides (rows 38-40 / 42-44), warps on the top row.
+@ The partner (not in Red's column) steps back onto its own warp tile, then the guard in front of Red
+@ slides into the partner's old tile: Red's column stays clear up to its warp.
 CF_C2_StepAside::
-	applymovement VAR_0x8008, CF1_M_C2_StepBack
+	applymovement VAR_0x8009, CF1_M_C2_StepBack
+	waitmovement 0
+	goto_if_eq VAR_0x8008, LOCALID_CF_R104_BAR_A1, CF_C2_StepRight
+	goto_if_eq VAR_0x8008, LOCALID_CF_R104_BAR_B1, CF_C2_StepRight
+	applymovement VAR_0x8008, CF1_M_C2_StepLeft
+	waitmovement 0
+	return
+
+CF_C2_StepRight::
+	applymovement VAR_0x8008, CF1_M_C2_StepRight
 	waitmovement 0
 	return
 
 CF1_M_C2_StepBack:
 	walk_up
 	face_down
+	step_end
+
+CF1_M_C2_StepLeft:
+	walk_left
+	face_right
+	step_end
+
+CF1_M_C2_StepRight:
+	walk_right
+	face_left
 	step_end
 
 @ ---------------------------------------------------------------- C3: Flora au Bois (D008)
@@ -868,10 +890,14 @@ CF_C4_NoBrice::
 	cf_say CF_N1_Passante, CF1_T_048
 CF_C4_Menu::
 	closemessage
+	setspeaker SP_NAME_NONE
+	message CF_Text_WhatToDo
+	waitmessage
 	dynmultipush CF1_T_049, 0
 	dynmultipush CF1_T_050, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_C4_Menu
 	switch VAR_RESULT
 	case 0, CF_C4_Stay
 	case 1, CF_C4_Leave
@@ -953,12 +979,15 @@ CF_C5_Ferrand::
 	goto_if_ne VAR_RESULT, DEC_NONE, CF_C5_Again
 	cf_excl VAR_LAST_TALKED
 	cf_say CF_N1_Ferrand, CF1_T_054
+CF_C5_Ask::
+	setspeaker CF_N1_Ferrand
 	message CF1_T_055
 	waitmessage
 	dynmultipush CF1_T_056, 0
 	dynmultipush CF1_T_050, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_C5_Ask
 	switch VAR_RESULT
 	case 0, CF_C5_Talk
 	case 1, CF_C5_Go
@@ -1043,12 +1072,15 @@ CF_C6_PresidentA::
 CF_C6_Photo::
 	applymovement LOCALID_CF_DEVON_PRESIDENT, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+CF_C6_Ask::
+	setspeaker CF_N1_President
 	message CF1_T_070
 	waitmessage
 	dynmultipush CF1_T_071, 0
 	dynmultipush CF1_T_050, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_C6_Ask
 	switch VAR_RESULT
 	case 0, CF_C6_Pose
 	case 1, CF_C6_Decline
@@ -1193,6 +1225,7 @@ CF_C7_Thief::
 	applymovement LOCALID_CF_RUST_HOOPA, CF1_M_Jump
 	waitmovement 0
 	cf_bsay CF1_T_078
+CF_C7_Ask::
 	setspeaker SP_NAME_NONE
 	message CF1_T_079
 	waitmessage
@@ -1210,6 +1243,7 @@ CF_C7_MenuNoBerry::
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 CF_C7_Choice::
 	closemessage
+	cf_confirm CF_C7_Ask
 	switch VAR_RESULT
 	case 0, CF_C7_Berry
 	case 1, CF_C7_Chase
@@ -1332,6 +1366,7 @@ CF_C8_Start::
 	closemessage
 	turnobject LOCALID_CF_TUN_MINER_2, DIR_WEST
 	cf_move LOCALID_CF_TUN_ROXANNE, Common_Movement_WalkInPlaceFasterLeft
+CF_C8_Ask::
 	setspeaker CF_N1_Roxanne
 	message CF1_T_093
 	waitmessage
@@ -1340,6 +1375,7 @@ CF_C8_Start::
 	dynmultipush CF1_T_096, 2
 	dynmultistack 0, 0, TRUE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_C8_Ask
 	switch VAR_RESULT
 	case 0, CF_C8_Move
 	case 1, CF_C8_Data
@@ -1502,6 +1538,7 @@ CF_C9_Ask::
 	closemessage
 	cf_move VAR_LAST_TALKED, Common_Movement_FacePlayer
 	cf_say CF_N1_Roxanne, CF1_T_107
+CF_C9_AskData::
 	setspeaker CF_N1_Roxanne
 	message CF1_T_108
 	waitmessage
@@ -1509,6 +1546,7 @@ CF_C9_Ask::
 	dynmultipush CF1_T_018, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_C9_AskData
 	switch VAR_RESULT
 	case 0, CF_C9_Give
 	case 1, CF_C9_Refuse
@@ -1617,11 +1655,15 @@ CF_C10_Spawned::
 CF_C10_Poster::
 	cf_if_dec 9, DEC_A, CF_C10_PosterA
 CF_C10_Menu::
+	setspeaker SP_NAME_NONE
+	message CF_Text_WhatToDo
+	waitmessage
 	dynmultipush CF1_T_119, 0
 	dynmultipush CF1_T_120, 1
 	dynmultipush CF1_T_121, 2
 	dynmultistack 0, 0, TRUE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
+	cf_confirm CF_C10_Menu
 	switch VAR_RESULT
 	case 0, CF_C10_Fight
 	case 1, CF_C10_Watch
@@ -1652,9 +1694,8 @@ CF_C10_Ferrand::
 
 CF_C10_PosterA::
 	cf_excl LOCALID_CF_R116_GRUNT_A
-	setspeaker CF_N1_Sbire
-	message CF1_T_124
-	waitmessage
+	cf_say CF_N1_Sbire, CF1_T_124
+	closemessage
 	goto CF_C10_Menu
 
 CF_C10_Fight::
@@ -1875,18 +1916,23 @@ CF_C10_SbireBPhotoA::
 	msgbox CF1_T_140, MSGBOX_DEFAULT
 CF_C10_SbireBMenu::
 	closemessage
+	setspeaker SP_NAME_NONE
+	message CF_Text_WhatToDo
+	waitmessage
 	checkmoney 500
 	goto_if_eq VAR_RESULT, FALSE, CF_C10_SbireBMenuPoor
 	dynmultipush CF1_T_141, 0
 	dynmultipush CF1_T_050, 1
 	dynmultistack 0, 0, TRUE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	closemessage
+	cf_confirm CF_C10_SbireBMenu
 	goto CF_C10_SbireBChoice
 
 CF_C10_SbireBMenuPoor::
 	dynmultipush CF1_T_050, 1
 	dynmultistack 0, 0, TRUE, 1, FALSE, 0, DYN_MULTICHOICE_CB_NONE
-CF_C10_SbireBChoice::
 	closemessage
+CF_C10_SbireBChoice::
 	switch VAR_RESULT
 	case 0, CF_C10_Give
 	case 1, CF_C10_NoGive
