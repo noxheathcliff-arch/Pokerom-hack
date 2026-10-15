@@ -11,6 +11,7 @@
 	.macro cf_bsay text:req
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, 1f
+	special CF_RevealFollowerNPC
 	setspeaker CF_N1_Brice
 	msgbox \text, MSGBOX_DEFAULT
 1:
@@ -20,6 +21,7 @@
 	.macro cf_bmove mvt:req
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, 1f
+	special CF_RevealFollowerNPC
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, \mvt
 	waitmovement 0
 1:
@@ -66,6 +68,7 @@
 	.macro cf_bexcl
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, 1f
+	special CF_RevealFollowerNPC
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -182,6 +185,14 @@ CF_Mov_Up2:
 
 CF_Mov_Down1:
 	walk_down
+	step_end
+
+CF_Mov_Left1:
+	walk_left
+	step_end
+
+CF_Mov_Right1:
+	walk_right
 	step_end
 
 CF1_M_Jump:
@@ -897,6 +908,32 @@ CF_C4_PosterRead::
 
 CF_C4_Poster::
 	lockall
+	getplayerxy VAR_0x8000, VAR_0x8001
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, CF_C4_Center
+	copyvar VAR_0x8004, VAR_0x8000
+	setvar VAR_0x8005, 54
+	setvar VAR_0x8006, DIR_NORTH
+	special CF_PlaceFollowerNPC
+@ Red (and Brice behind him) walk along row 53 until the poster at (16,52) is right in front
+CF_C4_Center:
+	getplayerxy VAR_0x8000, VAR_0x8001
+	goto_if_eq VAR_0x8000, 16, CF_C4_Centered
+	goto_if_lt VAR_0x8000, 16, CF_C4_CenterR
+	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Left1
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, CF_C4_CenterW
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, CF_Mov_Left1
+	goto CF_C4_CenterW
+CF_C4_CenterR:
+	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Right1
+	checkfollowernpc
+	goto_if_eq VAR_RESULT, FALSE, CF_C4_CenterW
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, CF_Mov_Right1
+CF_C4_CenterW:
+	waitmovement 0
+	goto CF_C4_Center
+CF_C4_Centered:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	cf_narr CF1_T_045
@@ -953,6 +990,7 @@ CF_C4_Stay::
 CF_C4_Leave::
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, CF_C4_LeaveP
+	special CF_RevealFollowerNPC
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
 	setspeaker CF_N1_Brice
@@ -1039,7 +1077,30 @@ CF_C5_Talk::
 	goto CF_C5_End
 
 CF_C5_Go::
+	special CF_StepAwayDir
+	switch VAR_RESULT
+	case DIR_NORTH, CF_C5_GoN
+	case DIR_SOUTH, CF_C5_GoS
+	case DIR_WEST, CF_C5_GoW
+	case DIR_EAST, CF_C5_GoE
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+	goto CF_C5_GoSay
+CF_C5_GoN:
+	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Up1
+	goto CF_C5_GoWait
+CF_C5_GoS:
+	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Down1
+	goto CF_C5_GoWait
+CF_C5_GoW:
+	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Left1
+	goto CF_C5_GoWait
+CF_C5_GoE:
+	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Right1
+CF_C5_GoWait:
+	waitmovement 0
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+	waitmovement 0
+CF_C5_GoSay:
 	cf_narr CF1_T_060
 	setdecision_once 13, DEC_B, CF_C5_End
 	subaffinity VAR_CF_BR, 1

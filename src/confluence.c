@@ -152,6 +152,9 @@ static void CF_DemoNewGameInit(void)
             continue;
         FlagSet(FLAG_CF_VIS_00 + i);
     }
+    // VIS_45 = vanilla trainers on the demo path (Petalburg Woods Lyle/James, Rusturf Mike, Route 116):
+    // hidden for the whole demo so they do not interrupt the chapter 1 scenes.
+    FlagSet(FLAG_CF_VIS_45);
     // VIS_80-92 = prologue staging (R104 portal/bag/balls, lab starter balls, R104 wild mons + Pikachu),
     // shown by script. VIS_84/85 = reserved for chapter 1 portal objects.
     for (i = 80; i <= 92; i++)
@@ -713,4 +716,85 @@ void CF_PlaceFollowerNPC(void)
     MoveObjectEventToMapCoords(follower, gSpecialVar_0x8004 + MAP_OFFSET, gSpecialVar_0x8005 + MAP_OFFSET);
     ObjectEventTurn(follower, gSpecialVar_0x8006);
     follower->invisible = FALSE;
+}
+
+// VAR_RESULT = a direction for the player to step one tile away from the object
+// VAR_LAST_TALKED, onto a free walkable tile that is not the follower's tile
+// (opposite direction first, then the sides). DIR_NONE if no tile is free.
+void CF_StepAwayDir(void)
+{
+    static const u8 sOrder[4][3] = {
+        [DIR_SOUTH - 1] = {DIR_NORTH, DIR_WEST, DIR_EAST},
+        [DIR_NORTH - 1] = {DIR_SOUTH, DIR_WEST, DIR_EAST},
+        [DIR_WEST - 1]  = {DIR_EAST, DIR_NORTH, DIR_SOUTH},
+        [DIR_EAST - 1]  = {DIR_WEST, DIR_NORTH, DIR_SOUTH},
+    };
+    struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    u32 facing = player->facingDirection;
+    u32 i;
+
+    gSpecialVar_Result = DIR_NONE;
+    if (facing < DIR_SOUTH || facing > DIR_EAST)
+        return;
+    for (i = 0; i < 3; i++)
+    {
+        u32 dir = sOrder[facing - 1][i];
+        s16 x = player->currentCoords.x;
+        s16 y = player->currentCoords.y;
+
+        MoveCoords(dir, &x, &y);
+        if (MapGridGetCollisionAt(x, y) != 0)
+            continue;
+        if (GetObjectEventIdByXY(x, y) != OBJECT_EVENTS_COUNT)
+            continue;
+        gSpecialVar_Result = dir;
+        return;
+    }
+}
+
+// If the follower NPC (Brice) is still hidden after a warp, show it on a free tile next to the
+// player (behind first, then the sides) before it speaks or emotes, so Brice never talks while
+// invisible. Falls back to CF_ShowFollowerNPC (player's tile) when no tile is free.
+void CF_RevealFollowerNPC(void)
+{
+    static const u8 sBehind[4][3] = {
+        [DIR_SOUTH - 1] = {DIR_NORTH, DIR_WEST, DIR_EAST},
+        [DIR_NORTH - 1] = {DIR_SOUTH, DIR_WEST, DIR_EAST},
+        [DIR_WEST - 1]  = {DIR_EAST, DIR_NORTH, DIR_SOUTH},
+        [DIR_EAST - 1]  = {DIR_WEST, DIR_NORTH, DIR_SOUTH},
+    };
+    struct ObjectEvent *player, *follower;
+    u32 followerId, facing, i;
+
+    if (!PlayerHasFollowerNPC())
+        return;
+    followerId = GetFollowerNPCObjectId();
+    follower = &gObjectEvents[followerId];
+    if (!follower->invisible)
+        return;
+    player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    facing = player->facingDirection;
+    if (facing >= DIR_SOUTH && facing <= DIR_EAST)
+    {
+        for (i = 0; i < 3; i++)
+        {
+            s16 x = player->currentCoords.x;
+            s16 y = player->currentCoords.y;
+            u32 id;
+
+            MoveCoords(sBehind[facing - 1][i], &x, &y);
+            if (MapGridGetCollisionAt(x, y) != 0)
+                continue;
+            id = GetObjectEventIdByXY(x, y);
+            if (id != OBJECT_EVENTS_COUNT && id != followerId)
+                continue;
+            SetFollowerNPCData(FNPC_DATA_WARP_END, FNPC_WARP_NONE);
+            SetFollowerNPCData(FNPC_DATA_COME_OUT_DOOR, FNPC_DOOR_NONE);
+            MoveObjectEventToMapCoords(follower, x, y);
+            ObjectEventTurn(follower, facing);
+            follower->invisible = FALSE;
+            return;
+        }
+    }
+    CF_ShowFollowerNPC();
 }

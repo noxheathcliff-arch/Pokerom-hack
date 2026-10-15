@@ -654,3 +654,5 @@ gSpecials::
 	def_special LedgerSet
 	def_special CF_ShowFollowerNPC
 	def_special CF_PlaceFollowerNPC
+	def_special CF_StepAwayDir
+	def_special CF_RevealFollowerNPC

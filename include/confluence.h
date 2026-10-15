@@ -34,5 +34,7 @@ void LedgerGet(void);
 void LedgerSet(void);
 void CF_ShowFollowerNPC(void);
 void CF_PlaceFollowerNPC(void);
+void CF_StepAwayDir(void);
+void CF_RevealFollowerNPC(void);
 
 #endif // GUARD_CONFLUENCE_H
