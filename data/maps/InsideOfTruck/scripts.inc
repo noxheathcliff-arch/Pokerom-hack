@@ -61,8 +61,8 @@ InsideOfTruck_Text_BoxPrintedWithMonLogo:
 
 @ TEMP CF engine emulator test (remove after verification)
 CF_TempEngineTest::
-	givemon SPECIES_TREECKO, 100
-	givemon SPECIES_PIKACHU, 100
+	givemon SPECIES_TREECKO, 100, move1=MOVE_LEAF_BLADE
+	givemon SPECIES_PIKACHU, 100, move1=MOVE_THUNDERBOLT
 	setflag FLAG_CHOOSE_BATTLE_LEAD
 	trainerbattle_single_declinable TRAINER_CALVIN_1, CF_Temp_Text_Intro, CF_Temp_Text_Defeat, FLAG_CF_REFUS_FLORA1, CF_Temp_AfterDecline
 	end
