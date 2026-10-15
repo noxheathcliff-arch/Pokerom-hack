@@ -323,8 +323,8 @@ TEST("E-ECO: Route 116 (Z-02) picks its _Mixte header with zone state MIXTE; oth
     EXPECT_NE(gWildMonHeaders[base + 1].encounterTypes[OW_TIME_OF_DAY_FALLBACK].landMonsInfo,
               gWildMonHeaders[base].encounterTypes[OW_TIME_OF_DAY_FALLBACK].landMonsInfo);
 
-    CF_WriteBits(VAR_CF_ECO, 2, 2, ECO_ABATTU); // no 4th table yet: falls back to the base table
-    EXPECT_EQ(GetCurrentMapWildMonHeaderId(), base);
+    CF_WriteBits(VAR_CF_ECO, 2, 2, ECO_ABATTU); // 4th table (_Abattu)
+    EXPECT_EQ(GetCurrentMapWildMonHeaderId(), base + 3);
 
     CF_WriteBits(VAR_CF_ECO, 2, 2, ECO_ENVAHI);
     CF_WriteBits(VAR_CF_ECO, 0, 2, ECO_MIXTE); // another zone (Z-01) does not change Route 116
