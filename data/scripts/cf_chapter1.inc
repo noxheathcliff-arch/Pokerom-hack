@@ -971,12 +971,19 @@ CF_C4_Menu::
 CF_C4_Stay::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
+	@ The photographer walks in along row 53 and stops at (19,53), camera turned on Red
+	addobject LOCALID_CF_RUST_PHOTOGRAPHE
+	applymovement LOCALID_CF_RUST_PHOTOGRAPHE, CF1_M_C4_PhotoIn
+	waitmovement 0
 	cf_narr CF1_T_051
 	closemessage
 	playse SE_RG_BALL_CLICK
 	fadescreenspeed FADE_TO_WHITE, 0
 	fadescreenspeed FADE_FROM_WHITE, 0
 	waitse
+	applymovement LOCALID_CF_RUST_PHOTOGRAPHE, CF1_M_C4_PhotoOut
+	waitmovement 0
+	removeobject LOCALID_CF_RUST_PHOTOGRAPHE
 	cf_bsay CF1_T_052
 	setdecision_once 9, DEC_A, CF_C4_End
 	setflag FLAG_CF_DOS_AFFICHE_SYLPHE
@@ -1023,6 +1030,22 @@ CF1_M_C4_PassanteIn:
 	walk_left
 	walk_left
 	face_left
+	step_end
+
+@ Photographer (23,53) -> (19,53), facing Red (16,53); then back out
+CF1_M_C4_PhotoIn:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_left
+	step_end
+
+CF1_M_C4_PhotoOut:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 CF1_M_C4_PassanteOut:
@@ -1232,7 +1255,7 @@ CF_C6_BriceEnters::
 	cf_say CF_N1_Brice, CF1_T_076
 	closemessage
 	removeobject LOCALID_CF_DEVON_BRICE
-	createfollowernpc OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, FNPC_ALL_LAND
+	createfollowernpc OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, FNPC_ALL_LAND, CF_Brice_FollowerTalk
 	goto CF_C6_Done
 
 @ (2,2) -> (10,3), in view of the President (15,5)
@@ -1573,7 +1596,7 @@ CF_C8_Hide::
 	removeobject LOCALID_CF_TUN_STRASSIE
 CF_C8_End::
 	cf_bsay CF1_T_100
-	turnobject LOCALID_CF_TUN_ROXANNE, DIR_WEST
+	cf_face LOCALID_CF_TUN_ROXANNE
 	cf_say CF_N1_Roxanne, CF1_T_101
 	closemessage
 	call CF_C8_BriceAside
@@ -1727,6 +1750,9 @@ CF_C9_Give::
 CF_C9_Refuse::
 	cf_bexcl
 	cf_bsay CF1_T_111
+	setvar VAR_0x8000, LOCALID_PLAYER
+	copyvar VAR_0x8001, VAR_LAST_TALKED
+	special CF_FaceEachOther
 	cf_say CF_N1_Roxanne, CF1_T_112
 	setdecision_once 16, DEC_B, CF_C9_End
 	subaffinity VAR_CF_REP_L, 2
@@ -1801,6 +1827,7 @@ CF_C10_Brice::
 	cf_bexcl
 	cf_bsay CF1_T_115
 	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	@ The gang is already on the map (CF_R116_Show, on transition)
 	goto_if_set FLAG_CF_VIS_30, CF_C10_Spawned
 	playmoncry SPECIES_HOOPA, CRY_MODE_WEAK
@@ -1846,6 +1873,7 @@ CF_C10_Ferrand::
 	cf_bexcl
 	cf_bsay CF1_T_122
 	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	cf_move LOCALID_CF_R116_FERRAND, CF1_M_C10_FerrandOut
 	cf_narr CF1_T_123
 	closemessage
@@ -2272,6 +2300,7 @@ CF_C11_ThiefGift::
 	cf_move LOCALID_CF_PC_HOOPA, CF1_M_Jump
 	msgbox CF1_T_155, MSGBOX_DEFAULT
 	giveitem ITEM_ORAN_BERRY
+	call CF_C11_FaceBrice
 	cf_say CF_N1_Brice, CF1_T_156
 	goto CF_C11_Thesis
 

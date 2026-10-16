@@ -79,6 +79,13 @@ CFP_P1_ToCeleo::
 	turnobject LOCALID_CF_R104_CELEO, DIR_WEST
 	return
 
+@ Gyarados stops at (14,57), just west of the group: everyone turns to face it.
+CFP_P1_FaceGyarados::
+	turnobject LOCALID_PLAYER, DIR_WEST
+	turnobject LOCALID_CF_R104_CELEO, DIR_WEST
+	turnobject LOCALID_CF_R104_MARCO, DIR_WEST
+	return
+
 @ Whatever is left on the sand drops into the ring, which then closes.
 CFP_P1_RingSwallows::
 	applymovement LOCALID_CF_R104_BALL_B, CFP_Mov_DropUp
@@ -191,6 +198,7 @@ CF_P1_Beach::
 	addobject LOCALID_CF_R104_GYARADOS
 	applymovement LOCALID_CF_R104_GYARADOS, CFP_Mov_GyaradosOut
 	waitmovement LOCALID_CF_R104_GYARADOS
+	call CFP_P1_FaceGyarados
 	playmoncry SPECIES_GYARADOS, CRY_MODE_NORMAL
 	call CFP_Shake
 	waitmoncry
@@ -205,6 +213,8 @@ CF_P1_Beach::
 	closemessage
 	@ Second ring, opening in the sand just below Red (15,60)
 	turnobject LOCALID_PLAYER, DIR_SOUTH
+	turnobject LOCALID_CF_R104_CELEO, DIR_SOUTH
+	turnobject LOCALID_CF_R104_MARCO, DIR_SOUTH
 	setobjectxyperm LOCALID_CF_R104_PORTAL, 15, 60
 	playse SE_M_TELEPORT
 	clearflag FLAG_CF_VIS_80
@@ -278,6 +288,7 @@ CF_P1_PikachuChoice::
 	removeobject LOCALID_CF_R104_PIKACHU
 	cfp_nar CF_T_020
 	closemessage
+	turnobject LOCALID_CF_R104_CELEO, DIR_SOUTH
 	call CFP_P1_RingSwallows
 	applymovement LOCALID_CF_R104_BAG, CFP_Mov_DropDown
 	waitmovement LOCALID_CF_R104_BAG
@@ -286,7 +297,7 @@ CF_P1_PikachuChoice::
 	call CFP_P1_RingCloses
 	applymovement LOCALID_PLAYER, CFP_Mov_RedBackFromRock
 	waitmovement LOCALID_PLAYER
-	call CFP_P1_ToCeleo
+	turnobject LOCALID_CF_R104_CELEO, DIR_SOUTH
 	cfp_say CF_N0_Celeo, CF_T_021
 	setdecision_once 1, DEC_A, CF_P1_Common
 	setbits VAR_CF_WORLD, 14, 2, 1
@@ -295,6 +306,7 @@ CF_P1_PikachuChoice::
 
 @ Red steps down to 15,58 and grabs the bag (15,59); Pikachu (16,59) falls into the ring.
 CF_P1_BagChoice::
+	turnobject LOCALID_CF_R104_CELEO, DIR_SOUTH
 	applymovement LOCALID_PLAYER, CFP_Mov_RedToBag
 	waitmovement LOCALID_PLAYER
 	playse SE_RG_BAG_POCKET
@@ -1168,7 +1180,7 @@ CF_P6_BriceFollows::
 	closemessage
 	removeobject LOCALID_ROUTE103_RIVAL
 	setflag FLAG_CF_VIS_07
-	createfollowernpc OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, FNPC_ALL_LAND
+	createfollowernpc OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, FNPC_ALL_LAND, CF_Brice_FollowerTalk
 	releaseall
 	end
 
