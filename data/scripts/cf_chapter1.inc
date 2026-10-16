@@ -211,41 +211,41 @@ CF1_M_Shiver:
 @ ---------------------------------------------------------------- speaker names (chapter 1)
 
 CF_N1_Norman:
-	.string "NORMAN$"
+	.string "Norman$"
 CF_N1_Flora:
-	.string "FLORA$"
+	.string "Flora$"
 CF_N1_Brice:
-	.string "BRICE$"
+	.string "Brice$"
 CF_N1_Celeo:
-	.string "CÉLÉO$"
+	.string "Ciléo$"
 CF_N1_Agent:
-	.string "AGENT$"
+	.string "Agent$"
 CF_N1_Ferrand:
-	.string "FERRAND$"
+	.string "Ferrand$"
 CF_N1_President:
-	.string "PRÉSIDENT$"
+	.string "Président$"
 CF_N1_Leo:
-	.string "LÉO$"
+	.string "Léo$"
 CF_N1_Lanette:
-	.string "LANETTE$"
+	.string "Lanette$"
 CF_N1_Rochard:
-	.string "ROCHARD$"
+	.string "Rochard$"
 CF_N1_Roxanne:
-	.string "ROXANNE$"
+	.string "Roxanne$"
 CF_N1_Pierre:
-	.string "PIERRE$"
+	.string "Pierre$"
 CF_N1_Mineur:
-	.string "MINEUR$"
+	.string "Mineur$"
 CF_N1_Lance:
-	.string "LANCE$"
+	.string "Lance$"
 CF_N1_Sbire:
-	.string "SBIRE$"
+	.string "Sbire$"
 CF_N1_Passante:
-	.string "PASSANTE$"
+	.string "Passante$"
 CF_N1_Coach:
-	.string "COACH$"
+	.string "Coach$"
 CF_N1_Habitant:
-	.string "HABITANT$"
+	.string "Habitant$"
 	.align 2
 
 @ ---------------------------------------------------------------- walls (s7)
@@ -942,12 +942,13 @@ CF_C4_Centered:
 
 CF_C4_NoBrice::
 	closemessage
-	setobjectxyperm LOCALID_CF_RUST_PASSANTE, 24, 52
+	@ She comes along row 53 and stops right beside Red (16,53), so they can face each other
+	setobjectxyperm LOCALID_CF_RUST_PASSANTE, 24, 53
 	clearflag FLAG_CF_VIS_24
 	addobject LOCALID_CF_RUST_PASSANTE
 	applymovement LOCALID_CF_RUST_PASSANTE, CF1_M_C4_PassanteIn
 	waitmovement 0
-	setobjectxyperm LOCALID_CF_RUST_PASSANTE, 17, 52
+	setobjectxyperm LOCALID_CF_RUST_PASSANTE, 17, 53
 	cf_excl LOCALID_CF_RUST_PASSANTE
 	cf_face LOCALID_CF_RUST_PASSANTE
 	cf_say CF_N1_Passante, CF1_T_048
@@ -1020,7 +1021,7 @@ CF1_M_C4_PassanteIn:
 	walk_left
 	walk_left
 	walk_left
-	face_down
+	face_left
 	step_end
 
 CF1_M_C4_PassanteOut:
@@ -1230,6 +1231,7 @@ CF_C6_BriceEnters::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement LOCALID_CF_DEVON_BRICE, CF1_M_C6_BriceIn
 	waitmovement 0
+	cf_face LOCALID_CF_DEVON_BRICE
 	cf_say CF_N1_Brice, CF1_T_076
 	closemessage
 	removeobject LOCALID_CF_DEVON_BRICE
