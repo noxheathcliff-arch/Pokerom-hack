@@ -44,8 +44,12 @@ RustboroCity_CuttersHouse_Text_ExplainCut:
 	.string "s'utiliser plusieurs fois.$"
 
 RustboroCity_CuttersHouse_Text_DadHelpedClearLandOfTrees:
-	.string "Quand ils ont agrandi MEROUVILLE,\n"
-	.string "mon papa les a aidés.\p"
-	.string "Il a fait utiliser COUPE à son POKéMON\n"
-	.string "pour qu'il déboise le terrain.$"
+	.string "Hé! On frappe avant d’entrer!\n"
+	.string "Papa, il y a quelqu’un!\p"
+	.string "Papa défrichait les bois avec\n"
+	.string "son Pokémon. Maintenant, il attend.\p"
+	.string "Plus de chantiers, plus de bateaux.\n"
+	.string "Il tourne en rond et il grogne.\p"
+	.string "Et toi, tu viens d’où? … Tu ne\n"
+	.string "réponds pas? Alors va-t’en.$"
 

@@ -281,10 +281,12 @@ Route101_Text_YouSavedMe:
 	.string "Allons au LABO POKéMON, OK?$"
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
-	.string "Si tes POKéMON sont fatigués,\n"
-	.string "emmène-les dans un CENTRE POKéMON.\p"
-	.string "Il y a un CENTRE POKéMON à ROSYERES,\n"
-	.string "tout près d'ici.$"
+	.string "Tu viens de la plage, toi?\n"
+	.string "Moi, je n’y descends plus.\p"
+	.string "Si tes Pokémon sont à bout, le Centre\n"
+	.string "de Rosyères est juste au nord.\p"
+	.string "La nuit, ils ferment à clé, maintenant.\n"
+	.string "Frappe fort et dis que c’est urgent.$"
 
 Route101_Text_WildPokemonInTallGrass:
 	.string "Les POKéMON sauvages vont te sauter\n"

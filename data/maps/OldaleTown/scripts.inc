@@ -340,46 +340,50 @@ OldaleTown_Movement_ReturnToOriginalPosition:
 	step_end
 
 OldaleTown_Text_SavingMyProgress:
-	.string "Si je veux faire une pause, alors je\n"
-	.string "sauvegarde ma partie.$"
+	.string "Je compte les gens qui passent.\n"
+	.string "C’est Brice qui m’a appris.\p"
+	.string "Toi, tu es le numéro quarante-trois.\n"
+	.string "Je le note, sinon j’oublie.$"
 
 OldaleTown_Text_IWorkAtPokemonMart:
-	.string "Bonjour! Je travaille dans une BOUTIQUE\n"
-	.string "POKéMON.\p"
-	.string "Je peux t'emmener avec moi?$"
+	.string "Toi! Oui, toi. Tu as l’air d’avoir\n"
+	.string "passé la nuit dehors.\p"
+	.string "Je travaille à la Boutique. Suis-moi,\n"
+	.string "j’ai quelque chose pour toi.$"
 
 OldaleTown_Text_ThisIsAPokemonMart:
-	.string "C'est une BOUTIQUE POKéMON.\n"
-	.string "On la reconnaît à son toit bleu.\p"
-	.string "Nous vendons divers produits, dont les\n"
-	.string "POKé BALLS pour attraper les POKéMON.\p"
-	.string "J'aimerais que tu prennes ça, comme\n"
-	.string "si c'était une offre promotionnelle.$"
+	.string "Voilà la Boutique. Toit bleu,\n"
+	.string "rayons à moitié vides.\p"
+	.string "Plus de Poké Balls depuis les anneaux.\n"
+	.string "Mais il me reste quelques Potions.\p"
+	.string "Prends celle-ci. Le patron ne fait pas\n"
+	.string "crédit aux étrangers. Moi, si.$"
 
 OldaleTown_Text_PotionExplanation:
-	.string "Une POTION s'utilise à tout moment.\n"
-	.string "Alors dans certaines situations, c'est\l"
-	.string "plus pratique qu'un CENTRE POKéMON.$"
+	.string "Une Potion, ça s’utilise n’importe où.\n"
+	.string "Même loin de tout Centre.\p"
+	.string "Et par les temps qui courent, loin\n"
+	.string "de tout, ça arrive vite.$"
 
 OldaleTown_Text_WaitDontComeInHere:
-	.string "Aaaaaah! Attends!\n"
-	.string "Ne va pas par là!\p"
-	.string "Je viens de découvrir les empreintes\n"
-	.string "d'un POKéMON rare!\p"
-	.string "Attends que je finisse de les\n"
-	.string "reproduire, d'accord?$"
+	.string "Aaah! Stop! N’avance pas!\n"
+	.string "Tu vas marcher dessus!\p"
+	.string "Ce sont des empreintes d’arrivant.\n"
+	.string "Trois doigts, des griffes… rien d’ici.\p"
+	.string "Je les relève pour la brigade.\n"
+	.string "Attends que j’aie fini, d’accord?$"
 
 OldaleTown_Text_DiscoveredFootprints:
-	.string "Je viens juste de découvrir les\n"
-	.string "empreintes d'un POKéMON rare!\p"
-	.string "Attends que je finisse de les\n"
-	.string "reproduire, d'accord?$"
+	.string "Ne marche pas là! Ce sont des\n"
+	.string "empreintes d’arrivant.\p"
+	.string "Je les relève pour la brigade.\n"
+	.string "Ils paient au croquis, figure-toi.$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
-	.string "J'ai fini de reproduire les empreintes\n"
-	.string "d'un POKéMON rare.\p"
-	.string "Mais je pense qu'il ne s'agit en fait\n"
-	.string "que de mes propres pas…$"
+	.string "J’ai fini mes croquis d’empreintes.\n"
+	.string "La brigade va adorer.\p"
+	.string "… Sauf que les dernières, en y regardant\n"
+	.string "bien, ce sont les miennes.$"
 
 OldaleTown_Text_MayLetsGoBack:
 	.string "FLORA: {PLAYER}{KUN}!\p"

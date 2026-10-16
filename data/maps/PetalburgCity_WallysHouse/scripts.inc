@@ -66,22 +66,20 @@ PetalburgCity_WallysHouse_EventScript_ReceivedHMSurf::
 	end
 
 PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally:
-	.string "Tu es…\n"
-	.string "Ah, tu dois être {PLAYER}{KUN}, n'est-ce pas?\p"
-	.string "Merci d'avoir joué avec TIMMY.\p"
-	.string "Il est faible et maladif depuis\n"
-	.string "qu'il est tout petit.\p"
-	.string "Nous l'avons envoyé chez des parents à\n"
-	.string "VERGAZON pour quelque temps.\p"
-	.string "L'air qu'on y respire est bien\n"
-	.string "meilleur qu'ici.\p"
-	.string "Comment ça? Où est TIMMY?\n"
-	.string "Il est déjà parti, notre TIMMY.\p"
-	.string "Je me demande où il peut bien\n"
-	.string "être en ce moment.$"
+	.string "Hé! On frappe avant d’entrer!\n"
+	.string "Qui t’a dit que c’était ouvert?\p"
+	.string "… Tu es l’étranger dont tout le monde\n"
+	.string "parle. Celui des Seko.\p"
+	.string "Mon fils a le souffle court depuis\n"
+	.string "tout petit. On l’a envoyé à Vergazon.\p"
+	.string "L’air y est meilleur, et on y voit\n"
+	.string "moins d’uniformes.\p"
+	.string "Si tu cherches un endroit où dormir,\n"
+	.string "ce n’est pas ici. Désolé.$"
 
 PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing:
-	.string "Comment va notre TIMMY?$"
+	.string "Encore toi? Je n’ai rien à te dire.\n"
+	.string "Ferme la porte, il y a des oreilles.$"
 
 PetalburgCity_WallysHouse_Text_PleaseExcuseUs:
 	.string "{PLAYER}{KUN}! Merci d'avoir accepté\n"
@@ -114,10 +112,14 @@ PetalburgCity_WallysHouse_Text_YouMetWallyInEverGrandeCity:
 	.string "pu aller aussi loin tout seul.$"
 
 PetalburgCity_WallysHouse_Text_WallyWasReallyHappy:
-	.string "TIMMY était très content de nous\n"
-	.string "dire qu'il avait attrapé un POKéMON.\p"
-	.string "Ça faisait une éternité que je ne\n"
-	.string "l'avais pas vu sourire comme ça.$"
+	.string "Ne fais pas attention à mon mari.\n"
+	.string "Il a peur, comme tout le monde.\p"
+	.string "Le Rempart est passé hier. Ils ont\n"
+	.string "noté nos noms, nos Pokémon.\p"
+	.string "Notre fils était si heureux d’avoir\n"
+	.string "son premier Pokémon…\p"
+	.string "J’espère qu’ils ne le lui prendront\n"
+	.string "pas pour leur ‘effort commun’.$"
 
 PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling:
 	.string "N'en parle pas à mon mari…\p"

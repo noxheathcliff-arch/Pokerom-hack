@@ -90,15 +90,18 @@ Route102_Text_LetsGoBack:
 	.string "Retournons à l'ARENE!$"
 
 Route102_Text_ImNotVeryTall:
-	.string "Je… ne suis pas très grand, alors je\n"
-	.string "m'enfonce dans les hautes herbes.\p"
-	.string "L'herbe chatouille mes narines…\n"
-	.string "Aaaaaaaaaaaaaa…\p"
-	.string "Atchoum!$"
+	.string "Chut! Je me cache dans les herbes.\n"
+	.string "Comme ça, les arrivants me voient pas.\p"
+	.string "Maman dit qu’ils mangent les enfants.\n"
+	.string "Aaa… Aaaaa…\p"
+	.string "Atchoum!\n"
+	.string "… Oh non. Ils m’ont entendu, c’est sûr.$"
 
 Route102_Text_CatchWholeBunchOfPokemon:
-	.string "Je vais attraper tout un tas de\n"
-	.string "POKéMON!$"
+	.string "Je vais attraper plein de Pokémon\n"
+	.string "et entrer dans la brigade!\p"
+	.string "Paraît que le Rempart paie pour chaque\n"
+	.string "arrivant abattu. Ça paie bien, tu crois?$"
 
 Route102_Text_RouteSignOldale:
 	.string "ROUTE 102\n"

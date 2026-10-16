@@ -53,16 +53,20 @@ OldaleTown_Mart_EventScript_Boy::
 	end
 
 OldaleTown_Mart_Text_PokeBallsAreSoldOut:
-	.string "Le stock est épuisé. Je ne peux pas\n"
-	.string "acheter de POKé BALLS.$"
+	.string "Plus une seule Poké Ball!\n"
+	.string "Tout est parti en deux jours.\p"
+	.string "La brigade rafle tout pour ses rondes.\n"
+	.string "Et les bateaux n’arrivent plus.\p"
+	.string "Comment je protège ma fille, moi?\n"
+	.string "Avec une Potion?$"
 
 OldaleTown_Mart_Text_ImGoingToBuyPokeBalls:
-	.string "Je vais acheter plein de POKé BALLS\n"
-	.string "et attraper plein de POKéMON!$"
+	.string "Ils ont reçu des Poké Balls!\n"
+	.string "Vite, avant que la brigade passe!$"
 
 OldaleTown_Mart_Text_RestoreHPWithPotion:
-	.string "Si un POKéMON est blessé et perd ses\n"
-	.string "PV, il est K.O. et ne peut plus se battre.\p"
-	.string "Pour éviter que tes POKéMON ne soient\n"
-	.string "K.O., soigne-les avec une POTION.$"
+	.string "Une Potion rend des PV à un Pokémon\n"
+	.string "blessé. Garde-en toujours une.\p"
+	.string "Le Centre ne peut pas tout soigner.\n"
+	.string "Il y a la queue depuis les anneaux.$"
 

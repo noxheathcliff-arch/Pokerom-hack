@@ -65,20 +65,24 @@ RustboroCity_Mart_EventScript_BugCatcher::
 	end
 
 RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish:
-	.string "J'achète des ANTI-PARA et des\n"
-	.string "ANTIDOTES.\p"
-	.string "C'est juste au cas où je tomberais sur\n"
-	.string "un BALIGNON au BOIS CLEMENTI.$"
+	.string "J’achète des Anti-Para et des\n"
+	.string "Antidotes. Beaucoup.\p"
+	.string "Mon mari part aux mines avec la\n"
+	.string "brigade. Il paraît que ça pique.\p"
+	.string "Il ne veut pas que je m’inquiète.\n"
+	.string "Alors je fais les courses.$"
 
 RustboroCity_Mart_Text_ShouldBuySuperPotionsInstead:
-	.string "Mon POKéMON a évolué.\n"
-	.string "Il a plein de PV maintenant.\p"
-	.string "Je ferais mieux d'acheter des SUPER\n"
-	.string "POTIONS plutôt que de simples POTIONS.$"
+	.string "Les Super Potions ont encore\n"
+	.string "augmenté. C’est du vol!\p"
+	.string "Le patron dit que c’est les ports.\n"
+	.string "Moi, je dis que c’est le patron.$"
 
 RustboroCity_Mart_Text_GettingEscapeRopeJustInCase:
-	.string "J'ai pris une CORDE SORTIE, juste au\n"
-	.string "cas où je me perdrais dans une caverne.\p"
-	.string "Il me suffit de l'utiliser pour me\n"
-	.string "retrouver directement à l'entrée.$"
+	.string "J’ai pris une Corde Sortie.\n"
+	.string "On ne sait jamais, dans une grotte.\p"
+	.string "Mon cousin est resté coincé dans\n"
+	.string "une galerie. Deux jours, sans lumière.\p"
+	.string "Il dit qu’il entendait mâcher\n"
+	.string "le charbon, tout autour de lui.$"
 

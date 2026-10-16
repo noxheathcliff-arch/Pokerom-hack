@@ -430,31 +430,34 @@ PetalburgWoods_Text_IveBeenTrainingHard:
 	.string "Alors je m'entraîne dur.$"
 
 PetalburgWoods_Text_StayOutOfTallGrass:
-	.string "Yo, là!\n"
-	.string "Ça baigne pour tes POKéMON?\p"
-	.string "Si tes POKéMON sont faibles et que tu\n"
-	.string "ne veux pas te battre, il vaut mieux ne\l"
-	.string "pas t'attarder dans les hautes herbes.$"
+	.string "Yo! Tes Pokémon tiennent le coup?\n"
+	.string "Ce bois a changé, tu sais.\p"
+	.string "Des anneaux se sont ouverts au-dessus\n"
+	.string "des arbres. Plusieurs fois.\p"
+	.string "Si ton équipe est faible, ne traîne\n"
+	.string "pas dans les herbes. Vraiment pas.$"
 
 PetalburgWoods_Text_HiddenItemsExplanation:
-	.string "Parfois, il y a des choses par terre\n"
-	.string "qu'on ne peut même pas voir.\p"
-	.string "C'est pour ça que je fais toujours\n"
-	.string "attention où je marche.$"
+	.string "Je regarde toujours où je marche.\n"
+	.string "Il y a des objets cachés par terre.\p"
+	.string "Et des choses tombées des anneaux.\n"
+	.string "J’ai trouvé un bracelet, hier.\p"
+	.string "Gravé dans une langue que personne\n"
+	.string "ne lit. Je l’ai jeté. On sait jamais.$"
 
 PetalburgWoods_Text_TryUsingThisItem:
-	.string "Oh, génial! C'est le BADGE de l'ARENE de\n"
-	.string "MEROUVILLE!\p"
-	.string "Tu dois être DRESSEUR.\n"
-	.string "Tu devrais essayer d'utiliser cet objet.$"
+	.string "Toi aussi, tu traverses le bois?\n"
+	.string "Tu as l’air aussi perdu que moi.\p"
+	.string "Tiens, prends ça. Je ne m’en sers\n"
+	.string "pas, et tu en auras plus besoin.$"
 
 PetalburgWoods_Text_MiracleSeedExplanation:
-	.string "C'est un GRAIN MIRACL.\n"
-	.string "Lorsqu'un POKéMON tient cet objet, ses \l"
-	.string "attaques PLANTE sont plus puissantes.\p"
-	.string "Mais il existe d'autres objets tout\n"
-	.string "aussi pratiques, que les POKéMON\l"
-	.string "peuvent porter.$"
+	.string "C’est un Grain Miracle. Tenu par\n"
+	.string "un Pokémon, il renforce la Plante.\p"
+	.string "Ma grand-mère le cultivait ici,\n"
+	.string "avant que le bois devienne dangereux.\p"
+	.string "Prends soin de toi, d’accord?\n"
+	.string "On ne se croise plus beaucoup, ici.$"
 
 PetalburgWoods_Text_TrainerTipsExperience:
 	.string "CONSEILS AUX DRESSEURS\p"

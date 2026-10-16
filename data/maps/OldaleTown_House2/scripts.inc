@@ -10,12 +10,16 @@ OldaleTown_House2_EventScript_Man::
 	end
 
 OldaleTown_House2_Text_PokemonLevelUp:
-	.string "Lorsque les POKéMON se battent, ils\n"
-	.string "gagnent de l'expérience et deviennent\l"
-	.string "plus forts.$"
+	.string "Mon fils veut s’engager dans la brigade.\n"
+	.string "Il a quatorze ans.\p"
+	.string "Les Pokémon s’endurcissent au combat.\n"
+	.string "Les enfants aussi, hélas.$"
 
 OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
-	.string "Si les POKéMON de ton équipe deviennent\n"
-	.string "plus forts, tu pourras voyager plus\l"
-	.string "loin.$"
+	.string "Avec une équipe forte, on va plus loin.\n"
+	.string "Moi, je veux aller jusqu’à Clémenti.\p"
+	.string "Le Rempart recrute, là-bas. Norman\n"
+	.string "donne un insigne à ceux qui tiennent.\p"
+	.string "Maman ne veut pas. Mais Maman\n"
+	.string "ne sort plus de la maison.$"
 

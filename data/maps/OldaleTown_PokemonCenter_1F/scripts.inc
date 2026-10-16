@@ -38,26 +38,26 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
-	.string "Le PC dans le coin est à la\n"
-	.string "disposition des DRESSEURS de POKéMON.\p"
-	.string "Naturellement, tu peux l'utiliser\n"
-	.string "quand tu veux.$"
+	.string "Le PC du coin est ouvert aux Dresseurs.\n"
+	.string "Enfin… aux Dresseurs recensés.\p"
+	.string "On dit que le Rempart lit les registres\n"
+	.string "de stockage. Moi, je n’y mets plus rien.$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
-	.string "Les CENTRES POKéMON sont géniaux!\p"
-	.string "Tu peux utiliser leurs services autant\n"
-	.string "que tu veux. En plus, c'est gratuit.\p"
-	.string "Pas de souci!$"
+	.string "Le Centre soigne gratuitement.\n"
+	.string "Même les arrivants, figure-toi.\p"
+	.string "Mon oncle trouve ça scandaleux.\n"
+	.string "Moi, je trouve que l’infirmière a raison.$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
-	.string "L'étage du CENTRE POKéMON\n"
-	.string "vient d'être construit.\p"
-	.string "Mais ils prétendent avoir encore besoin\n"
-	.string "de faire quelques petits travaux.$"
+	.string "L’étage est fermé jusqu’à nouvel ordre.\n"
+	.string "Ordre de qui? Personne ne sait.$"
 
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
-	.string "L'étage du CENTRE POKéMON\n"
-	.string "vient d'être construit.\p"
-	.string "J'y ai tout de suite échangé des\n"
-	.string "POKéMON.$"
+	.string "L’étage du Centre est fermé. Les\n"
+	.string "échanges à distance sont suspendus.\p"
+	.string "Paraît que la Passerelle fera mieux.\n"
+	.string "‘Le monde en une seconde.’\p"
+	.string "Le monde? Moi, je voudrais juste\n"
+	.string "joindre ma sœur à Mérouville.$"
 

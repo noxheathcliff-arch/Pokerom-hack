@@ -10,12 +10,18 @@ RustboroCity_House2_EventScript_LittleGirl::
 	end
 
 RustboroCity_House2_Text_TrainerSchoolExcellent:
-	.string "L'ECOLE DE DRESSEURS est excellente.\p"
-	.string "En y étudiant, tu pourrais même devenir\n"
-	.string "CHAMPION D'ARENE.$"
+	.string "L’École de Dresseurs était excellente.\n"
+	.string "Aujourd’hui, c’est un vivier.\p"
+	.string "Le Rempart y recrute des enfants.\n"
+	.string "On leur promet un insigne.\p"
+	.string "J’ai retiré ma fille. Elle me\n"
+	.string "déteste, mais elle est vivante.$"
 
 RustboroCity_House2_Text_RoxanneKnowsALot:
-	.string "ROXANNE, notre CHAMPION, en sait\n"
-	.string "vraiment beaucoup sur les POKéMON.\p"
-	.string "Elle est également très forte!$"
+	.string "Roxanne, c’est ma maîtresse à\n"
+	.string "l’École! Elle sait tout!\p"
+	.string "Elle est aux mines avec les arrivants.\n"
+	.string "Elle dit qu’il faut les étudier.\p"
+	.string "Papa dit qu’il faut les abattre.\n"
+	.string "Moi, je crois Roxanne.$"
 

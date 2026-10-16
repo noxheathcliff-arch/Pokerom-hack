@@ -63,20 +63,23 @@ PetalburgCity_Mart_EventScript_Man::
 	end
 
 PetalburgCity_Mart_Text_WeakWillGrowStronger:
-	.string "Même si un POKéMON est faible pour\n"
-	.string "le moment, il deviendra plus fort.\p"
-	.string "Le plus important, c'est l'amour!\n"
-	.string "L'amour pour tes POKéMON!$"
+	.string "Mon Pokémon est faible, je sais.\n"
+	.string "Mais il grandira.\p"
+	.string "Le Rempart dit qu’il faut des Pokémon\n"
+	.string "‘utiles’. Moi, je dis qu’il faut les aimer.\p"
+	.string "… Ne répète pas ça devant la brigade.$"
 
 PetalburgCity_Mart_Text_RepelIsUseful:
-	.string "Utilises-tu REPOUSSE?\n"
-	.string "Ça maintient les POKéMON éloignés.\p"
-	.string "Très utile quand tu veux te dépêcher!$"
+	.string "J’achète tous les Repousses que\n"
+	.string "je peux. Ça éloigne les Pokémon.\p"
+	.string "Sur les arrivants, ça marche moins bien.\n"
+	.string "Mais c’est mieux que rien, non?$"
 
 PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou:
-	.string "As-tu des ANTIDOTES avec toi?\p"
-	.string "Si tu avances avec un POKéMON\n"
-	.string "empoisonné, il va perdre ses PV\l"
-	.string "jusqu'à ce qu'il soit K.O. Alors\l"
-	.string "prends des ANTIDOTES avec toi!$"
+	.string "Prends des Antidotes, crois-moi.\n"
+	.string "Le poison ronge les PV en marchant.\p"
+	.string "Et certains arrivants ont des\n"
+	.string "venins qu’on ne connaît pas ici.\p"
+	.string "Mon voisin s’est fait piquer au bois.\n"
+	.string "Trois jours de fièvre.$"
 

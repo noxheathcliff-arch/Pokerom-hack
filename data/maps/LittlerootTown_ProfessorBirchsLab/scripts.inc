@@ -649,30 +649,30 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
-	.string "Hein? Le PROF. SEKO?\p"
-	.string "Le PROFESSEUR est sur le terrain.\n"
-	.string "C'est-à-dire qu'il n'est pas ici.\p"
-	.string "Laisse-moi t'expliquer ce que\n"
-	.string "signifie être sur le terrain.\p"
-	.string "Il s'agit de réaliser nos études dans un\n"
-	.string "environnement naturel, en plaine ou en\l"
-	.string "montagne, plutôt qu'en laboratoire.\p"
-	.string "Le PROFESSEUR n'est pas du genre à\n"
-	.string "rester derrière un bureau. Il préfère\l"
-	.string "sortir et faire ses expériences plutôt\l"
-	.string "que de rester ici à lire des livres.$"
+	.string "Hein? Le Prof. Seko?\n"
+	.string "Il est sorti chercher des blessés.\p"
+	.string "Depuis les anneaux, on ramasse\n"
+	.string "des Pokémon qui ne sont pas d’ici.\p"
+	.string "Le Prof. dit qu’un Pokémon blessé\n"
+	.string "n’a pas de pays. Je suis d’accord.\p"
+	.string "Le Rempart, lui, n’est pas d’accord.\n"
+	.string "Alors on ferme les volets.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
-	.string "Le PROFESSEUR n'est pas du genre à\n"
-	.string "rester derrière un bureau. Il préfère\l"
-	.string "sortir et faire ses expériences plutôt \l"
-	.string "que de rester ici à lire des livres.$"
+	.string "Ne touche à rien, s’il te plaît.\n"
+	.string "Ces bandages sont comptés.\p"
+	.string "Le Prof. n’a jamais aimé les bureaux.\n"
+	.string "Il préfère les herbes hautes.\p"
+	.string "Mais en ce moment, le terrain vient\n"
+	.string "à lui. Sur des brancards.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
-	.string "Le PROF. SEKO étudie l'habitat et la\n"
-	.string "répartition géographique des POKéMON.\p"
-	.string "Le PROFESSEUR aime aussi se faire aider\n"
-	.string "par {RIVAL}. Ils s'aiment beaucoup.$"
+	.string "Le Prof. ne fait plus de terrain.\n"
+	.string "Il soigne. Jour et nuit.\p"
+	.string "Le Pikachu se remet, mais doucement.\n"
+	.string "Des côtes fêlées, ça ne se presse pas.\p"
+	.string "Et Brice passe ses nuits à recenser.\n"
+	.string "‘Je note, je note.’ Comme son père.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "PROF. SEKO: Alors, {PLAYER}{KUN}.\p"
