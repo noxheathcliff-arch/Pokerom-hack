@@ -32,8 +32,8 @@ enum {
 };
 
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
-#define VERSION_BANNER_LEFT_X 98
-#define VERSION_BANNER_RIGHT_X 162
+#define VERSION_BANNER_LEFT_X 90  // Confluence: banner art re-centred (tools/qa/make_title_version_banner.py)
+#define VERSION_BANNER_RIGHT_X 154
 
 // !< French Difference
 #define VERSION_BANNER_Y 4
@@ -71,7 +71,7 @@ static const u32 sTitleScreenCloudsGfx[] = INCGFX_U32("graphics/title_screen/clo
 
 
 
-// Used to blend "Emerald Version" as it passes over over the Pokémon banner.
+// Used to blend the version banner ("Version Confluence") as it passes over over the Pokémon banner.
 // Also used by the intro to blend the Game Freak name/logo in and out as they appear and disappear
 const u16 gTitleScreenAlphaBlend[64] =
 {
