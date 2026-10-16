@@ -4,18 +4,25 @@
 // Everything here is ROM code; the only save data added is the 16-byte ledger in SaveBlock3.
 #include "global.h"
 #include "confluence.h"
+#include "data.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "follower_npc.h"
+#include "main.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
+#include "random.h"
+#include "rtc.h"
 #include "script.h"
 #include "tv.h"
 
 void EndMassOutbreak(void); // src/tv.c (no header prototype upstream)
+#include "constants/battle.h"
+#include "constants/battle_ai.h"
 #include "constants/confluence.h"
+#include "constants/trainers.h"
 #include "constants/flags.h"
 #include "constants/vars.h"
 #include "constants/maps.h"
@@ -862,4 +869,155 @@ void CF_FollowerSideDir(void)
         gSpecialVar_Result = sSides[i];
         return;
     }
+}
+
+// ---------------------------------------------------------------------------
+// Gameplay tuning (CF-15..CF-17, docs/hack/ENGINE_CHANGES.md)
+// ---------------------------------------------------------------------------
+
+// CF-15: full party EXP (Cmd_getexp). Always on in the game, independent of FLAG_CF_EXP_SHARE.
+bool32 CF_IsFullPartyExpEnabled(void)
+{
+#if TESTING
+    return FlagGet(CF_FLAG_FULL_PARTY_EXP);
+#else
+    return TRUE;
+#endif
+}
+
+// ---------------------------------------------------------------------------
+// CF-13: RNG seeding. Vanilla seeds it (and starts the per-frame advance) on the naming
+// screen, which this hack skips: Random() then always walked the same few low values from
+// a zero state, so the personality's gender byte was small and every wild Pokemon was female.
+// ---------------------------------------------------------------------------
+void CF_SeedRngFromMainMenu(void)
+{
+    struct SiiRtcInfo rtc;
+    u32 seed;
+
+    SeedRngAndSetTrainerId(); // timers started in InitMainMenu; also fills the TID lower half
+    RtcGetInfo(&rtc);
+    seed = Random32();
+    seed ^= gMain.vblankCounter1 * 2654435761u;
+    seed ^= (rtc.second | (rtc.minute << 8) | (rtc.hour << 16)) * 40503u;
+    seed ^= (rtc.day << 24) | (rtc.month << 16);
+    SeedRng(seed);
+    SeedRng2(Random32());
+}
+
+// ---------------------------------------------------------------------------
+// CF-16 / CF-17: wild and trainer levels follow the player's top level
+// ---------------------------------------------------------------------------
+
+static bool32 CF_IsLevelScalingActive(void)
+{
+#if TESTING
+    if (!FlagGet(CF_FLAG_LEVEL_SCALING))
+        return FALSE;
+#endif
+    // The prologue team is level 62+ and its fights are staged: leave them as authored.
+    return VarGet(VAR_CF_CHAPTER) != 0;
+}
+
+// Highest level among the non-egg party members (0 if none).
+u32 CF_GetPlayerTopLevel(void)
+{
+    u32 i, top = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u32 species = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG);
+        if (species == SPECIES_NONE || species == SPECIES_EGG)
+            continue;
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL) > top)
+            top = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL);
+    }
+    return top;
+}
+
+// Top level T with topChance % chance, else uniformly T-1..T-3 (never below 1).
+static u32 CF_RollBelowTopLevel(u32 top, u32 topChance)
+{
+    s32 level;
+
+    if (Random() % 100 < topChance)
+        return top;
+    level = (s32)top - 1 - (s32)(Random() % 3);
+    return level < 1 ? 1 : level;
+}
+
+// CF-16: wild levels. Mostly T-1..T-3, T in 3 % of encounters, never above T, never below the
+// slot's authored minimum (that minimum wins when it is above T).
+u32 CF_ScaleWildMonLevel(u32 vanillaLevel, u32 mapMinLevel)
+{
+    u32 top, level;
+
+    if (!CF_IsLevelScalingActive())
+        return vanillaLevel;
+    top = CF_GetPlayerTopLevel();
+    if (top == 0)
+        return vanillaLevel;
+    level = CF_RollBelowTopLevel(top, CF_WILD_TOP_LEVEL_CHANCE);
+    if (level < mapMinLevel)
+        level = mapMinLevel;
+    return level;
+}
+
+// Bosses and story fights: leaders, E4, champions, rivals, team bosses and admins, and every
+// team built with an ace (AI_FLAG_ACE_POKEMON, used by all the hack's scripted fights).
+bool32 CF_IsBossTrainer(const struct Trainer *trainer)
+{
+    if (trainer->aiFlags & AI_FLAG_ACE_POKEMON)
+        return TRUE;
+    switch (trainer->trainerClass)
+    {
+    case TRAINER_CLASS_LEADER:
+    case TRAINER_CLASS_ELITE_FOUR:
+    case TRAINER_CLASS_CHAMPION:
+    case TRAINER_CLASS_RIVAL:
+    case TRAINER_CLASS_AQUA_ADMIN:
+    case TRAINER_CLASS_AQUA_LEADER:
+    case TRAINER_CLASS_MAGMA_ADMIN:
+    case TRAINER_CLASS_MAGMA_LEADER:
+    case TRAINER_CLASS_RIVAL_EARLY_FRLG:
+    case TRAINER_CLASS_RIVAL_LATE_FRLG:
+    case TRAINER_CLASS_BOSS_FRLG:
+    case TRAINER_CLASS_LEADER_FRLG:
+    case TRAINER_CLASS_ELITE_FOUR_FRLG:
+    case TRAINER_CLASS_CHAMPION_FRLG:
+        return TRUE;
+    }
+    return FALSE;
+}
+
+// CF-17: how many levels to take off every mon of this trainer's team. The authored team is
+// kept as is (species, spacing between the mons, ace above the rest); only a team whose
+// highest mon is above the target is shifted down so that mon lands on it. Weaker teams are
+// never raised. Target: normal trainers T-1..T-3, T in 5 % of fights; bosses T.
+u32 CF_GetTrainerLevelShift(const struct Trainer *trainer, const u32 *monIndices, u32 monsCount, u32 battleTypeFlags)
+{
+    u32 i, top, target, highest = 0;
+
+    if (battleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED | BATTLE_TYPE_FRONTIER))
+        return 0;
+    if (!CF_IsLevelScalingActive())
+        return 0;
+    top = CF_GetPlayerTopLevel();
+    if (top == 0)
+        return 0;
+    for (i = 0; i < monsCount; i++)
+    {
+        if (trainer->party[monIndices[i]].lvl > highest)
+            highest = trainer->party[monIndices[i]].lvl;
+    }
+    if (CF_IsBossTrainer(trainer))
+        target = top;
+    else
+        target = CF_RollBelowTopLevel(top, CF_TRAINER_TOP_LEVEL_CHANCE);
+    return highest > target ? highest - target : 0;
+}
+
+u32 CF_ApplyTrainerLevelShift(u32 level, u32 shift)
+{
+    return level > shift ? level - shift : 1;
 }

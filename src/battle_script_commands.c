@@ -75,6 +75,7 @@
 #include "test/battle.h"
 #include "follower_npc.h"
 #include "load_save.h"
+#include "confluence.h" // Hack
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
@@ -3909,6 +3910,7 @@ static void Cmd_getexp(void)
             u32 expShareBits = 0;
             s32 viaSentIn = 0;
             s32 viaExpShare = 0;
+            bool32 fullPartyExp = CF_IsFullPartyExpEnabled(); // Confluence: full party EXP (CF-15)
 
             for (i = 0; i < PARTY_SIZE; i++)
             {
@@ -3918,7 +3920,7 @@ static void Cmd_getexp(void)
                     viaSentIn++;
 
                 holdEffect = GetMonHoldEffect(&gParties[B_TRAINER_PLAYER][i]);
-                if (holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled())
+                if (holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled() || fullPartyExp)
                 {
                     expShareBits |= 1u << i;
                     viaExpShare++;
@@ -3947,7 +3949,15 @@ static void Cmd_getexp(void)
             if (GetConfig(B_TRAINER_EXP_MULTIPLIER) <= GEN_7 && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                 calculatedExp = (calculatedExp * 150) / 100;
 
-            if (GetConfig(B_SPLIT_EXP) < GEN_6)
+            if (fullPartyExp)
+            {
+                // Confluence (CF-15): every non-fainted party member gets the same, unsplit EXP.
+                *exp = calculatedExp;
+                if (*exp == 0)
+                    *exp = 1;
+                gBattleStruct->expShareExpValue = *exp;
+            }
+            else if (GetConfig(B_SPLIT_EXP) < GEN_6)
             {
                 if (viaExpShare) // at least one mon is getting exp via exp share
                 {
@@ -3985,9 +3995,10 @@ static void Cmd_getexp(void)
         if (gBattleControllerExecFlags == 0)
         {
             bool32 wasSentOut = (gBattleStruct->expSentInMons & (1u << *expMonId)) != 0;
+            bool32 fullPartyExp = CF_IsFullPartyExpEnabled(); // Confluence: full party EXP (CF-15)
             holdEffect = GetMonHoldEffect(&gParties[B_TRAINER_PLAYER][*expMonId]);
 
-            if ((holdEffect != HOLD_EFFECT_EXP_SHARE && !wasSentOut && !IsGen6ExpShareEnabled())
+            if ((holdEffect != HOLD_EFFECT_EXP_SHARE && !wasSentOut && !IsGen6ExpShareEnabled() && !fullPartyExp)
              || GetMonData(&gParties[B_TRAINER_PLAYER][*expMonId], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
             {
                 gBattleScripting.getexpState = 5;
@@ -4021,8 +4032,8 @@ static void Cmd_getexp(void)
                     else
                         gBattleStruct->battlerExpReward = 0;
 
-                    if ((holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled())
-                        && (B_SPLIT_EXP < GEN_6 || gBattleStruct->battlerExpReward == 0)) // only give exp share bonus in later gens if the mon wasn't sent out
+                    if ((holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled() || fullPartyExp)
+                        && ((B_SPLIT_EXP < GEN_6 && !fullPartyExp) || gBattleStruct->battlerExpReward == 0)) // only give exp share bonus in later gens if the mon wasn't sent out
                     {
                         gBattleStruct->battlerExpReward += GetSoftLevelCapExpValue(gParties[B_TRAINER_PLAYER][*expMonId].level, gBattleStruct->expShareExpValue);
                     }
@@ -4059,7 +4070,7 @@ static void Cmd_getexp(void)
                     {
                         PrepareStringBattle(STRINGID_PKMNGAINEDEXP, 0);
                     }
-                    else if (IsGen6ExpShareEnabled() && !gBattleStruct->teamGotExpMsgPrinted) // Print 'the rest of your team got exp' message once, when all of the sent-in mons were given experience
+                    else if ((IsGen6ExpShareEnabled() || fullPartyExp) && !gBattleStruct->teamGotExpMsgPrinted) // Print 'the rest of your team got exp' message once, when all of the sent-in mons were given experience
                     {
                         gLastUsedItem = ITEM_EXP_SHARE;
                         PrepareStringBattle(STRINGID_TEAMGAINEDEXP, 0);

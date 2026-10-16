@@ -34,7 +34,7 @@
 ## A. Nettoyage et réglages de base
 
 | Fichier | Changement | Pourquoi |
-|---|---|---|
+|---|---|---|---|
 | `Makefile` | `TITLE ?= POKEMON HACK` (12 car. max), `GAME_CODE` **inchangé** `BPEF` | titre provisoire neutre ; garder un code `BPE?` pour que les émulateurs activent RTC + Flash 128K (TECHNICAL_AUDIT §2) |
 | `include/config/general.h` | `EXPANSION_INTRO FALSE` | identité du hack ; l'intro RHH ne s'affiche plus (crédits RHH à garder ailleurs, README/crédits) |
 | `include/constants/flags.h` | `0x20` → `FLAG_NO_WILD_ENCOUNTERS`, `0x21` → `FLAG_CHOOSE_BATTLE_LEAD` | voir §N1, §D2 |
@@ -297,20 +297,53 @@ CF_D027_Fin::
 - **Texte** (`data/text/trainers.inc`) : intro et revanche de Calvin se terminent par « Alors, tu relèves mon défi? » (cohérent avec le combat refusable).
 - **Carte** : panneau (métatuile 0x003, collision) en (16, 52) à Mérouville pour l’affiche de C4 ; Ferrand en `OBJ_EVENT_GFX_SCIENTIST_2` (Devon 2F, R116).
 
+### CF-13. Pokémon sauvages tous femelles (graine du RNG)
+- **Symptôme :** tous les Pokémon sauvages étaient femelles.
+- **Cause :** en vanilla, le RNG est semé (et son avance à chaque frame débloquée, `sRngLoopUnlocked`) par `SeedRngAndSetTrainerId` sur l’écran de nom, que le hack saute. `gRngValue` restait à l’état initial : `Random()` donnait toujours la même courte suite de petites valeurs, l’octet de genre de la personnalité était bas, d’où des femelles partout (et la moitié basse de l’ID dresseur valait toujours 0). Les dresseurs ne sont pas touchés : le genre de leurs Pokémon vient d’un hachage de l’équipe (`GeneratePartyHash`) ou du genre imposé dans les données, pas de l’état du RNG.
+- **Correctif :** `StartTimer1()` dans `InitMainMenu` (`src/main_menu.c`) et `CF_SeedRngFromMainMenu()` (`src/confluence.c`) appelé dans `Task_HandleMainMenuAPressed` avant le `switch (action)` (couvre Nouvelle partie **et** Continuer). La fonction appelle `SeedRngAndSetTrainerId()` (Timer1 → graine + moitié basse de l’ID) puis mélange `gMain.vblankCounter1` et l’heure RTC dans `SeedRng`/`SeedRng2`.
+- **Vérifié :** test `Wild genders: Route 104 grass…` (les deux genres sortent) ; gbaplay : `sRngLoopUnlocked = 1`, `gRngValue` avance à chaque frame, et deux délais différents au menu (10 / 37 frames) donnent des graines, ID (0xAC0C / 0x4B12) et personnalités différentes.
+
+### CF-14. Obéissance : tous les Pokémon obéissent
+- `CF_ALWAYS_OBEY` (`include/confluence.h`, `TRUE`). Dans `GetAttackerObedienceForAction` (`src/battle_util.c`), le test « prologue seulement » (`VAR_CF_CHAPTER == 0`) est remplacé par `if (CF_ALWAYS_OBEY) return OBEYS;` : un Pokémon capturé ou échangé obéit à tout niveau, sans badge. Mettre la macro à `FALSE` rend la règle vanilla.
+
+### CF-15. EXP pour toute l’équipe (pleine, non partagée)
+- `CF_IsFullPartyExpEnabled()` (`src/confluence.c`) : toujours vrai en jeu (indépendant de `FLAG_CF_EXP_SHARE`) ; en build de test, piloté par `CF_FLAG_FULL_PARTY_EXP` (= `TESTING_FLAG_UNUSED_3`) pour que les tests d’EXP upstream gardent le comportement vanilla.
+- `Cmd_getexp` (`src/battle_script_commands.c`) : chaque membre non K.O. (hors œuf) compte comme porteur de Multi Exp ; `expShareExpValue` = EXP complète (pas de division par le nombre de participants). Les Pokémon envoyés reçoivent la même valeur (pas de cumul). Le plafond de niveau (`GetSoftLevelCapExpValue`) s’applique toujours par Pokémon : au plafond, l’EXP est réduite comme avant.
+- **Messages :** même chemin que le Multi Exp Gen 6 : un message « X gagne N Points d’Exp. » par Pokémon envoyé, puis **un seul** « Le reste de l’équipe gagne aussi des Points d’Expérience! » (`STRINGID_TEAMGAINEDEXP`, `src/battle_message.c`, texte raccourci). Les montées de niveau (et apprentissages d’attaque) de chaque Pokémon restent affichées. `test/battle/exp.c` suit le nouveau texte.
+- **Tests :** `test/battle/hack_exp.c` (2 tests) : même EXP pour tous, rien pour le K.O., message unique ; témoin sans le flag.
+
+### CF-16. Niveaux sauvages selon le niveau max de l’équipe
+- `ChooseWildMonLevel` (`src/wild_encounter.c`) passe son résultat dans `CF_ScaleWildMonLevel(niveau vanilla, min du slot)`.
+- Règle (T = plus haut niveau de l’équipe, œufs exclus, `CF_GetPlayerTopLevel`) : 3 % (`CF_WILD_TOP_LEVEL_CHANCE`) au niveau T, sinon uniforme entre T−1 et T−3 ; jamais au-dessus de T ; jamais sous le minimum vanilla du slot (si ce minimum dépasse T, il l’emporte). Exemple : T = 11 → 8–10, 11 environ 3 %.
+- Désactivé au prologue (`VAR_CF_CHAPTER == 0`, équipe niv. 62+ et combats mis en scène) et en build de test sauf si `CF_FLAG_LEVEL_SCALING` (= `TESTING_FLAG_UNUSED_4`).
+- **Tests :** 3 tests `Wild levels: …` (1000 tirages dans [8, 11] pour T = 11, niveau 11 dans 1–6 % ; plancher du slot ; valeur vanilla au prologue / sans le flag).
+
+### CF-17. Niveaux des dresseurs selon le niveau max de l’équipe
+- `CreateNPCTrainerPartyFromTrainer` (`src/battle_main.c`) : `CF_GetTrainerLevelShift` calcule un décalage, appliqué à **toute** l’équipe par `CF_ApplyTrainerLevelShift` (min. 1). L’équipe écrite reste telle quelle (espèces, écarts entre les Pokémon, as au-dessus du reste) ; seule une équipe dont le plus haut Pokémon dépasse la cible est abaissée pour que ce Pokémon tombe sur la cible. Une équipe plus faible n’est **jamais** remontée (plus d’alignement automatique sur le niveau du joueur).
+- **Cible :** dresseurs normaux T−1 à T−3, T dans 5 % des combats (`CF_TRAINER_TOP_LEVEL_CHANCE`) ; boss et combats d’histoire = T au maximum.
+- **Boss** (`CF_IsBossTrainer`) : toute équipe avec `AI_FLAG_ACE_POKEMON` (tous les combats scénarisés du hack) ou classe Champion d’arène, Conseil 4, Maître, Rival, Admin/Chef Aqua et Magma (et équivalents FRLG).
+- Pas de décalage en link, combat enregistré ou Zone de combat ; désactivé au prologue et en test comme CF-16.
+- **Tests :** 3 tests `Trainer levels: …` sur des dresseurs locaux (le build de test n’a pas `gTrainers`) : définition des boss ; 100 équipes d’un sbire (plus haut dans [T−3, T], T rare, écarts conservés) ; as du rival plafonné à T, jamais remonté, inchangé sans le flag.
+
+### CF-18. Boutique : texte résiduel sous le Oui/Non
+- **Symptôme :** à l’achat, le reste de « Ça fera 200₽… » restait affiché dans la boîte Oui/Non.
+- **Cause :** `sShopBuyMenuYesNoWindowTemplates.baseBlock = 0x020E` chevauchait les tuiles de `WIN_MESSAGE` (base 0x01BC, 27×4 tuiles → jusqu’à 0x0227) : la fenêtre Oui/Non dessinait dans les tuiles du message.
+- **Correctif :** `baseBlock = 0x0228` (`src/shop.c`), juste après la fenêtre de message (VRAM libre jusqu’au cadre de la boîte). Vente : passe par le menu Oui/Non standard du sac, non concerné. `gText_ThatItemIsSoldOut` (`src/strings.c`) coupé en deux lignes (≤ 212 px chacune). Les autres textes de confirmation de la boutique tiennent dans 2 × 212 px.
+
 ## Tests (`make check`)
 
 Commande : `make check -j4 ROMTEST=/opt/mgba-tools/bin/mgba-rom-test ROMTESTHYDRA=/opt/mgba-tools/bin/mgba-rom-test-hydra` (log : `/home/user/check_engine.log`).
 
-| | Upstream 1.16.4 | Projet (2026-10-14) |
-|---|---|---|
-| PASSED | 4 937 | **4 949** (+12 tests projet) |
-| FAILED | 0 | **0** |
-| KNOWN_FAILING / TO_DO / EXPECT_FAILING | 13 / 595 / 8 | 13 / 595 / 8 |
-| ASSUMPTIONS_FAILED | 0 | 1 (`Level cap: soft cap reduces exp…`, volontaire : `EXP_CAP_NONE` en build de test) |
-| TOTAL | 5 553 | 5 566 |
+| | Upstream 1.16.4 | Projet (2026-10-14) | Projet (2026-10-16, CF-13 à CF-18) |
+|---|---|---|---|
+| PASSED | 4 937 | **4 949** (+12 tests projet) | **4 976** (dont 2 `hack_exp` + 7 `hack_engine` CF-13/16/17) |
+| FAILED | 0 | **0** | **0** |
+| KNOWN_FAILING / TO_DO / EXPECT_FAILING | 13 / 595 / 8 | 13 / 595 / 8 | 13 / 595 / 8 |
+| ASSUMPTIONS_FAILED | 0 | 1 (`Level cap: soft cap reduces exp…`, volontaire : `EXP_CAP_NONE` en build de test) | 1 (idem) |
+| TOTAL | 5 553 | 5 566 | 5 593 |
 
 Historique : un passage intermédiaire avait 4 échecs (3 tests d'EXP upstream cassés par le plafond souple → corrigé par l'override de `config/test.h` ; 1 test « choix du meneur » inexprimable → remplacé par des tests unitaires).
 
 ## Fichiers touchés (résumé)
 
-`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,overworld,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`.
+`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,overworld,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`. CF-13 à CF-18 : `include/confluence.h`, `src/{confluence,main_menu,wild_encounter,battle_main,battle_util,battle_script_commands,battle_message,shop,strings}.c`, `test/hack_engine.c`, `test/battle/{exp,hack_exp}.c`.

@@ -5,7 +5,11 @@
 #include "trainer_see.h"
 #include "constants/battle_setup.h"
 #include "constants/party_menu.h"
+#include "battle_main.h"
+#include "confluence.h"
+#include "constants/battle_ai.h"
 #include "data.h"
+#include "malloc.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "field_player_avatar.h"
@@ -232,4 +236,207 @@ TEST("Choose lead: the selection is offered only with the flag and 2+ usable Pok
     SetBattleLeadFromSelection();
     EXPECT_EQ(ConsumeChosenBattleLead(), PARTY_SIZE);
     FlagClear(FLAG_CHOOSE_BATTLE_LEAD);
+}
+
+// ---------------------------------------------------------------------------
+// CF-13: wild Pokemon genders follow the species ratio
+// ---------------------------------------------------------------------------
+
+TEST("Wild genders: Route 104 grass gives both genders with a non-Cute Charm lead")
+{
+    u32 i, males = 0, females = 0;
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_TREECKO, 5;
+        givemon SPECIES_ZIGZAGOON_GALAR, 5;
+    );
+    SetPlayerMap(MAP_ROUTE104);
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+    const struct WildPokemonInfo *info = gWildMonHeaders[headerId].encounterTypes[OW_TIME_OF_DAY_FALLBACK].landMonsInfo;
+    EXPECT_NE(info, NULL);
+    for (i = 0; i < 200; i++)
+    {
+        TryGenerateWildMon(info, WILD_AREA_LAND, 0);
+        u32 g = GetMonGender(&gParties[B_TRAINER_OPPONENT_A][0]);
+        if (g == MON_MALE) males++;
+        else if (g == MON_FEMALE) females++;
+    }
+    DebugPrintf("males=%d females=%d", males, females);
+    EXPECT_GT(males, 40);
+    EXPECT_GT(females, 40);
+}
+
+// ---------------------------------------------------------------------------
+// CF-16: wild levels follow the player's top level
+// ---------------------------------------------------------------------------
+
+static void GivePlayerTopLevel(u32 level)
+{
+    ZeroPlayerPartyMons();
+    CreateMon(&gParties[B_TRAINER_PLAYER][0], SPECIES_TREECKO, level, 0, OTID_STRUCT_PLAYER_ID);
+    CreateMon(&gParties[B_TRAINER_PLAYER][1], SPECIES_ZIGZAGOON, level - 4, 0, OTID_STRUCT_PLAYER_ID);
+    CalculatePlayerPartyCount();
+}
+
+TEST("Wild levels: 1-3 below the top level, the top level is rare, never above it")
+{
+    u32 i, atTop = 0;
+    GivePlayerTopLevel(11);
+    FlagSet(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 1);
+    EXPECT_EQ(CF_GetPlayerTopLevel(), 11);
+    for (i = 0; i < 1000; i++)
+    {
+        u32 lvl = CF_ScaleWildMonLevel(5, 2);
+        EXPECT_GE(lvl, 8);
+        EXPECT_LE(lvl, 11);
+        if (lvl == 11)
+            atTop++;
+    }
+    DebugPrintf("top level hits=%d/1000", atTop);
+    EXPECT_GE(atTop, 10);
+    EXPECT_LE(atTop, 60);
+    FlagClear(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 0);
+}
+
+TEST("Wild levels: never below the map's vanilla minimum")
+{
+    u32 i;
+    GivePlayerTopLevel(11);
+    FlagSet(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 1);
+    for (i = 0; i < 200; i++)
+    {
+        u32 lvl = CF_ScaleWildMonLevel(10, 10);
+        EXPECT_GE(lvl, 10);
+        EXPECT_LE(lvl, 11);
+        EXPECT_EQ(CF_ScaleWildMonLevel(16, 15), 15);
+    }
+    FlagClear(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 0);
+}
+
+TEST("Wild levels: vanilla level in the prologue (chapter 0) and without scaling")
+{
+    GivePlayerTopLevel(11);
+    FlagSet(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 0);
+    EXPECT_EQ(CF_ScaleWildMonLevel(5, 2), 5);
+    FlagClear(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 1);
+    EXPECT_EQ(CF_ScaleWildMonLevel(5, 2), 5);
+    VarSet(VAR_CF_CHAPTER, 0);
+}
+
+// ---------------------------------------------------------------------------
+// CF-17: trainer levels are shifted down below the player's top level
+// Test builds use the test trainer table, so the trainers are defined here
+// (same shape as the game's Petalburg Woods grunt and rival Flora fights).
+// ---------------------------------------------------------------------------
+
+static const struct TrainerMon sCfGruntMons[] =
+{
+    { .species = SPECIES_KOFFING, .lvl = 15 },
+    { .species = SPECIES_ZUBAT, .lvl = 15 },
+};
+
+static const struct TrainerMon sCfRivalMons[] =
+{
+    { .species = SPECIES_ZIGZAGOON, .lvl = 11 },
+    { .species = SPECIES_POOCHYENA, .lvl = 12 },
+    { .species = SPECIES_TAILLOW, .lvl = 14 },
+};
+
+static const struct Trainer sCfGrunt =
+{
+    .trainerClass = TRAINER_CLASS_TEAM_ROCKET_FRLG,
+    .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
+    .party = TRAINER_PARTY(sCfGruntMons),
+};
+
+static const struct Trainer sCfRival =
+{
+    .trainerClass = TRAINER_CLASS_RIVAL,
+    .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_ACE_POKEMON,
+    .party = TRAINER_PARTY(sCfRivalMons),
+};
+
+static const struct Trainer sCfAceOnly =
+{
+    .trainerClass = TRAINER_CLASS_HIKER,
+    .aiFlags = AI_FLAG_ACE_POKEMON,
+    .party = TRAINER_PARTY(sCfGruntMons),
+};
+
+TEST("Trainer levels: boss = Ace Pokemon flag or a leader/rival/E4/champion/admin class")
+{
+    EXPECT(!CF_IsBossTrainer(&sCfGrunt));
+    EXPECT(CF_IsBossTrainer(&sCfRival));
+    EXPECT(CF_IsBossTrainer(&sCfAceOnly));
+}
+
+TEST("Trainer levels: a normal trainer ends 1-3 below the top level (rarely equal), spacing kept")
+{
+    u32 i, j, atTop = 0, highest = 0;
+    const struct Trainer *trainer = &sCfGrunt;
+    struct Pokemon *party = Alloc(PARTY_SIZE * sizeof(struct Pokemon));
+    EXPECT(!CF_IsBossTrainer(trainer));
+    for (j = 0; j < trainer->partySize; j++)
+        highest = max(highest, trainer->party[j].lvl);
+    GivePlayerTopLevel(11);
+    FlagSet(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 1);
+    for (i = 0; i < 100; i++)
+    {
+        u32 n = CreateNPCTrainerPartyFromTrainer(party, trainer, TRUE, BATTLE_TYPE_TRAINER);
+        u32 top = 0, shift;
+        for (j = 0; j < n; j++)
+            top = max(top, GetMonData(&party[j], MON_DATA_LEVEL));
+        EXPECT_GE(top, 8);
+        EXPECT_LE(top, 11);
+        if (top == 11)
+            atTop++;
+        shift = highest - top;
+        for (j = 0; j < n; j++)
+            EXPECT_EQ(GetMonData(&party[j], MON_DATA_LEVEL), trainer->party[j].lvl - shift);
+    }
+    DebugPrintf("trainer at top=%d/100", atTop);
+    EXPECT_LE(atTop, 20);
+    FlagClear(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 0);
+    Free(party);
+}
+
+TEST("Trainer levels: a boss (rival) ace is capped at the top level, never raised")
+{
+    u32 j, n, highest = 0;
+    const struct Trainer *trainer = &sCfRival;
+    struct Pokemon *party = Alloc(PARTY_SIZE * sizeof(struct Pokemon));
+    EXPECT(CF_IsBossTrainer(trainer));
+    for (j = 0; j < trainer->partySize; j++)
+        highest = max(highest, trainer->party[j].lvl);
+    FlagSet(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 1);
+
+    // Player below the authored levels: shifted down so the ace equals the top level.
+    GivePlayerTopLevel(highest - 3);
+    n = CreateNPCTrainerPartyFromTrainer(party, trainer, TRUE, BATTLE_TYPE_TRAINER);
+    for (j = 0; j < n; j++)
+        EXPECT_EQ(GetMonData(&party[j], MON_DATA_LEVEL), trainer->party[j].lvl - 3);
+
+    // Player above the authored levels: unchanged (no upward scaling).
+    GivePlayerTopLevel(highest + 6);
+    n = CreateNPCTrainerPartyFromTrainer(party, trainer, TRUE, BATTLE_TYPE_TRAINER);
+    for (j = 0; j < n; j++)
+        EXPECT_EQ(GetMonData(&party[j], MON_DATA_LEVEL), trainer->party[j].lvl);
+
+    // Scaling off: authored levels.
+    FlagClear(CF_FLAG_LEVEL_SCALING);
+    GivePlayerTopLevel(highest - 3);
+    n = CreateNPCTrainerPartyFromTrainer(party, trainer, TRUE, BATTLE_TYPE_TRAINER);
+    for (j = 0; j < n; j++)
+        EXPECT_EQ(GetMonData(&party[j], MON_DATA_LEVEL), trainer->party[j].lvl);
+    VarSet(VAR_CF_CHAPTER, 0);
+    Free(party);
 }

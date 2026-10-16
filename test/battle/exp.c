@@ -173,7 +173,7 @@ WILD_BATTLE_TEST("Exp Share(held) gives Experience to mons which did not partici
         MESSAGE("Qulbutoké utilise\nGriffe!");
         MESSAGE("Chenipan sauvage est K.O.!\p");
         // This message should appear only for gen6> exp share.
-        NOT MESSAGE("Le reste de votre équipe a gagné des Points d'Expérience grâce au Multi Exp!");
+        NOT MESSAGE("Le reste de l'équipe gagne aussi des Points d'Expérience!");
     } THEN {
         if (item == ITEM_EXP_SHARE)
             EXPECT_GT(GetMonData(&gParties[B_TRAINER_PLAYER][1], MON_DATA_EXP), gExperienceTables[gSpeciesInfo[SPECIES_WYNAUT].growthRate][40]);
