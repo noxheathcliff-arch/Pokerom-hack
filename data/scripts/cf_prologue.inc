@@ -466,10 +466,11 @@ CF_P2_PetalburgScene::
 	playse SE_PIN
 	applymovement LOCALID_CF_PETAL_POLICE, Common_Movement_ExclamationMark
 	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+	@ Celeo (3,12) turns to the agent (5,11) too: he is the one who answers.
+	applymovement LOCALID_CF_PETAL_CELEO, Common_Movement_FaceRight
 	waitmovement LOCALID_CF_PETAL_POLICE
 	waitmovement LOCALID_PLAYER
-	@ Celeo (3,12) turns to the agent (5,11) too: he is the one who answers.
-	turnobject LOCALID_CF_PETAL_CELEO, DIR_EAST
+	waitmovement LOCALID_CF_PETAL_CELEO
 	cfp_say CF_N0_Agent, CF_T_045
 	cfp_say CF_N0_Celeo, CF_T_046
 	cfp_say CF_N0_Agent, CF_T_047
