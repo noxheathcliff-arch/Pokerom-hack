@@ -29,8 +29,8 @@ MoveRelearner_Text_HaveNoPkmn:
 	.string "Tu n'as pas de Pokémon.$"
 
 MoveRelearner_Text_CantTeachMoveToEgg:
-	.string "Navré…\n"
-	.string "Un Œuf ne peut pas apprendre de capacités.$"
+	.string "Navré… Un Œuf ne peut pas\n"
+	.string "apprendre de capacités.$"
 
 MoveRelearner_Text_CantTeachMoveToPkmn:
 	.string "Navré…\p"

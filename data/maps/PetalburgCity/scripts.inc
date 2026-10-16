@@ -708,21 +708,30 @@ PetalburgCity_Text_WhereIsWally:
 	.string "ses poumons! Mon Dieu, s’il le trouve…$"
 
 PetalburgCity_Text_AreYouRookieTrainer:
-	.string "Hé, toi! Tu viens t’enrôler?\n"
+	.string "Hé, toi ! Tu viens t’enrôler ?\n"
 	.string "La queue, c’est par là.\p"
-	.string "L’ancienne Arène, c’est le QG\n"
-	.string "du Rempart, maintenant.\p"
-	.string "Norman reçoit les recrues lui-même.\n"
-	.string "Il paraît qu’il n’oublie aucun visage.\p"
+	.string "L’ancienne Arène, c’est le QG de\n"
+	.string "la Brigade du Rempart.\p"
+	.string "Norman la dirige. Il reçoit les\n"
+	.string "recrues lui-même.\p"
+	.string "Barrages sur chaque route, et\n"
+	.string "couvre-feu au coucher du soleil.\p"
+	.string "Les Pokémon tombés des anneaux,\n"
+	.string "les arrivants, ils les rassemblent.\p"
+	.string "Ceux qui mordent, ils les abattent.\n"
+	.string "Les autres partent… on ne sait où.\p"
+	.string "Pour passer un barrage, il te faut\n"
+	.string "une accréditation : leur insigne.\p"
 	.string "Si tu viens de Kanto, je serais toi,\n"
 	.string "je ne traînerais pas devant.$"
 
 PetalburgCity_Text_ThisIsPetalburgGym:
-	.string "Tu vois? C'est l'ARENE de CLEMENTI.$"
+	.string "Tu vois ? C’est l’ancienne Arène\n"
+	.string "de Clémenti-Ville.$"
 
 PetalburgCity_Text_ThisIsGymSign:
-	.string "Ce panneau indique les ARENES. Cherche\n"
-	.string "ce signe quand tu veux en trouver une.$"
+	.string "Le panneau dit encore “Arène”.\n"
+	.string "Personne n’a osé le changer.$"
 
 PetalburgCity_Text_WaterReflection:
 	.string "Mon visage se reflète dans l’eau.\n"

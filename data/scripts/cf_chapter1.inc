@@ -1695,11 +1695,11 @@ CF_C8_Pierre::
 CF_C8_PierreDuel::
 	getbits VAR_CF_ECO, 2, 2
 	goto_if_eq VAR_RESULT, ECO_RESTAURE, CF_C8_PierreDuel5
-	trainerbattle_single_declinable TRAINER_VALERIE_4, CF1_T_104, CF1_T_105, 0
+	trainerbattle_single TRAINER_VALERIE_4, CF1_T_104, CF1_T_105
 	goto CF_C8_PierreAfter
 
 CF_C8_PierreDuel5::
-	trainerbattle_single_declinable TRAINER_VALERIE_5, CF1_T_104, CF1_T_105, 0
+	trainerbattle_single TRAINER_VALERIE_5, CF1_T_104, CF1_T_105
 CF_C8_PierreAfter::
 	setspeaker CF_N1_Pierre
 	msgbox CF1_T_106, MSGBOX_DEFAULT
@@ -2367,7 +2367,13 @@ CF1_T_003::
 
 CF1_T_004::
 	.string "Red. Le Rempart a une règle :\n"
-	.string "ici, rien ne passe sans contrôle.$"
+	.string "ici, rien ne passe sans contrôle.\p"
+	.string "Cette Arène est notre QG. Mes\n"
+	.string "brigadiers tiennent les barrages.\p"
+	.string "Couvre-feu au crépuscule. Chaque\n"
+	.string "arrivant est capturé, recensé…\p"
+	.string "… et abattu s’il est dangereux.\n"
+	.string "La règle est la règle.$"
 
 CF1_T_005::
 	.string "Le Passeur, hein ? Mon registre\n"
@@ -2412,11 +2418,13 @@ CF1_T_014::
 
 CF1_T_015::
 	.string "Nos barrages ferment les routes.\n"
-	.string "Ceci vous les ouvre.$"
+	.string "Ceci vous les ouvre.\p"
+	.string "Une accréditation du Rempart.\n"
+	.string "Votre nom entre dans mon registre.$"
 
 CF1_T_016::
-	.string "Norman tend un insigne du\n"
-	.string "Rempart.$"
+	.string "Norman propose à {PLAYER}\n"
+	.string "l’insigne du Rempart.$"
 
 CF1_T_017::
 	.string "Accepter l’insigne$"
@@ -2693,25 +2701,35 @@ CF1_T_088::
 	.string "tous virés !$"
 
 CF1_T_089::
-	.string "Roxanne, championne. Et prof. Il\n"
-	.string "me faut des données, pas des cris.$"
+	.string "Roxanne, championne d’Arène.\n"
+	.string "Des données, pas des cris !\p"
+	.string "… Attendez. Vous êtes Red ?\n"
+	.string "Le Maître de la Ligue de Kanto ?\p"
+	.string "Je montre vos combats à mes\n"
+	.string "élèves. Vous tombez à pic.$"
 
 CF1_T_090::
-	.string "Pierre, d’Argenta. Je suis coincé\n"
-	.string "ici depuis que les ports ont fermé.$"
+	.string "Doucement, tout le monde. Red ?\n"
+	.string "C’est bien toi ?\p"
+	.string "Pierre, d’Argenta. Ton premier\n"
+	.string "badge, c’est chez moi que tu l’as eu.\p"
+	.string "Devon m’a fait venir pour ses\n"
+	.string "fossiles ranimés. Puis les ports\p"
+	.string "ont fermé. Me voilà coincé ici.$"
 
 CF1_T_091::
+	.string "Ces Charbi ne sont pas méchants.\n"
+	.string "Ils ont faim, c’est tout.\p"
 	.string "Je peux les emmener. J’élève des\n"
-	.string "Pokémon. Chez moi, ils seraient\p"
-	.string "à leur place.$"
+	.string "Pokémon, je ne les abats pas.$"
 
 CF1_T_092::
 	.string "Les emmener ? On les abat, oui,\n"
 	.string "et on rouvre demain !$"
 
 CF1_T_093::
-	.string "Red. Tu as vu ces anneaux de près.\n"
-	.string "Que fait-on ?$"
+	.string "Red. Vous avez vu ces anneaux de\n"
+	.string "près. Que fait-on ?$"
 
 CF1_T_094::
 	.string "Déplacer avec Pierre$"
@@ -2723,12 +2741,12 @@ CF1_T_096::
 	.string "Laisser les mineurs$"
 
 CF1_T_097::
-	.string "Merci. Galerie fermée une semaine,\n"
-	.string "et ils repartent avec moi.$"
+	.string "Merci, Red. Galerie fermée une\n"
+	.string "semaine, et ils repartent avec moi.$"
 
 CF1_T_098::
-	.string "Un protocole : on balise, on rouvre,\n"
-	.string "on compte. Je te citerai.$"
+	.string "Notez bien : on balise, on rouvre,\n"
+	.string "on compte. Je vous citerai.$"
 
 CF1_T_099::
 	.string "La galerie se vide. Un mineur\n"
@@ -2739,8 +2757,10 @@ CF1_T_100::
 	.string "On verra bien ce qui revient.$"
 
 CF1_T_101::
-	.string "Je t’attends à l’arène. Tu as gagné\n"
-	.string "le droit d’essayer.$"
+	.string "Passez à mon Arène. Vous êtes\n"
+	.string "Maître à Kanto, pas ici.\p"
+	.string "Mes élèves veulent voir ça.\n"
+	.string "Et moi, je veux des données.$"
 
 CF1_T_102::
 	.string "Charbi crépite doucement.$"
@@ -2749,20 +2769,24 @@ CF1_T_103::
 	.string "Strassie scintille faiblement.$"
 
 CF1_T_104::
-	.string "Un petit duel entre coincés ?\n"
-	.string "Sans rancune.$"
+	.string "Le Badge Roche de Roxanne, hein ?\n"
+	.string "Alors à mon tour.\p"
+	.string "Depuis Argenta, j’attends ma\n"
+	.string "revanche. En garde, Red !$"
 
 CF1_T_105::
-	.string "Solide. Tu as de la roche dans\n"
-	.string "le cœur.$"
+	.string "Toujours aussi solide. Tu as de\n"
+	.string "la roche dans le cœur, Red.$"
 
 CF1_T_106::
-	.string "Reviens quand tu veux. Moi, les\n"
-	.string "galeries m’attendent.$"
+	.string "Je reste avec les Charbi. Tout\n"
+	.string "doucement, ils s’habituent à moi.\p"
+	.string "Et tant que les ports sont fermés,\n"
+	.string "Devon me paie à attendre.$"
 
 CF1_T_107::
-	.string "Joli combat. Une dernière chose :\n"
-	.string "tes observations sur les anneaux.$"
+	.string "Beau combat. Une dernière chose :\n"
+	.string "vos relevés sur les anneaux.$"
 
 CF1_T_108::
 	.string "Le Rempart me les réclame. Je\n"

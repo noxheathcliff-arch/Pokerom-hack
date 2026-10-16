@@ -307,7 +307,8 @@ RustboroCity_PokemonSchool_Text_StudentsNotes:
 	.string "progresser et se bat avec eux.\p"
 	.string "L'objectif du DRESSEUR est de battre\n"
 	.string "les puissants CHAMPIONS qui attendent\l"
-	.string "les adversaires dans les ARENES POKéMON.$"
+	.string "les adversaires dans les ARÈNES\l"
+	.string "POKéMON.$"
 
 RustboroCity_PokemonSchool_Text_ScottMetAlreadyCut:
 	.string "Ne fais pas attention à moi.\n"
