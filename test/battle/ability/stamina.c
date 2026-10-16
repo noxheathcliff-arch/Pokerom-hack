@@ -32,8 +32,8 @@ SINGLE_BATTLE_TEST("Stamina raises Defense by 1 when hit by a move")
         TURN { MOVE(opponent, move); }
         TURN { MOVE(opponent, move); }
     } SCENE {
-        STAMINA_HIT(opponent, player, move, "Ah, Défense du Qulbutoké augmente!", turnOneHit);
-        STAMINA_HIT(opponent, player, move, "Ah, Défense du Qulbutoké augmente!", turnTwoHit);
+        STAMINA_HIT(opponent, player, move, "Défense de Qulbutoké augmente!", turnOneHit);
+        STAMINA_HIT(opponent, player, move, "Défense de Qulbutoké augmente!", turnTwoHit);
     }
     THEN {
         if (move == MOVE_SCRATCH) {
@@ -70,11 +70,11 @@ DOUBLE_BATTLE_TEST("Stamina activates correctly for every battler with the abili
         HP_BAR(opponentRight);
 
         if (abilityLeft == ABILITY_STAMINA) {
-            STAMINA_STAT_RAISE(playerLeft, "Ah, Défense du Qulbutoké augmente!");
+            STAMINA_STAT_RAISE(playerLeft, "Défense de Qulbutoké augmente!");
         }
 
         if (abilityRight == ABILITY_STAMINA) {
-            STAMINA_STAT_RAISE(playerRight, "Ah, Défense du Qulbutoké augmente!");
+            STAMINA_STAT_RAISE(playerRight, "Défense de Qulbutoké augmente!");
         }
 
         NOT HP_BAR(opponentLeft); // We need to check the attacker itself does NOT get damaged. There was an issue when the targets would get overwritten by the Stamina's stat raise.
@@ -97,8 +97,8 @@ SINGLE_BATTLE_TEST("Stamina activates for every hit of a multi hit move")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_KICK, player);
         HP_BAR(opponent);
-        STAMINA_STAT_RAISE(opponent, "Ah, Défense du Tiboudet ennemi augmente!");
-        STAMINA_STAT_RAISE(opponent, "Ah, Défense du Tiboudet ennemi augmente!");
+        STAMINA_STAT_RAISE(opponent, "Défense de Tiboudet ennemi augmente!");
+        STAMINA_STAT_RAISE(opponent, "Défense de Tiboudet ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 2);
     }
@@ -116,7 +116,7 @@ SINGLE_BATTLE_TEST("Stamina is not activated by users own Substitute")
         MESSAGE("Tiboudet crée un clone!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_STAMINA);
-            MESSAGE("Ah, Défense du Tiboudet augmente!");
+            MESSAGE("Défense de Tiboudet augmente!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE);

@@ -21,35 +21,35 @@ DOUBLE_BATTLE_TEST("Competitive sharply raises player's Sp. Atk after Intimidate
         //1st mon Intimidate
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Toudoudou baisse!");
+        MESSAGE("Attaque de Toudoudou baisse!");
         if (abilityLeft == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(playerLeft, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Rondoudou baisse!");
+        MESSAGE("Attaque de Rondoudou baisse!");
         if (abilityRight == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(playerRight, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Ah, Attaque Spéciale du Rondoudou augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Rondoudou augmente beaucoup!");
         }
 
         //2nd mon Intimidate
         ABILITY_POPUP(opponentRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Toudoudou baisse!");
+        MESSAGE("Attaque de Toudoudou baisse!");
         if (abilityLeft == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(playerLeft, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Rondoudou baisse!");
+        MESSAGE("Attaque de Rondoudou baisse!");
         if (abilityRight == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(playerRight, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Ah, Attaque Spéciale du Rondoudou augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Rondoudou augmente beaucoup!");
         }
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + (abilityLeft == ABILITY_COMPETITIVE ? 4 : 0));
@@ -78,35 +78,35 @@ DOUBLE_BATTLE_TEST("Competitive sharply raises opponent's Sp. Atk after Intimida
         //1st mon Intimidate
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Ah, Attaque du Toudoudou ennemi baisse!");
+        MESSAGE("Attaque de Toudoudou ennemi baisse!");
         if (abilityLeft == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(opponentLeft, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque Spéciale du Toudoudou ennemi augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Toudoudou ennemi augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Attaque du Rondoudou ennemi baisse!");
+        MESSAGE("Attaque de Rondoudou ennemi baisse!");
         if (abilityRight == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(opponentRight, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Ah, Attaque Spéciale du Rondoudou ennemi augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Rondoudou ennemi augmente beaucoup!");
         }
 
         //2nd mon Intimidate
         ABILITY_POPUP(playerRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Ah, Attaque du Toudoudou ennemi baisse!");
+        MESSAGE("Attaque de Toudoudou ennemi baisse!");
         if (abilityLeft == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(opponentLeft, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque Spéciale du Toudoudou ennemi augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Toudoudou ennemi augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Attaque du Rondoudou ennemi baisse!");
+        MESSAGE("Attaque de Rondoudou ennemi baisse!");
         if (abilityRight == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(opponentRight, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Ah, Attaque Spéciale du Rondoudou ennemi augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Rondoudou ennemi augmente beaucoup!");
         }
     } THEN {
         EXPECT_EQ(opponentLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + (abilityLeft == ABILITY_COMPETITIVE ? 4 : 0));
@@ -129,11 +129,11 @@ SINGLE_BATTLE_TEST("Competitive activates after Sticky Web lowers Speed")
         SEND_IN_MESSAGE("Toudoudou");
         MESSAGE("Toudoudou est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
+        MESSAGE("Vitesse de Toudoudou baisse!");
         // Competitive activates
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+        MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
     }
 }
 
@@ -154,12 +154,12 @@ SINGLE_BATTLE_TEST("Competitive doesn't activate after Sticky Web lowers Speed i
         SEND_IN_MESSAGE("Toudoudou");
         MESSAGE("Toudoudou est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
+        MESSAGE("Vitesse de Toudoudou baisse!");
         // Competitive doesn't activate
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
         }
     }
 }
@@ -182,20 +182,20 @@ SINGLE_BATTLE_TEST("Competitive correctly activates after Sticky Web lowers Spee
         SEND_IN_MESSAGE("Toudoudou");
         MESSAGE("Toudoudou est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
+        MESSAGE("Vitesse de Toudoudou baisse!");
         // Competitive doesn't activate
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
         }
         // Competitive triggers correctly after Sticky Web
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Toudoudou baisse!");
+        MESSAGE("Attaque de Toudoudou baisse!");
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+        MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
     }
 }
 
@@ -213,19 +213,19 @@ DOUBLE_BATTLE_TEST("Competitive is activated by Cotton Down for non-ally pokemon
         ABILITY_POPUP(opponentLeft, ABILITY_COTTON_DOWN);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Vitesse du Toudoudou ennemi baisse!");
+        MESSAGE("Vitesse de Toudoudou ennemi baisse!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
+        MESSAGE("Vitesse de Toudoudou baisse!");
         ABILITY_POPUP(playerLeft, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+        MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
+        MESSAGE("Vitesse de Toudoudou baisse!");
         ABILITY_POPUP(playerRight, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+        MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
 
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
@@ -351,7 +351,7 @@ SINGLE_BATTLE_TEST("Competitive activates before White Herb")
 
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+        MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
 
         if (move == MOVE_LEER) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
@@ -384,15 +384,15 @@ SINGLE_BATTLE_TEST("Competitive activates for each stat that is lowered")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TICKLE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
 
-        MESSAGE("Ah, Attaque du Toudoudou baisse!");
+        MESSAGE("Attaque de Toudoudou baisse!");
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+        MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
 
-        MESSAGE("Ah, Défense du Toudoudou baisse!");
+        MESSAGE("Défense de Toudoudou baisse!");
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+        MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
 
     } THEN {
         EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 4);
@@ -424,7 +424,7 @@ SINGLE_BATTLE_TEST("Competitive doesn't activate if the pokemon lowers it's own 
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Toudoudou augmente beaucoup!");
         }
     } THEN {
         if (move == MOVE_SUPERPOWER)

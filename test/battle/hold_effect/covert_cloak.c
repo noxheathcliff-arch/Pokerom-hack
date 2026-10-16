@@ -203,6 +203,6 @@ SINGLE_BATTLE_TEST("Covert Cloak does not prevent ability stat changes")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
     }
 }

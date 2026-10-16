@@ -12,9 +12,9 @@ SINGLE_BATTLE_TEST("Octolock decreases Defense and Sp. Def by at the end of the 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
         MESSAGE("Qulbutoké ennemi ne peut plus fuir à cause d'Octoprise!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
+        MESSAGE("Défense de Qulbutoké ennemi baisse!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
+        MESSAGE("Défense Spéciale de Qulbutoké ennemi baisse!");
     }
 }
 
@@ -41,8 +41,8 @@ SINGLE_BATTLE_TEST("Octolock reduction is prevented by Clear Body, White Smoke a
             ABILITY_POPUP(opponent, ABILITY_CLEAR_BODY);
             MESSAGE("Les stats de Terhal ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("Ah, Défense du Terhal ennemi baisse!");
-                MESSAGE("Ah, Défense Spéciale du Terhal ennemi baisse!");
+                MESSAGE("Défense de Terhal ennemi baisse!");
+                MESSAGE("Défense Spéciale de Terhal ennemi baisse!");
             }
         }
         else if (species == SPECIES_TORKOAL)
@@ -51,8 +51,8 @@ SINGLE_BATTLE_TEST("Octolock reduction is prevented by Clear Body, White Smoke a
             ABILITY_POPUP(opponent, ABILITY_WHITE_SMOKE);
             MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("Ah, Défense du Chartor ennemi baisse!");
-                MESSAGE("Ah, Défense Spéciale du Chartor ennemi baisse!");
+                MESSAGE("Défense de Chartor ennemi baisse!");
+                MESSAGE("Défense Spéciale de Chartor ennemi baisse!");
             }
         }
         else if (species == SPECIES_SOLGALEO)
@@ -61,8 +61,8 @@ SINGLE_BATTLE_TEST("Octolock reduction is prevented by Clear Body, White Smoke a
             ABILITY_POPUP(opponent, ABILITY_FULL_METAL_BODY);
             MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("Ah, Défense du Solgaleo ennemi baisse!");
-                MESSAGE("Ah, Défense Spéciale du Solgaleo ennemi baisse!");
+                MESSAGE("Défense de Solgaleo ennemi baisse!");
+                MESSAGE("Défense Spéciale de Solgaleo ennemi baisse!");
             }
         }
     }
@@ -78,11 +78,11 @@ SINGLE_BATTLE_TEST("Octolock Defense reduction is prevented by Big Pecks")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
         MESSAGE("Roucool ennemi ne peut plus fuir à cause d'Octoprise!");
-        NOT MESSAGE("Ah, Défense du Roucool ennemi baisse!");
+        NOT MESSAGE("Défense de Roucool ennemi baisse!");
         ABILITY_POPUP(opponent, ABILITY_BIG_PECKS);
         MESSAGE("Défense de Roucool ennemi ne baisse pas!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense Spéciale du Roucool ennemi baisse!");
+        MESSAGE("Défense Spéciale de Roucool ennemi baisse!");
     }
 }
 
@@ -100,8 +100,8 @@ SINGLE_BATTLE_TEST("Octolock reduction is prevented by Clear Amulet")
         MESSAGE("L'effet de Talisman Sain tenu par Qulbutoké ennemi empêche ses stats de baisser!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
-            MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
+            MESSAGE("Défense de Qulbutoké ennemi baisse!");
+            MESSAGE("Défense Spéciale de Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -120,14 +120,14 @@ SINGLE_BATTLE_TEST("Octolock will not decrease Defense and Sp. Def further then 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
         for (j = 0; j < 5; j++) {
-            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
-            MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
+            MESSAGE("Défense de Qulbutoké ennemi baisse!");
+            MESSAGE("Défense Spéciale de Qulbutoké ennemi baisse!");
         }
         MESSAGE("Défense de Qulbutoké ennemi ne peut plus baisser!");
         MESSAGE("Défense Spéciale de Qulbutoké ennemi ne peut plus baisser!");
         NONE_OF {
-            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
-            MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
+            MESSAGE("Défense de Qulbutoké ennemi baisse!");
+            MESSAGE("Défense Spéciale de Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -145,13 +145,13 @@ SINGLE_BATTLE_TEST("Octolock ends after user that set the lock switches out")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
         MESSAGE("Qulbutoké ennemi ne peut plus fuir à cause d'Octoprise!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
+        MESSAGE("Défense de Qulbutoké ennemi baisse!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
+        MESSAGE("Défense Spéciale de Qulbutoké ennemi baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
-            MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
+            MESSAGE("Défense de Qulbutoké ennemi baisse!");
+            MESSAGE("Défense Spéciale de Qulbutoké ennemi baisse!");
         }
 
     }
@@ -169,7 +169,7 @@ SINGLE_BATTLE_TEST("Octolock stat drops are not reflected by Mirror Armor")
         MESSAGE("Corvaillus ennemi ne peut plus fuir à cause d'Octoprise!");
         NOT ABILITY_POPUP(opponent, ABILITY_MIRROR_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Corvaillus ennemi baisse!");
+        MESSAGE("Défense de Corvaillus ennemi baisse!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE);
         EXPECT_EQ(player->statStages[STAT_SPDEF], DEFAULT_STAT_STAGE);

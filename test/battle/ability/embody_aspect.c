@@ -21,13 +21,13 @@ SINGLE_BATTLE_TEST("Embody Aspect raises a stat depending on the users form by o
         ABILITY_POPUP(opponent, ability);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
         if (ability == ABILITY_EMBODY_ASPECT_TEAL_MASK)
-            MESSAGE("Ah, Vitesse du Ogerpon ennemi augmente!");
+            MESSAGE("Vitesse de Ogerpon ennemi augmente!");
         else if (ability == ABILITY_EMBODY_ASPECT_HEARTHFLAME_MASK)
-            MESSAGE("Ah, Attaque du Ogerpon ennemi augmente!");
+            MESSAGE("Attaque de Ogerpon ennemi augmente!");
         else if (ability == ABILITY_EMBODY_ASPECT_WELLSPRING_MASK)
-            MESSAGE("Ah, Défense Spéciale du Ogerpon ennemi augmente!");
+            MESSAGE("Défense Spéciale de Ogerpon ennemi augmente!");
         else if (ability == ABILITY_EMBODY_ASPECT_CORNERSTONE_MASK)
-            MESSAGE("Ah, Défense du Ogerpon ennemi augmente!");
+            MESSAGE("Défense de Ogerpon ennemi augmente!");
     } THEN {
         if (ability == ABILITY_EMBODY_ASPECT_TEAL_MASK)
             EXPECT_EQ(opponent->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
@@ -55,7 +55,7 @@ SINGLE_BATTLE_TEST("Embody Aspect activates when it's no longer effected by Neut
         MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(opponent, ABILITY_EMBODY_ASPECT_TEAL_MASK);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Ogerpon ennemi augmente!");
+        MESSAGE("Vitesse de Ogerpon ennemi augmente!");
     }
 }
 
@@ -71,7 +71,7 @@ SINGLE_BATTLE_TEST("Embody Aspect does not reactivate after Neutralizing Gas end
     } SCENE {
         ABILITY_POPUP(player, ABILITY_EMBODY_ASPECT_TEAL_MASK);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Ogerpon augmente!");
+        MESSAGE("Vitesse de Ogerpon augmente!");
 
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
         MESSAGE("Un gaz inhibiteur envahit les lieux!");

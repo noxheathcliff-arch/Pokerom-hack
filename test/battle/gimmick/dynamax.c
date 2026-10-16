@@ -686,11 +686,11 @@ SINGLE_BATTLE_TEST("Dynamax: Max Strike lowers single opponent's speed")
         MESSAGE("Qulbutoké ennemi utilise\nGriffe!");
         MESSAGE("Qulbutoké utilise\nNormalomax!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         // turn 2
         MESSAGE("Qulbutoké utilise\nNormalomax!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
 }
@@ -717,15 +717,15 @@ DOUBLE_BATTLE_TEST("Dynamax: Max Strike lowers both opponents' speed")
         MESSAGE("Qulbutoké ennemi utilise\nGriffe!");
         MESSAGE("Qulbutoké utilise\nNormalomax!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         // turn 2
         MESSAGE("Qulbutoké utilise\nNormalomax!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         MESSAGE("Qulbutoké ennemi utilise\nGriffe!");
         MESSAGE("Qulbutoké ennemi utilise\nGriffe!");
     }
@@ -753,9 +753,9 @@ DOUBLE_BATTLE_TEST("Dynamax: Max Knuckle raises both allies' attack")
         MESSAGE("Qulbutoké utilise\nPugilomax!");
         HP_BAR(opponentLeft, captureDamage: &damage[0]);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Okéoké augmente!");
+        MESSAGE("Attaque de Okéoké augmente!");
         MESSAGE("Okéoké utilise\nGriffe!");
         HP_BAR(opponentRight, captureDamage: &damage[1]);
         MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
@@ -764,9 +764,9 @@ DOUBLE_BATTLE_TEST("Dynamax: Max Knuckle raises both allies' attack")
         MESSAGE("Qulbutoké utilise\nPugilomax!");
         HP_BAR(opponentLeft, captureDamage: &damage[2]);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Okéoké augmente!");
+        MESSAGE("Attaque de Okéoké augmente!");
         MESSAGE("Okéoké utilise\nGriffe!");
         HP_BAR(opponentRight, captureDamage: &damage[3]);
     } THEN {
@@ -1548,7 +1548,7 @@ SINGLE_BATTLE_TEST("Dynamax: Max Moves don't execute effects on fainted battlers
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_DYNAMAX_GROWTH, player);
         MESSAGE("Qulbutoké utilise\nNormalomax!");
         MESSAGE("Qulbutoké ennemi est K.O.!\p");
-        NOT MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        NOT MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
     }
 }
 
@@ -1564,7 +1564,7 @@ SINGLE_BATTLE_TEST("Dynamax: Moxie clones can be triggered by Max Moves fainting
     } SCENE {
         MESSAGE("Qulbutoké ennemi est K.O.!\p");
         ABILITY_POPUP(player, ABILITY_MOXIE);
-        MESSAGE("Ah, Attaque du Léviator augmente!");
+        MESSAGE("Attaque de Léviator augmente!");
     }
 }
 

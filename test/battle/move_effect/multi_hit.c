@@ -166,9 +166,9 @@ SINGLE_BATTLE_TEST("Scale Shot decreases defense and increases speed after final
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCALE_SHOT, player);
         MESSAGE("Touché 5 fois!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Qulbutoké baisse!");
+        MESSAGE("Défense de Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké augmente!");
+        MESSAGE("Vitesse de Qulbutoké augmente!");
     }
 }
 
@@ -228,9 +228,9 @@ SINGLE_BATTLE_TEST("Scale Shot decreases defense and increases speed after the 4
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCALE_SHOT, player);
         MESSAGE("Touché 4 fois!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Qulbutoké baisse!");
+        MESSAGE("Défense de Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké augmente!");
+        MESSAGE("Vitesse de Qulbutoké augmente!");
     }
 }
 
@@ -254,9 +254,9 @@ SINGLE_BATTLE_TEST("Scale Shot decreases defense and increases speed after killi
         MESSAGE("Limagma ennemi est K.O.!\p");
         MESSAGE("Touché 3 fois!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Draby baisse!");
+        MESSAGE("Défense de Draby baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Draby augmente!");
+        MESSAGE("Vitesse de Draby augmente!");
     }
 }
 

@@ -38,7 +38,7 @@ SINGLE_BATTLE_TEST("No Retreat does not cause a freeze if a stat changing move i
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_NO_RETREAT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CURSE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 2);

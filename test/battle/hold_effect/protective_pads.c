@@ -101,11 +101,11 @@ SINGLE_BATTLE_TEST("Protective Pads protects from Protect's secondary effects")
             } else if (move == MOVE_BURNING_BULWARK) {
                 STATUS_ICON(player, STATUS1_BURN);
             } else if (move == MOVE_KINGS_SHIELD) {
-                MESSAGE("Ah, Attaque du Qulbutoké baisse!");
+                MESSAGE("Attaque de Qulbutoké baisse!");
             } else if (move == MOVE_SILK_TRAP) {
-                MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+                MESSAGE("Vitesse de Qulbutoké baisse!");
             } else if (move == MOVE_OBSTRUCT) {
-                MESSAGE("Ah, Défense du Qulbutoké baisse beaucoup!");
+                MESSAGE("Défense de Qulbutoké baisse beaucoup!");
             }
         }
     }

@@ -20,6 +20,7 @@
 
 void EndMassOutbreak(void); // src/tv.c (no header prototype upstream)
 #include "constants/battle.h"
+#include "constants/event_objects.h"
 #include "constants/battle_ai.h"
 #include "constants/confluence.h"
 #include "constants/trainers.h"
@@ -869,6 +870,56 @@ void CF_FollowerSideDir(void)
             continue;
         gSpecialVar_Result = sSides[i];
         return;
+    }
+}
+
+// CF-28: saves made while Brice followed with a NULL script (before CF_Brice_FollowerTalk was
+// wired) get it back when the follower is respawned on load. Brice is the hack's only NPC
+// follower; the gfx check keeps any other follower untouched.
+extern const u8 CF_Brice_FollowerTalk[];
+void CF_RepairFollowerNPCScript(void)
+{
+#if FNPC_ENABLE_NPC_FOLLOWERS
+    if (!PlayerHasFollowerNPC() || gSaveBlock3Ptr->NPCfollower.script != NULL)
+        return;
+    if (GetFollowerNPCData(FNPC_DATA_GFX_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL)
+        gSaveBlock3Ptr->NPCfollower.script = CF_Brice_FollowerTalk;
+#endif
+}
+
+// CF-27: TRUE when any non-egg party mon is missing HP, has a status or has spent PP
+// (Brice's follower talk skips the heal prompt when nothing needs healing).
+void CF_PartyNeedsHeal(void)
+{
+    u32 i, j;
+
+    gSpecialVar_Result = FALSE;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
+        u32 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
+        u32 ppBonuses;
+
+        if (species == SPECIES_NONE || species == SPECIES_EGG)
+            continue;
+        if (GetMonData(mon, MON_DATA_HP) < GetMonData(mon, MON_DATA_MAX_HP)
+         || GetMonData(mon, MON_DATA_STATUS) != 0)
+        {
+            gSpecialVar_Result = TRUE;
+            return;
+        }
+        ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+        for (j = 0; j < MAX_MON_MOVES; j++)
+        {
+            u32 move = GetMonData(mon, MON_DATA_MOVE1 + j);
+            if (move == MOVE_NONE)
+                continue;
+            if (GetMonData(mon, MON_DATA_PP1 + j) < CalculatePPWithBonus(move, ppBonuses, j))
+            {
+                gSpecialVar_Result = TRUE;
+                return;
+            }
+        }
     }
 }
 

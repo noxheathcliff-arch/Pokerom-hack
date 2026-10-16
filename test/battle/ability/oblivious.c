@@ -79,7 +79,7 @@ SINGLE_BATTLE_TEST("Oblivious doesn't prevent Intimidate (Gen3-7)")
             MESSAGE("L'Attaque de Ramoloss ne baisse pas!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Ramoloss baisse!");
+        MESSAGE("Attaque de Ramoloss baisse!");
     }
 }
 

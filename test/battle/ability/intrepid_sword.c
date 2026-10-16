@@ -11,7 +11,7 @@ SINGLE_BATTLE_TEST("Intrepid Sword raises Attack by one stage")
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
+        MESSAGE("Attaque de Zacian ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
     }
@@ -30,10 +30,10 @@ SINGLE_BATTLE_TEST("Intrepid Sword raises Attack by one stage every time it swit
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
+        MESSAGE("Attaque de Zacian ennemi augmente!");
         ABILITY_POPUP(opponent, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
+        MESSAGE("Attaque de Zacian ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
     }
@@ -52,11 +52,11 @@ SINGLE_BATTLE_TEST("Intrepid Sword raises Attack by one stage only once per batt
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
+        MESSAGE("Attaque de Zacian ennemi augmente!");
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_INTREPID_SWORD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
+            MESSAGE("Attaque de Zacian ennemi augmente!");
         }
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
@@ -78,7 +78,7 @@ SINGLE_BATTLE_TEST("Intrepid Sword activates when it's no longer effected by Neu
         MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(opponent, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
+        MESSAGE("Attaque de Zacian ennemi augmente!");
     }
 }
 
@@ -95,21 +95,21 @@ SINGLE_BATTLE_TEST("Intrepid Sword and Dauntless Shield both can be Skill Swappe
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
+        MESSAGE("Attaque de Zacian ennemi augmente!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, player);
         ABILITY_POPUP(player, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
 
         ABILITY_POPUP(opponent, ABILITY_DAUNTLESS_SHIELD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Zamazenta ennemi augmente!");
+        MESSAGE("Défense de Zamazenta ennemi augmente!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, player);
         ABILITY_POPUP(player, ABILITY_DAUNTLESS_SHIELD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Qulbutoké augmente!");
+        MESSAGE("Défense de Qulbutoké augmente!");
     }
 }
 

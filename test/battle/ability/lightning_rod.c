@@ -21,12 +21,12 @@ SINGLE_BATTLE_TEST("Lightning Rod absorbs Electric-type moves and increases the 
             };
             ABILITY_POPUP(opponent, ABILITY_LIGHTNING_ROD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
+            MESSAGE("Attaque Spéciale de Raichu ennemi augmente!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(opponent, ABILITY_LIGHTNING_ROD);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-                MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
+                MESSAGE("Attaque Spéciale de Raichu ennemi augmente!");
             };
             ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDERBOLT, player);
             HP_BAR(opponent);
@@ -68,10 +68,10 @@ DOUBLE_BATTLE_TEST("Lightning Rod forces single-target Electric-type moves to ta
             };
             ABILITY_POPUP(opponentLeft, ABILITY_LIGHTNING_ROD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
+            MESSAGE("Attaque Spéciale de Raichu ennemi augmente!");
             ABILITY_POPUP(opponentLeft, ABILITY_LIGHTNING_ROD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
+            MESSAGE("Attaque Spéciale de Raichu ennemi augmente!");
         } else {
             NONE_OF {
                 HP_BAR(opponentRight);
@@ -103,7 +103,7 @@ DOUBLE_BATTLE_TEST("Lightning Rod redirects an ally's attack")
             NOT HP_BAR(playerLeft);
             ABILITY_POPUP(opponentLeft, ABILITY_LIGHTNING_ROD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
+            MESSAGE("Attaque Spéciale de Raichu ennemi augmente!");
         }
         else
         {

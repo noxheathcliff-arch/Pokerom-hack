@@ -30,7 +30,7 @@ SINGLE_BATTLE_TEST("Defog lowers evasiveness by 1 stage")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, esquive du Qulbutoké ennemi baisse!");
+        MESSAGE("Esquive de Qulbutoké ennemi baisse!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 1);
     }
@@ -51,10 +51,10 @@ SINGLE_BATTLE_TEST("Defog fails if target has minimum evasion stat change")
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, esquive du Chamallot ennemi baisse beaucoup!");
+            MESSAGE("Esquive de Chamallot ennemi baisse beaucoup!");
         }
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
-        MESSAGE("esquive de Chamallot ennemi ne peut plus baisser!");
+        MESSAGE("Esquive de Chamallot ennemi ne peut plus baisser!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 6);
     }
@@ -74,7 +74,7 @@ SINGLE_BATTLE_TEST("Defog lowers evasiveness of target behind Substitute (Gen4)"
         NOT MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, esquive du Qulbutoké ennemi baisse!");
+        MESSAGE("Esquive de Qulbutoké ennemi baisse!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 1);
     }
@@ -96,7 +96,7 @@ SINGLE_BATTLE_TEST("Defog fails if target has minimum evasion stat change behind
         MESSAGE("Qulbutoké ennemi utilise\nClonage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, esquive du Qulbutoké ennemi baisse beaucoup!");
+        MESSAGE("Esquive de Qulbutoké ennemi baisse beaucoup!");
         MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 6);
@@ -125,14 +125,14 @@ SINGLE_BATTLE_TEST("Defog does not lower evasiveness if target behind Substitute
             NONE_OF {
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-                MESSAGE("Ah, esquive du Qulbutoké ennemi baisse!");
+                MESSAGE("Esquive de Qulbutoké ennemi baisse!");
             }
         }
         else
         {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-                MESSAGE("Ah, esquive du Qulbutoké ennemi baisse!");
+                MESSAGE("Esquive de Qulbutoké ennemi baisse!");
             }
         }
     } THEN {
@@ -312,14 +312,14 @@ DOUBLE_BATTLE_TEST("Defog removes Stealth Rock and Sticky Web from target's side
             MESSAGE("Des pierres pointues transpercent Qulbutoké!");
             MESSAGE("Qulbutoké est pris dans une toile gluante!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+            MESSAGE("Vitesse de Qulbutoké baisse!");
         } else {
             NONE_OF {
                 HP_BAR(playerLeft);
                 MESSAGE("Des pierres pointues transpercent Qulbutoké!");
                 MESSAGE("Qulbutoké est pris dans une toile gluante!");
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-                MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+                MESSAGE("Vitesse de Qulbutoké baisse!");
             }
         }
     } THEN {
@@ -366,14 +366,14 @@ DOUBLE_BATTLE_TEST("Defog removes Stealth Rock and Sticky Web from user's side (
             MESSAGE("Des pierres pointues transpercent Qulbutoké!");
             MESSAGE("Qulbutoké est pris dans une toile gluante!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+            MESSAGE("Vitesse de Qulbutoké baisse!");
         } else {
             NONE_OF {
                 HP_BAR(playerLeft);
                 MESSAGE("Des pierres pointues transpercent Qulbutoké!");
                 MESSAGE("Qulbutoké est pris dans une toile gluante!");
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-                MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+                MESSAGE("Vitesse de Qulbutoké baisse!");
             }
         }
     } THEN {
@@ -596,7 +596,7 @@ DOUBLE_BATTLE_TEST("Defog doesn't remove Aurora Veil from the user's side", s16 
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
         if (move == MOVE_DEFOG) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, esquive du Oniglali ennemi baisse!");
+            MESSAGE("Esquive de Oniglali ennemi baisse!");
         }
         NOT MESSAGE("Voile Aurore de votre équipe s'est dissipé!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
@@ -638,7 +638,7 @@ DOUBLE_BATTLE_TEST("Defog removes Aurora Veil from target's side", s16 damagePhy
         ANIMATION(ANIM_TYPE_MOVE, move, opponentLeft);
         if (move == MOVE_DEFOG) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, esquive du Oniglali baisse!");
+            MESSAGE("Esquive de Oniglali baisse!");
             MESSAGE("Voile Aurore de votre équipe s'est dissipé!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);

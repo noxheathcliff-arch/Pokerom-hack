@@ -56,11 +56,11 @@ DOUBLE_BATTLE_TEST("Ally Switch changes the position of battlers")
 
         MESSAGE("Kadabra ennemi utilise\nGrincement!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Défense du Okéoké baisse beaucoup!");
+        MESSAGE("Défense de Okéoké baisse beaucoup!");
 
         MESSAGE("Abra ennemi utilise\nGrincement!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Défense du Okéoké baisse beaucoup!");
+        MESSAGE("Défense de Okéoké baisse beaucoup!");
     } THEN {
         EXPECT_EQ(playerLeft->speed, 4);
         EXPECT_EQ(playerLeft->species, SPECIES_WYNAUT);

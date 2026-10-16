@@ -12,7 +12,7 @@ SINGLE_BATTLE_TEST("Cotton Down drops speed by one of opposing battler if hit by
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ABILITY_POPUP(opponent, ABILITY_COTTON_DOWN);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
     }
@@ -29,10 +29,10 @@ SINGLE_BATTLE_TEST("Cotton Down drops speed by one for each multi hit")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_KICK, player);
         ABILITY_POPUP(opponent, ABILITY_COTTON_DOWN);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
         ABILITY_POPUP(opponent, ABILITY_COTTON_DOWN);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 2);
     }
@@ -51,11 +51,11 @@ DOUBLE_BATTLE_TEST("Cotton Down drops speed by one of all other battlers on the 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         ABILITY_POPUP(opponentLeft, ABILITY_COTTON_DOWN);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Vitesse du Okéoké baisse!");
+        MESSAGE("Vitesse de Okéoké baisse!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(playerRight->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
@@ -77,17 +77,17 @@ DOUBLE_BATTLE_TEST("Cotton Down correctly gets blocked by stat reduction prevent
         ABILITY_POPUP(opponentLeft, ABILITY_COTTON_DOWN);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Ah, Vitesse du Corvaillus ennemi baisse!");
+            MESSAGE("Vitesse de Corvaillus ennemi baisse!");
         }
         ABILITY_POPUP(opponentRight, ABILITY_MIRROR_ARMOR);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Vitesse du Métalosse baisse!");
+            MESSAGE("Vitesse de Métalosse baisse!");
         }
         ABILITY_POPUP(playerLeft, ABILITY_CLEAR_BODY);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Ah, Vitesse du Okéoké baisse!");
+            MESSAGE("Vitesse de Okéoké baisse!");
         }
         MESSAGE("L'effet de Talisman Sain tenu par Okéoké empêche ses stats de baisser!");
     } THEN {

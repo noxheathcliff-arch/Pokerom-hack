@@ -29,13 +29,13 @@ SINGLE_BATTLE_TEST("Water Compaction raises Defense 2 stages on each hit of a mu
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURGING_STRIKES, opponent);
         ABILITY_POPUP(player, ABILITY_WATER_COMPACTION);
-        MESSAGE("Ah, Défense du Bacabouh augmente beaucoup!");
+        MESSAGE("Défense de Bacabouh augmente beaucoup!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURGING_STRIKES, opponent);
         ABILITY_POPUP(player, ABILITY_WATER_COMPACTION);
-        MESSAGE("Ah, Défense du Bacabouh augmente beaucoup!");
+        MESSAGE("Défense de Bacabouh augmente beaucoup!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURGING_STRIKES, opponent);
         ABILITY_POPUP(player, ABILITY_WATER_COMPACTION);
-        MESSAGE("Ah, Défense du Bacabouh augmente beaucoup!");
+        MESSAGE("Défense de Bacabouh augmente beaucoup!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 6);
     }

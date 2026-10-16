@@ -15,7 +15,7 @@ SINGLE_BATTLE_TEST("Cosmic Power increases the user's Defense and Sp. Defense by
         TURN { MOVE(player, MOVE_COSMIC_POWER); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COSMIC_POWER, player);
-        MESSAGE("Ah, Défense du Qulbutoké augmente!");
-        MESSAGE("Ah, Défense Spéciale du Qulbutoké augmente!");
+        MESSAGE("Défense de Qulbutoké augmente!");
+        MESSAGE("Défense Spéciale de Qulbutoké augmente!");
     }
 }

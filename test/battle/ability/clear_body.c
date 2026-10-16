@@ -453,11 +453,11 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke protect from Pr
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
             if (move == MOVE_KINGS_SHIELD) {
-                MESSAGE("Ah, Attaque du Qulbutoké baisse!");
+                MESSAGE("Attaque de Qulbutoké baisse!");
             } else if (move == MOVE_SILK_TRAP) {
-                MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+                MESSAGE("Vitesse de Qulbutoké baisse!");
             } else if (move == MOVE_OBSTRUCT) {
-                MESSAGE("Ah, Défense du Qulbutoké baisse beaucoup!");
+                MESSAGE("Défense de Qulbutoké baisse beaucoup!");
             }
         }
     }

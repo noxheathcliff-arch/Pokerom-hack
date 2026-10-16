@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Strength Sap lowers Attack by 1 and restores HP based on tar
         MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
+        MESSAGE("Attaque de Qulbutoké ennemi baisse!");
         HP_BAR(player, captureDamage: &results[i].hp);
         MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     } THEN {
@@ -49,7 +49,7 @@ SINGLE_BATTLE_TEST("Strength Sap works exactly the same when attacker is behind 
         MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
+        MESSAGE("Attaque de Qulbutoké ennemi baisse!");
         HP_BAR(player, captureDamage: &results[i].hp);
         NOT MESSAGE("Le clone subit les dégâts à la place de Qulbutoké ennemi!\p");
         MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
@@ -97,7 +97,7 @@ SINGLE_BATTLE_TEST("Strength Sap lowers Attack by 1 and restores HP based on tar
         MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
+        MESSAGE("Attaque de Qulbutoké ennemi baisse!");
         HP_BAR(player, captureDamage: &results[i].hp);
         MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     } THEN {
@@ -133,7 +133,7 @@ SINGLE_BATTLE_TEST("Strength Sap fails if target is at -6 Atk")
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
+            MESSAGE("Attaque de Qulbutoké ennemi baisse!");
             HP_BAR(player);
             MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
         }
@@ -160,7 +160,7 @@ SINGLE_BATTLE_TEST("Strength Sap restores more HP if Big Root is held", s16 hp)
         MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
+        MESSAGE("Attaque de Qulbutoké ennemi baisse!");
         HP_BAR(player, captureDamage: &results[i].hp);
         MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     } FINALLY {
@@ -244,7 +244,7 @@ SINGLE_BATTLE_TEST("Strength Sap will drain users HP if target has Liquid Ooze")
         MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Tentacool ennemi baisse!");
+        MESSAGE("Attaque de Tentacool ennemi baisse!");
         ABILITY_POPUP(opponent, ABILITY_LIQUID_OOZE);
         HP_BAR(player, captureDamage: &lostHp);
         MESSAGE("Qulbutoké aspire le suintement!");

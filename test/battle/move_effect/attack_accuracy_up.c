@@ -12,7 +12,7 @@ SINGLE_BATTLE_TEST("Hone Claws increases Attack and Accuracy by one stage each")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HONE_CLAWS, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-        MESSAGE("Ah, précision du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
+        MESSAGE("Précision de Qulbutoké augmente!");
     }
 }

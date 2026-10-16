@@ -74,13 +74,13 @@ SINGLE_BATTLE_TEST("Belly Drum fails if the user's Attack is already at +6")
         TURN { MOVE(player, MOVE_BELLY_DRUM); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
+        MESSAGE("Attaque de Qulbutoké augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
+        MESSAGE("Attaque de Qulbutoké augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
+        MESSAGE("Attaque de Qulbutoké augmente beaucoup!");
 
         MESSAGE("Mais cela échoue!");
         NONE_OF {
@@ -170,13 +170,13 @@ SINGLE_BATTLE_TEST("Belly Drum fails if the user's Attack is already at +6, even
         TURN { MOVE(player, MOVE_BELLY_DRUM); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Majaspic augmente beaucoup!");
+        MESSAGE("Attaque de Majaspic augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Majaspic augmente beaucoup!");
+        MESSAGE("Attaque de Majaspic augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Majaspic augmente beaucoup!");
+        MESSAGE("Attaque de Majaspic augmente beaucoup!");
 
         MESSAGE("Mais cela échoue!");
         NONE_OF {
@@ -200,13 +200,13 @@ SINGLE_BATTLE_TEST("Belly Drum deducts HP if the user has Contrary and is at -6"
         TURN { MOVE(player, MOVE_BELLY_DRUM); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Majaspic baisse beaucoup!");
+        MESSAGE("Attaque de Majaspic baisse beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Majaspic baisse beaucoup!");
+        MESSAGE("Attaque de Majaspic baisse beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Majaspic baisse beaucoup!");
+        MESSAGE("Attaque de Majaspic baisse beaucoup!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);

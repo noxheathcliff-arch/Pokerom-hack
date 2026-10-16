@@ -54,7 +54,7 @@ AI_SINGLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT,
     } WHEN {
         TURN { EXPECT_SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
+        MESSAGE(AI_TRAINER_NAME "\nveut se battre!\p");
         MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!");
         MESSAGE("Fantominus! Go!");
         MESSAGE("Qulbutoké est retiré par\n" AI_TRAINER_NAME "!");
@@ -103,7 +103,7 @@ AI_DOUBLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT,
             EXPECT_SWITCH(opponentRight, 2);
         }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
+        MESSAGE(AI_TRAINER_NAME "\nveut se battre!\p");
         MESSAGE("Un Qulbutoké et un Okéoké\nsont envoyés par\l" AI_TRAINER_NAME "!");
         MESSAGE("Fantominus et\nSpectrum! Go!");
         MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
@@ -160,7 +160,7 @@ AI_MULTI_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, 
             EXPECT_SWITCH(opponentRight, 1);
         }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME " et\l" AI_TRAINER_2_NAME "!\p");
+        MESSAGE(AI_TRAINER_NAME " et\n" AI_TRAINER_2_NAME "\lveulent se battre!\p");
         MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!\pUn Okéoké est envoyé\npar " AI_TRAINER_2_NAME "!");
         MESSAGE("Spectrum est envoyé par\n" AI_PARTNER_NAME "!\pFantominus! Go!");
         MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
@@ -219,7 +219,7 @@ AI_TWO_VS_ONE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSEND
             EXPECT_SWITCH(opponentRight, 2);
         }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
+        MESSAGE(AI_TRAINER_NAME "\nveut se battre!\p");
         MESSAGE("Un Qulbutoké et un Okéoké\nsont envoyés par\l" AI_TRAINER_NAME "!");
         MESSAGE("Spectrum est envoyé par\n" AI_PARTNER_NAME "!\pFantominus! Go!");
         MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
@@ -272,7 +272,7 @@ AI_ONE_VS_TWO_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSEND
             EXPECT_SWITCH(opponentRight, 1);
         }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME " et\l" AI_TRAINER_2_NAME "!\p");
+        MESSAGE(AI_TRAINER_NAME " et\n" AI_TRAINER_2_NAME "\lveulent se battre!\p");
         MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!\pUn Okéoké est envoyé\npar " AI_TRAINER_2_NAME "!");
         MESSAGE("Fantominus et\nSpectrum! Go!");
         MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");

@@ -50,12 +50,12 @@ SINGLE_BATTLE_TEST("Anger Shell lowers Def/Sp.Def by 1 and raises Atk/Sp.Atk/Spd
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ABILITY_POPUP(player, ABILITY_ANGER_SHELL);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Craparoi baisse!");
-        MESSAGE("Ah, Défense Spéciale du Craparoi baisse!");
+        MESSAGE("Défense de Craparoi baisse!");
+        MESSAGE("Défense Spéciale de Craparoi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Craparoi augmente!");
-        MESSAGE("Ah, Attaque Spéciale du Craparoi augmente!");
-        MESSAGE("Ah, Vitesse du Craparoi augmente!");
+        MESSAGE("Attaque de Craparoi augmente!");
+        MESSAGE("Attaque Spéciale de Craparoi augmente!");
+        MESSAGE("Vitesse de Craparoi augmente!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(player->statStages[STAT_SPDEF], DEFAULT_STAT_STAGE - 1);

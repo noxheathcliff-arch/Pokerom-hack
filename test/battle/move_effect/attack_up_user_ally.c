@@ -18,7 +18,7 @@ SINGLE_BATTLE_TEST("Howl raises user's Attack by 1 stage", s16 damage)
         if (raiseAttack) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_HOWL, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Qulbutoké augmente!");
+            MESSAGE("Attaque de Qulbutoké augmente!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
@@ -47,9 +47,9 @@ DOUBLE_BATTLE_TEST("Howl raises user's and partner's Attack by 1 stage", s16 dam
         if (raiseAttack) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_HOWL, playerLeft);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Attaque du Qulbutoké augmente!");
+            MESSAGE("Attaque de Qulbutoké augmente!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Ah, Attaque du Okéoké augmente!");
+            MESSAGE("Attaque de Okéoké augmente!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         HP_BAR(opponentLeft, captureDamage: &results[i].damageLeft);
@@ -87,7 +87,7 @@ DOUBLE_BATTLE_TEST("Howl does not work on partner if it has Soundproof but doesn
         MESSAGE("Ça n'affecte pas Voltorbe…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HOWL, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Brouhabam augmente!");
+        MESSAGE("Attaque de Brouhabam augmente!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
         HP_BAR(opponentLeft, captureDamage: &damage[1]);

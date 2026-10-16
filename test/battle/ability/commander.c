@@ -30,11 +30,11 @@ DOUBLE_BATTLE_TEST("Commander increases all stats by 2 stages once it is trigger
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
         MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Oyacata augmente beaucoup!");
-        MESSAGE("Ah, Défense du Oyacata augmente beaucoup!");
-        MESSAGE("Ah, Attaque Spéciale du Oyacata augmente beaucoup!");
-        MESSAGE("Ah, Défense Spéciale du Oyacata augmente beaucoup!");
-        MESSAGE("Ah, Vitesse du Oyacata augmente beaucoup!");
+        MESSAGE("Attaque de Oyacata augmente beaucoup!");
+        MESSAGE("Défense de Oyacata augmente beaucoup!");
+        MESSAGE("Attaque Spéciale de Oyacata augmente beaucoup!");
+        MESSAGE("Défense Spéciale de Oyacata augmente beaucoup!");
+        MESSAGE("Vitesse de Oyacata augmente beaucoup!");
     } THEN {
         EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
         EXPECT_EQ(playerRight->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 2);

@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Download raises Attack if player has lower Def than Sp. Def"
         {
             ABILITY_POPUP(opponent, ABILITY_DOWNLOAD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Porygon ennemi augmente!");
+            MESSAGE("Attaque de Porygon ennemi augmente!");
         }
         HP_BAR(player, captureDamage: &results[i].damage);
     } FINALLY {
@@ -45,7 +45,7 @@ SINGLE_BATTLE_TEST("Download raises Sp.Attack if enemy has lower Sp. Def than De
         {
             ABILITY_POPUP(player, ABILITY_DOWNLOAD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque Spéciale du Porygon augmente!");
+            MESSAGE("Attaque Spéciale de Porygon augmente!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -77,7 +77,7 @@ SINGLE_BATTLE_TEST("Download doesn't activate if target hasn't been sent out yet
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DOWNLOAD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Porygon augmente!");
+            MESSAGE("Attaque de Porygon augmente!");
         }
         MESSAGE("2 envoie\nun Porygon2!");
 
@@ -85,7 +85,7 @@ SINGLE_BATTLE_TEST("Download doesn't activate if target hasn't been sent out yet
         {
             ABILITY_POPUP(opponent, ABILITY_DOWNLOAD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque Spéciale du Porygon2 ennemi augmente!");
+            MESSAGE("Attaque Spéciale de Porygon2 ennemi augmente!");
         }
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRI_ATTACK, opponent);
@@ -112,7 +112,7 @@ DOUBLE_BATTLE_TEST("Download raises Sp.Attack if enemies have lower total Sp. De
         {
             ABILITY_POPUP(playerLeft, ABILITY_DOWNLOAD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Attaque Spéciale du Porygon augmente!");
+            MESSAGE("Attaque Spéciale de Porygon augmente!");
         }
         HP_BAR(opponentLeft, captureDamage: &results[i].damage);
     } FINALLY {

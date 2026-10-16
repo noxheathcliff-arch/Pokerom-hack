@@ -17,8 +17,8 @@ SINGLE_BATTLE_TEST("Tidy Up raises Attack and Speed by one")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TIDY_UP, player);
         NOT MESSAGE("Le grand nettoyage est terminé!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-        MESSAGE("Ah, Vitesse du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
+        MESSAGE("Vitesse de Qulbutoké augmente!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
         EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
@@ -48,8 +48,8 @@ SINGLE_BATTLE_TEST("Tidy Up removes hazards and raises Stats")
         MESSAGE("Les pierres pointues autour de votre équipe ont disparu!");
         MESSAGE("Le grand nettoyage est terminé!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-        MESSAGE("Ah, Vitesse du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
+        MESSAGE("Vitesse de Qulbutoké augmente!");
     }
 }
 
@@ -69,8 +69,8 @@ SINGLE_BATTLE_TEST("Tidy Up removes Substitute")
         MESSAGE("Le clone de Qulbutoké ennemi disparaît…\p");
         MESSAGE("Le grand nettoyage est terminé!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-        MESSAGE("Ah, Vitesse du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
+        MESSAGE("Vitesse de Qulbutoké augmente!");
     }
 }
 
@@ -113,8 +113,8 @@ SINGLE_BATTLE_TEST("Tidy Up raises Attack and Speed by one after clearing hazard
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TIDY_UP, player);
         MESSAGE("Le grand nettoyage est terminé!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-        MESSAGE("Ah, Vitesse du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
+        MESSAGE("Vitesse de Qulbutoké augmente!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
         EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);

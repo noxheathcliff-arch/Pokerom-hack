@@ -20,10 +20,10 @@ DOUBLE_BATTLE_TEST("Clanging Scales lowers defense by one stage if it hits both 
         HP_BAR(opponentLeft);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Défense du Qulbutoké baisse!");
+            MESSAGE("Défense de Qulbutoké baisse!");
         }
         HP_BAR(opponentRight);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Défense du Qulbutoké baisse!");
+        MESSAGE("Défense de Qulbutoké baisse!");
     }
 }

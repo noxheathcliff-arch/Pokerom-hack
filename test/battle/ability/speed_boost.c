@@ -13,7 +13,7 @@ SINGLE_BATTLE_TEST("Speed Boost gradually boosts Speed")
         MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         MESSAGE("Poussifeu utilise\nCélébration!");
         ABILITY_POPUP(player, ABILITY_SPEED_BOOST);
-        MESSAGE("Ah, Vitesse du Poussifeu augmente!");
+        MESSAGE("Vitesse de Poussifeu augmente!");
         MESSAGE("Poussifeu utilise\nCélébration!");
         MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
     }

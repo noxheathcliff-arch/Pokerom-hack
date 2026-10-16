@@ -273,7 +273,7 @@ static const u8 gText_MysteryGiftCantUse[] = _("Ne pas utiliser l'adaptateur san
 static const u8 gText_MysteryEventsCantUse[] = _("Ne pas utiliser l'adaptateur sans fil\navec les EVENEMENTS MYSTERE.");
 
 static const u8 gText_ContinueMenuPlayer[] = _("JOUEUR");
-static const u8 gText_ContinueMenuTime[] = _("DUREE JEU");
+static const u8 gText_ContinueMenuTime[] = _("DURÉE JEU");
 static const u8 gText_ContinueMenuPokedex[] = _("POKéDEX");
 static const u8 gText_ContinueMenuBadges[] = _("BADGES");
 

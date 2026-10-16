@@ -171,7 +171,7 @@ DOUBLE_BATTLE_TEST("Costar's message displays correctly after all battlers faint
     } SCENE {
         MESSAGE("Qulbutoké ennemi utilise\nExplosion!");
         ABILITY_POPUP(playerLeft, ABILITY_INTREPID_SWORD);
-        MESSAGE("Ah, Attaque du Zacian augmente!");
+        MESSAGE("Attaque de Zacian augmente!");
         ABILITY_POPUP(playerRight, ABILITY_COSTAR);
         MESSAGE("Flamenroule copie les changements de stats de Zacian!");
     }
@@ -200,7 +200,7 @@ DOUBLE_BATTLE_TEST("Costar's message displays correctly after all battlers faint
     } SCENE {
         MESSAGE("Qulbutoké utilise\nExplosion!");
         ABILITY_POPUP(opponentLeft, ABILITY_INTREPID_SWORD);
-        MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
+        MESSAGE("Attaque de Zacian ennemi augmente!");
         ABILITY_POPUP(opponentRight, ABILITY_COSTAR);
         MESSAGE("Flamenroule ennemi copie les changements de stats de Zacian ennemi!");
     }

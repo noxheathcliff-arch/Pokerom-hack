@@ -17,8 +17,8 @@ DOUBLE_BATTLE_TEST("Coaching raises Attack and Defense of ally by 1 stage each")
         TURN { MOVE(playerLeft, MOVE_COACHING, target: playerRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-        MESSAGE("Ah, Attaque du Okéoké augmente!");
-        MESSAGE("Ah, Défense du Okéoké augmente!");
+        MESSAGE("Attaque de Okéoké augmente!");
+        MESSAGE("Défense de Okéoké augmente!");
     }
 }
 
@@ -34,8 +34,8 @@ DOUBLE_BATTLE_TEST("Coaching bypasses Protect")
         TURN { MOVE(playerRight, MOVE_PROTECT); MOVE(playerLeft, MOVE_COACHING, target: playerRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-        MESSAGE("Ah, Attaque du Okéoké augmente!");
-        MESSAGE("Ah, Défense du Okéoké augmente!");
+        MESSAGE("Attaque de Okéoké augmente!");
+        MESSAGE("Défense de Okéoké augmente!");
     }
 }
 
@@ -51,8 +51,8 @@ DOUBLE_BATTLE_TEST("Coaching bypasses Crafty Shield")
         TURN { MOVE(playerRight, MOVE_CRAFTY_SHIELD); MOVE(playerLeft, MOVE_COACHING, target: playerRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-        MESSAGE("Ah, Attaque du Okéoké augmente!");
-        MESSAGE("Ah, Défense du Okéoké augmente!");
+        MESSAGE("Attaque de Okéoké augmente!");
+        MESSAGE("Défense de Okéoké augmente!");
     }
 }
 
@@ -71,8 +71,8 @@ DOUBLE_BATTLE_TEST("Coaching fails if all allies are is semi-invulnerable")
         MESSAGE("Qulbutoké utilise\nCoaching!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-            MESSAGE("Ah, Attaque du Brutalibré augmente!");
-            MESSAGE("Ah, Défense du Brutalibré augmente!");
+            MESSAGE("Attaque de Brutalibré augmente!");
+            MESSAGE("Défense de Brutalibré augmente!");
         }
         MESSAGE("Brutalibré évite l'attaque!");
     }
@@ -89,8 +89,8 @@ SINGLE_BATTLE_TEST("Coaching fails in single battles")
         MESSAGE("Mais cela échoue!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, player);
-            MESSAGE("Ah, Attaque du Okéoké augmente!");
-            MESSAGE("Ah, Défense du Okéoké augmente!");
+            MESSAGE("Attaque de Okéoké augmente!");
+            MESSAGE("Défense de Okéoké augmente!");
         }
     }
 }
@@ -111,8 +111,8 @@ DOUBLE_BATTLE_TEST("Coaching fails if there's no ally")
         MESSAGE("Qulbutoké utilise\nCoaching!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-            MESSAGE("Ah, Attaque du Okéoké augmente!");
-            MESSAGE("Ah, Défense du Okéoké augmente!");
+            MESSAGE("Attaque de Okéoké augmente!");
+            MESSAGE("Défense de Okéoké augmente!");
         }
         MESSAGE("Mais cela échoue!");
     }
@@ -151,7 +151,7 @@ DOUBLE_BATTLE_TEST("Coaching ignores Substitute")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-        MESSAGE("Ah, Attaque du Okéoké augmente!");
-        MESSAGE("Ah, Défense du Okéoké augmente!");
+        MESSAGE("Attaque de Okéoké augmente!");
+        MESSAGE("Défense de Okéoké augmente!");
     }
 }

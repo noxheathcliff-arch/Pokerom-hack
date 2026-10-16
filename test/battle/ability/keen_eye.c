@@ -27,11 +27,11 @@ SINGLE_BATTLE_TEST("Keen Eye, Gen9+ Illuminate & Minds Eye prevent accuracy stag
         ABILITY_POPUP(opponent, ability);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         if (species == SPECIES_HITMONCHAN)
-            MESSAGE("précision de Tygnon ennemi ne baisse pas!");
+            MESSAGE("Précision de Tygnon ennemi ne baisse pas!");
         else if (species == SPECIES_STARYU)
-            MESSAGE("précision de Stari ennemi ne baisse pas!");
+            MESSAGE("Précision de Stari ennemi ne baisse pas!");
         else
-            MESSAGE("précision de Ursaking ennemi ne baisse pas!");
+            MESSAGE("Précision de Ursaking ennemi ne baisse pas!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
 }
@@ -114,14 +114,14 @@ SINGLE_BATTLE_TEST("Keen Eye, Gen9+ Illuminate & Minds Eye don't prevent Topsy-T
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HONE_CLAWS, opponent);
         if (species == SPECIES_HITMONCHAN) {
-            MESSAGE("Ah, Attaque du Tygnon ennemi augmente!");
-            MESSAGE("Ah, précision du Tygnon ennemi augmente!");
+            MESSAGE("Attaque de Tygnon ennemi augmente!");
+            MESSAGE("Précision de Tygnon ennemi augmente!");
         } else if (species == SPECIES_STARYU) {
-            MESSAGE("Ah, Attaque du Stari ennemi augmente!");
-            MESSAGE("Ah, précision du Stari ennemi augmente!");
+            MESSAGE("Attaque de Stari ennemi augmente!");
+            MESSAGE("Précision de Stari ennemi augmente!");
         } else {
-            MESSAGE("Ah, Attaque du Ursaking ennemi augmente!");
-            MESSAGE("Ah, précision du Ursaking ennemi augmente!");
+            MESSAGE("Attaque de Ursaking ennemi augmente!");
+            MESSAGE("Précision de Ursaking ennemi augmente!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOPSY_TURVY, player);
         if (species == SPECIES_HITMONCHAN)
@@ -188,13 +188,13 @@ SINGLE_BATTLE_TEST("Keen Eye & Gen9+ Illuminate don't prevent Spectral Thief fro
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HONE_CLAWS, opponent);
         if (species == SPECIES_HITMONCHAN)
         {
-            MESSAGE("Ah, Attaque du Tygnon ennemi augmente!");
-            MESSAGE("Ah, précision du Tygnon ennemi augmente!");
+            MESSAGE("Attaque de Tygnon ennemi augmente!");
+            MESSAGE("Précision de Tygnon ennemi augmente!");
         }
         else
         {
-            MESSAGE("Ah, Attaque du Stari ennemi augmente!");
-            MESSAGE("Ah, précision du Stari ennemi augmente!");
+            MESSAGE("Attaque de Stari ennemi augmente!");
+            MESSAGE("Précision de Stari ennemi augmente!");
         }
         MESSAGE("Qulbutoké vole les augmentations de stats!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPECTRAL_THIEF, player);
