@@ -8,10 +8,13 @@
 @ ---------------------------------------------------------------- helpers
 
 @ Says the line only if Brice is the follower
-	.macro cf_bsay text:req
+	.macro cf_bsay text:req, to=LOCALID_PLAYER
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, 1f
 	special CF_RevealFollowerNPC
+	.if \to
+	cf_talk OBJ_EVENT_ID_NPC_FOLLOWER, \to
+	.endif
 	setspeaker CF_N1_Brice
 	msgbox \text, MSGBOX_DEFAULT
 1:
@@ -69,6 +72,17 @@
 	checkfollowernpc
 	goto_if_eq VAR_RESULT, FALSE, 1f
 	special CF_RevealFollowerNPC
+	@ Brice right behind Red: he sidesteps first so his "!" is not drawn over Red's head
+	special CF_FollowerSideDir
+	goto_if_eq VAR_RESULT, DIR_NONE, 2f
+	goto_if_eq VAR_RESULT, DIR_EAST, 3f
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, CF_Mov_BSideW
+	goto 4f
+3:
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, CF_Mov_BSideE
+4:
+	waitmovement 0
+2:
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -95,10 +109,17 @@
 	waitstate
 	.endm
 
-@ Red turns toward an object (dominant axis; vertical on ties). Clobbers VAR_0x8000-0x8006.
+@ Speaker and listener face each other (local ids; LOCALID_PLAYER / OBJ_EVENT_ID_NPC_FOLLOWER ok).
+@ Clobbers VAR_0x8000-0x8001.
+	.macro cf_talk a:req, b:req
+	setvar VAR_0x8000, \a
+	setvar VAR_0x8001, \b
+	special CF_FaceEachOther
+	.endm
+
+@ Red and an object face each other (dominant axis; vertical on ties). Clobbers VAR_0x8000-0x8001.
 	.macro cf_face id:req
-	setvar VAR_0x8000, \id
-	call CF_FaceObj
+	cf_talk LOCALID_PLAYER, \id
 	.endm
 
 @ VAR_RESULT = decision option; jump to label if it equals opt
@@ -132,47 +153,18 @@ CF_IncN::
 CF_IncN_Done::
 	return
 
-@ VAR_0x8000 = localId. 0x8001/0x8002 = |dx|/|dy|, 0x8005/0x8006 = horizontal/vertical side.
-CF_FaceObj::
-	getobjectxy VAR_0x8000, CURRENT_POSITION, VAR_0x8001, VAR_0x8002
-	getplayerxy VAR_0x8003, VAR_0x8004
-	setvar VAR_0x8005, DIR_EAST
-	goto_if_ge VAR_0x8001, VAR_0x8003, CF_FaceObj_DX
-	setvar VAR_0x8005, DIR_WEST
-	copyvar VAR_0x8006, VAR_0x8003
-	subvar VAR_0x8006, VAR_0x8001
-	copyvar VAR_0x8001, VAR_0x8006
-	goto CF_FaceObj_Y
-CF_FaceObj_DX:
-	subvar VAR_0x8001, VAR_0x8003
-CF_FaceObj_Y:
-	setvar VAR_0x8006, DIR_SOUTH
-	goto_if_ge VAR_0x8002, VAR_0x8004, CF_FaceObj_DY
-	setvar VAR_0x8006, DIR_NORTH
-	copyvar VAR_0x8003, VAR_0x8004
-	subvar VAR_0x8003, VAR_0x8002
-	copyvar VAR_0x8002, VAR_0x8003
-	goto CF_FaceObj_Pick
-CF_FaceObj_DY:
-	subvar VAR_0x8002, VAR_0x8004
-CF_FaceObj_Pick:
-	goto_if_lt VAR_0x8002, VAR_0x8001, CF_FaceObj_H
-	goto_if_eq VAR_0x8006, DIR_NORTH, CF_FaceObj_N
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
-	return
-CF_FaceObj_N:
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-	return
-CF_FaceObj_H:
-	goto_if_eq VAR_0x8005, DIR_WEST, CF_FaceObj_W
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	return
-CF_FaceObj_W:
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
-	return
-
 CF_Nop::
 	end
+
+CF_Mov_BSideW:
+	walk_left
+	face_up
+	step_end
+
+CF_Mov_BSideE:
+	walk_right
+	face_up
+	step_end
 
 CF_Mov_Up1:
 	walk_up
@@ -359,7 +351,7 @@ CF_C1_FloraA::
 
 CF_C1_Celeo::
 	closemessage
-	turnobject LOCALID_CF_GYM_BRIGADIER, DIR_WEST
+	cf_face LOCALID_CF_GYM_BRIGADIER
 	cf_say CF_N1_Agent, CF1_T_010
 	closemessage
 	playse SE_PIN
@@ -370,7 +362,7 @@ CF_C1_Celeo::
 	cf_face LOCALID_CF_GYM_CELEO
 	cf_say CF_N1_Celeo, CF1_T_011
 	closemessage
-	turnobject LOCALID_PETALBURG_GYM_NORMAN, DIR_EAST
+	cf_talk LOCALID_PETALBURG_GYM_NORMAN, LOCALID_CF_GYM_CELEO
 	cf_say CF_N1_Norman, CF1_T_012
 	closemessage
 	turnobject LOCALID_PETALBURG_GYM_NORMAN, DIR_SOUTH
@@ -523,7 +515,11 @@ CF_C2_Barrage::
 	goto_if_eq VAR_RESULT, FALSE, CF_C2_Fallback
 	goto_if_lt VAR_CF_BR, 50, CF_C2_Fallback
 	closemessage
-	cf_bmove Common_Movement_ExclamationMark
+	cf_bexcl
+	@ Brice answers the guard in front of Red (face each other)
+	setvar VAR_0x8000, OBJ_EVENT_ID_NPC_FOLLOWER
+	copyvar VAR_0x8001, VAR_0x8008
+	special CF_FaceEachOther
 	cf_say CF_N1_Brice, CF1_T_025
 	closemessage
 	applymovement VAR_0x8009, Common_Movement_QuestionMark
@@ -657,8 +653,8 @@ CF_C3_InPlace::
 	closemessage
 	turnobject LOCALID_CF_WOODS_POLICE_L, DIR_SOUTH
 	turnobject LOCALID_CF_WOODS_POLICE_R, DIR_SOUTH
-	cf_bmove Common_Movement_ExclamationMark
-	cf_bsay CF1_T_033
+	cf_bexcl
+	cf_bsay CF1_T_033, LOCALID_PETALBURG_WOODS_GRUNT
 	closemessage
 	@ Wooloo scurries aside, the three turn toward Red
 	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, CF1_M_C3_WoolooAside
@@ -692,10 +688,10 @@ CF_D008_Won::
 	removeobject LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE
 	removeobject LOCALID_CF_WOODS_APPLIN
 	removeobject LOCALID_CF_WOODS_YAMPER
-	turnobject LOCALID_PETALBURG_WOODS_GRUNT, DIR_EAST
+	cf_face LOCALID_PETALBURG_WOODS_GRUNT
 	cf_say CF_N1_Flora, CF1_T_037
 	closemessage
-	turnobject LOCALID_PETALBURG_WOODS_GRUNT, DIR_SOUTH
+	cf_face LOCALID_CF_WOODS_POLICE_L
 	cf_say CF_N1_Agent, CF1_T_038
 	setdecision_once 8, DEC_A, CF_C3_End
 	subaffinity VAR_CF_FL, 3
@@ -1360,7 +1356,7 @@ CF_C7_Thief::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement LOCALID_CF_RUST_HOOPA, CF1_M_Jump
 	waitmovement 0
-	cf_bsay CF1_T_078
+	cf_bsay CF1_T_078, LOCALID_CF_RUST_HOOPA
 CF_C7_Ask::
 	setspeaker SP_NAME_NONE
 	message CF1_T_079
@@ -1759,6 +1755,10 @@ CF_C9_GymClosed::
 @ ---------------------------------------------------------------- C10: contrebandiers de la R116 (D014, D015)
 
 CF_R116_Show::
+	setflag FLAG_CF_VIS_85
+	setflag FLAG_CF_VIS_46
+	@ demo-path trainers stay hidden (also covers saves made before VIS_45 existed): frees object slots for the C10 cages
+	setflag FLAG_CF_VIS_45
 	checkdecision 16
 	goto_if_ne VAR_RESULT, DEC_A, CF_R116_Show_End
 	clearflag FLAG_CF_VIS_13
@@ -1900,6 +1900,15 @@ CF_C10_Watch::
 	cf_flash
 	cf_shake 0, 3, 6, 4
 	waitse
+	@ Three arrivals drop out of the ring and end up caged (CF1_T_130):
+	@ Grunt B makes room: (45,11) -> (47,12), guarding the cages at (41/43/45,12)
+	cf_move LOCALID_CF_R116_GRUNT_B, CF1_M_C10_GruntBAside
+	clearflag FLAG_CF_VIS_46
+	addobject LOCALID_CF_R116_CAGE_1
+	addobject LOCALID_CF_R116_CAGE_2
+	addobject LOCALID_CF_R116_CAGE_3
+	playse SE_PIN
+	delay 40
 	cf_narr CF1_T_130
 	cf_bsay CF1_T_131
 	setdecision_once 14, DEC_B, CF_C10_End
@@ -1953,6 +1962,10 @@ CF_C10_End::
 	removeobject LOCALID_CF_R116_HOOPA
 	removeobject LOCALID_CF_R116_FERRAND
 	removeobject LOCALID_CF_R116_FLORA
+	setflag FLAG_CF_VIS_46
+	removeobject LOCALID_CF_R116_CAGE_1
+	removeobject LOCALID_CF_R116_CAGE_2
+	removeobject LOCALID_CF_R116_CAGE_3
 	waitse
 	setvar VAR_ROUTE116_STATE, 2
 	releaseall
@@ -1968,6 +1981,14 @@ CF1_M_C10_FerrandOut:
 	walk_right
 	walk_right
 	walk_right
+	step_end
+
+@ (45,11) -> (47,12), beside the cages
+CF1_M_C10_GruntBAside:
+	walk_down
+	walk_right
+	walk_right
+	face_left
 	step_end
 
 @ (45,9) -> (41,10), facing Red at (40,10)

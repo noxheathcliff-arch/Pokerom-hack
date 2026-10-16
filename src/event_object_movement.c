@@ -578,6 +578,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     // Gen VIII
     {gObjectEventPal_StrangeBall,           OBJ_EVENT_PAL_TAG_BALL_STRANGE},
 #endif //OW_FOLLOWERS_POKEBALLS
+    {gObjectEventPal_CfCaged,               OBJ_EVENT_PAL_TAG_CF_CAGE},
     {gObjectEventPal_Substitute,            OBJ_EVENT_PAL_TAG_SUBSTITUTE},
     {gObjectEventPaletteLight,              OBJ_EVENT_PAL_TAG_LIGHT},
     {gObjectEventPaletteLight2,             OBJ_EVENT_PAL_TAG_LIGHT_2},

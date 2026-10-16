@@ -419,6 +419,9 @@ enum
     OBJ_EVENT_GFX_CF_PORTAL_FRONT,  // Hack: animated portal, seen head-on (4 frames)
     OBJ_EVENT_GFX_CF_PORTAL_SIDE,   // Hack: animated portal, seen edge-on (4 frames)
     OBJ_EVENT_GFX_CF_PORTAL_TILTED, // Hack: animated portal, lying tilted (4 frames)
+    OBJ_EVENT_GFX_CF_CAGED_PIKACHU, // Hack: Pikachu in a cage (32x32, CF_CAGE palette)
+    OBJ_EVENT_GFX_CF_CAGED_EEVEE,   // Hack: Eevee in a cage
+    OBJ_EVENT_GFX_CF_CAGED_RATTATA, // Hack: Rattata in a cage
     NUM_OBJ_EVENT_GFX,
 };
 
@@ -611,6 +614,7 @@ enum
 #define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x116A
 #endif //OW_FOLLOWERS_POKEBALLS
 // Used as a placeholder follower graphic
+#define OBJ_EVENT_PAL_TAG_CF_CAGE                 0x1170 // Hack: caged Pokemon (Route 116, C10)
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001
 #define OBJ_EVENT_PAL_TAG_LIGHT_2                 0x8002

@@ -155,6 +155,7 @@ static void CF_DemoNewGameInit(void)
     // VIS_45 = vanilla trainers on the demo path (Petalburg Woods Lyle/James, Rusturf Mike, Route 116):
     // hidden for the whole demo so they do not interrupt the chapter 1 scenes.
     FlagSet(FLAG_CF_VIS_45);
+    FlagSet(FLAG_CF_VIS_46); // R116 caged Pokemon (C10 portal opening)
     // VIS_80-92 = prologue staging (R104 portal/bag/balls, lab starter balls, R104 wild mons + Pikachu),
     // shown by script. VIS_84/85 = reserved for chapter 1 portal objects.
     for (i = 80; i <= 92; i++)
@@ -797,4 +798,68 @@ void CF_RevealFollowerNPC(void)
         }
     }
     CF_ShowFollowerNPC();
+}
+
+// Speaker and listener face each other: objects VAR_0x8000 and VAR_0x8001 (local ids; the player
+// LOCALID_PLAYER and the follower OBJ_EVENT_ID_NPC_FOLLOWER work too) turn toward one another on
+// the dominant axis (vertical on ties). Hidden or missing objects are skipped.
+static u32 CF_DirToward(s16 fromX, s16 fromY, s16 toX, s16 toY)
+{
+    s32 dx = toX - fromX, dy = toY - fromY;
+    s32 adx = dx < 0 ? -dx : dx, ady = dy < 0 ? -dy : dy;
+
+    if (adx > ady)
+        return dx > 0 ? DIR_EAST : DIR_WEST;
+    return dy > 0 ? DIR_SOUTH : DIR_NORTH;
+}
+
+void CF_FaceEachOther(void)
+{
+    u8 mapNum = gSaveBlock1Ptr->location.mapNum, mapGroup = gSaveBlock1Ptr->location.mapGroup;
+    u32 a = GetObjectEventIdByLocalIdAndMap(gSpecialVar_0x8000, mapNum, mapGroup);
+    u32 b = GetObjectEventIdByLocalIdAndMap(gSpecialVar_0x8001, mapNum, mapGroup);
+    struct ObjectEvent *oa, *ob;
+
+    if (a >= OBJECT_EVENTS_COUNT || b >= OBJECT_EVENTS_COUNT || a == b)
+        return;
+    oa = &gObjectEvents[a];
+    ob = &gObjectEvents[b];
+    if (oa->currentCoords.x == ob->currentCoords.x && oa->currentCoords.y == ob->currentCoords.y)
+        return;
+    if (!oa->invisible)
+        ObjectEventTurn(oa, CF_DirToward(oa->currentCoords.x, oa->currentCoords.y, ob->currentCoords.x, ob->currentCoords.y));
+    if (!ob->invisible)
+        ObjectEventTurn(ob, CF_DirToward(ob->currentCoords.x, ob->currentCoords.y, oa->currentCoords.x, oa->currentCoords.y));
+}
+
+// VAR_RESULT = DIR_WEST/DIR_EAST if the follower NPC stands right below the player and can sidestep
+// onto a free tile, so an emote drawn above it is not drawn over the player's head; else DIR_NONE.
+void CF_FollowerSideDir(void)
+{
+    static const u8 sSides[2] = {DIR_WEST, DIR_EAST};
+    struct ObjectEvent *player, *follower;
+    u32 followerId, i;
+
+    gSpecialVar_Result = DIR_NONE;
+    if (!PlayerHasFollowerNPC())
+        return;
+    followerId = GetFollowerNPCObjectId();
+    follower = &gObjectEvents[followerId];
+    player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    if (follower->invisible || follower->currentCoords.x != player->currentCoords.x
+     || follower->currentCoords.y != player->currentCoords.y + 1)
+        return;
+    for (i = 0; i < 2; i++)
+    {
+        s16 x = follower->currentCoords.x;
+        s16 y = follower->currentCoords.y;
+
+        MoveCoords(sSides[i], &x, &y);
+        if (MapGridGetCollisionAt(x, y) != 0)
+            continue;
+        if (GetObjectEventIdByXY(x, y) != OBJECT_EVENTS_COUNT)
+            continue;
+        gSpecialVar_Result = sSides[i];
+        return;
+    }
 }

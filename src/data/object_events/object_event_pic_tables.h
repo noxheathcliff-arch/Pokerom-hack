@@ -423,6 +423,18 @@ static const struct SpriteFrameImage sPicTable_CfPortalTilted[] = {
     overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 3),
 };
 
+static const struct SpriteFrameImage sPicTable_CfCagedPikachu[] = {
+    overworld_frame(gObjectEventPic_CfCaged, 4, 4, 0),
+};
+
+static const struct SpriteFrameImage sPicTable_CfCagedEevee[] = {
+    overworld_frame(gObjectEventPic_CfCaged, 4, 4, 1),
+};
+
+static const struct SpriteFrameImage sPicTable_CfCagedRattata[] = {
+    overworld_frame(gObjectEventPic_CfCaged, 4, 4, 2),
+};
+
 static const struct SpriteFrameImage sPicTable_BirchsBag[] = {
     obj_frame_tiles(gObjectEventPic_BirchsBag),
 };

@@ -656,3 +656,5 @@ gSpecials::
 	def_special CF_PlaceFollowerNPC
 	def_special CF_StepAwayDir
 	def_special CF_RevealFollowerNPC
+	def_special CF_FaceEachOther
+	def_special CF_FollowerSideDir
