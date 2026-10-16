@@ -38,7 +38,7 @@ SINGLE_BATTLE_TEST("Sap Sipper increases Attack by one stage when hit by a Grass
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SAP_SIPPER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Marill augmente!");
+        MESSAGE("Attaque de Marill augmente!");
     }
 }
 
@@ -53,7 +53,7 @@ SINGLE_BATTLE_TEST("Sap Sipper does not increase Attack if already maxed")
         ABILITY_POPUP(player, ABILITY_SAP_SIPPER);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Marill augmente!");
+            MESSAGE("Attaque de Marill augmente!");
         }
     }
 }
@@ -70,7 +70,7 @@ SINGLE_BATTLE_TEST("Sap Sipper blocks multi-hit grass type moves")
         MESSAGE("Kokiyas ennemi utilise\nBalle Graine!");
         ABILITY_POPUP(player, ABILITY_SAP_SIPPER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Marill augmente!");
+        MESSAGE("Attaque de Marill augmente!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, opponent);
             HP_BAR(player);

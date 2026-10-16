@@ -25,9 +25,9 @@ SINGLE_BATTLE_TEST("Endure does not prevent multiple hits and stat changes occur
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCALE_SHOT, player);
         MESSAGE("Touché 5 fois!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Qulbutoké baisse!");
+        MESSAGE("Défense de Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké augmente!");
+        MESSAGE("Vitesse de Qulbutoké augmente!");
     }
 }
 

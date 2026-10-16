@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Iron Defense raises Defense by 2 stages", s16 damage)
         if (raiseDefense) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_IRON_DEFENSE, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Défense du Qulbutoké augmente beaucoup!");
+            MESSAGE("Défense de Qulbutoké augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &results[i].damage);

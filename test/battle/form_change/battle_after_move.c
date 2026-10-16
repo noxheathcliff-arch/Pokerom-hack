@@ -67,7 +67,7 @@ SINGLE_BATTLE_TEST("Relic Song transformation activates after target faints")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
         ABILITY_POPUP(opponent, ABILITY_COTTON_DOWN);
-        MESSAGE("Ah, Vitesse du Meloetta baisse!");
+        MESSAGE("Vitesse de Meloetta baisse!");
         MESSAGE("Tournicoton ennemi est K.O.!\p");
         MESSAGE("Meloetta se transforme!");
     } THEN {

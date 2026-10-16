@@ -32,7 +32,7 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when hit by Bug, Dark or Ghost typ
         if (move != MOVE_SCRATCH) {
             ABILITY_POPUP(opponent, ABILITY_RATTLED);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
+            MESSAGE("Vitesse de Simularbre ennemi augmente!");
         }
         MESSAGE("Simularbre ennemi utilise\nCélébration!");
         // Sudowoodo is now faster
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when hit by Bug, Dark or Ghost typ
             HP_BAR(opponent);
             ABILITY_POPUP(opponent, ABILITY_RATTLED);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
+            MESSAGE("Vitesse de Simularbre ennemi augmente!");
         }
         else {
             ANIMATION(ANIM_TYPE_MOVE, move, player);
@@ -63,11 +63,11 @@ SINGLE_BATTLE_TEST("Rattled does not boost speed by 1 when affected by Intimidat
     } SCENE {
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Simularbre ennemi baisse!");
+        MESSAGE("Attaque de Simularbre ennemi baisse!");
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_RATTLED);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
+            MESSAGE("Vitesse de Simularbre ennemi augmente!");
         }
     }
 }
@@ -83,10 +83,10 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when affected by Intimidate (Gen8+
     } SCENE {
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Simularbre ennemi baisse!");
+        MESSAGE("Attaque de Simularbre ennemi baisse!");
         ABILITY_POPUP(opponent, ABILITY_RATTLED);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
+        MESSAGE("Vitesse de Simularbre ennemi augmente!");
     }
 }
 
@@ -107,7 +107,7 @@ SINGLE_BATTLE_TEST("Rattled triggers correctly when hit by U-Turn") // Specific 
         HP_BAR(opponent);
         ABILITY_POPUP(opponent, ABILITY_RATTLED);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
+        MESSAGE("Vitesse de Simularbre ennemi augmente!");
         SEND_IN_MESSAGE("Okéoké");
     }
 }

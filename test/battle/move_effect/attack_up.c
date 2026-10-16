@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Meditate raises Attack by 1 stage", s16 damage)
         if (raiseAttack) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_MEDITATE, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Qulbutoké augmente!");
+            MESSAGE("Attaque de Qulbutoké augmente!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);

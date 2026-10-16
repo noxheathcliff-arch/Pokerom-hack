@@ -95,7 +95,7 @@ SINGLE_BATTLE_TEST("Liquid Ooze causes Strength Sap users to lose HP instead of 
         MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Tentacool ennemi baisse!");
+        MESSAGE("Attaque de Tentacool ennemi baisse!");
         ABILITY_POPUP(opponent, ABILITY_LIQUID_OOZE);
         HP_BAR(player, captureDamage: &lostHp);
         MESSAGE("Qulbutoké aspire le suintement!");

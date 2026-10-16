@@ -112,16 +112,16 @@ DOUBLE_BATTLE_TEST("Magic Bounce bounces back moves hitting both foes at two foe
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LEER, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Défense du Okéoké ennemi baisse!");
+        MESSAGE("Défense de Okéoké ennemi baisse!");
 
         ABILITY_POPUP(opponentLeft, ABILITY_MAGIC_BOUNCE);
         MESSAGE("La capacité Groz'Yeux de Abra a été renvoyée!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LEER, opponentLeft);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Défense du Abra baisse!");
+        MESSAGE("Défense de Abra baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Défense du Kadabra baisse!");
+        MESSAGE("Défense de Kadabra baisse!");
     }
 }
 
@@ -143,14 +143,14 @@ DOUBLE_BATTLE_TEST("Magic Bounce activates on all opposing mons")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LEER, opponentLeft);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Défense du Abra baisse!");
+        MESSAGE("Défense de Abra baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Défense du Kadabra baisse!");
+        MESSAGE("Défense de Kadabra baisse!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Défense du Abra baisse!");
+        MESSAGE("Défense de Abra baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Défense du Kadabra baisse!");
+        MESSAGE("Défense de Kadabra baisse!");
     }
 }
 

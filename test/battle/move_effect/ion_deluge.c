@@ -41,8 +41,8 @@ WILD_BATTLE_TEST("Ion Deluge works the same way as always when used by a mon wit
         NONE_OF {
             ABILITY_POPUP(opponent, ability);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque Spéciale du Wild Zéblitz augmente!");
-            MESSAGE("Ah, Vitesse du Wild Zéblitz augmente!");
+            MESSAGE("Attaque Spéciale de Wild Zéblitz augmente!");
+            MESSAGE("Vitesse de Wild Zéblitz augmente!");
         }
         MESSAGE("Un déluge de plasma s'abat sur le terrain!");
     }

@@ -271,8 +271,14 @@ CF_P1_Ask::
 
 @ Pikachu bolts away from the ring and slams into the rock at 18,59; Red runs to it.
 CF_P1_PikachuChoice::
+	turnobject LOCALID_CF_R104_CELEO, DIR_SOUTH
+	turnobject LOCALID_CF_R104_MARCO, DIR_SOUTH
 	call CFP_P1_RingFlare
 	applymovement LOCALID_CF_R104_PIKACHU, CFP_Mov_PikaBolt
+	@ Everyone's eyes follow Pikachu as it shoots east toward the rock.
+	turnobject LOCALID_CF_R104_CELEO, DIR_EAST
+	turnobject LOCALID_CF_R104_MARCO, DIR_EAST
+	turnobject LOCALID_PLAYER, DIR_EAST
 	waitmovement LOCALID_CF_R104_PIKACHU
 	playse SE_M_STRENGTH
 	call CFP_Shake
@@ -297,7 +303,7 @@ CF_P1_PikachuChoice::
 	call CFP_P1_RingCloses
 	applymovement LOCALID_PLAYER, CFP_Mov_RedBackFromRock
 	waitmovement LOCALID_PLAYER
-	turnobject LOCALID_CF_R104_CELEO, DIR_SOUTH
+	call CFP_P1_ToCeleo
 	cfp_say CF_N0_Celeo, CF_T_021
 	setdecision_once 1, DEC_A, CF_P1_Common
 	setbits VAR_CF_WORLD, 14, 2, 1

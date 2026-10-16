@@ -231,7 +231,7 @@ DOUBLE_BATTLE_TEST("Aromatherapy will be blocked on ally by Sap Sipper but not u
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_SAP_SIPPER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Marill augmente!");
+        MESSAGE("Attaque de Marill augmente!");
     } THEN {
         EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
     }

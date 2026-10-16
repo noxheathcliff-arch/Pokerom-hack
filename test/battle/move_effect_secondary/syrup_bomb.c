@@ -22,14 +22,14 @@ SINGLE_BATTLE_TEST("Syrup Bomb covers the foe in sticky syrup for 3 turns")
         HP_BAR(opponent);
         MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+            MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -47,7 +47,7 @@ SINGLE_BATTLE_TEST("Sticky Syrup isn't applied again if the target is already co
         HP_BAR(opponent);
         MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
         NOT MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
@@ -97,7 +97,7 @@ SINGLE_BATTLE_TEST("Sticky Syrup speed reduction is prevented by Clear Body, Whi
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
             MESSAGE("Les stats de Terhal ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("Ah, Vitesse du Terhal ennemi baisse!");
+                MESSAGE("Vitesse de Terhal ennemi baisse!");
             }
         }
         else if (species == SPECIES_TORKOAL)
@@ -107,7 +107,7 @@ SINGLE_BATTLE_TEST("Sticky Syrup speed reduction is prevented by Clear Body, Whi
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
             MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("Ah, Vitesse du Chartor ennemi baisse!");
+                MESSAGE("Vitesse de Chartor ennemi baisse!");
             }
         }
         else if (species == SPECIES_SOLGALEO)
@@ -117,7 +117,7 @@ SINGLE_BATTLE_TEST("Sticky Syrup speed reduction is prevented by Clear Body, Whi
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
             MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("Ah, Vitesse du Solgaleo ennemi baisse!");
+                MESSAGE("Vitesse de Solgaleo ennemi baisse!");
             }
         }
     }
@@ -137,7 +137,7 @@ SINGLE_BATTLE_TEST("Sticky Syrup speed reduction is prevented by Clear Amulet")
         MESSAGE("L'effet de Talisman Sain tenu par Qulbutoké ennemi empêche ses stats de baisser!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+            MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -165,7 +165,7 @@ SINGLE_BATTLE_TEST("Sticky syrup will not decrease speed further then minus six"
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
         MESSAGE("Vitesse de Qulbutoké ennemi ne peut plus baisser!");
         NONE_OF {
-            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+            MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -184,10 +184,10 @@ SINGLE_BATTLE_TEST("Sticky Syrup is removed when the user switches out")
         HP_BAR(opponent);
         MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+            MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -213,7 +213,7 @@ SINGLE_BATTLE_TEST("Sticky Syrup is removed when the user faints")
         SEND_IN_MESSAGE("Okéoké");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+            MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
         }
     }
 }

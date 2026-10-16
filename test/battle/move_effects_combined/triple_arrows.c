@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Triple Arrows may lower Defense by one stage")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRIPLE_ARROWS, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
+        MESSAGE("Défense de Qulbutoké ennemi baisse!");
     }
 }
 
@@ -76,7 +76,7 @@ SINGLE_BATTLE_TEST("Triple Arrows can lower Defense and cause flinch at the time
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRIPLE_ARROWS, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
+        MESSAGE("Défense de Qulbutoké ennemi baisse!");
         MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
     }
 }

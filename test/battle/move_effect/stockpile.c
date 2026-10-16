@@ -184,8 +184,8 @@ SINGLE_BATTLE_TEST("Stockpile temporarily raises Def and Sp. Def", s16 dmgPyhsic
         if (move == MOVE_STOCKPILE) {
             MESSAGE("Qulbutoké utilise la capacité Stockage 1 fois!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Défense du Qulbutoké augmente!");
-            MESSAGE("Ah, Défense Spéciale du Qulbutoké augmente!");
+            MESSAGE("Défense de Qulbutoké augmente!");
+            MESSAGE("Défense Spéciale de Qulbutoké augmente!");
         }
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
@@ -240,23 +240,23 @@ DOUBLE_BATTLE_TEST("Stockpile's Def and Sp. Def boost is lost after using Spit U
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         if (count == 1) {
-            MESSAGE("Ah, Défense du Qulbutoké baisse!");
+            MESSAGE("Défense de Qulbutoké baisse!");
         }
         else if (count == 2) {
-            MESSAGE("Ah, Défense du Qulbutoké baisse beaucoup!");
+            MESSAGE("Défense de Qulbutoké baisse beaucoup!");
         }
         else {
-            MESSAGE("Ah, Défense du Qulbutoké baisse énormément!");
+            MESSAGE("Défense de Qulbutoké baisse énormément!");
         }
 
         if (count == 1) {
-            MESSAGE("Ah, Défense Spéciale du Qulbutoké baisse!");
+            MESSAGE("Défense Spéciale de Qulbutoké baisse!");
         }
         else if (count == 2) {
-            MESSAGE("Ah, Défense Spéciale du Qulbutoké baisse beaucoup!");
+            MESSAGE("Défense Spéciale de Qulbutoké baisse beaucoup!");
         }
         else {
-            MESSAGE("Ah, Défense Spéciale du Qulbutoké baisse énormément!");
+            MESSAGE("Défense Spéciale de Qulbutoké baisse énormément!");
         }
         MESSAGE("Les effets accumulés par Qulbutoké se dissipent!");
 

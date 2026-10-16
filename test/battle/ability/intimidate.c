@@ -23,7 +23,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after switch ou
         {
             ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Qulbutoké baisse!");
+            MESSAGE("Attaque de Qulbutoké baisse!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -49,7 +49,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after KO", s16 
         {
             ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Qulbutoké baisse!");
+            MESSAGE("Attaque de Qulbutoké baisse!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -92,15 +92,15 @@ DOUBLE_BATTLE_TEST("Intimidate doesn't activate on an empty field in a double ba
         // Intimidate activates after all battlers have been brought out
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Ah, Attaque du Arbok ennemi baisse!");
+        MESSAGE("Attaque de Arbok ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Attaque du Okéoké ennemi baisse!");
+        MESSAGE("Attaque de Okéoké ennemi baisse!");
 
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Abo baisse!");
+        MESSAGE("Attaque de Abo baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Abra baisse!");
+        MESSAGE("Attaque de Abra baisse!");
     }
 }
 
@@ -123,7 +123,7 @@ SINGLE_BATTLE_TEST("Intimidate and Eject Button don't force the opponent to Atta
         MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
         MESSAGE("2 envoie\nun Kapoera!");
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
-        MESSAGE("Ah, Attaque du Qulbutoké baisse!");
+        MESSAGE("Attaque de Qulbutoké baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
             MESSAGE("Kapoera ennemi utilise\nGriffe!");
@@ -161,10 +161,10 @@ DOUBLE_BATTLE_TEST("Intimidate activates on an empty slot")
         SEND_IN_MESSAGE("Kapoera");
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         NONE_OF {
-            MESSAGE("Ah, Attaque du Tarsal ennemi baisse!");
+            MESSAGE("Attaque de Tarsal ennemi baisse!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Attaque du Azurill ennemi baisse!");
+        MESSAGE("Attaque de Azurill ennemi baisse!");
     }
 }
 
@@ -209,7 +209,7 @@ SINGLE_BATTLE_TEST("Intimidate can not further lower opponents Atk stat if it is
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Qulbutoké baisse!");
+            MESSAGE("Attaque de Qulbutoké baisse!");
         }
         MESSAGE("Attaque de Qulbutoké ne peut plus baisser!");
     } THEN {

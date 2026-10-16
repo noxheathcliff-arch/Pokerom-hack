@@ -16,9 +16,9 @@ SINGLE_BATTLE_TEST("Spicy Extract raises target's Attack by 2 stages and lowers 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPICY_EXTRACT, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Qulbutoké ennemi augmente beaucoup!");
+        MESSAGE("Attaque de Qulbutoké ennemi augmente beaucoup!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Qulbutoké ennemi baisse beaucoup!");
+        MESSAGE("Défense de Qulbutoké ennemi baisse beaucoup!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
         EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 2);
@@ -73,10 +73,10 @@ SINGLE_BATTLE_TEST("Spicy Extract Defense loss is prevented by Big Pecks")
         MESSAGE("Qulbutoké utilise\nHabanerage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPICY_EXTRACT, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Roucool ennemi augmente beaucoup!");
+        MESSAGE("Attaque de Roucool ennemi augmente beaucoup!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse beaucoup!");
+            MESSAGE("Défense de Qulbutoké ennemi baisse beaucoup!");
         }
         ABILITY_POPUP(opponent, ABILITY_BIG_PECKS);
         MESSAGE("Défense de Roucool ennemi ne baisse pas!");
@@ -96,9 +96,9 @@ SINGLE_BATTLE_TEST("Spicy Extract bypasses accuracy checks")
         NOT MESSAGE("Qulbutoké ennemi évite l'attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPICY_EXTRACT, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Qulbutoké ennemi augmente beaucoup!");
+        MESSAGE("Attaque de Qulbutoké ennemi augmente beaucoup!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Qulbutoké ennemi baisse beaucoup!");
+        MESSAGE("Défense de Qulbutoké ennemi baisse beaucoup!");
     }
 }
 
@@ -130,10 +130,10 @@ SINGLE_BATTLE_TEST("Spicy Extract stat changes will be inverted by Contrary")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPICY_EXTRACT, player);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Vipélierre ennemi baisse beaucoup!");
+        MESSAGE("Attaque de Vipélierre ennemi baisse beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Vipélierre ennemi augmente beaucoup!");
+        MESSAGE("Défense de Vipélierre ennemi augmente beaucoup!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 2);
         EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 2);
@@ -152,11 +152,11 @@ SINGLE_BATTLE_TEST("Spicy Extract against Clear Amulet and Contrary raises Defen
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPICY_EXTRACT, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Vipélierre ennemi baisse beaucoup!");
+            MESSAGE("Attaque de Vipélierre ennemi baisse beaucoup!");
         }
         MESSAGE("L'effet de Talisman Sain tenu par Vipélierre ennemi empêche ses stats de baisser!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Défense du Vipélierre ennemi augmente beaucoup!");
+        MESSAGE("Défense de Vipélierre ennemi augmente beaucoup!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 2);

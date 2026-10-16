@@ -21,35 +21,35 @@ DOUBLE_BATTLE_TEST("Defiant sharply raises player's Attack after Intimidate")
         //1st mon Intimidate
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Férosinge baisse!");
+        MESSAGE("Attaque de Férosinge baisse!");
         if (abilityLeft == ABILITY_DEFIANT) {
             ABILITY_POPUP(playerLeft, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+            MESSAGE("Attaque de Férosinge augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Colossinge baisse!");
+        MESSAGE("Attaque de Colossinge baisse!");
         if (abilityRight == ABILITY_DEFIANT) {
             ABILITY_POPUP(playerRight, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Ah, Attaque du Colossinge augmente beaucoup!");
+            MESSAGE("Attaque de Colossinge augmente beaucoup!");
         }
 
         //2nd mon Intimidate
         ABILITY_POPUP(opponentRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Férosinge baisse!");
+        MESSAGE("Attaque de Férosinge baisse!");
         if (abilityLeft == ABILITY_DEFIANT) {
             ABILITY_POPUP(playerLeft, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+            MESSAGE("Attaque de Férosinge augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Colossinge baisse!");
+        MESSAGE("Attaque de Colossinge baisse!");
         if (abilityRight == ABILITY_DEFIANT) {
             ABILITY_POPUP(playerRight, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Ah, Attaque du Colossinge augmente beaucoup!");
+            MESSAGE("Attaque de Colossinge augmente beaucoup!");
         }
     } THEN {
         // -2 from Intimidates and +4 from Defiants gets +2 total
@@ -79,35 +79,35 @@ DOUBLE_BATTLE_TEST("Defiant sharply raises opponent's Attack after Intimidate")
         //1st mon Intimidate
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Ah, Attaque du Férosinge ennemi baisse!");
+        MESSAGE("Attaque de Férosinge ennemi baisse!");
         if (abilityLeft == ABILITY_DEFIANT) {
             ABILITY_POPUP(opponentLeft, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque du Férosinge ennemi augmente beaucoup!");
+            MESSAGE("Attaque de Férosinge ennemi augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Attaque du Colossinge ennemi baisse!");
+        MESSAGE("Attaque de Colossinge ennemi baisse!");
         if (abilityRight == ABILITY_DEFIANT) {
             ABILITY_POPUP(opponentRight, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Ah, Attaque du Colossinge ennemi augmente beaucoup!");
+            MESSAGE("Attaque de Colossinge ennemi augmente beaucoup!");
         }
 
         //2nd mon Intimidate
         ABILITY_POPUP(playerRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Ah, Attaque du Férosinge ennemi baisse!");
+        MESSAGE("Attaque de Férosinge ennemi baisse!");
         if (abilityLeft == ABILITY_DEFIANT) {
             ABILITY_POPUP(opponentLeft, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque du Férosinge ennemi augmente beaucoup!");
+            MESSAGE("Attaque de Férosinge ennemi augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Attaque du Colossinge ennemi baisse!");
+        MESSAGE("Attaque de Colossinge ennemi baisse!");
         if (abilityRight == ABILITY_DEFIANT) {
             ABILITY_POPUP(opponentRight, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Ah, Attaque du Colossinge ennemi augmente beaucoup!");
+            MESSAGE("Attaque de Colossinge ennemi augmente beaucoup!");
         }
     } THEN {
         // -2 from Intimidates and +4 from Defiants gets +2 total
@@ -131,11 +131,11 @@ SINGLE_BATTLE_TEST("Defiant activates after Sticky Web lowers Speed")
         SEND_IN_MESSAGE("Férosinge");
         MESSAGE("Férosinge est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Férosinge baisse!");
+        MESSAGE("Vitesse de Férosinge baisse!");
         // Defiant activates
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
     }
 }
 
@@ -159,20 +159,20 @@ SINGLE_BATTLE_TEST("Defiant doesn't activate after Sticky Web lowers Speed if Co
         SEND_IN_MESSAGE("Férosinge");
         MESSAGE("Férosinge est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Férosinge baisse!");
+        MESSAGE("Vitesse de Férosinge baisse!");
         // Defiant doesn't activate
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+            MESSAGE("Attaque de Férosinge augmente beaucoup!");
         }
         // Defiant triggers correctly after Sticky Web
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge baisse!");
+        MESSAGE("Attaque de Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
     }
 }
 
@@ -196,17 +196,17 @@ SINGLE_BATTLE_TEST("Defiant activates after Sticky Web lowers Speed if Court Cha
         SEND_IN_MESSAGE("Férosinge");
         MESSAGE("Férosinge est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Férosinge baisse!");
+        MESSAGE("Vitesse de Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
         // Defiant triggers correctly after Sticky Web
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge baisse!");
+        MESSAGE("Attaque de Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
     }
 }
 
@@ -224,19 +224,19 @@ DOUBLE_BATTLE_TEST("Defiant is activated by Cotton Down for non-ally Pokémon")
         ABILITY_POPUP(opponentLeft, ABILITY_COTTON_DOWN);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Vitesse du Férosinge ennemi baisse!");
+        MESSAGE("Vitesse de Férosinge ennemi baisse!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Vitesse du Férosinge baisse!");
+        MESSAGE("Vitesse de Férosinge baisse!");
         ABILITY_POPUP(playerLeft, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Vitesse du Férosinge baisse!");
+        MESSAGE("Vitesse de Férosinge baisse!");
         ABILITY_POPUP(playerRight, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(playerRight->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
@@ -361,7 +361,7 @@ SINGLE_BATTLE_TEST("Defiant activates before White Herb")
 
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
 
         if (move == MOVE_LEER) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
@@ -393,15 +393,15 @@ SINGLE_BATTLE_TEST("Defiant activates for each stat that is lowered")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TICKLE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge baisse!");
+        MESSAGE("Attaque de Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Férosinge baisse!");
+        MESSAGE("Défense de Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge augmente beaucoup!");
 
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 3);
@@ -433,7 +433,7 @@ SINGLE_BATTLE_TEST("Defiant doesn't activate if the Pokémon lowers it's own sta
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+            MESSAGE("Attaque de Férosinge augmente beaucoup!");
         }
     } THEN {
         if (move == MOVE_SUPERPOWER)
@@ -480,17 +480,17 @@ SINGLE_BATTLE_TEST("Defiant doesn't display ability popup when already at Maximu
         // Maxed Attack
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TICKLE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge baisse!");
+        MESSAGE("Attaque de Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Férosinge augmente!");
+        MESSAGE("Attaque de Férosinge augmente!");
         // Maxed Attack
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Férosinge baisse!");
+        MESSAGE("Défense de Férosinge baisse!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
+            MESSAGE("Attaque de Férosinge augmente beaucoup!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], MAX_STAT_STAGE);

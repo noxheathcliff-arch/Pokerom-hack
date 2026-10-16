@@ -105,8 +105,8 @@ SINGLE_BATTLE_TEST("Stellar-type Tera Blast lowers both offensive stats")
         MESSAGE("Qulbutoké utilise\nTéra Explosion!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TERA_BLAST, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké baisse!");
-        MESSAGE("Ah, Attaque Spéciale du Qulbutoké baisse!");
+        MESSAGE("Attaque de Qulbutoké baisse!");
+        MESSAGE("Attaque Spéciale de Qulbutoké baisse!");
     }
 }
 

@@ -67,8 +67,8 @@ SINGLE_BATTLE_TEST("Weak Armor does not trigger when brought in by Dragon Tail a
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Défense du Limagma baisse!");
-            MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
+            MESSAGE("Défense de Limagma baisse!");
+            MESSAGE("Vitesse de Limagma augmente beaucoup!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE);
@@ -97,14 +97,14 @@ SINGLE_BATTLE_TEST("Weak Armor still boosts Speed if Defense can't go any lower"
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Défense du Limagma baisse!");
+            MESSAGE("Défense de Limagma baisse!");
         }
         MESSAGE("Défense de Limagma ne peut plus baisser!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         if (gen == GEN_6)
-            MESSAGE("Ah, Vitesse du Limagma augmente!");
+            MESSAGE("Vitesse de Limagma augmente!");
         else
-            MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
+            MESSAGE("Vitesse de Limagma augmente beaucoup!");
 
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], MIN_STAT_STAGE);
@@ -127,10 +127,10 @@ SINGLE_BATTLE_TEST("Weak Armor still lowers Defense if Speed can't go any higher
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Limagma baisse!");
+        MESSAGE("Défense de Limagma baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
+            MESSAGE("Vitesse de Limagma augmente beaucoup!");
         }
         MESSAGE("Vitesse de Limagma ne peut plus augmenter!");
     } THEN {
@@ -155,13 +155,13 @@ SINGLE_BATTLE_TEST("Weak Armor doesn't interrupt multi hit moves if Defense can'
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
             ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-            MESSAGE("Ah, Défense du Volcaropod baisse!");
-            MESSAGE("Ah, Vitesse du Volcaropod augmente beaucoup!");
+            MESSAGE("Défense de Volcaropod baisse!");
+            MESSAGE("Vitesse de Volcaropod augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         MESSAGE("Défense de Volcaropod ne peut plus baisser!");
-        MESSAGE("Ah, Vitesse du Volcaropod augmente beaucoup!");
+        MESSAGE("Vitesse de Volcaropod augmente beaucoup!");
         for (j = 0; j < 2; j++)
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
@@ -192,13 +192,13 @@ SINGLE_BATTLE_TEST("Weak Armor doesn't interrupt multi hit moves if Speed can't 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-        MESSAGE("Ah, Défense du Volcaropod baisse!");
-        MESSAGE("Ah, Vitesse du Volcaropod augmente beaucoup!");
+        MESSAGE("Défense de Volcaropod baisse!");
+        MESSAGE("Vitesse de Volcaropod augmente beaucoup!");
         for (j = 0; j < 4; j++)
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
             ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-            MESSAGE("Ah, Défense du Volcaropod baisse!");
+            MESSAGE("Défense de Volcaropod baisse!");
             MESSAGE("Vitesse de Volcaropod ne peut plus augmenter!");
         }
     } THEN {

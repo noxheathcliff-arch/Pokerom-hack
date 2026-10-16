@@ -20,10 +20,10 @@ SINGLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a single battle",
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         if (ability == ABILITY_CONTRARY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
+            MESSAGE("Attaque de Spinda ennemi augmente!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Spinda ennemi baisse!");
+            MESSAGE("Attaque de Spinda ennemi baisse!");
         }
         HP_BAR(player, captureDamage: &results[i].damage);
     } THEN {
@@ -53,17 +53,17 @@ DOUBLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a double battle",
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         if (abilityLeft == ABILITY_CONTRARY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
+            MESSAGE("Attaque de Spinda ennemi augmente!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque du Spinda ennemi baisse!");
+            MESSAGE("Attaque de Spinda ennemi baisse!");
         }
         if (abilityRight == ABILITY_CONTRARY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
+            MESSAGE("Attaque de Spinda ennemi augmente!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Ah, Attaque du Spinda ennemi baisse!");
+            MESSAGE("Attaque de Spinda ennemi baisse!");
         }
         HP_BAR(playerLeft, captureDamage: &results[i].damageLeft);
         HP_BAR(playerRight, captureDamage: &results[i].damageRight);
@@ -95,11 +95,11 @@ SINGLE_BATTLE_TEST("Contrary raises stats after using a move which would normall
         if (ability == ABILITY_CONTRARY) {
             // ABILITY_POPUP(opponent, ABILITY_CONTRARY);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque Spéciale du Spinda ennemi augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Spinda ennemi augmente beaucoup!");
         }
         else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque Spéciale du Spinda ennemi baisse beaucoup!");
+            MESSAGE("Attaque Spéciale de Spinda ennemi baisse beaucoup!");
         }
 
         // MESSAGE("Spinda ennemi utilise\nSurchauffe!");
@@ -107,11 +107,11 @@ SINGLE_BATTLE_TEST("Contrary raises stats after using a move which would normall
         if (ability == ABILITY_CONTRARY) {
             // ABILITY_POPUP(opponent, ABILITY_CONTRARY);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque Spéciale du Spinda ennemi augmente beaucoup!");
+            MESSAGE("Attaque Spéciale de Spinda ennemi augmente beaucoup!");
         }
         else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque Spéciale du Spinda ennemi baisse beaucoup!");
+            MESSAGE("Attaque Spéciale de Spinda ennemi baisse beaucoup!");
         }
     }
     FINALLY {
@@ -141,11 +141,11 @@ SINGLE_BATTLE_TEST("Contrary lowers a stat after using a move which would normal
         if (ability == ABILITY_CONTRARY) {
             // ABILITY_POPUP(opponent, ABILITY_CONTRARY);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Spinda ennemi baisse beaucoup!");
+            MESSAGE("Attaque de Spinda ennemi baisse beaucoup!");
         }
         else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Spinda ennemi augmente beaucoup!");
+            MESSAGE("Attaque de Spinda ennemi augmente beaucoup!");
         }
 
         // MESSAGE("Spinda ennemi utilise\nGriffe!");
@@ -173,11 +173,11 @@ SINGLE_BATTLE_TEST("Contrary raises a stat after using a move which would normal
         if (ability == ABILITY_CONTRARY) {
             // ABILITY_POPUP(opponent, ABILITY_CONTRARY);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
+            MESSAGE("Attaque de Spinda ennemi augmente!");
         }
         else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Spinda ennemi baisse!");
+            MESSAGE("Attaque de Spinda ennemi baisse!");
         }
 
         MESSAGE("Spinda ennemi utilise\nGriffe!");
@@ -238,7 +238,7 @@ SINGLE_BATTLE_TEST("Sticky Web raises Speed by 1 for Contrary mon on switch-in")
         MESSAGE("2 envoie\nun Vipélierre!");
         MESSAGE("Vipélierre ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Vipélierre ennemi augmente!");
+        MESSAGE("Vitesse de Vipélierre ennemi augmente!");
     }
 }
 

@@ -47,7 +47,7 @@ DOUBLE_BATTLE_TEST("Stalwart stops Lightning Rod and Storm Drain from redirectin
             NONE_OF {
                 ABILITY_POPUP(opponentLeft, ability);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-                MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
+                MESSAGE("Attaque Spéciale de Raichu ennemi augmente!");
             }
         } else {
             NONE_OF {

@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Sticky Web lowers Speed by 1 on switch-in")
         MESSAGE("2 envoie\nun Okéoké!");
         MESSAGE("Okéoké ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
+        MESSAGE("Vitesse de Okéoké ennemi baisse!");
     }
 }
 
@@ -68,10 +68,10 @@ DOUBLE_BATTLE_TEST("Sticky Web lowers Speed by 1 in a double battle after Explos
         MESSAGE("2 envoie\nun Alakazam!");
         MESSAGE("Alakazam ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Vitesse du Alakazam ennemi baisse!");
+        MESSAGE("Vitesse de Alakazam ennemi baisse!");
         MESSAGE("Okéoké ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
+        MESSAGE("Vitesse de Okéoké ennemi baisse!");
     }
 }
 
@@ -91,7 +91,7 @@ SINGLE_BATTLE_TEST("Sticky Web raises Speed by 1 for a Pokemon with Contrary")
         MESSAGE("2 envoie\nun Caratroc!");
         MESSAGE("Caratroc ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Caratroc ennemi augmente!");
+        MESSAGE("Vitesse de Caratroc ennemi augmente!");
     }
 }
 
@@ -129,12 +129,12 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - the 
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, BATTLER_OPPONENT);
         if (opponentSetUpper == 0) {
-            MESSAGE("Ah, Vitesse du Chenipan ennemi baisse!");
+            MESSAGE("Vitesse de Chenipan ennemi baisse!");
             NONE_OF {
                 MESSAGE("Chenipan ennemi est pris dans une toile gluante!");
             }
         } else {
-            MESSAGE("Ah, Vitesse du Aspicot ennemi baisse!");
+            MESSAGE("Vitesse de Aspicot ennemi baisse!");
             NONE_OF {
                 MESSAGE("Aspicot ennemi est pris dans une toile gluante!");
             }
@@ -301,6 +301,6 @@ DOUBLE_BATTLE_TEST("Sticky Web setter has their speed lowered with Mirror Armor 
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         // sticky web setter - caterpie (now opponentRight) gets speed lowered
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Ah, Vitesse du Chenipan ennemi baisse!");
+        MESSAGE("Vitesse de Chenipan ennemi baisse!");
     }
 }

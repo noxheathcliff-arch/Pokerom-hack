@@ -74,9 +74,9 @@ SINGLE_BATTLE_TEST("Supersweet Syrup can not further lower opponents evasion if 
         ABILITY_POPUP(opponent, ABILITY_SUPERSWEET_SYRUP);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, esquive du Mystherbe baisse!");
+            MESSAGE("Esquive de Mystherbe baisse!");
         }
-        MESSAGE("esquive de Mystherbe ne peut plus baisser!");
+        MESSAGE("Esquive de Mystherbe ne peut plus baisser!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_EVASION], MIN_STAT_STAGE);
     }

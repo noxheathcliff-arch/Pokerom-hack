@@ -32,7 +32,7 @@ SINGLE_BATTLE_TEST("Flatter on a foe with Own Tempo prevents confusion, changes 
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
         MESSAGE("Ramoloss ennemi ne peut pas être rendu confus!");
-        MESSAGE("Ah, Défense du Ramoloss ennemi augmente!");
+        MESSAGE("Défense de Ramoloss ennemi augmente!");
     }
 }
 

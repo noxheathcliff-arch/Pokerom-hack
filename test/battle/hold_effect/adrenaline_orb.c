@@ -16,10 +16,10 @@ SINGLE_BATTLE_TEST("Adrenaline Orb raises Speed by one stage if Intimidated")
     } SCENE {
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
+        MESSAGE("Attaque de Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Qulbutoké ennemi augmente!");
+        MESSAGE("Vitesse de Qulbutoké ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(opponent->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
@@ -36,10 +36,10 @@ SINGLE_BATTLE_TEST("Adrenaline Orb drops speed by one stage if user has Contrary
     } SCENE {
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
+        MESSAGE("Attaque de Spinda ennemi augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Spinda ennemi baisse!");
+        MESSAGE("Vitesse de Spinda ennemi baisse!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
         EXPECT_EQ(opponent->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
@@ -58,9 +58,9 @@ SINGLE_BATTLE_TEST("Adrenaline Orb activates after Defiant")
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
         ABILITY_POPUP(opponent, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Attaque du Férosinge ennemi augmente beaucoup!");
+        MESSAGE("Attaque de Férosinge ennemi augmente beaucoup!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Férosinge ennemi augmente!");
+        MESSAGE("Vitesse de Férosinge ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
         EXPECT_EQ(opponent->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);

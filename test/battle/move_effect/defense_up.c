@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Harden raises Defense by 1 stage", s16 damage)
         if (raiseDefense) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_HARDEN, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Défense du Qulbutoké augmente!");
+            MESSAGE("Défense de Qulbutoké augmente!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &results[i].damage);

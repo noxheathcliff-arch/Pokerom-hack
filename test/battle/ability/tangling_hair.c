@@ -26,7 +26,7 @@ SINGLE_BATTLE_TEST("Tangling Hair drops opposing mon's speed if ability user got
         if (move == MOVE_SCRATCH) {
             ABILITY_POPUP(player, ABILITY_TANGLING_HAIR);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
+            MESSAGE("Vitesse de Okéoké ennemi baisse!");
         }
     }
 }
@@ -43,7 +43,7 @@ SINGLE_BATTLE_TEST("Tangling Hair does not cause Rocky Helmet miss activation")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ABILITY_POPUP(player, ABILITY_TANGLING_HAIR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
+        MESSAGE("Vitesse de Okéoké ennemi baisse!");
         MESSAGE("Okéoké ennemi est blessé par Casque Brut de Triopikeur!");
     }
 }
@@ -59,9 +59,9 @@ SINGLE_BATTLE_TEST("Tangling Hair Speed stat drop triggers defiant and keeps ori
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ABILITY_POPUP(player, ABILITY_TANGLING_HAIR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Ah, Vitesse du Scalpion ennemi baisse!");
+        MESSAGE("Vitesse de Scalpion ennemi baisse!");
         ABILITY_POPUP(opponent, ABILITY_DEFIANT);
-        MESSAGE("Ah, Attaque du Scalpion ennemi augmente beaucoup!");
+        MESSAGE("Attaque de Scalpion ennemi augmente beaucoup!");
         MESSAGE("Scalpion ennemi est blessé par Casque Brut de Triopikeur!");
     }
 }

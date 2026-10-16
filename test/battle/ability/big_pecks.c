@@ -27,7 +27,7 @@ SINGLE_BATTLE_TEST("Big Pecks is ignored by Mold Breaker")
         ABILITY_POPUP(player, ABILITY_MOLD_BREAKER);
         MESSAGE("Scarabrute brise le moule!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LEER, player);
-        MESSAGE("Ah, Défense du Roucool ennemi baisse!");
+        MESSAGE("Défense de Roucool ennemi baisse!");
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_BIG_PECKS);
             MESSAGE("Défense de Roucool ennemi ne baisse pas!");
@@ -46,8 +46,8 @@ SINGLE_BATTLE_TEST("Big Pecks doesn't prevent Defense stage reduction from moves
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUPERPOWER, opponent);
-        MESSAGE("Ah, Attaque du Roucool ennemi baisse!");
-        MESSAGE("Ah, Défense du Roucool ennemi baisse!");
+        MESSAGE("Attaque de Roucool ennemi baisse!");
+        MESSAGE("Défense de Roucool ennemi baisse!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 1);
     }
@@ -64,7 +64,7 @@ SINGLE_BATTLE_TEST("Big Pecks doesn't prevent Topsy-Turvy")
         TURN { MOVE(opponent, MOVE_HARDEN); MOVE(player, MOVE_TOPSY_TURVY); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HARDEN, opponent);
-        MESSAGE("Ah, Défense du Roucool ennemi augmente!");
+        MESSAGE("Défense de Roucool ennemi augmente!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOPSY_TURVY, player);
         MESSAGE("Les changements de stats de Roucool ennemi sont inversés!");
     } THEN {
@@ -85,7 +85,7 @@ SINGLE_BATTLE_TEST("Big Pecks doesn't prevent Spectral Thief from resetting posi
         TURN { MOVE(opponent, MOVE_HARDEN); MOVE(player, MOVE_SPECTRAL_THIEF); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HARDEN, opponent);
-        MESSAGE("Ah, Défense du Roucool ennemi augmente!");
+        MESSAGE("Défense de Roucool ennemi augmente!");
         MESSAGE("Qulbutoké vole les augmentations de stats!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPECTRAL_THIEF, player);
     } THEN {

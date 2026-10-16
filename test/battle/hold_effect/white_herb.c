@@ -112,10 +112,10 @@ SINGLE_BATTLE_TEST("White Herb restores stats after all hits of a multi hit move
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DUAL_WINGBEAT, player);
         ABILITY_POPUP(opponent, ability);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
         ABILITY_POPUP(opponent, ability);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         MESSAGE("Herbe Blanche fait revenir Qulbutoké à la normale.");
     } THEN {
@@ -142,8 +142,8 @@ SINGLE_BATTLE_TEST("White Herb wont have time to activate if it is knocked off o
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Limagma baisse!");
-        MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
+        MESSAGE("Défense de Limagma baisse!");
+        MESSAGE("Vitesse de Limagma augmente beaucoup!");
         if (move == MOVE_KNOCK_OFF) {
             MESSAGE("Qulbutoké ennemi fait tomber Herbe Blanche de Limagma!");
         } else if (move == MOVE_THIEF) {
@@ -170,8 +170,8 @@ SINGLE_BATTLE_TEST("White Herb wont have time to activate if Magician steals it"
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Limagma baisse!");
-        MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
+        MESSAGE("Défense de Limagma baisse!");
+        MESSAGE("Vitesse de Limagma augmente beaucoup!");
         ABILITY_POPUP(opponent, ABILITY_MAGICIAN);
         MESSAGE("Feunnec ennemi vole Herbe Blanche de Limagma!");
         NONE_OF {

@@ -368,6 +368,26 @@ CF_D027_Fin::
 | Route 116 (caché) | `ITEM_BLACK_GLASSES` | `ITEM_CALM_MINT` |
 | Tunnel Mérazon | `ITEM_POKE_BALL` | `ITEM_TIMID_MINT` |
 
+### CF-24. Textes de variation de stats en français naturel
+- **Avant :** « Ah, Attaque du PIKACHU augmente! » (article « du » faux devant un surnom, « Ah, » parasite).
+- **Après :** `STRINGID_STATROSE` / `STRINGID_STATFELL` = « {B_BUFF1} de {B_SCR_NAME_WITH_PREFIX} augmente/baisse{B_BUFF2}! », `gText_DefendersStatRose` idem avec `{B_DEF_NAME_WITH_PREFIX}`, `gText_PkmnsXPreventsSwitching` « du » → « de » (`src/battle_message.c`). `sText_Accuracy` / `sText_Evasiveness` capitalisés (« Précision », « Esquive ») comme les autres noms de stats, car ils ouvrent désormais la phrase.
+- Tests : les 108 fichiers de `test/` qui attendent ces textes suivent (« X de … », Précision/Esquive en tête).
+
+### CF-25. Intro des combats de dresseurs, classe « SBIRE ROCKET »
+- `sText_Trainer1WantsToBattle` = « {B_TRAINER1_NAME_WITH_CLASS}\nveut se battre! », `sText_TwoTrainersWantToBattle` = « X et\nY\lveulent se battre! » (au lieu de « Un combat est lancé par … ») ; `test/battle/battle_message.c` suit.
+- `gTrainerClasses[TRAINER_CLASS_TEAM_ROCKET_FRLG]` : « TEAM ROCKET » → « ROCKET » (`src/battle_main.c`). `IsTrainerIdToSwap` inverse classe et nom pour cette classe : l'intro affiche « SBIRE ROCKET » (nom de dresseur « SBIRE ») au lieu de « SBIRE TEAM ROCKET ».
+
+### CF-26. « DURÉE JEU »
+- `gText_TrainerCardTime`, `gText_SavingTime` (`src/strings.c`) et `gText_ContinueMenuTime` (`src/main_menu.c`) : « DUREE JEU » → « DURÉE JEU » (É = 0x06 dans `charmap.txt`, même largeur que E : 51 px).
+
+### CF-27. Brice suiveur : pas de proposition de soin si l'équipe va bien
+- Special `CF_PartyNeedsHeal` (`src/confluence.c`, `data/specials.inc`) : `VAR_RESULT` = TRUE si un Pokémon (hors œuf) a perdu des PV, a un statut ou a dépensé des PP (`CalculatePPWithBonus`).
+- `CF_Brice_FollowerTalk` (`data/scripts/cf_brice_follower.inc`) : si FALSE, Brice dit « Tout le monde est en pleine forme. On continue ? » sans Oui/Non ni soin.
+
+### CF-28. Anciennes sauvegardes : script de Brice suiveur restauré
+- **Symptôme :** une sauvegarde faite avant le branchement de `CF_Brice_FollowerTalk` garde `NPCfollower.script = NULL` (SaveBlock3) : parler à Brice ne fait rien.
+- **Correctif :** `CF_RepairFollowerNPCScript` (`src/confluence.c`), appelé en tête de `CreateFollowerNPCAvatar` (`src/follower_npc.c`, au chargement de chaque carte) : si un suiveur existe, que son script est NULL et que son sprite est `OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL` (Brice, seul suiveur PNJ du hack), le script redevient `CF_Brice_FollowerTalk`. Aucun autre champ ni format de sauvegarde modifié.
+
 ## Tests (`make check`)
 
 Commande : `make check -j4 ROMTEST=/opt/mgba-tools/bin/mgba-rom-test ROMTESTHYDRA=/opt/mgba-tools/bin/mgba-rom-test-hydra` (log : `/home/user/check_engine.log`).
@@ -384,4 +404,4 @@ Historique : un passage intermédiaire avait 4 échecs (3 tests d'EXP upstream c
 
 ## Fichiers touchés (résumé)
 
-`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,overworld,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`. CF-13 à CF-19 : `include/confluence.h`, `src/{confluence,main_menu,wild_encounter,battle_main,battle_util,battle_script_commands,battle_message,shop,strings}.c`, `test/hack_engine.c`, `test/battle/{exp,hack_exp}.c`. CF-20 à CF-23 : `Makefile`, `src/{confluence,trainer_card}.c`, `src/data/credits.h`, `data/maps/{Route104,PetalburgWoods,Route116,RusturfTunnel}/map.json`, `test/hack_engine.c`.
+`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,overworld,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`. CF-13 à CF-19 : `include/confluence.h`, `src/{confluence,main_menu,wild_encounter,battle_main,battle_util,battle_script_commands,battle_message,shop,strings}.c`, `test/hack_engine.c`, `test/battle/{exp,hack_exp}.c`. CF-20 à CF-23 : `Makefile`, `src/{confluence,trainer_card}.c`, `src/data/credits.h`, `data/maps/{Route104,PetalburgWoods,Route116,RusturfTunnel}/map.json`, `test/hack_engine.c`. CF-24 à CF-28 : `include/confluence.h`, `src/{battle_message,battle_main,confluence,follower_npc,main_menu,strings}.c`, `data/specials.inc`, `data/scripts/cf_brice_follower.inc`, `test/battle/**` (textes attendus).

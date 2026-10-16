@@ -148,13 +148,13 @@ SINGLE_BATTLE_TEST("B_X_ITEMS_BUFF only boost battler by one stage prior to gen 
     } SCENE {
         if (genConfig == GEN_6)
         {
-            MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-            NOT MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
+            MESSAGE("Attaque de Qulbutoké augmente!");
+            NOT MESSAGE("Attaque de Qulbutoké augmente beaucoup!");
         }
         else
         {
-            NOT MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-            MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
+            NOT MESSAGE("Attaque de Qulbutoké augmente!");
+            MESSAGE("Attaque de Qulbutoké augmente beaucoup!");
         }
         MESSAGE("Qulbutoké utilise\nGriffe!");
         HP_BAR(opponent, captureDamage: &results[i].damage);

@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Charm lowers Attack by 2 stages", s16 damage)
         if (lowerAttack) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CHARM, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse beaucoup!");
+            MESSAGE("Attaque de Qulbutoké ennemi baisse beaucoup!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &results[i].damage);

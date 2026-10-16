@@ -81,7 +81,7 @@ SINGLE_BATTLE_TEST("Starting Sticky Web lowers Speed on entry")
     } SCENE {
         MESSAGE("2 envoie\nun Okéoké!");
         MESSAGE("Okéoké ennemi est pris dans une toile gluante!");
-        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
+        MESSAGE("Vitesse de Okéoké ennemi baisse!");
     } THEN {
         ResetStartingStatuses();
     }
@@ -211,7 +211,7 @@ SINGLE_BATTLE_TEST("Starting Sticky Web lowers Speed on player's entry")
     } SCENE {
         MESSAGE("Okéoké! Go!");
         MESSAGE("Okéoké est pris dans une toile gluante!");
-        MESSAGE("Ah, Vitesse du Okéoké baisse!");
+        MESSAGE("Vitesse de Okéoké baisse!");
     } THEN {
         ResetStartingStatuses();
     }

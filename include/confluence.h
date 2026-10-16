@@ -51,6 +51,9 @@ void CF_ClearRingOutbreak(void);
 bool32 CF_LedgerGet(u32 index);
 void CF_LedgerSet(u32 index, bool32 value);
 
+// CF-28: old saves, gives Brice's NPC follower its talk script back (follower_npc.c).
+void CF_RepairFollowerNPCScript(void);
+
 // Specials
 void CF_GetBits(void);
 void CF_SetBits(void);
@@ -66,5 +69,6 @@ void CF_StepAwayDir(void);
 void CF_RevealFollowerNPC(void);
 void CF_FaceEachOther(void);
 void CF_FollowerSideDir(void);
+void CF_PartyNeedsHeal(void);
 
 #endif // GUARD_CONFLUENCE_H

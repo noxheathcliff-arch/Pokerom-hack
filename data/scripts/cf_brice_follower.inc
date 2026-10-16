@@ -5,6 +5,8 @@ CF_Brice_FollowerTalk::
 	lock
 	faceplayer
 	setspeaker CF_N1_Brice
+	special CF_PartyNeedsHeal
+	goto_if_eq VAR_RESULT, FALSE, CF_Brice_FollowerAllFine
 	msgbox CF_Brice_T_HealAsk, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CF_Brice_FollowerNo
 	closemessage
@@ -23,6 +25,11 @@ CF_Brice_FollowerNo::
 	release
 	end
 
+CF_Brice_FollowerAllFine::
+	msgbox CF_Brice_T_AllFine, MSGBOX_DEFAULT
+	release
+	end
+
 CF_Brice_T_HealAsk::
 	.string "Tes Pokémon ont l’air crevés.\n"
 	.string "On souffle un peu ?$"
@@ -33,3 +40,7 @@ CF_Brice_T_HealDone::
 
 CF_Brice_T_HealNo::
 	.string "Ça marche. Dis-moi si ça change.$"
+
+CF_Brice_T_AllFine::
+	.string "Tout le monde est en pleine\n"
+	.string "forme. On continue ?$"

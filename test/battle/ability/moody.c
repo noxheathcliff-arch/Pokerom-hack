@@ -19,7 +19,7 @@ SINGLE_BATTLE_TEST("Moody randomly raises the user's Attack, Defense, Sp. Atk, S
     } SCENE {
         ABILITY_POPUP(player, ABILITY_MOODY);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Octillery augmente beaucoup!");
+        MESSAGE("Attaque de Octillery augmente beaucoup!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
@@ -45,7 +45,7 @@ SINGLE_BATTLE_TEST("Moody randomly lowers the user's Attack, Defense, Sp. Atk, S
         ABILITY_POPUP(player, ABILITY_MOODY);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Octillery baisse!");
+        MESSAGE("Attaque de Octillery baisse!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
     }

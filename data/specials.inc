@@ -658,3 +658,4 @@ gSpecials::
 	def_special CF_RevealFollowerNPC
 	def_special CF_FaceEachOther
 	def_special CF_FollowerSideDir
+	def_special CF_PartyNeedsHeal

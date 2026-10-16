@@ -21,12 +21,12 @@ SINGLE_BATTLE_TEST("Storm Drain absorbs Water-type moves and increases the Sp. A
             };
             ABILITY_POPUP(opponent, ABILITY_STORM_DRAIN);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque Spéciale du Tritosor ennemi augmente!");
+            MESSAGE("Attaque Spéciale de Tritosor ennemi augmente!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(opponent, ABILITY_STORM_DRAIN);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-                MESSAGE("Ah, Attaque Spéciale du Tritosor ennemi augmente!");
+                MESSAGE("Attaque Spéciale de Tritosor ennemi augmente!");
             };
             ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, player);
             HP_BAR(opponent);
@@ -62,10 +62,10 @@ DOUBLE_BATTLE_TEST("Storm Drain forces single-target Water-type moves to target 
             };
             ABILITY_POPUP(opponentLeft, ABILITY_STORM_DRAIN);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque Spéciale du Tritosor ennemi augmente!");
+            MESSAGE("Attaque Spéciale de Tritosor ennemi augmente!");
             ABILITY_POPUP(opponentLeft, ABILITY_STORM_DRAIN);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Ah, Attaque Spéciale du Tritosor ennemi augmente!");
+            MESSAGE("Attaque Spéciale de Tritosor ennemi augmente!");
         } else {
             NONE_OF {
                 HP_BAR(opponentRight);

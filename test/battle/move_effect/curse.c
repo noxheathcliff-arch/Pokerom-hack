@@ -16,10 +16,10 @@ SINGLE_BATTLE_TEST("Curse lowers Speed, raises Attack, and raises Defense when u
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CURSE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-        MESSAGE("Ah, Défense du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
+        MESSAGE("Défense de Qulbutoké augmente!");
     }
 }
 
@@ -87,10 +87,10 @@ SINGLE_BATTLE_TEST("Curse lowering stats is not prevented by Mist")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIST, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CURSE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
+        MESSAGE("Vitesse de Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
-        MESSAGE("Ah, Défense du Qulbutoké augmente!");
+        MESSAGE("Attaque de Qulbutoké augmente!");
+        MESSAGE("Défense de Qulbutoké augmente!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);

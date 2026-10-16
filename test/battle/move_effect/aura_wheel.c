@@ -26,7 +26,7 @@ SINGLE_BATTLE_TEST("Aura Wheel raises Speed; fails if the user is not Morpeko")
         else {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_AURA_WHEEL, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Ah, Vitesse du Morpeko augmente!");
+            MESSAGE("Vitesse de Morpeko augmente!");
         }
     }
 }

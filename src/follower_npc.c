@@ -6,6 +6,7 @@
 #include "battle_setup.h"
 #include "battle_tower.h"
 #include "bike.h"
+#include "confluence.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -1319,6 +1320,8 @@ void CreateFollowerNPCAvatar(void)
 {
     if (!PlayerHasFollowerNPC())
         return;
+
+    CF_RepairFollowerNPCScript(); // Hack: CF-28
 
     struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];
     struct ObjectEventTemplate clone =

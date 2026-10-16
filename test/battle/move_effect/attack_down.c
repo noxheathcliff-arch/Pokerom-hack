@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Growl lowers Attack by 1 stage", s16 damage)
         if (lowerAttack) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
+            MESSAGE("Attaque de Qulbutoké ennemi baisse!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &results[i].damage);

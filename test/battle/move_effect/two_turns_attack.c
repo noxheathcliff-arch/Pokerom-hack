@@ -117,7 +117,7 @@ SINGLE_BATTLE_TEST("Skull Bash needs a charging turn")
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Qulbutoké augmente!");
+        MESSAGE("Défense de Qulbutoké augmente!");
         // Attack turn
         MESSAGE("Qulbutoké utilise\nCoud'Krâne!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
@@ -143,7 +143,7 @@ SINGLE_BATTLE_TEST("Skull Bash doesn't need to charge with Power Herb")
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Défense du Qulbutoké augmente!");
+        MESSAGE("Défense de Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         MESSAGE("Qulbutoké est complètement chargé grâce à Herbe Pouvoir!");
         if (B_UPDATED_MOVE_DATA < GEN_5)
@@ -433,7 +433,7 @@ SINGLE_BATTLE_TEST("Electro Shot needs a charging Turn")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRO_SHOT, player);
         MESSAGE("Qulbutoké absorbe de l'électricité!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque Spéciale du Qulbutoké augmente!");
+        MESSAGE("Attaque Spéciale de Qulbutoké augmente!");
         // Attack turn
         MESSAGE("Qulbutoké utilise\nFulgurayon!");
         HP_BAR(opponent);
@@ -455,7 +455,7 @@ SINGLE_BATTLE_TEST("Electro Shot doesn't need to charge when it's raining")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRO_SHOT, player);
         MESSAGE("Qulbutoké absorbe de l'électricité!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque Spéciale du Qulbutoké augmente!");
+        MESSAGE("Attaque Spéciale de Qulbutoké augmente!");
         NONE_OF {
             MESSAGE("Qulbutoké utilise\nFulgurayon!");
         }
@@ -494,7 +494,7 @@ SINGLE_BATTLE_TEST("Electro Shot doesn't need to charge with Power Herb")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRO_SHOT, player);
         MESSAGE("Qulbutoké absorbe de l'électricité!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Ah, Attaque Spéciale du Qulbutoké augmente!");
+        MESSAGE("Attaque Spéciale de Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         MESSAGE("Qulbutoké est complètement chargé grâce à Herbe Pouvoir!");
         NONE_OF {
