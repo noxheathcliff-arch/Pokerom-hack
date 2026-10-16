@@ -722,8 +722,8 @@ PetalburgCity_Text_AreYouRookieTrainer:
 	.string "Les autres partent… on ne sait où.\p"
 	.string "Pour passer un barrage, il te faut\n"
 	.string "une accréditation : leur insigne.\p"
-	.string "Si tu viens de Kanto, je serais toi,\n"
-	.string "je ne traînerais pas devant.$"
+	.string "Les nouveaux visages, Norman les\n"
+	.string "remarque. Je ne traînerais pas devant.$"
 
 PetalburgCity_Text_ThisIsPetalburgGym:
 	.string "Tu vois ? C’est l’ancienne Arène\n"

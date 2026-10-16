@@ -1688,7 +1688,20 @@ CF_C8_Pierre::
 	faceplayer
 	setspeaker CF_N1_Pierre
 	goto_if_set FLAG_BADGE01_GET, CF_C8_PierreDuel
-	msgbox CF1_T_091, MSGBOX_DEFAULT
+	getbits VAR_CF_ECO, 2, 2
+	goto_if_eq VAR_RESULT, ECO_RESTAURE, CF_C8_PierreWaitR
+	goto_if_eq VAR_RESULT, ECO_MIXTE, CF_C8_PierreWaitM
+	msgbox CF1_T_164, MSGBOX_DEFAULT
+	release
+	end
+
+CF_C8_PierreWaitR::
+	msgbox CF1_T_162, MSGBOX_DEFAULT
+	release
+	end
+
+CF_C8_PierreWaitM::
+	msgbox CF1_T_163, MSGBOX_DEFAULT
 	release
 	end
 
@@ -1702,7 +1715,20 @@ CF_C8_PierreDuel5::
 	trainerbattle_single TRAINER_VALERIE_5, CF1_T_104, CF1_T_105
 CF_C8_PierreAfter::
 	setspeaker CF_N1_Pierre
+	getbits VAR_CF_ECO, 2, 2
+	goto_if_eq VAR_RESULT, ECO_RESTAURE, CF_C8_PierreAfterR
+	goto_if_eq VAR_RESULT, ECO_MIXTE, CF_C8_PierreAfterM
+	msgbox CF1_T_166, MSGBOX_DEFAULT
+	release
+	end
+
+CF_C8_PierreAfterR::
 	msgbox CF1_T_106, MSGBOX_DEFAULT
+	release
+	end
+
+CF_C8_PierreAfterM::
+	msgbox CF1_T_165, MSGBOX_DEFAULT
 	release
 	end
 
@@ -2368,10 +2394,12 @@ CF1_T_003::
 CF1_T_004::
 	.string "Red. Le Rempart a une règle :\n"
 	.string "ici, rien ne passe sans contrôle.\p"
-	.string "Cette Arène est notre QG. Mes\n"
-	.string "brigadiers tiennent les barrages.\p"
-	.string "Couvre-feu au crépuscule. Chaque\n"
-	.string "arrivant est capturé, recensé…\p"
+	.string "Cette Arène est le QG de la Brigade\n"
+	.string "du Rempart. Mes brigadiers tiennent\p"
+	.string "les barrages. Couvre-feu au\n"
+	.string "crépuscule.\p"
+	.string "Chaque Pokémon tombé d’un anneau\n"
+	.string "est capturé, recensé…\p"
 	.string "… et abattu s’il est dangereux.\n"
 	.string "La règle est la règle.$"
 
@@ -2705,17 +2733,19 @@ CF1_T_089::
 	.string "Des données, pas des cris !\p"
 	.string "… Attendez. Vous êtes Red ?\n"
 	.string "Le Maître de la Ligue de Kanto ?\p"
-	.string "Je montre vos combats à mes\n"
-	.string "élèves. Vous tombez à pic.$"
+	.string "Vous tombez à pic.$"
 
 CF1_T_090::
 	.string "Doucement, tout le monde. Red ?\n"
 	.string "C’est bien toi ?\p"
 	.string "Pierre, d’Argenta. Ton premier\n"
 	.string "badge, c’est chez moi que tu l’as eu.\p"
+	.string "Roxanne et moi, on se connaît :\n"
+	.string "deux Champions de type Roche.\p"
 	.string "Devon m’a fait venir pour ses\n"
-	.string "fossiles ranimés. Puis les ports\p"
-	.string "ont fermé. Me voilà coincé ici.$"
+	.string "fossiles ranimés.\p"
+	.string "Puis les ports ont fermé. Me\n"
+	.string "voilà coincé ici.$"
 
 CF1_T_091::
 	.string "Ces Charbi ne sont pas méchants.\n"
@@ -2757,9 +2787,9 @@ CF1_T_100::
 	.string "On verra bien ce qui revient.$"
 
 CF1_T_101::
-	.string "Passez à mon Arène. Vous êtes\n"
-	.string "Maître à Kanto, pas ici.\p"
-	.string "Mes élèves veulent voir ça.\n"
+	.string "Passez ensuite à mon Arène. Vous\n"
+	.string "êtes Maître à Kanto, pas ici.\p"
+	.string "Je veux vous voir combattre.\n"
 	.string "Et moi, je veux des données.$"
 
 CF1_T_102::
@@ -2991,3 +3021,32 @@ CF1_T_160::
 CF1_T_161::
 	.string "La suite arrive bientôt. Votre\n"
 	.string "partie va être sauvegardée.$"
+
+CF1_T_162::
+	.string "Les Charbi sont à l’abri. Va voir\n"
+	.string "Roxanne d’abord, Red.\p"
+	.string "Après, on reparle d’Argenta.\n"
+	.string "Je ne bouge pas d’ici.$"
+
+CF1_T_163::
+	.string "Roxanne balise la galerie. Je garde\n"
+	.string "un œil sur les Charbi en attendant.\p"
+	.string "Va chercher ton badge. Moi, je reste\n"
+	.string "coincé ici. Je ne bouge pas.$"
+
+CF1_T_164::
+	.string "Les Charbi sont partis. Et moi,\n"
+	.string "je reste coincé ici.\p"
+	.string "Va voir Roxanne. Je ne bouge pas.$"
+
+CF1_T_165::
+	.string "Les Charbi suivent les balises de\n"
+	.string "Roxanne. Je garde un œil sur eux.\p"
+	.string "Et tant que les ports sont fermés,\n"
+	.string "Devon me paie à attendre.$"
+
+CF1_T_166::
+	.string "La galerie est vide, maintenant.\n"
+	.string "Plus rien à protéger, ici.\p"
+	.string "Et tant que les ports sont fermés,\n"
+	.string "Devon me paie à attendre.$"

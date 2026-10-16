@@ -105,8 +105,8 @@ RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "Hé, attends… Red ? Le Maître de\n"
 	.string "Kanto, ici, à Mérouville ?\p"
 	.string "Je conseille les dresseurs qui\n"
-	.string "viennent défier l’Arène. D’habitude,\p"
-	.string "des gamins avec un seul Pokémon.\n"
+	.string "viennent défier l’Arène.\p"
+	.string "D’habitude, ce sont des gamins.\n"
 	.string "Mais un conseil, ça ne se refuse pas.\p"
 	.string "Roxanne utilise des Pokémon de\n"
 	.string "type Roche.\p"
@@ -127,8 +127,8 @@ RustboroCity_Gym_Text_GymGuidePostVictory:
 RustboroCity_Gym_Text_JoshIntro:
 	.string "Le Maître de Kanto dans notre\n"
 	.string "Arène ? Je n’y crois pas !\p"
-	.string "Tant pis. Je ne vais pas te\n"
-	.string "laisser passer sans rien dire !$"
+	.string "Mais je ne vais pas te laisser\n"
+	.string "passer sans me battre !$"
 
 RustboroCity_Gym_Text_JoshDefeat:
 	.string "Comme à la télé…\n"
@@ -171,10 +171,8 @@ RustboroCity_Gym_Text_MarcPostBattle:
 RustboroCity_Gym_Text_RoxanneIntro:
 	.string "{PLAYER}. Vous êtes venu.\n"
 	.string "Bienvenue à l’Arène de Mérouville.\p"
-	.string "J’ai étudié vos combats de la\n"
-	.string "Ligue de Kanto. Mes élèves aussi.\p"
-	.string "Vous êtes Maître là-bas. Ici, vous\n"
-	.string "êtes un dresseur comme un autre.\p"
+	.string "Depuis la mine, je n’attends\n"
+	.string "que ça. Mes notes sont prêtes.\p"
 	.string "Notez bien : je ne vous ferai\n"
 	.string "aucun cadeau. Montrez-moi tout !$"
 
@@ -182,10 +180,10 @@ RustboroCity_Gym_Text_RoxanneDefeat:
 	.string "… Voilà qui est instructif.\p"
 	.string "Mes notes ne disaient pas tout.\n"
 	.string "Il va falloir les réécrire.\p"
-	.string "Les règles de la Ligue Pokémon sont\n"
-	.string "claires, Maître ou non.\p"
-	.string "Voici le Badge Roche officiel.\n"
-	.string "Vous l’avez mérité.$"
+	.string "Le règlement est clair : Maître\n"
+	.string "de Kanto ou non, le badge se gagne.\p"
+	.string "Et vous l’avez gagné. Voici le\n"
+	.string "Badge Roche officiel.$"
 
 RustboroCity_Gym_Text_ReceivedStoneBadge:
 	.string "{PLAYER} reçoit le Badge Roche\n"

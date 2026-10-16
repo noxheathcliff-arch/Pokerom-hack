@@ -9,10 +9,10 @@ gText_PutItemInPocket::
     .string "POCHE {STR_VAR_3}.$"
 
 gText_PlayerFoundOneItem::
-    .string "{PLAYER} trouve {STR_VAR_2}!$"
+    .string "{PLAYER} trouve {STR_VAR_2} !$"
 
 gText_TooBadBagIsFull::
-    .string "Dommage!\n"
+    .string "Dommage !\n"
     .string "Le SAC est plein.$"
 
 gText_PlayerPutItemInBag::
@@ -23,7 +23,7 @@ gText_ObtainedTheDecor::
     .string "Obtenu : {STR_VAR_2} !$"
 
 gText_NoRoomLeftForAnother::
-    .string "Dommage! Il n'y a plus assez de place\n"
+    .string "Dommage ! Il n’y a plus assez de place\n"
     .string "pour {STR_VAR_2}…$"
 
 gText_TheDecorWasTransferredToThePC::
@@ -42,16 +42,16 @@ gText_PutCoinsAwayInCoinCase::
 
 gText_FoundXCoins::
 	.string "{PLAYER} trouve\n"
-	.string "{STR_VAR_1} {STR_VAR_2}!$"
+	.string "{STR_VAR_1} {STR_VAR_2} !$"
 
 gText_FoundXItems::
 	.string "{PLAYER} a trouvé\n"
 	.string "{STR_VAR_1} {STR_VAR_2}(s)$"
 
 gText_CoinCaseIsFull::
-	.string "Dommage!\n"
+	.string "Dommage !\n"
 	.string "La BOITE JETONS est pleine.$"
 
 gText_NothingToPutThemIn::
-	.string "Dommage!\n"
-	.string "Il n'y a rien pour les ranger.$"
+	.string "Dommage !\n"
+	.string "Il n’y a rien pour les ranger.$"
