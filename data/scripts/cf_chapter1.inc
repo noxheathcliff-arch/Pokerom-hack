@@ -264,6 +264,7 @@ CF_Wall_R115::
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
+	cf_face LOCALID_CF_RUST_BRIGADIER
 	cf_say CF_N1_Agent, CF1_T_002
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CF_Mov_Down1
@@ -1193,11 +1194,7 @@ CF_C6_Pose::
 	goto CF_C6_Common
 
 CF_C6_Decline::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement 0
 	cf_say CF_N1_President, CF1_T_073
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
 	setdecision_once 11, DEC_B, CF_C6_Common
 	subaffinity VAR_CF_REP_C, 3
 	addaffinity VAR_CF_REP_P, 2
@@ -1926,7 +1923,7 @@ CF_C10_Warn::
 	clearflag FLAG_CF_VIS_20
 	addobject LOCALID_CF_R116_FLORA
 	cf_move LOCALID_CF_R116_FLORA, CF1_M_C10_FloraIn
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+	cf_face LOCALID_CF_R116_FLORA
 	cf_if_dec 8, DEC_A, CF_C10_FloraA
 	cf_say CF_N1_Flora, CF1_T_133
 	goto CF_C10_Warn2
