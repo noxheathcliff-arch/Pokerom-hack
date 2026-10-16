@@ -297,6 +297,15 @@ CF_D027_Fin::
 - **Texte** (`data/text/trainers.inc`) : intro et revanche de Calvin se terminent par « Alors, tu relèves mon défi? » (cohérent avec le combat refusable).
 - **Carte** : panneau (métatuile 0x003, collision) en (16, 52) à Mérouville pour l’affiche de C4 ; Ferrand en `OBJ_EVENT_GFX_SCIENTIST_2` (Devon 2F, R116).
 
+### CF-13. Correctifs QA, round 2 (2026-10-16)
+- **`CF_FaceEachOther`** (`src/confluence.c`, special) : tourne l’un vers l’autre les objets de local id `VAR_0x8000` et `VAR_0x8001` (axe dominant, vertical en cas d’égalité ; objets invisibles ignorés). Macros `cf_talk a, b` et `cf_face id` (= `cf_talk LOCALID_PLAYER, id`) dans `cf_chapter1.inc` ; elles écrasent `VAR_0x8000`–`0x8001`. Utilisées avant chaque réplique où le locuteur et Red ne se faisaient pas face (prologue, C4, C6, C10, mur R115, Ciléo à Clémenti).
+- **`CF_FollowerSideDir`** (special) : `VAR_RESULT` = `DIR_WEST`/`DIR_EAST` si Brice (suiveur PNJ) est juste sous Red et peut faire un pas de côté sur une case libre, `DIR_NONE` sinon. Brice s’écarte avant une émote pour que la bulle ne recouvre pas la tête de Red.
+- **Pokémon en cage (R116, C10)** : `OBJ_EVENT_GFX_CF_CAGED_PIKACHU/EEVEE/RATTATA` (32×32, `graphics/object_events/pics/misc/cf_caged.png`, généré par `tools/qa/make_cf_caged.py`), palette `OBJ_EVENT_PAL_TAG_CF_CAGE` = 0x1170 (inscrite dans `sObjectEventSpritePalettes`, `src/event_object_movement.c`). Objets `LOCALID_CF_R116_CAGE_1–3` (VIS_46).
+- **Clochette** : `ITEM_CLOCHETTE` = 874, objet rare (poche OBJ. RARES) remis au prologue.
+- **Nom de poche** (`src/data/script_menu.h`) : `STDSTRING_KEYITEMS` = « OBJ. RARES », comme l’étiquette du sac (remplace « OBJETS CLÉS » de CF-12).
+- **Tunnel Mérazon** (`data/maps/RusturfTunnel/map.json`) : météo `WEATHER_NONE` (le brouillard horizontal délavait tout l’écran).
+- Fichiers : `src/confluence.c`, `include/confluence.h`, `data/specials.inc`, `include/constants/event_objects.h`, `src/data/object_events/{object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `src/event_object_movement.c` (1 ligne : palette).
+
 ## Tests (`make check`)
 
 Commande : `make check -j4 ROMTEST=/opt/mgba-tools/bin/mgba-rom-test ROMTESTHYDRA=/opt/mgba-tools/bin/mgba-rom-test-hydra` (log : `/home/user/check_engine.log`).
