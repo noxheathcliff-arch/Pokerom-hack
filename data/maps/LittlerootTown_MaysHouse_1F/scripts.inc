@@ -329,32 +329,30 @@ RivalsHouse_1F_Text_OhYoureTheNewNeighbor:
 	.string "Tu devrais aller voir à l'étage.$"
 
 RivalsHouse_1F_Text_LikeChildLikeFather:
-	.string "Les chiens ne font pas des chats.\p"
-	.string "Mon mari est aussi passionné de\n"
-	.string "POKéMON que l'est notre enfant.\p"
-	.string "S'il n'est pas dans son LABO, il est\n"
-	.string "quelque part dans l'herbe à fouiller.$"
+	.string "Tu cherches quelqu’un? Les Seko,\n"
+	.string "c’est la maison d’à côté.\p"
+	.string "Ici, on n’héberge pas d’étrangers.\n"
+	.string "Rien de personnel.$"
 
 RivalsHouse_1F_Text_TooBusyToNoticeVisit:
-	.string "{RIVAL}!\p"
-	.string "Je suppose que notre enfant s'occupe\n"
-	.string "de ses POKéMON et n'a pas le temps\l"
-	.string "de discuter avec toi, {PLAYER}{KUN}.$"
+	.string "Chut! Le petit devrait dormir.\n"
+	.string "Il fait des cauchemars, depuis.\p"
+	.string "Si tu veux parler, parle tout bas.\n"
+	.string "Ou mieux: ne parle pas.$"
 
 RivalsHouse_1F_Text_WentOutToRoute103:
-	.string "Oh, {RIVAL} doit être sur la ROUTE 103.\p"
-	.string "Ça doit venir de son père.\n"
-	.string "{RIVAL} ne tient pas en place non plus.$"
+	.string "Hé! On frappe avant d’entrer!\n"
+	.string "Tu te crois chez les Seko?\p"
+	.string "Mon mari fait la ronde avec la brigade.\n"
+	.string "Si tu cherches des ennuis, attends-le.\p"
+	.string "… Bon. Tu as l’air épuisé. Mais\n"
+	.string "tu ressors. Tout de suite.$"
 
 RivalsHouse_1F_Text_ShouldGoHomeEverySoOften:
-	.string "Je trouve ça merveilleux de voyager\n"
-	.string "avec des POKéMON.\p"
-	.string "Mais tu devrais revenir à la maison de\n"
-	.string "temps en temps pour éviter que ta\l"
-	.string "maman ne s'inquiète.\p"
-	.string "Elle n'en parle peut-être pas, mais je\n"
-	.string "suis sûre qu'elle se fait du souci\l"
-	.string "pour toi, {PLAYER}{KUN}.$"
+	.string "Encore toi? Cette maison n’est pas\n"
+	.string "un Centre Pokémon.\p"
+	.string "Les Seko te logent, pas nous.\n"
+	.string "Ferme bien la porte en sortant.$"
 
 RivalsHouse_1F_Text_MayWhoAreYou:
 	.string "Hein?\n"
@@ -403,6 +401,7 @@ RivalsHouse_1F_Text_BrendanWhoAreYou:
 	.string "A très bientôt, OK?$"
 
 RivalsHouse_1F_Text_DoYouHavePokemon:
-	.string "Salut, toi!\p"
-	.string "Est-ce que tu as déjà des\n"
-	.string "POKéMON à toi?$"
+	.string "T’es l’arrivant? T’as pas l’air\n"
+	.string "méchant. T’as des Pokémon?\p"
+	.string "Maman dit que ceux de Kanto mordent.\n"
+	.string "Les Pokémon ou les gens, je sais plus.$"

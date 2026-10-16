@@ -962,12 +962,12 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "Le pouvoir de la science est incroyable!$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "Le PROF. SEKO passe des journées\n"
-	.string "entières dans son LABO à étudier et\l"
-	.string "tout d'un coup, il part faire des\l"
-	.string "recherches dans la nature…\p"
-	.string "Mais quand est-ce que le PROF. SEKO\n"
-	.string "arrive à passer du temps chez lui?$"
+	.string "Le Prof. Seko ne dort plus depuis\n"
+	.string "l’histoire des anneaux.\p"
+	.string "Son labo est devenu une infirmerie.\n"
+	.string "Il y a même un Pikachu blessé, dedans.\p"
+	.string "Un Pokémon de Kanto, paraît-il.\n"
+	.string "Pauvre bête. Elle n’a rien demandé.$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Hum, hum!\p"
@@ -989,12 +989,16 @@ LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "qui se passe?$"
 
 LittlerootTown_Text_YouSavedBirch:
-	.string "Tu as sauvé le PROF. SEKO! Je t'en suis\n"
-	.string "très reconnaissante!$"
+	.string "C’est toi, l’étranger qui dort chez\n"
+	.string "les Seko? Toute la ville en parle.\p"
+	.string "Brice raconte que tu es tombé du ciel.\n"
+	.string "Brice raconte beaucoup de choses.\p"
+	.string "Moi, je trouve que tu ne parles pas\n"
+	.string "assez pour quelqu’un d’honnête.$"
 
 LittlerootTown_Text_GoodLuckCatchingPokemon:
-	.string "Tu vas attraper des POKéMON?\n"
-	.string "Bonne chance!$"
+	.string "Tu t’en vas? Bon débarras.\n"
+	.string "… Pardon. C’est maman qui dit ça.$"
 
 LittlerootTown_Text_TownSign:
 	.string "BOURG-EN-VOL\n"

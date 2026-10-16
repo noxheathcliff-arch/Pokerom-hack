@@ -269,43 +269,44 @@ RustboroCity_DevonCorp_2F_EventScript_WorkOnNext::
 	end
 
 RustboroCity_DevonCorp_2F_Text_DeviceForTalkingToPokemon:
-	.string "Nous développons un appareil\n"
-	.string "permettant de communiquer avec\l"
-	.string "les POKéMON.\p"
-	.string "Mais ce n'est pas encore au point…$"
+	.string "On développait un appareil pour\n"
+	.string "parler aux Pokémon.\p"
+	.string "Projet gelé. On m’a demandé de\n"
+	.string "l’adapter aux arrivants.\p"
+	.string "Pour les comprendre… ou pour mieux\n"
+	.string "les piéger. On ne m’a pas dit.$"
 
 RustboroCity_DevonCorp_2F_Text_DevelopingNewBalls:
-	.string "Je mets au point de nouvelles sortes de\n"
-	.string "POKé BALLS…\p"
-	.string "Mais je n'ai pas trop progressé…$"
+	.string "Je travaille sur une Ball capable\n"
+	.string "de retenir un arrivant.\p"
+	.string "Ils brisent les modèles classiques.\n"
+	.string "Comme s’ils venaient… d’ailleurs.$"
 
 RustboroCity_DevonCorp_2F_Text_WeFinallyMadeNewBalls:
-	.string "Nous avons élaboré de nouvelles\n"
-	.string "POKé BALLS!\p"
-	.string "La BIS BALL permet d'attraper plus\n"
-	.string "facilement un type de POKéMON que\l"
-	.string "tu as déjà capturé.\p"
-	.string "La CHRONO BALL est plus efficace\n"
-	.string "si le combat dure longtemps.\p"
-	.string "Toutes deux sont fièrement produites\n"
-	.string "par DEVON.\p"
-	.string "Il faut les essayer!$"
+	.string "On a mis au point de nouvelles\n"
+	.string "Poké Balls. Plus solides.\p"
+	.string "La commande vient du Rempart.\n"
+	.string "Des milliers d’exemplaires.\p"
+	.string "Pour capturer, officiellement.\n"
+	.string "Je préfère ne pas savoir le reste.$"
 
 RustboroCity_DevonCorp_2F_Text_IMadePokenav:
-	.string "J'ai inventé le POKéNAV!\p"
-	.string "En tant qu'ingénieur, je suis enchanté\n"
-	.string "d'avoir créé un appareil si génial!$"
+	.string "J’ai conçu une partie du réseau\n"
+	.string "de la Passerelle.\p"
+	.string "J’en étais fier. Le monde en une\n"
+	.string "seconde, tu te rends compte?\p"
+	.string "Maintenant, je regarde le ciel et\n"
+	.string "je me demande ce qu’on a ouvert.$"
 
 RustboroCity_DevonCorp_2F_Text_WowThatsAPokenav:
-	.string "Oh, waouh!\n"
-	.string "C'est un POKéNAV!\p"
-	.string "Il a été conçu pour répondre au souhait\n"
-	.string "de notre DIRECTEUR. Il voulait mieux\l"
-	.string "connaître les POKéMON.\p"
-	.string "Veux-tu que je te décrive précisément\n"
-	.string "ses caractéristiques?\p"
-	.string "Et puis non. Tu t'en rendras vite compte\n"
-	.string "rien qu'en l'essayant, de toute façon.$"
+	.string "Tu es dans l’aile réseau de la\n"
+	.string "Passerelle. Ne touche à rien.\p"
+	.string "Sylphe fournit le Cœur, Devon\n"
+	.string "le réseau. C’est mon équipe, ici.\p"
+	.string "Les relevés grimpent chaque fois\n"
+	.string "qu’un anneau s’ouvre. Chaque fois.\p"
+	.string "Ça ne prouve rien, d’accord?\n"
+	.string "Officiellement, ça ne prouve rien.$"
 
 RustboroCity_DevonCorp_2F_Text_DeviceToVisualizePokemonDreams:
 	.string "J'essaie de mettre au point un appareil\n"
@@ -369,15 +370,16 @@ RustboroCity_DevonCorp_2F_Text_TooManyPokemon:
 	.string "You have no room for this one.$"
 
 RustboroCity_DevonCorp_2F_Text_DevelopNewPokenavFeature:
-	.string "J'essaie de développer une nouvelle\n"
-	.string "fonction pour le POKéNAV…\p"
-	.string "Mais ce n'est pas très concluant…$"
+	.string "Devon est fermé au public.\n"
+	.string "Tu n’as rien à faire ici.\p"
+	.string "… Qui t’a laissé monter?\n"
+	.string "Va-t’en avant que je prévienne.$"
 
 RustboroCity_DevonCorp_2F_Text_WhatToWorkOnNext:
-	.string "Bon, sur quoi est-ce que je vais bien\n"
-	.string "pouvoir travailler maintenant?\p"
-	.string "Cette compagnie nous permet de\n"
-	.string "travailler sur ce que l'on souhaite.\p"
-	.string "Un ingénieur ne pourrait pas rêver\n"
-	.string "de meilleur environnement.$"
+	.string "On m’a retiré mon projet.\n"
+	.string "Tout le monde bosse sur les anneaux.\p"
+	.string "Mesures, relevés, protocoles…\n"
+	.string "Le Président veut des réponses.\p"
+	.string "Et Sylphe en veut encore plus.\n"
+	.string "Ils appellent toutes les heures.$"
 

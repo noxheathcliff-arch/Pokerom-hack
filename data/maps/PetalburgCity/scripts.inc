@@ -700,17 +700,22 @@ PetalburgCity_EventScript_GymBoy::
 	end
 
 PetalburgCity_Text_WhereIsWally:
-	.string "Où est passé notre TIMMY?\p"
-	.string "Nous devons bientôt partir\n"
-	.string "pour VERGAZON…$"
+	.string "Tu n’as pas vu mon fils? Douze ans,\n"
+	.string "une écharpe verte, toujours essoufflé.\p"
+	.string "Il est parti voir les recrues du Rempart\n"
+	.string "devant l’ancienne Arène.\p"
+	.string "Il veut un insigne, lui aussi. Avec\n"
+	.string "ses poumons! Mon Dieu, s’il le trouve…$"
 
 PetalburgCity_Text_AreYouRookieTrainer:
-	.string "Ah! Tu es peut-être…\n"
-	.string "un DRESSEUR qui débute?\p"
-	.string "Tu sais ce que font les DRESSEURS de\n"
-	.string "POKéMON en arrivant dans une ville?\p"
-	.string "Ils commencent par vérifier quel type\n"
-	.string "d'ARENE se trouve dans la ville.$"
+	.string "Hé, toi! Tu viens t’enrôler?\n"
+	.string "La queue, c’est par là.\p"
+	.string "L’ancienne Arène, c’est le QG\n"
+	.string "du Rempart, maintenant.\p"
+	.string "Norman reçoit les recrues lui-même.\n"
+	.string "Il paraît qu’il n’oublie aucun visage.\p"
+	.string "Si tu viens de Kanto, je serais toi,\n"
+	.string "je ne traînerais pas devant.$"
 
 PetalburgCity_Text_ThisIsPetalburgGym:
 	.string "Tu vois? C'est l'ARENE de CLEMENTI.$"
@@ -720,17 +725,20 @@ PetalburgCity_Text_ThisIsGymSign:
 	.string "ce signe quand tu veux en trouver une.$"
 
 PetalburgCity_Text_WaterReflection:
-	.string "Mon visage se reflète dans l'eau.\p"
-	.string "Je vois un grand sourire plein d'espoir…\p"
-	.string "Ça pourrait aussi être l'expression d'un\n"
-	.string "silence lugubre luttant contre la peur…\p"
-	.string "Qu'exprime le reflet de ton visage?$"
+	.string "Mon visage se reflète dans l’eau.\n"
+	.string "Je ne le reconnais plus trop.\p"
+	.string "Avant les anneaux, je souriais\n"
+	.string "pour un rien.\p"
+	.string "Maintenant, je regarde le ciel toutes\n"
+	.string "les cinq minutes. Et toi, ton reflet?$"
 
 PetalburgCity_Text_FullPartyExplanation:
-	.string "Disons que tu as six POKéMON.\n"
-	.string "Si tu en attrapes un autre…\p"
-	.string "Il est aussitôt envoyé dans une BOITE\n"
-	.string "DE STOCKAGE par une connexion au PC.$"
+	.string "Six Pokémon, c’est le maximum.\n"
+	.string "Le septième part au stockage du PC.\p"
+	.string "Enfin, ça, c’était la règle.\n"
+	.string "Le Rempart en a ajouté d’autres.\p"
+	.string "Un Pokémon venu d’ailleurs, il faut\n"
+	.string "le déclarer. Sinon, ils le saisissent.$"
 
 PetalburgCity_Text_GymSign:
 	.string "ARENE POKéMON de CLEMENTI-VILLE\n"

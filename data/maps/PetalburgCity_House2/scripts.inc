@@ -10,15 +10,18 @@ PetalburgCity_House2_EventScript_SchoolKid::
 	end
 
 PetalburgCity_House2_Text_NormanBecameGymLeader:
-	.string "NORMAN est le nouveau CHAMPION\n"
-	.string "D'ARENE de notre ville.\p"
-	.string "Je crois qu'il a fait venir sa famille\n"
-	.string "d'une région lointaine.$"
+	.string "Norman était un bon Champion d’Arène.\n"
+	.string "Juste, sévère, mais juste.\p"
+	.string "Depuis les anneaux, il commande\n"
+	.string "le Rempart. Il a changé.\p"
+	.string "Il paie pour chaque arrivant abattu.\n"
+	.string "Je ne sais plus quoi penser de lui.$"
 
 PetalburgCity_House2_Text_BattledNormanOnce:
-	.string "J'ai affronté NORMAN une fois.\n"
-	.string "Mais il était bien trop fort.\p"
-	.string "Comment dire…\p"
-	.string "J'ai le sentiment qu'il ne vit\n"
-	.string "que pour les POKéMON.$"
+	.string "J’ai affronté Norman, une fois.\n"
+	.string "Il était bien trop fort.\p"
+	.string "Aujourd’hui, il ne se bat plus pour\n"
+	.string "le sport. Il se bat pour gagner.\p"
+	.string "Mes copains portent tous l’insigne.\n"
+	.string "Moi, j’ai peur du prix à payer.$"
 

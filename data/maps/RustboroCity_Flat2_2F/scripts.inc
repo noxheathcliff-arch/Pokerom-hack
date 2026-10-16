@@ -22,16 +22,22 @@ RustboroCity_Flat2_2F_EventScript_GavePremierBall::
 	end
 
 RustboroCity_Flat2_2F_Text_DevonWasTinyInOldDays:
-	.string "A l'époque, DEVON n'était qu'une toute\n"
-	.string "petite, une minuscule entreprise.$"
+	.string "Devon, je l’ai vu naître. Un petit\n"
+	.string "atelier, trois machines.\p"
+	.string "Ils fabriquaient des Poké Balls\n"
+	.string "pour les gamins du quartier.\p"
+	.string "Aujourd’hui, ils relient le monde.\n"
+	.string "Et le monde nous tombe dessus.$"
 
 RustboroCity_Flat2_2F_Text_MyDaddyMadeThisYouCanHaveIt:
-	.string "Mon papa travaille chez DEVON.\p"
-	.string "C'est mon papa qu'a fait ça!\n"
-	.string "Mais ça m'sert pas. Tu peux l'prendre.$"
+	.string "Mon papa travaille chez Devon!\n"
+	.string "Il a fait ça avec ses mains.\p"
+	.string "Je m’en sers pas. Tiens!\n"
+	.string "Mais le dis pas à la brigade, hein!$"
 
 RustboroCity_Flat2_2F_Text_GoingToWorkAtDevonToo:
-	.string "Mon papa travaille chez DEVON.\p"
-	.string "Quand j'serai grand, moi aussi\n"
-	.string "j'travaillerai pour DEVON.$"
+	.string "Mon papa travaille sur la Passerelle!\n"
+	.string "Plus tard, moi aussi.\p"
+	.string "Mais il dit que je dois\n"
+	.string "pas le dire aux inconnus.$"
 

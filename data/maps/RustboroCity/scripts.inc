@@ -183,7 +183,7 @@ RustboroCity_EventScript_Twin::
 	end
 
 RustboroCity_EventScript_NinjaBoy::
-	msgbox RustboroCity_Text_CatchRarePokemonIfIGoToSchool, MSGBOX_SIGN
+	msgbox RustboroCity_Text_CatchRarePokemonIfIGoToSchool, MSGBOX_NPC
 	end
 
 RustboroCity_EventScript_TunnelSign::
@@ -1014,79 +1014,106 @@ RustboroCity_EventScript_Boy1::
 	end
 
 RustboroCity_Text_WeShortenItToDevon:
-	.string "DEVON SARL… Mais tout le monde\n"
-	.string "dit juste DEVON, c'est plus court.\p"
-	.string "Cette entreprise fabrique toutes\n"
-	.string "sortes de produits très utiles.$"
+	.string "Devon SARL. Tout le monde dit Devon.\n"
+	.string "Ici, c’est presque un mot sacré.\p"
+	.string "Avec Sylphe, ils ont fait la\n"
+	.string "Passerelle. ‘Le monde en une seconde.’\p"
+	.string "Et depuis cinq mois, il tombe des\n"
+	.string "anneaux du ciel. Drôle de hasard.$"
 
 RustboroCity_Text_SneakyLookingManWentAroundCorner:
-	.string "Hum? Un homme d'apparence sournoise?\p"
-	.string "Oui, ça m'revient. Un type louche\n"
-	.string "traîne dans le coin.$"
+	.string "Un type louche? Oh, il y en a.\n"
+	.string "Des hommes en noir, la nuit.\p"
+	.string "Ils montent vers la Route 116\n"
+	.string "avec des cages vides.\p"
+	.string "Et ils redescendent avec des cages\n"
+	.string "pleines. Je n’ai rien vu, hein.$"
 
 RustboroCity_Text_HaveYouChallengedGym:
-	.string "As-tu relevé le défi de l'ARENE\n"
-	.string "POKéMON?\p"
-	.string "Quand tu auras le BADGE tout brillant\n"
-	.string "en main, tu réaliseras ce qui t'attend\l"
-	.string "en tant que DRESSEUR.$"
+	.string "Tu veux défier l’Arène? Fermée.\n"
+	.string "Roxanne est aux mines.\p"
+	.string "Les galeries sont pleines d’arrivants,\n"
+	.string "et les mineurs veulent les abattre.\p"
+	.string "Elle, elle prend des notes. Des\n"
+	.string "données, pas des cris, qu’elle dit.$"
 
 RustboroCity_Text_HeyThatsRustborosGymBadge:
-	.string "Hé, c'est le BADGE de MEROUVILLE!\p"
-	.string "De tous les BADGES D'ARENES, c'est celui\n"
-	.string "de MEROUVILLE que je préfère!$"
+	.string "Hé, c’est l’insigne de Mérouville!\n"
+	.string "Roxanne te l’a donné?\p"
+	.string "Elle ne le donne pas à n’importe qui.\n"
+	.string "Surtout pas à un étranger.\p"
+	.string "Tu as dû faire quelque chose pour\n"
+	.string "les mines. Merci, alors.$"
 
 RustboroCity_Text_YoureNewAroundHere:
-	.string "Oh? Qui peux-tu bien être?\n"
-	.string "Une nouvelle tête dans les parages…\p"
-	.string "Tu viens d'arriver à l'ECOLE DE\n"
-	.string "DRESSEURS?$"
+	.string "Tiens, une tête inconnue.\n"
+	.string "Tu as tes papiers, j’espère?\p"
+	.string "Devon rouvre sous protocole.\n"
+	.string "Badges, fouilles, registres.\p"
+	.string "Les étrangers sont… observés.\n"
+	.string "Rien de personnel. Ordre d’en haut.$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
-	.string "Je vais affronter le CHAMPION, mais…\p"
-	.string "Ça ne va pas être facile de gagner avec\n"
-	.string "mes POKéMON du type FEU…\p"
-	.string "Les POKéMON du type FEU ne sont pas\n"
-	.string "bons face aux POKéMON du type ROCHE…$"
+	.string "Je voulais défier Roxanne, mais\n"
+	.string "l’Arène est fermée.\p"
+	.string "Elle descend aux mines tous les jours,\n"
+	.string "par la Route 116.\p"
+	.string "De toute façon, mes Pokémon Feu\n"
+	.string "contre ses Roches… J’aurais perdu.$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel:
-	.string "Le vieux marin, M. MARCO, habite\n"
-	.string "une petite maison près de la mer.\p"
-	.string "Dès qu'il le peut, il va se balader\n"
-	.string "dans le tunnel.$"
+	.string "Mon père travaille aux mines,\n"
+	.string "près du Tunnel Mérazon.\p"
+	.string "Il dit que ça gronde, là-dessous.\n"
+	.string "Pas comme un éboulement.\p"
+	.string "Comme quelque chose qui respire.\n"
+	.string "Il a peur, et lui n’a jamais peur.$"
 
 RustboroCity_Text_MrBrineyLovesPeeko:
-	.string "Le vieux marin, M. MARCO, habite\n"
-	.string "une petite maison près de la mer.\p"
-	.string "Il a dit qu'il allait à POIVRESSEL\n"
-	.string "pour acheter des choses à son PIKO.\p"
-	.string "Ce vieux loup de mer, il doit vraiment\n"
-	.string "l'aimer son compagnon PIKO.$"
+	.string "Mon père était mineur. Il ne l’est\n"
+	.string "plus depuis la semaine dernière.\p"
+	.string "Des arrivants dans les galeries.\n"
+	.string "Ils mangent le charbon, tu le crois?\p"
+	.string "Il reste à la maison et il boit.\n"
+	.string "Moi, j’aimerais qu’ils partent.$"
 
 RustboroCity_Text_WowYouHavePokemon:
-	.string "Waouh! T'as aussi des POKéMON avec toi.\p"
-	.string "Quand j'serai plus grande, j'irai aussi\n"
-	.string "de place en place avec mes POKéMON.$"
+	.string "T’as des Pokémon, toi aussi?\n"
+	.string "Ils viennent d’où?\p"
+	.string "Maman dit qu’il faut demander,\n"
+	.string "maintenant. À cause des arrivants.\p"
+	.string "… T’as une drôle de tête. On dirait\n"
+	.string "le garçon sur l’affiche!$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool:
-	.string "ECOLE DE DRESSEURS POKéMON.\p"
-	.string "Si j'allais dans cette école, je pourrais\n"
-	.string "facilement attraper des POKéMON rares?$"
+	.string "L’École de Dresseurs est encore\n"
+	.string "ouverte. Pas pour longtemps.\p"
+	.string "Le Rempart vient y choisir des élèves.\n"
+	.string "Les meilleurs partent à Clémenti.\p"
+	.string "Moi, je fais exprès d’avoir\n"
+	.string "de mauvaises notes. Chut!$"
 
 RustboroCity_Text_PokemonCanChangeLookFromExp:
-	.string "Un POKéMON qui acquiert de\n"
-	.string "l'expérience au combat peut \l"
-	.string "parfois changer d'aspect.$"
+	.string "Un Pokémon qui se bat beaucoup\n"
+	.string "peut changer de forme.\p"
+	.string "Mon grand frère dit que les arrivants\n"
+	.string "aussi. Qu’ils deviennent énormes.\p"
+	.string "… C’est pas vrai, hein? Dis-moi\n"
+	.string "que c’est pas vrai.$"
 
 RustboroCity_Text_PokemonChangeShape:
-	.string "Un POKéMON peut changer de forme?\n"
-	.string "Si je voyais ça, je serais choquée!$"
+	.string "Moi, je crois que mon frère ment.\n"
+	.string "Il veut juste me faire peur.\p"
+	.string "Mais je dors avec la lumière,\n"
+	.string "quand même.$"
 
 RustboroCity_Text_TradePokemonGrowFast:
-	.string "Un POKéMON obtenu lors d'un échange\n"
-	.string "avec quelqu'un grandit vite.\p"
-	.string "Mais si tu n'as pas obtenu certains\n"
-	.string "BADGES, il ne t'obéira peut-être pas…$"
+	.string "Avant, on échangeait des Pokémon\n"
+	.string "avec le monde entier.\p"
+	.string "Avec la Passerelle, Devon promettait\n"
+	.string "encore mieux. En une seconde.\p"
+	.string "Aujourd’hui, un Pokémon échangé,\n"
+	.string "c’est un Pokémon à déclarer.$"
 
 RustboroCity_Text_OutOfTheWay:
 	.string "Dégage! Hors de ma route!$"
@@ -1284,11 +1311,9 @@ RustboroCity_Text_IdBetterGetBackToWork:
 	.string "Bonne continuation, {PLAYER}!$"
 
 RustboroCity_Text_YouCanHave2On2Battle:
-	.string "Tu savais?\p"
-	.string "Tu peux faire des combats 2 contre 2\n"
-	.string "même sans être avec un autre DRESSEUR.\p"
-	.string "Si tu as deux POKéMON ou plus et si\n"
-	.string "tu croises le regard de deux DRESSEURS,\l"
-	.string "ils te défieront tous les deux.\p"
-	.string "Ça doit être trop cool de battre deux\n"
-	.string "DRESSEURS à la fois!$"
+	.string "Si deux Dresseurs te repèrent,\n"
+	.string "ils peuvent t’attaquer à deux.\p"
+	.string "Les arrivants, eux, sortent parfois\n"
+	.string "à plusieurs d’un même anneau.\p"
+	.string "Garde toujours deux Pokémon en forme.\n"
+	.string "Je l’ai appris à mes dépens.$"

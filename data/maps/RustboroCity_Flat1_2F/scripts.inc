@@ -76,13 +76,12 @@ RustboroCity_Flat1_2F_EventScript_PokeDoll::
 	end
 
 RustboroCity_Flat1_2F_Text_ComingUpWithMealsIsHard:
-	.string "Oh, c'est chaque jour si difficile…\p"
-	.string "Ce qui est difficile?\n"
-	.string "Tu me le demandes?\p"
-	.string "Tous les jours, je dois décider ce que\n"
-	.string "je vais préparer pour le repas.\p"
-	.string "C'est vraiment pas facile de trouver\n"
-	.string "des idées différentes chaque jour.$"
+	.string "Oh, c’est si difficile chaque jour…\n"
+	.string "Remplir l’assiette, je veux dire.\p"
+	.string "Les bateaux n’arrivent plus. Les prix\n"
+	.string "ont doublé à la Boutique.\p"
+	.string "Mon mari travaille chez Devon.\n"
+	.string "Il rentre tard, et il ne dit rien.$"
 
 RustboroCity_Flat1_2F_Text_HelloDoYouKnowFunnyPhrase:
 	.string "Oh, bonjour!\n"

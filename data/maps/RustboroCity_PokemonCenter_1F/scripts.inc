@@ -35,20 +35,26 @@ RustboroCity_PokemonCenter_1F_EventScript_Girl::
 	end
 
 RustboroCity_PokemonCenter_1F_Text_PokemonHavePersonalities:
-	.string "Mon POKéMON est NAIF et celui de mon\n"
-	.string "ami est JOVIAL. C'est leur nature.\p"
-	.string "C'est fascinant de voir comme les\n"
-	.string "POKéMON ont leur caractère!$"
+	.string "Mon Pokémon est Naïf, celui de mon\n"
+	.string "ami est Jovial. Chacun sa nature.\p"
+	.string "Les arrivants aussi ont un caractère.\n"
+	.string "J’en ai vu un protéger son petit.\p"
+	.string "Ça ne colle pas avec ce que\n"
+	.string "raconte le Rempart.$"
 
 RustboroCity_PokemonCenter_1F_Text_MaleAndFemalePokemon:
-	.string "Tout comme chez les hommes, il existe\n"
-	.string "des POKéMON mâles et femelles.\p"
-	.string "Mais la différence entre les deux sexes\n"
-	.string "ne saute pas aux yeux.$"
+	.string "Le Centre est plein de mineurs\n"
+	.string "blessés. Et de leurs Pokémon.\p"
+	.string "Éboulements, morsures… Les\n"
+	.string "galeries ne pardonnent pas.\p"
+	.string "L’infirmière n’a pas dormi depuis\n"
+	.string "trois jours. Sois patient.$"
 
 RustboroCity_PokemonCenter_1F_Text_HMCutNextDoor:
-	.string "L'homme de la maison voisine m'a donné\n"
-	.string "une CS!\p"
-	.string "Je l'ai apprise à mon POKéMON pour\n"
-	.string "qu'il COUPE les petits arbres.$"
+	.string "Tu as vu les affiches dehors?\n"
+	.string "‘Il a sauvé Sylphe.’\p"
+	.string "Un garçon de Kanto, casquette rouge.\n"
+	.string "Paraît qu’il est ici, à Hoenn.\p"
+	.string "Les gens disent qu’il porte malheur.\n"
+	.string "Les anneaux l’auraient suivi.$"
 
