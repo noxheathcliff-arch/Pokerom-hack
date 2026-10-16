@@ -144,6 +144,7 @@ static void CF_DemoNewGameInit(void)
     u32 i;
 
     FlagSet(FLAG_NO_WILD_ENCOUNTERS); // cleared at the end of P4
+    FlagSet(FLAG_SYS_B_DASH); // CF-21: running shoes from the start (the vanilla Littleroot gift is never reached)
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK); // no moving trucks (were walk-through)
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK);
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL); // vanilla Potion ball in Brice's room

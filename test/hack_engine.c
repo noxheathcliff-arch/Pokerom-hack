@@ -440,3 +440,48 @@ TEST("Trainer levels: a boss (rival) ace is capped at the top level, never raise
     VarSet(VAR_CF_CHAPTER, 0);
     Free(party);
 }
+
+// ---------------------------------------------------------------------------
+// CF-20: every hack path that builds a moveset leaves PP full (PP display audit)
+// ---------------------------------------------------------------------------
+
+static void ExpectFullPP(struct Pokemon *mon)
+{
+    u32 slot, bonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+    for (slot = 0; slot < MAX_MON_MOVES; slot++)
+    {
+        enum Move move = GetMonData(mon, MON_DATA_MOVE1 + slot);
+        u32 pp = GetMonData(mon, MON_DATA_PP1 + slot);
+        if (move == MOVE_NONE)
+            EXPECT_EQ(pp, 0);
+        else
+            EXPECT_EQ(pp, CalculatePPWithBonus(move, bonuses, slot));
+    }
+}
+
+TEST("PP: Red's prologue givemon team (custom moves) starts with full PP")
+{
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_PIKACHU, 62, ITEM_LIGHT_BALL, gender=MON_MALE, move1=MOVE_THUNDERBOLT, move2=MOVE_QUICK_ATTACK, move3=MOVE_IRON_TAIL, move4=MOVE_THUNDER;
+        givemon SPECIES_SNORLAX, 63, move1=MOVE_BODY_SLAM, move2=MOVE_REST, move3=MOVE_SNORE, move4=MOVE_CRUNCH;
+    );
+    EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_PP1), GetMovePP(MOVE_THUNDERBOLT));
+    ExpectFullPP(&gParties[B_TRAINER_PLAYER][0]);
+    ExpectFullPP(&gParties[B_TRAINER_PLAYER][1]);
+}
+
+TEST("PP: CF-18 level-shifted trainer Pokemon start with full PP")
+{
+    u32 j, n;
+    struct Pokemon *party = Alloc(PARTY_SIZE * sizeof(struct Pokemon));
+    FlagSet(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 1);
+    GivePlayerTopLevel(9);
+    n = CreateNPCTrainerPartyFromTrainer(party, &sCfGrunt, TRUE, BATTLE_TYPE_TRAINER);
+    for (j = 0; j < n; j++)
+        ExpectFullPP(&party[j]);
+    FlagClear(CF_FLAG_LEVEL_SCALING);
+    VarSet(VAR_CF_CHAPTER, 0);
+    Free(party);
+}

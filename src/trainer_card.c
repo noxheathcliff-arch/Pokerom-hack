@@ -312,8 +312,8 @@ static const u8 sTrainerPicFacilityClass[][GENDER_COUNT] =
     },
     [CARD_TYPE_EMERALD] =
     {
-        [MALE]   = FACILITY_CLASS_BRENDAN,
-        [FEMALE] = FACILITY_CLASS_MAY
+        [MALE]   = OW_KANTO_PLAYER_AVATAR ? FACILITY_CLASS_RED : FACILITY_CLASS_BRENDAN, // CF-22: Red/Leaf portrait
+        [FEMALE] = OW_KANTO_PLAYER_AVATAR ? FACILITY_CLASS_LEAF : FACILITY_CLASS_MAY
     }
 };
 

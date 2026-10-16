@@ -9,7 +9,7 @@
 
 | Fonctionnalité | Compile | Testée comment | Résultat |
 |---|---|---|---|
-| A. Nettoyage (renommages neutres, titre `POKEMON HACK`, intro RHH off, classes « Heure Suspendue » retirées) | oui | build + smoke test + `make check` | OK |
+| A. Nettoyage (renommages neutres, titre `CONFLUENCE` (CF-23), intro RHH off, classes « Heure Suspendue » retirées) | oui | build + smoke test + `make check` | OK |
 | N1. Flag sans rencontres `FLAG_NO_WILD_ENCOUNTERS` | oui | tests unitaires (pêche avec témoin positif, Éclate-Roc, Doux Parfum/Miel, câblage `WE_FLAG_NO_ENCOUNTER`) | OK ; chemin « herbe » couvert par code upstream (non testé directement) |
 | H1. Plafonds souples (valeurs provisoires) | oui | tests unitaires de la table | OK ; calcul d'EXP souple ignoré en test (voir H1) |
 | H2. Difficulté `VAR_DIFFICULTY` | oui | lecture de code (tests upstream `trainer_control`) | OK |
@@ -27,7 +27,7 @@
 | `make -j4` (ROM normale) | **EXIT 0** ; EWRAM 226 588 o (86,44 %, +4 o), IWRAM 28 376 o (inchangé, 86,60 %), ROM 26 792 064 o (79,85 % ; +242 Kio vs upstream, presque tout dû aux sprites Kanto) |
 | `tools/qa/run_smoke.sh . qa_artifacts/smoke_engine_v3` | **SMOKE: PASS** (nouvelle partie → sauvegarde → redémarrage → CONTINUER) ; **aucun script QA modifié** (les scripts se synchronisent sur `gMain.callback2`, la suppression de l'intro RHH ne les casse pas) |
 | `make check` | **EXIT 0 — PASSED 4 949 / TOTAL 5 566, FAILED 0** (upstream : 4 937 / 5 553, 0 échec) ; 1 test projet ignoré (ASSUME, voir H1) |
-| En-tête ROM | `POKEMON HACK` / `BPEF` (vérifié dans `pokeemeraude.gba` à 0xA0) |
+| En-tête ROM | `CONFLUENCE` / `BPEF` (avant CF-23 : `POKEMON HACK`) (vérifié dans `pokeemeraude.gba` à 0xA0) |
 
 ---
 
@@ -35,7 +35,7 @@
 
 | Fichier | Changement | Pourquoi |
 |---|---|---|---|
-| `Makefile` | `TITLE ?= POKEMON HACK` (12 car. max), `GAME_CODE` **inchangé** `BPEF` | titre provisoire neutre ; garder un code `BPE?` pour que les émulateurs activent RTC + Flash 128K (TECHNICAL_AUDIT §2) |
+| `Makefile` | `TITLE ?= CONFLUENCE` (12 car. max ; `POKEMON HACK` avant CF-23), `GAME_CODE` **inchangé** `BPEF` | titre provisoire neutre ; garder un code `BPE?` pour que les émulateurs activent RTC + Flash 128K (TECHNICAL_AUDIT §2) |
 | `include/config/general.h` | `EXPANSION_INTRO FALSE` | identité du hack ; l'intro RHH ne s'affiche plus (crédits RHH à garder ailleurs, README/crédits) |
 | `include/constants/flags.h` | `0x20` → `FLAG_NO_WILD_ENCOUNTERS`, `0x21` → `FLAG_CHOOSE_BATTLE_LEAD` | voir §N1, §D2 |
 | `include/constants/vars.h` | `0x40F7` → `VAR_DIFFICULTY` | §H2 |
@@ -339,20 +339,49 @@ CF_D027_Fin::
 - **Cause :** `sShopBuyMenuYesNoWindowTemplates.baseBlock = 0x020E` chevauchait les tuiles de `WIN_MESSAGE` (base 0x01BC, 27×4 tuiles → jusqu’à 0x0227) : la fenêtre Oui/Non dessinait dans les tuiles du message.
 - **Correctif :** `baseBlock = 0x0228` (`src/shop.c`), juste après la fenêtre de message (VRAM libre jusqu’au cadre de la boîte). Vente : passe par le menu Oui/Non standard du sac, non concerné. `gText_ThatItemIsSoldOut` (`src/strings.c`) coupé en deux lignes (≤ 212 px chacune). Les autres textes de confirmation de la boutique tiennent dans 2 × 212 px.
 
+### CF-20. Audit de l'affichage des PP (aucun défaut propre au hack)
+- **Signalement :** « l'affichage des PP est parfois faux » (menu d'attaque en combat et/ou résumé).
+- **Vérifié à l'émulateur (gbaplay, ROM du worktree) :** menu d'attaque du combat du prologue : Tonnerre « PP 15/15 », Fatal-Foudre « PP 10/10 » ; résumé : « PP 35/35 » (mise en page vanilla). Après un Tonnerre, le combat se termine (K.O. en un coup) ; la décrémentation en combat est du code upstream couvert par ses tests.
+- **Chemins du hack qui créent un jeu d'attaques, tous relus :** `givemon … move1=…` de l'équipe de Red (`ScriptGiveMonParameterized` → `SetMonMoveSlot`, qui pose les PP) ; équipes de dresseurs CF-18 (seul le niveau passé à `CreateMon` change, les attaques et PP sont posés ensuite par le code upstream) ; épidémies (`SetMonMoveSlot` vanilla, `wild_encounter.c`) ; niveaux sauvages CF-17 (niveau seulement) ; CF-16 (EXP seulement) ; `CF_RemovePartyMon` (copie/zéro de structures entières) ; choix du meneur (indices seulement) ; textes de combat (aucun texte de PP modifié). Aucun ne laisse des PP incohérents avec l'attaque.
+- **Garde-fous :** 2 tests `PP: …` (`test/hack_engine.c`) : l'équipe `givemon` du prologue et une équipe de dresseur décalée par CF-18 ont des PP égaux à `CalculatePPWithBonus` pour chaque emplacement (0 pour un emplacement vide).
+- Si le défaut réapparaît, noter le Pokémon, l'attaque, l'écran et le moment (après un level-up, une capture, un échange de place…) : rien dans le code du hack ne touche aux PP.
+
+### CF-21. Chaussures de course dès le départ
+- `CF_DemoNewGameInit` (`src/confluence.c`, appelé par `NewGameInitData`) : `FlagSet(FLAG_SYS_B_DASH)`. En vanilla, le flag n'est posé que par Maman à Bourg-en-Vol (`data/maps/LittlerootTown/scripts.inc`), scène que la démo ne joue jamais.
+
+### CF-22. Carte dresseur : portrait de Red / Leaf
+- **Symptôme :** la carte dresseur montrait Brendan (ou May) au lieu de Red.
+- **Cause :** `src/trainer_card.c` choisit le portrait dans sa propre table `sTrainerPicFacilityClass[CARD_TYPE_EMERALD]` (Brendan/May) au lieu de `PlayerGenderToFrontTrainerPicId` (corrigé en B).
+- **Correctif :** `[MALE] = OW_KANTO_PLAYER_AVATAR ? FACILITY_CLASS_RED : FACILITY_CLASS_BRENDAN`, idem `LEAF`/`MAY`. La palette est celle du portrait choisi (vérifié à l'émulateur : Red net, bonnes couleurs).
+- **Badge de Roche (ch. 1) :** le badge 1 (`FLAG_BADGE01_GET`) s'affiche avec son sprite vanilla sur le verso de la carte (vérifié à l'émulateur). Les graphismes de badges ne sont utilisés que par `trainer_card.c` : aucun autre écran à corriger.
+
+### CF-23. Titre « CONFLUENCE », Rappels de nature, divers
+- **Titre :** en-tête ROM `TITLE ?= CONFLUENCE` (`Makefile`, vérifié : `CONFLUENCE\0\0BPEF` à 0xA0) ; crédits : `sCreditsText_PkmnEmeraldVersion` = « POKéMON VERSION CONFLUENCE » (`src/data/credits.h`). Le code du jeu (`GAME_CODE`, `VERSION_EMERALD`) est inchangé.
+- **Aromates (mints) variés** sur les cartes de la démo (flags des objets conservés) :
+
+| Carte | Objet avant | Objet après |
+|---|---|---|
+| Route 104 (ball visible) | `ITEM_X_ACCURACY` | `ITEM_ADAMANT_MINT` |
+| Route 104 (caché) | `ITEM_HEART_SCALE` | `ITEM_BOLD_MINT` |
+| Bois Clémenti | `ITEM_X_ATTACK` | `ITEM_JOLLY_MINT` |
+| Route 116 (ball visible) | `ITEM_X_SPECIAL` | `ITEM_MODEST_MINT` |
+| Route 116 (caché) | `ITEM_BLACK_GLASSES` | `ITEM_CALM_MINT` |
+| Tunnel Mérazon | `ITEM_POKE_BALL` | `ITEM_TIMID_MINT` |
+
 ## Tests (`make check`)
 
 Commande : `make check -j4 ROMTEST=/opt/mgba-tools/bin/mgba-rom-test ROMTESTHYDRA=/opt/mgba-tools/bin/mgba-rom-test-hydra` (log : `/home/user/check_engine.log`).
 
-| | Upstream 1.16.4 | Projet (2026-10-14) | Projet (2026-10-16, CF-13 à CF-19) |
-|---|---|---|---|
-| PASSED | 4 937 | **4 949** (+12 tests projet) | **4 976** (dont 2 `hack_exp` + 7 `hack_engine` CF-14/17/18) |
-| FAILED | 0 | **0** | **0** |
-| KNOWN_FAILING / TO_DO / EXPECT_FAILING | 13 / 595 / 8 | 13 / 595 / 8 | 13 / 595 / 8 |
-| ASSUMPTIONS_FAILED | 0 | 1 (`Level cap: soft cap reduces exp…`, volontaire : `EXP_CAP_NONE` en build de test) | 1 (idem) |
-| TOTAL | 5 553 | 5 566 | 5 593 |
+| | Upstream 1.16.4 | Projet (2026-10-14) | Projet (2026-10-16, CF-13 à CF-19) | Projet (CF-20 à CF-23) |
+|---|---|---|---|---|
+| PASSED | 4 937 | **4 949** (+12 tests projet) | **4 976** (dont 2 `hack_exp` + 7 `hack_engine` CF-14/17/18) | **4 978** (+2 `PP: …`) |
+| FAILED | 0 | **0** | **0** | **0** |
+| KNOWN_FAILING / TO_DO / EXPECT_FAILING | 13 / 595 / 8 | 13 / 595 / 8 | 13 / 595 / 8 | 13 / 595 / 8 |
+| ASSUMPTIONS_FAILED | 0 | 1 (`Level cap: soft cap reduces exp…`, volontaire : `EXP_CAP_NONE` en build de test) | 1 (idem) | 1 (idem) |
+| TOTAL | 5 553 | 5 566 | 5 593 | 5 595 |
 
 Historique : un passage intermédiaire avait 4 échecs (3 tests d'EXP upstream cassés par le plafond souple → corrigé par l'override de `config/test.h` ; 1 test « choix du meneur » inexprimable → remplacé par des tests unitaires).
 
 ## Fichiers touchés (résumé)
 
-`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,overworld,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`. CF-13 à CF-19 : `include/confluence.h`, `src/{confluence,main_menu,wild_encounter,battle_main,battle_util,battle_script_commands,battle_message,shop,strings}.c`, `test/hack_engine.c`, `test/battle/{exp,hack_exp}.c`.
+`Makefile`, `include/config/{battle,caps,general,overworld,test,wild_encounter}.h`, `include/constants/{battle,event_objects,flags,vars}.h`, `include/{battle_setup,wild_encounter,script_affinity}.h`, `src/{battle_controllers,battle_setup,caps,event_data,event_object_movement,overworld,pokemon,script_affinity,trainer,trainer_see,wild_encounter}.c`, `src/data/object_events/{object_event_anims,object_event_graphics,object_event_graphics_info,object_event_graphics_info_pointers,object_event_pic_tables}.h`, `asm/macros/event.inc`, `data/scripts/trainer_battle.inc`, `data/specials.inc`, `test/hack_engine.c`, `test/battle/hack_choose_lead.c`. CF-13 à CF-19 : `include/confluence.h`, `src/{confluence,main_menu,wild_encounter,battle_main,battle_util,battle_script_commands,battle_message,shop,strings}.c`, `test/hack_engine.c`, `test/battle/{exp,hack_exp}.c`. CF-20 à CF-23 : `Makefile`, `src/{confluence,trainer_card}.c`, `src/data/credits.h`, `data/maps/{Route104,PetalburgWoods,Route116,RusturfTunnel}/map.json`, `test/hack_engine.c`.
