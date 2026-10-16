@@ -413,13 +413,13 @@ u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, en
             if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
             {
                 if (Random() % 2 == 0)
-                    return max;
+                    return CF_ScaleWildMonLevel(max, min); // Hack: CF-17
 
                 if (rand != 0)
                     rand--;
             }
         }
-        return min + rand;
+        return CF_ScaleWildMonLevel(min + rand, min); // Hack: CF-17
     }
     else
     {

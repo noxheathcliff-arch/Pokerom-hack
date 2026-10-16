@@ -54,6 +54,7 @@
 #include "constants/weather.h"
 #include "constants/pokemon.h"
 #include "test/battle.h"
+#include "confluence.h" // Hack
 
 static bool32 TryRemoveScreens(enum BattlerId battler);
 static bool32 IsUnnerveAbilityOnOpposingSide(enum BattlerId battler);
@@ -5644,7 +5645,7 @@ enum Obedience GetAttackerObedienceForAction(void)
         return OBEYS;
     if (FlagGet(FLAG_BADGE08_GET)) // Rain Badge, ignore obedience altogether
         return OBEYS;
-    if (VarGet(VAR_CF_CHAPTER) == 0) // Confluence: prologue team (lv62+) always obeys
+    if (CF_ALWAYS_OBEY) // Confluence: captured/traded Pokemon always obey (CF-15)
         return OBEYS;
 
     obedienceLevel = 10;

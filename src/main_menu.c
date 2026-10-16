@@ -1,6 +1,7 @@
 #include "global.h"
 #include "trainer_pokemon_sprites.h"
 #include "bg.h"
+#include "confluence.h" // Hack: CF-14
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
@@ -577,6 +578,7 @@ void CB2_ReinitMainMenu(void)
 static u32 InitMainMenu(bool8 returningFromOptionsMenu)
 {
     SetVBlankCallback(NULL);
+    StartTimer1(); // Hack: CF-14, the naming screen that used to start it is skipped
 
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_BG2CNT, 0);
@@ -1073,6 +1075,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
         }
         ChangeBgY(0, 0, BG_COORD_SET);
         ChangeBgY(1, 0, BG_COORD_SET);
+        CF_SeedRngFromMainMenu(); // Hack: CF-14, nothing else seeds the RNG in this hack
         switch (action)
         {
         case ACTION_NEW_GAME:

@@ -331,7 +331,7 @@ static const struct WindowTemplate sShopBuyMenuYesNoWindowTemplates =
     .width = 5,
     .height = 4,
     .paletteNum = 15,
-    .baseBlock = 0x020E,
+    .baseBlock = 0x0228, // Confluence (CF-19): was 0x020E, which overlapped WIN_MESSAGE (0x01BC + 27*4 = 0x0228)
 };
 
 static const u8 sShopBuyMenuTextColors[][3] =

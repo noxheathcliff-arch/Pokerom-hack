@@ -45,6 +45,7 @@
 #include "pokemon.h"
 #include "pokerus.h"
 #include "random.h"
+#include "confluence.h" // Hack: CF-18
 #include "recorded_battle.h"
 #include "roamer.h"
 #include "safari_zone.h"
@@ -1885,6 +1886,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
         u32 monIndices[monsCount];
         DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags);
+        u32 cfLevelShift = CF_GetTrainerLevelShift(trainer, monIndices, monsCount, battleTypeFlags); // Hack: CF-18
 
         for (s32 i = 0; i < monsCount; i++)
         {
@@ -1915,7 +1917,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otId.method = OT_ID_PRESET;
                 otId.value = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, personalityValue, otId);
+            CreateMon(&party[i], partyData[monIndex].species, CF_ApplyTrainerLevelShift(partyData[monIndex].lvl, cfLevelShift), personalityValue, otId);
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 
             CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
