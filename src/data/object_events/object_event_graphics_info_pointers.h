@@ -100,6 +100,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalFro
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalSide;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalTilted;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfCagedPikachu;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfDoctor;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfCagedEevee;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfCagedRattata;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EnemyZigzagoon;
@@ -514,6 +515,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CF_CAGED_PIKACHU] = &gObjectEventGraphicsInfo_CfCagedPikachu,
     [OBJ_EVENT_GFX_CF_CAGED_EEVEE] = &gObjectEventGraphicsInfo_CfCagedEevee,
     [OBJ_EVENT_GFX_CF_CAGED_RATTATA] = &gObjectEventGraphicsInfo_CfCagedRattata,
+    [OBJ_EVENT_GFX_CF_DOCTOR] = &gObjectEventGraphicsInfo_CfDoctor,
     [OBJ_EVENT_GFX_ZIGZAGOON_1] =              &gObjectEventGraphicsInfo_EnemyZigzagoon,
     [OBJ_EVENT_GFX_ARTIST] =                   &gObjectEventGraphicsInfo_Artist,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL] =     &gObjectEventGraphicsInfo_RivalBrendanNormal,

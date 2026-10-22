@@ -469,6 +469,9 @@ const u16 gTrainerPalette_LadyFrlg[] = INCGFX_U16("graphics/trainers/palettes/la
 const u32 gTrainerFrontPic_PainterFrlg[] = INCGFX_U32("graphics/trainers/front_pics/painter_frlg.png", ".4bpp.smol");
 const u16 gTrainerPalette_PainterFrlg[] = INCGFX_U16("graphics/trainers/palettes/painter_frlg.pal", ".gbapal");
 
+const u32 gTrainerFrontPic_CfDoctor[] = INCGFX_U32("graphics/trainers/front_pics/cf_doctor.png", ".4bpp.smol");
+const u16 gTrainerPalette_CfDoctor[] = INCGFX_U16("graphics/trainers/front_pics/cf_doctor.png", ".gbapal");
+
 static const u8 gTrainerBackPic_None[] = INCGFX_U8("graphics/trainers/back_pics/none.png", ".4bpp");
 const u8 gTrainerBackPic_Brendan[] = INCGFX_U8("graphics/trainers/back_pics/brendan.png", ".4bpp");
 const u8 gTrainerBackPic_May[] = INCGFX_U8("graphics/trainers/back_pics/may.png", ".4bpp");
@@ -481,6 +484,8 @@ const u8 gTrainerBackPic_Steven[] = INCGFX_U8("graphics/trainers/back_pics/steve
 const u8 gTrainerBackPic_Pokedude[] = INCGFX_U8("graphics/trainers/back_pics/pokedude.png", ".4bpp");
 const u8 gTrainerBackPic_OldMan[] = INCGFX_U8("graphics/trainers/back_pics/old_man.png", ".4bpp");
 
+const u8 gTrainerBackPic_CfDoctor[] = INCGFX_U8("graphics/trainers/back_pics/cf_doctor.png", ".4bpp");
+const u16 gTrainerBackPicPalette_CfDoctor[] = INCGFX_U16("graphics/trainers/back_pics/cf_doctor.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Red[] = INCGFX_U16("graphics/trainers/back_pics/red.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Pokedude[] = INCGFX_U16("graphics/trainers/back_pics/pokedude.png", ".gbapal");
@@ -1225,5 +1230,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PAINTER_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
+    },
+    [TRAINER_PIC_CF_DOCTOR] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CfDoctor, gTrainerPalette_CfDoctor),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_CfDoctor, gTrainerBackPicPalette_CfDoctor, sBackAnims_Hoenn),
     },
 };
