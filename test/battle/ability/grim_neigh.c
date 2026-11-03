@@ -24,9 +24,9 @@ DOUBLE_BATTLE_TEST("Grim Neigh raises Sp. Attack by one stage after directly cau
         ABILITY_POPUP(playerLeft, abilityPopUp);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         if (species == SPECIES_SPECTRIER)
-            MESSAGE("Attaque Spéciale de Spectreval\naugmente énormément!");
+            MESSAGE("Ah, Attaque Spéciale du Spectreval\naugmente énormément!");
         else
-            MESSAGE("Attaque Spéciale de Sylveroy\naugmente énormément!");
+            MESSAGE("Ah, Attaque Spéciale du Sylveroy\naugmente énormément!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 3);
     }
@@ -59,9 +59,9 @@ DOUBLE_BATTLE_TEST("Grim Neigh does not trigger if Pokemon faint to indirect dam
             NONE_OF {
                 ABILITY_POPUP(playerLeft, abilityPopUp);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-                MESSAGE("Attaque Spéciale de Drattak augmente!");
-                MESSAGE("Attaque Spéciale de Spectreval augmente!");
-                MESSAGE("Attaque Spéciale de Sylveroy augmente!");
+                MESSAGE("Ah, Attaque Spéciale du Drattak augmente!");
+                MESSAGE("Ah, Attaque Spéciale du Spectreval augmente!");
+                MESSAGE("Ah, Attaque Spéciale du Sylveroy augmente!");
             }
         }
     } THEN {
@@ -95,9 +95,9 @@ DOUBLE_BATTLE_TEST("Grim Neigh does not increase damage done by the same move th
         ABILITY_POPUP(playerLeft, abilityPopUp);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         if (species == SPECIES_SPECTRIER)
-            MESSAGE("Attaque Spéciale de Spectreval augmente!");
+            MESSAGE("Ah, Attaque Spéciale du Spectreval augmente!");
         else
-            MESSAGE("Attaque Spéciale de Sylveroy augmente!");
+            MESSAGE("Ah, Attaque Spéciale du Sylveroy augmente!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 1);
         EXPECT_EQ(damage[0], damage[1]);

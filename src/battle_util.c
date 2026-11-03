@@ -54,7 +54,6 @@
 #include "constants/weather.h"
 #include "constants/pokemon.h"
 #include "test/battle.h"
-#include "confluence.h" // Hack
 
 static bool32 TryRemoveScreens(enum BattlerId battler);
 static bool32 IsUnnerveAbilityOnOpposingSide(enum BattlerId battler);
@@ -5644,8 +5643,6 @@ enum Obedience GetAttackerObedienceForAction(void)
     if (B_OBEDIENCE_MECHANICS < GEN_8 && !IsOtherTrainer(gBattleMons[gBattlerAttacker].otId, gBattleMons[gBattlerAttacker].otName))
         return OBEYS;
     if (FlagGet(FLAG_BADGE08_GET)) // Rain Badge, ignore obedience altogether
-        return OBEYS;
-    if (CF_ALWAYS_OBEY) // Confluence: captured/traded Pokemon always obey (CF-15)
         return OBEYS;
 
     obedienceLevel = 10;

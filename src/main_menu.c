@@ -1,7 +1,6 @@
 #include "global.h"
 #include "trainer_pokemon_sprites.h"
 #include "bg.h"
-#include "confluence.h" // Hack: CF-14
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
@@ -273,7 +272,7 @@ static const u8 gText_MysteryGiftCantUse[] = _("Ne pas utiliser l'adaptateur san
 static const u8 gText_MysteryEventsCantUse[] = _("Ne pas utiliser l'adaptateur sans fil\navec les EVENEMENTS MYSTERE.");
 
 static const u8 gText_ContinueMenuPlayer[] = _("JOUEUR");
-static const u8 gText_ContinueMenuTime[] = _("DURÉE JEU");
+static const u8 gText_ContinueMenuTime[] = _("DUREE JEU");
 static const u8 gText_ContinueMenuPokedex[] = _("POKéDEX");
 static const u8 gText_ContinueMenuBadges[] = _("BADGES");
 
@@ -578,7 +577,6 @@ void CB2_ReinitMainMenu(void)
 static u32 InitMainMenu(bool8 returningFromOptionsMenu)
 {
     SetVBlankCallback(NULL);
-    StartTimer1(); // Hack: CF-14, the naming screen that used to start it is skipped
 
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_BG2CNT, 0);
@@ -1075,7 +1073,6 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
         }
         ChangeBgY(0, 0, BG_COORD_SET);
         ChangeBgY(1, 0, BG_COORD_SET);
-        CF_SeedRngFromMainMenu(); // Hack: CF-14, nothing else seeds the RNG in this hack
         switch (action)
         {
         case ACTION_NEW_GAME:
@@ -1297,31 +1294,7 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
-// Confluence: the vanilla Birch intro (speech, gender, naming) is skipped.
-// The prologue hero is Red: male, named "RED". Fade out and go straight to CB2_NewGame
-// (the same exit the vanilla speech takes in Task_NewGameBirchSpeech_Cleanup).
-static void Task_NewGameBirchSpeech_SkipToNewGame(u8 taskId)
-{
-    if (!gPaletteFade.active)
-    {
-        FreeAllWindowBuffers();
-        ResetAllPicSprites();
-        SetMainCallback2(CB2_NewGame);
-        DestroyTask(taskId);
-    }
-}
-
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
-{
-    static const u8 sCfPlayerName[] = _("RED");
-
-    gSaveBlock2Ptr->playerGender = MALE;
-    StringCopy(gSaveBlock2Ptr->playerName, sCfPlayerName);
-    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-    gTasks[taskId].func = Task_NewGameBirchSpeech_SkipToNewGame;
-}
-
-static void UNUSED Task_NewGameBirchSpeech_InitVanilla(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);

@@ -1130,15 +1130,8 @@
 #define P_FAMILY_PECHARUNT               TRUE
 
 // Vars
-// Hack: upstream exp tests assume no level cap; the project enables soft caps (config/caps.h).
-#undef B_EXP_CAP_TYPE
-#define B_EXP_CAP_TYPE                  EXP_CAP_NONE
 #undef B_VAR_DIFFICULTY
 #define B_VAR_DIFFICULTY                TESTING_VAR_DIFFICULTY
-
-// Hack: the project forces Sleep Clause on (config/battle.h); upstream tests drive it through TESTING_FLAG_SLEEP_CLAUSE instead.
-#undef B_SLEEP_CLAUSE
-#define B_SLEEP_CLAUSE                  FALSE
 
 // Flags
 #undef B_FLAG_SLEEP_CLAUSE

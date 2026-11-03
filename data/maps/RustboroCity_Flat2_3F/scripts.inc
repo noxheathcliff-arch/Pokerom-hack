@@ -10,18 +10,10 @@ RustboroCity_Flat2_3F_EventScript_Woman::
 	end
 
 RustboroCity_Flat2_3F_Text_PresidentCollectsRareStones:
-	.string "Le Président collectionne\n"
-	.string "les pierres rares.\p"
-	.string "Depuis les anneaux, il en reçoit\n"
-	.string "de bien étranges. Des inconnues.\p"
-	.string "Les géologues disent qu’elles ne\n"
-	.string "viennent d’aucune mine connue.$"
+	.string "Le DIRECTEUR de DEVON collectionne\n"
+	.string "les pierres rares.$"
 
 RustboroCity_Flat2_3F_Text_PresidentsSonAlsoCollectsRareStones:
-	.string "Hé! On frappe avant d’entrer!\n"
-	.string "C’est un logement Devon, ici.\p"
-	.string "… Tu as vu les affiches de Sylphe?\n"
-	.string "Tu ressembles au garçon dessus.\p"
-	.string "Non, rien. Je dois être fatiguée.\n"
-	.string "Ferme la porte en sortant.$"
+	.string "Je crois que le fils du DIRECTEUR\n"
+	.string "collectionne aussi les pierres rares.$"
 

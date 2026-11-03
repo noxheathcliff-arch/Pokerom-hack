@@ -893,7 +893,6 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE
     TryUpdateRandomTrainerRematches(mapGroup, mapNum);
-    ClearDeclinedTrainersOnMap(); // Hack: CF-ROUTE-DECLINE
 #endif //FREE_MATCH_CALL
 
     if (I_VS_SEEKER_CHARGING != 0)
@@ -961,7 +960,6 @@ static void LoadMapFromWarp(bool32 a1)
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE
     TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
-    ClearDeclinedTrainersOnMap(); // Hack: CF-ROUTE-DECLINE
 #endif //FREE_MATCH_CALL
 
     if (I_VS_SEEKER_CHARGING != 0)
@@ -1936,9 +1934,10 @@ void CB2_NewGame(void)
     PlayTimeCounter_Start();
     ScriptContext_Init();
     UnlockPlayerFieldControls();
-    // Hack: Confluence spawns on the Route 104 beach, not in the truck: no truck sequence
-    // (it locked the player ~11 s before the P1 cutscene could start).
-    gFieldCallback = FieldCB_WarpExitFadeFromBlack;
+    if (IS_FRLG)
+        gFieldCallback = FieldCB_WarpExitFadeFromBlack;
+    else
+        gFieldCallback = ExecuteTruckSequence;
     gFieldCallback2 = NULL;
     DoMapLoadLoop(&gMain.state);
     SetFieldVBlankCallback();

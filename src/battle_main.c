@@ -45,7 +45,6 @@
 #include "pokemon.h"
 #include "pokerus.h"
 #include "random.h"
-#include "confluence.h" // Hack: CF-18
 #include "recorded_battle.h"
 #include "roamer.h"
 #include "safari_zone.h"
@@ -397,7 +396,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_SCIENTIST_FRLG] =       { _("SCIENTIFIQUE"), 12 },
     [TRAINER_CLASS_BOSS_FRLG] =            { _("BOSS"), 25 },
     [TRAINER_CLASS_LEADER_FRLG] =          { _("CHAMPION"), 25 },
-    [TRAINER_CLASS_TEAM_ROCKET_FRLG] =     { _("ROCKET"), 8 },
+    [TRAINER_CLASS_TEAM_ROCKET_FRLG] =     { _("TEAM ROCKET"), 8 },
     [TRAINER_CLASS_COOLTRAINER_FRLG] =     { _("TOPDRESSEUR"), 9, BALL_ULTRA },
     [TRAINER_CLASS_ELITE_FOUR_FRLG] =      { _("CONSEIL 4"), 25, BALL_ULTRA },
     [TRAINER_CLASS_GENTLEMAN_FRLG] =       { _("GENTLEMAN"), 18, BALL_LUXURY },
@@ -1886,7 +1885,6 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
         u32 monIndices[monsCount];
         DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags);
-        u32 cfLevelShift = CF_GetTrainerLevelShift(trainer, monIndices, monsCount, battleTypeFlags); // Hack: CF-18
 
         for (s32 i = 0; i < monsCount; i++)
         {
@@ -1917,7 +1915,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otId.method = OT_ID_PRESET;
                 otId.value = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            CreateMon(&party[i], partyData[monIndex].species, CF_ApplyTrainerLevelShift(partyData[monIndex].lvl, cfLevelShift), personalityValue, otId);
+            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, personalityValue, otId);
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 
             CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);

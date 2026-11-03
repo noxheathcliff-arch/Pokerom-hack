@@ -29,13 +29,13 @@ DOUBLE_BATTLE_TEST("Order Up increases a stat based on Tatsugiri's form")
         switch (species)
         {
         case SPECIES_TATSUGIRI_CURLY:
-            MESSAGE("Attaque de Oyacata augmente!");
+            MESSAGE("Ah, Attaque du Oyacata augmente!");
             break;
         case SPECIES_TATSUGIRI_DROOPY:
-            MESSAGE("Défense de Oyacata augmente!");
+            MESSAGE("Ah, Défense du Oyacata augmente!");
             break;
         case SPECIES_TATSUGIRI_STRETCHY:
-            MESSAGE("Vitesse de Oyacata augmente!");
+            MESSAGE("Ah, Vitesse du Oyacata augmente!");
             break;
         }
     } THEN {
@@ -81,13 +81,13 @@ DOUBLE_BATTLE_TEST("Order Up increases a stat based on Tatsugiri's form even if 
         switch (species)
         {
         case SPECIES_TATSUGIRI_CURLY:
-            MESSAGE("Attaque de Oyacata augmente!");
+            MESSAGE("Ah, Attaque du Oyacata augmente!");
             break;
         case SPECIES_TATSUGIRI_DROOPY:
-            MESSAGE("Défense de Oyacata augmente!");
+            MESSAGE("Ah, Défense du Oyacata augmente!");
             break;
         case SPECIES_TATSUGIRI_STRETCHY:
-            MESSAGE("Vitesse de Oyacata augmente!");
+            MESSAGE("Ah, Vitesse du Oyacata augmente!");
             break;
         }
     } THEN {

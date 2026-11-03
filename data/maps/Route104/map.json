@@ -32,6 +32,19 @@
   ],
   "object_events": [
     {
+      "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
+      "x": 15,
+      "y": 60,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route104_EventScript_BugCatcher",
+      "flag": "0"
+    },
+    {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
       "x": 25,
       "y": 49,
@@ -42,7 +55,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Girl1",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
@@ -55,7 +68,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "7",
       "script": "Route104_EventScript_Haley",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
@@ -68,7 +81,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Boy1",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -81,7 +94,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Woman",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
@@ -135,7 +148,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Ivan",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
@@ -317,7 +330,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route104_EventScript_Gina",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
@@ -330,7 +343,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route104_EventScript_Mia",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
@@ -343,7 +356,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route104_EventScript_Winston",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -356,7 +369,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route104_EventScript_Cindy",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -382,7 +395,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "Route104_EventScript_Billy",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -393,7 +406,7 @@
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_ADAMANT_MINT",
+      "trainer_sight_or_berry_tree_id": "ITEM_X_ACCURACY",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE_104_X_ACCURACY"
     },
@@ -447,7 +460,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Darian",
-      "flag": "FLAG_CF_VIS_39"
+      "flag": "0"
     },
     {
       "local_id": "LOCALID_ROUTE104_RIVAL",
@@ -462,216 +475,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Rival",
       "flag": "FLAG_HIDE_ROUTE_104_RIVAL"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_MARCO",
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
-      "x": 15,
-      "y": 56,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_00"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_CELEO",
-      "graphics_id": "OBJ_EVENT_GFX_CELIO",
-      "x": 16,
-      "y": 57,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_01"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_BAR_A1",
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
-      "x": 10,
-      "y": 39,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "CF_C2_BarrageTalk",
-      "flag": "FLAG_CF_VIS_10"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_BAR_A2",
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
-      "x": 11,
-      "y": 39,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "CF_C2_BarrageTalk",
-      "flag": "FLAG_CF_VIS_10"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_BAR_B1",
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
-      "x": 32,
-      "y": 43,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "CF_C2_BarrageTalk",
-      "flag": "FLAG_CF_VIS_10"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_BAR_B2",
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
-      "x": 33,
-      "y": 43,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "CF_C2_BarrageTalk",
-      "flag": "FLAG_CF_VIS_10"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_TAUROS",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAUROS)",
-      "x": 13,
-      "y": 60,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_92"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_URSARING",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(URSARING)",
-      "x": 13,
-      "y": 60,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_91"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_GYARADOS",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GYARADOS)",
-      "x": 13,
-      "y": 60,
-      "elevation": 1,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_90"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_PIKACHU",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIKACHU)",
-      "x": 16,
-      "y": 59,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_89"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_PORTAL",
-      "graphics_id": "OBJ_EVENT_GFX_CF_PORTAL_FRONT",
-      "x": 13,
-      "y": 60,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_80"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_BAG",
-      "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
-      "x": 15,
-      "y": 59,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_81"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_BALL_A",
-      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
-      "x": 16,
-      "y": 59,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_82"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_BALL_B",
-      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
-      "x": 15,
-      "y": 61,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_83"
-    },
-    {
-      "local_id": "LOCALID_CF_R104_ROCK",
-      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 18,
-      "y": 59,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_CF_VIS_44"
     }
   ],
   "warp_events": [
@@ -741,42 +544,6 @@
       "var": "VAR_ROUTE104_STATE",
       "var_value": "1",
       "script": "Route104_EventScript_RivalTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 10,
-      "y": 40,
-      "elevation": 3,
-      "var": "VAR_TEMP_E",
-      "var_value": "0",
-      "script": "CF_C2_Barrage"
-    },
-    {
-      "type": "trigger",
-      "x": 11,
-      "y": 40,
-      "elevation": 3,
-      "var": "VAR_TEMP_E",
-      "var_value": "0",
-      "script": "CF_C2_Barrage"
-    },
-    {
-      "type": "trigger",
-      "x": 32,
-      "y": 44,
-      "elevation": 3,
-      "var": "VAR_TEMP_E",
-      "var_value": "0",
-      "script": "CF_C2_Barrage"
-    },
-    {
-      "type": "trigger",
-      "x": 33,
-      "y": 44,
-      "elevation": 3,
-      "var": "VAR_TEMP_E",
-      "var_value": "0",
-      "script": "CF_C2_Barrage"
     }
   ],
   "bg_events": [
@@ -857,7 +624,7 @@
       "x": 16,
       "y": 64,
       "elevation": 3,
-      "item": "ITEM_BOLD_MINT",
+      "item": "ITEM_HEART_SCALE",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_HEART_SCALE"
     }
   ]

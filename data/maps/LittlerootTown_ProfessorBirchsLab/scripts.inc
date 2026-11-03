@@ -1,5 +1,6 @@
 LittlerootTown_ProfessorBirchsLab_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_ProfessorBirchsLab_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_ProfessorBirchsLab_OnWarp
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_ProfessorBirchsLab_OnFrame
 	.byte 0
 
@@ -19,7 +20,11 @@ LittlerootTown_ProfessorBirchsLab_MapScripts::
 	@ 5: Received pokedex
 
 LittlerootTown_ProfessorBirchsLab_OnTransition:
-	call CF_Lab_ShowPikachu
+	call Common_EventScript_SetupRivalGfxId
+	call ProfBirch_EventScript_UpdateLocation
+	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_SetAfterJohtoStarterLayout
+	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_SetJohtoStarterLayout
+	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter::
@@ -91,7 +96,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters::
 	end
 
 LittlerootTown_ProfessorBirchsLab_OnFrame:
-	map_script_2 VAR_BIRCH_LAB_STATE, 0, CF_P3_Lab
+	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent
+	map_script_2 VAR_BIRCH_LAB_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent
+	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex
+	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter
 	.2byte 0
 
 @ The starter is technically given prior to this on Route 101 by special ChooseStarter
@@ -649,30 +657,30 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
-	.string "Hein? Le Prof. Seko?\n"
-	.string "Il est sorti chercher des blessés.\p"
-	.string "Depuis les anneaux, on ramasse\n"
-	.string "des Pokémon qui ne sont pas d’ici.\p"
-	.string "Le Prof. dit qu’un Pokémon blessé\n"
-	.string "n’a pas de pays. Je suis d’accord.\p"
-	.string "Le Rempart, lui, n’est pas d’accord.\n"
-	.string "Alors on ferme les volets.$"
+	.string "Hein? Le PROF. SEKO?\p"
+	.string "Le PROFESSEUR est sur le terrain.\n"
+	.string "C'est-à-dire qu'il n'est pas ici.\p"
+	.string "Laisse-moi t'expliquer ce que\n"
+	.string "signifie être sur le terrain.\p"
+	.string "Il s'agit de réaliser nos études dans un\n"
+	.string "environnement naturel, en plaine ou en\l"
+	.string "montagne, plutôt qu'en laboratoire.\p"
+	.string "Le PROFESSEUR n'est pas du genre à\n"
+	.string "rester derrière un bureau. Il préfère\l"
+	.string "sortir et faire ses expériences plutôt\l"
+	.string "que de rester ici à lire des livres.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
-	.string "Ne touche à rien, s’il te plaît.\n"
-	.string "Ces bandages sont comptés.\p"
-	.string "Le Prof. n’a jamais aimé les bureaux.\n"
-	.string "Il préfère les herbes hautes.\p"
-	.string "Mais en ce moment, le terrain vient\n"
-	.string "à lui. Sur des brancards.$"
+	.string "Le PROFESSEUR n'est pas du genre à\n"
+	.string "rester derrière un bureau. Il préfère\l"
+	.string "sortir et faire ses expériences plutôt \l"
+	.string "que de rester ici à lire des livres.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
-	.string "Le Prof. ne fait plus de terrain.\n"
-	.string "Il soigne. Jour et nuit.\p"
-	.string "Le Pikachu se remet, mais doucement.\n"
-	.string "Des côtes fêlées, ça ne se presse pas.\p"
-	.string "Et Brice passe ses nuits à recenser.\n"
-	.string "‘Je note, je note.’ Comme son père.$"
+	.string "Le PROF. SEKO étudie l'habitat et la\n"
+	.string "répartition géographique des POKéMON.\p"
+	.string "Le PROFESSEUR aime aussi se faire aider\n"
+	.string "par {RIVAL}. Ils s'aiment beaucoup.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "PROF. SEKO: Alors, {PLAYER}{KUN}.\p"

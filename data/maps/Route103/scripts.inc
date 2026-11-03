@@ -4,7 +4,8 @@ Route103_MapScripts::
 	.byte 0
 
 Route103_OnTransition:
-	call_if_eq VAR_LITTLEROOT_RIVAL_STATE, 6, CF_P6_ShowBrice
+	call Common_EventScript_SetupRivalGfxId
+	call ProfBirch_EventScript_UpdateLocation
 	end
 
 Route103_OnLoad:
@@ -338,18 +339,13 @@ Route103_Text_BrendanTimeToHeadBack:
 	.string "On devrait retourner au LABO.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "Mon Pokémon est épuisé…\n"
-	.string "J’aurais dû prendre une Potion.\p"
-	.string "Rosyères n’en reçoit presque plus.\n"
-	.string "Les ports sont fermés.$"
+	.string "Mon POKéMON est terriblement fatigué…\n"
+	.string "J'aurais dû apporter une POTION…$"
 
 Route103_Text_ShortcutToOldale:
-	.string "Avant, je coupais par la mer pour aller\n"
-	.string "à Rosyères. Un sacré raccourci.\p"
-	.string "Depuis les anneaux, j’ose plus.\n"
-	.string "Ce qui tombe du ciel finit dans l’eau.\p"
-	.string "Hum, hum… Si tu vois un cercle doré\n"
-	.string "au-dessus des vagues, cours.$"
+	.string "Si tu traverses la mer ici, tu trouveras\n"
+	.string "un raccourci pour ROSYERES.\p"
+	.string "Hum, hum… Utile, hein?$"
 
 Route103_Text_RouteSign:
 	.string "ROUTE 103\n"

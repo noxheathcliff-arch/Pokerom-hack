@@ -4,10 +4,11 @@ Route101_MapScripts::
 	.byte 0
 
 Route101_OnTransition:
-	call_if_eq VAR_ROUTE101_STATE, 2, CF_P4_Show
+	call ProfBirch_EventScript_UpdateLocation
 	end
 
 Route101_OnFrame:
+	map_script_2 VAR_ROUTE101_STATE, 0, Route101_EventScript_HideMapNamePopup
 	.2byte 0
 
 Route101_EventScript_HideMapNamePopup::
@@ -281,12 +282,10 @@ Route101_Text_YouSavedMe:
 	.string "Allons au LABO POKéMON, OK?$"
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
-	.string "Tu viens de la plage, toi?\n"
-	.string "Moi, je n’y descends plus.\p"
-	.string "Si tes Pokémon sont à bout, le Centre\n"
-	.string "de Rosyères est juste au nord.\p"
-	.string "La nuit, ils ferment à clé, maintenant.\n"
-	.string "Frappe fort et dis que c’est urgent.$"
+	.string "Si tes POKéMON sont fatigués,\n"
+	.string "emmène-les dans un CENTRE POKéMON.\p"
+	.string "Il y a un CENTRE POKéMON à ROSYERES,\n"
+	.string "tout près d'ici.$"
 
 Route101_Text_WildPokemonInTallGrass:
 	.string "Les POKéMON sauvages vont te sauter\n"

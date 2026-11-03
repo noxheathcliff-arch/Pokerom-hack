@@ -793,38 +793,6 @@
 	.endif
 	.endm
 
-	@ Hack: like trainerbattle_single, but after the intro text the player is asked "Accepter le combat ?".
-	@ declined_flag: saved flag set when the player refuses (the refusal is final: the trainer never
-	@   spots the player again and does not re-ask while the flag is set). 0 = not recorded (the
-	@   trainer will ask again next time).
-	@ decline_script: optional script jumped to on refusal (VAR_RESULT = TRAINER_DECLINED_NOW) and
-	@   when talked to again after a refusal (VAR_RESULT = TRAINER_DECLINED_BEFORE). The player is
-	@   still locked: end it with release/releaseall + end. Without it, the script just ends.
-	@ The trainer flag is NOT set on refusal. Single battles only; mandatory battles keep trainerbattle_single.
-	.macro trainerbattle_single_declinable trainer:req, intro_text:req, lose_text:req, declined_flag:req, decline_script=NULL, event_script=FALSE, music=TRUE
-	.if \event_script == FALSE
-	trainerbattle TRAINER_BATTLE_SINGLE, LOCALID_NONE, \trainer, \intro_text, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, \declined_flag, \decline_script, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
-	.elseif \music == TRUE
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, \declined_flag, \decline_script, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
-	.else
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, \declined_flag, \decline_script, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE
-	.endif
-	.endm
-
-	@ Hack: trainer battle started from a coord event / scene script (no trainer object). Intro text, optional
-	@ "Accepter le combat ?", battle, then the script CONTINUES at the next instruction after a win or a loss
-	@ (set FLAG_CF_NO_WHITEOUT beforehand to avoid the whiteout; read the result with goto_if_set TRAINER_FLAGS_START + trainer).
-	@ On refusal: jumps to decline_script (VAR_RESULT = TRAINER_DECLINED_NOW) which must end the script.
-	.macro trainerbattle_scene_declinable trainer:req, intro_text:req, lose_text:req, declined_flag:req, decline_script=NULL
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, LOCALID_NONE, \trainer, \intro_text, \lose_text, .Lscene_after_\@, LOCALID_NONE, TRAINER_NONE, NULL, \declined_flag, \decline_script, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_DECLINABLE | TRAINER_BATTLE_SCENE
-.Lscene_after_\@:
-	.endm
-
-	@ Hack: like trainerbattle_no_intro but usable from a coord event / scene script (no trainer object).
-	.macro trainerbattle_scene_no_intro trainer:req, lose_text:req
-	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, LOCALID_NONE, \trainer, NULL, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRAINER_BATTLE_SCENE
-	.endm
-
 	@ Starts a double trainer battle. Takes a trainer, intro text, loss text, text for when you have too few pokemon
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
 	.macro trainerbattle_double trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script=FALSE, music=TRUE
@@ -2624,20 +2592,6 @@
 	.2byte \wait
 	.endm
 
-	@ Hack: hidden relationship / reputation counters (vars). VAR = clamp(VAR + amount, min, max),
-	@ VAR_RESULT = new value. Default range 0..100. Check thresholds with goto_if_ge / goto_if_lt.
-	.macro addaffinity var:req, amount:req, min=0, max=100
-	callnative Script_AddAffinity, requests_effects=1
-	.2byte \var
-	.2byte \amount
-	.2byte \min
-	.2byte \max
-	.endm
-
-	.macro subaffinity var:req, amount:req, min=0, max=100
-	addaffinity \var, -(\amount), \min, \max
-	.endm
-
 	.macro increasedifficulty
 	callnative Script_IncreaseDifficulty, requests_effects=1
 	.endm
@@ -2997,111 +2951,4 @@
 	braillemessage \text
 	getbraillestringwidth \text
 	call EventScript_BrailleCursorWaitButton
-	.endm
-
-	@ Hack: Pokemon Confluence helpers (src/confluence.c, docs/hack/ENGINE_CHANGES.md §CF).
-	@ Arguments marked "var or value" accept either an immediate or a var.
-
-	@ VAR_RESULT = (var >> shift) & ((1 << width) - 1). shift/width: var or value.
-	.macro getbits var:req, shift:req, width:req
-	callnative Script_CF_GetBits, requests_effects=1
-	.2byte \var
-	.2byte \shift
-	.2byte \width
-	.endm
-
-	@ Writes value (var or value) into bits [shift, shift+width) of var; other bits untouched.
-	.macro setbits var:req, shift:req, width:req, value:req
-	callnative Script_CF_SetBits, requests_effects=1
-	.2byte \var
-	.2byte \shift
-	.2byte \width
-	.2byte \value
-	.endm
-
-	@ Records decision Dnnn (1..131) = option (DEC_A/DEC_B/DEC_C). Write-once:
-	@ VAR_RESULT = TRUE if recorded now, FALSE if it was already taken (apply deltas only on TRUE).
-	.macro setdecision decision:req, option:req
-	callnative Script_CF_SetDecision, requests_effects=1
-	.2byte \decision
-	.2byte \option
-	.endm
-
-	@ VAR_RESULT = option recorded for decision Dnnn (DEC_NONE = 0 if not taken yet).
-	.macro checkdecision decision:req
-	callnative Script_CF_CheckDecision, requests_effects=1
-	.2byte \decision
-	.endm
-
-	@ Records the decision then jumps to \already if it had already been taken.
-	.macro setdecision_once decision:req, option:req, already:req
-	setdecision \decision, \option
-	goto_if_eq VAR_RESULT, FALSE, \already
-	.endm
-
-	@ E-REPREL: VAR_RESULT = rep - mean(7 reputations) + 100 (100 = average standing).
-	.macro repstanding repvar:req
-	callnative Script_CF_RepStanding, requests_effects=1
-	.2byte \repvar
-	.endm
-
-	@ E-CAP: VAR_CF_CAP = max(VAR_CF_CAP, cap) (never lowers it); VAR_RESULT = new cap.
-	.macro raisecap cap:req
-	callnative Script_CF_RaiseCap, requests_effects=1
-	.2byte \cap
-	.endm
-
-	@ E-REMOVE: removes party slot (0-5, var or value) and compacts the party.
-	@ VAR_RESULT = FALSE if refused (empty slot, or it would leave no non-egg Pokemon).
-	.macro removepartymon slot:req
-	callnative Script_CF_RemovePartyMon, requests_effects=1
-	.2byte \slot
-	.endm
-
-	@ E-CLEARPARTY: empties the whole party (no guard: the script must give a Pokemon back
-	@ before any battle, or keep FLAG_NO_WILD_ENCOUNTERS set).
-	.macro clearparty
-	callnative Script_CF_ClearParty, requests_effects=1
-	.endm
-
-	@ E-NATIVE: VAR_RESULT = TRUE if species (var or value) is in the Hoenn dex (no foreign regional forms).
-	.macro ishoennnative species:req
-	callnative Script_CF_IsHoennNative, requests_effects=1
-	.2byte \species
-	.endm
-
-	@ E-ADAPT: VAR_RESULT = dominant TYPE_* of the party; VAR_0x8000 = package 1 (A), 2 (B) or 3 (C).
-	.macro getdominanttype
-	callnative Script_CF_DominantType, requests_effects=1
-	.endm
-
-	@ E-OUT: ring outbreak of species at level on map (MAP_* constant), probability % of land
-	@ encounters, for days (0 = until clearringoutbreak). Moves: 0 = level-up moves at that level.
-	.macro setringoutbreak species:req, map:req, level:req, probability=50, days=0, move1=0, move2=0, move3=0, move4=0
-	callnative Script_CF_SetRingOutbreak, requests_effects=1
-	.2byte \species
-	.2byte \map
-	.2byte \level
-	.2byte \probability
-	.2byte \days
-	.2byte \move1
-	.2byte \move2
-	.2byte \move3
-	.2byte \move4
-	.endm
-
-	.macro clearringoutbreak
-	callnative Script_CF_ClearRingOutbreak, requests_effects=1
-	.endm
-
-	@ E-LEDGER: VAR_RESULT = bit index (0-127) of the static-encounter ledger.
-	.macro checkledger index:req
-	callnative Script_CF_LedgerGet, requests_effects=1
-	.2byte \index
-	.endm
-
-	.macro setledger index:req, value=TRUE
-	callnative Script_CF_LedgerSet, requests_effects=1
-	.2byte \index
-	.2byte \value
 	.endm

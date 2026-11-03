@@ -2,7 +2,6 @@
 #include "battle.h"
 #include "load_save.h"
 #include "battle_setup.h"
-#include "battle_controllers.h"
 #include "battle_tower.h"
 #include "battle_transition.h"
 #include "main.h"
@@ -55,7 +54,6 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
-#include "constants/trainer_types.h"
 #include "constants/weather.h"
 #include "fishing.h"
 
@@ -678,7 +676,7 @@ static void CB2_EndScriptedWildBattle(void)
 
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
-        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(B_FLAG_NO_WHITEOUT)) // Hack: no whiteout for scripted scene battles
+        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         else
             SetMainCallback2(CB2_WhiteOut);
@@ -1118,14 +1116,6 @@ void SetMapVarsToTrainerB(void)
 // expects parameters have been loaded correctly with TrainerBattleLoadArgs
 const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 {
-    // Hack: scene battle started from a coord event / script (no trainer object): see TRAINER_BATTLE_SCENE
-    if (TRAINER_BATTLE_PARAM.rivalBattleFlags & TRAINER_BATTLE_SCENE)
-    {
-        if (TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT)
-            return EventScript_DoSceneNoIntroTrainerBattle;
-        return EventScript_DoSceneTrainerBattle;
-    }
-
     switch (TRAINER_BATTLE_PARAM.mode)
     {
     case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:
@@ -1275,149 +1265,6 @@ u8 GetRivalBattleFlags(void)
 {
     return TRAINER_BATTLE_PARAM.rivalBattleFlags;
 }
-
-// Hack: declinable trainer battles (trainerbattle_single_declinable, B_DECLINABLE_TRAINER_BATTLES).
-// For these single battles the unused trainer-B fields of the trainerbattle data carry:
-//   defeatTextB          = flag set when the player refuses (0 = none)
-//   battleScriptRetAddrB = script jumped to on refusal / when already refused (NULL = release)
-// (trainer B fields are only read for two-trainer battles, which are never declinable).
-static bool32 IsDeclinableParam(const TrainerBattleParameter *param)
-{
-    return B_DECLINABLE_TRAINER_BATTLES
-        && (param->params.rivalBattleFlags & TRAINER_BATTLE_DECLINABLE)
-        && param->params.mode != TRAINER_BATTLE_EARLY_RIVAL;
-}
-
-static u32 GetDeclinedFlag(const TrainerBattleParameter *param)
-{
-    if (!(param->params.rivalBattleFlags & TRAINER_BATTLE_DECLINABLE))
-        return 0;
-    return (u32)param->params.defeatTextB;
-}
-
-// Hack (CF-ROUTE-DECLINE, B_DECLINABLE_ROUTE_TRAINERS): trainerbattle_single / trainerbattle_double (also
-// with an event script WITH music, e.g. match-call registration; not NO_MUSIC, not scene battles) used by a map
-// trainer with a sight type (route / gym trainers) are declinable too. Gym leaders and story bosses are
-// TRAINER_TYPE_NONE and/or use the NO_MUSIC variants: mandatory.
-static bool32 IsAutoDeclinableParam(const TrainerBattleParameter *param)
-{
-    struct ObjectEvent *obj;
-
-    if (!B_DECLINABLE_ROUTE_TRAINERS
-        || (param->params.rivalBattleFlags & (TRAINER_BATTLE_SCENE | TRAINER_BATTLE_DECLINABLE))
-        || (param->params.mode != TRAINER_BATTLE_SINGLE && param->params.mode != TRAINER_BATTLE_DOUBLE
-         && param->params.mode != TRAINER_BATTLE_CONTINUE_SCRIPT && param->params.mode != TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE)
-        || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InTrainerHill() || gSelectedObjectEvent >= OBJECT_EVENTS_COUNT)
-        return FALSE;
-    obj = &gObjectEvents[gSelectedObjectEvent];
-    return obj->active && obj->localId == gSpecialVar_LastTalked
-        && obj->trainerType != TRAINER_TYPE_NONE && obj->trainerType != TRAINER_TYPE_OW_WILD_ENCOUNTER;
-}
-
-// Local IDs of the trainers refused on the current map: they do not spot the player again until the
-// next map load (talking to them re-offers the battle). Cleared by ClearDeclinedTrainersOnMap.
-EWRAM_DATA static u8 sDeclinedTrainerLocalIds[256 / 8] = {0};
-
-void ClearDeclinedTrainersOnMap(void)
-{
-    memset(sDeclinedTrainerLocalIds, 0, sizeof(sDeclinedTrainerLocalIds));
-}
-
-bool32 IsTrainerDeclinedOnMap(u8 localId)
-{
-    return (sDeclinedTrainerLocalIds[localId / 8] >> (localId % 8)) & 1;
-}
-
-bool32 IsTrainerBattleDeclinable(void)
-{
-    if (gNoOfApproachingTrainers > 1) // two trainers spotted the player at once: no choice
-        return FALSE;
-    return IsDeclinableParam(&gTrainerBattleParameter) || IsAutoDeclinableParam(&gTrainerBattleParameter);
-}
-
-// TRUE if this declinable battle was already refused (its declined flag is set).
-bool32 IsTrainerBattleAlreadyDeclined(void)
-{
-    u32 flag = GetDeclinedFlag(&gTrainerBattleParameter);
-    return IsTrainerBattleDeclinable() && flag != 0 && FlagGet(flag);
-}
-
-// Used by trainer_see.c: a refused trainer never spots the player again (until the flag is cleared).
-bool32 IsTrainerBattleDeclinedFromScriptPointer(const u8 *data)
-{
-    const TrainerBattleParameter *param = (const TrainerBattleParameter *)(data + 1);
-    u32 flag = GetDeclinedFlag(param);
-    return IsDeclinableParam(param) && flag != 0 && FlagGet(flag);
-}
-
-// Script native: VAR_RESULT = result, set the declined flag, then jump to the decline script if any.
-static void FinishDeclinedTrainerBattle(struct ScriptContext *ctx, u16 result)
-{
-    u32 flag = GetDeclinedFlag(&gTrainerBattleParameter);
-
-    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
-    Script_RequestWriteVar(VAR_RESULT);
-    if (flag != 0)
-        FlagSet(flag);
-    if (result == TRAINER_DECLINED_NOW && !(TRAINER_BATTLE_PARAM.rivalBattleFlags & TRAINER_BATTLE_SCENE)
-        && gSelectedObjectEvent < OBJECT_EVENTS_COUNT && gObjectEvents[gSelectedObjectEvent].active)
-    {
-        u8 localId = gObjectEvents[gSelectedObjectEvent].localId;
-        sDeclinedTrainerLocalIds[localId / 8] |= 1 << (localId % 8);
-    }
-    gSpecialVar_Result = result;
-    gNoOfApproachingTrainers = 0;
-    gApproachingTrainerId = 0;
-    gTrainerApproachedPlayer = FALSE;
-    if (TRAINER_BATTLE_PARAM.battleScriptRetAddrB != NULL)
-        ScriptJump(ctx, TRAINER_BATTLE_PARAM.battleScriptRetAddrB);
-}
-
-void Script_TrainerBattleDeclinedNow(struct ScriptContext *ctx)
-{
-    FinishDeclinedTrainerBattle(ctx, TRAINER_DECLINED_NOW);
-}
-
-void Script_TrainerBattleDeclinedBefore(struct ScriptContext *ctx)
-{
-    FinishDeclinedTrainerBattle(ctx, TRAINER_DECLINED_BEFORE);
-}
-
-// Hack: B_FLAG_CHOOSE_BATTLE_LEAD. The chosen slot is consumed by SetBattlePartyIds
-// (battle_controllers.c) for the next battle only; the party order is never changed.
-EWRAM_DATA static u8 sChosenBattleLeadPlusOne = 0; // 0 = no choice (EWRAM starts zeroed)
-
-bool32 ShouldChooseBattleLead(void)
-{
-    u32 i, count = 0;
-
-    sChosenBattleLeadPlusOne = 0;
-    if (B_FLAG_CHOOSE_BATTLE_LEAD == 0 || !FlagGet(B_FLAG_CHOOSE_BATTLE_LEAD))
-        return FALSE;
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        if (IsValidForBattle(&gParties[B_TRAINER_PLAYER][i]))
-            count++;
-    }
-    return count >= 2;
-}
-
-void SetBattleLeadFromSelection(void)
-{
-    // Validity (not fainted, not an egg) is checked when the battle consumes the choice.
-    if (gSpecialVar_0x8004 < PARTY_SIZE)
-        sChosenBattleLeadPlusOne = gSpecialVar_0x8004 + 1;
-    else
-        sChosenBattleLeadPlusOne = 0;
-}
-
-u32 ConsumeChosenBattleLead(void)
-{
-    u32 lead = sChosenBattleLeadPlusOne ? sChosenBattleLeadPlusOne - 1 : PARTY_SIZE;
-    sChosenBattleLeadPlusOne = 0;
-    return lead;
-}
-
 
 bool8 GetTrainerFlag(void)
 {

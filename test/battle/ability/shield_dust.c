@@ -189,7 +189,7 @@ SINGLE_BATTLE_TEST("Shield Dust does not prevent ability stat changes")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Vitesse de Prismillon baisse!");
+        MESSAGE("Ah, Vitesse du Prismillon baisse!");
     }
 }
 

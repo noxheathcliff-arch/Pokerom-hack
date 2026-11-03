@@ -239,11 +239,11 @@ SINGLE_BATTLE_TEST("Teatime triggers Lightning Rod if it has been affected by El
         MESSAGE("Qulbutoké ennemi utilise\nThérémonie!");
         if (shouldTriggerAbility) {
             ABILITY_POPUP(player, ABILITY_LIGHTNING_ROD);
-            MESSAGE("Attaque Spéciale de Pikachu augmente!");
+            MESSAGE("Ah, Attaque Spéciale du Pikachu augmente!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(player, ABILITY_LIGHTNING_ROD);
-                MESSAGE("Attaque Spéciale de Pikachu augmente!");
+                MESSAGE("Ah, Attaque Spéciale du Pikachu augmente!");
             }
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, opponent);
@@ -280,11 +280,11 @@ SINGLE_BATTLE_TEST("Teatime triggers Motor Drive if it has been affected by Elec
         MESSAGE("Qulbutoké ennemi utilise\nThérémonie!");
         if (shouldTriggerAbility) {
             ABILITY_POPUP(player, ABILITY_MOTOR_DRIVE);
-            MESSAGE("Vitesse de Élekable augmente!");
+            MESSAGE("Ah, Vitesse du Élekable augmente!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(player, ABILITY_MOTOR_DRIVE);
-                MESSAGE("Vitesse de Élekable augmente!");
+                MESSAGE("Ah, Vitesse du Élekable augmente!");
             }
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, opponent);

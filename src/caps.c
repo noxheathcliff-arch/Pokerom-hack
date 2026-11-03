@@ -7,21 +7,16 @@
 
 u32 GetCurrentLevelCap(void)
 {
-    // Hack: the cap is the value of the first flag NOT yet set; once the last flag is set
-    // the cap is MAX_LEVEL (100). Values are PLACEHOLDERS (to be tuned by design).
-    // To add a story milestone, insert {FLAG_<milestone>, <cap>} at its place in progression
-    // order: each flag must be set after the previous one in every possible playthrough.
-    // Any saved flag works (badge, FLAG_DEFEATED_*, story flag from FLAGS_VARS_REGISTRY.md).
     static const u32 sLevelCapFlagMap[][2] =
     {
         {FLAG_BADGE01_GET, 15},
         {FLAG_BADGE02_GET, 19},
         {FLAG_BADGE03_GET, 24},
         {FLAG_BADGE04_GET, 29},
-        {FLAG_BADGE05_GET, 33},
-        {FLAG_BADGE06_GET, 38},
-        {FLAG_BADGE07_GET, 44},
-        {FLAG_BADGE08_GET, 50},
+        {FLAG_BADGE05_GET, 31},
+        {FLAG_BADGE06_GET, 33},
+        {FLAG_BADGE07_GET, 42},
+        {FLAG_BADGE08_GET, 46},
         {FLAG_IS_CHAMPION, 58},
     };
 
@@ -37,13 +32,7 @@ u32 GetCurrentLevelCap(void)
     }
     else if (B_LEVEL_CAP_TYPE == LEVEL_CAP_VARIABLE)
     {
-        // Hack: Confluence E-CAP. VAR_CF_CAP is set to 14 by NewGameInitData and only raised by
-        // raisecap / CF_RaiseCap. Fail-safe: an unset var (0, e.g. a save made before E-CAP)
-        // means "no cap" rather than "cap 0", and the value is clamped to MAX_LEVEL.
-        u32 cap = VarGet(B_LEVEL_CAP_VARIABLE);
-        if (cap == 0 || cap > MAX_LEVEL)
-            return MAX_LEVEL;
-        return cap;
+        return VarGet(B_LEVEL_CAP_VARIABLE);
     }
 
     return MAX_LEVEL;

@@ -50,19 +50,6 @@ EventScript_DoNoIntroTrainerBattle::
 	waitmovement 0
 	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	special PlayTrainerEncounterMusic
-	call EventScript_MaybeChooseBattleLead
-	dotrainerbattle
-	gotopostbattlescript
-
-@ Hack: scene battles (trainerbattle_scene_*): started from a coord event / scene script, no trainer object.
-@ No faceplayer/reveal/facing; the script continues after the battle (win AND loss) at the instruction after the macro.
-EventScript_DoSceneTrainerBattle::
-	special PlayTrainerEncounterMusic
-	goto EventScript_ShowTrainerIntroMsg
-
-EventScript_DoSceneNoIntroTrainerBattle::
-	special PlayTrainerEncounterMusic
-	call EventScript_MaybeChooseBattleLead
 	dotrainerbattle
 	gotopostbattlescript
 
@@ -118,54 +105,14 @@ Movement_RevealTrainer:
 	step_end
 
 EventScript_ShowTrainerIntroMsg::
-	specialvar VAR_RESULT, IsTrainerBattleAlreadyDeclined
-	goto_if_eq VAR_RESULT, TRUE, EventScript_TrainerBattleAlreadyDeclined
 	special ShowTrainerIntroSpeech
 	waitmessage
 	waitbuttonpress
-	specialvar VAR_RESULT, IsTrainerBattleDeclinable
-	goto_if_eq VAR_RESULT, TRUE, EventScript_AskAcceptTrainerBattle
-EventScript_TrainerIntroMsgContinue::
 	special TryPrepareSecondApproachingTrainer
 	goto_if_eq VAR_RESULT, TRUE, EventScript_TrainerApproach
 	goto EventScript_DoTrainerBattle
 
-@ Hack: declinable trainer battles (trainerbattle_single_declinable)
-EventScript_AskAcceptTrainerBattle::
-	msgbox Text_AcceptTrainerBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, EventScript_TrainerIntroMsgContinue
-	closemessage
-	fadedefaultbgm
-	callnative Script_TrainerBattleDeclinedNow, requests_effects=1
-	@ No decline script: short refusal line (CF-ROUTE-DECLINE). The trainer won't spot the player again on this map visit.
-	msgbox Text_TrainerBattleRefused, MSGBOX_DEFAULT
-	releaseall
-	end
-
-EventScript_TrainerBattleAlreadyDeclined::
-	fadedefaultbgm
-	callnative Script_TrainerBattleDeclinedBefore, requests_effects=1
-	releaseall
-	end
-
-Text_AcceptTrainerBattle:
-	.string "Accepter le combat ?$"
-
-Text_TrainerBattleRefused:
-	.string "Dommage… Reviens quand tu seras\n"
-	.string "prêt pour un combat !$"
-
-@ Hack: B_FLAG_CHOOSE_BATTLE_LEAD - pick the lead Pokemon before the battle (B cancels: normal lead)
-EventScript_MaybeChooseBattleLead::
-	specialvar VAR_RESULT, ShouldChooseBattleLead
-	goto_if_eq VAR_RESULT, FALSE, EventScript_MaybeChooseBattleLeadEnd
-	special ChoosePartyMon
-	special SetBattleLeadFromSelection
-EventScript_MaybeChooseBattleLeadEnd::
-	return
-
 EventScript_DoTrainerBattle::
-	call EventScript_MaybeChooseBattleLead
 	dotrainerbattle
 	@ Below battle mode check only needed in FRLG
 	specialvar VAR_RESULT, GetTrainerBattleMode

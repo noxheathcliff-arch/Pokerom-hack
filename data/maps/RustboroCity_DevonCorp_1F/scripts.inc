@@ -79,60 +79,42 @@ RustboroCity_DevonCorp_1F_EventScript_ProductsDisplay::
 	end
 
 RustboroCity_DevonCorp_1F_Text_WelcomeToDevonCorp:
-	.string "Bienvenue chez Devon SARL.\n"
-	.string "Partenaire officiel de Sylphe.\p"
-	.string "Ensemble, nous avons créé la\n"
-	.string "Passerelle: le monde en une seconde.\p"
-	.string "Toute question sur les anneaux doit\n"
-	.string "être adressée au service presse.$"
+	.string "Bonjour et bienvenue à la DEVON SARL.\p"
+	.string "Nous produisons avec fierté des objets\n"
+	.string "et médicaments qui simplifient la vie.$"
 
 RustboroCity_DevonCorp_1F_Text_StaffGotRobbed:
-	.string "Je n’ai pas le droit de parler\n"
-	.string "des anneaux. Désolée.\p"
-	.string "Le service presse dit que la\n"
-	.string "Passerelle n’y est pour rien.$"
+	.string "Une de nos équipes de chercheurs s'est\n"
+	.string "fait voler un important paquet.$"
 
 RustboroCity_DevonCorp_1F_Text_ThoseShoesAreOurProduct:
-	.string "Hé, ces Chaussures de Sport!\n"
-	.string "Elles sortent de nos ateliers.\p"
-	.string "Avant, Devon fabriquait des choses\n"
-	.string "utiles. Des chaussures, des Balls.\p"
-	.string "Maintenant, tout le budget part\n"
-	.string "dans la Passerelle. Tout.$"
+	.string "Hé, ces CHAUSSURES DE SPORT!\n"
+	.string "Elles sortent de nos ateliers!\p"
+	.string "J'aime constater que ce que nous\n"
+	.string "avons produit sert à quelqu'un.$"
 
 RustboroCity_DevonCorp_1F_Text_RobberWasntVeryBright:
-	.string "Un ingénieur sort tous les soirs\n"
-	.string "par la porte de service.\p"
-	.string "Ferrand, je crois. Il fredonne\n"
-	.string "toujours. Ça m’agace.\p"
-	.string "Ne dis à personne que je t’en ai\n"
-	.string "parlé. Je tiens à mon poste.$"
+	.string "Ce paquet qui a été volé…\p"
+	.string "Bien sûr, c'est important, mais ce n'est\n"
+	.string "pas utile à tout le monde.\p"
+	.string "Et d'après mes calculs, le voleur ne\n"
+	.string "doit pas être très intelligent.$"
 
 RustboroCity_DevonCorp_1F_Text_SoundsLikeStolenGoodsRecovered:
-	.string "Les registres sont à jour. Le protocole\n"
-	.string "est respecté. Tout va bien.\p"
-	.string "… C’est ce qu’on me demande de dire\n"
-	.string "aux visiteurs, en tout cas.$"
+	.string "Ils ont l'air d'avoir retrouvé le\n"
+	.string "PACK DEVON qui avait été volé.$"
 
 RustboroCity_DevonCorp_1F_Text_OnlyAuthorizedPeopleEnter:
-	.string "Halte. Accès réservé au personnel\n"
-	.string "autorisé.\p"
-	.string "Depuis les anneaux, on ne plaisante\n"
-	.string "plus avec la sécurité.\p"
-	.string "Sans badge Devon, tu ne passes pas.\n"
-	.string "Même avec une jolie casquette.$"
+	.string "Désolé, mais seules les personnes\n"
+	.string "autorisées peuvent entrer ici.$"
 
 RustboroCity_DevonCorp_1F_Text_HowCouldWeGetRobbed:
-	.string "Ne restez pas près de l’escalier,\n"
-	.string "s’il vous plaît.\p"
-	.string "On a des consignes. Personne ne monte\n"
-	.string "sans badge. Même pas un héros.$"
+	.string "C'est trop bête!\n"
+	.string "Comment a-t-on pu se faire voler?$"
 
 RustboroCity_DevonCorp_1F_Text_YoureAlwaysWelcomeHere:
-	.string "Bonjour. Devon est heureux de\n"
-	.string "vous accueillir.\p"
-	.string "… Sous protocole, bien sûr. Les étages\n"
-	.string "restent réservés au personnel.$"
+	.string "Bonjour! C'est toujours avec grand\n"
+	.string "plaisir que nous vous accueillons ici!$"
 
 RustboroCity_DevonCorp_1F_Text_RocksMetalDisplay:
 	.string "Des échantillons de pierres et de\n"

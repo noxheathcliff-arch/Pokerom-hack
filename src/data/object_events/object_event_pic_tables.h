@@ -221,10 +221,6 @@ static const struct SpriteFrameImage sPicTable_Beauty[] = {
     overworld_ascending_frames(gObjectEventPic_Beauty, 2, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_CfDoctor[] = {
-    overworld_ascending_frames(gObjectEventPic_CfDoctor, 2, 4),
-};
-
 static const struct SpriteFrameImage sPicTable_Scientist1[] = {
     overworld_ascending_frames(gObjectEventPic_Scientist1, 2, 4),
 };
@@ -400,43 +396,6 @@ static const struct SpriteFrameImage sPicTable_VigorothFacingAway[] = {
     overworld_frame(gObjectEventPic_VigorothMover, 4, 4, 4),
     overworld_frame(gObjectEventPic_VigorothMover, 4, 4, 4),
     overworld_frame(gObjectEventPic_VigorothMover, 4, 4, 4),
-};
-
-static const struct SpriteFrameImage sPicTable_CfPortal[] = {
-    obj_frame_tiles(gObjectEventPic_CfPortal),
-};
-
-static const struct SpriteFrameImage sPicTable_CfPortalFront[] = {
-    overworld_frame(gObjectEventPic_CfPortalFront, 4, 4, 0),
-    overworld_frame(gObjectEventPic_CfPortalFront, 4, 4, 1),
-    overworld_frame(gObjectEventPic_CfPortalFront, 4, 4, 2),
-    overworld_frame(gObjectEventPic_CfPortalFront, 4, 4, 3),
-};
-
-static const struct SpriteFrameImage sPicTable_CfPortalSide[] = {
-    overworld_frame(gObjectEventPic_CfPortalSide, 4, 4, 0),
-    overworld_frame(gObjectEventPic_CfPortalSide, 4, 4, 1),
-    overworld_frame(gObjectEventPic_CfPortalSide, 4, 4, 2),
-    overworld_frame(gObjectEventPic_CfPortalSide, 4, 4, 3),
-};
-
-static const struct SpriteFrameImage sPicTable_CfPortalTilted[] = {
-    overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 0),
-    overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 1),
-    overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 2),
-    overworld_frame(gObjectEventPic_CfPortalTilted, 4, 4, 3),
-};
-
-static const struct SpriteFrameImage sPicTable_CfCagedPikachu[] = {
-    overworld_frame(gObjectEventPic_CfCaged, 4, 4, 0),
-};
-
-static const struct SpriteFrameImage sPicTable_CfCagedEevee[] = {
-    overworld_frame(gObjectEventPic_CfCaged, 4, 4, 1),
-};
-
-static const struct SpriteFrameImage sPicTable_CfCagedRattata[] = {
-    overworld_frame(gObjectEventPic_CfCaged, 4, 4, 2),
 };
 
 static const struct SpriteFrameImage sPicTable_BirchsBag[] = {
@@ -1400,7 +1359,7 @@ static const struct SpriteFrameImage sPicTable_ApricornTree[] = {
     overworld_frame(gObjectEventPic_ApricornTree, 2, 2, 0),
 };
 
-// Hack: FRLG object events are also built in Emerald (Kanto player avatar + Kanto NPCs)
+#if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {
     overworld_frame(gObjectEventPic_RedNormal, 2, 4, 0),
@@ -3067,4 +3026,4 @@ static const struct SpriteFrameImage sPicTable_MomFrlg[] = {
     overworld_frame(gObjectEventPic_MomFrlg, 2, 4, 2),
 };
 
-// end of FRLG object events
+#endif // IS_FRLG

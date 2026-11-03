@@ -60,28 +60,28 @@ DOUBLE_BATTLE_TEST("Opportunist raises Attack only once when partner has Intimid
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         if (abilityLeft == ABILITY_CONTRARY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Attaque de Spinda ennemi augmente!");
+            MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Attaque de Spinda ennemi baisse!");
+            MESSAGE("Ah, Attaque du Spinda ennemi baisse!");
         }
         if (abilityRight == ABILITY_CONTRARY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Attaque de Spinda ennemi augmente!");
+            MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Attaque de Spinda ennemi baisse!");
+            MESSAGE("Ah, Attaque du Spinda ennemi baisse!");
         }
 
         if ((abilityLeft == ABILITY_CONTRARY && abilityRight != ABILITY_CONTRARY)
                 || (abilityLeft != ABILITY_CONTRARY && abilityRight == ABILITY_CONTRARY)) {
             ABILITY_POPUP(playerRight, ABILITY_OPPORTUNIST);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Attaque de Cléopsytra augmente!");
+            MESSAGE("Ah, Attaque du Cléopsytra augmente!");
         } else if (abilityLeft == ABILITY_CONTRARY && abilityRight == ABILITY_CONTRARY) {
             ABILITY_POPUP(playerRight, ABILITY_OPPORTUNIST);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Attaque de Cléopsytra augmente beaucoup!");
+            MESSAGE("Ah, Attaque du Cléopsytra augmente beaucoup!");
         }
 
         HP_BAR(playerLeft, captureDamage: &results[i].damageLeft);
@@ -225,7 +225,7 @@ DOUBLE_BATTLE_TEST("Opportunist copies the stat of each Pokémon that were raise
         ABILITY_POPUP(opponentRight, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
         ABILITY_POPUP(playerRight, ABILITY_OPPORTUNIST);
-        MESSAGE("Attaque de Cléopsytra augmente beaucoup!");
+        MESSAGE("Ah, Attaque du Cléopsytra augmente beaucoup!");
     } THEN {
         EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
     }

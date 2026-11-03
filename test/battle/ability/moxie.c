@@ -25,11 +25,11 @@ DOUBLE_BATTLE_TEST("Moxie/Chilling Neigh raises Attack by one stage after direct
         ABILITY_POPUP(playerLeft, abilityPopUp);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         if (species == SPECIES_SALAMENCE)
-            MESSAGE("Attaque de Drattak\naugmente énormément!");
+            MESSAGE("Ah, Attaque du Drattak\naugmente énormément!");
         else if (species == SPECIES_GLASTRIER)
-            MESSAGE("Attaque de Blizzeval\naugmente énormément!");
+            MESSAGE("Ah, Attaque du Blizzeval\naugmente énormément!");
         else
-            MESSAGE("Attaque de Sylveroy\naugmente énormément!");
+            MESSAGE("Ah, Attaque du Sylveroy\naugmente énormément!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 3);
     }
@@ -63,9 +63,9 @@ DOUBLE_BATTLE_TEST("Moxie/Chilling Neigh does not trigger if Pokemon faint to in
             NONE_OF {
                 ABILITY_POPUP(playerLeft, abilityPopUp);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-                MESSAGE("Attaque de Drattak augmente!");
-                MESSAGE("Attaque de Blizzeval augmente!");
-                MESSAGE("Attaque de Sylveroy augmente!");
+                MESSAGE("Ah, Attaque du Drattak augmente!");
+                MESSAGE("Ah, Attaque du Blizzeval augmente!");
+                MESSAGE("Ah, Attaque du Sylveroy augmente!");
             }
         }
     } THEN {
@@ -102,9 +102,9 @@ SINGLE_BATTLE_TEST("Moxie/Chilling Neigh does not trigger when already at maximu
         NONE_OF {
             ABILITY_POPUP(player, abilityPopUp);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Attaque de Drattak augmente!");
-            MESSAGE("Attaque de Blizzeval augmente!");
-            MESSAGE("Attaque de Sylveroy augmente!");
+            MESSAGE("Ah, Attaque du Drattak augmente!");
+            MESSAGE("Ah, Attaque du Blizzeval augmente!");
+            MESSAGE("Ah, Attaque du Sylveroy augmente!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], MAX_STAT_STAGE);
@@ -138,11 +138,11 @@ DOUBLE_BATTLE_TEST("Moxie/Chilling Neigh does not increase damage done by the sa
         ABILITY_POPUP(playerLeft, abilityPopUp);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         if (species == SPECIES_SALAMENCE)
-            MESSAGE("Attaque de Drattak augmente!");
+            MESSAGE("Ah, Attaque du Drattak augmente!");
         else if (species == SPECIES_GLASTRIER)
-            MESSAGE("Attaque de Blizzeval augmente!");
+            MESSAGE("Ah, Attaque du Blizzeval augmente!");
         else
-            MESSAGE("Attaque de Sylveroy augmente!");
+            MESSAGE("Ah, Attaque du Sylveroy augmente!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
         EXPECT_EQ(damage[0], damage[1]);

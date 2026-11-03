@@ -55,7 +55,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
       "x": 10,
       "y": 5,
       "elevation": 3,
@@ -64,7 +64,7 @@
       "movement_range_y": 10,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "CF_C5_Ferrand",
+      "script": "RustboroCity_DevonCorp_2F_EventScript_PokemonDreamsScientist",
       "flag": "0"
     },
     {

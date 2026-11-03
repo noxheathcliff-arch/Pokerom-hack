@@ -31,36 +31,32 @@ RustboroCity_House1_EventScript_Hiker::
 	end
 
 RustboroCity_House1_Text_IllTradeIfYouWant:
-	.string "Mon Pokémon est mignon?\n"
-	.string "Je sais, je sais.\p"
-	.string "Mais j’ai peur que la brigade me le\n"
-	.string "prenne. Il est né loin d’ici.\p"
-	.string "Je t’échange mon {STR_VAR_2} contre\n"
-	.string "un {STR_VAR_1}. D’accord?$"
+	.string "Hein? Mon POKéMON est mignon?\n"
+	.string "Bien sûr que je le sais.\p"
+	.string "Mais si tu veux, je suis d'accord pour\n"
+	.string "te l'échanger.\p"
+	.string "Je t'échange mon {STR_VAR_2} contre\n"
+	.string "un {STR_VAR_1} si tu veux.$"
 
 RustboroCity_House1_Text_PleaseBeGoodToMyPokemon:
-	.string "Merci. Il sera plus en\n"
-	.string "sécurité avec toi.$"
+	.string "Hé hé…\n"
+	.string "Sois sympa avec mon POKéMON.$"
 
 RustboroCity_House1_Text_DoesntLookLikeMonToMe:
-	.string "Hein? Ça, ce n’est pas\n"
+	.string "Hein? Il ressemble pas vraiment à\n"
 	.string "un {STR_VAR_1}!$"
 
 RustboroCity_House1_Text_YouDontWantToThatsOkay:
-	.string "Tant pis. Je le cacherai\n"
-	.string "encore un peu, alors.$"
+	.string "Oh, si tu ne veux pas, c'est d'accord.\n"
+	.string "Mais il est vraiment mignon, tu sais?$"
 
 RustboroCity_House1_Text_AnyPokemonCanBeCute:
-	.string "Un Pokémon élevé avec douceur\n"
-	.string "devient adorable. Même un arrivant.\p"
-	.string "Ne le dis pas trop fort. Ici,\n"
-	.string "ce genre d’idée, ça dérange.$"
+	.string "Tous les POKéMON peuvent être mignons\n"
+	.string "s'ils sont élevés avec gentillesse.$"
 
 RustboroCity_House1_Text_AllSortsOfPlaces:
-	.string "J’ai marché dans toute la région.\n"
-	.string "Chaque coin a ses Pokémon.\p"
-	.string "Maintenant, il faut un laissez-passer\n"
-	.string "pour sortir de la ville.\p"
-	.string "Si tu vas vers Vergazon, oublie\n"
-	.string "le Tunnel Mérazon. Plein d’arrivants.$"
+	.string "Chaque endroit a ses types précis de\n"
+	.string "POKéMON et de personnes.\p"
+	.string "Je trouve ça si fascinant que je me\n"
+	.string "balade un peu partout.$"
 

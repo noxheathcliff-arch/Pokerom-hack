@@ -1632,9 +1632,6 @@ static void TryStartRandomMassOutbreak(void)
     u8 i;
     u16 outbreakIdx;
     TVShow *show;
-    // Hack: Confluence E-OUT. Outbreaks are scripted (setringoutbreak); no random TV outbreak.
-    if (!OW_RANDOM_TV_OUTBREAKS)
-        return;
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
     {

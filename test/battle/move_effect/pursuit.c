@@ -474,7 +474,7 @@ SINGLE_BATTLE_TEST("Pursuited mon correctly switches out after it got hit and ac
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         ABILITY_POPUP(player, ABILITY_TANGLING_HAIR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("Vitesse de Okéoké ennemi baisse!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
         SEND_IN_MESSAGE("Qulbutoké");
     }
 }
@@ -494,11 +494,11 @@ DOUBLE_BATTLE_TEST("Pursuited mon correctly switches out after it got hit and ac
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         ABILITY_POPUP(playerLeft, ABILITY_TANGLING_HAIR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Vitesse de Okéoké ennemi baisse!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
         ABILITY_POPUP(playerLeft, ABILITY_TANGLING_HAIR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         SEND_IN_MESSAGE("Qulbutoké");
     }
 }
@@ -536,19 +536,19 @@ DOUBLE_BATTLE_TEST("Pursuited mon correctly switches out after it got hit and ac
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         ABILITY_POPUP(playerLeft, ABILITY_COTTON_DOWN);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Vitesse de Qulbutoké baisse!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Vitesse de Okéoké ennemi baisse!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
         ABILITY_POPUP(playerLeft, ABILITY_COTTON_DOWN);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Vitesse de Qulbutoké baisse!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Vitesse de Okéoké ennemi baisse!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Vitesse de Qulbutoké ennemi baisse!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         SEND_IN_MESSAGE("Qulbutoké");
     }
 }

@@ -229,14 +229,6 @@ const u16 gObjectEventPal_SubmarineShadow[] = INCGFX_U16("graphics/object_events
 const u32 gObjectEventPic_Truck[] = INCGFX_U32("graphics/object_events/pics/misc/truck.png", ".4bpp");
 const u16 gObjectEventPal_Truck[] = INCGFX_U16("graphics/object_events/palettes/truck.pal", ".gbapal");
 const u16 gObjectEventPal_Vigoroth[] = INCGFX_U16("graphics/object_events/palettes/vigoroth.pal", ".gbapal");
-const u32 gObjectEventPic_CfPortal[] = INCGFX_U32("graphics/object_events/pics/misc/cf_portal.png", ".4bpp");
-const u32 gObjectEventPic_CfPortalFront[] = INCGFX_U32("graphics/object_events/pics/misc/cf_portal_front.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_CfPortalSide[] = INCGFX_U32("graphics/object_events/pics/misc/cf_portal_side.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_CfPortalTilted[] = INCGFX_U32("graphics/object_events/pics/misc/cf_portal_tilted.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_CfCaged[] = INCGFX_U32("graphics/object_events/pics/misc/cf_caged.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u16 gObjectEventPal_CfCaged[] = INCGFX_U16("graphics/object_events/pics/misc/cf_caged.png", ".gbapal");
-const u32 gObjectEventPic_CfDoctor[] = INCGFX_U32("graphics/object_events/pics/people/cf_doctor.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPal_CfDoctor[] = INCGFX_U16("graphics/object_events/pics/people/cf_doctor.png", ".gbapal");
 const u32 gObjectEventPic_BirchsBag[] = INCGFX_U32("graphics/object_events/pics/misc/birchs_bag.png", ".4bpp");
 const u32 gObjectEventPic_EnemyZigzagoon[] = INCGFX_U32("graphics/object_events/pics/pokemon_old/enemy_zigzagoon.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u16 gObjectEventPal_EnemyZigzagoon[] = INCGFX_U16("graphics/object_events/palettes/enemy_zigzagoon.pal", ".gbapal");
@@ -474,7 +466,7 @@ const u32 gObjectEventPic_ApricornTree[] = INCGFX_U32("graphics/object_events/pi
 
 const u32 gFieldEffectObjectPic_ShinySparkle[] = INCGFX_U32("graphics/field_effects/pics/shiny_sparkle.png", ".4bpp", "-mwidth 2 -mheight 4");
 
-// Hack: FRLG object events are also built in Emerald (Kanto player avatar + Kanto NPCs)
+#if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCGFX_U16("graphics/object_events/pics/people/red/red_normal.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_RedBike[] = INCGFX_U16("graphics/object_events/pics/people/red/red_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
@@ -640,4 +632,4 @@ const u16 gObjectEventPic_JigglypuffOld[] = INCGFX_U16("graphics/object_events/p
 const u16 gObjectEventPic_PidgeyOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/pidgey.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u16 gObjectEventPic_ClefairyOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/clefairy.png", ".4bpp", "-mwidth 2 -mheight 2");
 
-// end of FRLG object events
+#endif // IS_FRLG

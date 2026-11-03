@@ -21,7 +21,6 @@
 #include "script.h"
 #include "tv.h"
 #include "wild_encounter.h"
-#include "confluence.h" // Hack
 #include "battle_debug.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -77,15 +76,6 @@ static const u16 sRoute119WaterTileData[] =
 void DisableWildEncounters(bool8 disabled)
 {
     sWildEncountersDisabled = disabled;
-}
-
-// Hack: step encounters (grass/water) and overworld encounters
-// already honour WE_FLAG_NO_ENCOUNTER (field_control_avatar.c, wild_encounter_ow.c).
-// This helper extends it to the paths that upstream does not cover: fishing,
-// Rock Smash and Sweet Scent / Honey. WE_FLAG_NO_ENCOUNTER = FLAG_NO_WILD_ENCOUNTERS.
-bool32 IsWildEncounterFlagSet(void)
-{
-    return WE_FLAG_NO_ENCOUNTER != 0 && FlagGet(WE_FLAG_NO_ENCOUNTER);
 }
 
 // Each fishing spot on Route 119 is given a number between 1 and NUM_FISHING_SPOTS inclusive.
@@ -413,13 +403,13 @@ u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, en
             if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
             {
                 if (Random() % 2 == 0)
-                    return CF_ScaleWildMonLevel(max, min); // Hack: CF-17
+                    return max;
 
                 if (rand != 0)
                     rand--;
             }
         }
-        return CF_ScaleWildMonLevel(min + rand, min); // Hack: CF-17
+        return min + rand;
     }
     else
     {
@@ -453,16 +443,6 @@ u16 GetCurrentMapWildMonHeaderId(void)
                     alteringCaveId = 0;
 
                 i += alteringCaveId;
-            }
-            else
-            {
-                // Hack: Confluence E-ECO. A zone map may list consecutive headers (base, _Mixte,
-                // _Restaure, _Abattu); pick the one for the zone state in VAR_CF_ECO.
-                u32 count = 1;
-                while (gWildMonHeaders[i + count].mapGroup == gWildMonHeaders[i].mapGroup
-                    && gWildMonHeaders[i + count].mapNum == gWildMonHeaders[i].mapNum)
-                    count++;
-                i += CF_GetEcoHeaderOffset(gWildMonHeaders[i].mapGroup, gWildMonHeaders[i].mapNum, count);
             }
 
             return i;
@@ -863,12 +843,6 @@ void RockSmashWildEncounter(void)
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay;
 
-    if (IsWildEncounterFlagSet())
-    {
-        gSpecialVar_Result = FALSE;
-        return;
-    }
-
     if (headerId != HEADER_NONE)
     {
         timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_ROCKS);
@@ -911,9 +885,6 @@ bool8 SweetScentWildEncounter(void)
     s16 x, y;
     u32 headerId;
     enum TimeOfDay timeOfDay;
-
-    if (IsWildEncounterFlagSet())
-        return FALSE;
 
     PlayerGetDestCoords(&x, &y);
     headerId = GetCurrentMapWildMonHeaderId();
@@ -995,9 +966,6 @@ bool8 DoesCurrentMapHaveFishingMons(void)
 {
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_FISHING);
-
-    if (IsWildEncounterFlagSet())
-        return FALSE;
 
     if (headerId != HEADER_NONE && gWildMonHeaders[headerId].encounterTypes[timeOfDay].fishingMonsInfo != NULL)
         return TRUE;

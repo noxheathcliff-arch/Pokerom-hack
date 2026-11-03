@@ -104,15 +104,15 @@ SINGLE_BATTLE_TEST("Protect: King's Shield, Silk Trap and Obstruct protect from 
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
                 if (statId == STAT_ATK) {
                     #if B_KINGS_SHIELD_LOWER_ATK >= GEN_8
-                    MESSAGE("Attaque de Qulbutoké baisse!");
+                    MESSAGE("Ah, Attaque du Qulbutoké baisse!");
                     #else
-                    MESSAGE("Attaque de Qulbutoké baisse beaucoup!");
+                    MESSAGE("Ah, Attaque du Qulbutoké baisse beaucoup!");
                     #endif
                 } else if (statId == STAT_SPEED) {
-                    MESSAGE("Vitesse de Qulbutoké baisse!");
+                    MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
                 } else if (statId == STAT_DEF) {
                     if (lowersBy == 2) {
-                        MESSAGE("Défense de Qulbutoké baisse beaucoup!");
+                        MESSAGE("Ah, Défense du Qulbutoké baisse beaucoup!");
                     }
                 }
             } else {
@@ -819,13 +819,13 @@ DOUBLE_BATTLE_TEST("Crafty Shield does not protect against moves that target all
             MESSAGE("Saquedeneu utilise\nGarde Florale!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FLOWER_SHIELD, playerLeft);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Défense de Saquedeneu augmente!");
+            MESSAGE("Ah, Défense du Saquedeneu augmente!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Défense de Bouldeneu augmente!");
+            MESSAGE("Ah, Défense du Bouldeneu augmente!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Défense de Tournegrin ennemi augmente!");
+            MESSAGE("Ah, Défense du Tournegrin ennemi augmente!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Défense de Héliatronc ennemi augmente!");
+            MESSAGE("Ah, Défense du Héliatronc ennemi augmente!");
         } else {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_PERISH_SONG, playerLeft);
             NONE_OF {

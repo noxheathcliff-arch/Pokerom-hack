@@ -24,13 +24,13 @@ DOUBLE_BATTLE_TEST("Flower Shield raises the defense of all Grass-type Pokémon"
         MESSAGE("Saquedeneu utilise\nGarde Florale!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLOWER_SHIELD, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Défense de Saquedeneu augmente!");
+        MESSAGE("Ah, Défense du Saquedeneu augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Défense de Bouldeneu augmente!");
+        MESSAGE("Ah, Défense du Bouldeneu augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Défense de Tournegrin ennemi augmente!");
+        MESSAGE("Ah, Défense du Tournegrin ennemi augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Défense de Héliatronc ennemi augmente!");
+        MESSAGE("Ah, Défense du Héliatronc ennemi augmente!");
     }
 }
 

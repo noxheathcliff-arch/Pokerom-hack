@@ -95,14 +95,6 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Truck;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothCarryingBox;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothFacingAway;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BirchsBag;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortal;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalFront;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalSide;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfPortalTilted;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfCagedPikachu;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfDoctor;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfCagedEevee;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CfCagedRattata;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EnemyZigzagoon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Artist;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalBrendanNormal;
@@ -508,14 +500,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX] =    &gObjectEventGraphicsInfo_VigorothCarryingBox,
     [OBJ_EVENT_GFX_VIGOROTH_FACING_AWAY] =     &gObjectEventGraphicsInfo_VigorothFacingAway,
     [OBJ_EVENT_GFX_BIRCHS_BAG] =               &gObjectEventGraphicsInfo_BirchsBag,
-    [OBJ_EVENT_GFX_CF_PORTAL] =                &gObjectEventGraphicsInfo_CfPortal,
-    [OBJ_EVENT_GFX_CF_PORTAL_FRONT] = &gObjectEventGraphicsInfo_CfPortalFront,
-    [OBJ_EVENT_GFX_CF_PORTAL_SIDE] = &gObjectEventGraphicsInfo_CfPortalSide,
-    [OBJ_EVENT_GFX_CF_PORTAL_TILTED] = &gObjectEventGraphicsInfo_CfPortalTilted,
-    [OBJ_EVENT_GFX_CF_CAGED_PIKACHU] = &gObjectEventGraphicsInfo_CfCagedPikachu,
-    [OBJ_EVENT_GFX_CF_CAGED_EEVEE] = &gObjectEventGraphicsInfo_CfCagedEevee,
-    [OBJ_EVENT_GFX_CF_CAGED_RATTATA] = &gObjectEventGraphicsInfo_CfCagedRattata,
-    [OBJ_EVENT_GFX_CF_DOCTOR] = &gObjectEventGraphicsInfo_CfDoctor,
     [OBJ_EVENT_GFX_ZIGZAGOON_1] =              &gObjectEventGraphicsInfo_EnemyZigzagoon,
     [OBJ_EVENT_GFX_ARTIST] =                   &gObjectEventGraphicsInfo_Artist,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL] =     &gObjectEventGraphicsInfo_RivalBrendanNormal,
@@ -661,7 +645,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
     [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
-// Hack: FRLG object events are also built in Emerald (Kanto player avatar + Kanto NPCs)
+#if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,
     [OBJ_EVENT_GFX_RED_SURF] =                 &gObjectEventGraphicsInfo_RedSurf,
@@ -806,7 +790,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DEOXYS_A]                 = &gObjectEventGraphicsInfo_DeoxysA,
     [OBJ_EVENT_GFX_DEOXYS_N]                 = &gObjectEventGraphicsInfo_DeoxysN,
     [OBJ_EVENT_GFX_SS_ANNE]                  = &gObjectEventGraphicsInfo_SSAnne,
-// end of FRLG object events
+#endif // IS_FRLG
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

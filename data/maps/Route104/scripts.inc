@@ -1,20 +1,9 @@
 Route104_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route104_OnWarp
 	.byte 0
 
-@ New game: Red spawns at (15,57) facing south; face Marco (north) before the fade-in.
-Route104_OnWarp:
-	map_script_2 VAR_ROUTE104_STATE, 0, Route104_EventScript_CfFaceMarco
-	.2byte 0
-
-Route104_EventScript_CfFaceMarco::
-	turnobject LOCALID_PLAYER, DIR_NORTH
-	end
-
 Route104_OnFrame:
-	map_script_2 VAR_ROUTE104_STATE, 0, CF_P1_Beach
 	map_script_2 VAR_BOARD_BRINEY_BOAT_STATE, 1, Route104_EventScript_StartSailToDewford
 	.2byte 0
 
@@ -1006,12 +995,10 @@ Route104_EventScript_Darian::
 	end
 
 Route104_Text_BrineyLivesInSeasideCottage:
-	.string "Tu vois la maison au bord de l’eau?\n"
-	.string "C’est celle de M. Marco.\p"
-	.string "Il faisait passer les gens d’une rive\n"
-	.string "à l’autre. Plus depuis qu’il a perdu Piko.\p"
-	.string "On dit qu’il a hébergé un Kantonais.\n"
-	.string "Moi, je ne dis rien. Mais je le pense.$"
+	.string "Cette maison au bord de l'eau,\n"
+	.string "c'est là qu'habite M. MARCO.\p"
+	.string "Autrefois, c'était un grand marin. Il ne\n"
+	.string "craignait pas la mer, même déchaînée.$"
 
 Route104_Text_WhatsItLikeAtBottomOfSea:
 	.string "La mer, hum?\p"
@@ -1019,41 +1006,38 @@ Route104_Text_WhatsItLikeAtBottomOfSea:
 	.string "de la mer.$"
 
 Route104_Text_ThrowBallAtWeakenedPokemon:
-	.string "Affaiblis un Pokémon sauvage avant\n"
-	.string "de lancer ta Poké Ball.\p"
-	.string "Endormi, brûlé ou empoisonné,\n"
-	.string "il se débat beaucoup moins.\p"
-	.string "Ceux qui sortent des anneaux…\n"
-	.string "Eux, je les laisse passer. Prudence.$"
+	.string "Si tu veux jeter une POKé BALL,\n"
+	.string "affaiblis d'abord le POKéMON sauvage.\p"
+	.string "Ce sera plus facile de l'attraper\n"
+	.string "s'il est empoisonné, brûlé ou endormi.$"
 
 Route104_Text_OnlyThrowBallAtWildPokemon:
-	.string "Prendre le Pokémon d’un autre, c’est\n"
-	.string "du vol. Même si l’autre vient d’ailleurs.\p"
-	.string "La brigade, elle, appelle ça ‘saisir’.\n"
-	.string "Moi, j’appelle ça voler.\p"
-	.string "… Tu ne répètes pas ça, hein?$"
+	.string "Si tu essaies de prendre le POKéMON de\n"
+	.string "quelqu'un d'autre, c'est du vol.\p"
+	.string "Tu ne devrais lancer des POKé BALLS\n"
+	.string "qu'aux POKéMON sauvages.$"
 
 Route104_Text_ImNotATrainer:
-	.string "Non, je ne suis pas Dresseuse.\n"
-	.string "Je cueille des baies, c’est tout.\p"
-	.string "Si un Dresseur croise ton regard,\n"
-	.string "c’est le combat assuré.\p"
-	.string "Un arrivant, lui, ne te demande pas\n"
-	.string "ton avis. Reste hors de leur vue.$"
+	.string "Oh, non, je ne suis pas DRESSEUR.\p"
+	.string "Mais s'il y a échange de regards entre\n"
+	.string "DRESSEURS, c'est le combat assuré!\p"
+	.string "Si tu ne veux pas te battre, reste\n"
+	.string "hors de leur vue!$"
 
 Route104_Text_LikeFillingMouthWithSeedsTakeThis:
-	.string "Pfft! Pfft! Je crache des graines\n"
-	.string "sur les Chenipotte du verger!\p"
-	.string "Mon père dit que je gâche la récolte.\n"
-	.string "Mais faut bien s’entraîner, non?\p"
-	.string "Tiens, prends ça. Ton Pokémon\n"
-	.string "pourra mitrailler des graines, lui aussi.$"
+	.string "J'aime bien remplir ma bouche de graines\n"
+	.string "et les recracher très vite ensuite!\p"
+	.string "Tiens, prends ça. Comme ça, tu pourras\n"
+	.string "essayer!\p"
+	.string "Essaie avec un POKéMON. Il apprendra\n"
+	.string "un coup pour vite lancer des graines.$"
 
 Route104_Text_TMsAreOneTimeUse:
-	.string "Une CT, ça ne sert qu’une seule fois.\n"
-	.string "Après, pfft, elle disparaît.\p"
-	.string "Et avec les ports fermés, personne\n"
-	.string "n’en vend plus. Choisis bien!$"
+	.string "Un petit conseil!\p"
+	.string "Une CT, ou CAPSULE TECHNIQUE, ne\n"
+	.string "peut servir qu'une seule fois.\p"
+	.string "Une fois utilisée, elle disparaît.\n"
+	.string "Réfléchis bien avant de l'utiliser!$"
 
 Route104_Text_DontNeedThisTakeIt:
 	.string "Ce FLEURISTE vend de petits\n"

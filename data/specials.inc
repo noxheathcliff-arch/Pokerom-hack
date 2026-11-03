@@ -639,23 +639,3 @@ gSpecials::
 	def_special UpdateTrainerCardPhotoIcons
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
-	def_special IsTrainerBattleDeclinable
-	def_special IsTrainerBattleAlreadyDeclined
-	def_special ShouldChooseBattleLead
-	def_special SetBattleLeadFromSelection
-	@ Hack: Pokemon Confluence (src/confluence.c)
-	def_special CF_GetBits
-	def_special CF_SetBits
-	def_special CF_RepStanding
-	def_special CF_RaiseCap
-	def_special SetRingOutbreak
-	def_special ClearRingOutbreak
-	def_special LedgerGet
-	def_special LedgerSet
-	def_special CF_ShowFollowerNPC
-	def_special CF_PlaceFollowerNPC
-	def_special CF_StepAwayDir
-	def_special CF_RevealFollowerNPC
-	def_special CF_FaceEachOther
-	def_special CF_FollowerSideDir
-	def_special CF_PartyNeedsHeal
