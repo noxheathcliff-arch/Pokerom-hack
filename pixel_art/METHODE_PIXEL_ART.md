@@ -1,9 +1,14 @@
-# Méthode de pixel art — objets et personnages (v9)
+# Méthode de pixel art — objets et personnages (v10)
 
 On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin classique
 (construction par volumes, ligne d'action, anatomie) et les règles du pixel art
 (silhouette, valeurs, clusters, lignes propres, rampes, lumière).
 
+> **v10 :** bloc **Règles impératives** en tête (tout ce que les tests ont appris, en
+> ordres courts) ; nouvelle section **C14** (corps nu d'abord, vêtements en calque, test 10
+> « chibi2 ») ; ordre du chibi (C13-B) refait : le corps nu passe avant tout le reste ;
+> `contour.py` en mode calque (partie D).
+>
 > **v9 :** nouvelle section **C13** (chibi pas à pas, test 9 « Pip ») ; leçons de la potion
 > (liquide, rebord de verre, contour sur fond sombre) ; partie **D** (outils) ; nettoyage :
 > renvois au lieu de doublons, C9-H renumérotée, C12-G remise en place.
@@ -16,6 +21,7 @@ On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin cla
   cheveux) ; **C10** donne les règles par taille (8 à 128 px) ; **C11** donne la méthode du
   portrait anime (3/4, mèches, yeux, couleurs) ; **C12** construit le visage (Loomis + anime) ;
   **C13** donne l'ordre complet d'un **chibi** (2,5 à 3 têtes), du croquis au contrôle ;
+  **C14** explique comment habiller un corps nu validé, vêtement par vêtement, en calque ;
 - un dessin suit B ou C pour la construction, puis le pipeline A5 pour les pixels ;
 - la section **A4b** (simplifier) s'applique dès qu'une taille est imposée ;
 - la **partie D** liste les petits outils (`trace.py`, `px.py`, `planche.py`) pour poser les
@@ -30,15 +36,85 @@ On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin cla
 | Langage de formes | A4b (règle) · C5 (vêtements) |
 | Frange et sourcils | C6 · C10-J2 · C12-F · C13-D |
 | Liquide, verre | A5-8b · B5 · C13-D |
+| Vêtements | C5 (design) · C13-B · **C14** (calque sur corps nu) |
+| Jointures du corps | C2 · C3 · C14-A |
 
 **Sources :** [Z] *Apprendre à tout dessiner avec Zephy* · [M] livre de dessin manga · [I]
 planches d'anatomie fournies · [C] planches sur les cheveux fournies · [R] recherches
 (Loomis, Bridgman, Proko, tutoriels d'anticrénelage, de matières et de lisibilité d'icônes,
 simplification des formes) · [P] planches fournies (cheveux, œil, arche, cristal, flamme,
-déclinaisons par taille, projections) · [T1]…[T9] leçons de nos propres tests (T8 : visage
-de face ; T9 : chibi « Pip ») · [L] méthode Loomis et tutoriels de visage anime (règles
+déclinaisons par taille, projections) · [T1]…[T10] leçons de nos propres tests (T8 : visage
+de face ; T9 : chibi « Pip » ; T10 : chibi2, corps d'abord) · [L] méthode Loomis et tutoriels de visage anime (règles
 reformulées) · [A] analyse de portraits anime en pixel art fournis en exemple (règles
 reformulées).
+
+---
+
+# Règles impératives (à relire avant chaque dessin)
+
+Chaque règle est un ordre. Le détail et le « pourquoi » sont dans la section citée.
+
+**Travail**
+1. **Une étape = un fichier `.txt` + son `.png`, regardés à ×1 et agrandis** avant de
+   continuer. Ce qui ne se lit pas à ×1 n'existe pas (R1).
+2. **Décide chaque pixel toi-même.** Écris la grille à la main (1 caractère = 1 pixel) ou
+   pose des primitives que tu as décidées. Un script ne calcule jamais une forme, une ombre
+   ou un dégradé (R3, partie D).
+3. **Garde chaque étape dans un fichier de commandes** (`cXX.txt`). Pour corriger, modifie
+   les commandes et relance : ne retouche jamais l'image sans trace.
+4. **Corrige à l'étape fautive.** Un détail ne rattrape pas une construction fausse (R2).
+5. **Si l'utilisateur rejette une modification, reviens à la version d'avant** au lieu
+   d'empiler des corrections.
+
+**Ordre du personnage**
+6. **Construis en calques de couleur** (rouge pose, bleu repères, vert volumes) avant tout
+   pixel final (R4, C13-A).
+7. **Dessine d'abord le corps nu**, mannequin lisse et sans détail sexuel, avec toutes ses
+   jointures (C14-A). **Valide-le** en silhouette, ombres et ×1 avant le moindre vêtement.
+8. **Habille ensuite, en calque** : le corps validé ne se retouche plus. Tu travailles
+   seulement le tissu (C14-B).
+9. **Puis le visage, puis les cheveux** (en calque aussi), puis les accessoires, le
+   nettoyage et la planche (C13-B).
+
+**Corps**
+10. **Marque chaque jointure** : rondeur de l'épaule, creux d'aisselle, pli du coude,
+    poignet resserré, V de l'aine, rotule claire et ombre dessous, cheville resserrée.
+11. **Donne un geste** : bras levé avec un coude, jambes en contrapposto. Jamais de membres
+    en colonnes raides.
+12. **Remplis une rangée de plus sous les pieds** avant de poser le contour : sinon le
+    contour mange la semelle.
+13. **Garde l'ombre de la tête étroite** (2 à 3 px sur le côté opposé à la lumière). Une
+    bande large salit le visage.
+
+**Vêtements (C14)**
+14. **Peins le tissu 1 px au-delà du bord du corps** : le tissu a une épaisseur.
+15. **Contourne le calque seul** (`contour.py … CALQUE CONTRE`) : seul le bord du vêtement
+    contre le vide ou la peau devient trait.
+16. **Trace à la main les bords intérieurs** : séparation manche/torse, sangle, cadre de la
+    sacoche. Le contour automatique ne les voit pas.
+17. **Nettoie à la main chaque ourlet contre la peau** (`hline O`) : le contour y laisse des
+    pixels clairs isolés.
+18. **Le bord haut de l'écharpe (ou du col) sert de trait du menton.** Jamais deux traits
+    collés.
+19. **Mets les plis aux articulations** (coude, aisselle, aine, genou) et une **ligne de
+    tension** depuis l'aisselle du bras levé vers la hanche opposée.
+20. **Ombre le tissu en masses** : clair du côté de la lumière, sombre sous les manches, sous
+    l'écharpe et en ourlet. Pas de pixels isolés.
+
+**Lignes et pixels**
+21. **Diagonales propres** : marches régulières (1-1, 2-2, 1-2-1…), aucun pixel doublé en
+    « L » (A5-6).
+22. **Aucun pixel de bruit** : un pixel seul d'une couleur n'a le droit d'exister que s'il
+    dit quelque chose (reflet, coin, bouton).
+23. **Lumière en haut à gauche, partout** : reflets des yeux, des cheveux et du tissu du même
+    côté.
+24. **Pas de détail qui suit le contour sur 1 px** au contact de la peau : une mèche, une
+    pointe de frange ou un ourlet d'une seule rangée devient tout noir. Fais-les au moins
+    2 rangées de haut.
+
+**Contrôle**
+25. **Finis par la planche** (`planche.py`) : ×1, ×2, gris, silhouette, fonds clair et sombre,
+    miroir. Note au moins un défaut, corrige, revérifie (R5).
 
 ---
 
@@ -1130,19 +1206,21 @@ pièges propres au chibi.
   mains en moufles.
 - On regarde ce calque seul : la pose et la masse doivent déjà raconter le personnage.
 
-### B. Ordre de travail (64 px)
-1. Construction (A), puis **silhouette à plat** en noir : tête, coiffure, accessoire
-   lisibles sans aucun détail.
-2. **Contour** pixel-perfect (A5-6) sur la silhouette validée.
-3. **Aplats** : une couleur de base par zone, aucune ombre.
-4. **Visage d'abord** (C) : il fixe l'échelle et le caractère ; tout le reste s'y adapte.
-5. **Cheveux** : une masse en casque, puis l'arc de lumière cassé en tirets, puis 2 ou 3
-   mèches à pointes ; ombre du côté opposé à la lumière.
-6. **Vêtements** : liseré clair du côté éclairé, plis en « v » aux points de tension,
-   ombre en biais du côté ombre.
-7. **Détails et accessoires** (lunettes, fiole, ceinture) seulement à ce stade.
-8. **Nettoyage** (A5-10), puis **planche de contrôle** (×1, ×2, gris, silhouette, fond clair
-   et sombre, miroir).
+### B. Ordre de travail (64 px) — v10 : le corps d'abord
+Ordre validé sur chibi2 (`chibi2/`, étapes 01 à 08). Une étape = un fichier de commandes
+`cXX.txt` + `etapeXX_nom.txt` + son rendu.
+1. **Construction** (A) : pose rouge, repères bleus, volumes verts (`etape01`).
+2. **Silhouette du corps nu** à plat, contour pixel-perfect (A5-6) : tête ronde, torse,
+   membres avec leurs jointures (C14-A). Une rangée de plus sous les pieds (`etape02`).
+3. **Ombres du corps** : peau claire, moyenne, sombre ; ombre de tête étroite (`etape03`).
+4. **Corps final validé** : planche du corps seul (silhouette, ×1, gris). On ne passe pas à
+   la suite tant que les jointures ne sont pas justes (`etape04`).
+5. **Vêtements en calque** (C14-B) : aplats 1 px hors du corps, ombres, puis contour du
+   calque seul, puis bords intérieurs à la main (`etape05`).
+6. **Visage** (C) : yeux, joues, bouche, sur la tête déjà finie (`etape06`).
+7. **Cheveux en calque** : masse en casque, tirets de lumière, ombre côté opposé, frange
+   en pointes d'au moins 2 rangées, puis contour du calque seul (`etape07`).
+8. **Accessoires, nettoyage** (A5-10), puis **planche de contrôle** (`etape08`).
 
 ### C. L'œil chibi (64 px, au moins 4×3 avec du blanc)
 Cinq rangées, de haut en bas :
@@ -1171,15 +1249,79 @@ Cinq rangées, de haut en bas :
 - **Contour** : selout du côté de la lumière, contour plein du côté de l'ombre (C10-F).
 - **Budget** : 14 à 20 couleurs à 64 px (Pip : 15).
 
-### E. Faiblesses restantes (à corriger au prochain chibi)
-- **Bras levé raide** et droit : ajouter un léger coude.
-- **Jambes en colonnes** : un genou marqué ou un écart de pose (contrapposto, C9-G).
-- **Tunique plate** entre la ceinture et l'ourlet : un pli ou une ombre en biais.
-- En général : partir d'un **geste** plus marqué dès le calque rouge.
+### E. Faiblesses restantes
+Corrigées sur chibi2 grâce au corps nu d'abord :
+- ~~Bras levé raide~~ : coude marqué dès le mannequin ;
+- ~~Jambes en colonnes~~ : contrapposto et rotules sur le corps nu ;
+- ~~Tunique plate~~ : plis aux articulations et ligne de tension du bras levé (C14-B).
+
+À corriger au prochain chibi :
+- **Frange** : encore un peu plate ; dessiner 3 ou 4 pointes nettes de 2 à 3 rangées.
+- **Main levée** : la manche s'arrête net au poignet ; ajouter un revers de 1 px plus clair.
+- **Pieds** : bottes vues trop de face ; tourner la botte d'appui vers l'extérieur.
 
 ---
 
-# Partie D — Outils (dossier `pixel_art/chibi/`)
+## C14. Corps nu d'abord, vêtements en calque [T10]
+Testé sur chibi2 (explorateur qui salue, `chibi2/`). Idée : on règle **une seule fois** les
+problèmes du corps (attaches, jointures, proportions), sur un mannequin nu. Ensuite on
+l'habille comme une poupée : chaque vêtement est un calque posé par-dessus, et on ne
+revérifie plus l'anatomie.
+
+### A. Le mannequin nu (étapes 01 à 04)
+- **Mannequin lisse**, sans aucun détail sexuel : c'est un support, pas un nu.
+- **Jointures obligatoires**, chacune avec sa marque en pixels :
+
+  | Jointure | Marque |
+  |---|---|
+  | Épaule | rondeur du deltoïde, 1 px plus large que le bras |
+  | Aisselle | creux d'1 px en peau sombre |
+  | Coude | pli d'1 px du côté intérieur, léger angle |
+  | Poignet | resserré d'1 px avant la main |
+  | Aine | V de peau moyenne |
+  | Genou | rotule claire, ombre d'1 px dessous |
+  | Cheville | resserrée d'1 px avant le pied |
+
+- **Ombres du corps** dans la même lumière que la tenue à venir (haut-gauche).
+- **Valider** le corps seul en planche avant d'habiller. Les défauts trouvés plus tard se
+  corrigent ici, puis on relance les étapes suivantes (les fichiers `cXX.txt` le permettent).
+
+### B. Habiller en calque (étape 05)
+1. **Aplats** : chaque vêtement dans sa couleur moyenne, **1 px au-delà du bord du corps**
+   (épaisseur du tissu). Manche, torse, short, bottes, écharpe : une zone à la fois.
+2. **Ombres du tissu** dans la même passe : clair du côté de la lumière (épaule, haut de la
+   manche levée), sombre du côté opposé, sous la manche, sous l'écharpe, en ourlet.
+3. **Plis** : aux articulations seulement (coude, aisselle, aine) ; le bras levé tire le
+   tissu en une **ligne de tension** de l'aisselle vers la hanche opposée.
+4. **Contour du calque seul** :
+   `python3 contour.py in.txt out.txt LETTRES_DU_CALQUE LETTRES_DE_PEAU`. Seules les lettres
+   du calque qui touchent le vide ou la peau deviennent trait ; le contour du corps déjà
+   posé ne bouge pas.
+5. **Bords intérieurs à la main** (second fichier `cXXb.txt`) : séparation manche/torse,
+   sangle, cadre et rabat de la sacoche, boucle de ceinture.
+6. **Nettoyage des ourlets** : un ourlet ou un revers d'une rangée contre la peau devient
+   tout noir et laisse des pixels clairs isolés. Pose une `hline O` propre à la main.
+7. **Col ou écharpe** : son bord haut **est** le trait du menton. Ne laisse jamais deux
+   traits collés ; mets l'ombre portée **sous** l'écharpe (tissu sombre), pas un trait.
+
+### C. Pièges vus sur chibi2 (et corrections)
+- **Manche levée trop fine**, sans trait au-dessus : élargir les rangées, le contour du
+  calque pose ensuite le trait.
+- **Écharpe mangée par le contour** contre le cou : la monter d'une rangée pour que son
+  bord haut devienne le menton.
+- **Revers de bottes et ourlets du short** : pixels clairs isolés après contour → `hline O`.
+- **Frange d'une rangée** : entièrement transformée en trait. Les mèches font au moins
+  2 rangées (règle impérative 24).
+- **Sacoche** : sans cadre tracé à la main, elle se fond dans le short (même valeur).
+
+### D. Fichiers de chibi2
+`c01` construction · `c02` silhouette du corps · `c03` ombres du corps · `etape04` corps
+final · `c05` + `c05b` vêtements (aplats, puis bords intérieurs) · `c06` visage · `c07`
+cheveux · `etape08_final` · `planche_finale.png`.
+
+---
+
+# Partie D — Outils (dossiers `pixel_art/chibi/` et `pixel_art/chibi2/`)
 Les scripts **ne décident rien** (R3) : ils posent ce qui a été décidé à la main, ou
 rendent l'image pour la regarder (R1).
 
@@ -1188,7 +1330,8 @@ rendent l'image pour la regarder (R1).
 | `trace.py` | `python3 trace.py in.txt\|NEW:64x64 out.txt cmds.txt` | pose des primitives décidées : `px C x y`, `hline C x1 x2 y`, `vline C x y1 y2`, `rect`, `frame`, `disc C cx cy r`, `ring`, `rows C y x1 x2 […]`, `rep A B x1 y1 x2 y2` (remplace A par B dans une zone — à manier avec prudence, C13-D) |
 | `px.py` | `python3 px.py etape_XX.txt 8 palette64.json` | rend la grille texte (1 caractère = 1 pixel) en PNG à ×1 et agrandi avec grille |
 | `planche.py` | `python3 planche.py in.png out.png` | planche de contrôle : ×1, ×2, agrandi, fond clair et sombre, miroir, silhouette, gris, case d'inventaire |
-| `contour.py`, `outline.py` | — | aides au contour extérieur |
+| `contour.py` | `python3 contour.py in.txt out.txt [CALQUE [CONTRE]]` | règle mécanique de contour. Sans argument : tout pixel plein qui touche le vide devient `O`. Avec `CALQUE` (ex. `tjJreEucChkHY`) : seules ces lettres qui touchent le vide, ou une lettre de `CONTRE` (ex. la peau `slmS`), deviennent `O` (C14-B) |
+| `outline.py` | — | ancienne aide au contour extérieur (chibi 1) |
 
 Une étape = un fichier `etape_XX_nom.txt` + son rendu `.png` + `_vue.png`.
 
@@ -1205,9 +1348,11 @@ en situation.
 (C12) → vêtements → cheveux → table par taille (C10) → (portrait anime : C11) → silhouette →
 contour → palette → ombres à la main → détails → nettoyage → contrôle avec la référence.
 
-**Chibi (C13) :** croquis rouge (pose) → repères bleus → volumes verts → silhouette à plat →
-contour → aplats → **visage d'abord** → cheveux → vêtements → accessoires → nettoyage →
-planche de contrôle (×1, ×2, gris, fond sombre).
+**Chibi (C13 + C14) :** croquis rouge (pose) → repères bleus → volumes verts → **corps nu**
+(silhouette, jointures, ombres) → **validation du corps** → vêtements en calque (aplats 1 px
+hors du corps, ombres, plis, contour du calque, bords intérieurs à la main) → visage →
+cheveux en calque → accessoires → nettoyage → planche de contrôle (×1, ×2, gris, fond
+sombre).
 
 Un concept à la fois, du grand au petit. Aucun pixel de détail tant que la structure n'est
 pas juste.

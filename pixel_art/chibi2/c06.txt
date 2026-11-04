@@ -1,0 +1,22 @@
+# etape06 : visage (sur etape05). Lumiere haut-gauche -> reflets en haut a gauche de l'iris.
+# oeil gauche : paupiere + cil exterieur, iris 3 px, bord bas
+hline O 22 27 14
+vline O 23 15 18
+vline O 27 15 18
+hline O 24 26 19
+rows W 15 24 25  16 24 24
+rows I 15 26 26  16 25 26
+rows i 17 24 26  18 24 26
+# oeil droit (miroir, meme reflet haut-gauche)
+hline O 35 40 14
+vline O 35 15 18
+vline O 39 15 18
+hline O 36 38 19
+rows W 15 36 37  16 36 36
+rows I 15 38 38  16 37 38
+rows i 17 36 38  18 36 38
+# joues
+rows p 20 22 24  20 38 40
+# bouche
+hline O 30 33 21
+hline S 31 32 22

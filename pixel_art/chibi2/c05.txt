@@ -1,0 +1,49 @@
+# ETAPE 05 - VETEMENTS en calque sur le corps nu validé (etape04)
+# Règle : aplats posés 1 px AU-DELÀ du bord du corps, puis contour.py sur le calque seul.
+# --- veste (j) : torse + manche gauche jusqu'au coude + manche du bras levé jusqu'au coude
+rows j 28 25 45  29 22 43  30 21 40  31 20 39  32 20 39  33 19 39  34 19 39  35 19 39  36 19 38
+rows j 37 25 38  38 25 38  39 25 38  40 25 38
+rows j 28 36 45  27 37 46  26 39 48  25 41 50  24 43 52  23 45 52
+# lumière (haut-gauche) : épaule, bord gauche, dessus de la manche levée
+rows t 29 23 26  30 22 24  31 21 22  32 21 21  33 20 21  34 20 20  35 20 20  36 20 20
+rows t 30 26 26  31 26 26  32 26 26  33 26 26  34 26 26  35 26 26  36 26 26  37 26 26  38 26 26
+rows t 27 39 41  26 41 43  25 43 45  24 45 47
+# ombre : côté droit du torse, dessous de la manche levée, intérieur de la manche gauche
+rows J 31 36 38  32 36 38  33 36 38  34 36 38  35 36 37  36 36 37  37 36 37  38 36 37  39 35 37  40 26 37
+rows J 33 23 23  34 23 23  35 23 23  36 23 23
+rows J 29 40 42  28 42 44  27 44 45  26 46 47  25 48 49  24 50 51
+px J 47 25
+px J 48 24
+# plis tirés par le bras levé (aisselle -> hanche opposée) + pli du coude gauche
+line J 37 31 34 34
+line J 36 34 34 36
+px J 21 36
+# --- short (c)
+rows c 41 24 39  42 24 39  43 24 39  44 24 39  45 24 39  46 24 39
+rows c 47 24 31  48 24 31  49 24 31  47 33 39  48 33 39  49 33 39
+rows u 42 25 26  43 25 25  44 25 25  45 25 25  46 25 25  47 25 25  48 25 25
+rows C 42 37 38  43 37 38  44 37 38  45 37 38  46 36 38  47 37 38  48 37 38
+line C 31 44 32 46
+px C 29 48
+px C 35 48
+# --- bottes (h)
+rows h 55 25 32  56 25 32  57 25 32  58 26 31  59 26 31  60 23 32  61 23 32
+rows h 55 34 41  56 34 41  57 34 41  58 34 39  59 33 41  60 33 42  61 33 42
+# revers clair, ombre sous le revers, semelle sombre, côté droit sombre
+rows k 55 26 31  56 26 31  55 35 40  56 35 40
+rows H 57 26 31  57 35 40  61 24 31  61 34 41
+rows H 58 30 30  59 30 30  60 30 31  58 38 38  59 39 40  60 40 41
+px k 25 60
+px k 34 60
+# --- écharpe (e) par-dessus la veste ; son bord haut sert de menton (pas de double trait)
+rows e 26 28 36  27 26 38  28 25 39  29 26 38  30 27 37
+rows r 27 28 31  28 27 30  29 28 29
+rows E 30 28 37  29 34 37  28 37 38
+# nœud + pan qui tombe
+rows e 31 33 36  32 33 36  33 34 36  34 34 36  35 35 36
+rows r 31 33 33  32 33 33
+rows E 31 36 36  32 36 36  33 36 36  34 36 36
+rows J 31 26 32  31 37 38
+# --- ceinture
+rows H 41 24 39
+rows Y 41 31 32
