@@ -1,0 +1,5 @@
+# silhouette B: smaller sphere low down, long thin neck, flared lip
+disc K 32 46 16
+rect K 29 14 35 31
+rows K 11 25 39 12 24 40 13 26 38
+rows K 3 29 35 4 28 36 5 28 36 6 28 36 7 28 36 8 28 36 9 28 36 10 29 35

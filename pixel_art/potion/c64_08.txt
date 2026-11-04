@@ -1,0 +1,15 @@
+# Step 08: light (spans decided by hand), light from top-left
+# glass: curved reflection streak following the sphere, then the 2x2 specular
+rows d 26 23 26  27 22 24  28 21 23  29 20 22  30 19 21  31 19 20  32 18 19  33 18 19  34 18 18
+rect W 21 28 22 29
+# opposite highlight: small bounce light on the shadow side of the glass
+rows r 31 45 45  32 45 45  33 46 46
+# neck + lip + cork lit edge
+rows d 19 29 29  20 29 29  21 29 29  22 29 29  16 25 27
+rows g 5 28 29  6 28 28  7 28 28  8 28 28  9 28 28  10 28 28  11 28 28
+px h 28 5
+# liquid: glass reflection crossing the liquid (left), vertical curved streak
+rows 4 42 16 17  43 16 17  44 16 16  45 16 16  46 16 16  47 17 17  48 17 17
+# pink caustic: light focused through the liquid, low on the shadow side
+rows 3 50 39 41  51 38 42  52 37 42  53 38 42  54 39 41
+rows 4 51 40 41  52 39 41  53 40 40

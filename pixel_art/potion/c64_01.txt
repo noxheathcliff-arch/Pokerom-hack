@@ -1,0 +1,11 @@
+# step 64-01: construction. 64 canvas, centre x=32. Sphere centre (32,41) r=20 -> rows 21..61
+vline R 32 0 63
+hline R 0 63 41
+hline B 0 63 3
+hline B 0 63 61
+hline B 0 63 14
+hline B 0 63 21
+ring G 32 41 20
+frame G 26 4 38 13
+frame G 23 14 41 17
+frame G 27 18 37 21

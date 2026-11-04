@@ -1,0 +1,5 @@
+# silhouette A: round sphere r19, neck 5 rows, cork tapered
+disc K 32 42 19
+rect K 28 18 36 24
+rect K 24 15 40 17
+rows K 5 28 36 6 27 37 7 27 37 8 27 37 9 27 37 10 27 37 11 27 37 12 27 37 13 27 37 14 28 36

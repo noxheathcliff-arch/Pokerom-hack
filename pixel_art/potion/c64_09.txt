@@ -1,0 +1,16 @@
+# Step 09: details, hierarchy = 1 specular (done) > 2 surface glint > 3 bubbles > 4 cork texture
+# cork: lit top face, then pores in groups of 2-3
+rows g 5 29 33
+px h 30 5
+rows i 7 30 31  10 33 33  11 29 29
+rows g 9 30 31  12 32 33
+rows i 6 35 35  9 35 35
+# surface glint on the lens (front-left, where the light hits)
+rows W 38 19 20
+px d 21 38
+# bubbles: one 2x2 with highlight, one single, one tiny, rising toward the surface
+rows 4 49 23 24  50 23 24
+px W 23 49
+px 4 27 45
+px 4 25 54
+px 4 30 42
