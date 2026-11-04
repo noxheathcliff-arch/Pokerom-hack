@@ -1,0 +1,22 @@
+# efface l'ancien visage (zone x12..19 y9..15) en peau, puis redessine
+rect s 13 9 18 14
+rows s 15 13 18
+vline i 12 9 12
+vline i 19 9 12
+# frange descendue : y9 en cheveux, pointe centrale y10
+hline i 12 19 9
+px i 15 10
+# yeux 2x3 sur y11..13 : reflet en haut DANS la masse sombre
+px W 13 11
+px O 14 11
+hline v 13 14 12
+hline v 13 14 13
+px W 17 11
+px O 18 11
+hline v 17 18 12
+hline v 17 18 13
+# joues + bouche 1 px
+px S 12 13
+px S 19 13
+px q 15 14
+px S 16 14

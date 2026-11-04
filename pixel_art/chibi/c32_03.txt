@@ -1,0 +1,17 @@
+# Étape 3 — silhouette A corrigée
+# tête : crâne + carré court qui s'évase sur les joues
+disc K 15.5 8.5 6.6
+rows K 13 9 22  14 9 22  15 12 19
+# mèche rebelle (ahoge)
+px K 16 1
+px K 17 0
+# cape trapèze + jambes
+rows K 16 11 20  17 10 21  18 10 21  19 9 21  20 9 21  21 9 22  22 9 22  23 8 22  24 8 23  25 8 23
+rows K 26 11 14 26 17 20  27 12 14 27 17 19  28 12 14 28 17 19  29 11 14 29 17 20  30 11 14 30 17 21
+# main gauche qui dépasse de la cape
+rows K 22 7 7  23 7 7
+# bras levé écarté de la tête : épaule 21,16 -> coude 24,15 -> main 26,12
+rows K 16 21 23  15 23 24  14 24 25  13 25 27  12 25 27  11 26 27
+# fiole au-dessus de la main (vide d'1 px avec la tête)
+disc K 27 7.5 2.2
+rows K 4 26 27  3 26 27

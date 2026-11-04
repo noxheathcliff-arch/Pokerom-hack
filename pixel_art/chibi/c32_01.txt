@@ -1,0 +1,45 @@
+# Étape 1 — construction (rouge = axes, bleu = guides, vert = volumes)
+# colonne de têtes à gauche : tête H = 14 px (y 2..15), corps y 16..30
+vline B 1 2 30
+hline B 0 2 2
+hline B 0 2 16
+hline B 0 2 30
+# tête : cercle du crâne (rayon 6), menton chibi court
+ring B 15.5 8.5 6
+px B 14 15
+px B 15 15
+px B 16 15
+px B 17 15
+px B 13 14
+px B 18 14
+# axe du visage (rouge) et lignes en travers
+vline R 15 3 15
+hline R 9 22 10
+hline R 11 20 13
+# ligne d'action en C (rouge) : du crâne au pied d'appui
+px R 17 16
+px R 16 18
+px R 16 20
+px R 15 22
+px R 15 24
+px R 14 26
+px R 14 28
+# sol
+hline R 4 27 30
+# torse (ligne épaules y16 inclinée, bassin y24) — volumes verts
+hline G 11 20 16
+hline G 11 21 24
+vline G 11 16 24
+vline G 20 16 23
+# articulations : épaules, coude levé, main levée, main basse
+px G 10 17
+px G 21 16
+px G 24 14
+px G 25 11
+px G 9 21
+px G 9 23
+# jambes : appui sous le cou (gauche image), libre décalée
+vline G 13 25 29
+vline G 18 25 29
+# fiole tenue dans la main levée
+ring G 25.5 7.5 2

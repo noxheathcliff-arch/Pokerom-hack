@@ -1,0 +1,30 @@
+# Étape 8 — ombres / lumières (lumière haut-gauche)
+# occlusion de la tête sur le col
+hline v 13 18 16
+# cape : liseré de lumière côté gauche
+vline t 11 17 18
+vline t 10 19 22
+px t 9 23
+px t 9 24
+px t 12 16
+# cape : ombre côté droit + bord de l'ouverture
+vline v 20 18 23
+px v 21 21
+px v 21 22
+px v 21 23
+px v 22 24
+vline v 18 17 20
+# tunique : ombre sous le col et côté droit
+hline d 14 17 17
+vline d 17 18 19
+vline d 18 21 24
+hline d 17 20 25
+# jambes : la droite à l'ombre
+px S 19 26
+px S 18 27
+# bottes : lumière / ombre
+px h 12 29
+px j 19 29
+px j 13 28
+# manche levée : ombre dessous
+px v 21 15

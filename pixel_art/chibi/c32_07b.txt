@@ -1,0 +1,6 @@
+rep S s 13 10 18 10
+px S 14 10
+px S 16 10
+px i 11 13
+px i 20 13
+px h 12 6

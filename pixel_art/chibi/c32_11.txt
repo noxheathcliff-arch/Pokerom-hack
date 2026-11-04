@@ -1,0 +1,14 @@
+# Étape 11 — nettoyage + selout côté lumière (haut-gauche), sur les vrais pixels de contour
+px v 11 16
+px v 10 17
+px v 10 18
+px v 9 19
+px v 9 20
+px v 9 21
+px j 12 3
+px j 13 3
+px j 14 3
+px j 11 4
+px j 10 5
+px j 10 6
+px j 9 8

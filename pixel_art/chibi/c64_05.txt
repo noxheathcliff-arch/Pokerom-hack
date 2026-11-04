@@ -1,0 +1,34 @@
+# étape 5 : frange (4 mèches à pointes), lumière h haut-gauche en tirets, ombre j droite, lunettes sur le crâne
+# frange
+rows i 15 23 38  16 23 38  17 23 26  17 28 29  17 31 34  17 36 38  18 22 24  18 32 33
+# séparations de mèches + ombre portée sous la frange
+px j 27 16
+px j 30 16
+px j 35 16
+rows j 17 27 27  17 30 30  17 35 35
+px S 25 18
+px S 26 18
+px S 30 18
+px S 31 18
+px S 34 18
+px S 35 18
+# ombre côté droit (colonne intérieure du contour)
+rows j 8 39 40  9 40 41  10 40 41  11 41 42  12 41 42  13 42 43  14 42 43
+rows j 15 43 43  16 43 43  17 42 43  18 42 43  19 42 43  20 42 43  21 42 43  22 42 43  23 42 44  24 41 45  25 41 45  26 41 43
+rows j 27 42 43
+# lumière haut-gauche, cassée en tirets
+rows h 6 27 29  7 25 26  13 21 23  14 20 21
+px h 31 6
+# lunettes : bandeau v + 2 verres cerclés, posés haut sur le crâne
+rows v 9 22 24  10 22 24  9 30 32  10 30 32  9 38 40  10 38 40
+frame O 25 7 29 11
+rect t 26 8 28 10
+px g 26 8
+px u 28 10
+frame O 33 7 37 11
+rect t 34 8 36 10
+px g 34 8
+px u 36 10
+# ahoge rempli
+px i 35 2
+px i 34 3

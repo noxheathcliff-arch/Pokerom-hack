@@ -1,0 +1,32 @@
+# étape 7 : détails
+# main : 2 masses de doigts qui enserrent le bas de la fiole + pouce à gauche
+px O 47 16
+px s 48 16
+px O 47 15
+px S 51 17
+px S 51 18
+px S 52 19
+px S 50 21
+px S 49 22
+# verre : reflet 2x2 + 1 px opposé, liseré clair à droite
+rect W 49 9 49 11
+px W 50 10
+px W 53 11
+px W 51 6
+# liquide : surface claire (lentille), ombre q bas-droite, bulle
+rows c 13 49 53
+rows q 14 53 54  15 52 53  16 51 52
+px W 50 15
+# bouchon liège texturé
+px d 50 3
+px d 52 4
+px j 52 3
+# ceinture cuir + boucle
+rows i 41 25 37
+rows j 41 35 37
+rows h 41 30 31
+px O 29 41
+px O 32 41
+# main gauche : séparation des doigts
+px S 15 46
+px S 14 47

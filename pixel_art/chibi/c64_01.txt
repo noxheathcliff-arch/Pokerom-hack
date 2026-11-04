@@ -1,0 +1,42 @@
+# 64 — Étape 1 construction. Tête H=22 (y6..27), corps y28..61 → 2,6 têtes
+vline B 2 6 61
+hline B 0 4 6
+hline B 0 4 28
+hline B 0 4 50
+hline B 0 4 61
+ring B 31 17 11
+# menton chibi
+hline B 27 35 28
+px B 25 27
+px B 37 27
+# axe visage et lignes yeux/bouche
+vline R 31 6 28
+hline R 19 43 21
+hline R 23 39 25
+# ligne d'action en C
+px R 33 29
+px R 32 33
+px R 31 37
+px R 31 41
+px R 30 45
+px R 29 49
+px R 28 53
+px R 27 57
+hline R 8 56 61
+# torse
+hline G 22 40 30
+hline G 21 42 47
+vline G 22 30 47
+vline G 40 30 47
+# épaules, coude, main levée, main basse
+px G 20 32
+px G 42 31
+px G 47 26
+px G 50 20
+px G 17 40
+px G 16 45
+# jambes
+vline G 26 48 60
+vline G 36 48 60
+# fiole
+ring G 51 13 5

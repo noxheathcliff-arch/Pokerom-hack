@@ -1,0 +1,4 @@
+# B : potion tenue à deux mains devant la poitrine
+disc K 15.5 20 2.6
+rows K 17 16 16
+rows K 20 8 8  21 8 8 20 23 23  21 23 23

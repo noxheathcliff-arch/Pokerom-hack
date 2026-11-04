@@ -1,0 +1,10 @@
+# étape 8 : nettoyage + selout
+# correctif étape 7 : surface du liquide trop claire (lisait "lait") -> lentille fine 2 px
+rows r 13 49 53
+px W 49 13
+px W 50 13
+# selout cheveux côté lumière (O -> j)
+rows j 5 27 30  6 25 26  7 23 24  8 22 22  9 21 21  10 21 21  11 20 20  12 20 20  13 19 19  14 19 19
+# selout cape côté lumière (O -> v)
+rows v 31 22 22  32 21 21  33 21 21  34 21 21  35 20 20  36 20 20  37 20 20  38 19 19  39 19 19  40 19 19  41 18 18  42 18 18  43 18 18
+# selout bras levé (O -> S) bord haut-gauche

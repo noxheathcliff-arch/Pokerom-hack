@@ -1,0 +1,30 @@
+# 64 — Étape 4 visage (C4) : yeux bas et écartés, 3 iris + blanc côté extérieur
+# oeil gauche (image) iris x26..28, blanc x25
+hline O 24 28 20
+rows W 21 25 25  22 25 25  23 25 25
+rows v 21 26 28  22 26 28
+px W 27 21
+px O 27 22
+px O 27 23
+px u 26 23
+px u 28 23
+hline t 26 28 24
+# oeil droit iris x34..36, blanc x37
+hline O 34 38 20
+rows W 21 37 37  22 37 37  23 37 37
+rows v 21 34 36  22 34 36
+px W 35 21
+px O 35 22
+px O 35 23
+px u 34 23
+px u 36 23
+hline t 34 36 24
+# nez = plan d'ombre (côté droit, lumière haut-gauche)
+px S 32 25
+# bouche : petit sourire fier
+hline q 30 32 27
+px O 29 26
+px S 31 28
+# joues
+hline S 23 24 25
+hline S 38 39 25

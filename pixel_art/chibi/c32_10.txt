@@ -1,0 +1,18 @@
+# Étape 10 — détails : col de fiole, bouchon, liquide, ceinture, main
+hline O 26 28 2
+px O 25 3
+px O 29 3
+hline i 26 28 3
+px h 26 3
+px O 26 4
+px c 27 4
+px O 28 4
+px O 26 5
+px W 27 5
+px O 28 5
+px q 28 8
+px q 28 9
+px q 27 10
+hline j 13 18 21
+px h 15 21
+px S 8 23

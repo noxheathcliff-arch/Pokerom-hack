@@ -1,0 +1,18 @@
+# Étape 6 — visage. Yeux 2x3 bas et écartés : cil en haut, reflet 1 px haut-gauche, iris dégradé
+hline O 13 14 10
+hline O 17 18 10
+px W 13 11
+px v 14 11
+px W 17 11
+px v 18 11
+hline u 13 14 12
+hline u 17 18 12
+# bouche 2 px (sourire fier), joues roses
+hline S 15 16 14
+px S 12 13
+px S 19 13
+# mèches latérales qui encadrent et affinent le visage
+px i 12 13
+px i 19 13
+vline i 12 9 12
+vline i 19 9 12

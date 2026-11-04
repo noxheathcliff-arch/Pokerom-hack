@@ -1,0 +1,25 @@
+# Étape 5 — aplats (couleurs de base seulement)
+# masse casque des cheveux
+rows i 3 15 16  4 12 19  5 11 20  6 11 20  7 11 20  8 10 21  9 10 21  10 11 20  11 11 20  12 11 20  13 10 21  14 12 19
+# visage : la frange fixe la ligne des yeux (y10), mèches latérales gardées en x11/x20
+rows s 8 14 17  9 12 19  10 12 19  11 12 19  12 12 19  13 12 19  14 13 18  15 13 18
+# col / capuche de la cape
+rows u 16 12 19
+# cape
+rows u 17 11 20  18 11 20  19 10 20  20 10 20  21 10 21  22 10 21  23 9 21  24 9 22
+# manche du bras levé
+rows u 15 20 21  14 22 22  13 23 23
+# tunique crème dans l'ouverture de la cape
+rows c 17 14 17  18 14 17  19 14 17  20 13 17  21 13 18  22 13 18  23 13 18  24 13 18  25 11 14  25 17 20
+# mains
+px s 8 22
+px s 26 11
+# jambes (peau) + bottes
+rows s 26 12 13  26 18 19  27 13 13  27 18 18
+rows i 28 13 13  28 18 18  29 12 13  29 18 19
+# fiole : verre (blanc) en haut, liquide rouge
+px W 27 6
+rows W 7 26 28
+rows r 8 26 28  9 26 28  10 27 27
+# bouchon
+rows i 3 26 28

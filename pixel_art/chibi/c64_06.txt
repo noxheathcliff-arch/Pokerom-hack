@@ -1,0 +1,39 @@
+# correctif étape 5 : taches S sous la frange = sourcils froncés -> peau ; volume des mèches par tirets h
+px s 25 18
+px s 26 18
+px s 30 18
+px s 31 18
+px s 34 18
+px s 35 18
+rows h 15 24 25  15 28 29  15 32 33
+# --- étape 6 : ombrage des vêtements (lumière haut-gauche)
+# col de la cape (relevé, clair)
+rows t 30 28 34
+rows v 31 27 27  31 35 35
+# cape : liseré clair côté gauche, cassé
+rows t 31 23 24  32 22 23  33 22 22  34 22 22  35 21 21  36 21 21  38 20 20  39 20 20  41 19 19  42 19 19
+# plis de la cape (v) + ombre côté droit
+rows v 37 25 25  38 25 25  39 25 25  40 24 24  41 24 24  42 24 24  43 24 24  44 23 23  45 23 23  46 23 23  47 23 23  48 22 22  49 22 22  50 22 22
+rows v 33 41 42  34 41 42  35 41 42  36 41 42  37 41 43  38 41 43  39 41 43  40 41 43  41 42 44  42 42 44  43 42 44  44 42 44  45 42 45  46 42 45  47 42 45  48 43 46  49 43 46  50 43 46
+rows v 41 38 38  42 38 38  43 38 38  44 38 38  45 39 39  46 39 39  47 39 39  48 39 39  49 39 39  50 40 40
+# doublure ombrée le long de la tunique côté droit
+rows v 32 36 36  33 36 36  34 36 36  35 36 36
+# tunique : ombre sous le col, côté droit, pli central, ourlet
+rows d 31 28 34  32 33 35  33 34 35  34 34 35  35 35 35  36 35 36  37 35 36  38 35 36  39 35 36  40 35 36  41 35 36  42 35 36  43 36 37  44 36 37  45 36 37  46 36 37  47 36 37  48 36 37  49 36 37  50 37 38
+rows d 43 31 31  44 31 31  45 31 31  46 30 30  47 30 30  48 30 30  49 30 30
+rows d 50 26 29  50 32 34
+# manche (bras levé) : ombre bord bas-droit
+px d 47 26
+px d 47 27
+px d 46 28
+px d 46 29
+px d 45 30
+px d 44 31
+# main gauche
+rows S 47 15 17  48 16 17
+# jambes
+rows S 52 29 29  53 29 29  54 29 29  55 29 29  56 29 29  52 38 38  53 38 38  54 38 38  55 38 38  56 38 38
+rows S 52 26 28  52 35 37
+# bottes : reflet h haut-gauche, ombre j bas/droite
+rows h 57 25 26  58 25 25  57 34 35  58 34 34
+rows j 57 29 29  58 29 29  59 29 30  60 24 30  57 38 38  58 38 38  59 38 39  60 34 39
