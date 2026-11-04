@@ -1,0 +1,55 @@
+# 08 lumière
+# --- EAU émissive, ombrage inversé : cœur clair, bords sombres, d seulement côté ombre (droite)
+mask w
+# lentille du bassin (2 px) : surface claire, fond e
+rows x 14 35 42
+rows y 14 36 37
+rows e 16 34 43
+# bosse de débordement : l eau se gonfle au-dessus de la lèvre, écume claire
+rows x 12 43 47 13 41 49
+rows y 12 44 45 13 47 48
+# bord extérieur droit : d dehors, e dedans
+px e 12 48
+rows e 13 50 50 14 50 50 15 50 50
+rows d 14 51 51 15 51 51 16 52 52 17 52 52 18 53 53 19 53 53 20 53 53 21 53 53
+rows e 16 51 51 17 51 51 18 52 52 19 52 52 20 52 52 21 52 52
+rows d 22 54 54 23 54 54 24 54 54 25 54 54 26 54 54 27 54 54
+rows e 22 53 53 23 53 53 24 53 53 25 53 53 26 53 53 27 53 53
+rows d 28 55 55 29 55 55 30 55 55 31 55 55 32 55 55 33 55 55 34 55 55 35 55 55 36 55 55 37 55 55
+rows e 28 54 54 29 54 54 30 54 54 31 54 54 32 54 54 33 54 54 34 54 54 35 54 54 36 54 54 37 54 54
+rows d 38 56 56 39 56 56 40 56 56 41 56 56 42 56 56 43 56 56 44 56 56 45 56 56
+rows e 38 55 55 39 55 55 40 55 55 41 55 55 42 55 55 43 55 55 44 55 55 45 55 55
+# bord gauche : simple liseré e (côté lumière, pas de d)
+vline e 45 17 19
+vline e 46 20 21
+vline e 45 22 44
+px e 46 45
+rows e 46 47 55
+# cœur : filets clairs qui dérivent vers la droite quand le rideau s élargit, cassés (pas de rayures régulières)
+vline x 48 17 29
+vline x 48 32 40
+vline x 50 19 25
+vline x 51 27 37
+vline x 52 39 43
+vline x 49 42 44
+rows y 17 48 48 18 48 48 19 50 50
+mask *
+# --- ROCHE : liseré de lumière sur le bord gauche de la face éclairée + éclat sur le haut de l arête
+mask s
+stroke t 7 21 9 25 11 29 14 33 16 38
+line t 14 21 15 26
+px t 4 40
+px t 5 40
+mask *
+# --- MOUSSE : grappes claires en haut-gauche des masses
+mask n
+rows l 2 15 16 3 14 15 4 13 14 5 9 11 6 9 10
+rows l 10 27 28
+rows l 14 9 13 14 23 31
+mask *
+# --- CRISTAL : éclats blancs sur la facette éclairée
+mask x
+px y 27 40
+px y 28 41
+px y 27 44
+mask *

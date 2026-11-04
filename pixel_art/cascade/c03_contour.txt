@@ -1,0 +1,15 @@
+# étape 03 contour (A5-6, C13-C)
+# roche/arbre : O (ton le plus sombre du set, pas de noir pur) posé par contour.py
+# eau : émissive -> pas de trait O ; selout dans le bleu le plus sombre de l'eau (d)
+mask O
+poly d 44 13 50 13 57 19 57 49 46 49 46 21 43 17
+nomask *
+mask *
+# gouttes et étoiles : petites formes émissives, pas de trait du tout (elles restent K = remplissage)
+mask O
+rect K 46 49 57 63
+mask *
+# ligne intérieure : la canopée passe devant le plateau (chevauchement net, A4)
+stroke O 11 11 13 12
+stroke O 17 12 19 11
+# l'eau sort du bassin : ligne intérieure plateau/bec en ton moyen (pas O)

@@ -1,0 +1,43 @@
+# v2 étape 02 : silhouette (masses pleines K), décidées point par point
+# plateau
+ell K 25 17 20 5
+# dessous asymétrique : ressauts à gauche, pointe principale (22,53), encoche, pointe secondaire (34,44)
+poly K 5 18 7 24 9 25 10 30 13 32 14 38 17 40 19 46 22 53 24 47 26 43 28 40 30 39 32 42 34 44 36 39 37 33 40 28 41 23 44 19
+# cristaux pendants dans l'encoche (prismes pointe en bas)
+# grappe de 2 prismes collés qui sortent du flanc de la pointe secondaire
+# une seule masse de grappe (2 pointes, celle de gauche plus longue) qui comble l'encoche, sans trou
+poly K 25.5 42 27.5 39 30.5 38.5 33 42 33.5 45 32 48 30.5 46 29.5 50 27.5 46
+# arbre : couronne 3 lobes + tronc évasé
+disc K 11 7 4
+disc K 16 4.5 4
+disc K 19 8 3.5
+rect K 12 11 16 13
+rows K 15 12 16
+# base de couronne arrondie : ferme les creux entre lobes, puis retire les pixels orphelins
+ell K 15 8.5 7 2.8
+rows . 3 11 11
+rows . 11 11 11
+# buisson
+blob K 25 12 26 10 28 9 30 10 31 12 29 13 26 13
+# bec de débordement + arc
+blob K 40 14 44 12 48 12 52 15 54 20 50 21 46 20 43 17
+# rideau qui s'élargit (8 -> 13 px), bas déchiré en langues
+poly K 46 19 51 18 54 20 55 25 56 32 57 44 56 47 54 45 52 48 50 46 48 48 46 45 45 44 45 32 45 25
+# racines (côté éclairé)
+stroke K 8 25 6 28 6 31 7 34
+stroke K 12 32 11 35 11 38
+# gouttes allongées puis plus petites
+vline K 47 50 51
+vline K 51 50 52
+vline K 55 49 50
+px K 49 54
+px K 54 55
+px K 57 53
+# étoiles : une grande croix, des petites qui rapetissent en s'éloignant
+rows K 58 51 51 59 50 52 60 49 53 61 50 52 62 51 51
+px K 46 58
+px K 56 60
+px K 47 62
+# débris flottants (groupe de 2)
+blob K 3 41 6 39 9 40 10 42 8 45 5 45
+rect K 12 47 13 48

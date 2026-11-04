@@ -1,0 +1,25 @@
+# étape 02 variante B : la chute tombe À CÔTÉ de l'île (bord droit), dans le vide
+# plateau
+ell K 26 16 20 5
+# dessous en cône à facettes (points posés à la main, cassures de pierre)
+poly K 6 16 7 21 10 24 12 29 16 32 18 37 21 40 23 46 25 44 27 39 31 35 33 31 37 28 40 24 43 21 46 17
+# arbre rond
+blob K 10 8 10 5 12 3 15 2 18 3 20 5 21 8 19 11 15 12 11 11
+rect K 14 10 16 13
+# bec de la source qui déborde à droite
+blob K 42 14 46 13 49 15 51 18 44 18
+# colonne d'eau
+poly K 44 17 51 17 53 48 43 48
+# gouttes qui deviennent étoiles
+rect K 44 49 45 50
+rect K 48 50 49 51
+rect K 51 49 52 50
+px K 46 53
+px K 50 54
+px K 53 53
+px K 44 56
+px K 48 58
+px K 52 57
+px K 47 61
+# éclat de roche flottant
+blob K 8 37 11 36 13 38 11 40 9 40

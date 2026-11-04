@@ -1,0 +1,7 @@
+# 06 terminateur (lumière haut-gauche), tracé en R de construction, effacé ensuite.
+# roche = pierre -> ligne BRISÉE en facettes (pas une courbe molle)
+stroke R 32 18 30 23 31 27 27 31 26 36 23 41 22 44
+# feuillage = organique -> courbe ronde, côté bas-droit dans l'ombre
+stroke R 19 4 18 7 15 10 12 10
+# jet d'eau : bande d'ombre côté droit (la lumière vient de la gauche)
+stroke R 47 14 50 17 52 21 53 26 53 44

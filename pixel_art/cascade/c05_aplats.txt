@@ -1,0 +1,35 @@
+# étape 05 aplats : une couleur moyenne par matière, sans lumière
+mask K
+# roche (corps de l'île, éclat)
+rect q 0 0 63 63
+mask q
+# dessus du plateau : tapis de mousse (vu de 3/4 haut, l'ellipse du dessus)
+ell n 26 15 19 4
+# arbre : canopée ronde, tronc
+blob n 10 8 10 5 12 3 15 2 18 3 20 5 21 8 19 11 15 12 11 11
+rect k 14 10 16 12
+blob n 33 11 35 10 37 11 37 13 33 13
+# eau : bassin sur le plateau, bec, jet
+ell w 31 15 7 2
+blob w 37 14 41 13 45 13 48 14 49 16 44 17 38 17
+poly w 45 14 50 14 53 17 55 22 56 30 56 47 47 47 47 29 47 22 46 18
+mask *
+# bas du jet : il se déchire (pas de ligne plate), retire l'ancien bord fermé
+hline . 46 57 48
+hline . 46 57 47
+px w 48 47
+px w 49 47
+px w 51 47
+px w 52 47
+px w 54 47
+px w 55 47
+px w 49 48
+px w 54 48
+# bord droit : la marche à y30 devient une pente régulière (pas de "L")
+px d 57 30
+px . 57 29
+# gouttes -> clair, étoiles -> or
+mask K
+rect x 44 48 57 52
+rect z 44 53 57 63
+mask *

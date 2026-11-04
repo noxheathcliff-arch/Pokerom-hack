@@ -1,0 +1,2 @@
+stamp calques/eau_05.txt 0 0
+stamp calques/etoiles_05.txt 0 0

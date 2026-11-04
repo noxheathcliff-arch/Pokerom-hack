@@ -1,0 +1,10 @@
+# v2 étape 03a : je sépare les matières AVANT de cerner (sinon l'eau prendrait un trait O)
+# W = eau émissive (bec + rideau + gouttes) ; Z = étoiles ; C = cristaux lumineux. Le reste (K) = roche, arbre, buisson, racines, débris.
+mask K
+# bec : le bord de la roche s'arrête à x=44 sous le bec ; au-dessus de y=13 tout est eau
+poly W 38 11 63 11 63 63 44 63 44 21 45 19 45 14 39 14
+# les étoiles (sous y=56) sont une autre matière que les gouttes
+rect Z 44 56 63 63
+# grappe de cristaux (même polygone que la silhouette, seulement sous la roche y>=41)
+poly C 25.5 42 27.5 39 30.5 38.5 33 42 33.5 45 32 48 30.5 46 29.5 50 27.5 46
+mask *

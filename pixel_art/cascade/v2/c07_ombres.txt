@@ -1,0 +1,19 @@
+# 07 ombres : occlusion SEULEMENT dans les creux.
+# sous la lèvre du plateau : la mousse surplombe la roche -> 1 rangée plus sombre d un cran, plus large côté ombre
+mask s
+rows q 19 6 13 20 7 9
+mask q
+rows p 19 14 28 20 15 22
+mask *
+# ombre portée de la couronne sur le tapis de mousse, décalée vers la droite (lumière haut-gauche)
+mask n
+rows m 14 14 22 15 16 20
+mask *
+# creux d accroche des cristaux : la roche se referme dessus
+mask qp
+rows O 37 29 30
+mask *
+# ombre portée de l arbre sur le buisson : côté gauche du buisson
+mask n
+rows m 11 26 26 12 26 27
+mask *

@@ -1,0 +1,13 @@
+# 10 nettoyage (les 7 défauts de H)
+# jaggy : encoche d'un pixel vide dans le contour sous le feuillage
+px O 18 11
+# orphelin : pixel de contour isolé qui dépasse sur le dessus de l'île
+px . 26 11
+# banding : le reflet x de l'arc suivait le trait d sur 11 px -> raccourci et coupé
+mask x
+hline w 36 37 14
+px w 41 14
+hline w 45 46 14
+mask *
+# trou laissé par l'orphelin retiré : on referme le contour
+px O 26 12

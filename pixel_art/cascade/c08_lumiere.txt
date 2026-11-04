@@ -1,0 +1,31 @@
+# 08 lumière (haut-gauche)
+# --- roche : face gauche éclairée en facette, arête vive en t
+mask q
+poly s 8 19 19 20 16 22 13 25 11 22
+poly s 14 26 18 25 19 28 16 30
+px s 7 39
+mask *
+mask s
+px t 8 19
+px t 9 20
+px t 12 22
+mask *
+# --- mousse : bord du fond touché par la lumière (rythme irrégulier, pas une bande)
+mask n
+hline l 14 18 13
+hline l 11 13 14
+px l 22 13
+hline l 9 10 15
+# feuillage : touche haut-gauche
+hline l 13 15 3
+hline l 12 14 4
+px l 12 5
+px l 11 6
+px l 34 10
+mask *
+# --- eau : bord gauche du jet éclairé, dessus de l'arc, lentille du bassin opposée à la lumière
+mask w
+stroke x 45 17 46 19 47 21 48 24 49 27 49 44
+hline x 36 46 14
+hline x 32 34 16
+mask *

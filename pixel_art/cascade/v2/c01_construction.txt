@@ -1,0 +1,19 @@
+# v2 étape 01 : volumes simples, repères posés à la main
+# axe île x=25, axe chute x=51 ; niveaux : plateau y=17, pointe y=53
+vline R 25 0 63
+vline R 51 0 63
+hline B 0 63 17
+hline B 0 63 53
+ell G 25 17 20 5
+ell . 25 17 19 4
+stroke G 5 18 22 53
+stroke G 45 18 34 44
+stroke G 22 53 28 40 34 44
+ell G 15 7 7 5
+ell . 15 7 6 4
+vline G 14 11 15
+stroke G 45 20 45 46
+stroke G 53 18 57 46
+ell G 51 56 6 6
+ell . 51 56 5 5
+ell G 6 42 3 2

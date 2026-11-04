@@ -1,0 +1,25 @@
+# 06 terminateur : lumière haut-gauche. Je trace d abord les arêtes, puis un ton par face.
+# ROCHE : 3 faces séparées par 2 arêtes qui convergent vers la pointe principale (21,50)
+#  face gauche éclairée s : du bord gauche jusqu à l arête (13,18)->(20,49)
+mask q
+poly s 0 17 13 17 20.6 50 0 50
+#  face droite à l ombre p : de l arête (29,18)->(23,47) jusqu au bord droit
+poly p 29 17 63 17 63 50 23.4 48
+#  face centrale reste q. Pointe secondaire (aiguille sous les cristaux) : tournée vers la droite -> p
+rect p 31 36 36 43
+# débris flottant gauche : dessus-gauche éclairé, dessous-droit à l ombre
+poly s 3 39 9 39 3 43
+poly p 9 40 9 44 4 44
+mask *
+# FEUILLAGE : couronne de l arbre, la moitié bas-droite tourne le dos à la lumière -> m
+mask n
+poly m 22 3 22 11 9 11 9 10 15 9 19 7
+# buisson : même logique
+poly m 31 9 31 13 25 13 25 12 29 11
+# tapis de mousse du plateau : le rebord avant (2 rangées basses) passe à l ombre
+rows m 17 9 39 18 19 29
+mask *
+# CRISTAL : deux facettes, gauche face à la lumière x, droite à l ombre w
+mask x
+poly w 30 37 36 37 36 50 29.5 50 30.5 45
+mask *

@@ -1,0 +1,10 @@
+# selout : contour de l'eau = sa teinte la plus sombre (d) en haut ; le bas du jet reste ouvert
+mask O
+rect d 0 0 63 44
+rect w 0 45 63 63
+mask *
+# bord proche du bassin et du déversoir sur la mousse (y16) : pas de trait sombre,
+# la mousse fait la lèvre -> eau claire (selout ouvert côté proche)
+mask d
+rect w 28 16 40 16
+mask *

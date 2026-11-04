@@ -1,0 +1,14 @@
+# calque roche : on part du contour 03, on retire tout ce qui est eau / gouttes
+mask dK
+poly . 43 12 63 12 63 63 43 63
+mask *
+mask K
+rect q 0 0 63 63
+mask q
+ell n 26 15 19 4
+blob n 10 8 10 5 12 3 15 2 18 3 20 5 21 8 19 11 15 12 11 11
+blob n 33 11 35 10 37 11 37 13 33 13
+# tronc posé APRÈS le feuillage (sinon le masque q l'empêchait d'exister) : 2 rangées sous la boule
+mask qn
+rect k 14 11 16 12
+mask *

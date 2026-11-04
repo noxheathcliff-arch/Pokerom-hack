@@ -1,0 +1,6 @@
+# 10 nettoyage
+# petit débris 2x2 tout en O = tache sans lecture -> caillou à 2 tons (dessus éclairé, dessous ombre), contour gardé à droite
+rows s 47 12 12
+rows q 47 13 13 48 12 12
+# racine droite : la pointe s amincit -> dernier pixel plus clair (bois éclairé par-dessous ? non : simplement coupé, pas de pixel pendant seul)
+px . 11 38

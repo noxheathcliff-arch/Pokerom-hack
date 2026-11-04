@@ -1,0 +1,25 @@
+# étape 01 : construction (volumes simples, je pose chaque repère)
+# axe de l'île x=26, axe de la chute x=48 ; niveaux : plateau y=16, pointe du cône y=46, fin des étoiles y=62
+vline R 26 0 63
+vline R 48 0 63
+hline B 0 63 16
+hline B 0 63 46
+hline B 0 63 62
+# plateau : ellipse rx20 ry5 (anneau = pleine G puis creusée)
+ell G 26 16 20 5
+ell . 26 16 19 4
+# cône renversé : du bord du plateau à la pointe (24,46)
+stroke G 6 17 24 46
+stroke G 46 17 24 46
+# arbre : tronc + boule
+vline G 15 9 14
+ell G 15 7 6 5
+ell . 15 7 5 4
+# colonne d'eau : cylindre étroit qui s'élargit (44..51 en haut, 43..53 en bas)
+stroke G 44 17 43 50
+stroke G 51 17 53 50
+# zone des gouttes-étoiles
+ell G 48 56 7 6
+ell . 48 56 6 5
+# éclat flottant
+ell G 10 38 3 2

@@ -1,0 +1,11 @@
+# calque gouttes/étoiles (émissif : pas de trait)
+rect x 47 50 48 51
+rect x 51 51 52 52
+px x 55 50
+px e 50 54
+px e 53 55
+px z 56 54
+px z 47 57
+px z 51 59
+px z 55 58
+px z 50 62

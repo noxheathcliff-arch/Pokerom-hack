@@ -1,0 +1,43 @@
+# 09 détails
+# --- écume là où l'eau bascule par-dessus le bord (y = blanc d'écume)
+mask wxe
+px y 42 15
+px y 43 15
+px y 44 16
+px y 45 15
+# traînées d'écume dans le rideau : tirets courts décalés (pas de bande régulière)
+px y 51 22
+px y 51 23
+px y 50 30
+px y 50 31
+px y 50 32
+px y 52 37
+px y 52 38
+px y 50 42
+px y 50 43
+# brume au pied du jet
+px y 50 45
+px y 53 45
+mask *
+# --- fissure brisée sur la face éclairée (trait intérieur plus clair que le contour, s'estompe aux bouts)
+mask qs
+px p 16 23
+px p 17 24
+px p 17 25
+px q 16 26
+px p 20 31
+px p 21 32
+px q 21 33
+mask *
+# arête éclairée de la fissure
+mask q
+px s 18 24
+mask *
+# --- mousse qui déborde sur la roche (organique, irrégulier)
+mask p
+px m 12 19
+px m 12 20
+px n 27 19
+px m 33 19
+px m 34 20
+mask *

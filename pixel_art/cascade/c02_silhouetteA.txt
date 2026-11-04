@@ -1,0 +1,13 @@
+# étape 02 variante A : la chute tombe DEVANT l'île, au centre
+ell K 32 14 20 5
+poly K 12 14 13 19 16 22 18 27 22 30 24 35 27 38 29 44 31 42 33 37 37 33 39 29 43 26 46 22 49 19 52 15
+blob K 16 6 16 3 18 1 21 0 24 1 26 3 27 6 25 9 21 10 17 9
+rect K 20 8 22 11
+poly K 28 18 36 18 37 50 27 50
+rect K 28 51 29 52
+rect K 33 52 34 53
+px K 31 55
+px K 36 56
+px K 28 58
+px K 33 60
+blob K 52 36 55 35 57 37 55 39 53 39

@@ -1,0 +1,14 @@
+# calque eau. Le dessus de l'île ne fait que 5 rangées (y13-17) : le bassin doit rester mince
+# pour qu'on voie la mousse autour (lecture « bassin », pas « tuyau »).
+# bassin : rangées décidées à la main (lentille 3/4, plus large au milieu)
+rows w 13 27 34
+rows w 14 24 37
+rows w 15 25 36
+rows w 16 27 34
+# déversoir : part du bassin, passe le bord de l'île, arc puis chute qui s'élargit
+poly w 34 13 45 13 49 13 52 15 54 18 55 22 56 27 56 46 48 46 48 30 47 24 46 20 44 17 34 17
+hline w 48 49 47
+hline w 51 52 47
+hline w 54 55 47
+px w 48 48
+px w 54 48
