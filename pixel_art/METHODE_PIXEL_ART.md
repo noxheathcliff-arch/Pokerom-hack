@@ -6,8 +6,9 @@ On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin cla
 
 > **v10.1 :** **chibi = pas d'épaule marquée** (règle impérative 10, C13-A, C14-A) : les bras
 > partent directement du torse, le contour glisse du cou au bras sans bosse de deltoïde.
-> **Tête ronde, jamais ovale** (règle impérative 13, C13-A) : en pixel art, la tête est
-> un rond presque uniforme, aux bords arrondis, le bas juste un peu aplati.
+> **Tête ronde ou ovale de visage, jamais en œuf ni en V** (règle impérative 13, C13-A) :
+> en pixel art, la tête est un rond ou un ovale de visage humain simplifié, régulier, aux
+> bords arrondis, le bas juste un peu aplati.
 >
 > **v10 :** bloc **Règles impératives** en tête (tout ce que les tests ont appris, en
 > ordres courts) ; nouvelle section **C14** (corps nu d'abord, vêtements en calque, test 10
@@ -97,11 +98,13 @@ Chaque règle est un ordre. Le détail et le « pourquoi » sont dans la section
     en colonnes raides.
 12. **Remplis une rangée de plus sous les pieds** avant de poser le contour : sinon le
     contour mange la semelle.
-13. **Fais la tête ronde, jamais ovale.** En pixel art, la tête est un rond presque
-    uniforme : à peu près aussi large que haute, et des bords arrondis sur tout le tour. Le
-    bas peut être **un peu aplati** (menton large et court, qui se ferme en 2 ou 3 marches),
-    mais jamais étiré en pointe ni en œuf. Sur le contour, les marches restent courtes
-    (0, 0, 1, 1, 2, 3 px en descendant vers le menton), jamais un long biseau en V.
+13. **Fais la tête ronde ou en ovale de visage, jamais en œuf ni en V.** En pixel art, la
+    tête est un rond, ou un **ovale de visage humain légèrement simplifié** : à peine plus
+    haute que large, régulière, des bords arrondis sur tout le tour. Le bas peut être **un
+    peu aplati** (menton large et court, qui se ferme en 2 ou 3 marches). Ce qui est
+    interdit, c'est l'ovale étiré en pointe : l'œuf ou le menton en V. Sur le contour, les
+    marches restent courtes (0, 1, 1, 2, 3 px en descendant vers le menton), jamais un
+    long biseau en V.
     **Garde l'ombre de la tête étroite** (2 à 3 px sur le côté opposé à la lumière). Une
     bande large salit le visage.
 
@@ -1134,8 +1137,8 @@ tire de ce volume le contour, la mâchoire, les ombres et la place des traits.
 
 Menton étroit et pointu (forme en V). Garçon plus âgé ou homme : menton plus large et plus
 bas, angle de mâchoire plus marqué. Chibi : la partie menton est moitié plus courte. **En
-pixel art (et en chibi surtout), ne garde pas ce V : la tête se pixelise en rond** (règle
-impérative 13), menton large et à peine aplati.
+pixel art (et en chibi surtout), ne garde pas ce V : la tête se pixelise en rond ou en
+ovale de visage simplifié** (règle impérative 13), menton large et à peine aplati.
 
 ### C. La vue de 3/4 (le cas qui rate le plus)
 - Côté **lointain** : le contour descend du crâne, fait une petite **bosse de pommette**
@@ -1222,11 +1225,12 @@ pièges propres au chibi.
 ### A. Proportions et construction (calques de couleur, R4)
 - **2,5 à 3 têtes** de haut ; tête ≈ 40 % de la hauteur ; yeux sous le milieu de la tête ;
   mains et pieds petits et ronds ; pas de cou visible ou presque.
-- **Tête ronde, pas ovale** (règle impérative 13) : un rond presque uniforme, aussi large
-  que haut, aux bords arrondis. Le bas est à peine aplati et le menton reste large. Sur
-  chibi2, la première tête était un ovale terminé en pointe (le menton se fermait en
-  7 rangées : 24, 22, 20, 18, 14, 10, 6 px). Elle a été refaite plus ronde : 26 px de
-  large jusqu'à la rangée 21, puis 24, 22, 18, 12 (`c02_fill.txt`, rangées 19 à 25).
+- **Tête ronde ou ovale de visage, pas en œuf** (règle impérative 13) : un rond ou un
+  ovale de visage humain simplifié, régulier, aux bords arrondis. Le bas est à peine
+  aplati et le menton reste large. Sur chibi2, la première tête était un œuf terminé en
+  pointe (le menton se fermait en 7 rangées : 24, 22, 20, 18, 14, 10, 6 px). Elle est
+  maintenant un ovale de visage doux : 26 px de large sur les rangées 19 et 20, puis 24,
+  22, 20, 16, 10 (`c02_fill.txt`, rangées 19 à 25).
 - **Pas d'épaule marquée** (règle impérative 10) : torse en cloche ou en trapèze étroit sous
   la tête ; le contour glisse du cou au bras en une pente régulière, puis le bras pend le
   long du torse, séparé par un seul trait. Pas de bosse de deltoïde, pas de marche. Sur
@@ -1242,7 +1246,7 @@ pièges propres au chibi.
 Ordre validé sur chibi2 (`chibi2/`, étapes 01 à 08). Une étape = un fichier de commandes
 `cXX.txt` + `etapeXX_nom.txt` + son rendu.
 1. **Construction** (A) : pose rouge, repères bleus, volumes verts (`etape01`).
-2. **Silhouette du corps nu** à plat, contour pixel-perfect (A5-6) : tête ronde, torse,
+2. **Silhouette du corps nu** à plat, contour pixel-perfect (A5-6) : tête ronde ou ovale de visage, torse,
    membres avec leurs jointures (C14-A), **sans épaule marquée** (pente cou → bras, règle 10).
    Une rangée de plus sous les pieds (`etape02`).
 3. **Ombres du corps** : peau claire, moyenne, sombre ; ombre de tête étroite (`etape03`).
