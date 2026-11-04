@@ -1,0 +1,7 @@
+# image 04 étape final : empilement des calques (ordre = profondeur)
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f04/calques/feuille_final.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f04/calques/pendentif_final.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f04/calques/smear_final.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f04/calques/rouleauG_final.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f04/calques/rouleauD_final.txt 0 0
+# contour traînée : appliqué après empilement (voir build.py, contour_smear)

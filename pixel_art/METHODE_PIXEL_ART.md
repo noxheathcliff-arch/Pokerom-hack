@@ -2026,6 +2026,17 @@ même à 80 ms, parce qu'elle fait « sauter » la silhouette.
       d'amplitude.
 - [ ] Au moins un défaut noté, corrigé à son étape, bande refaite.
 
+**C. Leçons du premier essai (rouleau + joyau) [T15]**
+- **Une pièce rigide se redessine entière, jamais décalée ligne par ligne.** Décaler des
+  lignes une à une casse sa forme (pendentif « cisaillé » en F07).
+- **Construis une image à la fois.** Générer plusieurs images d'un coup saute la validation
+  E5-A ; chaque image se termine et se valide avant que la suivante commence.
+- **Vérifie à la pelure d'oignon qu'aucune pièce n'apparaît d'un coup.** Une partie qui
+  n'existe pas à l'image N et qui est entière à N+1 « saute » : donne-lui un bourgeon (1-2 px)
+  à l'image N.
+- **Un éclat clair posé sur de l'or clair se voit mal.** Juge-le dans le GIF, ou pose-le
+  sur le bord, contre le fond sombre.
+
 ---
 
 # Résumé

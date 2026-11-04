@@ -1,0 +1,6 @@
+# image 13 étape 01 : empilement des calques (ordre = profondeur)
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f13/calques/feuille_01.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f13/calques/pendentif_01.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f13/calques/medaillon_01.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f13/calques/rouleauG_01.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f13/calques/rouleauD_01.txt 0 0

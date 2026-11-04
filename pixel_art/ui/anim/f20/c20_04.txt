@@ -1,0 +1,8 @@
+# image 20 étape 04 : empilement des calques (ordre = profondeur)
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f20/calques/feuille_04.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f20/calques/decor_04.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f20/calques/pendentif_04.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f20/calques/medaillon_04.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f20/calques/rouleauG_04.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f20/calques/rouleauD_04.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f20/calques/eclat_04.txt 0 0

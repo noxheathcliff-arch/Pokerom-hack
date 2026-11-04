@@ -1,0 +1,6 @@
+# image 11 étape 05 : empilement des calques (ordre = profondeur)
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f11/calques/feuille_05.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f11/calques/decor_05.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f11/calques/pendentif_05.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f11/calques/rouleauG_05.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f11/calques/rouleauD_05.txt 0 0

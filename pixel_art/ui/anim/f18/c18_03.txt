@@ -1,0 +1,8 @@
+# image 18 étape 03 : empilement des calques (ordre = profondeur)
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f18/calques/feuille_03.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f18/calques/decor_03.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f18/calques/pendentif_03.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f18/calques/medaillon_03.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f18/calques/rouleauG_03.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f18/calques/rouleauD_03.txt 0 0
+stamp /home/user/Pokerom-hack/pixel_art/ui/anim/f18/calques/eclat_03.txt 0 0
