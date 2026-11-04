@@ -1,0 +1,23 @@
+# ETAPE 01 - construction. R = pose (colonne, membres), B = reperes (crane, bassin, articulations), G = volumes
+# colonne : legerement cambree, epaules hautes, tete en avant = posture menacante
+line R 30 18 30 40
+# bras gauche pendant, bras droit leve avec l'epee
+line R 19 22 15 33
+line R 15 33 13 42
+line R 41 22 45 32
+line R 45 32 51 32
+line R 52 30 52 6
+# jambes ecartees
+line R 25 41 24 50
+line R 24 50 24 58
+line R 35 41 36 50
+line R 36 50 36 58
+# reperes
+ring B 29 10 7
+rect B 22 36 37 40
+ring B 15 33 2
+ring B 45 32 2
+ring B 24 50 2
+ring B 36 50 2
+# volume : cage thoracique
+frame G 19 20 40 32

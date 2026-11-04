@@ -1,0 +1,16 @@
+# ETAPE 01 - construction : liche flottante, bras leves en V, robe en cloche (pas de pieds)
+# R = pose : axe, epaules, bras leves
+vline R 31 4 60
+line R 20 27 9 16
+line R 43 27 54 14
+hline R 16 47 28
+# B = reperes : capuche, mains, orbes de flamme
+ring B 31 17 9
+ring B 9 13 3
+ring B 54 11 3
+ring B 9 6 3
+ring B 54 4 3
+# G = volume de la robe (cloche)
+line G 20 26 14 58
+line G 43 26 49 58
+hline G 14 49 58

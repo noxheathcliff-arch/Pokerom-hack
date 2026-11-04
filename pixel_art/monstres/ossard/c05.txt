@@ -1,0 +1,6 @@
+# ETAPE 05 - selout : contour adouci (os sombre n) sur le haut-gauche du crane et des os eclaires
+rows n 3 26 29
+px n 24 4
+px n 23 5
+px n 22 6
+px n 22 7

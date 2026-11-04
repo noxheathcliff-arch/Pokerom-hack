@@ -1,0 +1,89 @@
+# ETAPE 04 - volumes : chaque rocher est une boule eclairee en haut a gauche (s lumiere, m moyen, k ombre)
+rows k 4 59 59
+rows k 5 58 59
+rows k 6 57 59
+rows k 7 55 59
+rows k 8 54 59
+rows k 9 53 58
+rows k 15 35 35
+rows k 16 34 36  16 55 55
+rows k 17 33 35  17 55 55
+rows k 18 32 35  18 54 55
+rows k 19 31 35  19 54 55
+rows k 20 30 34  20 53 55
+rows k 21 29 35  21 53 53
+rows k 22 22 22  22 29 34  22 52 52
+rows k 23 21 23  23 31 31  23 50 50
+rows k 24 20 25  24 49 52
+rows k 25 19 24  25 48 51
+rows k 26 19 24  26 48 51
+rows k 27 18 24  27 47 51
+rows k 28 17 23  28 46 50
+rows k 29 17 23  29 45 49
+rows k 30 18 22  30 39 40  30 46 46
+rows k 31 18 20  31 38 42
+rows k 32 17 18  32 38 42
+rows k 33 16 17  33 37 43
+rows k 34 15 16  34 36 42
+rows k 35 15 15  35 35 42
+rows k 36 14 15  36 34 42
+rows k 37 13 14  37 33 42
+rows k 38 32 42
+rows k 39 31 41
+rows k 40 31 40
+rows k 41 30 40
+rows k 42 29 39
+rows k 43 28 37
+rows k 44 15 15  44 27 36
+rows k 45 14 15  45 28 29  45 31 31  45 33 34
+rows k 46 13 15
+rows k 47 12 15
+rows k 48 11 15
+rows k 49 9 15
+rows k 50 8 14
+rows k 51 28 28  51 41 41
+rows k 52 27 28  52 40 41
+rows k 53 27 28  53 40 42
+rows k 54 26 28  54 39 42
+rows k 55 25 29  55 38 43
+rows k 56 24 29  56 37 43
+rows k 57 24 29  57 37 42
+rows s 2 50 53
+rows s 3 49 52
+rows s 4 49 51
+rows s 5 49 50
+rows s 6 49 49
+rows s 11 31 31
+rows s 12 28 30
+rows s 13 27 29
+rows s 14 27 28  14 52 52
+rows s 15 27 27
+rows s 16 26 26
+rows s 18 17 17  18 46 46
+rows s 19 14 16  19 43 45  19 50 50
+rows s 20 13 15  20 42 44
+rows s 21 12 14  21 41 43
+rows s 22 12 14  22 26 27  22 41 43
+rows s 23 12 13  23 25 30  23 40 42
+rows s 24 11 12  24 26 30  24 38 41
+rows s 25 25 29  25 39 40
+rows s 26 25 28  26 39 39
+rows s 27 25 27
+rows s 28 13 13  28 24 26
+rows s 29 14 14  29 24 25
+rows s 30 13 13  30 23 24
+rows s 31 10 12  31 21 24
+rows s 32 10 11  32 19 23
+rows s 33 9 10  33 19 22
+rows s 34 9 9  34 20 21
+rows s 35 20 20
+rows s 42 5 9
+rows s 43 4 8
+rows s 44 4 7
+rows s 45 4 5  45 25 25  45 35 37
+rows s 46 4 4  46 21 24  46 34 37
+rows s 47 21 24  47 34 37
+rows s 48 21 23  48 34 36
+rows s 49 21 22  49 34 35
+rows s 50 21 22  50 34 35
+rows s 51 21 21  51 34 34

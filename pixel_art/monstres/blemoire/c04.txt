@@ -1,0 +1,92 @@
+# ETAPE 04 - volumes. Lumiere haut-gauche ; l'emission verte vient du centre (flamme) et des orbes.
+# --- flamme : coeur clair g au centre-bas, bords v (plus sombres vers le contour)
+rows g 3 31 32  4 30 33  5 30 33  6 29 34  7 30 33
+rows v 4 25 25  5 25 26  6 24 25  7 24 25  8 24 26  9 24 25  4 38 38  5 37 38  6 38 39  7 38 39  8 38 39  9 38 39
+px v 26 4
+px g 37 4
+# --- capuche : reflet haut-gauche, ombre a droite, interieur profond
+rows c 9 27 30  10 25 28  11 24 26  12 23 24  13 23 23  14 23 23  15 23 23
+rows A 10 37 38  11 37 39  12 38 40  13 38 41  14 39 41  15 39 41  16 39 41  17 39 41  18 39 41  19 39 41  20 39 41  21 39 41  22 39 41  23 38 40  24 38 40
+rows d 12 27 36  13 26 37
+rows K 13 29 34  14 27 36  15 26 37  16 26 37  17 26 37  18 26 37  19 26 37  20 26 37  21 26 37  22 27 36  23 28 35
+# bord de capuche (galon) autour de l'ouverture
+rows e 14 26 26  15 25 25  16 25 25  17 25 25  18 25 25  19 25 25  20 25 25  21 25 25  22 26 26  23 27 27  24 28 35
+rows e 14 37 37  15 38 38  16 38 38  17 38 38  18 38 38  19 38 38  20 38 38  21 38 38  22 37 37  23 36 36
+rows n 24 33 35  23 36 36  22 37 37
+# --- crane dans l'ombre de la capuche (haut assombri)
+rows n 15 29 34
+rows b 16 28 35  17 28 35  18 28 35  19 28 35  20 29 34  21 30 33  22 30 33
+rows q 16 28 29  17 28 28
+rows n 16 35 35  17 35 35  18 35 35  19 34 35  20 34 34  22 33 33
+# yeux brules : flamme verte dans les orbites
+rows u 17 29 30  18 29 30  17 33 34  18 33 34
+px g 30 17
+px g 33 17
+rows K 19 31 32
+# dents
+px O 31 21
+px O 32 22
+px O 30 22
+# lueur de la flamme sur l'ouverture
+px v 31 23
+px v 32 23
+# --- mains : gauche lumineuse a gauche, ombre a droite ; doigts-griffes
+rows q 14 7 8  15 7 7  16 7 7  17 8 8  18 9 9
+rows n 15 12 12  16 11 12  17 11 11  18 10 10  19 10 10
+rows q 12 55 56  13 51 52  14 51 51  15 52 52  16 53 53
+rows n 13 56 56  14 56 56  15 55 55  16 54 54  17 54 54
+# --- orbes : coeur g decale vers la main, bord bas-droit v
+rows g 4 8 9  5 7 10  6 8 10
+rows v 7 10 11  8 9 10  6 11 11
+rows g 2 54 55  3 53 56  4 54 56
+rows v 5 55 56  6 54 55  4 56 56
+# --- manches : dessus clair, dessous sombre, bouche de manche profonde
+rows d 20 8 11  21 7 12  18 52 55  19 51 56
+rows c 21 6 6  22 7 8  23 8 9  24 9 10  25 10 11  26 11 12
+rows A 22 14 15  23 15 16  24 15 16  25 16 17  26 17 18
+rows c 19 50 50  20 49 50  21 48 49  22 47 48  23 46 47  24 45 46  25 44 45
+rows A 20 55 56  21 54 55  22 53 54  23 52 53  24 51 52  25 50 51  26 49 50
+# separation manche / epaule (bord interieur pose a la main)
+line O 18 26 20 25
+line O 45 25 43 26
+# --- robe : flanc gauche clair, droite sombre, plis verticaux
+rows c 27 19 22  28 19 21
+vline c 20 29 33
+vline c 19 34 38
+vline c 18 39 43
+vline c 17 44 48
+vline c 16 49 53
+vline c 15 54 57
+rows A 26 40 44  27 41 45  28 41 44
+vline A 41 29 33
+vline A 42 29 57
+vline A 43 29 57
+vline A 44 34 57
+vline A 45 39 57
+vline A 46 44 57
+vline A 47 49 57
+vline A 48 54 57
+# plis : creux A, arete c a gauche
+line A 25 36 22 57
+line c 24 36 21 57
+line A 31 36 31 57
+line c 30 36 30 57
+line A 37 36 40 57
+line c 36 36 39 57
+# ceinture de corde + pendant
+rows e 34 20 41
+rows A 34 42 43
+vline e 27 35 40
+px n 27 40
+rows v 41 26 28
+px u 27 41
+# ourlet dechire dans l'ombre
+rows A 57 14 49
+rows d 58 15 20  58 24 28  58 33 39  58 44 48
+# --- etincelles qui tombent
+px u 12 30
+px v 10 33
+px u 52 33
+px v 55 37
+px v 23 62
+px u 41 61

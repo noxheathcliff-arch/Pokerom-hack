@@ -1,0 +1,80 @@
+# ETAPE 05 - details. Les bords interieurs entre rochers sont des joints de lave (x sombre, o par endroits) :
+# le contour.py ne les voit pas, on les pose a la main. Coeur de lave : centre w -> y -> o -> bord x.
+# --- joints entre volumes
+hline x 28 34 22
+px x 27 21
+px x 35 21
+line x 22 18 24 24
+line x 24 25 22 30
+line x 41 18 39 24
+line x 39 25 41 30
+hline x 21 28 45
+hline x 34 41 45
+hline x 10 16 30
+line x 48 21 52 19
+px o 23 24
+px o 40 24
+px o 31 22
+# --- coeur de lave dans la poitrine + fissures qui rayonnent
+disc x 31 33 4
+disc o 31 33 3
+disc y 31 33 2
+px w 30 32
+px w 31 32
+px w 30 33
+line x 34 29 37 25
+px o 35 28
+line x 28 29 26 26
+line x 28 37 25 41
+px o 27 38
+line x 35 37 37 41
+px o 36 38
+# --- visage : arcade lourde, yeux de braise, bouche fendue
+hline K 27 30 15
+hline K 32 35 15
+rows y 16 28 29  17 28 29  16 33 34  17 33 34
+px w 28 16
+px w 33 16
+rows K 17 31 31  18 31 31
+hline x 29 33 19
+px o 30 19
+px o 31 19
+# --- poing gauche : doigts separes par la lave, pouce
+vline x 7 42 45
+vline x 10 42 45
+vline x 13 42 45
+line K 4 47 9 47
+px o 10 43
+# --- poing droit leve : jointures en haut
+vline x 51 2 5
+vline x 54 2 5
+vline x 57 2 5
+line K 49 7 55 7
+px o 54 3
+# --- fissures sur epaules et jambes
+line x 14 20 17 23
+px o 15 21
+line x 47 19 50 22
+px o 48 20
+line x 25 48 27 53
+px o 26 50
+line x 38 48 36 53
+px o 37 50
+hline K 19 29 58
+hline K 33 43 58
+# --- braises qui montent
+px y 10 12
+px o 12 9
+px y 44 2
+px o 22 6
+px y 61 20
+px o 6 32
+px y 59 40
+px o 17 55
+px y 47 60
+# --- les longs joints rougeoient au centre (o), sombres aux extremites (x)
+rows o 45 24 25  45 37 38  30 13 14
+px o 23 21
+px o 40 21
+px o 23 28
+px o 40 28

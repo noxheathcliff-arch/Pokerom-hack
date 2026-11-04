@@ -1,0 +1,48 @@
+# ETAPE 02 - silhouette. Crane gros (lisible a x1), os de 4 px (2 px de remplissage apres contour),
+# articulations en noeuds plus larges, cage = forme pleine (les creux seront peints en d, pas en vide).
+# crane
+rows b 3 26 33  4 24 35  5 23 36  6 22 37  7 22 37  8 22 37  9 22 37  10 22 37  11 22 37  12 22 37  13 23 36  14 24 35
+# machoire
+rows b 15 25 34  16 25 34  17 26 33
+# cou
+rows b 18 28 31  19 28 31
+# cage
+rows b 20 21 38  21 20 39  22 20 39  23 20 39  24 20 39  25 20 39  26 20 39  27 21 38  28 21 38  29 22 37  30 23 36  31 24 35  32 26 33
+# lombaires
+rows b 33 28 31  34 28 31  35 28 31
+# bassin
+rows b 36 22 37  37 21 38  38 21 38  39 21 38  40 22 26  40 28 31  40 33 37
+# jambe gauche
+rows b 41 22 25  42 22 25  43 22 25  44 22 25  45 22 25  46 22 25  47 22 25  48 22 25
+rows b 49 21 26  50 21 26  51 21 26
+rows b 52 22 25  53 22 25  54 22 25  55 22 25  56 22 25  57 22 25
+rows b 58 21 26  59 19 26  60 18 26
+# jambe droite
+rows b 41 34 37  42 34 37  43 34 37  44 34 37  45 34 37  46 34 37  47 34 37  48 34 37
+rows b 49 33 38  50 33 38  51 33 38
+rows b 52 34 37  53 34 37  54 34 37  55 34 37  56 34 37  57 34 37
+rows b 58 33 38  59 33 40  60 33 41
+# bras gauche : epaule, humerus, coude, avant-bras, main griffue
+rows b 21 16 20  22 16 20  23 16 20  24 16 19  25 15 19  26 15 18  27 15 18  28 14 17  29 14 17  30 14 17  31 13 17
+rows b 32 12 17  33 12 17  34 12 17
+rows b 35 12 15  36 12 15  37 11 15  38 11 14  39 11 14  40 11 14
+rows b 41 10 15  42 10 15  43 10 15
+vline b 10 44 46
+vline b 12 44 47
+vline b 14 44 46
+# bras droit : epaule, humerus, coude, avant-bras vers l'avant, poing
+rows b 21 39 43  22 39 43  23 40 44  24 41 44  25 41 44  26 41 45  27 41 45  28 42 45  29 42 45  30 42 46
+rows b 31 42 47  32 42 47  33 42 47
+rows b 31 48 49  32 48 49  33 48 49  34 48 49
+rows b 30 50 54  31 50 54  32 50 54  33 50 54  34 50 54  35 50 54
+# epee : garde, lame ebrechee, pommeau
+rows i 28 47 57  29 47 57
+rows i 8 50 53  9 50 53  10 50 53  11 50 53  12 50 53  13 50 53  14 50 53  15 50 52  16 50 52  17 50 53
+rows i 18 50 53  19 50 53  20 50 53  21 50 53  22 50 53  23 50 53  24 50 53  25 50 53  26 50 53  27 50 53
+rows i 5 52 52  6 51 53  7 50 53
+rows h 30 51 53  36 51 53
+rows i 37 51 53  38 51 53
+# epauliere rouillee (cote epee) : seule piece d'armure, casse la symetrie
+rows I 18 37 43  19 36 45  20 36 46  21 36 46  22 37 46  23 38 45  24 40 44
+# pagne dechire entre les jambes
+rows h 38 26 33  39 26 33  40 26 33  41 26 33  42 26 33  43 27 33  44 27 32  45 28 32  46 28 29  46 31 32  47 28 28

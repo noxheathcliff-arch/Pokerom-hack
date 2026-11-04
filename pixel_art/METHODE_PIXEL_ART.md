@@ -1,4 +1,4 @@
-# Méthode de pixel art — objets, personnages et créatures (v10.2)
+# Méthode de pixel art — objets, personnages et créatures (v10.3)
 
 On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin classique
 (construction par volumes, ligne d'action, anatomie) et les règles du pixel art
@@ -1428,6 +1428,73 @@ trois finales en ont 13, 13 et 14) : `c01` construction · `c02` silhouette · `
 · `c04` volumes + bords intérieurs · `c05` détails (yeux, bouche, selout) · `etape_final` ·
 `planche_finale.png`. L'intention de chaque bête est dans `monstres/INTENTION.md`.
 
+## C16. Créatures complexes : morts-vivants et élémentaires [T12]
+Test 12 : trois créatures plus chargées en 64×64 (`pixel_art/monstres/`) : **Ossard**
+(squelette guerrier), **Blêmoire** (liche en robe) et **Magmorne** (golem de magma). Même
+pipeline que C15. Une créature complexe garde **une** silhouette lisible et **un** accent
+saturé. La complexité vient des pièces qu'on assemble, pas du nombre de couleurs.
+
+### A. Squelette (Ossard)
+- **Os d'au moins 4 px de large** (bras, fémurs, tibias) en 64 px : un os de 2 px devient
+  un trait de contour et disparaît. Les articulations sont des **nœuds** plus larges d'1 px.
+- **Cage thoracique** : remplis-la d'abord avec une couleur de **cavité** sombre `d`, puis
+  pose les côtes par-dessus en arcs clairs. Des côtes posées sur le vide se lisent comme
+  des rayures.
+- Garde la cage **plus étroite que les épaules** (x20–39 pour Ossard) : une cage qui touche
+  les bras fait un bloc (v1).
+- **Crâne** : rond, avec une mâchoire plus étroite en dessous. Les orbites sont des trous `K`
+  avec une lueur verte au centre. Pose un selout sur le haut du crâne (bord clair à la place
+  du `O`).
+- **Doigts de 2 px** : le pixel côté lumière est en os, l'autre reste `O`.
+- **Asymétrie par l'équipement** : une seule épaulière, une épée ébréchée, un pagne
+  déchiré. Ces pièces rouillées (brun orangé) restent ternes pour ne pas voler l'accent.
+
+### B. Liche en robe (Blêmoire)
+- **La robe est une cloche**, pas une boîte : elle s'élargit rang par rang (v1 était
+  carrée). Fais un ourlet en lambeaux, avec des pointes de longueurs différentes.
+- **Capuche** : c'est une ouverture sombre `K` avec un galon clair autour. Le crâne y est
+  enfoncé et seuls les yeux brillent vraiment.
+- **Manches larges et bras levés en V** : le bras droit est 2 px plus haut que le gauche,
+  ce qui casse la symétrie. Pose à la main le bord entre la manche et le corps. Raccorde
+  la manche à l'épaule par des rangs pleins (v1 : la manche droite flottait).
+- **Parties flottantes** : des orbes au-dessus des paumes et des étincelles qui tombent.
+  Laisse **au moins 1 px de vide** entre la partie flottante et le corps. Sinon, elle se
+  lit comme une excroissance.
+- **Plis** de la robe : quelques lignes verticales d'un cran plus sombres, qui partent de
+  la ceinture.
+
+### C. Élémentaire de magma (Magmorne)
+- **Construction en rochers** : une boule pour le torse, deux pour les épaules, une petite
+  tête **enfoncée entre les épaules** (plus haute qu'elles d'à peine 7 px), des jambes
+  courtes et des pieds larges.
+- **Poings flottants** : l'avant-bras s'arrête et le poing flotte à côté, avec 2 px de vide
+  entre les deux. Un poing est levé et l'autre est bas, ce qui crée l'asymétrie et le
+  mouvement. Les doigts sont séparés par des lignes de lave.
+- **Joints de lave à la place des bords intérieurs** : entre deux rochers, le trait posé à
+  la main est en rouge sombre `x`, avec un pixel `o` plus vif au milieu des longs joints.
+  Un `O` violet ici éteindrait la créature.
+- **Cœur émissif** : centre presque blanc `w`, puis `y`, puis `o`, puis un bord `x`. Des
+  fissures partent du cœur et rayonnent vers le bord du torse.
+- **Volumes** : chaque rocher est une boule éclairée en haut à gauche (`s` clair, `m`
+  moyen, `k` sombre). Une boule n'est pas ombrée comme les autres : on applique la même
+  règle de lumière à chaque volume, puis les joints séparent les volumes.
+- **Débris et braises** : de petits rochers de 2–3 px avec leur contour, et des braises
+  d'**un seul pixel** sans contour.
+- Palette courte (9 couleurs) : 4 tons de roche froids et 4 tons de lave chauds, plus `O`.
+  Le contraste froid/chaud suffit.
+
+### D. Règles communes
+| Règle | Pourquoi |
+|---|---|
+| Émissif : cœur clair au centre, bords plus sombres | la lumière vient de l'objet |
+| Un seul accent saturé (vert nécrotique, ou lave) | l'œil va droit à la menace |
+| Parties flottantes séparées par du vide (≥ 1–2 px) | sinon elles collent au corps |
+| Asymétrie par un bras levé ou une pièce d'armure | une pose symétrique est figée |
+| Bords intérieurs posés à la main (manche/corps, rocher/rocher) | `contour.py` ne voit que le vide |
+| Cavité sombre avant les détails (cage, capuche, orbites) | le détail clair se lit sur du sombre |
+
+Fichiers : identiques à C15-G. Ossard a 15 couleurs, Blêmoire 13 et Magmorne 9.
+
 ---
 
 # Partie D — Outils (dossiers `pixel_art/chibi/`, `pixel_art/chibi2/`, `pixel_art/monstres/`)
@@ -1467,6 +1534,11 @@ sombre).
 construction R/B/G → silhouette refaite tant qu'elle forme un bloc (contrôle en noir) →
 contour → volumes (pattes lointaines plus sombres, émissifs à ombrage inversé) → bords
 intérieurs à la main → yeux selon le langage → selout → planche.
+
+**Créature complexe (C16) :** silhouette assemblée de pièces (os, robe, rochers) → cavités
+sombres d'abord → asymétrie (bras levé, armure) → parties flottantes séparées par du vide →
+bords intérieurs à la main (joints de lave chez l'élémentaire) → un seul accent émissif →
+planche.
 
 Un concept à la fois, du grand au petit. Aucun pixel de détail tant que la structure n'est
 pas juste.

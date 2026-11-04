@@ -1,0 +1,12 @@
+# ETAPE 05 - details : doigts osseux (phalange claire cote lumiere, contour cote ombre)
+vline b 6 12 13
+vline b 9 12 13
+vline b 12 12 13
+px q 9 12
+vline b 50 10 11
+vline b 53 10 11
+vline b 56 10 11
+px q 53 10
+# selout : haut de capuche adouci par le reflet violet
+px c 30 8
+px c 26 9

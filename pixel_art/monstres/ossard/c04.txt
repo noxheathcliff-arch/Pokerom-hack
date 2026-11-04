@@ -1,0 +1,122 @@
+# ETAPE 04 - volumes + bords interieurs. Lumiere haut-gauche. Os : 2 px de remplissage, gauche clair, droite ombre.
+# --- crane : reflet haut-gauche, cote droit dans l'ombre
+rows q 4 26 30  5 24 29  6 23 27  7 23 25  8 23 24
+rows n 5 34 35  6 35 36  7 35 36  8 35 36  9 36 36  10 36 36  11 36 36  12 36 36  13 34 35  14 33 34
+# orbites profondes (K) bordees de d, pupilles necrotiques (accent)
+rows d 8 25 27  9 24 28  10 24 28  11 24 28  12 25 27
+rows d 8 32 34  9 31 35  10 31 35  11 31 35  12 32 34
+rows K 9 25 27  10 25 27  11 25 27
+rows K 9 32 34  10 32 34  11 32 34
+px g 26 10
+px u 26 11
+px u 27 10
+px g 33 10
+px u 33 11
+px u 32 10
+# cavite nasale + pommettes
+rows K 13 29 30
+px d 30 14
+px K 29 14
+rows n 13 24 26  13 33 33
+rows n 14 25 27
+# dents : separations O, bout de machoire dans l'ombre
+px O 27 15
+px O 29 15
+px O 31 15
+px n 33 15
+px n 26 16
+px O 28 16
+px O 30 16
+px O 32 16
+px n 33 16
+rows n 17 30 31
+# cou dans l'ombre du menton
+rows n 18 29 30  19 30 30
+px b 29 19
+# --- clavicule, cage : cavite sombre d, cotes claires par-dessus
+rows q 21 21 27
+rows n 21 32 35
+vline O 20 22 24
+rows d 23 22 37  25 22 37  27 23 36  29 24 35  31 27 32
+rows b 22 21 36  24 21 38  26 21 38  28 22 37  30 24 35
+rows q 22 21 25  24 21 24  26 21 23
+rows n 22 33 36  24 33 38  26 33 38  28 33 37  30 33 35
+# sternum + colonne
+vline q 29 21 29
+vline n 30 21 29
+# coeur necrotique : lueur dans la cavite, deborde sur les cotes voisines
+rows v 23 25 27  25 24 24  25 28 28  27 25 27
+rows u 25 25 27
+px g 26 25
+px u 26 24
+px u 26 26
+# lombaires : vertebres separees
+rows n 31 30 30  33 30 30  35 30 30
+px O 29 34
+px n 30 34
+# --- bassin
+rows q 37 22 25
+rows n 37 34 37  38 35 37  39 35 37  40 34 36  41 34 36  42 34 36
+rows d 38 22 22
+# ceinture de corde rouillee + pagne (h clair, H ombre et pli)
+rows r 38 26 33
+rows H 39 32 33  40 32 33  41 32 33  42 32 33  43 31 32
+vline H 30 40 44
+rows H 39 26 33
+rows r 38 26 33
+# ombre portee du bassin sur le haut des femurs
+rows n 41 23 24  42 23 24
+# --- jambes : colonne gauche b, droite n ; genoux en noeud
+vline n 24 43 48
+vline n 36 43 48
+rows q 49 22 23  50 23 23
+rows n 49 25 25  50 24 25  51 22 25
+rows q 49 34 35  50 35 35
+rows n 49 37 37  50 36 37  51 34 37
+vline n 24 52 57
+vline n 36 52 57
+rows n 58 24 25  59 24 25
+rows n 58 36 37  59 37 39
+px O 22 59
+px O 38 59
+# --- bras gauche (cote lumiere) : q a gauche, n a droite
+rows q 22 17 18  23 17 17
+rows n 24 18 19
+rows q 25 16 16  26 16 16  27 16 16  28 15 15  29 15 15  30 15 15  31 14 14  32 13 13  33 13 13
+rows n 25 18 18  31 16 16  32 16 16  33 16 16  34 15 16
+rows q 35 13 13  36 13 13  37 12 12  38 12 12  39 12 12  40 12 12
+rows n 35 14 14  36 14 14  37 14 14  38 13 13  39 13 13  40 13 13
+rows q 41 11 11  42 11 11
+rows n 41 14 14  42 14 14
+px n 13 43
+px O 12 42
+# --- bras droit (cote ombre) : b a gauche, n a droite
+rows n 25 43 43  26 44 44  27 44 44  28 44 44  29 44 44  30 45 45  31 45 46
+rows q 31 43 43
+rows n 32 46 52  33 47 52
+rows n 34 50 53  35 52 53
+px O 51 32
+px O 51 34
+# --- epauliere : reflet haut-gauche, rivets, rouille
+rows i 19 37 40  20 37 39  21 37 37
+rows J 21 44 45  22 43 45  23 41 44  24 41 43
+px r 42 21
+px r 41 22
+px J 39 21
+px J 42 19
+# --- epee : lame gauche claire, droite sombre, rouille, garde
+vline I 52 7 27
+vline I 51 15 16
+px r 52 12
+px r 52 13
+px r 51 20
+px r 52 21
+px r 52 24
+rows J 29 48 56
+rows i 28 48 50
+rows J 37 52 52
+# --- etincelles necrotiques autour du crane
+px u 40 8
+px v 41 6
+px u 19 11
+px v 18 13
