@@ -1,4 +1,4 @@
-# Méthode de pixel art — objets, personnages et créatures (v11)
+# Méthode de pixel art — objets, personnages et créatures (v12)
 
 On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin classique
 (construction par volumes, ligne d'action, anatomie) et les règles du pixel art
@@ -14,10 +14,11 @@ On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin cla
 
 | Partie | Sections |
 |---|---|
-| Règles impératives | 25 ordres courts, tirés des tests |
+| Règles impératives | 30 ordres courts, tirés des tests |
 | **A. Règles communes** | A1 travail · A2 lisibilité · A3 table par taille · A4 règles du dessin · A4b simplifier · A5 pipeline pixel (silhouette → contour → palette → lumière → matières → détails → nettoyage → contrôle) · A6 finition pro |
 | **B. Objets** | B0 intention · B0b projection · B1 cadre · B2 volumes · B3 forme iconique · B4 matière · B4b déclinaison par taille · B5 contrôle |
 | **C. Personnages** | C0 intention · C1 proportions · C2 pose · C3 volumes · C4 tête et visage · C5 vêtements (design) · C6 cheveux · C7 astuces de figure · C8 contrôle · C9 anatomie · C10 tailles (8 à 128 px) · C11 portrait anime · C12 visage Loomis + anime · C13 chibi pas à pas · C14 corps nu puis vêtements en calque · C15 créatures · C16 créatures complexes · C17 vêtements (plis, matières) |
+| **E. Animation** | E0 méthode imposée image par image · E1 les 12 principes de *The Illusion of Life* · E2 techniques pixel (durées, espacement, smear, sous-pixel, pop, éclats, boucle) · E3 feuille de timing · E4 fichiers · E5 contrôles |
 | **D. Outils** | `trace.py` · `px.py` · `contour.py` · `planche.py` · dossiers de tests |
 | Fin | Résumé par type de dessin · sources web · historique des versions |
 
@@ -114,6 +115,18 @@ Chaque règle est un ordre. Le détail et le « pourquoi » sont dans la section
 **Contrôle**
 25. **Finis par la planche** (`planche.py`) : ×1, ×2, gris, silhouette, fonds clair et sombre,
     miroir. Note au moins un défaut, corrige, revérifie (R5).
+
+**Animation** (partie E)
+26. **Découpe le mouvement en un nombre d'images fixé avant de dessiner**, dans une feuille
+    de timing : rôle de chaque image (clé, passage, intervalle, tenue) et sa durée en ms (E0).
+27. **Chaque image passe par TOUT le pipeline** (silhouette → contour → aplats → lumière →
+    détails → contrôle) **et est validée avant la suivante.** Aucune étape sautée (E0-5).
+28. **Applique les 12 principes** (E1) : anticipation avant, ralenti aux clés, dépassement
+    et retour, chevauchement des pièces souples, volume constant, une action à la fois.
+29. **Le ralenti se fait d'abord par la durée des images**, pas par plus de dessins ; les
+    clés et l'impact tiennent 3 à 4 fois plus longtemps (E2-A).
+30. **Contrôle la séquence** : bande, pelure d'oignon, GIF aux vraies durées. Note un défaut,
+    corrige l'image fautive, refais la bande (E5).
 
 ---
 
@@ -1858,6 +1871,163 @@ gardés : seules leurs leçons restent dans ce document.
 
 ---
 
+# Partie E — Animation [R][T15]
+
+Une animation, c'est une suite de dessins finis. Chaque image passe par **tout** le
+pipeline A5. On ne gagne pas de temps en sautant des étapes : une image bâclée se voit
+même à 80 ms, parce qu'elle fait « sauter » la silhouette.
+
+## E0. Méthode imposée (dans cet ordre, sans rien sauter)
+
+1. **Intention (B0) de l'animation.** En une phrase : ce qui bouge, pourquoi, et l'émotion
+   (solennel, comique, nerveux…). Note la durée totale visée.
+2. **Pose de départ et pose d'arrivée finies d'abord.** Ce sont deux dessins statiques
+   complets (pipeline A5 + planche). L'animation relie deux images déjà validées.
+3. **Découpe mentale du mouvement en un nombre d'images fixé à l'avance.** Écris la liste
+   avant de dessiner : numéro, rôle (**clé**, **extrême**, **intermédiaire de passage**
+   « breakdown », **intervalle** « in-between », **tenue**), ce qui change, durée en ms.
+   C'est la **feuille de timing** (`ANIM_PLAN.md`). On ne rajoute pas d'image en cours de
+   route sans mettre la feuille à jour.
+4. **Ordre de dessin : pose à pose.** Clés d'abord, puis extrêmes, puis passages, puis
+   intervalles. Les effets libres (flamme, étincelle, fumée) peuvent se faire « tout
+   droit » (image après image), mais **dans un calque à part**.
+5. **Pour CHAQUE image, applique le pipeline complet** : 01 silhouette → 02 contour →
+   03 aplats → 04 lumière → 05 détails → contrôle. Un fichier `.txt` + `.png` par étape,
+   regardé à ×1 et agrandi. **Valide l'image (E5-A) avant de passer à la suivante.**
+   Une image non validée bloque la suivante.
+6. **Partir de l'image validée précédente est permis** (copie de grille) **si et seulement
+   si** on refait quand même les cinq étapes sur ce qui change : la silhouette de l'image
+   se redessine, le contour se re-vérifie, la lumière se re-place. On ne déplace jamais un
+   bloc d'ombre sans vérifier qu'il obéit encore à la lumière en haut à gauche.
+7. **Contrôle de séquence (E5-B)** : bande de toutes les images côte à côte, pelure
+   d'oignon, GIF aux vraies durées. Note au moins un défaut, corrige l'image fautive à son
+   étape fautive, refais la bande.
+
+## E1. Les 12 principes de *The Illusion of Life* (Thomas et Johnston), en règles pixel
+
+| # | Principe | Règle impérative en pixel art |
+|---|---|---|
+| 1 | **Écrasement et étirement** (squash & stretch) | **Le volume ne change pas** : si un objet perd 2 px de haut, il gagne ~2 px de large. Écrase à l'impact, étire dans la vitesse. Les objets rigides (métal, bois) ne s'écrasent pas : c'est leur **mouvement** qui s'écrase (recul plus court, rebond). |
+| 2 | **Anticipation** | Avant toute action, un **petit mouvement inverse** (recul, ramassement). Il prend **plus d'images que l'action elle-même** (ex. 3 images d'anticipation pour 1-2 d'action). |
+| 3 | **Mise en scène** (staging) | **Une seule action principale à la fois.** La silhouette de chaque image clé doit se lire seule. Rien d'autre ne bouge pendant l'image clé. |
+| 4 | **Tout droit / pose à pose** | Pose à pose pour la structure (E0-4). Tout droit seulement pour les effets organiques, dans un calque séparé. |
+| 5 | **Continuité et chevauchement** (follow-through & overlapping) | **Rien ne s'arrête d'un coup.** Les parties souples (tissu, cheveux, pendentif, queue) s'arrêtent **1 à 3 images après** le corps, dépassent puis reviennent. L'action est finie quand l'élan est à zéro, pas quand la pièce principale est arrivée. |
+| 6 | **Ralenti au départ et à l'arrivée** (slow in / slow out) | Espacement **serré près des clés, large au milieu**. En pixel art, deux leviers : la **distance** entre images, et la **durée** de chaque image (image plus longue = ralenti). |
+| 7 | **Arcs** | Tout mouvement naturel suit une courbe. **Trace l'arc-guide** (calque à part) et place chaque position dessus. Un mouvement mécanique (rouleau sur rail) peut rester droit. |
+| 8 | **Action secondaire** | Elle **appuie** l'action principale (éclat, poussière, petit rebond d'un ornement), **elle ne la cache jamais**. Elle commence après la principale ou sur son impact. |
+| 9 | **Timing** | Le nombre d'images et leur durée **donnent le poids et l'humeur**. Peu d'images rapides = léger, nerveux. Beaucoup d'images lentes = lourd, solennel. Décide-le dans la feuille de timing, pas en dessinant. |
+| 10 | **Exagération** | Pousse les poses clés **au-delà** du réel (dépassement de 2 à 4 px, écrasement visible). À 32 px, un mouvement de 1 px ne se voit presque pas : exagère ou n'anime pas. |
+| 11 | **Dessin solide** | Chaque image respecte **volume, lumière et contour** comme un dessin statique (pipeline A5). Pelure d'oignon : la taille d'un objet ne doit pas « respirer » par erreur. |
+| 12 | **Attrait** (appeal) | Formes claires, silhouette lisible, **asymétrie voulue**. Pas de « jumeaux » : deux côtés ne bougent jamais exactement en miroir et en même temps ; décale l'un d'une image ou change son amplitude. |
+
+## E2. Techniques propres au pixel art
+
+**A. Cadence et durées**
+- Base : **12 images/s, soit ~83 ms par image** (« animer en deux »). Les jeux GBA tournent
+  à 60 Hz : une image = un multiple de 16,7 ms (ex. 50, 67, 83, 100, 133 ms).
+- **Chaque image a sa propre durée.** C'est l'outil principal du ralenti : on allonge les
+  images près des clés au lieu d'ajouter des dessins.
+- **Tenues** : l'image clé ou l'impact dure **3 à 4 fois** une image de mouvement (ex.
+  250-300 ms contre 70-80 ms). La pose finale tient assez pour être lue.
+- **Interface (UI)** : une apparition dure **200 à 500 ms** de mouvement ; au-delà, elle
+  gêne le joueur. Une animation d'ouverture « cérémonielle » peut aller à ~1,5 s si elle
+  n'est jouée qu'une fois.
+
+**B. Espacement**
+- Calcule l'espacement avant de dessiner (ex. ralenti à l'arrivée sur 30 px en 5 images :
+  12, 8, 5, 3, 2). Écris-le dans la feuille de timing.
+- **Dépassement** (overshoot) : la pièce va 2-4 px trop loin, revient de 1-2 px au-delà
+  du bon point en sens inverse, puis se pose. Deux rebonds maximum.
+
+**C. Image étirée** (smear)
+- Pour un mouvement **plus rapide qu'une image**, dessine une seule image où la forme
+  s'allonge dans le sens du mouvement (traînée de la couleur de base, sans détail).
+- **Une seule image, jamais deux de suite**, et jamais sur une tenue.
+
+**D. Sous-pixel**
+- Pour un mouvement **plus petit qu'un pixel** (respiration, flottement), on ne déplace pas
+  la silhouette : on **décale les couleurs** d'un demi-ton sur le bord (le pixel de bord
+  passe du clair au moyen). Le contour reste fixe.
+
+**E. Volume, pelure d'oignon, calques**
+- Vérifie chaque image sur la précédente en transparence (pelure d'oignon). Compte les
+  pixels d'un objet rigide : il ne doit pas changer de taille sans raison.
+- Une **pièce = un calque** (rouleau gauche, rouleau droit, papier, médaillon, éclats).
+  On compose l'image en empilant les calques ; on ne redessine pas ce qui ne bouge pas,
+  mais on **revérifie** les raccords.
+
+**F. Lumière qui reste vraie**
+- La lumière vient **toujours d'en haut à gauche, quelle que soit la position**. Une pièce
+  qui tourne garde son reflet en haut à gauche ; elle ne « porte » pas son reflet avec elle.
+- Un objet **émissif** qui s'allume passe par une rampe : éteint (couleurs sombres) →
+  première lueur (moyenne) → pic (plus clair que la pose finale, 1 image) → pose finale.
+  Le pic plus clair que la fin = « pop » de lumière.
+
+**G. Apparition d'un objet** (pop)
+- Jamais d'un coup en taille finale : petit (≈ 40-60 %) → **trop grand** (110-120 %,
+  1 image) → légèrement écrasé → taille finale. C'est l'écrasement-étirement appliqué à
+  l'échelle.
+- Aux petites tailles, une forme réduite **se redessine** (B4b) ; on ne réduit jamais
+  par calcul.
+
+**H. Éclats** (sparkle, glint)
+- Un éclat vit en **4 à 6 états en escalier** : point → croix 3 px → croix 5 px (pic) →
+  croix 3 px → point → rien. Pas d'éclat qui reste allumé.
+- **Un éclat à la fois** à l'écran, posé sur la zone la plus claire (côté lumière).
+
+**I. Boucle d'attente** (idle)
+- Première et dernière image doivent s'enchaîner sans saut. Garde l'amplitude petite
+  (1 px ou sous-pixel) et une durée longue (600 ms à 1 s par état).
+
+**J. Ce qu'on interdit**
+- Une image identique à la précédente (utilise une durée plus longue à la place).
+- Un mouvement linéaire (même espacement partout) pour un objet vivant ou lancé.
+- Plus d'une action principale en même temps.
+- Des pixels qui « grouillent » : un pixel de détail qui change d'une image à l'autre
+  sans raison (bruit d'animation).
+- Une forme qui grandit ou rétrécit sans écrasement voulu.
+
+## E3. Feuille de timing (modèle)
+
+| Image | Rôle | Ce qui change | Principe | Durée |
+|---|---|---|---|---|
+| 01 | clé | pose de départ | mise en scène | 300 ms |
+| 02 | anticipation | ramassement | anticipation, écrasement | 120 ms |
+| 03 | passage | départ rapide | ralenti au départ | 67 ms |
+| … | … | … | … | … |
+| N | clé | pose finale | tenue | 600 ms+ |
+
+## E4. Fichiers d'une animation
+
+- `ANIM_PLAN.md` : intention, liste des images, espacements, durées.
+- `fXX/` : un dossier par image avec `cXX_0N.txt` (commandes), `etape01…05_*.txt/.png`,
+  `final.txt/.png`, et une ligne « validée » dans `ANIM_PLAN.md`.
+- `bande.png` : toutes les images côte à côte (×1 et agrandi).
+- `oignon.png` : chaque image sur la précédente en transparence.
+- `anim.gif` : aux vraies durées, agrandi ×4 (sans lissage).
+
+## E5. Contrôles
+
+**A. Par image (avant de passer à la suivante)**
+- [ ] Les 5 étapes existent (`.txt` + `.png`) et ont été regardées.
+- [ ] Contour fermé, pas de pixel doublé en L, pas de pixel de bruit.
+- [ ] Lumière en haut à gauche sur **chaque** pièce, même déplacée.
+- [ ] Volume des pièces rigides inchangé (compte des pixels) ou changement voulu noté.
+- [ ] La silhouette correspond au rôle prévu dans la feuille de timing.
+
+**B. Sur la séquence**
+- [ ] Bande : les clés se lisent seules ; l'espacement suit le plan (serré aux clés).
+- [ ] Pelure d'oignon : pas de « respiration » parasite, arcs respectés.
+- [ ] GIF aux vraies durées, regardé au moins 3 fois en boucle et une fois à ×1.
+- [ ] Anticipation présente, dépassement et retour présents, chevauchement des pièces
+      souples présent.
+- [ ] Une seule action principale par instant ; l'action secondaire ne la cache pas.
+- [ ] Pas de jumeaux : les deux côtés diffèrent d'au moins une image ou d'un pixel
+      d'amplitude.
+- [ ] Au moins un défaut noté, corrigé à son étape, bande refaite.
+
+---
+
 # Résumé
 
 **Objet :** intention, usage et projection → cadre (diagonale pour les objets longs) →
@@ -1932,10 +2102,27 @@ pas juste.
 · [DodoIcons, fourrure](https://www.deviantart.com/dodoicons/art/Pixel-fur-shading-tutorial-513887367)
 · [itch.io, fourrure](https://itch.io/t/2173926/pixel-tutorial-fur)
 
+**Animation (partie E) :**
+[Wikipédia, les 12 principes de l'animation](https://en.wikipedia.org/wiki/Twelve_basic_principles_of_animation)
+· [Adobe, principes de l'animation](https://www.adobe.com/creativecloud/animation.html)
+· [Clip Studio, maîtriser les 12 principes](https://tips.clip-studio.com/en-us)
+· [80.lv, tutoriel de Pedro Medeiros](https://80.lv/)
+· [Aseprite, « 32x32 Crane Kick »](https://community.aseprite.org/)
+· [Tiny Warrior Games, animation sous-pixel](https://tinywarriorgames.com/)
+· [CG Wire, images étirées](https://blog.cg-wire.com/)
+· [GitHub, EaseSprite et outils pixel (ralenti par durée d'image)](https://github.com/topics/pixel-art)
+· [borntofrappe, éclats « Spirited sparkles »](https://github.com/borntofrappe)
+· [Brian Lemay, chevauchement](https://www.brianlemay.com/)
+
 ---
 
 # Historique des versions
 
+- **v12 :** partie E « Animation » : méthode imposée image par image (feuille de timing,
+  pipeline complet et validation pour chaque image), les 12 principes de *The Illusion of
+  Life* traduits en règles pixel, techniques pixel (durées, tenues, espacement,
+  dépassement, smear, sous-pixel, pop, éclats, boucle, UI), contrôles par image et par
+  séquence ; règles impératives 26 à 30 ; test 15 (parchemin qui se déroule).
 - **v11 :** nettoyage. A6 et A7 fusionnées en une seule A6 « Finition pro » ; C6, C6b et
   C6c fusionnées en une seule C6 « Cheveux » ; sommaire ajouté ; sources web réunies à la
   fin ; partie D corrigée (vrais dossiers, usages exacts) ; renvois corrigés ; listes de
