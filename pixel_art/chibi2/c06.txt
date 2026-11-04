@@ -16,7 +16,7 @@ rows W 15 36 37  16 36 36
 rows I 15 38 38  16 37 38
 rows i 17 36 38  18 36 38
 # joues
-rows p 20 22 24  20 38 40
+rows p 20 21 23  20 38 40  21 21 23  21 38 40
 # bouche
-hline O 30 33 21
-hline S 31 32 22
+hline O 30 33 22
+hline S 31 32 23
