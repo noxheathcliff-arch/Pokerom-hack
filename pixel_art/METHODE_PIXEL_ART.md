@@ -1,4 +1,4 @@
-# Méthode de pixel art — objets, personnages et créatures (v12)
+# Méthode de pixel art — objets, personnages et créatures (v13)
 
 On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin classique
 (construction par volumes, ligne d'action, anatomie) et les règles du pixel art
@@ -2005,6 +2005,9 @@ même à 80 ms, parce qu'elle fait « sauter » la silhouette.
 - `bande.png` : toutes les images côte à côte (×1 et agrandi).
 - `oignon.png` : chaque image sur la précédente en transparence.
 - `anim.gif` : aux vraies durées, agrandi ×4 (sans lissage).
+- `pieces/` : une pièce par fichier (`corps.txt`, `avant_bras_fXX.txt`…), voir E6-E.
+- `ebauche.gif` : les clés en silhouette avec leurs durées, validé avant le pipeline (E7-A).
+- `planche_sprites.png` : cellules de taille fixe, pivot au même pixel (E8-A).
 
 ## E5. Contrôles
 
@@ -2025,6 +2028,9 @@ même à 80 ms, parce qu'elle fait « sauter » la silhouette.
 - [ ] Pas de jumeaux : les deux côtés diffèrent d'au moins une image ou d'un pixel
       d'amplitude.
 - [ ] Au moins un défaut noté, corrigé à son étape, bande refaite.
+- [ ] Calques nommés et dans l'ordre fixe (E6-B) ; `ref` et `pivot` non exportés.
+- [ ] Pivot au même pixel dans toutes les images ; aucune image recadrée seule (E8-A).
+- [ ] Taille de cellule GBA autorisée, objets OAM comptés, 16 couleurs respectées (E8-B).
 
 **C. Leçons du premier essai (rouleau + joyau) [T15]**
 - **Une pièce rigide se redessine entière, jamais décalée ligne par ligne.** Décaler des
@@ -2036,6 +2042,180 @@ même à 80 ms, parce qu'elle fait « sauter » la silhouette.
   à l'image N.
 - **Un éclat clair posé sur de l'or clair se voit mal.** Juge-le dans le GIF, ou pose-le
   sur le bord, contre le fond sombre.
+
+## E6. Composition en calques et assemblage [R][T16]
+
+Une animation complexe ne se dessine pas d'un bloc : c'est un **assemblage de pièces**
+empilées. Bien découpé, on ne redessine que ce qui bouge, et on corrige une pièce une
+seule fois pour toutes les images.
+
+**A. Quoi mettre sur un calque à part**
+- **Un calque = une pièce qui bouge seule** (bras avant, arme, cape, tête, médaillon,
+  éclats). Ce qui bouge toujours ensemble reste sur le même calque.
+- **Ne découpe pas pour rien.** Trop de calques = raccords à vérifier partout. Un buste
+  qui ne fait que respirer reste un seul calque.
+- **Le trait (line art) sur son calque, les aplats dessous** tant que la pièce n'est pas
+  validée. On fusionne seulement à l'étape 05 (détails), quand le contour intérieur doit
+  être retouché à la main.
+- **Un calque `ref`** (croquis, image source, arc-guide) : verrouillé, jamais exporté.
+- **Un calque `pivot`** : 1 pixel de couleur repère au point d'ancrage (entre les pieds
+  pour un personnage debout, au centre pour un objet qui tourne). Il ne bouge **jamais** ;
+  on déplace les pièces par rapport à lui. Jamais exporté.
+
+**B. Ordre d'empilement fixe (de l'arrière vers l'avant)**
+
+| Rang | Calque | Contenu |
+|---|---|---|
+| 1 | `ref` | croquis, arc-guide (masqué à l'export) |
+| 2 | `ombre` | ombre portée au sol |
+| 3 | `arriere_*` | membres et pièces du côté loin (plus sombres, A-ombrage) |
+| 4 | `corps` | tronc, tête |
+| 5 | `avant_*` | membres et pièces du côté proche, arme tenue |
+| 6 | `fx` | fumée, traînées, poussière (« tout droit ») |
+| 7 | `eclat` | éclats, flash, lueur émissive |
+| 8 | `pivot` | point d'ancrage (masqué à l'export) |
+
+- **Nomme chaque calque** (`avant_bras`, `arriere_jambe`, pas « Calque 7 »). **Groupe**
+  les calques d'un même ensemble (groupe `perso`, groupe `fx`).
+- **Une pièce qui passe devant puis derrière** (bras qui fait le tour, épée qui tourne) :
+  **deux calques** (`arme_avant`, `arme_arriere`), on vide l'un quand l'autre est rempli.
+  On ne change jamais l'ordre des calques au milieu d'une animation.
+
+**C. Cels liés et duplication**
+- **Cel lié** (linked cel, Aseprite) : une pièce immobile pointe vers **un seul dessin**
+  partagé par plusieurs images. Une retouche s'applique partout. Utilise-le pour le décor,
+  le corps pendant que seul le bras bouge, un cadre d'UI.
+- **Délie avant de modifier une seule image.** Sinon la retouche contamine toute la suite.
+- **Duplique l'image validée précédente, puis ne touche que la pièce qui bouge** (E0-6).
+  Les autres calques restent liés.
+
+**D. Assembler une image**
+1. Pose les cels fixes (liés).
+2. Place la pièce mobile par rapport au **pivot** (déplacement compté en pixels, noté
+   dans la feuille de timing).
+3. **Redessine la pièce si elle change d'angle** (rotation, raccourci) : on ne déplace
+   jamais un dessin qui devrait tourner (voir E7-D).
+4. **Vérifie les raccords** (épaule/bras, poignet/arme) : pas de trou, pas de contour
+   doublé. Un raccord se retouche **sur le calque de la pièce mobile**, jamais sur le
+   corps lié.
+5. Re-place la lumière en haut à gauche sur la pièce déplacée (E2-F).
+6. Ajoute les effets sur `fx`/`eclat` en dernier.
+
+**E. Avec nos outils texte**
+- Une pièce = un fichier `piece_nom.txt` (`.` = transparent). L'image se compose par
+  `stamp` successifs dans l'ordre du tableau B (le dernier tamponné passe devant) :
+  ```
+  stamp ombre.txt 10 30
+  stamp arriere_bras.txt 14 12
+  stamp corps.txt 12 8
+  stamp avant_bras_f04.txt 18 13
+  ```
+- Le fichier `cXX_0N.txt` de chaque image est **la liste des calques et leurs positions** :
+  c'est notre équivalent des cels liés (on réutilise le même `corps.txt`).
+
+## E7. Flux de travail pro [R][T16]
+
+**A. Ébauche d'abord, propre ensuite** (blocking)
+- Dessine les **clés en silhouette grossière** (aplat d'une couleur) et règle leurs
+  **durées** dans un GIF **avant** tout nettoyage. Si le mouvement ne marche pas en
+  silhouette, aucun détail ne le sauvera.
+- Ajoute les passages et intervalles en silhouette, revalide le GIF, **puis** seulement
+  passe chaque image dans le pipeline 01-05.
+- **Peu d'images fortes valent mieux que beaucoup d'images molles.** Un sprite de jeu
+  vise **8 à 12 images/s** ; un cycle de 4 à 8 images suffit le plus souvent.
+
+**B. Pelure d'oignon bien réglée**
+- **1 à 2 images avant et après**, pas plus (au-delà, on ne voit plus rien).
+- Couleurs distinctes pour avant (rouge) et après (bleu), opacité ~30 %.
+- **Limite-la à l'étiquette en cours** (tag) pour ne pas voir la boucle voisine.
+
+**C. Étiquettes et boucles**
+- Un fichier par personnage, **une étiquette par boucle** (`idle`, `marche`, `attaque`,
+  `degat`), avec son sens de lecture (avant, aller-retour). Chaque étiquette a sa propre
+  feuille de timing.
+- **Les boucles partagent le même pivot et la même taille de cellule** (E8-A) pour
+  s'enchaîner sans saut.
+
+**D. Rotation d'une pièce**
+- **Ne tourne jamais un sprite déjà tourné.** Chaque rotation part de **l'original**
+  (sinon les erreurs s'additionnent).
+- Utilise un algorithme fait pour le pixel art (RotSprite, Clean Rotate), **puis
+  nettoie à la main** : contour simple, pas de pixel orphelin, lumière remise en haut à
+  gauche.
+- Les angles de 90° et 180° sont exacts (miroir/rotation directe) ; 45° demande toujours
+  un redessin partiel. **Les petits détails (yeux, boucles, gemmes) se redessinent**, ils
+  ne survivent pas à la rotation.
+
+**E. Cycle de marche**
+- Quatre poses de base par pas : **contact** (talon au sol, jambes écartées), **descente**
+  (corps au plus bas, genou plié), **passage** (jambe libre croise l'autre), **montée**
+  (corps au plus haut). Deux pas = un cycle (8 images, ou 4 en version courte).
+- Le corps monte et descend de **1 px** ; les bras sont **opposés** aux jambes et en
+  retard d'une image (chevauchement).
+- Rythme indicatif : **2 pas par seconde** (≈ 8 images × 60-70 ms).
+
+**F. Attaque et impact**
+1. **Préparation** (windup) : **2 images ou plus**, l'arme part en arrière, le corps se
+   ramasse. Plus elle est longue, plus le coup paraît lourd.
+2. **Action** : **1 image de smear** (2 au grand maximum), le geste entier tient dans la
+   traînée.
+3. **Impact** : l'image la plus forte. **Image d'impact** (formes simplifiées, contraste
+   maximal) réservée aux coups puissants, 1 image.
+4. **Flash** sur la cible : silhouette blanche (ou couleur claire de palette) pendant
+   ~**2 images** (≈ 33 ms), **~4 pour un coup critique**.
+5. **Arrêt sur image** (hitstop) : on fige attaquant et cible quelques images.
+   **Varie-le selon le coup** (petit coup ≈ 50 ms, coup lourd ≈ 100-150 ms) : un arrêt
+   identique partout devient mécanique.
+6. **Récupération** : retour lent à la garde (2-3 images plus longues), cape et cheveux
+   finissent après (chevauchement).
+
+**G. Effets : fumée, explosion, poussière**
+- Couleur : **du clair au sombre et vers le gris** au fil des images (chaud et vif au
+  départ, désaturé à la fin).
+- Forme : la masse **se fragmente**, les morceaux prennent **chacun leur trajectoire**,
+  ralentissent et rétrécissent.
+- Disparition : **on efface par morceaux** (trous qui grandissent), jamais en fondu ni
+  d'un coup.
+- Une explosion part d'un **flash blanc d'une image**, puis boule de feu, puis fumée qui
+  monte.
+- Toujours sur `fx`, dessiné « tout droit » (E0-4), avec la même règle d'éclat unique.
+
+**H. Cycle de palette** (palette cycling)
+- Pour l'eau, la lave, une lueur, un portail : on dessine **une seule image** avec une
+  rampe de 3-6 indices, puis on **fait tourner les couleurs** de ces indices à chaque
+  image. Mouvement gratuit, aucun pixel redessiné.
+- Sur GBA, c'est une simple réécriture de la palette (16 couleurs) : idéal pour l'UI et
+  les décors.
+
+## E8. Export et contraintes GBA [R][T16]
+
+**A. Planche de sprites** (sprite sheet)
+- **Une seule taille de cellule pour toute l'animation**, prise sur **la plus grande
+  boîte englobante** de toutes les images (dépassement et smear compris). **Ne recadre
+  jamais une image seule** : le personnage « sauterait ».
+- **Même pivot, au même pixel, dans chaque cellule.** La boîte de collision (hitbox) est
+  définie **par rapport au pivot**, pas au coin de l'image.
+- Export en **filtre au plus proche** (nearest), PNG sans perte, indexé.
+
+**B. Tailles d'objet GBA** (OAM)
+- La GBA affiche **128 objets** (OBJ) au maximum. Un objet n'a que ces tailles :
+
+| Forme | Tailles |
+|---|---|
+| carré | 8×8, 16×16, 32×32, 64×64 |
+| large | 16×8, 32×8, 32×16, 64×32 |
+| haut | 8×16, 8×32, 16×32, 32×64 |
+
+- Un sprite est fait de **tuiles 8×8** (mode de rangement 1D conseillé).
+- **Choisis la taille de cellule d'après ce tableau** (ex. 32×32, 64×64) au moment de la
+  feuille de timing, pas après.
+- Une pièce plus grande se compose de **plusieurs objets** (métasprite) : chaque image
+  coûte alors plusieurs entrées OAM. Compte-les.
+- **Réutilise les tuiles identiques** entre images (corps lié, E6-C) : moins de mémoire
+  vidéo.
+- **16 couleurs par palette d'objet** (dont la transparence) : toute l'animation, effets
+  compris, tient dans cette palette, ou les effets prennent une palette à part.
+- Durées : **multiples de 16,7 ms** (une trame à 60 Hz), voir E2-A.
 
 ---
 
@@ -2072,6 +2252,11 @@ lumière selon la matière → motif qui suit la forme → contour du calque →
 **Finition pro (A6) :** rampes à teinte tournante → budget de couleurs → une seule lumière,
 terminateur net → AO dans les creux → lumière réfléchie → selout → AA seulement sur les
 courbes dures → chasse aux sept défauts → tests de la planche.
+
+**Animation (E) :** intention et durée → poses de départ et d'arrivée finies → feuille de
+timing (taille de cellule GBA, pivot) → découpe en calques (E6) → ébauche des clés en
+silhouette et GIF (E7-A) → pour chaque image : pipeline 01-05 et validation → effets sur
+`fx` → bande, pelure d'oignon, GIF → planche de sprites (E8).
 
 Un concept à la fois, du grand au petit. Aucun pixel de détail tant que la structure n'est
 pas juste.
@@ -2125,10 +2310,49 @@ pas juste.
 · [borntofrappe, éclats « Spirited sparkles »](https://github.com/borntofrappe)
 · [Brian Lemay, chevauchement](https://www.brianlemay.com/)
 
+**Calques, flux pro, effets, GBA (E6-E8) [T16] :**
+[Aseprite, bases](https://aseprite.org/docs/basics/)
+· [Aseprite, cels liés](https://www.aseprite.org/docs/linked-cels/)
+· [Aseprite, animation](https://aseprite.org/docs/animation/)
+· [Aseprite (doc Mintlify), calques](https://mintlify.com/aseprite/aseprite/concepts/layers)
+· [Aseprite (doc Mintlify), pelure d'oignon](https://mintlify.com/aseprite/aseprite/features/onion-skinning)
+· [Aseprite, point d'ancrage](https://community.aseprite.org/t/set-the-anchor-of-a-sprite/14962)
+· [emb33r, base pour séparer les articulations](https://emb33r.itch.io/aseprite-character-base-for-learning-how-to-separate-joints-when-making-an-anima)
+· [PokéCommunity, tutoriel d'animation de sprite](https://www.pokecommunity.com/showthread.php?p=9990691)
+· [Slynyrd #8, intro à l'animation](https://slynyrd.com/blog/2018/8/19/pixelblog-8-intro-to-animation)
+· [Slynyrd #9, attaques au corps à corps](https://slynyrd.com/blog/2018/9/8/pixelblog-9-melee-attacks)
+· [Slynyrd #53, coups de poing et de pied](https://www.slynyrd.com/blog/2024/11/25/pixelblog-53-punches-and-kicks)
+· [Slynyrd #56, attaque vue de dessus](https://www.slynyrd.com/blog/2025/5/23/pixelblog-56-top-down-character-attack-animation)
+· [Saint11, tutoriels](https://saint11.org/blog/pixel-art-tutorials/)
+· [80.lv, Pedro Medeiros](https://80.lv/articles/pixel-animation-tutorial-by-pedro-medeiros)
+· [sprite-ai, animation pixel](https://www.sprite-ai.art/blog/pixel-art-animation)
+· [Divoom, animer du pixel art](https://divoom.com/blogs/app-guide/how-to-animate-pixel-art-divoom-display)
+· [gamineai, hitstop, smear, impact](https://gamineai.com/blog/pixel-art-combat-fx-hitstop-smear-frames-impact-timing-2026)
+· [Pinnguaq, effets d'animation](https://pinnguaq.com/learn/pixel-art/pixel-art-4-animation-effects-in-gimp/)
+· [Tuts+, explosions](https://design.tutsplus.com/tutorials/how-to-animate-explosion-effects--cms-30960)
+· [PixelJoint, fumée](https://pixeljoint.com/forum/printer_friendly_posts.asp?TID=16587)
+· [r/PixelArtTutorials, décomposition d'une explosion](https://redlib.hbubli.cc/r/PixelArtTutorials/comments/1hkuqv1/breakdown_of_this_pixel_art_explosion_effect)
+· [Aseprite, rotation sans tout refaire](https://community.aseprite.org/t/is-there-a-way-to-easily-rotate-objects-and-sprites-without-having-to-remake-them/7997)
+· [Clean Rotate pour Aseprite](https://astropulse.itch.io/clean-rotate-for-aseprite)
+· [Wikipédia, cycle de couleurs](https://en.wikipedia.org/wiki/Color_cycling)
+· [80.lv, cycle de couleurs](https://80.lv/articles/color-cycling-from-the-90s-returns-with-html5)
+· [loopsprite, alignement et pivot](https://loopsprite.pages.dev/slice/guide-sprite-alignment-pivot.html)
+· [gamedev.net, planches de sprites](https://gamedev.net/forums/topic/613213-need-a-program-to-transfer-frames-to-an-animation-sheet)
+· [gbadoc, sprites et OAM](https://gbadev-org.github.io/gbadoc/sprites.html)
+· [agb, tailles d'objet](https://docs.rs/agb/latest/agb/display/object/enum.Size.html)
+· [BlocksDS, sprites](https://blocksds.skylyrac.net/tutorial/basic/sprites/)
+· [FEU, qu'est-ce que l'OAM](https://feuniverse.us/t/what-is-oam/6193)
+
 ---
 
 # Historique des versions
 
+- **v13 :** partie E complétée pour l'animation complexe : E6 composition en calques
+  (pièces séparées, ordre d'empilement fixe, cels liés, pivot, assemblage par `stamp`),
+  E7 flux de travail pro (ébauche en silhouette, pelure d'oignon, étiquettes, rotation,
+  cycle de marche, attaque et impact avec flash et arrêt sur image, fumée et explosions,
+  cycle de palette), E8 export et contraintes GBA (taille de cellule fixe, pivot, tailles
+  OAM, métasprites, 16 couleurs) ; E4, E5 et résumé mis à jour.
 - **v12 :** partie E « Animation » : méthode imposée image par image (feuille de timing,
   pipeline complet et validation pour chaque image), les 12 principes de *The Illusion of
   Life* traduits en règles pixel, techniques pixel (durées, tenues, espacement,
