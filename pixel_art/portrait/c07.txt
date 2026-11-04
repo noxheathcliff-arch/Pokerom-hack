@@ -1,0 +1,7 @@
+# c07 : boutons au contour adouci (N/M au lieu de O/o), fidèle aux boutons gris de la référence.
+stamp piece_bouton_doux.txt 109 137
+stamp piece_bouton_doux.txt 112 190
+stamp piece_bouton_doux.txt 172 196
+stamp piece_bouton_doux.txt 171 249
+stamp piece_bouton_doux.txt 112 244
+stamp piece_bouton_p_doux.txt 152 139

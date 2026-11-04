@@ -1,0 +1,39 @@
+# etape01 construction (R4) : rouge = axes de pose, bleu = reperes, vert = volumes. Lus sur le calque ref.
+# --- vert : volumes
+ring = 128 70 27
+line = 104 84 118 116
+line = 154 84 142 116
+line = 118 116 142 116
+line = 112 112 112 136
+line = 148 112 148 134
+line = 70 140 112 132
+line = 148 132 212 168
+line = 212 168 244 260
+line = 70 140 30 230
+line = 30 230 60 320
+line = 244 260 230 320
+# bras leve : epaule -> coude -> poignet -> main
+line = 46 130 38 104
+line = 38 104 52 92
+line = 52 92 90 70
+disc = 70 50 4
+line = 66 36 96 18
+line = 96 18 104 30
+# bras croise : epaule droite -> coude -> main gauche
+line = 230 250 96 296
+line = 96 296 60 280
+line = 60 280 46 190
+# --- rouge : axes
+line ! 128 40 131 120
+line ! 131 120 133 140
+line ! 133 140 140 320
+line ! 70 140 212 168
+line ! 104 78 154 74
+# --- bleu : reperes visage (yeux, nez, bouche, oreilles, menton)
+hline + 108 122 77
+hline + 136 150 76
+px + 131 92
+hline + 120 136 104
+vline + 98 80 98
+vline + 168 80 98
+px + 130 118

@@ -1,0 +1,56 @@
+# etape03 visage (C11/C12) : yeux, nez, bouche redessines a la main sur le decalque
+# -- oeil gauche (du lecteur) : nettoyage puis paupiere sup en arc, blanc, iris, pupille, reflet, paupiere inf douce
+rect K 102 76 120 78
+hline k 102 120 79
+line O 102 77 104 76
+hline O 105 116 75
+line O 117 75 119 76
+px o 120 77
+hline O 103 118 76
+rect i 107 76 112 78
+rect O 109 76 110 77
+px W 111 76
+px Z 107 78
+hline k 104 106 77
+hline j 106 115 79
+px K 103 77
+# -- oeil droit : idem, plus etroit, sous la meche
+rect K 133 74 152 76
+hline k 133 152 77
+line O 133 75 135 74
+hline O 136 149 73
+line O 150 73 152 74
+hline O 134 151 74
+rect i 139 74 144 76
+rect O 141 74 142 75
+px W 143 74
+px Z 139 76
+hline j 138 147 77
+# -- nez : narines nettes
+rect j 122 90 133 92
+px L 124 91
+px J 125 91
+px L 130 91
+px J 129 91
+px k 123 90
+# -- bouche : sourire en coin, diagonale 2:1 propre
+rect K 117 99 143 105
+px L 142 97
+px L 141 98
+px L 140 99
+hline L 128 139 100
+rows L 101 126 127
+rows L 102 124 125
+rows L 103 122 123
+rows L 104 120 121
+px L 119 103
+px J 118 103
+hline J 129 138 101
+hline k 121 125 105
+# correction R5 : iris lisible (gris moyen I sur la moitie basse, reflet bas)
+hline I 107 112 77
+hline I 108 111 78
+px i 107 78
+px i 112 78
+hline I 139 144 75
+hline I 140 143 76

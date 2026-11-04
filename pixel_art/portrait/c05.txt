@@ -1,0 +1,19 @@
+# c05 : boucles d'oreilles redessinées à la main. Plaque 卍 7x7 en or, lumière en haut à gauche.
+# Droite (côté lumière) : clou Y/y sur le lobe, maillon z, plaque claire.
+px Y 163 99
+px y 163 100
+px z 162 101
+px z 162 102
+px z 161 103
+px z 161 104
+stamp piece_manji.txt 158 105
+# Gauche (côté ombre, oreille tournée) : plaque dans les tons y/z.
+px Y 95 106
+px Y 96 106
+px y 95 107
+px y 96 107
+px z 96 108
+px z 96 109
+px z 97 110
+px z 97 111
+stamp piece_manji_ombre.txt 94 112

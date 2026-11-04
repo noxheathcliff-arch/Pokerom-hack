@@ -1,0 +1,8 @@
+# c06 : reflets des verres durcis (Z au cœur du reflet C) + maillon d'oreille gauche éclairci.
+px Z 137 11
+px Z 138 11
+px Z 136 12
+px Z 99 17
+px Z 100 17
+px y 96 109
+px Y 96 108

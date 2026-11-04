@@ -1,0 +1,15 @@
+# Polygones de matieres, ecrits a la main en lisant g_full (grille sur le calque ref). Derniere zone = priorite.
+zone fond 012345XOo
+poly 0 0 256 0 256 320 0 320
+zone manteau WwvVuUBbnSstmMNOoX4Yyz
+poly 0 140 2 128 14 100 30 93 62 94 68 100 70 128 100 128 102 122 168 120 172 134 182 146 205 160 222 168 238 180 246 210 252 250 256 280 256 320 0 320
+zone tete KkjJLHhdDiOoYyzecCZ012345X
+poly 88 46 98 32 128 27 158 32 170 48 172 74 178 84 177 100 168 110 160 120 159 132 104 132 102 120 96 112 88 100 90 84 96 72 90 58
+zone lunettes ecCZOoHhdgfF012345X
+poly 88 24 92 14 108 9 132 10 150 7 160 14 156 31 128 32 100 37
+zone gant_haut GgfFOoWw2345X
+poly 34 99 40 86 45 66 50 46 62 32 78 20 96 20 104 33 101 52 95 63 82 72 74 84 68 98 50 101
+zone gant_bas GgfFOoRrqQWw
+poly 32 222 40 214 66 212 74 230 72 262 70 290 50 292 34 280
+zone chapelet RrqQGgfFWwvVuOo0123X
+poly 6 244 34 238 36 280 50 294 74 292 82 300 84 320 4 320
