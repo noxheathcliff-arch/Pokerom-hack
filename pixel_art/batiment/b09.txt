@@ -1,0 +1,18 @@
+# Etape 9 — correction des défauts relevés sur la planche (étape 8)
+# Défaut 1 : fumée en 3 bouffées détachées + pixel orphelin (57,0) = bruit à x1 -> une seule traînée en S
+rep b . 44 0 58 5
+rep z . 44 0 58 5
+rep c . 44 0 58 5
+rows b 5 46 47 4 47 48 3 48 50 2 48 51 1 50 52 0 52 53
+px z 46 5
+px z 48 3
+px z 48 2
+px z 50 1
+px c 51 2
+px c 50 3
+px c 53 0
+# Défaut 2 : la lucarne n'a pas de reflet -> incohérente avec les 2 autres vitrages
+px z 20 23
+px z 21 23
+px z 20 24
+px z 23 25

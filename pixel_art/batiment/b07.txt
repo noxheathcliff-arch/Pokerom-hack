@@ -1,0 +1,67 @@
+# Etape 7 — détails qui racontent (≈1/3 de la surface, groupés)
+# VITRINE : étagère + fioles à contre-jour, reflet 2x2 + 1 px opposé
+hline n 10 15 44
+hline n 17 22 44
+rows e 42 11 12 43 11 12
+rows M 42 14 14 43 14 14
+rows n 42 18 19 43 18 19
+rows e 42 21 21 43 21 21
+px z 11 38
+px z 12 38
+px z 11 39
+px z 12 39
+px z 21 46
+# FENETRE DROITE : reflet + diagonale
+px z 51 39
+px z 51 40
+px z 50 39
+px z 50 40
+px z 54 45
+line g 53 38 50 44
+# JARDINIERE sous la vitrine + fleurs, débord de lumière chaude
+rect w 10 50 22 51
+hline X 10 22 52
+hline o 11 21 50
+rows M 49 10 22
+px m 11 48
+px e 12 48
+px e 15 48
+px m 16 48
+px e 19 48
+px m 20 48
+px e 22 48
+# ENSEIGNE : fiole peinte
+px i 44 38
+rows e 39 43 45 40 43 45
+px z 43 39
+# MOUSSE : faîtage et bas de croupe gauche (sommets = lumière)
+rows m 10 12 13
+rows M 11 12 13
+rows m 28 6 8
+rows M 29 5 9
+# FUMEE (pas de contour) : lumière haut-gauche, ombre bas-droite
+rows b 4 47 48 5 46 47
+rows b 1 48 50 2 47 51 3 48 50
+px z 48 1
+px z 47 2
+px c 51 2
+px c 50 3
+rows b 1 54 55 2 53 55
+px z 54 1
+px c 55 2
+px b 57 0
+# HERBE au pied (ancrage)
+rows M 56 5 10 57 4 10
+rows m 55 6 6 55 9 9 56 7 7
+hline O 4 10 58
+px O 3 57
+px O 11 57
+rows M 56 40 44 57 40 45
+rows m 55 41 41 55 44 44
+hline O 40 45 58
+px O 46 57
+rows M 56 53 58 57 52 58
+rows m 55 54 54 55 57 57 56 56 56
+hline O 52 58 58
+px O 51 57
+px O 59 57

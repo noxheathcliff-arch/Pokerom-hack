@@ -1,0 +1,22 @@
+# Etape 1 — construction : grandes masses en couleurs de chantier (décidées à la main)
+# toit (trapèze, croupe) = 1
+rows 1 9 9 54 12 8 55 15 7 56 18 6 57 21 5 58 24 4 59 27 3 60 30 2 61
+line 1 9 9 2 30
+line 1 54 9 61 30
+# cheminée = 6
+rect 6 43 5 51 8
+rect 6 45 9 49 16
+# lucarne = 2
+line 2 13 19 21 11
+line 2 21 11 29 19
+rect 2 15 20 27 27
+# mur = 3, socle = 5
+rect 3 5 32 58 50
+rect 5 5 51 58 56
+# vitrine / fenêtre = 2, porte = 4
+rect 2 9 36 23 47
+rect 2 49 37 55 46
+rect 4 27 35 38 55
+rect 4 26 56 39 58
+# enseigne = 6
+rect 6 41 37 47 42

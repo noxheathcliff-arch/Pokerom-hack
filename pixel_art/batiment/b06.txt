@@ -1,0 +1,88 @@
+# Etape 6 — textures matière (groupes de 2-3, jamais de bruit)
+# ARDOISE : 5 rangs de 4 px (y10-13, 14-17, 18-21, 22-25, 26-29) ; dernier rang de chaque = recouvrement r
+rep q r 0 13 63 13
+rep q r 0 17 63 17
+rep q r 0 21 63 21
+rep q r 0 25 63 25
+rep q r 0 29 63 29
+rep r R 0 17 63 17
+rep r R 0 21 63 21
+rep r R 0 25 63 25
+rep r R 0 29 63 29
+# joints verticaux (2 px) tous les 6 px, décalés de 3 par rang ; plus rares en haut-gauche (zone de lumière)
+rep q r 30 11 30 12
+rep q r 36 11 36 12
+rep q r 42 11 42 12
+rep q r 27 15 27 16
+rep q r 33 15 33 16
+rep q r 39 15 39 16
+rep q r 21 15 21 16
+rep q r 12 19 12 20
+rep q r 36 19 36 20
+rep q r 42 19 42 20
+rep q r 48 19 48 20
+rep q r 9 23 9 24
+rep q r 15 23 15 24
+rep q r 21 23 21 24
+rep q r 27 23 27 24
+rep q r 33 23 33 24
+rep q r 39 23 39 24
+rep q r 45 23 45 24
+rep q r 51 23 51 24
+rep q r 12 27 12 28
+rep q r 18 27 18 28
+rep q r 24 27 24 28
+rep q r 30 27 30 28
+rep q r 36 27 36 28
+rep q r 42 27 42 28
+rep q r 48 27 48 28
+rep q r 54 27 54 28
+rep r R 51 10 53 17
+# BRIQUES de cheminée : lits de mortier c, joints verticaux d alternés
+hline c 45 49 12
+hline c 45 49 15
+px d 47 10
+px d 47 11
+px d 46 13
+px d 46 14
+px d 48 13
+px d 48 14
+px d 47 16
+# COLOMBAGES : poteau entre vitrine et porte + fil du bois éclairé à gauche
+rect W 24 34 25 49
+vline w 24 35 49
+vline P 26 35 49
+vline w 6 35 49
+vline w 56 35 49
+rows w 32 10 11 32 30 32 32 48 49
+# PORTE : planches, couvre-joint, pentures, rivets, poignée, seuil
+vline X 33 40 54
+vline w 30 40 54
+vline w 34 40 54
+hline d 30 36 43
+hline d 30 36 51
+px i 31 43
+px i 35 43
+px i 31 51
+px i 35 51
+px i 35 47
+hline X 29 36 55
+# ENCADREMENT PIERRE : arête extérieure d, clé de voûte, joints
+hline d 30 35 34
+hline d 32 33 33
+px a 32 34
+px a 33 34
+rows d 35 28 29 35 36 37 36 27 27 36 38 38 37 27 27 37 38 38
+vline d 26 38 55
+vline d 39 38 55
+rows d 42 27 28 42 37 38 46 27 28 46 37 38 50 27 28 50 37 38 54 27 28 54 37 38
+# SOCLE : deux assises, joints décalés
+hline d 6 26 53
+hline d 39 57 53
+hline b 6 26 54
+hline b 39 57 54
+rows d 52 16 16 52 22 22 52 44 44 52 50 50 52 56 56
+rows d 54 7 7 55 7 7 54 13 13 55 13 13 54 19 19 55 19 19 54 25 25 55 25 25 54 41 41 55 41 41 54 47 47 55 47 47 54 53 53 55 53 53
+# ENSEIGNE : planche ombrée bas/droite
+hline W 42 46 41
+vline W 46 38 41

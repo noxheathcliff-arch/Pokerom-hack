@@ -1,0 +1,63 @@
+# Etape 5 — lumière haut-gauche : une valeur par face, AO, ombres portées, creux inversés
+# toit : bande d'arête gauche éclairée Q, droite r (2 px à l'intérieur du contour)
+rows Q 9 10 11 10 10 11 11 9 10 12 9 10 13 9 10 14 8 9 15 8 9 16 8 9 17 7 8 18 7 8 19 7 8 20 6 7 21 6 7 22 6 7 23 5 6 24 5 6 25 5 6 26 4 5 27 4 5 28 4 5 29 3 4
+rows r 9 52 53 10 52 53 11 53 54 12 53 54 13 53 54 14 54 55 15 54 55 16 54 55 17 55 56 18 55 56 19 55 56 20 56 57 21 56 57 22 56 57 23 57 58 24 57 58 25 57 58 26 58 59 27 58 59 28 58 59 29 59 60
+# ombre portée de la cheminée (bas-droite) + AO au pied
+rect r 51 10 53 17
+hline R 44 50 17
+# cheminée : colonne éclairée / colonne ombre
+vline a 45 10 16
+vline c 49 10 16
+hline a 44 46 6
+# lucarne : versant gauche clair, droit sombre ; ombre sous avant-toit ; ombre portée sur le toit
+line Q 14 19 21 12
+line Q 15 19 21 13
+line R 21 12 28 19
+hline P 16 26 21
+rect r 30 20 31 27
+hline r 16 31 28
+# vitre lucarne : creux inversé (ombre haut + gauche)
+rect g 19 22 23 25
+hline G 19 23 22
+vline G 19 22 25
+# mur : ombre d'avant-toit, ombre des poteaux
+hline P 8 55 34
+vline P 8 35 49
+# vitrine : creux inversés (rang haut + colonne gauche de chaque carreau) en o
+hline o 10 15 37
+hline o 17 22 37
+vline o 10 37 40
+vline o 17 37 40
+hline o 10 15 42
+hline o 17 22 42
+vline o 10 42 46
+vline o 17 42 46
+hline P 9 23 49
+# fenêtre droite : verre g, creux G
+rect g 50 38 54 45
+hline G 50 51 38
+hline G 53 54 38
+vline G 50 38 40
+vline G 53 38 40
+hline G 50 51 42
+hline G 53 54 42
+vline G 50 42 45
+vline G 53 42 45
+hline P 49 55 48
+# porte : renfoncement (ombre gauche + haut de l'arc), vantail
+vline X 29 39 55
+rows X 37 31 34 38 30 35 39 30 36
+# encadrement pierre : jambage gauche a/b, droit b/c, claveaux
+vline b 28 39 55
+vline b 37 39 55
+vline c 38 39 55
+rows b 36 34 37 37 35 37 38 36 38
+# enseigne : ombre portée
+vline P 48 38 43
+hline P 42 48 43
+# socle et marche
+hline a 6 26 51
+hline a 39 57 51
+rect c 6 54 26 55
+rect c 39 54 57 55
+hline b 27 38 57

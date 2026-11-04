@@ -1,0 +1,12 @@
+# Etape 2 — silhouette B (retenue) en F : toit à croupe + cheminée + façade + marche
+rows F 8 9 54 9 9 54 10 9 54 11 8 55 12 8 55 13 8 55 14 7 56 15 7 56 16 7 56 17 6 57 18 6 57 19 6 57 20 5 58 21 5 58 22 5 58 23 4 59 24 4 59 25 4 59 26 3 60 27 3 60 28 3 60 29 2 61 30 2 61 31 2 61
+rect F 43 5 51 8
+rect F 5 32 58 56
+rect F 26 56 39 58
+# girouette (tige + flèche)
+vline F 15 3 7
+hline F 12 18 5
+px F 17 4
+px F 17 6
+px F 12 4
+px F 12 6

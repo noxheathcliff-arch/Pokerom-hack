@@ -1,0 +1,4 @@
+# Variante A (R7) : simple pignon rectangulaire, pas de cheminée ni girouette
+rect F 4 10 59 31
+rect F 5 32 58 56
+rect F 26 56 39 58
