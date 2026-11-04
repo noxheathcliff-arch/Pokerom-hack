@@ -1,6 +1,6 @@
 """Places primitives DECIDED BY HAND onto a character grid (decides nothing).
 usage: python3 trace.py in.txt|NEW:WxH out.txt cmds.txt
-cmds: px C x y | hline C x1 x2 y | vline C x y1 y2 | rect C x1 y1 x2 y2 | frame C x1 y1 x2 y2
+cmds: px C x y | line C x1 y1 x2 y2 | hline C x1 x2 y | vline C x y1 y2 | rect C x1 y1 x2 y2 | frame C x1 y1 x2 y2
       disc C cx cy r | ring C cx cy r | rows C y x1 x2 [y x1 x2 ...] (explicit spans) | rep A B x1 y1 x2 y2 (replace A->B in the zone)"""
 import sys
 src,out,cmdf=sys.argv[1:4]
@@ -23,6 +23,9 @@ for line in open(cmdf):
     op,C,a=p[0],p[1],list(map(float,p[2:]))
     a=[int(v) if v==int(v) else v for v in a]
     if op=='px': put(C,a[0],a[1])
+    elif op=='line':
+        x1,y1,x2,y2=a; n=max(abs(x2-x1),abs(y2-y1)) or 1
+        for k in range(n+1): put(C,round(x1+(x2-x1)*k/n),round(y1+(y2-y1)*k/n))
     elif op=='hline': [put(C,x,a[2]) for x in range(a[0],a[1]+1)]
     elif op=='vline': [put(C,a[0],y) for y in range(a[1],a[2]+1)]
     elif op=='rect': [put(C,x,y) for y in range(a[1],a[3]+1) for x in range(a[0],a[2]+1)]
