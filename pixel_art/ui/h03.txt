@@ -1,0 +1,392 @@
+# Etape 3 — aplats : cadre or (g) 2 px, arête intérieure O (posée à la main), canal de liquide (r)
+# pointe = or plein ; fin du liquide fermée par une arête O verticale en x98
+vline g 24 9 10
+px O 24 11
+vline r 24 12 20
+px O 24 21
+vline g 24 22 23
+vline g 25 9 10
+px O 25 11
+vline r 25 12 20
+px O 25 21
+vline g 25 22 23
+vline g 26 9 10
+px O 26 11
+vline r 26 12 20
+px O 26 21
+vline g 26 22 23
+vline g 27 9 10
+px O 27 11
+vline r 27 12 20
+px O 27 21
+vline g 27 22 23
+vline g 28 9 10
+px O 28 11
+vline r 28 12 20
+px O 28 21
+vline g 28 22 23
+vline g 29 9 10
+px O 29 11
+vline r 29 12 20
+px O 29 21
+vline g 29 22 23
+vline g 30 9 10
+px O 30 11
+vline r 30 12 20
+px O 30 21
+vline g 30 22 23
+vline g 31 9 10
+px O 31 11
+vline r 31 12 20
+px O 31 21
+vline g 31 22 23
+vline g 32 9 10
+px O 32 11
+vline r 32 12 20
+px O 32 21
+vline g 32 22 23
+vline g 33 9 10
+px O 33 11
+vline r 33 12 20
+px O 33 21
+vline g 33 22 23
+vline g 34 9 10
+px O 34 11
+vline r 34 12 20
+px O 34 21
+vline g 34 22 23
+vline g 35 9 10
+px O 35 11
+vline r 35 12 20
+px O 35 21
+vline g 35 22 23
+vline g 36 9 10
+px O 36 11
+vline r 36 12 20
+px O 36 21
+vline g 36 22 23
+vline g 37 9 10
+px O 37 11
+vline r 37 12 20
+px O 37 21
+vline g 37 22 23
+vline g 38 9 10
+px O 38 11
+vline r 38 12 20
+px O 38 21
+vline g 38 22 23
+vline g 39 9 10
+px O 39 11
+vline r 39 12 20
+px O 39 21
+vline g 39 22 23
+vline g 40 9 10
+px O 40 11
+vline r 40 12 20
+px O 40 21
+vline g 40 22 23
+vline g 41 9 10
+px O 41 11
+vline r 41 12 20
+px O 41 21
+vline g 41 22 23
+vline g 42 9 10
+px O 42 11
+vline r 42 12 20
+px O 42 21
+vline g 42 22 23
+vline g 43 10 11
+px O 43 12
+vline r 43 13 19
+px O 43 20
+vline g 43 21 22
+vline g 44 10 11
+px O 44 12
+vline r 44 13 19
+px O 44 20
+vline g 44 21 22
+vline g 45 10 11
+px O 45 12
+vline r 45 13 19
+px O 45 20
+vline g 45 21 22
+vline g 46 10 11
+px O 46 12
+vline r 46 13 19
+px O 46 20
+vline g 46 21 22
+vline g 47 10 11
+px O 47 12
+vline r 47 13 19
+px O 47 20
+vline g 47 21 22
+vline g 48 10 11
+px O 48 12
+vline r 48 13 19
+px O 48 20
+vline g 48 21 22
+vline g 49 10 11
+px O 49 12
+vline r 49 13 19
+px O 49 20
+vline g 49 21 22
+vline g 50 10 11
+px O 50 12
+vline r 50 13 19
+px O 50 20
+vline g 50 21 22
+vline g 51 10 11
+px O 51 12
+vline r 51 13 19
+px O 51 20
+vline g 51 21 22
+vline g 52 10 11
+px O 52 12
+vline r 52 13 19
+px O 52 20
+vline g 52 21 22
+vline g 53 10 11
+px O 53 12
+vline r 53 13 19
+px O 53 20
+vline g 53 21 22
+vline g 54 10 11
+px O 54 12
+vline r 54 13 19
+px O 54 20
+vline g 54 21 22
+vline g 55 10 11
+px O 55 12
+vline r 55 13 19
+px O 55 20
+vline g 55 21 22
+vline g 56 10 11
+px O 56 12
+vline r 56 13 19
+px O 56 20
+vline g 56 21 22
+vline g 57 10 11
+px O 57 12
+vline r 57 13 19
+px O 57 20
+vline g 57 21 22
+vline g 58 10 11
+px O 58 12
+vline r 58 13 19
+px O 58 20
+vline g 58 21 22
+vline g 59 10 11
+px O 59 12
+vline r 59 13 19
+px O 59 20
+vline g 59 21 22
+vline g 60 10 11
+px O 60 12
+vline r 60 13 19
+px O 60 20
+vline g 60 21 22
+vline g 61 10 11
+px O 61 12
+vline r 61 13 19
+px O 61 20
+vline g 61 21 22
+vline g 62 11 12
+px O 62 13
+vline r 62 14 18
+px O 62 19
+vline g 62 20 21
+vline g 63 11 12
+px O 63 13
+vline r 63 14 18
+px O 63 19
+vline g 63 20 21
+vline g 64 11 12
+px O 64 13
+vline r 64 14 18
+px O 64 19
+vline g 64 20 21
+vline g 65 11 12
+px O 65 13
+vline r 65 14 18
+px O 65 19
+vline g 65 20 21
+vline g 66 11 12
+px O 66 13
+vline r 66 14 18
+px O 66 19
+vline g 66 20 21
+vline g 67 11 12
+px O 67 13
+vline r 67 14 18
+px O 67 19
+vline g 67 20 21
+vline g 68 11 12
+px O 68 13
+vline r 68 14 18
+px O 68 19
+vline g 68 20 21
+vline g 69 11 12
+px O 69 13
+vline r 69 14 18
+px O 69 19
+vline g 69 20 21
+vline g 70 11 12
+px O 70 13
+vline r 70 14 18
+px O 70 19
+vline g 70 20 21
+vline g 71 11 12
+px O 71 13
+vline r 71 14 18
+px O 71 19
+vline g 71 20 21
+vline g 72 11 12
+px O 72 13
+vline r 72 14 18
+px O 72 19
+vline g 72 20 21
+vline g 73 11 12
+px O 73 13
+vline r 73 14 18
+px O 73 19
+vline g 73 20 21
+vline g 74 11 12
+px O 74 13
+vline r 74 14 18
+px O 74 19
+vline g 74 20 21
+vline g 75 11 12
+px O 75 13
+vline r 75 14 18
+px O 75 19
+vline g 75 20 21
+vline g 76 11 12
+px O 76 13
+vline r 76 14 18
+px O 76 19
+vline g 76 20 21
+vline g 77 11 12
+px O 77 13
+vline r 77 14 18
+px O 77 19
+vline g 77 20 21
+vline g 78 11 12
+px O 78 13
+vline r 78 14 18
+px O 78 19
+vline g 78 20 21
+vline g 79 11 12
+px O 79 13
+vline r 79 14 18
+px O 79 19
+vline g 79 20 21
+vline g 80 11 12
+px O 80 13
+vline r 80 14 18
+px O 80 19
+vline g 80 20 21
+vline g 81 12 13
+px O 81 14
+vline r 81 15 17
+px O 81 18
+vline g 81 19 20
+vline g 82 12 13
+px O 82 14
+vline r 82 15 17
+px O 82 18
+vline g 82 19 20
+vline g 83 12 13
+px O 83 14
+vline r 83 15 17
+px O 83 18
+vline g 83 19 20
+vline g 84 12 13
+px O 84 14
+vline r 84 15 17
+px O 84 18
+vline g 84 19 20
+vline g 85 12 13
+px O 85 14
+vline r 85 15 17
+px O 85 18
+vline g 85 19 20
+vline g 86 12 13
+px O 86 14
+vline r 86 15 17
+px O 86 18
+vline g 86 19 20
+vline g 87 12 13
+px O 87 14
+vline r 87 15 17
+px O 87 18
+vline g 87 19 20
+vline g 88 12 13
+px O 88 14
+vline r 88 15 17
+px O 88 18
+vline g 88 19 20
+vline g 89 12 13
+px O 89 14
+vline r 89 15 17
+px O 89 18
+vline g 89 19 20
+vline g 90 12 13
+px O 90 14
+vline r 90 15 17
+px O 90 18
+vline g 90 19 20
+vline g 91 12 13
+px O 91 14
+vline r 91 15 17
+px O 91 18
+vline g 91 19 20
+vline g 92 12 13
+px O 92 14
+vline r 92 15 17
+px O 92 18
+vline g 92 19 20
+vline g 93 12 13
+px O 93 14
+vline r 93 15 17
+px O 93 18
+vline g 93 19 20
+vline g 94 12 13
+px O 94 14
+vline r 94 15 17
+px O 94 18
+vline g 94 19 20
+vline g 95 12 13
+px O 95 14
+vline r 95 15 17
+px O 95 18
+vline g 95 19 20
+vline g 96 12 13
+px O 96 14
+vline r 96 15 17
+px O 96 18
+vline g 96 19 20
+vline g 97 12 13
+px O 97 14
+vline r 97 15 17
+px O 97 18
+vline g 97 19 20
+vline g 98 12 13
+vline O 98 14 18
+vline g 98 19 20
+vline g 99 13 19
+vline g 100 13 19
+vline g 101 13 19
+vline g 102 14 18
+vline g 103 14 18
+vline g 104 14 18
+vline g 105 15 17
+vline g 106 15 17
+vline g 107 15 17
+vline g 108 16 16
+vline g 109 16 16
+vline g 110 16 16
+# orbe : couronne or puis arête O puis liquide (e)
+disc O 16 16 15.4
+disc g 16 16 14.4
+disc O 16 16 11.4
+disc e 16 16 10.4

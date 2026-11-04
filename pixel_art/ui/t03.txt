@@ -1,0 +1,60 @@
+# t03 flat colours
+rect p 12 9 114 31
+vline O 11 6 34
+vline O 115 6 34
+rect P 4 6 10 34
+rect P 116 6 122 34
+disc O 7 3 2.5
+disc g 7 3 1.5
+disc O 7 37 2.5
+disc g 7 37 1.5
+disc O 119 3 2.5
+disc g 119 3 1.5
+disc O 119 37 2.5
+disc g 119 37 1.5
+frame n 17 12 109 28
+hline p 59 67 28
+hline g 17 17 11
+hline g 16 18 12
+hline g 17 17 13
+hline g 109 109 11
+hline g 108 110 12
+hline g 109 109 13
+hline g 17 17 27
+hline g 16 18 28
+hline g 17 17 29
+hline g 109 109 27
+hline g 108 110 28
+hline g 109 109 29
+hline O 54 54 6
+hline O 53 55 7
+hline O 52 56 8
+hline O 53 55 9
+hline O 54 54 10
+hline g 54 54 7
+hline g 53 55 8
+hline g 54 54 9
+hline O 72 72 6
+hline O 71 73 7
+hline O 70 74 8
+hline O 71 73 9
+hline O 72 72 10
+hline g 72 72 7
+hline g 71 73 8
+hline g 72 72 9
+hline O 63 63 29
+hline O 62 64 30
+hline O 61 65 31
+hline O 60 66 32
+hline O 61 65 33
+hline O 62 64 34
+hline O 63 63 35
+hline g 63 63 30
+hline g 62 64 31
+hline g 61 65 32
+hline g 62 64 33
+hline g 63 63 34
+disc O 63 8 7.5
+disc g 63 8 6.5
+disc O 63 8 4.4
+disc c 63 8 3.5

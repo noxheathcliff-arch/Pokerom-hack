@@ -1,0 +1,10 @@
+# focus state: gilt frame lights up, gem glows, ink caret at the start of the field
+rep n g 17 12 109 28
+rep g y 17 12 56 12
+rep g y 70 12 109 12
+rep g y 17 13 17 27
+disc C 62.5 7.5 2.4
+rect z 61 6 62 7
+px z 65 10
+vline k 21 17 24
+px n 22 17

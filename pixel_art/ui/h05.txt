@@ -1,0 +1,22 @@
+# h05 details: segment notches (graduations) + ring rivets + gold glint
+vline R 38 12 20
+px n 38 9
+px n 38 23
+vline R 52 13 19
+px n 52 10
+px n 52 22
+vline R 66 14 18
+px n 66 11
+px n 66 21
+vline R 80 14 18
+px n 80 11
+px n 80 21
+px w 7 7
+px n 8 8
+px y 25 7
+px k 26 8
+px y 7 25
+px k 8 26
+px g 25 25
+px k 26 26
+px w 10 3

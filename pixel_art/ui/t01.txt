@@ -1,0 +1,30 @@
+# t01 silhouette: sheet + 2 rolls + 4 knobs + medallion + 2 wings + bottom rhombus
+rect d 12 8 114 32
+hline d 4 10 5
+rect d 3 6 11 34
+hline d 4 10 35
+hline d 116 122 5
+rect d 115 6 123 34
+hline d 116 122 35
+disc d 7 3 2.5
+disc d 7 37 2.5
+disc d 119 3 2.5
+disc d 119 37 2.5
+disc d 63 8 7.5
+hline d 54 54 6
+hline d 53 55 7
+hline d 52 56 8
+hline d 53 55 9
+hline d 54 54 10
+hline d 72 72 6
+hline d 71 73 7
+hline d 70 74 8
+hline d 71 73 9
+hline d 72 72 10
+hline d 63 63 29
+hline d 62 64 30
+hline d 61 65 31
+hline d 60 66 32
+hline d 61 65 33
+hline d 62 64 34
+hline d 63 63 35

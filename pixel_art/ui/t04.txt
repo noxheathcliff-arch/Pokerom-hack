@@ -1,0 +1,120 @@
+# t04 light from top-left, hue-shifted ramps
+rep d q 0 0 126 39
+vline P 4 6 34
+vline p 5 6 34
+vline p 6 6 34
+vline P 7 6 34
+vline P 8 6 34
+vline q 9 6 34
+vline l 10 6 34
+hline q 4 8 6
+hline l 9 10 6
+hline q 4 8 34
+hline l 4 10 34
+vline P 116 6 34
+vline p 117 6 34
+vline p 118 6 34
+vline P 119 6 34
+vline P 120 6 34
+vline q 121 6 34
+vline l 122 6 34
+hline q 116 120 6
+hline l 121 122 6
+hline q 116 120 34
+hline l 116 122 34
+vline q 12 9 31
+vline P 13 9 31
+vline P 113 9 31
+vline q 114 9 31
+hline P 12 114 31
+hline P 12 114 30
+px q 12 31
+px q 114 31
+px q 12 30
+px q 114 30
+hline w 14 51 9
+hline w 75 112 9
+px y 6 2
+px y 7 2
+px y 6 3
+px n 8 4
+px n 7 4
+px n 8 3
+px y 6 36
+px y 7 36
+px y 6 37
+px n 8 38
+px n 7 38
+px n 8 37
+px y 118 2
+px y 119 2
+px y 118 3
+px n 120 4
+px n 119 4
+px n 120 3
+px y 118 36
+px y 119 36
+px y 118 37
+px n 120 38
+px n 119 38
+px n 120 37
+px y 54 7
+px y 53 8
+px n 55 8
+px k 54 9
+px y 72 7
+px y 71 8
+px n 73 8
+px k 72 9
+hline y 62 63 30
+px y 63 29
+px y 61 31
+px y 62 31
+hline n 64 65 31
+px n 63 33
+px n 64 32
+px k 65 32
+disc k 63 8 6.5
+disc n 62.7 7.7 6.0
+disc g 62.4 7.4 5.6
+disc y 62 7 5.0
+disc O 63 8 4.4
+disc b 63 8 3.5
+disc c 62.6 7.6 3.0
+disc C 62 7 1.6
+rect z 61 6 62 7
+px z 65 10
+hline g 18 56 12
+hline g 70 108 12
+vline g 17 13 27
+hline n 18 58 28
+hline n 68 108 28
+vline n 109 13 27
+hline g 17 17 11
+hline g 16 18 12
+hline g 17 17 13
+px y 17 12
+px y 16 12
+px n 18 12
+px n 17 13
+hline g 109 109 11
+hline g 108 110 12
+hline g 109 109 13
+px y 109 12
+px y 108 12
+px n 110 12
+px n 109 13
+hline g 17 17 27
+hline g 16 18 28
+hline g 17 17 29
+px y 17 28
+px y 16 28
+px n 18 28
+px n 17 29
+hline g 109 109 27
+hline g 108 110 28
+hline g 109 109 29
+px y 109 28
+px y 108 28
+px n 110 28
+px n 109 29

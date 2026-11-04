@@ -1,0 +1,16 @@
+# t05 details: parchment fibres outside the text zone, roll layers, gem glint
+px P 14 15
+px P 15 16
+px P 112 22
+px P 111 23
+px P 40 10
+px P 41 10
+px P 92 10
+px P 15 25
+# rolled layers: a 1px spiral line on each roll
+vline l 9 9 30
+vline l 121 9 30
+px q 9 8
+px q 121 8
+px q 9 31
+px q 121 31

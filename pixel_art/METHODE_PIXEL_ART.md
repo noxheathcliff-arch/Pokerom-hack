@@ -1,72 +1,45 @@
-# Méthode de pixel art — objets, personnages et créatures (v10.4)
+# Méthode de pixel art — objets, personnages et créatures (v11)
 
 On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin classique
 (construction par volumes, ligne d'action, anatomie) et les règles du pixel art
 (silhouette, valeurs, clusters, lignes propres, rampes, lumière).
 
-> **v10.4 :** nouvelle section **C17** (vêtements du simple au complexe : appuis et
-> tensions, poids du tissu, les sept plis de Bridgman en pixels, jupe en cônes, couches,
-> cape, armure, motifs qui suivent la forme, matières) et **A6** (astuces de pro : hue
-> shifting, selout, AA parcimonieux, doubles, jaggies, banding, coussin, terminateur net,
-> AO, lumière réfléchie).
->
-> **v10.2 :** nouvelle section **C15** (créatures et monstres, test 11 : Mousseron,
-> Tisonard, Moellon) : un langage de formes par créature, silhouette refaite tant qu'elle
-> forme un bloc, pattes lointaines plus sombres, flamme émissive à ombrage inversé, bords
-> intérieurs posés à la main.
->
-> **v10.1 :** **chibi = pas d'épaule marquée** (règle impérative 10, C13-A, C14-A) : les bras
-> partent directement du torse, le contour glisse du cou au bras sans bosse de deltoïde.
-> **Tête ronde ou ovale de visage, jamais en œuf ni en V** (règle impérative 13, C13-A) :
-> en pixel art, la tête est un rond ou un ovale de visage humain simplifié, régulier, aux
-> bords arrondis, le bas juste un peu aplati.
->
-> **v10 :** bloc **Règles impératives** en tête (tout ce que les tests ont appris, en
-> ordres courts) ; nouvelle section **C14** (corps nu d'abord, vêtements en calque, test 10
-> « chibi2 ») ; ordre du chibi (C13-B) refait : le corps nu passe avant tout le reste ;
-> `contour.py` en mode calque (partie D).
->
-> **v9 :** nouvelle section **C13** (chibi pas à pas, test 9 « Pip ») ; leçons de la potion
-> (liquide, rebord de verre, contour sur fond sombre) ; partie **D** (outils) ; nettoyage :
-> renvois au lieu de doublons, C9-H renumérotée, C12-G remise en place.
-
 **Comment l'utiliser :**
-- la **partie A** vaut pour tout : règles de travail, lisibilité, tailles, couleurs, lumière,
-  matières, finition et contrôle ;
-- la **partie B** donne les étapes de construction d'un **objet** ;
-- la **partie C** donne les étapes de construction d'un **personnage** (anatomie, visage,
-  cheveux) ; **C10** donne les règles par taille (8 à 128 px) ; **C11** donne la méthode du
-  portrait anime (3/4, mèches, yeux, couleurs) ; **C12** construit le visage (Loomis + anime) ;
-  **C13** donne l'ordre complet d'un **chibi** (2,5 à 3 têtes), du croquis au contrôle ;
-  **C14** explique comment habiller un corps nu validé, vêtement par vêtement, en calque ;
-  **C17** explique comment rendre le vêtement (plis, matières, motifs) ; **A6** réunit les
-  astuces de pro (rampes, selout, AA, défauts à traquer) ;
-- un dessin suit B ou C pour la construction, puis le pipeline A5 pour les pixels ;
-- la section **A4b** (simplifier) s'applique dès qu'une taille est imposée ;
-- la **partie D** liste les petits outils (`trace.py`, `px.py`, `planche.py`) pour poser les
-  pixels, rendre l'image et sortir la planche de contrôle.
+1. Relire les **règles impératives** avant chaque dessin.
+2. Construire avec la **partie B** (objet) ou la **partie C** (personnage, créature).
+3. Poser les pixels avec le **pipeline A5**, puis finir avec **A6** (finition pro).
+4. Contrôler avec la planche (A5-11, `planche.py`, partie D).
+
+**Sommaire :**
+
+| Partie | Sections |
+|---|---|
+| Règles impératives | 25 ordres courts, tirés des tests |
+| **A. Règles communes** | A1 travail · A2 lisibilité · A3 table par taille · A4 règles du dessin · A4b simplifier · A5 pipeline pixel (silhouette → contour → palette → lumière → matières → détails → nettoyage → contrôle) · A6 finition pro |
+| **B. Objets** | B0 intention · B0b projection · B1 cadre · B2 volumes · B3 forme iconique · B4 matière · B4b déclinaison par taille · B5 contrôle |
+| **C. Personnages** | C0 intention · C1 proportions · C2 pose · C3 volumes · C4 tête et visage · C5 vêtements (design) · C6 cheveux · C7 astuces de figure · C8 contrôle · C9 anatomie · C10 tailles (8 à 128 px) · C11 portrait anime · C12 visage Loomis + anime · C13 chibi pas à pas · C14 corps nu puis vêtements en calque · C15 créatures · C16 créatures complexes · C17 vêtements (plis, matières) |
+| **D. Outils** | `trace.py` · `px.py` · `contour.py` · `planche.py` · dossiers de tests |
+| Fin | Résumé par type de dessin · sources web · historique des versions |
 
 **Où trouver quoi (sujets répartis) :**
 
 | Sujet | Sections |
 |---|---|
 | Yeux | C4 (œil en grand) · C10-D (1×1 à 3×3) · C10-J2 (32 px, portrait) · C11-A · C12-G · C13-C (chibi) |
-| Couleur du contour | A3 (table) · C10-F (règle) · C11 (peau = trait chaud) · C13-D (selout) |
-| Langage de formes | A4b (règle) · C5 (vêtements) |
-| Frange et sourcils | C6 · C10-J2 · C12-F · C13-D |
+| Couleur du contour | A5-6 · A6-C · C10-F · C11 (peau = trait chaud) · C13-D (selout) |
+| Langage de formes | A4b (règle) · C5 (vêtements) · C15-A (créatures) |
+| Cheveux, frange, sourcils | C6 · C10-J2 · C12-F · C13-D |
 | Liquide, verre | A5-8b · B5 · C13-D |
-| Vêtements | C5 (design) · C13-B · C14 (calque sur corps nu) · **C17** (plis, matières, recettes) |
-| Rendu pro (rampes, AA, défauts) | **A6** · A5-10 |
+| Vêtements | C5 (design) · C13-B · C14 (calque sur corps nu) · C17 (plis, matières, recettes) |
+| Rendu pro (rampes, AA, défauts) | A5-7 à A5-10 · **A6** |
 | Jointures du corps | C2 · C3 · C14-A |
 
-**Sources :** [Z] *Apprendre à tout dessiner avec Zephy* · [M] livre de dessin manga · [I]
-planches d'anatomie fournies · [C] planches sur les cheveux fournies · [R] recherches
-(Loomis, Bridgman, Proko, tutoriels d'anticrénelage, de matières et de lisibilité d'icônes,
-simplification des formes) · [P] planches fournies (cheveux, œil, arche, cristal, flamme,
-déclinaisons par taille, projections) · [T1]…[T10] leçons de nos propres tests (T8 : visage
-de face ; T9 : chibi « Pip » ; T10 : chibi2, corps d'abord) · [L] méthode Loomis et tutoriels de visage anime (règles
-reformulées) · [A] analyse de portraits anime en pixel art fournis en exemple (règles
-reformulées).
+**Sources (étiquettes) :** [Z] *Apprendre à tout dessiner avec Zephy* · [M] livre de dessin
+manga · [I] planches d'anatomie fournies · [C] planches sur les cheveux fournies · [P]
+planches fournies (cheveux, œil, arche, cristal, flamme, déclinaisons, projections) · [R]
+recherches web (liens en fin de document) · [L] méthode Loomis et tutoriels de visage anime
+· [A] analyse de portraits anime en pixel art fournis en exemple · [T1]…[T14] leçons de nos
+propres tests (partie D). Toutes les règles sont reformulées.
 
 ---
 
@@ -98,29 +71,19 @@ Chaque règle est un ordre. Le détail et le « pourquoi » sont dans la section
 
 **Corps**
 10. **Marque chaque jointure** : creux d'aisselle, pli du coude, poignet resserré, V de
-    l'aine, rotule claire et ombre dessous, cheville resserrée. **L'épaule dépend du style :**
-    - **Chibi (toujours en dessous de 64 px, et au-delà dès que la tête est grosse) : pas
-      d'épaule marquée.** Pas de bosse de deltoïde, pas de marche dans le contour. Le trait
-      descend du cou en **une pente régulière** (1 px de côté par rangée) jusqu'au bord
-      extérieur du bras. Ensuite, le bras pend droit, collé au torse, et seul un trait de
-      séparation l'en détache (C13-A). Une épaule marquée sur un chibi est laide : ne la
-      dessine jamais.
-    - **Exception :** un sprite plus grand que 64 px aux proportions plus réalistes (tête
-      plus petite pour paraître grand, comme les grands formats Pokémon) : là seulement,
-      l'épaule a sa rondeur de deltoïde (C14-A).
+    l'aine, rotule claire et ombre dessous, cheville resserrée.
+    **Chibi : jamais d'épaule marquée** (toujours sous 64 px, et au-delà dès que la tête est
+    grosse). Pas de bosse de deltoïde : le trait descend du cou en une pente régulière
+    (1 px par rangée) jusqu'au bord du bras, qui pend collé au torse, séparé par un seul
+    trait (C13-A). Seul un grand sprite aux proportions réalistes a un deltoïde (C14-A).
 11. **Donne un geste** : bras levé avec un coude, jambes en contrapposto. Jamais de membres
     en colonnes raides.
 12. **Remplis une rangée de plus sous les pieds** avant de poser le contour : sinon le
     contour mange la semelle.
-13. **Fais la tête ronde ou en ovale de visage, jamais en œuf ni en V.** En pixel art, la
-    tête est un rond, ou un **ovale de visage humain légèrement simplifié** : à peine plus
-    haute que large, régulière, des bords arrondis sur tout le tour. Le bas peut être **un
-    peu aplati** (menton large et court, qui se ferme en 2 ou 3 marches). Ce qui est
-    interdit, c'est l'ovale étiré en pointe : l'œuf ou le menton en V. Sur le contour, les
-    marches restent courtes (0, 1, 1, 2, 3 px en descendant vers le menton), jamais un
-    long biseau en V.
-    **Garde l'ombre de la tête étroite** (2 à 3 px sur le côté opposé à la lumière). Une
-    bande large salit le visage.
+13. **Fais la tête ronde ou en ovale de visage, jamais en œuf ni en V.** À peine plus haute
+    que large, bords arrondis sur tout le tour ; le bas peut être un peu aplati (menton
+    large et court, fermé en 2 ou 3 marches). Marches courtes vers le menton (0, 1, 1, 2,
+    3 px), jamais un long biseau. **Ombre de la tête étroite** : 2 à 3 px côté ombre.
 
 **Vêtements (C14)**
 14. **Peins le tissu 1 px au-delà du bord du corps** : le tissu a une épaisseur.
@@ -146,7 +109,7 @@ Chaque règle est un ordre. Le détail et le « pourquoi » sont dans la section
     côté.
 24. **Pas de détail qui suit le contour sur 1 px** au contact de la peau : une mèche, une
     pointe de frange ou un ourlet d'une seule rangée devient tout noir. Fais-les au moins
-    2 rangées de haut.
+    2 rangées de haut (3 px de large pour une pointe, C6-C).
 
 **Contrôle**
 25. **Finis par la planche** (`planche.py`) : ×1, ×2, gris, silhouette, fonds clair et sombre,
@@ -475,80 +438,121 @@ objectifs du dessin suivant.
 
 ---
 
-## A6. Astuces de pro : rendu propre [R]
-Ce qui sépare un sprite « correct » d'un sprite « pro ». À appliquer à chaque étape du
-pipeline A5, puis à vérifier une dernière fois au nettoyage (A5-10).
+## A6. Finition pro [R][T14]
+Ce qui sépare un sprite « correct » d'un sprite « pro ». Les bases sont dans A5 (contour 6,
+palette 7, lumière 8, nettoyage 10) ; A6 ajoute les chiffres et les tests pour décider vite.
+À relire au moment des couleurs, puis au contrôle final.
 
-### A. Rampes et décalage de teinte (hue shifting)
-- **Une rampe = 4 à 6 tons** d'une même matière, du plus sombre au plus clair. La valeur
-  monte régulièrement ; on vérifie la rampe en gris (marches égales, aucun saut).
-- **La teinte tourne le long de la rampe** : vers le bleu ou le violet dans l'ombre, vers
-  le jaune ou l'orange dans la lumière (lumière chaude = ombres froides). Un ombrage qui ne
-  fait que noircir la couleur paraît sale et plat.
-- **Saturation :** plus forte dans les tons moyens, plus faible aux deux bouts. Une ombre
-  très sombre et très saturée « brûle » ; un reflet blanc pur et saturé « éclate ».
-- **Rampes partagées :** l'ombre de la peau peut être le ton moyen des cheveux, l'ombre du
-  tissu rouge peut être un violet déjà dans la palette. Moins de couleurs, plus d'unité.
-- **Pas de noir pur, pas de blanc pur** sauf exprès (pupille, éclat de métal). Le trait
-  le plus sombre est le bas de la rampe la plus sombre (ici `O #2a1a2e`, un violet).
+### A. Construire une rampe
+1. Choisir le **ton moyen** d'abord : c'est le plus saturé de la rampe.
+2. Vers l'ombre : chaque marche **baisse la luminosité**, **monte un peu la saturation** et
+   **tourne la teinte vers le froid** (bleu, violet). Vers la lumière : la luminosité monte,
+   la saturation **baisse**, la teinte tourne vers le **chaud** (jaune, orange).
+3. Écart de teinte : **10 à 20° par marche** au plus. Une rampe dont la teinte ne bouge pas
+   donne des ombres boueuses ; désaturer seul donne du gris sale.
+4. **Ni 0 %, ni 100 %** de luminosité ou de saturation, sauf exprès (pupille, éclat de
+   métal). Saturation forte + luminosité forte = couleur qui « crie ».
+5. **Marches plus courtes près du blanc** : l'œil distingue moins les clairs.
+6. **En gris, les marches sont égales** : aucun saut plus grand que les autres.
+7. **Rampes partagées** : l'ombre de la peau peut être le ton moyen des cheveux, l'ombre du
+   tissu rouge un violet déjà dans la palette. Le trait le plus sombre est le bas de la
+   rampe la plus sombre (ici `O #2a1a2e`, un violet).
 
-### B. Contour sélectif (selout) et « tout ou rien »
-- **Selout :** le contour prend la couleur la plus sombre de la matière qu'il borde, au lieu
-  d'un trait uniforme. Côté lumière, il s'éclaircit (ton sombre de la rampe) ou s'ouvre
-  sur 1 à 3 px ; côté ombre, il reste au plus sombre. La silhouette garde sa lecture et le
-  sprite gagne du volume.
-- **Bords intérieurs plus doux que le contour extérieur :** un pli, la limite d'une
-  manche ou d'une mèche se trace avec un ton sombre de la matière, pas avec `O`.
-- **Tout ou rien :** soit tout le sprite a un contour (même s'il est sélectif), soit
-  aucun. Un sprite à moitié contouré paraît inachevé.
+### B. Budget de couleurs
+- Nombre de tons par matière et de couleurs au total : **table A3**.
+- **Test « une couleur de moins »** : retirer la couleur la moins utile et la remplacer par
+  sa voisine. Si on ne voit pas la différence à ×1, elle reste retirée.
+- **Petites pièces** (œil, bouton, boucle) : on les sépare par la **valeur**. **Grandes
+  pièces** (cape, cheveux, corps) : on les module par la **teinte**.
+- Deux couleurs de même valeur et de teinte voisine se lisent comme une seule : les
+  fusionner, ou écarter franchement leur valeur.
 
-### C. Les sept défauts à traquer
+### C. Contour : selout et couleur
+- **Selout** : le contour prend le ton le plus sombre de la matière qu'il borde. Côté
+  lumière, il s'éclaircit ou s'ouvre sur 1 à 3 px ; côté ombre, il reste au plus sombre.
+- Le contour est **plus sombre que l'objet et que le fond** : il augmente le contraste,
+  jamais il ne le réduit. Le contraste trait/remplissage reste à peu près constant.
+- **Tout ou rien** : soit tout le sprite a un contour (même sélectif), soit aucun.
+- **Lignes intérieures** : un ton plus sombre que la matière = séparation discrète ;
+  beaucoup plus sombre = séparation forte. Une ligne entre deux pièces prend la couleur de
+  la pièce la plus proche de l'œil (ou de la plus sombre, à l'ombre). Un pli léger : pas de
+  ligne, ou le ton sombre de la matière, jamais `O`.
+- **Fin de ligne** : une ligne intérieure **s'éteint** (dernier pixel un ton plus clair) au
+  lieu de s'arrêter net ; trop fine, elle se coupe côté lumière.
+- Un contour peut **entrer de 1 à 2 px** dans le sprite pour suggérer une séparation (bras
+  devant le torse) sans tracer toute la ligne.
+- **Fond sombre** : un trait foncé franc ; si le style impose un trait noir, mettre la
+  couleur dans les lignes intérieures.
+
+### D. Courbes et silhouette
+- Rappel des marches : A5-6 (5-3-2-1-1, jamais 5-2-1-2-1 ; diagonale = segments égaux).
+- **Ajouter un pixel** au bout d'une forme la rend pointue ; **en retirer un** l'arrondit.
+  C'est le moyen le plus rapide de corriger une silhouette.
+- **Pas de saillie d'1 px isolée** sur la silhouette (sauf pointe voulue) : une forme qui
+  dépasse fait au moins 2 px.
+- **Jaggy voulu** : une marche cassée exprès peut séparer deux mèches ou deux pièces. Elle
+  reste seule et lisible, sinon c'est un défaut (H).
+
+### E. Lumière qui fait « fini »
+- **Terminateur net** : la limite lumière/ombre est franche (1 ton intermédiaire au plus).
+  Un dégradé lent sur tout le volume donne une forme molle.
+- **Reflet principal** : un seul petit cluster, sur le point le plus proche de la lumière.
+- **Occlusion (AO)** : le ton le plus sombre seulement dans les creux et les contacts (sous
+  le menton, aisselle, sous la ceinture, plis profonds, pieds au sol).
+- **Lumière réfléchie colorée** : l'ombre prend un peu la teinte du sol ou de l'objet voisin
+  (herbe → ombre un peu verte), jamais aussi claire que la lumière directe. Une ombre grise
+  neutre fait « naïf ».
+- **Ombre de bord** : le ton le plus sombre sur 1 px du bord opposé à la lumière arrondit
+  le volume. Un seul côté, sinon c'est du coussin.
+- **Contre-jour** (A5-8) : liseré clair d'1 px, avec parcimonie, pour une ambiance (feu,
+  magie, nuit) ou un fond sombre.
+- **Éclats en dernier**, seulement sur les matières brillantes (cheveux, cuir verni, métal,
+  yeux). Matière mate (laine, peau) : pas d'éclat blanc.
+- **Point d'intérêt** : la couleur la plus saturée et le plus fort contraste vont au visage
+  (ou à l'élément clé). Le reste est un cran plus calme.
+
+### F. Anticrénelage (AA)
+Règles de base : A5-10. En plus :
+- **Où** : seulement là où une courbe fait un escalier trop dur à ×1 (joue, épaule ronde,
+  bord de cape). Jamais sur une droite, ni sur une pente régulière à 45° ou 2:1.
+- **Longueur** : elle suit la marche (marche de 4 px → AA de 2 px ; de 2 px → 1 px), dans le
+  sens de la pente.
+- Trop d'AA rend flou : à ×1, le contour reste net.
+
+### G. Penser en volumes
+- Avant l'ombrage, réduire chaque pièce à un **volume simple** (boule, cylindre, boîte) et
+  ombrer ce volume. Un ombrage qui suit le contour au lieu du volume aplatit.
+- Un design « carton » (raide, symétrique, de face) se corrige par une **ligne d'action**,
+  une asymétrie (mèche, accessoire) et l'**exagération** du trait de caractère.
+
+### H. Les sept défauts à traquer
 | Défaut | Ce que c'est | Correction |
 |---|---|---|
-| **Doubles (« L »)** | coin en L dans une ligne d'1 px : 3 pixels là où 2 suffisent | enlever le pixel du coin (ligne « pixel perfect ») |
-| **Jaggies** | escalier irrégulier : 3-1-2-1-3 au lieu d'une progression | marches régulières (2-2-2) ou qui changent doucement (3-2-1 pour une courbe) |
-| **Banding** | deux bandes de tons qui suivent le même bord avec des marches de même longueur : l'œil voit des lignes, pas une forme | décaler les marches, varier les longueurs, fondre une bande dans l'autre |
-| **Ombrage coussin** | ombre tout autour du contour, clair au centre : pas de source de lumière | une seule direction de lumière (haut-gauche) : le côté haut-gauche reste clair jusqu'au bord |
-| **Orphelins** | pixel isolé d'une couleur, sans voisin de même couleur | le supprimer, ou l'accrocher à un cluster |
-| **Bruit** | trop de petits clusters de 1-2 px : texture qui grésille | regrouper en grandes taches ; un détail = un cluster lisible |
-| **Dithering décoratif** | damier pour « faire un dégradé » sur un petit sprite | réservé aux textures (cotte de mailles, pierre, fourrure clairsemée) ou aux grands aplats |
+| **Doubles (« L »)** | coin en L dans une ligne d'1 px : 3 pixels là où 2 suffisent | enlever le pixel du coin |
+| **Jaggies** | escalier irrégulier : 3-1-2-1-3 au lieu d'une progression | marches régulières (2-2-2) ou qui changent doucement (3-2-1) |
+| **Banding** | bandes de tons qui suivent le même bord avec les mêmes marches : on voit des lignes, pas une forme | décaler les marches, varier les longueurs, fondre une bande dans l'autre |
+| **Ombrage coussin** | ombre tout autour, clair au centre : pas de source de lumière | une seule direction : le côté haut-gauche reste clair jusqu'au bord |
+| **Orphelins** | pixel isolé sans voisin de même couleur | le supprimer, ou l'accrocher à un cluster |
+| **Bruit** | trop de clusters de 1-2 px : texture qui grésille | regrouper en grandes taches ; un détail = un cluster lisible |
+| **Dithering décoratif** | damier pour « faire un dégradé » sur un petit sprite | réservé aux textures (mailles, pierre, fourrure) ou aux grands aplats ; zéro par défaut sur un sprite de jeu |
 
-### D. Anticrénelage (AA) : avec parcimonie
-- **Où :** seulement là où une courbe ou une pente fait un escalier trop dur à ×1 (joue,
-  épaule ronde, bord de cape). **Jamais** sur une ligne droite, ni sur une pente à 45° ou
-  2:1 régulière : elles sont déjà propres.
-- **Comment :** l'AA prend un ton intermédiaire **déjà dans la palette**. La longueur de
-  la rangée d'AA suit la longueur de la marche : marche de 4 px → AA de 2 px ; marche de
-  2 px → AA d'1 px. L'AA se pose dans le sens de la pente.
-- **Pas d'AA vers l'extérieur** d'un sprite qui bouge sur plusieurs fonds (déjà en A5-10).
-- Trop d'AA rend le sprite flou : à ×1, un contour doit rester net.
+### I. Ordre de travail d'un pro
+Aplats → valeurs vérifiées en gris → ombre propre (une direction) → AO dans les creux →
+lumière et reflets → lumière réfléchie → contour sélectif → AA → nettoyage (H) → planche.
+On ne passe pas à la suite tant que l'étape ne se lit pas à ×1.
 
-### E. Lumière : les quatre zones
-1. **Lumière directe** (haut-gauche) : grandes zones claires, le reflet le plus clair en
-   un seul petit cluster sur le point le plus proche de la lumière.
-2. **Terminateur net** : la limite lumière/ombre est **franche** (1 ton intermédiaire au
-   plus). Un dégradé lent sur tout le volume = forme molle.
-3. **Occlusion ambiante (AO)** : le ton le plus sombre seulement dans les creux et les
-   contacts (sous le menton, aisselle, sous la ceinture, plis profonds, pieds au sol).
-4. **Lumière réfléchie et contre-jour** : un ton à peine plus clair sur le bord **dans
-   l'ombre** (lumière renvoyée par le sol) ; jamais aussi clair que la lumière directe.
-   Le contre-jour (rim light) est un liseré clair d'1 px sur le bord opposé : à réserver
-   à une ambiance (feu, magie, nuit).
-
-### F. Ordre de travail d'un pro
-Aplats (couleur moyenne de chaque matière) → valeurs vérifiées en gris → ombre propre
-(une direction) → AO dans les creux → lumière et reflets → lumière réfléchie → contour
-sélectif → AA → nettoyage (doubles, orphelins, banding) → planche. On ne revient pas aux
-détails tant que l'étape précédente ne se lit pas à ×1.
-
-### G. Contrôle « pro » (s'ajoute à A5-11)
-1. En gris, chaque matière a-t-elle sa valeur ? Le visage ou le point d'intérêt a-t-il
-   le contraste le plus fort ?
-2. Les ombres virent-elles au froid et les lumières au chaud ?
-3. Reste-t-il un « L », un escalier irrégulier, une bande parallèle, un orphelin ?
-4. L'ombre suit-elle une seule lumière, sans coussin ?
-5. L'AA est-il posé seulement sur les courbes dures ?
-6. Le contour est-il sélectif et cohérent (tout ou rien) ?
+### J. Contrôle et tests du pro (sur la planche A5-11)
+| Test | Comment | Ce qu'on doit voir |
+|---|---|---|
+| **Plisser les yeux** | planche à ×1, yeux plissés | quelques grandes taches claires et sombres, pas de grésillement |
+| **Gris** | colonne grise | chaque matière a sa valeur ; le point d'intérêt a le plus fort contraste |
+| **Silhouette** | colonne noire | pose et coiffure se reconnaissent sans couleur |
+| **Taille réelle** | ×1 sur fond clair et sombre | aucun détail ne devient bruit ; le contour tient sur les deux fonds |
+| **Miroir** | colonne miroir | aucune pente ni proportion fausse ne saute aux yeux |
+| **Teinte** | rampes côte à côte | les ombres virent au froid, les lumières au chaud |
+| **Défauts** | agrandi ×4 | aucun des sept défauts (H) ; AA seulement sur les courbes dures ; contour cohérent |
+| **Une couleur de moins** | retirer une couleur | si rien ne change, elle reste retirée |
+| **En situation** | sprite sur le décor du jeu | il se détache du fond sans liseré forcé |
 
 ---
 
@@ -787,50 +791,118 @@ deux moitiés claire et sombre (effet masque), sauf intention dramatique.
   (manches, ceinture, col), puis tertiaires (boutons, bijoux). Varier les tailles, garder
   des zones calmes.
 
-## C6. Cheveux [M][C]
-**Construction :**
+## C6. Cheveux [M][C][R][T13][T14]
+
+### A. Construction
 - Dessiner d'abord **la tête chauve**, puis une enveloppe de volume un peu plus grande que
   le crâne. Des cheveux tirés ou attachés épousent le crâne, à 1 ou 2 px.
 - **Ligne des cheveux en premier.** Chez un adulte : cheveux → haut des yeux = yeux → nez.
-  Un enfant a un front plus grand ; un front d'enfant sur un adulte le fait paraître
-  dégarni. Formes : arrondie, en M, plate. Une ligne qui recule part du M et finit en arc.
+  Un enfant a un front plus grand ; trop haute, la ligne fait paraître le front dégarni.
+  Formes : arrondie, en M, plate. Une ligne qui recule part du M et finit en arc.
 - **Point d'attache** (queue, chignon) : toutes les mèches tirées vont vers lui en suivant
   le crâne. Queue haute : l'attache se voit. Queue basse : les cheveux pendent vers elle.
   Couettes : derrière les oreilles, à la même hauteur, alignées avec les yeux.
+- **Les cheveux ont du poids** : une mèche part du crâne, suit une courbe simple puis
+  **pend à la verticale**. Cheveux longs : plus fins en haut, plus gonflés en bas ; ils
+  suivent les épaules et la poitrine.
+- La coiffure est le **premier signe d'identité** : sa silhouette doit différer de celle
+  des autres personnages.
 
-**Ordre de pose en pixels [P] :**
+### B. Ordre de pose en pixels [P]
 1. la masse entière en un aplat, comme un casque ;
-2. la lumière sur la masse entière (un anneau de reflet qui suit le crâne, l'ombre sous la
-   masse et à la raie) ;
-3. découpage en grandes mèches, qui suivent toutes le même mouvement ;
-4. contour posé autour des mèches, pointes ouvertes ;
-5. chaque mèche reçoit sa propre lumière et sa propre ombre ;
-6. variation de couleur (8c) : chaud en haut, rosé ou violet vers les pointes et dans les
-   ombres ;
-7. le reflet en arc se casse en tirets dans le sens des mèches.
+2. la lumière sur la masse entière (arc de reflet qui suit le crâne, ombre sous la masse
+   et à la raie) ;
+3. découpage en 3 à 6 grandes touffes qui suivent toutes le même mouvement ;
+4. contour autour des touffes, pointes ouvertes (E) ;
+5. chaque touffe reçoit son clair et son sombre ;
+6. variation de couleur (A5-8c) : chaud en haut, rosé ou violet vers les pointes et dans
+   les ombres ;
+7. l'arc de reflet se casse en tirets dans le sens des mèches ;
+8. mèches libres et éclats en tout dernier.
 
-**Mèches :**
-- Des mèches et touffes, jamais des fils. Épaisseurs et longueurs variées.
-- Une pointe finit sur **1 px**.
-- Cheveux en pointes : les plus longues à l'arrière ; leur hauteur suit un demi-cercle
-  autour du crâne.
-- Ondulé : des « S ». Bouclé : des demi-cercles plus petits vers les racines et les pointes.
-  Spirales : un cône qui se vrille. Tresse : 3 bandes, des « Y », puis arrondir.
-- Cheveux longs : plus fins en haut, plus gonflés en bas ; ils suivent les épaules et la
-  poitrine, ne tombent jamais tout droit.
-- Frange : épaisseurs variées. Mèches de côté : elles partent entre les yeux et les
-  oreilles. Raie : placée par rapport aux yeux.
-- Quelques mèches libres pour faire naturel.
+### C. Touffes et mèches
+- **Des touffes ou rubans, jamais des fils** : chaque touffe a son clair, son moyen et son
+  sombre, avec 2 ou 3 lignes de mèche **continues** à l'intérieur (des pointillés = bruit).
+- Une touffe qui coule fait **2 px de large** et s'affine vers une pointe de **1 px**.
+- Regrouper le détail en **îlots** (front, raie, pointes) et laisser de grandes zones
+  calmes. Aucun pixel orphelin.
+- Courbes régulières : marches qui montent ou descendent (1-1-2-3, 3-2-1-1), jamais 1-3-1.
+- **Pointe ou flick vers l'extérieur** : au moins **3 px de large à la base et 2 rangées**,
+  sinon la règle de contour la rend tout trait (elle se lit comme une antenne). Elle finit
+  sur 1 px de contour, pas sur un pixel de couleur isolé [T13][T14].
+- **Frange** : profil dessiné à la main, une longueur par colonne, alternance longue /
+  courte et une mèche centrale plus longue ou décalée. Mèches de côté : entre les yeux et
+  les oreilles. Raie placée par rapport aux yeux.
+- **Types** : pointes = les plus longues à l'arrière, hauteur en demi-cercle autour du
+  crâne ; ondulé = des « S » autour d'une ligne verticale ; bouclé = demi-cercles plus
+  petits vers les racines et les pointes ; spirale = cône qui se vrille ; tresse =
+  3 bandes, des « Y », puis arrondir.
+- **Plaqués en arrière** : la coiffure vient des lignes de mèche tirées vers l'arrière et du
+  reflet ; la masse reste collée au crâne (1 px au-dessus du trait) [T13].
+- **Favoris** : au niveau des tempes ; ils descendent vers la joue **1 px en retrait du bord
+  du visage**, sans toucher l'oreille [T13].
+- **Ahoge** (mèche rebelle) : 2 à 3 rangées au-dessus du crâne, courbée, d'un seul côté.
+  Un seul.
+- **Mèches libres** en dernier, comme accents, d'un seul côté de préférence (deux ou trois
+  en petit format). Les mèches avant longues s'arrêtent **avant les mains** et ne croisent
+  pas le bras [T14].
 
-**Couleur :**
+### D. Lumière et couleur
+- **Rampe : 3 valeurs d'une teinte + 1 reflet.** Un seul ton sans reflet = casque en
+  plastique. Glissement de teinte discret : ombres plus froides, clairs plus chauds (roux →
+  bordeaux à l'ombre, orange au clair ; blond → ocre et jaune pâle). Cheveux foncés : reflet
+  bleu ou violet désaturé, pas gris.
 - Clairs : surtout des ombres. Moyens : tons moyens et ombres franches. Foncés : masse
   sombre, reflet facultatif.
-- **Reflet en arc** qui suit le crâne, découpé en tirets dans le sens des mèches.
-- L'ombre suit le sens des cheveux. Ombre portée de 1 px sous la frange. Arrière du crâne,
-  nuque et dessous de l'attache dans l'ombre.
+- **Une seule source**, en haut et de face, sur un côté. Grande ombre du côté opposé et sous
+  la masse. Arrière du crâne, nuque et dessous de l'attache dans l'ombre.
+- **Ombre portée sous la frange** sur le front, et sous chaque touffe qui en recouvre une
+  autre : elle décolle les cheveux du visage et donne les couches. Peau plus sombre et plus
+  chaude, jamais noire. Sur une frange en biais, la limiter au haut des creux et sous les
+  pointes, sinon on voit des rayures [T14].
+- **Un reflet par touffe éclairée**, pas un par mèche : les reflets séparent les touffes.
+- **Interdits** : l'ombrage coussin (y compris un liseré clair qui fait le tour de la tête)
+  et le banding (A6-H). Remède : resserrer l'écart de valeurs, poser la limite au
+  terminateur, ou casser la bande en touffes.
 
-**Contrôle :** ligne des cheveux à la bonne hauteur ; mèches vers le point d'attache ;
-pointes à 1 px ; reflet en arc ; pointes visibles, pas cachées derrière un bras [T2].
+### E. Contour
+- **Selout** : sur le haut éclairé, le trait prend le bas de la rampe des cheveux ; en bas
+  et côté ombre, trait foncé pour protéger la silhouette.
+- Masque des cheveux posé à la main, puis **trait automatique seulement contre le vide ou
+  les vêtements**, jamais contre la peau. La **ligne des cheveux sur le front** se marque
+  par le contraste cheveux/peau : une longue bande sombre au front se lit comme des
+  sourcils ou un bandeau [T13][T14].
+- Une mèche de 2 ou 3 px posée sur la peau devient tout trait : la recolorer à la main
+  (cœur moyen, clair côté lumière, sombre côté ombre) [T13].
+- Un **jaggy voulu** peut séparer deux touffes du contour (A6-D).
+- L'ombrage **ne remplace jamais** un pixel de contour : vérifier qu'aucun trou n'apparaît
+  dans le trait après avoir ombré [T14].
+- **Pas d'AA** sous ~48 px de haut ; au-delà, un seul pixel intermédiaire sur les courbes
+  douces, jamais tout autour.
+
+### F. Style anime (ombrage cel)
+On exagère les formes, on réduit les tons, on soigne le contour.
+- **2 tons + 1 ombre profonde + 1 reflet**, limites franches (pas d'AA, pas de dégradé).
+  L'ombre est **plus saturée** que la base, pas seulement plus foncée.
+- **Pointe d'une mèche** : ton moyen ou clair sur la pointe, ombre profonde sur la colonne
+  voisine côté ombre. Une colonne entière d'ombre au bout d'une mèche se lit comme une
+  rayure [T14].
+- **Couronne de reflet (angel ring)** : arc clair qui suit l'arrondi du crâne au premier
+  tiers de la hauteur, en dents de scie (petits triangles vers le bas, alignés sur les
+  touffes). Toujours au même endroit d'une image d'animation à l'autre. Sous 48 px, 3 à
+  5 pixels suffisent.
+- **Éclats les plus clairs** (blanc chaud) en tout dernier : 1 ou 2 clusters, côté lumière.
+
+### G. Leçons des tests 13 et 14 (toile 32×39)
+- Coupe au carré « seau » (côtés droits, bas plat) : courber les côtés et faire dépasser
+  des pointes avant plus claires sur des cheveux de derrière plus sombres.
+- Pour remettre le visage sous la frange, ne recopier **que les pixels non vides** du corps
+  de base, sinon on efface la mâchoire et les cheveux de derrière.
+
+### H. Contrôle
+Ligne des cheveux à la bonne hauteur ; mèches vers le point d'attache ; pointes d'au moins
+2 rangées finies sur 1 px ; arc de reflet ; une seule lumière, sans coussin ni banding ;
+pas de trait noir contre le front ; pointes visibles, pas cachées derrière un bras [T2].
 
 ## C7. Astuces de figure [R]
 - Le geste d'abord, l'anatomie par-dessus : si les muscles cassent la ligne d'action, on
@@ -850,9 +922,9 @@ pointes à 1 px ; reflet en arc ; pointes visibles, pas cachées derrière un br
 3. Chaque articulation est-elle plausible ? Le deltoïde dépasse-t-il la cage (sauf en
    chibi, où il n'y a pas d'épaule marquée : règle 10) ? Le cou
    part-il de derrière la mâchoire ? Le pouce part-il du poignet ?
-4. Peut-on nommer les muscles qui font le contour de chaque membre (C9-I) ? Reste-t-il un
+4. Peut-on nommer les muscles qui font le contour de chaque membre (C9-H) ? Reste-t-il un
    bras « tube » ou un torse « rectangle » ?
-5. Les cheveux passent-ils le contrôle C6 ?
+5. Les cheveux passent-ils le contrôle C6-H ?
 6. À côté de la référence, le dessin tient-il la comparaison ?
 
 ## C9. Anatomie de référence [I]
@@ -1311,24 +1383,19 @@ Tailles d'œil retenues pour la vue de face : 11×12 à 96 px, 8×9 à 64 px et 
 
 ## C13. Chibi pas à pas : de la construction au sprite [T9]
 Inspiré de la façon dont un dessinateur construit un chibi (croquis, repères, volumes, puis
-encrage), et vérifié en dessinant « Pip » (alchimiste) en 32 puis en 64 px
-(`chibi/`). Tout ce qui est dans C1 à C12 reste valable ; C13 donne **l'ordre** et les
+encrage), et vérifié en dessinant « Pip » (alchimiste) en 32 puis en 64 px.
+Tout ce qui est dans C1 à C12 reste valable ; C13 donne **l'ordre** et les
 pièges propres au chibi.
 
 ### A. Proportions et construction (calques de couleur, R4)
 - **2,5 à 3 têtes** de haut ; tête ≈ 40 % de la hauteur ; yeux sous le milieu de la tête ;
   mains et pieds petits et ronds ; pas de cou visible ou presque.
-- **Tête ronde ou ovale de visage, pas en œuf** (règle impérative 13) : un rond ou un
-  ovale de visage humain simplifié, régulier, aux bords arrondis. Le bas est à peine
-  aplati et le menton reste large. Sur chibi2, la première tête était un œuf terminé en
-  pointe (le menton se fermait en 7 rangées : 24, 22, 20, 18, 14, 10, 6 px). Elle est
-  maintenant un ovale de visage doux : 26 px de large sur les rangées 19 et 20, puis 24,
-  22, 20, 16, 10 (`c02_fill.txt`, rangées 19 à 25).
-- **Pas d'épaule marquée** (règle impérative 10) : torse en cloche ou en trapèze étroit sous
-  la tête ; le contour glisse du cou au bras en une pente régulière, puis le bras pend le
-  long du torse, séparé par un seul trait. Pas de bosse de deltoïde, pas de marche. Sur
-  chibi2, la première version avait un deltoïde en escalier : c'était moche, il a été
-  remplacé par cette pente (`c02_fill.txt`, rangées 28 à 33).
+- **Tête ronde ou ovale de visage, pas en œuf** (règle 13). Sur chibi2, la première tête
+  se fermait en 7 rangées (24, 22, 20, 18, 14, 10, 6 px) : un œuf. Corrigée en ovale doux :
+  26 px sur 2 rangées, puis 24, 22, 20, 16, 10.
+- **Pas d'épaule marquée** (règle 10) : torse en cloche ou en trapèze étroit sous la tête ;
+  pente régulière du cou au bras, bras le long du torse séparé par un seul trait. Le
+  deltoïde en escalier de la première version de chibi2 était laid.
 - **Rouge = pose** : ligne d'action, axe de la tête, bâton des épaules et du bassin.
 - **Bleu = repères** : ligne des yeux, axe du visage, ligne du menton, sol.
 - **Vert = volumes** : cercle de la tête, haricot du torse, cylindres courts des membres,
@@ -1336,7 +1403,7 @@ pièges propres au chibi.
 - On regarde ce calque seul : la pose et la masse doivent déjà raconter le personnage.
 
 ### B. Ordre de travail (64 px) — v10 : le corps d'abord
-Ordre validé sur chibi2 (`chibi2/`, étapes 01 à 08). Une étape = un fichier de commandes
+Ordre validé sur chibi2 (étapes 01 à 08). Une étape = un fichier de commandes
 `cXX.txt` + `etapeXX_nom.txt` + son rendu.
 1. **Construction** (A) : pose rouge, repères bleus, volumes verts (`etape01`).
 2. **Silhouette du corps nu** à plat, contour pixel-perfect (A5-6) : tête ronde ou ovale de visage, torse,
@@ -1379,21 +1446,15 @@ Cinq rangées, de haut en bas :
 - **Contour** : selout du côté de la lumière, contour plein du côté de l'ombre (C10-F).
 - **Budget** : 14 à 20 couleurs à 64 px (Pip : 15).
 
-### E. Faiblesses restantes
-Corrigées sur chibi2 grâce au corps nu d'abord :
-- ~~Bras levé raide~~ : coude marqué dès le mannequin ;
-- ~~Jambes en colonnes~~ : contrapposto et rotules sur le corps nu ;
-- ~~Tunique plate~~ : plis aux articulations et ligne de tension du bras levé (C14-B).
-
-À corriger au prochain chibi :
-- **Frange** : encore un peu plate ; dessiner 3 ou 4 pointes nettes de 2 à 3 rangées.
+### E. À corriger au prochain chibi
+- **Frange** encore un peu plate : 3 ou 4 pointes nettes de 2 à 3 rangées.
 - **Main levée** : la manche s'arrête net au poignet ; ajouter un revers de 1 px plus clair.
-- **Pieds** : bottes vues trop de face ; tourner la botte d'appui vers l'extérieur.
+- **Pieds** : bottes trop de face ; tourner la botte d'appui vers l'extérieur.
 
 ---
 
 ## C14. Corps nu d'abord, vêtements en calque [T10]
-Testé sur chibi2 (explorateur qui salue, `chibi2/`). Idée : on règle **une seule fois** les
+Testé sur chibi2 (explorateur qui salue). Idée : on règle **une seule fois** les
 problèmes du corps (attaches, jointures, proportions), sur un mannequin nu. Ensuite on
 l'habille comme une poupée : chaque vêtement est un calque posé par-dessus, et on ne
 revérifie plus l'anatomie.
@@ -1444,15 +1505,10 @@ revérifie plus l'anatomie.
   2 rangées (règle impérative 24).
 - **Sacoche** : sans cadre tracé à la main, elle se fond dans le short (même valeur).
 
-### D. Fichiers de chibi2
-`c01` construction · `c02` silhouette du corps · `c03` ombres du corps · `etape04` corps
-final · `c05` + `c05b` vêtements (aplats, puis bords intérieurs) · `c06` visage · `c07`
-cheveux · `etape08_final` · `planche_finale.png`.
-
 ---
 
 ## C15. Créatures et monstres [T11]
-Test 11 : trois créatures originales en 64×64 (`pixel_art/monstres/`), une par langage de
+Test 11 : trois créatures originales en 64×64, une par langage de
 formes. Même pipeline que les personnages (construction R/B/G → silhouette → contour →
 volumes → détails → planche), avec les points propres aux bêtes ci-dessous.
 
@@ -1510,14 +1566,13 @@ l'arcade se pose plus haut, l'œil juste dessous.
 - **Végétal sur pierre** (mousse) : posé sur le dessus, il **drape** vers le bas du côté
   éclairé ; deux tons seulement, désaturés, pour ne pas voler l'accent.
 
-### G. Fichiers
-Chaque créature a son dossier et sa `palette.json` (≤ 15 couleurs + transparent ; les
-trois finales en ont 13, 13 et 14) : `c01` construction · `c02` silhouette · `etape03_contour`
-· `c04` volumes + bords intérieurs · `c05` détails (yeux, bouche, selout) · `etape_final` ·
-`planche_finale.png`. L'intention de chaque bête est dans `monstres/INTENTION.md`.
+### G. Palette et étapes
+Une `palette.json` par créature (≤ 15 couleurs + transparent ; les trois finales en ont 13,
+13 et 14). Étapes : construction → silhouette → contour → volumes et bords intérieurs →
+détails (yeux, bouche, selout) → final → planche.
 
 ## C16. Créatures complexes : morts-vivants et élémentaires [T12]
-Test 12 : trois créatures plus chargées en 64×64 (`pixel_art/monstres/`) : **Ossard**
+Test 12 : trois créatures plus chargées en 64×64 : **Ossard**
 (squelette guerrier), **Blêmoire** (liche en robe) et **Magmorne** (golem de magma). Même
 pipeline que C15. Une créature complexe garde **une** silhouette lisible et **un** accent
 saturé. La complexité vient des pièces qu'on assemble, pas du nombre de couleurs.
@@ -1581,7 +1636,7 @@ saturé. La complexité vient des pièces qu'on assemble, pas du nombre de coule
 | Bords intérieurs posés à la main (manche/corps, rocher/rocher) | `contour.py` ne voit que le vide |
 | Cavité sombre avant les détails (cage, capuche, orbites) | le détail clair se lit sur du sombre |
 
-Fichiers : identiques à C15-G. Ossard a 15 couleurs, Blêmoire 13 et Magmorne 9.
+Couleurs : Ossard en a 15, Blêmoire 13 et Magmorne 9.
 
 ---
 
@@ -1690,7 +1745,7 @@ par du sombre). Le bord haut de l'écharpe sert de trait de menton (C14-B7).
 
 **8. Cape, manteau long, robe.**
 - **Silhouette d'abord** : une cape, c'est d'abord une forme (triangle, cloche, rideau).
-  Faire la silhouette noire avant tout pli (A5-3).
+  Faire la silhouette noire avant tout pli (A5-5).
 - Points d'appui : les **épaules** (et l'attache au cou) ; les plis partent de là en
   **tuyaux** qui s'élargissent vers le bas. Entre les épaules dans le dos : un **hamac**.
 - **Intérieur visible** : là où la cape se retourne, on voit la doublure (couleur
@@ -1738,7 +1793,7 @@ par du sombre). Le bord haut de l'écharpe sert de trait de menton (C14-B7).
 | **Soie, satin** | très fort | **longs reflets fins** qui suivent chaque pli | très durs | beaucoup de petits plis, le clair et le sombre se touchent presque sans ton moyen |
 | **Velours** | inversé | les **bords** et les plis sont plus clairs que le centre face à nous | doux | ton sombre et saturé au centre, liseré clair sur la silhouette |
 | **Fourrure** | faible | — | — | ombrage lisse d'abord, puis on **taille** des touffes (triangles, mèches de 2-4 px) dans le contour et dans les limites d'ombre ; des touffes, pas des poils ; un peu de dither seulement à la limite |
-| **Métal** | maximal | petit, net, presque blanc | — | contre-reflet, reflet du ciel en haut (froid) et du sol en bas (chaud) ; voir D9 |
+| **Métal** | maximal | petit, net, presque blanc | — | contre-reflet, reflet du ciel en haut (froid) et du sol en bas (chaud) ; voir la recette 9 (armure) |
 
 ### G. Détails qui font « fini »
 - **Col, poignets, ourlets** : 1 rangée plus sombre ou plus claire ; l'épaisseur du tissu
@@ -1774,27 +1829,36 @@ par du sombre). Le bord haut de l'écharpe sert de trait de menton (C14-B7).
 5. **Lumières** et reflets selon la matière (C17-F).
 6. **Motif** s'il y en a un (C17-E).
 7. **Contour du calque** (`contour.py`), puis **bords intérieurs à la main** (C14-B5).
-8. **Détails** (C17-G), **nettoyage** (A6-C) et planche.
+8. **Détails** (C17-G), **nettoyage** (A6-H) et planche.
 
 ---
 
-# Partie D — Outils (dossiers `pixel_art/chibi/`, `pixel_art/chibi2/`, `pixel_art/monstres/`)
-Les scripts **ne décident rien** (R3) : ils posent ce qui a été décidé à la main, ou
-rendent l'image pour la regarder (R1).
+# Partie D — Outils et dossiers
+Les scripts sont dans `methode_dessin/outils/`. Ils **ne décident rien** (R3) : ils posent
+ce qui a été décidé à la main, ou rendent l'image pour la regarder (R1).
 
 | Outil | Usage | Rôle |
 |---|---|---|
-| `trace.py` | `python3 trace.py in.txt\|NEW:64x64 out.txt cmds.txt` | pose des primitives décidées : `px C x y`, `hline C x1 x2 y`, `vline C x y1 y2`, `rect`, `frame`, `disc C cx cy r`, `ring`, `rows C y x1 x2 […]`, `rep A B x1 y1 x2 y2` (remplace A par B dans une zone — à manier avec prudence, C13-D) |
-| `px.py` | `python3 px.py etape_XX.txt 8 palette64.json` | rend la grille texte (1 caractère = 1 pixel) en PNG à ×1 et agrandi avec grille |
-| `planche.py` | `python3 planche.py in.png out.png` | planche de contrôle : ×1, ×2, agrandi, fond clair et sombre, miroir, silhouette, gris, case d'inventaire |
-| `contour.py` | `python3 contour.py in.txt out.txt [CALQUE [CONTRE]]` | règle mécanique de contour. Sans argument : tout pixel plein qui touche le vide devient `O`. Avec `CALQUE` (ex. `tjJreEucChkHY`) : seules ces lettres qui touchent le vide, ou une lettre de `CONTRE` (ex. la peau `slmS`), deviennent `O` (C14-B) |
-| `outline.py` | — | ancienne aide au contour extérieur (chibi 1) |
+| `trace.py` | `python3 trace.py in.txt\|NEW:64x64 out.txt cmds.txt` | pose des primitives décidées : `px C x y`, `hline C x1 x2 y`, `vline C x y1 y2`, `rect C x1 y1 x2 y2`, `frame`, `disc C cx cy r`, `ring`, `rows C y x1 x2 […]`, `rep A B x1 y1 x2 y2` (remplace A par B dans une zone, `*` = tout pixel plein ; à manier avec prudence, C13-D) |
+| `px.py` | `python3 px.py etape_XX.txt 12 palette.json` | rend la grille texte (1 caractère = 1 pixel, `.` = vide) en `etape_XX.png` à ×1 et `etape_XX_vue.png` agrandi avec grille |
+| `contour.py` | `python3 contour.py in.txt out.txt [CALQUE [CONTRE]] [--trait=O]` | règle mécanique de contour. Sans calque : tout pixel plein qui touche le vide devient trait. Avec `CALQUE` (ex. `tjJreEucChkHY`) : seules ces lettres, si elles touchent le vide ou une lettre de `CONTRE` (ex. la peau `slmS`), deviennent trait (C14-B) |
+| `planche.py` | `python3 planche.py in.png out.png [situation.png]` | planche de contrôle (A5-11). Rangée 1 : ×1 et ×2 sur fond clair et sombre, miroir, silhouette, gris. Rangée 2 : ×4, image en situation si donnée, gris ×4 |
 
-Une étape = un fichier `etape_XX_nom.txt` + son rendu `.png` + `_vue.png`.
+- Une étape = `cXX.txt` (commandes) → `etapeXX_nom.txt` → `.png` + `_vue.png`.
+- **Lire une capture annotée** : sur une image `_vue`, une case = l'échelle du rendu (par
+  exemple 12 px). Les cases colorées par l'utilisateur donnent donc les coordonnées
+  exactes des pixels à changer.
+
+**Dossiers de tests** (dans `methode_dessin/`, chacun avec ses notes) :
+`test1_samourai` · `test2_samourai_v3` · `test3_objets` · `test4_objets_v4` ·
+`test5_personnages` · `test6_portraits` (`tete.py`, `construction.py`, `portrait.py`) ·
+`test9_chibi` · `test12_batiment` · `test13_chibi_template` (et `costume/`) ·
+`test14_cheveux`. Les fichiers de Pip, de chibi2 et des créatures (C13 à C16) n'ont pas été
+gardés : seules leurs leçons restent dans ce document.
 
 ---
 
-## Résumé
+# Résumé
 
 **Objet :** intention, usage et projection → cadre (diagonale pour les objets longs) →
 volumes et terminateur → simplification (A4b) → forme iconique → silhouette → contour →
@@ -1802,32 +1866,85 @@ palette → lumière selon la matière → variation de couleur → détails →
 en situation.
 
 **Personnage :** intention et références → proportions → pose → volumes → visage construit
-(C12) → vêtements → cheveux → table par taille (C10) → (portrait anime : C11) → silhouette →
-contour → palette → ombres à la main → détails → nettoyage → contrôle avec la référence.
+(C12) → vêtements → cheveux (C6) → table par taille (C10) → (portrait anime : C11) →
+silhouette → contour → palette → ombres à la main → détails → nettoyage → contrôle avec la
+référence.
 
 **Chibi (C13 + C14) :** croquis rouge (pose) → repères bleus → volumes verts → **corps nu**
-(silhouette, jointures, pas d'épaule marquée, ombres) → **validation du corps** → vêtements en calque (aplats 1 px
-hors du corps, ombres, plis, contour du calque, bords intérieurs à la main) → visage →
-cheveux en calque → accessoires → nettoyage → planche de contrôle (×1, ×2, gris, fond
-sombre).
+(silhouette, jointures, pas d'épaule marquée, ombres) → **validation du corps** →
+vêtements en calque (aplats 1 px hors du corps, ombres, plis, contour du calque, bords
+intérieurs à la main) → visage → cheveux en calque → accessoires → nettoyage → planche.
 
 **Créature (C15) :** langage de formes (rond / triangle / carré) et 2–3 marqueurs →
-construction R/B/G → silhouette refaite tant qu'elle forme un bloc (contrôle en noir) →
-contour → volumes (pattes lointaines plus sombres, émissifs à ombrage inversé) → bords
-intérieurs à la main → yeux selon le langage → selout → planche.
+construction R/B/G → silhouette refaite tant qu'elle forme un bloc → contour → volumes
+(pattes lointaines plus sombres, émissifs à ombrage inversé) → bords intérieurs à la main →
+yeux selon le langage → selout → planche.
 
 **Créature complexe (C16) :** silhouette assemblée de pièces (os, robe, rochers) → cavités
 sombres d'abord → asymétrie (bras levé, armure) → parties flottantes séparées par du vide →
-bords intérieurs à la main (joints de lave chez l'élémentaire) → un seul accent émissif →
-planche.
+bords intérieurs à la main → un seul accent émissif → planche.
 
 **Vêtement (C17) :** appuis et tensions → poids du tissu → silhouette → aplat 1 px hors
 du corps → ombre et AO → 1-3 plis depuis les tensions (ombre + lumière, pas de trait) →
 lumière selon la matière → motif qui suit la forme → contour du calque → détails.
 
-**Finition pro (A6) :** rampes à teinte tournante → une seule lumière, terminateur net →
-AO dans les creux → lumière réfléchie → selout → AA seulement sur les courbes dures →
-chasse aux doubles, jaggies, banding, orphelins.
+**Finition pro (A6) :** rampes à teinte tournante → budget de couleurs → une seule lumière,
+terminateur net → AO dans les creux → lumière réfléchie → selout → AA seulement sur les
+courbes dures → chasse aux sept défauts → tests de la planche.
 
 Un concept à la fois, du grand au petit. Aucun pixel de détail tant que la structure n'est
 pas juste.
+
+---
+
+# Sources web [R]
+
+**Rendu général, couleurs, contour :**
+[Derek Yu, bases](https://www.derekyu.com/makegames/pixelart.html)
+· [Derek Yu, erreurs fréquentes](https://derekyu.com/makegames/pixelart2.html)
+· [Slynyrd, palettes](https://www.slynyrd.com/blog/2018/1/10/pixelblog-1-color-palettes)
+· [pixnote, ombrage](https://pixnote.net/en/learn/shading/)
+· [pixnote, palette](https://pixnote.net/en/learn/color-palette/)
+· [pixnote, selout](https://pixnote.net/en/learn/outlines/)
+· [Lospec, contours](https://lospec.com/articles/pixel-art-outlines)
+· [Lospec, contours et couleur](https://lospec.com/articles/pixel-art-outlines-part-2-using-color)
+· [the-pixel.art, anticrénelage](https://the-pixel.art/articles/anti-aliasing/)
+· [the-pixel.art, glissement de teinte](https://the-pixel.art/articles/hue-shifting-pixel-art-shading/)
+· [the-pixel.art, design de personnage](https://the-pixel.art/articles/pixel-art-character-design/)
+· [Logbook, banding et coussin](https://the-logbook-project.blogspot.com/2013/04/pixel-art-lessons-jiinchus-darkness.html)
+· [androidarts](https://androidarts.com/pixtut/pixelart.htm)
+· [Humbird0, créer des sprites](https://humbird0.com/makes/tutorials/create_sprites/content.htm)
+· [MIT GDG, guide de style](https://gdg.mit.edu/style-guide)
+· [clusters et AA](https://www.toolify.ai/ai-news/pixel-art-tutorial-mastering-clusters-and-antialiasing-3479126)
+· [pixel-editor, théorie des couleurs](https://www.pixel-editor.com/articles/color-theory-for-pixel-art)
+· [Pixel Grimoire #7](https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-7-e504bfa4ddf2)
+· [DEV Community, guide complet](https://dev.to/autosprites/from-zero-to-mastery-a-complete-pixel-art-guide-for-modern-game-developers-205i)
+
+**Cheveux et fourrure :**
+[Lospec, tutoriels cheveux](https://lospec.com/pixel-art-tutorials/tags/hair)
+· [KawaiiHannah, ombre et lumière](https://kawaiihannah.com/pixelart/tutorials/shading-lighting/)
+· [KawaiiHannah, cheveux sans contour](https://kawaiihannah.com/pixelart/tutorials/lineless-pixel-doll-hair/)
+· [Slynyrd, visages et cheveux anime](https://slynyrd.com/blog/2020/7/28/pixelblog-29-anime-faces-and-hair)
+· [Aseprite, visage anime d'après Slynyrd](https://community.aseprite.org/t/anime-face-based-off-slyndyrd/19607)
+· [sprite-ai, pixel art anime](https://www.sprite-ai.art/blog/anime-pixel-art)
+· [Clip Studio, cheveux en cel](https://tips.clip-studio.com/en-us/articles/11408)
+· [Unity Toon Shader, angel ring](https://docs.unity3d.com/Packages/com.unity.toonshader@0.13/manual/AngelRing.html)
+· [DodoIcons, fourrure](https://www.deviantart.com/dodoicons/art/Pixel-fur-shading-tutorial-513887367)
+· [itch.io, fourrure](https://itch.io/t/2173926/pixel-tutorial-fur)
+
+---
+
+# Historique des versions
+
+- **v11 :** nettoyage. A6 et A7 fusionnées en une seule A6 « Finition pro » ; C6, C6b et
+  C6c fusionnées en une seule C6 « Cheveux » ; sommaire ajouté ; sources web réunies à la
+  fin ; partie D corrigée (vrais dossiers, usages exacts) ; renvois corrigés ; listes de
+  fichiers disparus retirées.
+- **v10.6 :** finition pro chiffrée (rampe, budget couleur, contour, tests) ; cheveux anime
+  (poids, flicks, ahoge, ombrage cel, angel ring, test 14).
+- **v10.5 :** cheveux, astuces de pro (touffes, lumière, rampe, selout, test 13).
+- **v10.4 :** C17 vêtements (plis de Bridgman, cônes, couches, matières) ; astuces de pro.
+- **v10.2 :** C15 créatures et monstres (test 11).
+- **v10.1 :** chibi sans épaule marquée ; tête ronde ou ovale, jamais en œuf.
+- **v10 :** règles impératives ; C14 corps nu d'abord (test 10) ; `contour.py` en calque.
+- **v9 :** C13 chibi pas à pas (test 9) ; leçons de la potion ; partie D.
