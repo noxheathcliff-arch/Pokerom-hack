@@ -1,9 +1,12 @@
-# Méthode de pixel art — objets et personnages (v10)
+# Méthode de pixel art — objets et personnages (v10.1)
 
 On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin classique
 (construction par volumes, ligne d'action, anatomie) et les règles du pixel art
 (silhouette, valeurs, clusters, lignes propres, rampes, lumière).
 
+> **v10.1 :** **chibi = pas d'épaule marquée** (règle impérative 10, C13-A, C14-A) : les bras
+> partent directement du torse, le contour glisse du cou au bras sans bosse de deltoïde.
+>
 > **v10 :** bloc **Règles impératives** en tête (tout ce que les tests ont appris, en
 > ordres courts) ; nouvelle section **C14** (corps nu d'abord, vêtements en calque, test 10
 > « chibi2 ») ; ordre du chibi (C13-B) refait : le corps nu passe avant tout le reste ;
@@ -77,8 +80,17 @@ Chaque règle est un ordre. Le détail et le « pourquoi » sont dans la section
    nettoyage et la planche (C13-B).
 
 **Corps**
-10. **Marque chaque jointure** : rondeur de l'épaule, creux d'aisselle, pli du coude,
-    poignet resserré, V de l'aine, rotule claire et ombre dessous, cheville resserrée.
+10. **Marque chaque jointure** : creux d'aisselle, pli du coude, poignet resserré, V de
+    l'aine, rotule claire et ombre dessous, cheville resserrée. **L'épaule dépend du style :**
+    - **Chibi (toujours en dessous de 64 px, et au-delà dès que la tête est grosse) : pas
+      d'épaule marquée.** Pas de bosse de deltoïde, pas de marche dans le contour. Le trait
+      descend du cou en **une pente régulière** (1 px de côté par rangée) jusqu'au bord
+      extérieur du bras. Ensuite, le bras pend droit, collé au torse, et seul un trait de
+      séparation l'en détache (C13-A). Une épaule marquée sur un chibi est laide : ne la
+      dessine jamais.
+    - **Exception :** un sprite plus grand que 64 px aux proportions plus réalistes (tête
+      plus petite pour paraître grand, comme les grands formats Pokémon) : là seulement,
+      l'épaule a sa rondeur de deltoïde (C14-A).
 11. **Donne un geste** : bras levé avec un coude, jambes en contrapposto. Jamais de membres
     en colonnes raides.
 12. **Remplis une rangée de plus sous les pieds** avant de poser le contour : sinon le
@@ -732,7 +744,8 @@ pointes à 1 px ; reflet en arc ; pointes visibles, pas cachées derrière un br
 ## C8. Contrôle propre aux personnages
 1. La pose exprime-t-elle l'intention ? Les proportions suivent-elles la colonne de têtes ?
 2. Le visage est-il attirant et majoritairement éclairé ? Se lit-il à ×1, comme les mains ?
-3. Chaque articulation est-elle plausible ? Le deltoïde dépasse-t-il la cage ? Le cou
+3. Chaque articulation est-elle plausible ? Le deltoïde dépasse-t-il la cage (sauf en
+   chibi, où il n'y a pas d'épaule marquée : règle 10) ? Le cou
    part-il de derrière la mâchoire ? Le pouce part-il du poignet ?
 4. Peut-on nommer les muscles qui font le contour de chaque membre (C9-I) ? Reste-t-il un
    bras « tube » ou un torse « rectangle » ?
@@ -952,8 +965,8 @@ recopié à l'identique, sinon l'animation tremble.
 ### J2. Leçons du test 5 (Lina en 16×32, 32, 64 et portraits 32/48/64) [T5]
 - **Œil à 32 px :** 2×3 (pupille sombre, reflet 1 px en haut du côté de la lumière, ton de
   l'iris en bas). Un 2×2 avec le reflet en bas lit comme un œil blanc ou un regard endormi.
-- **Corps à 64 px :** jamais un torse rectangle et des bras en tubes. Il faut épaules,
-  taille, hanches, coudes et mollets : au moins 1 px de variation de largeur à chaque
+- **Corps à 64 px :** jamais un torse rectangle et des bras en tubes. Il faut taille,
+  hanches, coudes et mollets (en chibi, l'épaule reste une simple pente : règle 10) : au moins 1 px de variation de largeur à chaque
   articulation.
 - **Frange :** les pointes de mèches sombres au-dessus des yeux lisent comme des sourcils
   froncés. Ton sombre seulement sur les côtés, frange relevée, une seule rangée d'ombre
@@ -1200,6 +1213,11 @@ pièges propres au chibi.
 ### A. Proportions et construction (calques de couleur, R4)
 - **2,5 à 3 têtes** de haut ; tête ≈ 40 % de la hauteur ; yeux sous le milieu de la tête ;
   mains et pieds petits et ronds ; pas de cou visible ou presque.
+- **Pas d'épaule marquée** (règle impérative 10) : torse en cloche ou en trapèze étroit sous
+  la tête ; le contour glisse du cou au bras en une pente régulière, puis le bras pend le
+  long du torse, séparé par un seul trait. Pas de bosse de deltoïde, pas de marche. Sur
+  chibi2, la première version avait un deltoïde en escalier : c'était moche, il a été
+  remplacé par cette pente (`c02_fill.txt`, rangées 28 à 33).
 - **Rouge = pose** : ligne d'action, axe de la tête, bâton des épaules et du bassin.
 - **Bleu = repères** : ligne des yeux, axe du visage, ligne du menton, sol.
 - **Vert = volumes** : cercle de la tête, haricot du torse, cylindres courts des membres,
@@ -1211,7 +1229,8 @@ Ordre validé sur chibi2 (`chibi2/`, étapes 01 à 08). Une étape = un fichier 
 `cXX.txt` + `etapeXX_nom.txt` + son rendu.
 1. **Construction** (A) : pose rouge, repères bleus, volumes verts (`etape01`).
 2. **Silhouette du corps nu** à plat, contour pixel-perfect (A5-6) : tête ronde, torse,
-   membres avec leurs jointures (C14-A). Une rangée de plus sous les pieds (`etape02`).
+   membres avec leurs jointures (C14-A), **sans épaule marquée** (pente cou → bras, règle 10).
+   Une rangée de plus sous les pieds (`etape02`).
 3. **Ombres du corps** : peau claire, moyenne, sombre ; ombre de tête étroite (`etape03`).
 4. **Corps final validé** : planche du corps seul (silhouette, ×1, gris). On ne passe pas à
    la suite tant que les jointures ne sont pas justes (`etape04`).
@@ -1274,7 +1293,7 @@ revérifie plus l'anatomie.
 
   | Jointure | Marque |
   |---|---|
-  | Épaule | rondeur du deltoïde, 1 px plus large que le bras |
+  | Épaule | **chibi : aucune marque**, pente régulière du cou au bras, bras collé au torse avec 1 trait de séparation (règle 10). Grand sprite aux proportions réalistes seulement : rondeur du deltoïde, 1 px plus large que le bras |
   | Aisselle | creux d'1 px en peau sombre |
   | Coude | pli d'1 px du côté intérieur, léger angle |
   | Poignet | resserré d'1 px avant la main |
@@ -1349,7 +1368,7 @@ en situation.
 contour → palette → ombres à la main → détails → nettoyage → contrôle avec la référence.
 
 **Chibi (C13 + C14) :** croquis rouge (pose) → repères bleus → volumes verts → **corps nu**
-(silhouette, jointures, ombres) → **validation du corps** → vêtements en calque (aplats 1 px
+(silhouette, jointures, pas d'épaule marquée, ombres) → **validation du corps** → vêtements en calque (aplats 1 px
 hors du corps, ombres, plis, contour du calque, bords intérieurs à la main) → visage →
 cheveux en calque → accessoires → nettoyage → planche de contrôle (×1, ×2, gris, fond
 sombre).

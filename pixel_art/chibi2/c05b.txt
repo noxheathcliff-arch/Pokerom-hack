@@ -1,6 +1,7 @@
 # ETAPE 05b - bords intérieurs posés à la main (le script ne les voit pas)
 # séparation manche gauche / torse
-vline O 24 33 36
+vline O 24 34 38
+px O 21 38
 # bandoulière (h clair dessus, H sombre dessous) épaule gauche -> hanche droite
 line h 27 32 36 40
 line H 27 33 35 40

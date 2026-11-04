@@ -1,23 +1,22 @@
 # ETAPE 05 - VETEMENTS en calque sur le corps nu validé (etape04)
 # Règle : aplats posés 1 px AU-DELÀ du bord du corps, puis contour.py sur le calque seul.
 # --- veste (j) : torse + manche gauche jusqu'au coude + manche du bras levé jusqu'au coude
-rows j 28 25 45  29 22 43  30 21 40  31 20 39  32 20 39  33 19 39  34 19 39  35 19 39  36 19 38
-rows j 37 25 38  38 25 38  39 25 38  40 25 38
+rows j 28 26 45  29 25 43  30 24 41  31 23 39  32 22 39  33 21 39  34 20 39  35 20 39  36 20 38  37 20 38  38 20 38
+rows j 39 25 38  40 25 38
 rows j 28 36 45  27 37 46  26 39 48  25 41 50  24 43 52  23 45 52
-# lumière (haut-gauche) : épaule, bord gauche, dessus de la manche levée
-rows t 29 23 26  30 22 24  31 21 22  32 21 21  33 20 21  34 20 20  35 20 20  36 20 20
+# lumière (haut-gauche) : pente cou->bras (pas d'épaule marquée en chibi), bord gauche, dessus de la manche levée
+rows t 29 26 28  30 25 26  31 24 25  32 23 24  33 22 23  34 21 21  35 21 21  36 21 21  37 21 21  38 21 21
 rows t 30 26 26  31 26 26  32 26 26  33 26 26  34 26 26  35 26 26  36 26 26  37 26 26  38 26 26
 rows t 27 39 41  26 41 43  25 43 45  24 45 47
 # ombre : côté droit du torse, dessous de la manche levée, intérieur de la manche gauche
 rows J 31 36 38  32 36 38  33 36 38  34 36 38  35 36 37  36 36 37  37 36 37  38 36 37  39 35 37  40 26 37
-rows J 33 23 23  34 23 23  35 23 23  36 23 23
+rows J 34 23 23  35 23 23  36 23 23  37 23 23  38 23 23
 rows J 29 40 42  28 42 44  27 44 45  26 46 47  25 48 49  24 50 51
 px J 47 25
 px J 48 24
 # plis tirés par le bras levé (aisselle -> hanche opposée) + pli du coude gauche
 line J 37 31 34 34
 line J 36 34 34 36
-px J 21 36
 # --- short (c)
 rows c 41 24 39  42 24 39  43 24 39  44 24 39  45 24 39  46 24 39
 rows c 47 24 31  48 24 31  49 24 31  47 33 39  48 33 39  49 33 39
