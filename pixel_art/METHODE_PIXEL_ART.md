@@ -1,9 +1,14 @@
-# Méthode de pixel art — objets et personnages (v10.1)
+# Méthode de pixel art — objets, personnages et créatures (v10.2)
 
 On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin classique
 (construction par volumes, ligne d'action, anatomie) et les règles du pixel art
 (silhouette, valeurs, clusters, lignes propres, rampes, lumière).
 
+> **v10.2 :** nouvelle section **C15** (créatures et monstres, test 11 : Mousseron,
+> Tisonard, Moellon) : un langage de formes par créature, silhouette refaite tant qu'elle
+> forme un bloc, pattes lointaines plus sombres, flamme émissive à ombrage inversé, bords
+> intérieurs posés à la main.
+>
 > **v10.1 :** **chibi = pas d'épaule marquée** (règle impérative 10, C13-A, C14-A) : les bras
 > partent directement du torse, le contour glisse du cou au bras sans bosse de deltoïde.
 > **Tête ronde ou ovale de visage, jamais en œuf ni en V** (règle impérative 13, C13-A) :
@@ -1358,7 +1363,74 @@ cheveux · `etape08_final` · `planche_finale.png`.
 
 ---
 
-# Partie D — Outils (dossiers `pixel_art/chibi/` et `pixel_art/chibi2/`)
+## C15. Créatures et monstres [T11]
+Test 11 : trois créatures originales en 64×64 (`pixel_art/monstres/`), une par langage de
+formes. Même pipeline que les personnages (construction R/B/G → silhouette → contour →
+volumes → détails → planche), avec les points propres aux bêtes ci-dessous.
+
+### A. Un langage de formes par créature (décidé à l'étape 01)
+| Créature | Langage | Lecture voulue | Marqueurs (2–3) | Accent saturé |
+|---|---|---|---|---|
+| **Mousseron** (champignon-esprit) | rond | doux, ami | chapeau, pousse sur la tête, queue-feuille | joues roses |
+| **Tisonard** (renard d'obsidienne) | triangle | rapide, dangereux | museau en coin, 3 épines, flamme de queue | flamme |
+| **Moellon** (tortue de pierre) | carré | lourd, lent, solide | carapace en dalles, arcade lourde, pattes-piliers | cristaux |
+
+Le langage décide **tout** : contour de la tête, forme des yeux (rond = gros œil brillant ;
+triangle = amande inclinée ; carré = œil mi-clos sous une arcade), forme des pieds, même
+le sommet des cristaux (chanfreinés, pas pointus, chez Moellon).
+
+### B. Silhouette : refaire tant qu'elle forme un bloc
+- **Tête et corps en un seul rectangle** (Tisonard v1) : illisible. Une tête plus petite
+  en coin, un **poitrail profond** et une **taille creusée** séparent les masses.
+- **Pattes en pieds de table** : verticales, de même largeur, collées. Coude la patte
+  arrière (cuisse → jarret → pied), évase le pied, et laisse un vide entre les pattes.
+- **Flamme en œuf** : une flamme a 2–3 langues de longueurs différentes.
+- **Queue en rectangle, pieds en dalles** (Mousseron v1) : effilée pour la queue, arrondie
+  pour les pieds.
+- **Cristaux en bâtonnets** (Moellon v1) : prismes trapus de 4–6 px, en groupe.
+- **Tête trop petite** sur une grosse carapace : elle disparaît à ×1. Agrandis-la jusqu'à
+  ce que l'œil se lise sur la planche.
+- Contrôle : **silhouette noire** de la planche. Si on ne reconnaît pas la bête, on refait
+  l'étape 02, pas l'ombrage.
+
+### C. Pattes lointaines
+Les pattes du côté opposé sont **plus sombres d'un cran** (entièrement dans l'ombre). Si
+une patte proche touche une patte lointaine de même valeur, pose un **bord `O` à la main**
+entre les deux (Moellon : `vline O 46 41 47`). L'ombre portée du corps tombe en haut des
+pattes (1–2 rangées sombres).
+
+### D. Matières émissives (flamme, braise, cristal lumineux)
+- **Ombrage inversé** : cœur clair (`f` presque blanc) **en bas au centre**, puis `F`, puis
+  `e` sur les bords. La lumière vient de l'objet, pas de la lampe haut-gauche.
+- **Contour rouge sombre `E`** au lieu de `O` : un contour violet éteint la flamme.
+- La flamme **éclaire ce qui la touche** : la queue juste dessous prend la teinte claire.
+- Un reflet de la braise peut revenir ailleurs (intérieur d'oreille `e`, iris `F`) : il relie
+  l'accent au reste de la créature sans ajouter de couleur.
+
+### E. Bords intérieurs à la main
+`contour.py` ne trace que le bord avec le vide. Tout ce qui se recouvre doit recevoir un
+trait posé à la main : arcade au-dessus de l'œil, prismes de cristal entre eux, orteils
+(`vline O` sur les 2 rangées du pied), pli entre oreille et crâne, séparation des pattes.
+Un trait **horizontal au milieu de la tête** se lit comme une bouche ouverte (Moellon v1) :
+l'arcade se pose plus haut, l'œil juste dessous.
+
+### F. Matières
+- **Pierre** : dalles carrées séparées par des sillons d'un cran plus sombres, chaque
+  dalle avec un biseau clair en haut-gauche ; ombre propre en bas-droite de la masse.
+- **Obsidienne** : violets froids, lumière en `a/q` lavande (pas blanc), faces gauches des
+  épines claires, faces droites sombres.
+- **Végétal sur pierre** (mousse) : posé sur le dessus, il **drape** vers le bas du côté
+  éclairé ; deux tons seulement, désaturés, pour ne pas voler l'accent.
+
+### G. Fichiers
+Chaque créature a son dossier et sa `palette.json` (≤ 15 couleurs + transparent ; les
+trois finales en ont 13, 13 et 14) : `c01` construction · `c02` silhouette · `etape03_contour`
+· `c04` volumes + bords intérieurs · `c05` détails (yeux, bouche, selout) · `etape_final` ·
+`planche_finale.png`. L'intention de chaque bête est dans `monstres/INTENTION.md`.
+
+---
+
+# Partie D — Outils (dossiers `pixel_art/chibi/`, `pixel_art/chibi2/`, `pixel_art/monstres/`)
 Les scripts **ne décident rien** (R3) : ils posent ce qui a été décidé à la main, ou
 rendent l'image pour la regarder (R1).
 
@@ -1390,6 +1462,11 @@ contour → palette → ombres à la main → détails → nettoyage → contrô
 hors du corps, ombres, plis, contour du calque, bords intérieurs à la main) → visage →
 cheveux en calque → accessoires → nettoyage → planche de contrôle (×1, ×2, gris, fond
 sombre).
+
+**Créature (C15) :** langage de formes (rond / triangle / carré) et 2–3 marqueurs →
+construction R/B/G → silhouette refaite tant qu'elle forme un bloc (contrôle en noir) →
+contour → volumes (pattes lointaines plus sombres, émissifs à ombrage inversé) → bords
+intérieurs à la main → yeux selon le langage → selout → planche.
 
 Un concept à la fois, du grand au petit. Aucun pixel de détail tant que la structure n'est
 pas juste.

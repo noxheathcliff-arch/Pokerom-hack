@@ -1,0 +1,19 @@
+# ETAPE 01 - construction : rouge = pose / sol, bleu = reperes, vert = volumes
+# corps-tete en une seule boule (forme ronde = gentil, ~70 %)
+ring G 30.5 37 15.5
+# axe de symetrie et ligne des yeux
+vline B 30 20 54
+hline B 18 43 33
+# pousse sur la tete (marqueur 1) : tige + 2 feuilles + bouton
+vline R 30 10 21
+line G 23 12 29 15
+line G 40 10 32 14
+ring G 30.5 10.5 1.5
+# queue-feuille (marqueur 2) qui remonte derriere a droite
+line R 47 41 58 26
+line G 48 38 52 31
+line G 52 41 58 32
+# pieds courts + sol (une rangee libre sous les pieds)
+ring G 21 53 3.5
+ring G 40 53 3.5
+hline R 8 54 57

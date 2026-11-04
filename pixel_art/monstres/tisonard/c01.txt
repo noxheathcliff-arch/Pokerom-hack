@@ -1,0 +1,18 @@
+# ETAPE 01 - construction : langage TRIANGLE (rapide, dangereux). Pose basse, tete en coin vers la gauche.
+# R = ligne d'action (museau -> dos -> queue qui remonte), B = reperes, G = volumes
+line R 6 27 34 27
+line R 34 27 52 32
+line R 52 32 57 22
+line R 57 22 57 9
+hline B 6 34 22
+line G 6 27 15 18
+line G 6 27 18 31
+line G 16 17 19 8
+line G 26 17 30 9
+ring G 37 37 9
+ring G 46 38 6
+vline G 24 42 52
+vline G 31 42 52
+vline G 38 42 52
+vline G 46 42 52
+hline R 4 60 53

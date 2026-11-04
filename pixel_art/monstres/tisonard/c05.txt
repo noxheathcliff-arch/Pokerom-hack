@@ -1,0 +1,14 @@
+# ETAPE 05 - details : oeil en amande incline (triangle = menace), braise F dans l'iris,
+# reflet W du meme cote (haut-gauche), museau, gueule + croc blanc, selout clair sur le dos.
+rows O 19 23 27
+rows O 20 21 21  20 27 27  21 22 22  21 26 26  22 23 25
+rows W 20 22 22
+rows F 20 23 23  20 25 26  21 23 23  21 25 25
+rows K 20 24 24  21 24 24
+# narine
+px O 9 22
+# gueule : trait qui remonte vers l'arriere (rictus), croc
+line O 10 24 17 24
+px W 15 25
+# selout : le contour exterieur prend la teinte claire du cote eclaire (haut du crane)
+rows m 15 20 22

@@ -1,0 +1,24 @@
+# ETAPE 05 - details : yeux chibi 5 rangs (reflet meme cote, haut-gauche), bouche, joues (accent rose)
+rows O 31 22 23  32 21 24  33 21 24  34 21 24  35 22 23
+rows K 32 22 23  33 22 23  34 22 24
+px W 22 32
+rows O 31 38 39  32 37 40  33 37 40  34 37 40  35 38 39
+rows K 32 38 39  33 38 39  34 38 40
+px W 38 32
+# bouche : petit v
+px O 29 37
+px O 31 37
+px O 30 38
+# joues
+hline p 18 20 37
+hline p 41 43 37
+# feuilles de la pousse : nervure sombre, bouton ombre a droite
+hline v 23 26 14
+hline v 34 37 12
+px P 32 11
+px P 32 12
+px P 31 13
+# selout cote lumiere : contour adouci en vert fonce sur le haut-gauche
+rows V 21 27 28
+px V 22 23
+px V 19 24

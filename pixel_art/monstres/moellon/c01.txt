@@ -1,0 +1,10 @@
+# ETAPE 01 - construction : langage CARRE (lourd, stable, lent). Profil vers la droite.
+# R = ligne d'action quasi horizontale (poids), B = reperes (sol, haut de carapace), G = volumes en blocs
+hline R 8 60 30
+hline B 4 60 51
+hline B 12 48 16
+rect G 12 16 48 39
+rect G 49 26 60 36
+rect G 13 39 21 50
+rect G 37 39 45 50
+rect G 26 7 34 16
