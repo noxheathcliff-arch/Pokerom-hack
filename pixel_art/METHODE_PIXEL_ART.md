@@ -1,9 +1,15 @@
-# Méthode de pixel art — objets, personnages et créatures (v10.3)
+# Méthode de pixel art — objets, personnages et créatures (v10.4)
 
 On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin classique
 (construction par volumes, ligne d'action, anatomie) et les règles du pixel art
 (silhouette, valeurs, clusters, lignes propres, rampes, lumière).
 
+> **v10.4 :** nouvelle section **C17** (vêtements du simple au complexe : appuis et
+> tensions, poids du tissu, les sept plis de Bridgman en pixels, jupe en cônes, couches,
+> cape, armure, motifs qui suivent la forme, matières) et **A6** (astuces de pro : hue
+> shifting, selout, AA parcimonieux, doubles, jaggies, banding, coussin, terminateur net,
+> AO, lumière réfléchie).
+>
 > **v10.2 :** nouvelle section **C15** (créatures et monstres, test 11 : Mousseron,
 > Tisonard, Moellon) : un langage de formes par créature, silhouette refaite tant qu'elle
 > forme un bloc, pattes lointaines plus sombres, flamme émissive à ombrage inversé, bords
@@ -33,6 +39,8 @@ On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin cla
   portrait anime (3/4, mèches, yeux, couleurs) ; **C12** construit le visage (Loomis + anime) ;
   **C13** donne l'ordre complet d'un **chibi** (2,5 à 3 têtes), du croquis au contrôle ;
   **C14** explique comment habiller un corps nu validé, vêtement par vêtement, en calque ;
+  **C17** explique comment rendre le vêtement (plis, matières, motifs) ; **A6** réunit les
+  astuces de pro (rampes, selout, AA, défauts à traquer) ;
 - un dessin suit B ou C pour la construction, puis le pipeline A5 pour les pixels ;
 - la section **A4b** (simplifier) s'applique dès qu'une taille est imposée ;
 - la **partie D** liste les petits outils (`trace.py`, `px.py`, `planche.py`) pour poser les
@@ -47,7 +55,8 @@ On construit d'abord, on détaille ensuite. Cette méthode réunit le dessin cla
 | Langage de formes | A4b (règle) · C5 (vêtements) |
 | Frange et sourcils | C6 · C10-J2 · C12-F · C13-D |
 | Liquide, verre | A5-8b · B5 · C13-D |
-| Vêtements | C5 (design) · C13-B · **C14** (calque sur corps nu) |
+| Vêtements | C5 (design) · C13-B · C14 (calque sur corps nu) · **C17** (plis, matières, recettes) |
+| Rendu pro (rampes, AA, défauts) | **A6** · A5-10 |
 | Jointures du corps | C2 · C3 · C14-A |
 
 **Sources :** [Z] *Apprendre à tout dessiner avec Zephy* · [M] livre de dessin manga · [I]
@@ -466,6 +475,83 @@ objectifs du dessin suivant.
 
 ---
 
+## A6. Astuces de pro : rendu propre [R]
+Ce qui sépare un sprite « correct » d'un sprite « pro ». À appliquer à chaque étape du
+pipeline A5, puis à vérifier une dernière fois au nettoyage (A5-10).
+
+### A. Rampes et décalage de teinte (hue shifting)
+- **Une rampe = 4 à 6 tons** d'une même matière, du plus sombre au plus clair. La valeur
+  monte régulièrement ; on vérifie la rampe en gris (marches égales, aucun saut).
+- **La teinte tourne le long de la rampe** : vers le bleu ou le violet dans l'ombre, vers
+  le jaune ou l'orange dans la lumière (lumière chaude = ombres froides). Un ombrage qui ne
+  fait que noircir la couleur paraît sale et plat.
+- **Saturation :** plus forte dans les tons moyens, plus faible aux deux bouts. Une ombre
+  très sombre et très saturée « brûle » ; un reflet blanc pur et saturé « éclate ».
+- **Rampes partagées :** l'ombre de la peau peut être le ton moyen des cheveux, l'ombre du
+  tissu rouge peut être un violet déjà dans la palette. Moins de couleurs, plus d'unité.
+- **Pas de noir pur, pas de blanc pur** sauf exprès (pupille, éclat de métal). Le trait
+  le plus sombre est le bas de la rampe la plus sombre (ici `O #2a1a2e`, un violet).
+
+### B. Contour sélectif (selout) et « tout ou rien »
+- **Selout :** le contour prend la couleur la plus sombre de la matière qu'il borde, au lieu
+  d'un trait uniforme. Côté lumière, il s'éclaircit (ton sombre de la rampe) ou s'ouvre
+  sur 1 à 3 px ; côté ombre, il reste au plus sombre. La silhouette garde sa lecture et le
+  sprite gagne du volume.
+- **Bords intérieurs plus doux que le contour extérieur :** un pli, la limite d'une
+  manche ou d'une mèche se trace avec un ton sombre de la matière, pas avec `O`.
+- **Tout ou rien :** soit tout le sprite a un contour (même s'il est sélectif), soit
+  aucun. Un sprite à moitié contouré paraît inachevé.
+
+### C. Les sept défauts à traquer
+| Défaut | Ce que c'est | Correction |
+|---|---|---|
+| **Doubles (« L »)** | coin en L dans une ligne d'1 px : 3 pixels là où 2 suffisent | enlever le pixel du coin (ligne « pixel perfect ») |
+| **Jaggies** | escalier irrégulier : 3-1-2-1-3 au lieu d'une progression | marches régulières (2-2-2) ou qui changent doucement (3-2-1 pour une courbe) |
+| **Banding** | deux bandes de tons qui suivent le même bord avec des marches de même longueur : l'œil voit des lignes, pas une forme | décaler les marches, varier les longueurs, fondre une bande dans l'autre |
+| **Ombrage coussin** | ombre tout autour du contour, clair au centre : pas de source de lumière | une seule direction de lumière (haut-gauche) : le côté haut-gauche reste clair jusqu'au bord |
+| **Orphelins** | pixel isolé d'une couleur, sans voisin de même couleur | le supprimer, ou l'accrocher à un cluster |
+| **Bruit** | trop de petits clusters de 1-2 px : texture qui grésille | regrouper en grandes taches ; un détail = un cluster lisible |
+| **Dithering décoratif** | damier pour « faire un dégradé » sur un petit sprite | réservé aux textures (cotte de mailles, pierre, fourrure clairsemée) ou aux grands aplats |
+
+### D. Anticrénelage (AA) : avec parcimonie
+- **Où :** seulement là où une courbe ou une pente fait un escalier trop dur à ×1 (joue,
+  épaule ronde, bord de cape). **Jamais** sur une ligne droite, ni sur une pente à 45° ou
+  2:1 régulière : elles sont déjà propres.
+- **Comment :** l'AA prend un ton intermédiaire **déjà dans la palette**. La longueur de
+  la rangée d'AA suit la longueur de la marche : marche de 4 px → AA de 2 px ; marche de
+  2 px → AA d'1 px. L'AA se pose dans le sens de la pente.
+- **Pas d'AA vers l'extérieur** d'un sprite qui bouge sur plusieurs fonds (déjà en A5-10).
+- Trop d'AA rend le sprite flou : à ×1, un contour doit rester net.
+
+### E. Lumière : les quatre zones
+1. **Lumière directe** (haut-gauche) : grandes zones claires, le reflet le plus clair en
+   un seul petit cluster sur le point le plus proche de la lumière.
+2. **Terminateur net** : la limite lumière/ombre est **franche** (1 ton intermédiaire au
+   plus). Un dégradé lent sur tout le volume = forme molle.
+3. **Occlusion ambiante (AO)** : le ton le plus sombre seulement dans les creux et les
+   contacts (sous le menton, aisselle, sous la ceinture, plis profonds, pieds au sol).
+4. **Lumière réfléchie et contre-jour** : un ton à peine plus clair sur le bord **dans
+   l'ombre** (lumière renvoyée par le sol) ; jamais aussi clair que la lumière directe.
+   Le contre-jour (rim light) est un liseré clair d'1 px sur le bord opposé : à réserver
+   à une ambiance (feu, magie, nuit).
+
+### F. Ordre de travail d'un pro
+Aplats (couleur moyenne de chaque matière) → valeurs vérifiées en gris → ombre propre
+(une direction) → AO dans les creux → lumière et reflets → lumière réfléchie → contour
+sélectif → AA → nettoyage (doubles, orphelins, banding) → planche. On ne revient pas aux
+détails tant que l'étape précédente ne se lit pas à ×1.
+
+### G. Contrôle « pro » (s'ajoute à A5-11)
+1. En gris, chaque matière a-t-elle sa valeur ? Le visage ou le point d'intérêt a-t-il
+   le contraste le plus fort ?
+2. Les ombres virent-elles au froid et les lumières au chaud ?
+3. Reste-t-il un « L », un escalier irrégulier, une bande parallèle, un orphelin ?
+4. L'ombre suit-elle une seule lumière, sans coussin ?
+5. L'AA est-il posé seulement sur les courbes dures ?
+6. Le contour est-il sélectif et cohérent (tout ou rien) ?
+
+---
+
 # Partie B — Objets
 
 ## B0. Intention
@@ -691,6 +777,8 @@ yeux.
 deux moitiés claire et sombre (effet masque), sauf intention dramatique.
 
 ## C5. Vêtements et design
+> Rendu détaillé (plis, matières, motifs, recettes par vêtement) : **C17**.
+
 - Les vêtements épousent les volumes, puis s'en écartent selon le tissu. Les plis partent
   des points de tension (épaules, coudes, taille, genoux).
 - **Langage de formes :** voir A4b (rond = doux, carré = solide, triangle = dangereux).
@@ -1497,6 +1585,199 @@ Fichiers : identiques à C15-G. Ossard a 15 couleurs, Blêmoire 13 et Magmorne 9
 
 ---
 
+## C17. Vêtements : du simple au complexe [R]
+Complète C5 (design) et C14 (calque sur corps nu). C14 dit **où** poser le vêtement ;
+C17 dit **comment le rendre** : poids du tissu, plis, motifs, matières, puis des recettes
+pièce par pièce. Lumière haut-gauche, trait `O`, rampes de A6.
+
+### A. Les trois questions avant de poser un pixel
+1. **D'où pend le tissu ?** Repérer les **points d'appui** : épaules, haut des bras, taille
+   (ceinture), hanches. Le tissu s'y accroche, et tout le reste pend ou se tend depuis là.
+2. **Où est-il tiré ou compressé ?** Les **points de tension** : aisselle, coude plié,
+   genou plié, entrejambe, ceinture serrée, bras levé. Les plis **rayonnent** de ces
+   points, comme des rayons d'un moyeu, et meurent en s'éloignant.
+3. **Quel poids ?** Tissu lourd (laine, cuir, manteau) : **peu de plis, grands et
+   arrondis**. Tissu léger (soie, coton fin) : **beaucoup de petits plis, fins et nets**.
+   Vêtement moulant : petits plis en U aux articulations, presque rien ailleurs.
+
+**Règle d'or :** on dessine **moins** de plis qu'on n'en voit. À 32 px, 1 à 3 plis par
+pièce de vêtement, placés aux points de tension. Un pli qui n'explique rien est du bruit.
+
+### B. Les sept plis (Bridgman) et leur recette pixel
+| Pli | Où | Forme | Recette pixel |
+|---|---|---|---|
+| **Tuyau** (pipe) | tissu qui pend d'un point : bas de jupe, rideau, cape | cylindres verticaux qui s'élargissent vers le bas | bandes verticales : ton clair (côté lumière du tube) puis ton sombre ; bas de l'ourlet en vague (creux et bosses alternés) |
+| **Zigzag** | tube plié ou compressé : manche retroussée, derrière du genou, bas de pantalon tassé sur la botte | V emboîtés, alternés gauche/droite | chevrons de 2-3 px en ton sombre, décalés d'une rangée à l'autre ; ne pas les aligner (banding) |
+| **Spirale** | tissu enroulé autour d'un membre : manche moulante, bandage, jambière | diagonales parallèles qui tournent autour du cylindre | courtes diagonales sombres régulières, toutes dans le même sens ; plus serrées sur le bord (le cylindre tourne) |
+| **Demi-nœud** (half-lock) | là où le tube change de direction : coude, genou, hanche | gros pli en forme de nœud à l'intérieur du coude | 1 cluster sombre en virgule du côté intérieur de l'articulation + 1 px clair au-dessus ; côté extérieur tendu, lisse |
+| **Hamac** (diaper) | tissu tendu entre deux appuis : col bénitier, entrejambe, cape entre les épaules, écharpe | U ou V qui pendent | arcs en U sombres emboîtés, le plus profond au centre ; 1 ligne claire sur le haut de chaque arc |
+| **Chute** (drop) | tissu qui tombe d'un appui unique : manche de toge, foulard, drapeau au repos | cône qui s'évase | un pli tuyau qui part en pointe de l'appui et s'ouvre ; ombre forte juste sous l'appui (AO) |
+| **Inerte** | tissu posé au sol ou sur un objet | plis écrasés, irréguliers | clusters plats, peu de contraste, ombre portée sous le tissu |
+
+Variante Proko utile au mouvement : **compression** (tissu tassé : accordéon de petits
+plis courts, par ex. manche remontée sur l'avant-bras) et **drapeau** (tissu emporté par
+le vent ou le mouvement : grandes vagues qui partent du point d'attache et vont dans le
+sens opposé au mouvement).
+
+### C. Dessiner un pli en pixels
+- **Pas de trait pour un pli.** Un pli = une **ombre** (ton sombre de la matière) collée à
+  une **lumière** (ton clair) du côté de la source. Le `O` est réservé au contour et aux
+  vraies séparations de pièces.
+- **Bords mixtes :** le côté du pli qui se creuse (vers l'ombre) est **dur** (passage
+  direct clair → sombre) ; le côté qui remonte doucement est **doux** (un ton moyen
+  intermédiaire, ou la marche s'allonge). Que des bords durs = tissu en carton ; que des
+  bords doux = plastique fondu.
+- **Le pli suit la forme :** sur un cylindre (bras, jambe), il est courbe ; sur le torse,
+  il descend en diagonale depuis le point de tension. Jamais de pli parfaitement
+  horizontal ou vertical sur un corps, sauf le tuyau d'une jupe.
+- **Le pli casse le contour :** là où un pli important arrive au bord, la silhouette fait
+  une petite encoche ou une bosse d'1 px. C'est ce qui rend le tissu « vrai » à petite
+  taille.
+- **Taille du sprite :**
+
+  | Taille | Plis | Ourlets et coutures |
+  |---|---|---|
+  | 16 px | aucun pli : 2 tons (clair / sombre) par pièce suffisent | rien ; la ceinture est une rangée de couleur |
+  | 24-32 px | 1-3 plis par pièce, aux articulations ; un pli = 2-3 px sombres | ourlet = 1 rangée plus sombre ; col en 2-3 px |
+  | 48-64 px | plis tuyau, hamac et demi-nœud lisibles ; bords mixtes | ourlets, revers, coutures de 1 px (ton sombre, pointillés si piqûre) |
+  | 96-128 px | tout le vocabulaire ; textures de matière (A6, C17-F) | boutons, boutonnières, piqûres, usure des bords |
+
+### D. Recettes par vêtement (du plus simple au plus complexe)
+**1. T-shirt / haut simple.**
+Aplat 1 px hors du corps (C14-B). Ombre sous la poitrine et sur le côté opposé à la
+lumière. Pli **hamac** léger sous le col si le col est large ; **demi-nœud** à
+l'aisselle (1 virgule sombre). Ourlet de manche : 1 rangée sombre + encoche dans la
+silhouette. Le bas du t-shirt ne fait **pas** une ligne droite : il suit le bassin
+(légère courbe vers le bas au centre en 3/4).
+
+**2. Pantalon.**
+Les plis partent de l'**entrejambe** (hamac en V) et des **genoux** (demi-nœud derrière,
+zigzag si la jambe est pliée). Jambe tendue : un long tuyau qui part de la hanche, ombre
+sur le côté intérieur. Bas du pantalon : petit **zigzag** de compression s'il tombe sur la
+chaussure (2-3 chevrons). Couture extérieure en 1 px sombre seulement à 64 px et plus.
+
+**3. Short, jupe courte.**
+Le bord bas est un **cylindre vu de biais** : l'ourlet est une courbe (ellipse), pas une
+droite ; on voit l'intérieur sombre du tube sur 1 rangée côté ombre.
+
+**4. Jupe = cônes.**
+Dessiner la jupe comme **un grand cône** (de la taille à l'ourlet), puis découper en **cônes
+plus petits** (les godets). Chaque petit cône a son côté clair (vers la lumière) et son
+côté sombre ; les creux entre deux cônes sont les plus sombres (AO). L'ourlet ondule :
+bosse sous chaque cône, creux entre deux. Jupe plissée : cônes réguliers et étroits,
+bords durs ; jupe ample : peu de cônes, bords doux.
+
+**5. Veste ou chemise par-dessus (superposition).**
+Chaque couche = un calque (C14). Règles :
+- la couche du dessus **projette une ombre** d'1 px sur celle du dessous (sous le col,
+  sous le revers, au bord de la veste ouverte) ;
+- la couche du dessus est **1 px plus large** que celle du dessous ;
+- une veste ouverte montre la chemise en **bande verticale** au centre, plus claire si
+  c'est la chemise, avec l'ombre de la veste sur ses bords ;
+- un revers de col = un triangle clair (dessus du revers) + son ombre dessous.
+
+**6. Ceinture, sangles, bretelles.**
+Elles **serrent** : le tissu au-dessus et au-dessous fait de petits plis qui rayonnent
+(hamac court de 2 px de chaque côté). Une sangle en diagonale : rangée claire dessus,
+sombre dessous (chibi2 : `h` / `H`), et elle **enfonce** le tissu (1 px d'ombre de chaque
+côté). Boucle : 2×2 à 3×3 px, ton métal le plus clair au coin haut-gauche.
+
+**7. Écharpe, foulard, col roulé.**
+Volume **épais** autour du cou : un tore. Le haut est clair, le dessous très sombre
+(AO sur le menton et la poitrine). Les tours de l'écharpe font des **hamacs** ; le pan qui
+tombe fait une **chute** (cône) avec un ourlet en bout (frange : 2-3 px clairs séparés
+par du sombre). Le bord haut de l'écharpe sert de trait de menton (C14-B7).
+
+**8. Cape, manteau long, robe.**
+- **Silhouette d'abord** : une cape, c'est d'abord une forme (triangle, cloche, rideau).
+  Faire la silhouette noire avant tout pli (A5-3).
+- Points d'appui : les **épaules** (et l'attache au cou) ; les plis partent de là en
+  **tuyaux** qui s'élargissent vers le bas. Entre les épaules dans le dos : un **hamac**.
+- **Intérieur visible** : là où la cape se retourne, on voit la doublure (couleur
+  différente, plus sombre ou complémentaire). Ça donne de l'épaisseur et de la couleur.
+- **Ourlet** : ondulé (bosses sous les tuyaux), jamais une règle droite. Une cape en
+  mouvement fait des **drapeaux** : grandes vagues opposées au mouvement.
+- **Tissu lourd** (manteau de laine) : 2-4 plis seulement, bords doux ; **tissu léger**
+  (voile, robe d'été) : plis nombreux et fins, bords durs.
+
+**9. Armure.**
+- **Plaques de métal** : chaque plaque est un volume simple (cylindre pour le bras, coque
+  pour le torse). Contraste **fort** : noir profond à côté d'un reflet presque blanc.
+  Reflet **petit et net** au point le plus proche de la lumière ; **contre-reflet** (une
+  bande sombre au milieu de la zone claire, ou une bande claire dans l'ombre) pour faire
+  « métal poli ». Peu de tons : 3-4 suffisent sous 32 px.
+- **Plaques qui se chevauchent** (épaulières, jupe de plaques) : chaque plaque du dessus
+  projette 1 px d'ombre sur celle du dessous ; bord du dessus = 1 px clair.
+- **Rivets** : 1 px clair + 1 px sombre en diagonale (bas-droite) ; alignés et espacés
+  régulièrement le long du bord.
+- **Cotte de mailles** : un motif répétitif (damier, petits ronds ou « o » alternés)
+  posé sur un ombrage déjà juste. Le motif s'assombrit dans l'ombre, et on le **coupe**
+  dans les zones les plus sombres.
+- **Exagérer le trait distinctif** : la pointe du casque, la grosse épaulière, le blason
+  du bouclier. À petite taille, l'armure se reconnaît à une seule forme forte.
+- **Armure de cuir** : voir F (mat, coutures, bords usés).
+
+### E. Motifs (rayures, carreaux, imprimés)
+- **Ordre :** aplat → ombrage complet du vêtement → **motif en dernier**, posé sur
+  l'ombrage (ton clair du motif dans la lumière, ton sombre dans l'ombre).
+- **Le motif suit la forme :** les rayures tournent avec le cylindre (droites au centre
+  du bras, courbes et resserrées sur les bords). Dans un pli, la rayure se **casse** :
+  elle s'arrête au creux et repart décalée.
+- **Il disparaît dans l'ombre profonde :** dans les creux (AO), ne pas poser le motif.
+- **Grande échelle à petite taille :** à 32 px, une rayure fait au moins 1 px et l'écart
+  au moins 1 px ; un carreau fait au moins 2×2. Plus fin, le motif devient du bruit.
+- **Ton du motif proche du fond** (1-2 marches de valeur) sauf si c'est le point
+  d'intérêt : un motif très contrasté mange le volume.
+
+### F. Matières
+| Matière | Contraste | Reflet | Bords des plis | Signes particuliers |
+|---|---|---|---|---|
+| **Coton, toile** | moyen | large et doux | mixtes | ourlets visibles, plis moyens |
+| **Laine, tricot** | faible | aucun reflet net | doux, arrondis | grosses formes, côtes en lignes verticales ; peluche au bord (silhouette légèrement bosselée) |
+| **Cuir** | moyen-fort | moyen, assez large, à peine brillant | durs aux plis, cassures nettes | coutures en pointillés, bords usés plus clairs, plis peu nombreux et marqués |
+| **Soie, satin** | très fort | **longs reflets fins** qui suivent chaque pli | très durs | beaucoup de petits plis, le clair et le sombre se touchent presque sans ton moyen |
+| **Velours** | inversé | les **bords** et les plis sont plus clairs que le centre face à nous | doux | ton sombre et saturé au centre, liseré clair sur la silhouette |
+| **Fourrure** | faible | — | — | ombrage lisse d'abord, puis on **taille** des touffes (triangles, mèches de 2-4 px) dans le contour et dans les limites d'ombre ; des touffes, pas des poils ; un peu de dither seulement à la limite |
+| **Métal** | maximal | petit, net, presque blanc | — | contre-reflet, reflet du ciel en haut (froid) et du sol en bas (chaud) ; voir D9 |
+
+### G. Détails qui font « fini »
+- **Col, poignets, ourlets** : 1 rangée plus sombre ou plus claire ; l'épaisseur du tissu
+  se voit en **1 px de bord** à l'ouverture (on voit dedans, côté ombre).
+- **Coutures** : seulement à partir de 48 px ; pointillés réguliers d'1 px, ton sombre de
+  la matière, qui suivent la courbe.
+- **Boutons** : 1 px (32 px) à 2×2 (64 px) ; un clair et un sombre. Alignés sur la
+  ligne centrale qui suit la torsion du torse (C2).
+- **Poches, rabats** : un rectangle déformé par le volume, son bord haut clair, son
+  ombre portée dessous.
+- **Usure** : bords plus clairs (cuir, jean), taches plus sombres aux genoux et coudes —
+  une touche, pas un motif.
+
+### H. Erreurs fréquentes (et corrections)
+| Erreur | Pourquoi ça rate | Correction |
+|---|---|---|
+| Plis tracés en `O` | le vêtement paraît découpé, pas drapé | pli = ombre de la matière + lumière (C17-C) |
+| Plis partout, tous pareils | bruit, banding | 1-3 plis, aux points de tension, de tailles différentes |
+| Plis qui ne partent de rien | le tissu « flotte » | chaque pli remonte à un appui ou à une tension |
+| Ourlet droit | le vêtement est en carton | ourlet en courbe (cylindre) ou en vague (tuyaux) |
+| Vêtement collé au corps, même contour | on ne voit pas le tissu | 1 px au-delà du corps (C14-B1), encoches aux plis |
+| Rayures droites sur un bras | aucun volume | rayures courbes, qui se resserrent sur les bords |
+| Ombrage coussin sur chaque pièce | aucune lumière | même lumière haut-gauche pour tout le personnage |
+| Couches sans ombre portée | les couches se confondent | 1 px d'ombre sous chaque couche du dessus |
+| Même valeur pour deux pièces voisines | elles se fondent en gris | décaler les valeurs (A5-11, contrôle en gris) |
+
+### I. Ordre de travail d'un vêtement
+1. **Silhouette** du vêtement (forme noire), avec ses appuis et ses tensions marqués au
+   croquis (points rouges).
+2. **Aplat** 1 px hors du corps (C14-B1).
+3. **Ombre propre** (côté opposé à la lumière) + **AO** (sous les couches, dans les creux).
+4. **Plis** : du plus grand au plus petit, en partant des tensions (C17-B, C).
+5. **Lumières** et reflets selon la matière (C17-F).
+6. **Motif** s'il y en a un (C17-E).
+7. **Contour du calque** (`contour.py`), puis **bords intérieurs à la main** (C14-B5).
+8. **Détails** (C17-G), **nettoyage** (A6-C) et planche.
+
+---
+
 # Partie D — Outils (dossiers `pixel_art/chibi/`, `pixel_art/chibi2/`, `pixel_art/monstres/`)
 Les scripts **ne décident rien** (R3) : ils posent ce qui a été décidé à la main, ou
 rendent l'image pour la regarder (R1).
@@ -1539,6 +1820,14 @@ intérieurs à la main → yeux selon le langage → selout → planche.
 sombres d'abord → asymétrie (bras levé, armure) → parties flottantes séparées par du vide →
 bords intérieurs à la main (joints de lave chez l'élémentaire) → un seul accent émissif →
 planche.
+
+**Vêtement (C17) :** appuis et tensions → poids du tissu → silhouette → aplat 1 px hors
+du corps → ombre et AO → 1-3 plis depuis les tensions (ombre + lumière, pas de trait) →
+lumière selon la matière → motif qui suit la forme → contour du calque → détails.
+
+**Finition pro (A6) :** rampes à teinte tournante → une seule lumière, terminateur net →
+AO dans les creux → lumière réfléchie → selout → AA seulement sur les courbes dures →
+chasse aux doubles, jaggies, banding, orphelins.
 
 Un concept à la fois, du grand au petit. Aucun pixel de détail tant que la structure n'est
 pas juste.
