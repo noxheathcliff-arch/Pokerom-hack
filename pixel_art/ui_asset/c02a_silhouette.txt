@@ -1,0 +1,28 @@
+# Étape 2a — silhouette A « astrolabe ailé » : soleil de rayons + ailes déployées + pendentif
+# moitié gauche (x<=64), puis symétrie colonne 64
+disc K 64 64 44
+# rayons : lance (0°), court, moyen
+poly K 64 2 62 12 60 20 60 27 64 27
+vline K 64 2 27
+poly K 54 15 59 24 54 26
+poly K 43 12 52 25 45 29
+# aile : bras (bord d'attaque) épaule (32,44) -> poignet (7,13)
+blob K 33 40 24 26 14 15 7 12 5 15 10 22 18 34 28 48
+# rémiges pendantes (générées par wing_gen : ancre sur le bras -> pointe)
+ell K 5.0 28.5 12.2 4 109.2
+ell K 7.0 36.5 16.3 4 107.9
+ell K 10.0 44.5 19.2 4 105.1
+ell K 14.5 52.0 21.5 4 102.1
+ell K 19.5 59.0 23.3 4 98.7
+ell K 25.0 65.0 23.1 4 95.0
+# fentes entre rémiges (1 px, le long de l'axe des plumes) : chaque plume se lit seule
+stroke . 1 46 3 41 5 36 7 32
+stroke . 3 58 5 52 7 47 9 42
+stroke . 7 69 9 63 11 58 13 53
+stroke . 13 79 15 73 17 68 19 62
+stroke . 20 87 21 81 23 75 25 69
+# pendentif : goutte + volute en C + perle
+poly K 60 104 64 104 64 126 62 116 60 110
+blob K 59 105 53 108 51 114 55 119 59 118 56 115 55 111 59 108
+disc K 64 121 3
+miroir 64 0 128

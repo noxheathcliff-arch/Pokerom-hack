@@ -1,0 +1,29 @@
+# Étape 4 — planche de palette : une rampe par ligne, du plus sombre au plus clair
+# or (contour O en tête)
+rect O 0 0 3 3
+rect a 4 0 7 3
+rect b 8 0 11 3
+rect c 12 0 15 3
+rect d 16 0 19 3
+rect e 20 0 23 3
+rect f 24 0 27 3
+# liquide
+rect 1 0 5 3 8
+rect 2 4 5 7 8
+rect 3 8 5 11 8
+rect 4 12 5 15 8
+rect 5 16 5 19 8
+rect 6 20 5 23 8
+# verre
+rect p 0 10 3 13
+rect q 4 10 7 13
+rect r 8 10 11 13
+rect s 12 10 15 13
+rect k 16 10 19 13
+rect x 20 10 23 13
+rect w 24 10 27 13
+# fer
+rect h 0 15 3 18
+rect i 4 15 7 18
+rect j 8 15 11 18
+rect m 12 15 15 18

@@ -1,0 +1,23 @@
+# Étape 1 — construction en volumes simples (axe colonne 32, on dessine la gauche)
+# Révision : les rémiges horizontales lisaient « soleil ». Ailes levées dans les coins
+# du haut (espace libre entre cercle et carré), plumes en éventail pointe vers l'extérieur.
+# plaque du bas (fer) : hexagone, glissé sous l'anneau
+poly i 16 48 48 48 53 54 48 61 16 61 11 54
+# B1 : pointes reculées d'1 px (la colonne 63, miroir de la 1, touchait le bord)
+# aile gauche : 4 rémiges, de la plus haute (coin) à la plus basse
+poly c 18 13 11 6 3 2 6 9 14 18
+poly c 15 15 8 10 2 8 5 14 12 21
+poly c 12 19 6 16 2 17 5 21 11 25
+poly c 11 24 6 23 3 26 6 29 11 30
+# couronne : 5 pointes, la centrale la plus haute
+poly c 23 10 24 4 28 7 32 1 36 7 40 4 41 10
+# anneau d'or
+disc c 32 29 22.5
+# verre
+disc q 32 29 18.5
+# liquide (≈ 60 %)
+mask q
+rect 3 0 26 63 63
+mask *
+disc 4 32 6 1.6
+miroir 32 0 63

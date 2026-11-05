@@ -1,0 +1,43 @@
+# Étape 1 — construction (R4) : R = axes/cercles, B = volumes primitifs, G = lumière/terminateur
+# Cercles concentriques centre (64,64) : lunette r44-36, anneau acier 36-32, cadran <32
+disc R 64 64 44
+disc . 64 64 43
+disc R 64 64 36
+disc . 64 64 35
+disc R 64 64 32
+disc . 64 64 31
+# axes (dépassent un peu de la forme)
+vline R 64 0 128
+hline R 0 128 64
+# cercle de l'écliptique (araignée), décentré vers le haut : centre (64,57) r21
+mask .
+disc K 64 57 21
+mask K
+disc . 64 57 20
+mask *
+rep K B 0 0 128 128
+# Couronne : rayons radiaux (0°, ±20°, ±40° depuis la verticale)
+line B 64 20 64 2
+line B 49 23 45 13
+line B 79 23 83 13
+line B 36 31 32 26
+line B 92 31 96 26
+# Ailes : 3 plumes par côté, balayées vers le haut et l'extérieur
+stroke B 21 58 12 46 4 37
+stroke B 21 66 12 61 5 57
+stroke B 22 74 15 77 11 82
+stroke B 107 58 116 46 124 37
+stroke B 107 66 116 61 123 57
+stroke B 106 74 113 77 117 82
+# Pendentif : rayon vers le bas + 2 volutes
+line B 64 108 64 126
+stroke B 58 109 54 114 57 118 60 116
+stroke B 70 109 74 114 71 118 68 116
+# Aiguille vers 10h30 + contrepoids lune en bas à droite
+line B 64 64 42 42
+disc B 76 76 2
+# Cristal central : losange 13x17
+poly B 64 54 71 64 64 73 57 64
+# Lumière haut-gauche (flèche) et terminateur (perpendiculaire, décalé vers bas-droite)
+line G 2 2 14 14
+line G 112 28 28 112

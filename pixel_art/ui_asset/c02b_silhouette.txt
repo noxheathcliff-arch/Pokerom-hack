@@ -1,0 +1,10 @@
+# Étape 2b — silhouette B « rose des vents » : 8 pointes autour du cadran
+disc K 64 64 44
+poly K 64 2 72 30 64 64 56 30
+poly K 64 126 72 98 64 64 56 98
+poly K 2 64 30 56 64 64 30 72
+poly K 126 64 98 56 64 64 98 72
+poly K 22 22 44 36 64 64 36 44
+poly K 106 22 92 44 64 64 84 36
+poly K 22 106 36 84 64 64 44 92
+poly K 106 106 84 92 64 64 92 84

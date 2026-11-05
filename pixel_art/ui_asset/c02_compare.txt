@@ -1,0 +1,2 @@
+stamp v02a_silhouette.txt 0 0
+stamp v02b_silhouette.txt 133 0

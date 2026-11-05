@@ -1,0 +1,155 @@
+# Étape 4 — contour. Chaîne bord.py (contour sélectif, lettres choisies à la main) :
+#  bord v03_zones -> O d .   (or contre le vide : contour vin)
+#  bord h j .               (ailes contre le vide : selout acier sombre h)
+#  bord t v .               (cristal/perle contre le vide : contour coloré t)
+#  bord b d j               (or contre acier : trait intérieur mi-sombre b)
+#  bord h j r               (anneau acier contre émail : h)
+#  bord t v d * 55 55 73 73 (cristal contre chaton : t)
+#  bord O d O h 0 0 38 40 / 90 0 128 40  (haut des bras épaissi à 2 px : épais en haut/dehors)
+#  -> v04a_brut.txt ; puis corrections à la main ci-dessous (moitié gauche, puis miroir).
+#
+# B1 : la plume A touchait la colonne 0 -> bord ramené en x1
+rep h . 0 32 0 39
+rep j h 1 32 1 39
+# Fente N1 (A/B) : 'h . h' (3 px) -> trait h de 1 px, bords rendus au corps j, départ estompé en i
+px i 7 31
+px h 7 32
+px h 7 33
+px h 6 34
+px h 6 35
+px h 5 36
+px h 5 37
+px h 4 38
+px h 4 39
+px j 6 32
+px j 8 32
+px j 6 33
+px j 8 33
+px j 5 34
+px j 7 34
+px j 5 35
+px j 7 35
+px j 4 36
+px j 6 36
+px j 4 37
+px j 6 37
+px j 3 38
+px j 5 38
+px j 3 39
+px j 5 39
+# pointe A : queue de 1 px supprimée
+px . 2 42
+# bosse orpheline du bord de B (1,45)
+px . 1 45
+px h 2 45
+px j 3 45
+# Fente N2 (B/C)
+px i 9 41
+px h 9 42
+px h 9 43
+px h 8 44
+px h 8 45
+px h 8 46
+px h 7 47
+px h 7 48
+px j 8 42
+px j 10 42
+px j 8 43
+px j 10 43
+px j 7 44
+px j 9 44
+px j 7 45
+px j 9 45
+px j 7 46
+px j 9 46
+px j 6 47
+px j 8 47
+px j 6 48
+px j 8 48
+# pointe B : fond plat de 4 px -> pointe vers bas-gauche
+px h 4 50
+px . 5 50
+px . 4 51
+px . 5 51
+px . 2 52
+# Fente N3 (C/D)
+px i 13 52
+px h 13 53
+px h 13 54
+px h 12 55
+px h 12 56
+px j 12 53
+px j 14 53
+px j 12 54
+px j 14 54
+px j 11 55
+px j 13 55
+px j 11 56
+px j 13 56
+# pointe C : lamelle orpheline et queue supprimées
+px . 10 59
+px . 9 61
+px . 9 62
+px . 5 63
+# Fente N4 (D/E)
+px i 19 61
+px h 19 62
+px h 19 63
+px h 18 64
+px h 18 65
+px h 18 66
+px j 18 62
+px j 20 62
+px j 18 63
+px j 20 63
+px j 17 64
+px j 19 64
+px j 17 65
+px j 19 65
+px j 17 66
+px j 19 66
+# pointe D : lamelle de 2 px fondue dans la plume, pointe en diagonale 1:1
+px j 14 67
+px j 13 68
+px j 14 68
+px j 15 68
+px h 16 68
+px j 13 69
+px j 14 69
+px . 16 69
+px j 12 70
+px j 13 70
+px h 14 70
+px . 15 70
+px j 12 71
+px h 13 71
+px . 15 71
+px j 11 72
+px h 12 72
+px . 15 72
+px . 10 73
+px h 11 73
+# Fente N5 (E/F) : plume F pincée à 1 px contre le bras -> fente fine, F remplie jusqu'à l'or
+px i 20 75
+px h 20 76
+px h 20 77
+px j 19 76
+px j 21 76
+px j 19 77
+px j 21 77
+px b 22 76
+px b 22 77
+px j 22 78
+px j 22 79
+px b 23 78
+px b 23 79
+# pointe E : queue supprimée
+px . 16 82
+# pointe F : contact h/or -> b ; pointe orientée bas-gauche
+px b 26 85
+px h 23 87
+px . 24 87
+px . 23 88
+# symétrie
+# miroir limité aux ailes (x 100-128) : le croissant de lumière haut-gauche (m) du cadran reste asymétrique
+miroir 64 0 128 100 128

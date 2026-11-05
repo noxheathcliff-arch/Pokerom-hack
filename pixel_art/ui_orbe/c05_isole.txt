@@ -1,0 +1,4 @@
+# Étape 5 — isoler la bande d'or de l'anneau en lettre temporaire R (pour ne pas toucher les plumes)
+mask c
+disc R 32 29 21.6
+mask *

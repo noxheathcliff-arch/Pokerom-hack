@@ -1,0 +1,36 @@
+# Étape 3 — zones/aplats : chaque matière en ton moyen de sa rampe (pas encore de lumière)
+# ailes : rémiges en acier bleui (j) ; le reste re-posé par-dessus
+rep K j 0 0 128 128
+# bras de l'aile = or (bord d'attaque)
+blob d 33 40 24 26 14 15 7 12 5 15 10 22 18 34 28 48
+# couronne : lance + rayons en or
+poly d 64 2 62 12 60 20 60 27 64 27
+vline d 64 2 27
+poly d 54 15 59 24 54 26
+poly d 43 12 52 25 45 29
+# pendentif : goutte + volute en or, perle de cristal (écho de l'accent)
+poly d 60 104 64 104 64 126 62 116 60 110
+blob d 59 105 53 108 51 114 55 119 59 118 56 115 55 111 59 108
+disc v 64 121 3
+miroir 64 0 128
+# médaillon : lunette or (r44) / anneau des heures acier (r36) / cadran émail (r32)
+disc d 64 64 44
+disc j 64 64 36
+disc r 64 64 32
+# rete : anneau écliptique or, 2 px, centre décalé vers le haut (64,57)
+disc d 64 57 21.5
+disc r 64 57 19.5
+# aiguille Breguet (acier clair m) vers 10h30 : tige 2 px, pomme évidée, pointe ; contrepoids croissant
+line m 64 64 45 45
+line m 65 64 46 45
+line m 64 65 45 46
+disc m 49.5 49.5 3.6
+disc r 49.5 49.5 1.6
+poly m 46 43 43 40 41 41 40 43 41 46 43 43 46 46
+line m 64 64 72 72
+line m 65 64 73 72
+disc m 75 75 4.6
+disc r 73.6 73.6 3.6
+# chaton or + cristal central (octogone taillé)
+disc d 64 64 9.5
+poly v 61 57 67 57 71 61 71 67 67 71 61 71 57 67 57 61

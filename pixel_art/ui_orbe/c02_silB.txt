@@ -1,0 +1,6 @@
+# Étape 2 — silhouette B (alternative R7) : orbe nu sur pied à griffes, sans ailes
+disc O 32 27 22.5
+poly O 22 46 42 46 46 54 40 58 24 58 18 54
+poly O 14 58 50 58 54 62 10 62
+poly O 10 22 4 18 6 26
+poly O 54 22 60 18 58 26

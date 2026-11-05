@@ -1,0 +1,6 @@
+# Étape 2 — silhouette A (orbe ailé) : tout en O pour juger la forme seule
+rep c O 0 0 63 63
+rep i O 0 0 63 63
+rep q O 0 0 63 63
+rep 3 O 0 0 63 63
+rep 4 O 0 0 63 63

@@ -1,0 +1,37 @@
+# Étape 5 (A5-8/9) — terminateur et ombres propres. Lumière haut-gauche, PAS de miroir.
+# --- Anneau : moitié haut-gauche éclairée (d), bas-droite à l'ombre (b), le reste reste c
+mask R
+disc Z 29 26 23
+disc d 29 26 20
+mask *
+rep R b 0 0 63 63
+rep Z c 0 0 63 63
+# --- Liquide : il s'assombrit avec la profondeur et vers le bas-droite
+mask 3
+disc T 30 26 17
+mask *
+rep 3 2 0 0 63 63
+mask 2
+disc U 30 27 20
+mask *
+rep 2 1 0 0 63 63
+rep U 2 0 0 63 63
+rep T 3 0 0 63 63
+# sous le ménisque, la lumière traverse : plus clair (5 puis 4)
+mask 321
+hline 5 0 63 26
+rect 4 0 27 63 28
+mask *
+# --- Verre vide : la moitié bas-droite tombe dans l'ombre (p)
+mask q
+disc T 30 27 17
+mask *
+rep q p 0 0 63 63
+rep T q 0 0 63 63
+# --- Rubis : facette haute-gauche allumée, bas-droite dans l'ombre
+px 6 31 5
+px 5 32 5
+px 5 31 6
+px 3 33 6
+px 3 32 7
+px 2 33 7

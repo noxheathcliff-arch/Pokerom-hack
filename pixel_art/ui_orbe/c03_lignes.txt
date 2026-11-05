@@ -1,0 +1,18 @@
+# Étape 3 — lignes intérieures (après le contour extérieur O posé par bord.py)
+# séparation anneau / ailes / couronne : un cercle a d'1 px sur le bord extérieur de l'anneau,
+# seulement là où il y a de l'or (O protégé)
+mask c
+disc a 32 29 22.5
+mask a
+disc c 32 29 21.5
+mask *
+# fentes entre rémiges (moitié gauche), départ en b pour que la ligne s'éteigne
+nomask O
+stroke a 5 9 9 11 14 15
+px b 5 9
+stroke a 5 16 8 17 12 19
+px b 5 16
+stroke a 7 22 10 23
+px b 7 22
+nomask *
+miroir 32 0 47
