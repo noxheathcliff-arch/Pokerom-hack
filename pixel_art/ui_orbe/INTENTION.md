@@ -116,3 +116,41 @@ Fichier : `c10_nettoyage.txt` → `v10_nettoyage_vue.png`. Chaque pixel retouch�
 - **Vérifié et gardé** :
   - l'arc de l'anneau en y13-14 : ses marches sont régulières ;
   - les bulles du liquide : elles sont isolées exprès.
+
+## Étape 11 — Contrôle final
+
+Fichiers : `orbe_vie.png` (l'asset, 64×64 à ×1) et `v11_planche.png` (×1, ×2, agrandi, fond clair, fond sombre, miroir, silhouette, gris, case d'inventaire).
+
+**Questions communes**
+
+1. **Silhouette** : oui. La masse noire se lit « sphère + deux ailes + couronne + socle ». Les ailes levées ne lisent plus « soleil » (correction de l'étape 1).
+2. **Matières en gris** : l'or (luminance 119) se sépare nettement du fer (48) et du contour (23). Le verre (38) et le liquide (64) se séparent, mais de peu. Le niveau reste lisible grâce au ménisque.
+3. **Volume et lumière** : une seule source, en haut à gauche. Le reflet du verre, la bande d'or poli, les arêtes `e` des plumes et le biseau `j` de la plaque viennent tous de là. Le liseré froid à droite est du rebond, pas une deuxième source.
+4. **Point d'intérêt** : l'éclat `6` du ménisque (luminance 189) est le pixel le plus clair posé sur le fond le plus sombre. C'est bien le plus fort contraste, au bon endroit : le niveau de PV.
+5. **Propreté** : les orphelins, les « L » des rémiges et la caustique isolée ont été traités à l'étape 10. Pas de banding : chaque dégradé suit la forme. Pas d'ombrage coussin : le terminateur suit la lumière, pas le contour.
+6. **Hiérarchie de formes** (A4b) :
+   - la forme dominante est la sphère ;
+   - les formes moyennes sont les ailes et la plaque ;
+   - les petites sont la gemme, les bulles et les rivets.
+
+   À ×1, les marqueurs d'identité (rouge, niveau, or) se voient. Les chiffres « 65/99 » ne se lisent bien qu'à ×2.
+7. **Objectif de l'étape 0** : atteint. On lit une jauge de PV précieuse, et son niveau se lit d'un coup d'œil.
+
+**Contrôle objet (B5)**
+
+- **Case d'inventaire** : reconnu en 1 seconde.
+- **Centrage** : l'objet va de x1 à x63, soit 63 px (largeur impaire), sur l'axe x32. La gemme et la pointe centrale de la couronne sont sur cet axe.
+- **Fond sombre** : le contour vin se fond côté ombre, comme prévu. Le liseré `r`/`s` du liquide et l'or de l'anneau gardent le bord droit lisible.
+- **Miroir** : rien ne casse. La lumière devient asymétrique, ce qui est normal, et le texte s'inverse.
+- **Accord avec le set** : à vérifier quand les autres éléments du HUD existeront (même contour `O`, même lumière).
+
+**Bilan**
+
+- **Réussi** :
+  - la silhouette, iconique et symétrique ;
+  - le point d'intérêt placé sur le niveau de PV ;
+  - la séparation or / fer / verre, avec une seule source de lumière.
+- **À améliorer**, objectifs du prochain asset :
+  - écarter davantage les valeurs du verre et du liquide (38 contre 64) ;
+  - prévoir des chiffres lisibles à ×1, avec une police plus grande ou une plaque plus haute ;
+  - alléger le détail des plumes, qui fourmille un peu à ×1.
