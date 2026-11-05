@@ -12,4 +12,6 @@ python3 bord.py v05_ombres.txt v05_ombres.txt r q a hg 10 8 32 25
 # plaque : biseau haut-gauche clair (j), bas-droite sombre (h)
 python3 bord.py v05_ombres.txt v05_ombres.txt j i Oh hg 10 48 54 60
 python3 bord.py v05_ombres.txt v05_ombres.txt h i O bd 10 48 54 60
+# ménisque concave, éteint vers la droite
+python3 trace.py v05_ombres.txt v05_ombres.txt c05b_menisque.txt
 python3 ../cascade/px.py v05_ombres.txt 8 palette.json

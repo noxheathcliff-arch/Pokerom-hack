@@ -1,0 +1,21 @@
+# Étape 5b — ménisque : la surface n'est plus une règle plate.
+# Liquide concave : il monte d'1 px contre le verre (y25) aux deux bords.
+# La ligne de surface (y26) s'éteint de gauche (lumière) à droite (ombre).
+mask 54321rqp
+# remontée contre la paroi
+px 4 14 25
+px 3 49 25
+px 2 50 25
+# ligne de surface : 5 → 4 → 3
+hline 5 14 38 26
+hline 4 39 45 26
+hline 3 46 50 26
+# sous la surface : la lumière traverse, puis le liquide s'assombrit vers la droite
+hline 4 14 42 27
+hline 3 43 48 27
+hline 2 49 50 27
+px 3 14 28
+hline 4 15 38 28
+hline 3 39 47 28
+hline 2 48 50 28
+mask *

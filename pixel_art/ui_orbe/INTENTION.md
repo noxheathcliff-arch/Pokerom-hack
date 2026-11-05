@@ -53,3 +53,20 @@ Planches : `v04_palette_vue.png`, et `v04_palette_gris_vue.png` pour la version 
   - le liquide s'éclaircit sous le ménisque (`4`, `5`) ;
   - le vide de verre reste sombre (`p`, `q`) ;
   - une ligne de ménisque claire marque le niveau.
+
+## Étape 5 (A5-8) — Terminateur et ombres
+
+Lumière en haut à gauche (R23). Fichiers : `c05.sh`, `c05_isole.txt`, `c05_ombres.txt`, `c05b_menisque.txt` → `v05_ombres_vue.png`.
+
+- **Anneau d'or** : le terminateur passe sur la diagonale haut-droite / bas-gauche. La moitié haut-gauche monte en `d`, la moitié bas-droite descend en `b`. Le miroir de l'étape 1 est cassé ici : la lumière n'est pas symétrique.
+- **Plumes et couronne** : arête haute éclairée (`d`), arête basse dans l'ombre (`b`). L'aile droite ne reçoit que l'ombre (`bd`) : elle est du côté opposé à la lumière.
+- **Liquide** : la profondeur va de `3` à `2` puis `1` vers le fond et le bord bas-droit. Le fond reste une masse sombre, sans bandes.
+- **Ménisque** (`c05b`) : la surface n'est plus une règle plate.
+  - Elle est concave : le liquide remonte d'1 px contre le verre aux deux bords.
+  - La ligne de surface s'éteint de gauche à droite (`5 → 4 → 3`), et la lumière qui la traverse éclaire les deux rangs dessous (`4`).
+  - Correction après vue : un pixel `4` posé en x15 y24 faisait une marche isolée contre l'or. Je l'ai retiré : une seule marche suffit.
+- **Verre vide** : `q` en masse, `p` en croissant d'ombre en haut à droite, `r` sur l'épaisseur éclairée du bord haut-gauche.
+- **Rubis** : facette claire en haut à gauche, sombre en bas à droite, avec les teintes du liquide.
+- **Plaque** : biseau `j` en haut à gauche, `h` en bas à droite (B2).
+
+Encore à régler : le verre du haut est mort et plat (ce sera l'étape 8, avec le reflet), et les ailes comme la plaque restent plates.
