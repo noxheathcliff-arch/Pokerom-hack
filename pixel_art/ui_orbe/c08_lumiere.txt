@@ -1,0 +1,85 @@
+# Étape 8 (A5-10/11) — Lumière et matières. Lumière en haut à gauche (R23).
+# --- Verre : fenêtre de reflet, arc parallèle au bord haut-gauche, 2 px à l'intérieur
+px s 26 14
+px k 27 14
+px k 28 14
+px s 29 14
+px k 24 15
+px x 25 15
+px k 26 15
+px s 27 15
+px k 22 16
+px w 23 16
+px x 24 16
+px s 25 16
+px k 21 17
+px x 22 17
+px s 23 17
+px k 20 18
+px s 21 18
+px s 20 19
+px s 19 20
+px r 18 21
+# petite vitre secondaire (reflet de fenêtre)
+px k 25 19
+px s 26 19
+px s 25 20
+# --- Verre : liseré froid en bas à droite, sur le bord du liquide
+px r 50 33
+px r 49 34
+px r 49 35
+px s 49 36
+px s 48 37
+px s 48 38
+px s 47 39
+px r 46 40
+px r 46 41
+px r 45 42
+# --- Liquide : éclat spéculaire du ménisque, bulles qui montent, caustique au fond
+px 6 16 26
+px 6 17 26
+px 6 18 26
+px 5 19 26
+px 4 25 30
+px 5 22 34
+px 4 23 35
+px 4 19 39
+rect 3 33 44 37 44
+rect 3 34 43 38 43
+rect 3 34 45 36 45
+# --- Or : bande polie au milieu de l'anneau, quart haut-gauche
+px d 24 10
+px d 25 10
+px d 26 10
+px d 22 11
+px d 23 11
+px d 20 12
+px d 21 12
+px e 19 13
+px d 20 13
+px e 18 14
+px d 17 14
+px f 17 15
+px d 16 15
+px e 16 16
+px d 15 16
+px d 15 17
+px d 16 17
+px d 15 18
+px d 14 19
+px d 13 20
+px d 12 21
+px d 12 22
+# éclats sur les arêtes éclairées des plumes (aile gauche) et de la couronne
+px e 5 4
+px e 4 10
+px e 4 17
+px e 5 24
+px e 31 3
+px e 25 6
+# --- Fer : biseau poli haut-gauche
+px m 16 49
+px m 17 49
+px j 13 53
+px j 14 53
+px j 13 54

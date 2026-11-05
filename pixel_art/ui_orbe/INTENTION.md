@@ -81,3 +81,15 @@ Fichier : `c07_ao.txt` → `v07_ao_vue.png`. Chaque pixel a été vérifié avan
 - **Couronne** : la pointe droite pose une petite ombre (`b`) sur l'anneau, du côté opposé à la lumière.
 - **Plaque** : sous l'anneau, le biseau clair `j` s'éteint en `i`. La plaque passe *sous* l'or au lieu d'être collée à côté.
 - Le fond du liquide était déjà en `1` contre le verre : rien à ajouter.
+
+## Étape 8 (A5-10/11) — Lumière et matières
+
+Fichier : `c08_lumiere.txt` → `v08_lumiere_vue.png`.
+
+- **Verre** : une fenêtre de reflet courbe en haut à gauche, qui épouse l'arc de la sphère (`k`, `x`, avec un seul pixel `w` pour l'éclat). Elle s'éteint en `s` puis `r` en descendant. Une petite vitre secondaire (`k`, `s`) la double : c'est le reflet d'un deuxième carreau, et c'est ce qui fait lire le verre et non un trou.
+- **Liseré froid** (rim) : le bord bas-droit du liquide reçoit `r` puis `s`. C'est la lumière qui revient à travers le verre. Il ne touche pas le ménisque, donc le niveau reste net.
+- **Ménisque** : un éclat spéculaire `6` sur 3 px à gauche, prolongé par `5`. C'est le point le plus lumineux du liquide, et donc le point d'intérêt (B4).
+- **Liquide** : 4 bulles (`4`, `5`) qui montent en diagonale, et une caustique `3` au fond. Le liquide devient une matière vivante, plus un aplat.
+- **Or poli** : une bande `d` suit l'arc haut-gauche de l'anneau, avec un cœur `e` et un seul `f`. Le métal poli se lit comme une bande nette, pas comme un dégradé.
+- **Plumes et couronne** : quelques points `e` sur les arêtes éclairées.
+- **Fer** : un reflet `m` sur l'arête haute de la plaque, et un biseau `j` à gauche. Le fer reste mat face à l'or.
