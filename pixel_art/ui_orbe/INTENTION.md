@@ -101,3 +101,18 @@ Fichiers : `c09_details.txt` et `c09_chiffres.txt` → `v09_details_vue.png`.
 - **Cartouche en creux** : un rectangle `h` creusé dans la plaque. Ses parois haute et gauche sont dans l'ombre, ses lèvres basse et droite sont éclairées (`j`). Comme la lumière vient d'en haut à gauche, on lit un creux et non une bosse.
 - **Chiffres « 65/99 »** : une police 3×5 dessinée pixel par pixel. Le corps est en crème `e`, le rang du haut en `f` pour l'arête éclairée. La barre est en `d` : elle est secondaire. Correction après vue : en `c`, elle se perdait sur le fer.
 - **Rivets** : deux têtes de 2×2 qui encadrent le cartouche (`m` en haut à gauche, `j` sur les flancs, `h` en bas à droite). Ils répondent aux bulles du liquide par leur petite taille (A4b).
+
+## Étape 10 (A5-13) — Nettoyage
+
+Fichier : `c10_nettoyage.txt` → `v10_nettoyage_vue.png`. Chaque pixel retouché est choisi à la main.
+
+- **Pointe de la rémige haute** (y8-9) : le bloc `OO` / `OOO` faisait un « L » épais (R21). La pointe redevient un seul pixel qui dépasse, suivi d'une diagonale propre.
+- **Pointe de la rémige basse** (y17-19) : il y avait un coin en « L » en x3. Le contour glisse d'1 px vers l'intérieur.
+- **Côté droit** : je recopie chaque retouche à la main avec x → 64 − x. Correction après vue : j'avais d'abord pris x → 63 − x, et ça laissait un trou `O.O` dans le contour.
+- **Pixels orphelins** (A6-C) :
+  - un `2` isolé au fond du liquide (x30 y47) devient `1` ;
+  - un `c` perdu sous l'anneau (x29 y49) devient `b`.
+- **Caustique** : un `3` isolé en x30 y43, détaché de la tache x34-38, faisait du bruit. Il devient `2`. La tache principale reste.
+- **Vérifié et gardé** :
+  - l'arc de l'anneau en y13-14 : ses marches sont régulières ;
+  - les bulles du liquide : elles sont isolées exprès.

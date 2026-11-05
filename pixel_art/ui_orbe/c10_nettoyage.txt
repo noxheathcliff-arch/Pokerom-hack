@@ -1,0 +1,17 @@
+# Étape 10 (A5-13) — Nettoyage : chaque pixel retouché est choisi à la main.
+# 1. Pointe de la rémige haute (y8-9) : le bloc OO / OOO faisait un « L » épais (R21).
+#    Côté droit : miroir à la main (x → 64 − x).
+#    La pointe redevient un seul pixel qui dépasse, suivi d'une diagonale propre.
+px . 3 8
+px . 61 8
+# 2. Pointe de la rémige basse (y17-19) : coin en « L » en x3 y17-18.
+#    Le contour glisse d'1 px vers l'intérieur : y17 x2-3, y18 x4, y19 x4, y20 x5.
+px . 3 18
+px O 4 18
+px . 61 18
+px O 60 18
+# 3. Pixels orphelins (A6-C) : un 2 isolé au fond du liquide, un c perdu sous l'anneau.
+px 1 30 47
+px b 29 49
+# 4. Caustique du fond (y43) : un 3 isolé en x30, détaché de la tache x34-38, faisait du bruit.
+px 2 30 43
