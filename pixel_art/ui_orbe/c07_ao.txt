@@ -1,0 +1,37 @@
+# Étape 7 (A5-9) — Occlusion ambiante / ombres de contact. Chaque pixel est posé à la main.
+# Aile gauche (côté lumière) : 1 px s'assombrit d'un cran contre la ligne de l'anneau
+px c 13 16
+px b 12 17
+px c 10 19
+px c 11 20
+px b 10 21
+px c 8 23
+px c 10 24
+px b 9 25
+px b 9 26
+px b 9 27
+# Aile droite (côté ombre) : l'anneau projette son ombre vers la droite
+px b 49 13
+px b 52 16
+px b 52 17
+px b 54 20
+px b 54 21
+px b 55 25
+px b 55 26
+px b 55 27
+# Couronne : ombre portée de la pointe droite sur l'anneau
+px b 41 10
+px b 42 10
+px b 43 11
+# Plaque : sous l'anneau la lumière est bloquée, le biseau j s'éteint en i
+px i 20 50
+px i 21 50
+px i 43 50
+px i 44 50
+px i 22 51
+px i 23 51
+px i 41 51
+px i 42 51
+rect i 24 52 27 52
+rect i 37 52 40 52
+rect i 28 53 36 53

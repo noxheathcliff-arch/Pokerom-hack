@@ -70,3 +70,14 @@ Lumière en haut à gauche (R23). Fichiers : `c05.sh`, `c05_isole.txt`, `c05_omb
 - **Plaque** : biseau `j` en haut à gauche, `h` en bas à droite (B2).
 
 Encore à régler : le verre du haut est mort et plat (ce sera l'étape 8, avec le reflet), et les ailes comme la plaque restent plates.
+
+## Étape 7 (A5-9) — Occlusion ambiante
+
+Fichier : `c07_ao.txt` → `v07_ao_vue.png`. Chaque pixel a été vérifié avant d'être posé.
+
+- **Ailes contre l'anneau** : là où une plume passe sous l'anneau, la lumière rasante n'arrive pas.
+  - Aile gauche, côté lumière : 1 px descend d'un cran (`d → c`, `c → b`).
+  - Aile droite, côté ombre : 2 px (`a` puis `b`), parce que l'anneau projette aussi son ombre vers la droite.
+- **Couronne** : la pointe droite pose une petite ombre (`b`) sur l'anneau, du côté opposé à la lumière.
+- **Plaque** : sous l'anneau, le biseau clair `j` s'éteint en `i`. La plaque passe *sous* l'or au lieu d'être collée à côté.
+- Le fond du liquide était déjà en `1` contre le verre : rien à ajouter.
