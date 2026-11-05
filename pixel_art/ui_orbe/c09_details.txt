@@ -1,0 +1,16 @@
+# Étape 9 (A5-12) — détails
+# cartouche en creux sur la plaque : fond h, paroi haut-gauche dans l'ombre (h), paroi bas-droite éclairée (j)
+rect h 21 52 43 58
+hline j 22 43 58
+vline j 43 53 58
+# chiffres
+stamp c09_chiffres.txt 23 53
+# rivets 2×2 : tête m éclairée en haut à gauche, j sur les flancs, h dans l'ombre en bas à droite
+px m 16 55
+px j 17 55
+px j 16 56
+px h 17 56
+px m 47 55
+px j 48 55
+px j 47 56
+px h 48 56

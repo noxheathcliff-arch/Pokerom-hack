@@ -93,3 +93,11 @@ Fichier : `c08_lumiere.txt` → `v08_lumiere_vue.png`.
 - **Or poli** : une bande `d` suit l'arc haut-gauche de l'anneau, avec un cœur `e` et un seul `f`. Le métal poli se lit comme une bande nette, pas comme un dégradé.
 - **Plumes et couronne** : quelques points `e` sur les arêtes éclairées.
 - **Fer** : un reflet `m` sur l'arête haute de la plaque, et un biseau `j` à gauche. Le fer reste mat face à l'or.
+
+## Étape 9 (A5-12) — Détails
+
+Fichiers : `c09_details.txt` et `c09_chiffres.txt` → `v09_details_vue.png`.
+
+- **Cartouche en creux** : un rectangle `h` creusé dans la plaque. Ses parois haute et gauche sont dans l'ombre, ses lèvres basse et droite sont éclairées (`j`). Comme la lumière vient d'en haut à gauche, on lit un creux et non une bosse.
+- **Chiffres « 65/99 »** : une police 3×5 dessinée pixel par pixel. Le corps est en crème `e`, le rang du haut en `f` pour l'arête éclairée. La barre est en `d` : elle est secondaire. Correction après vue : en `c`, elle se perdait sur le fer.
+- **Rivets** : deux têtes de 2×2 qui encadrent le cartouche (`m` en haut à gauche, `j` sur les flancs, `h` en bas à droite). Ils répondent aux bulles du liquide par leur petite taille (A4b).

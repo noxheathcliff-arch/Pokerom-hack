@@ -1,0 +1,6 @@
+# « 65/99 » en police 3×5 dessinée à la main : rang du haut en f (arête éclairée), corps en e, barre en d (subordonnée)
+fff.fff...d.fff.fff
+e...e.....d.e.e.e.e
+eee.eee..d..eee.eee
+e.e...e.d.....e...e
+eee.eee.d...eee.eee
